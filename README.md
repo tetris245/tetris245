@@ -1,7 +1,7 @@
 Quick-AccessMenu2.1 - Addon for Ben987's BondageClub game - Version 1.0 was created in June 2021 by KellyLoveyness
 
 Version 1.1 - 04/11/21
- What are the changes?
+
 * Ordered all commands in alphabetical order (also in the menu)
 * Added new commands: arousal - maxdifficulty - mindifficulty - release - timercell - totalrelease                                                                                                                             
 * Improved the commands cum -  quitclubslave                                                                                                                                                                                                           
