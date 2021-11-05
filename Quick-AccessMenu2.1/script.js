@@ -418,7 +418,7 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/gaglight") == 0) {
       content = SpeechGarbleByGagLevel(1, content.substring(9).trim());
       ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" }); 
-      }
+    }
     else if (content.indexOf("/gagtalk") == 0) {
         if (this.GagTalkOff == undefined | this.GagTalkOff == false) {
         SpeechGagLevelLookup = {};
@@ -1078,7 +1078,7 @@ this.OLDtalking=ChatRoomSendChat;this.ChatRoomSendChat=NEWtalking;
     ChatRoomSetLastChatRoom("");
     OnlineGameName = "";
     ChatRoomClearAllElements();
-     }
+    }
     else if (content.indexOf("/talkbaby") == 0) {
     ElementValue("InputChat", "");
         if (this.BabyTalkOn == false || this.BabyTalkOn == undefined) {
