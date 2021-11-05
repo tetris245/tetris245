@@ -204,7 +204,7 @@ if (CurrentScreen == "ChatRoom") {
     ChatCreateBackgroundList = BackgroundsGenerateList(BackgroundsTagList);
     ChatRoomMessage({ Content: "Quick-AccessMenu2: You can use more backgrounds now.", Type: "LocalMessage", Sender: Player.MemberNumber });
     }   
-     else if (content.indexOf("/becomeownlover") == 0) {
+    else if (content.indexOf("/becomeownlover") == 0) {
     ChatRoomMessage({ Content: "Warning: Uncomfirmed glitch might occur when removing self as lover, during which a random/real lover will be taken Use with risk in mind. Confirm: /becomeownlover yes", Type: "LocalMessage", Sender: Player.MemberNumber });
         if (content.includes("yes")) {
         ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
