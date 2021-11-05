@@ -1064,12 +1064,12 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         }
     }
     else if ((content.indexOf("/speak") == 0) || (content.indexOf("/mouth") == 0) || (content.indexOf("/speech") == 0)) {
-(typeof OLDtalking !== 'undefined') && (ChatRoomSendChat=OLDtalking); // reset
-NEWtalking = function (){this.msg = ElementValue("InputChat").trim();
-if(!this.msg.startsWith("/")&&!this.msg.startsWith("*")&&!this.msg.startsWith("!")) {
-if(this.msg.length > 10) {RunExpressionAnimation([null, "Grin", "Smirk", null, "Grin", "Smirk", null]);
-} else {RunExpressionAnimation([null, "Grin", "Smirk", null]);}}OLDtalking();}
-this.OLDtalking=ChatRoomSendChat;this.ChatRoomSendChat=NEWtalking;
+    (typeof OLDtalking !== 'undefined') && (ChatRoomSendChat=OLDtalking); // reset
+    NEWtalking = function (){this.msg = ElementValue("InputChat").trim();
+    if(!this.msg.startsWith("/")&&!this.msg.startsWith("*")&&!this.msg.startsWith("!")) {
+    if(this.msg.length > 10) {RunExpressionAnimation([null, "Grin", "Smirk", null, "Grin", "Smirk", null]);
+    } else {RunExpressionAnimation([null, "Grin", "Smirk", null]);}}OLDtalking();}
+    this.OLDtalking=ChatRoomSendChat;this.ChatRoomSendChat=NEWtalking;
     }
     else if (content.indexOf("/store") == 0) {
     Asset.forEach(e => { if (e.Value < 0) e.Value = 1; });
@@ -1170,130 +1170,130 @@ this.OLDtalking=ChatRoomSendChat;this.ChatRoomSendChat=NEWtalking;
         ChatRoomMessage({ Content: "Quick-AccessMenu2: Manual. For total, type /unrestrict total. For submissives, type /unrestrict soft. To reset, type /unrestrict reset", Type: "LocalMessage", Sender: Player.MemberNumber });}
         else if (content.includes("reset")) {
         ChatRoomMessage({ Content: "Quick-AccessMenu2: Unrestrict reset.", Type: "LocalMessage", Sender: Player.MemberNumber });
-Player.CanInteract = function () { return (this.Effect.indexOf("Block") < 0)}
-Player.CanTalk = function () {
-(this.Effect.indexOf("GagVeryLight") < 0) &&
-(this.Effect.indexOf("GagLight") < 0) &&
-(this.Effect.indexOf("GagEasy") < 0) &&
-(this.Effect.indexOf("GagNormal") < 0) &&
-(this.Effect.indexOf("GagMedium") < 0) &&
-(this.Effect.indexOf("GagHeavy") < 0) &&
-(this.Effect.indexOf("GagVeryHeavy") < 0) &&
-(this.Effect.indexOf("GagTotal") < 0) &&
-(this.Effect.indexOf("GagTotal2") < 0) &&
-(this.Effect.indexOf("GagTotal3") < 0) &&
-(this.Effect.indexOf("GagTotal4") < 0)}
-ChatSearchMuffle = function (Text) {
-let ret = Text;
-if (Player.ImmersionSettings && Player.ImmersionSettings.ChatRoomMuffle && Player.GetBlindLevel() > 0) {
-ret = SpeechGarbleByGagLevel(Player.GetBlindLevel() * Player.GetBlindLevel(), Text, true);
-if (ret.length == 0)return "...";return ret;}return ret;}
-Player.CanWalk = function () { return (
-(this.Effect.indexOf("Freeze") < 0) &&
-(this.Effect.indexOf("Tethered") < 0) &&
-((this.Pose == null) || (this.Pose.indexOf("Kneel") < 0) || (this.Effect.indexOf("KneelFreeze") < 0)))}
-Player.IsPlugged = function () { return (this.Effect.indexOf("IsPlugged") >= 0)}
-Player.IsVulvaChaste = function () { return (this.Effect.indexOf("Chaste") >= 0)}
-Player.CanKneel = function () { return CharacterCanKneel(this)}
-Player.GetBlindLevel = function (eyesOnly = false) { 
-let blindLevel = 0;
-const eyes1 = InventoryGet(this, "Eyes");
-const eyes2 = InventoryGet(this, "Eyes2");
-if (eyes1.Property && eyes1.Property.Expression && eyes2.Property && eyes2.Property.Expression) {
-if ((eyes1.Property.Expression === "Closed") && (eyes2.Property.Expression === "Closed")) {
-blindLevel += DialogFacialExpressionsSelectedBlindnessLevel;}}}
- Player.CanChange  = function (Pose) { return CharacterCanChangeToPose(this, Pose) }
-InventoryGroupIsBlocked = function (C, GroupName, Activity) {
+        Player.CanInteract = function () { return (this.Effect.indexOf("Block") < 0)}
+        Player.CanTalk = function () {
+        (this.Effect.indexOf("GagVeryLight") < 0) &&
+        (this.Effect.indexOf("GagLight") < 0) &&
+        (this.Effect.indexOf("GagEasy") < 0) &&
+        (this.Effect.indexOf("GagNormal") < 0) &&
+        (this.Effect.indexOf("GagMedium") < 0) &&
+        (this.Effect.indexOf("GagHeavy") < 0) &&
+        (this.Effect.indexOf("GagVeryHeavy") < 0) &&
+        (this.Effect.indexOf("GagTotal") < 0) &&
+        (this.Effect.indexOf("GagTotal2") < 0) &&
+        (this.Effect.indexOf("GagTotal3") < 0) &&
+        (this.Effect.indexOf("GagTotal4") < 0)}
+        ChatSearchMuffle = function (Text) {
+        let ret = Text;
+        if (Player.ImmersionSettings && Player.ImmersionSettings.ChatRoomMuffle && Player.GetBlindLevel() > 0) {
+        ret = SpeechGarbleByGagLevel(Player.GetBlindLevel() * Player.GetBlindLevel(), Text, true);
+        if (ret.length == 0)return "...";return ret;}return ret;}
+        Player.CanWalk = function () { return (
+        (this.Effect.indexOf("Freeze") < 0) &&
+        (this.Effect.indexOf("Tethered") < 0) &&
+        ((this.Pose == null) || (this.Pose.indexOf("Kneel") < 0) || (this.Effect.indexOf("KneelFreeze") < 0)))}
+        Player.IsPlugged = function () { return (this.Effect.indexOf("IsPlugged") >= 0)}
+        Player.IsVulvaChaste = function () { return (this.Effect.indexOf("Chaste") >= 0)}
+        Player.CanKneel = function () { return CharacterCanKneel(this)}
+        Player.GetBlindLevel = function (eyesOnly = false) { 
+        let blindLevel = 0;
+        const eyes1 = InventoryGet(this, "Eyes");
+        const eyes2 = InventoryGet(this, "Eyes2");
+        if (eyes1.Property && eyes1.Property.Expression && eyes2.Property && eyes2.Property.Expression) {
+        if ((eyes1.Property.Expression === "Closed") && (eyes2.Property.Expression === "Closed")) {
+        blindLevel += DialogFacialExpressionsSelectedBlindnessLevel;}}}
+        Player.CanChange  = function (Pose) { return CharacterCanChangeToPose(this, Pose) }
+        InventoryGroupIsBlocked = function (C, GroupName, Activity) {
 	if (InventoryGroupIsBlockedForCharacter(C, GroupName, Activity)) return true;
 	if ((C.ID != 0) && Player.IsEnclose()) return true;
 	return false;}
-InventoryPrerequisiteMessage    = function (C, Prerequisit) { return ""; }//too long to restore
-Player.GameplaySettings.BlindDisableExamine = false;//no point
-Player.Inventory.forEach(item => item.Asset.Enable = true);//can't be
-Player.Inventory.forEach(item => item.Asset.Wear = true);//can't be
-DialogHasKey = function (C, Item) {
-if (InventoryGetItemProperty(Item, "SelfUnlock") == false && (!Player.CanInteract() || C.ID == 0)) return false;
-if (C.IsOwnedByPlayer() && InventoryAvailable(Player, "OwnerPadlockKey", "ItemMisc") && Item.Asset.Enable) return true;
-const lock = InventoryGetLock(Item);
-if (C.IsLoverOfPlayer() && InventoryAvailable(Player, "LoversPadlockKey", "ItemMisc") && Item.Asset.Enable && Item.Property && Item.Property.LockedBy && !Item.Property.LockedBy.startsWith("Owner")) return true;
-if (lock && lock.Asset.ExclusiveUnlock && ((!Item.Property.MemberNumberListKeys && Item.Property.LockMemberNumber != Player.MemberNumber) || (Item.Property.MemberNumberListKeys && CommonConvertStringToArray("" + Item.Property.MemberNumberListKeys).indexOf(Player.MemberNumber) < 0))) return false;
-if (lock && lock.Asset.ExclusiveUnlock) return true;
-var UnlockName = "Unlock-" + Item.Asset.Name;
-if ((Item.Property != null) && (Item.Property.LockedBy != null)) UnlockName = "Unlock-" + Item.Property.LockedBy;
-for (let I = 0; I < Player.Inventory.length; I++)
-if (InventoryItemHasEffect(Player.Inventory[I], UnlockName)) {
-if (lock != null) {if (lock.Asset.LoverOnly && !C.IsLoverOfPlayer()) return false;
-if (lock.Asset.OwnerOnly && !C.IsOwnedByPlayer()) return false;
-return true;} else return true;}return false;}
- StruggleStrengthStart = function (C, PrevItem, NextItem) {
-var StruggleDiff = StruggleStrengthGetDifficulty(C, PrevItem, NextItem);
-var S = StruggleDiff.difficulty;
-if ((PrevItem && PrevItem.Asset) || (NextItem && NextItem.Asset)) {
-var AudioFile = (NextItem && NextItem.Asset) ? NextItem.Asset.Audio : PrevItem.Asset.Audio;
-if (AudioFile != null) AudioDialogStart("Audio/" + AudioGetFileName(AudioFile) + ".mp3");}
-if (Player.CanInteract()) {StruggleProgress = 200;StruggleProgressPrevItem = PrevItem;
-StruggleProgressNextItem = NextItem;}
-else {StruggleProgress = 0;StruggleProgressAuto = StruggleDiff.auto;
-StruggleProgressPrevItem = PrevItem;StruggleProgressNextItem = NextItem;
-StruggleProgressOperation = StruggleProgressGetOperation(C, PrevItem, NextItem);
-StruggleProgressSkill = StruggleDiff.timer;StruggleProgressChallenge = S * -1;
-StruggleProgressLastKeyPress = 0;StruggleProgressStruggleCount = 0;
-DialogItemToLock = null;DialogMenuButtonBuild(C);
-if ((StruggleProgressAuto < 0) && Player.CanInteract() && (PrevItem == null)) StruggleProgressAuto = 0;
-if ((StruggleProgressAuto < 0) && Player.CanInteract() && (PrevItem != null) && (!InventoryItemHasEffect(PrevItem, "Lock", true) || DialogCanUnlock(C, PrevItem)) && !InventoryItemHasEffect(PrevItem, "Mounted", true)) StruggleProgressAuto = 0;
-DialogAllowBlush = ((StruggleProgressAuto < 0) && (StruggleProgressChallenge > 0) && (C.ID == 0) && ((InventoryGet(C, "Blush") == null) || (InventoryGet(C, "Blush").Property == null) || (InventoryGet(C, "Blush").Property.Expression == null)));
-DialogAllowEyebrows = ((StruggleProgressAuto < 0) && (StruggleProgressChallenge > 0) && (C.ID == 0) && ((InventoryGet(C, "Eyebrows") == null) || (InventoryGet(C, "Eyebrows").Property == null) || (InventoryGet(C, "Eyebrows").Property.Expression == null)));
-DialogAllowFluids = ((StruggleProgressAuto < 0) && (StruggleProgressChallenge > 0) && (C.ID == 0) && ((InventoryGet(C, "Fluids") == null) || (InventoryGet(C, "Fluids").Property == null) || (InventoryGet(C, "Fluids").Property.Expression == null)));}}
-StruggleProgressStart = function (C, PrevItem, NextItem) {
-if (InventoryGet(CurrentCharacter, CurrentCharacter.FocusGroup.Name) == null) {
-if (C != Player || PrevItem == null || ((PrevItem != null) && (!InventoryItemHasEffect(PrevItem, "Lock", true) || DialogCanUnlock(C, PrevItem)) && ((Player.CanInteract() && !InventoryItemHasEffect(PrevItem, "Mounted", true)) || StruggleStrengthGetDifficulty(C, PrevItem, NextItem).auto >= 0))) {
-StruggleProgressCurrentMinigame = "Strength";
-StruggleStrengthStart(C, PrevItem, NextItem);}}
-else if (Player.CanInteract()) {
-ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: Player.Name+" removes the "+InventoryGet(CurrentCharacter, CurrentCharacter.FocusGroup.Name).Asset.Name+" from "+CurrentCharacter.Name+"'s "+CurrentCharacter.FocusGroup.Name }]});InventoryUnlock(CurrentCharacter, CurrentCharacter.FocusGroup.Name);
-InventoryRemove(CurrentCharacter, CurrentCharacter.FocusGroup.Name);ChatRoomCharacterItemUpdate(CurrentCharacter, CurrentCharacter.FocusGroup.Name);}
-else {StruggleProgressChoosePrevItem = PrevItem;StruggleProgressChooseNextItem = NextItem;StruggleProgressCurrentMinigame = "";StruggleProgress = 0;DialogMenuButtonBuild(Player);StruggleStrengthStart(Player, StruggleProgressChoosePrevItem, StruggleProgressChooseNextItem);}}
-function StruggleLockPickProgressStart(C, Item) {
-StruggleLockPickArousalText = "";StruggleLockPickArousalTick = 0;if (Item) {StruggleLockPickItem = Item;}
-var lock = InventoryGetLock(Item);var LockRating = 1;var LockPickingImpossible = false;if (Item != null && lock) {
-var BondageLevel = Item.Difficulty - Item.Asset.Difficulty;var S = 0;
-S = S + SkillGetWithRatio("LockPicking");if (lock.Asset.PickDifficulty && lock.Asset.PickDifficulty > 0) {
-S = S - lock.Asset.PickDifficulty;LockRating = lock.Asset.PickDifficulty;}
-if (Player.IsEnclose() || Player.IsMounted()) S = S - 2;if (!Player.CanInteract() && (Item != null)) {
-if (InventoryItemHasEffect(Item, "NotSelfPickable", true)){S = S - 50;LockPickingImpossible = true;}else {
-if (InventoryItemHasEffect(InventoryGet(Player, "ItemArms"), "Block", true)) {
-if (Item.Asset.Group.Name != "ItemArms" && Item.Asset.Group.Name != "ItemHands") S = S - 50;else S = S - 2;}
-if (InventoryItemHasEffect(InventoryGet(Player, "ItemHands"), "Block", true)) {
-if (!LogQuery("KeyDeposit", "Cell") && DialogHasKey(Player, Item)) S = S - 4;else S = S - 50;}if (S < -6) {
-LockPickingImpossible = true;}if (!C.CanTalk()) S = S - 1;
-if (InventoryItemHasEffect(InventoryGet(Player, "ItemLegs"), "Block", true)) S = S - 1;
-if (InventoryItemHasEffect(InventoryGet(Player, "ItemFeet"), "Block", true)) S = S - 1;
-if (InventoryGroupIsBlocked(Player, "ItemFeet")) S = S - 1;
-if (Player.IsBlind()) S = S - 1;if (Player.GetDeafLevel() > 0) S = S - Math.Ceiling(Player.GetDeafLevel()/2);}}
-var NumPins = 4;if (LockRating >= 6) NumPins += 2;if (LockRating >= 8) NumPins += 1;
-if (LockRating >= 10) NumPins += 1;if (LockRating >= 11) NumPins += 2;
-StruggleLockPickOrder = [];StruggleLockPickSet = [];StruggleLockPickSetFalse = [];StruggleLockPickOffset = [];
-StruggleLockPickOffsetTarget = [];StruggleLockPickImpossiblePins = [];StruggleLockPickProgressItem = Item;
-StruggleLockPickProgressOperation = StruggleLockPickProgressGetOperation(C, Item);
-StruggleLockPickProgressSkill = Math.floor(NumPins*NumPins/2) + Math.floor(Math.max(0, -S)*Math.max(0, -S));
-StruggleLockPickProgressSkillLose = NumPins*NumPins/2;StruggleLockPickProgressChallenge = S * -1;
-StruggleLockPickProgressCurrentTries = 0;StruggleLockPickSuccessTime = 0;StruggleLockPickFailTime = 0;
-DialogMenuButtonBuild(C);for (let P = 0; P < NumPins; P++) {StruggleLockPickOrder.push(P);
-StruggleLockPickSet.push(false);StruggleLockPickSetFalse.push(false);StruggleLockPickOffset.push(0);
-StruggleLockPickOffsetTarget.push(0);}for (var i = StruggleLockPickOrder.length - 1; i > 0; i--) {
-var j = Math.floor(Math.random() * (i + 1));var temp = StruggleLockPickOrder[i];
-StruggleLockPickOrder[i] = StruggleLockPickOrder[j];StruggleLockPickOrder[j] = temp;}
-if ((Item.Property == null)) Item.Property = {};if (Item.Property != null)
-if ((Item.Property.LockPickSeed == null) || (typeof Item.Property.LockPickSeed != "string")) {Item.Property.LockPickSeed = CommonConvertArrayToString(StruggleLockPickOrder); StruggleLockPickTotalTries = 0;}
-else {var conv = CommonConvertStringToArray(Item.Property.LockPickSeed);for (let PP = 0; PP < conv.length; PP++) {
-if (typeof conv[PP] != "number") {Item.Property.LockPickSeed = CommonConvertArrayToString(StruggleLockPickOrder);
-conv = StruggleLockPickOrder;break;}}StruggleLockPickOrder = conv;}var PickingImpossible = false;if (S < -6 && LockPickingImpossible) {
-PickingImpossible = true;StruggleLockPickImpossiblePins.push(StruggleLockPickOrder[StruggleLockPickOrder.length-1]);
-if (NumPins >= 6) StruggleLockPickImpossiblePins.push(StruggleLockPickOrder[StruggleLockPickOrder.length-2]);
-if (NumPins >= 8) StruggleLockPickImpossiblePins.push(StruggleLockPickOrder[StruggleLockPickOrder.length-3]);}
-var NumTries = Math.max(Math.floor(NumPins * (1.5 - 0.3*BondageLevel/10)),
-Math.ceil(NumPins * (3.25 - BondageLevel/10) - Math.max(0, (StruggleLockPickProgressChallenge + BondageLevel/2)*1.5)));	
-StruggleLockPickProgressMaxTries = Math.max(1, NumTries - NumPins);}}}
+        InventoryPrerequisiteMessage    = function (C, Prerequisit) { return ""; }//too long to restore
+        Player.GameplaySettings.BlindDisableExamine = false;//no point
+        Player.Inventory.forEach(item => item.Asset.Enable = true);//can't be
+        Player.Inventory.forEach(item => item.Asset.Wear = true);//can't be
+        DialogHasKey = function (C, Item) {
+        if (InventoryGetItemProperty(Item, "SelfUnlock") == false && (!Player.CanInteract() || C.ID == 0)) return false;
+        if (C.IsOwnedByPlayer() && InventoryAvailable(Player, "OwnerPadlockKey", "ItemMisc") && Item.Asset.Enable) return true;
+        const lock = InventoryGetLock(Item);
+        if (C.IsLoverOfPlayer() && InventoryAvailable(Player, "LoversPadlockKey", "ItemMisc") && Item.Asset.Enable && Item.Property && Item.Property.LockedBy && !Item.Property.LockedBy.startsWith("Owner")) return true;
+        if (lock && lock.Asset.ExclusiveUnlock && ((!Item.Property.MemberNumberListKeys && Item.Property.LockMemberNumber != Player.MemberNumber) || (Item.Property.MemberNumberListKeys && CommonConvertStringToArray("" + Item.Property.MemberNumberListKeys).indexOf(Player.MemberNumber) < 0))) return false;
+        if (lock && lock.Asset.ExclusiveUnlock) return true;
+        var UnlockName = "Unlock-" + Item.Asset.Name;
+        if ((Item.Property != null) && (Item.Property.LockedBy != null)) UnlockName = "Unlock-" + Item.Property.LockedBy;
+        for (let I = 0; I < Player.Inventory.length; I++)
+        if (InventoryItemHasEffect(Player.Inventory[I], UnlockName)) {
+        if (lock != null) {if (lock.Asset.LoverOnly && !C.IsLoverOfPlayer()) return false;
+        if (lock.Asset.OwnerOnly && !C.IsOwnedByPlayer()) return false;
+        return true;} else return true;}return false;}
+        StruggleStrengthStart = function (C, PrevItem, NextItem) {
+        var StruggleDiff = StruggleStrengthGetDifficulty(C, PrevItem, NextItem);
+        var S = StruggleDiff.difficulty;
+        if ((PrevItem && PrevItem.Asset) || (NextItem && NextItem.Asset)) {
+        var AudioFile = (NextItem && NextItem.Asset) ? NextItem.Asset.Audio : PrevItem.Asset.Audio;
+        if (AudioFile != null) AudioDialogStart("Audio/" + AudioGetFileName(AudioFile) + ".mp3");}
+        if (Player.CanInteract()) {StruggleProgress = 200;StruggleProgressPrevItem = PrevItem;
+        StruggleProgressNextItem = NextItem;}
+        else {StruggleProgress = 0;StruggleProgressAuto = StruggleDiff.auto;
+        StruggleProgressPrevItem = PrevItem;StruggleProgressNextItem = NextItem;
+        StruggleProgressOperation = StruggleProgressGetOperation(C, PrevItem, NextItem);
+        StruggleProgressSkill = StruggleDiff.timer;StruggleProgressChallenge = S * -1;
+        StruggleProgressLastKeyPress = 0;StruggleProgressStruggleCount = 0;
+        DialogItemToLock = null;DialogMenuButtonBuild(C);
+        if ((StruggleProgressAuto < 0) && Player.CanInteract() && (PrevItem == null)) StruggleProgressAuto = 0;
+        if ((StruggleProgressAuto < 0) && Player.CanInteract() && (PrevItem != null) && (!InventoryItemHasEffect(PrevItem, "Lock", true) || DialogCanUnlock(C, PrevItem)) && !InventoryItemHasEffect(PrevItem, "Mounted", true)) StruggleProgressAuto = 0;
+        DialogAllowBlush = ((StruggleProgressAuto < 0) && (StruggleProgressChallenge > 0) && (C.ID == 0) && ((InventoryGet(C, "Blush") == null) || (InventoryGet(C, "Blush").Property == null) || (InventoryGet(C, "Blush").Property.Expression == null)));
+        DialogAllowEyebrows = ((StruggleProgressAuto < 0) && (StruggleProgressChallenge > 0) && (C.ID == 0) && ((InventoryGet(C, "Eyebrows") == null) || (InventoryGet(C, "Eyebrows").Property == null) || (InventoryGet(C, "Eyebrows").Property.Expression == null)));
+        DialogAllowFluids = ((StruggleProgressAuto < 0) && (StruggleProgressChallenge > 0) && (C.ID == 0) && ((InventoryGet(C, "Fluids") == null) || (InventoryGet(C, "Fluids").Property == null) || (InventoryGet(C, "Fluids").Property.Expression == null)));}}
+        StruggleProgressStart = function (C, PrevItem, NextItem) {
+        if (InventoryGet(CurrentCharacter, CurrentCharacter.FocusGroup.Name) == null) {
+        if (C != Player || PrevItem == null || ((PrevItem != null) && (!InventoryItemHasEffect(PrevItem, "Lock", true) || DialogCanUnlock(C, PrevItem)) && ((Player.CanInteract() && !InventoryItemHasEffect(PrevItem, "Mounted", true)) || StruggleStrengthGetDifficulty(C, PrevItem, NextItem).auto >= 0))) {
+        StruggleProgressCurrentMinigame = "Strength";
+        StruggleStrengthStart(C, PrevItem, NextItem);}}
+        else if (Player.CanInteract()) {
+        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: Player.Name+" removes the "+InventoryGet(CurrentCharacter, CurrentCharacter.FocusGroup.Name).Asset.Name+" from "+CurrentCharacter.Name+"'s "+CurrentCharacter.FocusGroup.Name }]});InventoryUnlock(CurrentCharacter, CurrentCharacter.FocusGroup.Name);
+        InventoryRemove(CurrentCharacter, CurrentCharacter.FocusGroup.Name);ChatRoomCharacterItemUpdate(CurrentCharacter, CurrentCharacter.FocusGroup.Name);}
+        else {StruggleProgressChoosePrevItem = PrevItem;StruggleProgressChooseNextItem = NextItem;StruggleProgressCurrentMinigame = "";StruggleProgress = 0;DialogMenuButtonBuild(Player);StruggleStrengthStart(Player, StruggleProgressChoosePrevItem, StruggleProgressChooseNextItem);}}
+        function StruggleLockPickProgressStart(C, Item) {
+        StruggleLockPickArousalText = "";StruggleLockPickArousalTick = 0;if (Item) {StruggleLockPickItem = Item;}
+        var lock = InventoryGetLock(Item);var LockRating = 1;var LockPickingImpossible = false;if (Item != null && lock) {
+        var BondageLevel = Item.Difficulty - Item.Asset.Difficulty;var S = 0;
+        S = S + SkillGetWithRatio("LockPicking");if (lock.Asset.PickDifficulty && lock.Asset.PickDifficulty > 0) {
+        S = S - lock.Asset.PickDifficulty;LockRating = lock.Asset.PickDifficulty;}
+        if (Player.IsEnclose() || Player.IsMounted()) S = S - 2;if (!Player.CanInteract() && (Item != null)) {
+        if (InventoryItemHasEffect(Item, "NotSelfPickable", true)){S = S - 50;LockPickingImpossible = true;}else {
+        if (InventoryItemHasEffect(InventoryGet(Player, "ItemArms"), "Block", true)) {
+        if (Item.Asset.Group.Name != "ItemArms" && Item.Asset.Group.Name != "ItemHands") S = S - 50;else S = S - 2;}
+        if (InventoryItemHasEffect(InventoryGet(Player, "ItemHands"), "Block", true)) {
+        if (!LogQuery("KeyDeposit", "Cell") && DialogHasKey(Player, Item)) S = S - 4;else S = S - 50;}if (S < -6) {
+        LockPickingImpossible = true;}if (!C.CanTalk()) S = S - 1;
+        if (InventoryItemHasEffect(InventoryGet(Player, "ItemLegs"), "Block", true)) S = S - 1;
+        if (InventoryItemHasEffect(InventoryGet(Player, "ItemFeet"), "Block", true)) S = S - 1;
+        if (InventoryGroupIsBlocked(Player, "ItemFeet")) S = S - 1;
+        if (Player.IsBlind()) S = S - 1;if (Player.GetDeafLevel() > 0) S = S - Math.Ceiling(Player.GetDeafLevel()/2);}}
+        var NumPins = 4;if (LockRating >= 6) NumPins += 2;if (LockRating >= 8) NumPins += 1;
+        if (LockRating >= 10) NumPins += 1;if (LockRating >= 11) NumPins += 2;
+        StruggleLockPickOrder = [];StruggleLockPickSet = [];StruggleLockPickSetFalse = [];StruggleLockPickOffset = [];
+        StruggleLockPickOffsetTarget = [];StruggleLockPickImpossiblePins = [];StruggleLockPickProgressItem = Item;
+        StruggleLockPickProgressOperation = StruggleLockPickProgressGetOperation(C, Item);
+        StruggleLockPickProgressSkill = Math.floor(NumPins*NumPins/2) + Math.floor(Math.max(0, -S)*Math.max(0, -S));
+        StruggleLockPickProgressSkillLose = NumPins*NumPins/2;StruggleLockPickProgressChallenge = S * -1;
+        StruggleLockPickProgressCurrentTries = 0;StruggleLockPickSuccessTime = 0;StruggleLockPickFailTime = 0;
+        DialogMenuButtonBuild(C);for (let P = 0; P < NumPins; P++) {StruggleLockPickOrder.push(P);
+        StruggleLockPickSet.push(false);StruggleLockPickSetFalse.push(false);StruggleLockPickOffset.push(0);
+        StruggleLockPickOffsetTarget.push(0);}for (var i = StruggleLockPickOrder.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));var temp = StruggleLockPickOrder[i];
+        StruggleLockPickOrder[i] = StruggleLockPickOrder[j];StruggleLockPickOrder[j] = temp;}
+        if ((Item.Property == null)) Item.Property = {};if (Item.Property != null)
+        if ((Item.Property.LockPickSeed == null) || (typeof Item.Property.LockPickSeed != "string")) {Item.Property.LockPickSeed = CommonConvertArrayToString(StruggleLockPickOrder); StruggleLockPickTotalTries = 0;}
+        else {var conv = CommonConvertStringToArray(Item.Property.LockPickSeed);for (let PP = 0; PP < conv.length; PP++) {
+        if (typeof conv[PP] != "number") {Item.Property.LockPickSeed = CommonConvertArrayToString(StruggleLockPickOrder);
+        conv = StruggleLockPickOrder;break;}}StruggleLockPickOrder = conv;}var PickingImpossible = false;if (S < -6 && LockPickingImpossible) {
+        PickingImpossible = true;StruggleLockPickImpossiblePins.push(StruggleLockPickOrder[StruggleLockPickOrder.length-1]);
+        if (NumPins >= 6) StruggleLockPickImpossiblePins.push(StruggleLockPickOrder[StruggleLockPickOrder.length-2]);
+        if (NumPins >= 8) StruggleLockPickImpossiblePins.push(StruggleLockPickOrder[StruggleLockPickOrder.length-3]);}
+        var NumTries = Math.max(Math.floor(NumPins * (1.5 - 0.3*BondageLevel/10)),
+        Math.ceil(NumPins * (3.25 - BondageLevel/10) - Math.max(0, (StruggleLockPickProgressChallenge + BondageLevel/2)*1.5)));	
+        StruggleLockPickProgressMaxTries = Math.max(1, NumTries - NumPins);}}}
     }   
     else if (content.indexOf("/wardrobe") == 0) {
     var targetname = content.substring(10).trim();
