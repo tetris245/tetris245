@@ -82,28 +82,28 @@ if (CurrentScreen == "ChatRoom") {
     }
     else if (content.indexOf("/arousal") == 0) {
     Player.ArousalSettings.Progress = content.substring(8);ServerPlayerSync();
-    if (content.includes("100")) {
-    ActivityOrgasmRuined = false;
-    ActivityOrgasmStart(Player); }
+        if (content.includes("100")) {
+        ActivityOrgasmRuined = false;
+        ActivityOrgasmStart(Player); }
     }
     else if (content.indexOf("/autokick") == 0) {
-    if (this.AutoKickOn == false || this.AutoKickOn == undefined) {
-    ChatRoomMessage({ Content: "AutoKick: Ready.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    AutoKickOn = true;
-    AutoKicker = function (data, days = 1, hours = 12, minutes = 0) {
-      minutes *= 60000;
+        if (this.AutoKickOn == false || this.AutoKickOn == undefined) {
+        ChatRoomMessage({ Content: "AutoKick: Ready.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        AutoKickOn = true;
+        AutoKicker = function (data, days = 1, hours = 12, minutes = 0) {
+        minutes *= 60000;
         hours *= 3600000;
-      days *= 86400000;
+        days *= 86400000;
           let character = ChatRoomCharacter.find((c) => c.MemberNumber === data.Sender);
           if (data.Content == "ServerEnter" && character.Creation > CurrentTime - days - hours - minutes) {
             ServerSend("ChatRoomAdmin", { MemberNumber: character.MemberNumber, Action: "Ban" });
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: "AutoKick: Account was 0 days old."}] });};
         };ServerSocket.on("ChatRoomMessage", AutoKicker);}
-    else {
-    AutoKickOn = false;
-    ServerSocket.off("ChatRoomMessage", AutoKicker);
-    ChatRoomMessage({ Content: "AutoKick: Disabled.", Type: "LocalMessage", Sender: Player.MemberNumber })
-}
+        else {
+        AutoKickOn = false;
+        ServerSocket.off("ChatRoomMessage", AutoKicker);
+        ChatRoomMessage({ Content: "AutoKick: Disabled.", Type: "LocalMessage", Sender: Player.MemberNumber })
+        }
     }
     else if ((content.indexOf("/babytalk") == 0) || content.indexOf("/b ") == 0) {
         if (content.includes("/babytalk")) {
