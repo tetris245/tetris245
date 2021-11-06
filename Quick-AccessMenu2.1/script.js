@@ -6,223 +6,223 @@ var content = ElementValue("InputChat").trim();
 //chatcommand
 if (CurrentScreen == "ChatRoom") {
     if (content.indexOf("/help") == 0) {
-    ChatRoomMessage({ Content: "ChatRoomHelp", Type: "Action", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "Quick-AccessMenu2: List of commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/action (stuffhere)  = inserts an action. Can also: /a.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/arousal 10  =  sets arousal level. Change value (0-100).", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/autokick  =  toggles on auto kick for 0 day old accounts.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/babytalk (stuffhere) =  speaks as a baby. Can also: /b", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/background =  adds hidden backgrounds to the admin selection screen.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/becomeownlover  =  becomes your own lover.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/becomeownowner  =  becomes your own owner.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/boost  =  boosts skills, similar to maid quarters drink.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/chess  (difficulty) =  starts chess, must specify difficulty first (/chess 1 = easy, /chess 3 = hard).", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/clothes (targetname) =  changes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });  
-    ChatRoomMessage({ Content: "/clubmistress  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/clubslave  =  becomes club slave. Careful, will be forced to complete contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/collarremove  =  removes slave/owner collar. Can also be: /removecollar", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/college  =  enters college, bypasses requirements.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/colorchanger  =  using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/doctor  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/erase  =  erases chat.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gh", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/gagtalk  =  toggle to decode/not decode gagged people talking.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/giveeverything  =  gives every item.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/headmaid  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/hiddenmessages  =  sees hidden messages made by game.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/kidnapper  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/kinkydungeon  =  to the end, add devious to toggle deviouschallenge or cheat to start with cheats or use as is to start vanilla. Remember to wear VR headset if you want others to see you play.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/leave  =  leaves room, even if prevented.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/login (accountname) (password)  =  logs in a new account.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/maid  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/masterkidnapper  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/maxdifficulty  =  all your current bindings become extremely solid.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics, more info on others.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/mindifficulty  =  all your current bindings become very easy to remove.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/mistress  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/money 9999  =  gives or takes money. Change value.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/naked (targetname) =  removes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/nurse  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/outfit  =  saving/loading, using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/patient  = becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/patreoncheats  =  all except college uniform, is auto toggled by default.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/permanentpatient  = becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/pose (posehere) (targetname) =  Poses: exercise, kneel, sleep, pet, stand, suspension. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/quitasylum  =  stops being a doctor, nurse, patient or permanent patient.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/quitclubslave  =  breaks club slave contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/quitkidnapper  =  stops being a kidnapper or master kidnapper.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/quitmanagement  =  stops being a mistress or club mistress.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/quitsorority  =  stops being a maid or head maid.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/randomize (targetname) = naked + underwear + clothes + restrain commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/release (targetname) =  removes all bindings.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/relog  =  relogs.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/resetdifficulty  =  resets difficulty, thereby quitting it. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-    ChatRoomMessage({ Content: "/resetinventory  =  erases your inventory. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/restrain (targetname) =  adds random restraints.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/safewordspecific  =  removes specific item. More info when used.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/search (areaname)  =  opens room search, area is: club or asylum", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/speak  = animates mouth when talking in chat. Can also: /mouth or /speech", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/store  =  leaves chatroom, goes to store. Shows hidden items.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/talkbaby  =  toggle on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/talkgag light/heavy  =  toggles on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/timercell (minutes) = stays randomly tied in the isolation cell. More than 60 minutes is possible.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/totalrelease (targetname) =  removes all bindings, collar, harness, chastity, toys.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/underwear (targetname) =  changes underwear.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/unrestrict  = Using will give more info.  Removes all restrictions from game. Can use maid drink tray/other stuff. Submissives should use /unrestrict soft", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/wardrobe (targetname)  =  opens target wardrobe.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "/whisper (targetname) = sets whisper target.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "ChatRoomHelp", Type: "Action", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "Quick-AccessMenu2: List of commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/action (stuffhere)  = inserts an action. Can also: /a.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/arousal 10  =  sets arousal level. Change value (0-100).", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/autokick  =  toggles on auto kick for 0 day old accounts.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/babytalk (stuffhere) =  speaks as a baby. Can also: /b", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/background =  adds hidden backgrounds to the admin selection screen.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/becomeownlover  =  becomes your own lover.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/becomeownowner  =  becomes your own owner.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/boost  =  boosts skills, similar to maid quarters drink.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/chess  (difficulty) =  starts chess, must specify difficulty first (/chess 1 = easy, /chess 3 = hard).", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/clothes (targetname) =  changes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });  
+        ChatRoomMessage({ Content: "/clubmistress  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/clubslave  =  becomes club slave. Careful, will be forced to complete contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/collarremove  =  removes slave/owner collar. Can also be: /removecollar", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/college  =  enters college, bypasses requirements.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/colorchanger  =  using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/doctor  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/erase  =  erases chat.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gh", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/gagtalk  =  toggle to decode/not decode gagged people talking.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/giveeverything  =  gives every item.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/headmaid  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/hiddenmessages  =  sees hidden messages made by game.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/kidnapper  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/kinkydungeon  =  to the end, add devious to toggle deviouschallenge or cheat to start with cheats or use as is to start vanilla. Remember to wear VR headset if you want others to see you play.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/leave  =  leaves room, even if prevented.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/login (accountname) (password)  =  logs in a new account.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/maid  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/masterkidnapper  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/maxdifficulty  =  all your current bindings become extremely solid.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics, more info on others.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/mindifficulty  =  all your current bindings become very easy to remove.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/mistress  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/money 9999  =  gives or takes money. Change value.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/naked (targetname) =  removes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/nurse  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/outfit  =  saving/loading, using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/patient  = becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/patreoncheats  =  all except college uniform, is auto toggled by default.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/permanentpatient  = becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/pose (posehere) (targetname) =  Poses: exercise, kneel, sleep, pet, stand, suspension. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/quitasylum  =  stops being a doctor, nurse, patient or permanent patient.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/quitclubslave  =  breaks club slave contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/quitkidnapper  =  stops being a kidnapper or master kidnapper.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/quitmanagement  =  stops being a mistress or club mistress.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/quitsorority  =  stops being a maid or head maid.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/randomize (targetname) = naked + underwear + clothes + restrain commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/release (targetname) =  removes all bindings.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/relog  =  relogs.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/resetdifficulty  =  resets difficulty, thereby quitting it. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+        ChatRoomMessage({ Content: "/resetinventory  =  erases your inventory. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/restrain (targetname) =  adds random restraints.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/safewordspecific  =  removes specific item. More info when used.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/search (areaname)  =  opens room search, area is: club or asylum", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/speak  = animates mouth when talking in chat. Can also: /mouth or /speech", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/store  =  leaves chatroom, goes to store. Shows hidden items.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/talkbaby  =  toggle on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/talkgag light/heavy  =  toggles on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/timercell (minutes) = stays randomly tied in the isolation cell. More than 60 minutes is possible.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/totalrelease (targetname) =  removes all bindings, collar, harness, chastity, toys.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/underwear (targetname) =  changes underwear.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/unrestrict  = Using will give more info.  Removes all restrictions from game. Can use maid drink tray/other stuff. Submissives should use /unrestrict soft", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/wardrobe (targetname)  =  opens target wardrobe.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/whisper (targetname) = sets whisper target.", Type: "LocalMessage", Sender: Player.MemberNumber });
     }
     else if ((content.indexOf("/action ") == 0) || (content.indexOf("/a ") == 0))  {
         if (content.includes("/action") == true) {
-        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (content.substring(7).trim() )}] });}
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (content.substring(7).trim() )}] });}
         else {
-        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (content.substring(2).trim() )}] });}
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (content.substring(2).trim() )}] });}
     }
     else if (content.indexOf("/arousal") == 0) {
-    Player.ArousalSettings.Progress = content.substring(8);ServerPlayerSync();
+        Player.ArousalSettings.Progress = content.substring(8);ServerPlayerSync();
         if (content.includes("100")) {
-        ActivityOrgasmRuined = false;
-        ActivityOrgasmStart(Player); }
+           ActivityOrgasmRuined = false;
+           ActivityOrgasmStart(Player); }
     }
     else if (content.indexOf("/autokick") == 0) {
         if (this.AutoKickOn == false || this.AutoKickOn == undefined) {
-        ChatRoomMessage({ Content: "AutoKick: Ready.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        AutoKickOn = true;
-        AutoKicker = function (data, days = 1, hours = 12, minutes = 0) {
-        minutes *= 60000;
-        hours *= 3600000;
-        days *= 86400000;
-          let character = ChatRoomCharacter.find((c) => c.MemberNumber === data.Sender);
-          if (data.Content == "ServerEnter" && character.Creation > CurrentTime - days - hours - minutes) {
-            ServerSend("ChatRoomAdmin", { MemberNumber: character.MemberNumber, Action: "Ban" });
-            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: "AutoKick: Account was 0 days old."}] });};
-        };ServerSocket.on("ChatRoomMessage", AutoKicker);}
+           ChatRoomMessage({ Content: "AutoKick: Ready.", Type: "LocalMessage", Sender: Player.MemberNumber });
+           AutoKickOn = true;
+           AutoKicker = function (data, days = 1, hours = 12, minutes = 0) {
+           minutes *= 60000;
+           hours *= 3600000;
+           days *= 86400000;
+           let character = ChatRoomCharacter.find((c) => c.MemberNumber === data.Sender);
+           if (data.Content == "ServerEnter" && character.Creation > CurrentTime - days - hours - minutes) {
+               ServerSend("ChatRoomAdmin", { MemberNumber: character.MemberNumber, Action: "Ban" });
+               ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: "AutoKick: Account was 0 days old."}] });};
+               };ServerSocket.on("ChatRoomMessage", AutoKicker);}
         else {
-        AutoKickOn = false;
-        ServerSocket.off("ChatRoomMessage", AutoKicker);
-        ChatRoomMessage({ Content: "AutoKick: Disabled.", Type: "LocalMessage", Sender: Player.MemberNumber })
+            AutoKickOn = false;
+            ServerSocket.off("ChatRoomMessage", AutoKicker);
+            ChatRoomMessage({ Content: "AutoKick: Disabled.", Type: "LocalMessage", Sender: Player.MemberNumber })
         }
     }
     else if ((content.indexOf("/babytalk") == 0) || content.indexOf("/b ") == 0) {
         if (content.includes("/babytalk")) {
-        content = SpeechBabyTalk({Effect: ["RegressedTalk"]}, content);
-        ServerSend("ChatRoomChat", { "Content":content.substring(9).trim(), "Type":"Chat" });}
+           content = SpeechBabyTalk({Effect: ["RegressedTalk"]}, content);
+           ServerSend("ChatRoomChat", { "Content":content.substring(9).trim(), "Type":"Chat" });}
         else {
-        content = SpeechBabyTalk({Effect: ["RegressedTalk"]}, content);
-        ServerSend("ChatRoomChat", { "Content":content.substring(2).trim(), "Type":"Chat" });}
+           content = SpeechBabyTalk({Effect: ["RegressedTalk"]}, content);
+           ServerSend("ChatRoomChat", { "Content":content.substring(2).trim(), "Type":"Chat" });}
     }
     else if (content.indexOf("/background") == 0) {
-    BackgroundsList.push({ Name: "Pandora/Ground/Entrance", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Cell0", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Cell1", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Cell2", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Cell3", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Cell4", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Cell5", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Cell6", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Entrance", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Fork0", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Fork1", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Fork2", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Fork3", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Fork4", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Fork5", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Fork6", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Tunnel0", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Tunnel1", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Tunnel2", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Tunnel3", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Tunnel4", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Tunnel5", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Second/Tunnel6", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Cell0", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Cell1", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Cell2", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Cell3", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Cell4", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Cell5", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Cell6", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Entrance", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Fork0", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Fork1", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Fork2", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Fork3", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Fork4", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Fork5", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Fork6", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Tunnel0", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Tunnel1", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Tunnel2", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Tunnel3", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Tunnel4", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Tunnel5", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Pandora/Underground/Tunnel6", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "AsylumBedroom", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "AsylumEntrance", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "AsylumMeeting", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "AsylumTherapy", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "AmandaCollarIntro", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "AmandaIntro", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Bar", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "BrickWall", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Cell", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "CollegeCafeteria", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "CollegeDetention", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "CollegeEntrance", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "CollegeTeacherLounge", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "CollegeTennisPlay", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Dressing", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Gambling", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "grey", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "White", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "HorseStableLight", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "HypnoSpiral2", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "HypnoticSpiral", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Magic", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "MagicSchoolLaboratory", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "/Orig/buhne-dekorativ-kino-276179", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "/Orig/Entrance", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "/Orig/Lounge", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "OutsideCells", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "PaddedCell", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "PaddedCell2", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Prison", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "RhythmGame", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "RhythmGameLoading", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "SarahBedroom0", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "SarahBedroom1", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "SarahBedroom2", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "SarahBedroom3", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "SarahIntro", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Sheet", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "SheetWhite", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "Shop", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "SlaveMarket", Tag: [BackgroundsTagIndoor] });
-    BackgroundsList.push({ Name: "SophieIntro", Tag: [BackgroundsTagIndoor] });
-    ChatCreateBackgroundList = BackgroundsGenerateList(BackgroundsTagList);
-    ChatRoomMessage({ Content: "Quick-AccessMenu2: You can use more backgrounds now.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        BackgroundsList.push({ Name: "Pandora/Ground/Entrance", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Cell0", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Cell1", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Cell2", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Cell3", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Cell4", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Cell5", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Cell6", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Entrance", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Fork0", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Fork1", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Fork2", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Fork3", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Fork4", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Fork5", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Fork6", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Tunnel0", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Tunnel1", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Tunnel2", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Tunnel3", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Tunnel4", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Tunnel5", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Second/Tunnel6", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Cell0", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Cell1", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Cell2", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Cell3", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Cell4", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Cell5", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Cell6", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Entrance", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Fork0", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Fork1", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Fork2", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Fork3", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Fork4", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Fork5", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Fork6", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Tunnel0", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Tunnel1", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Tunnel2", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Tunnel3", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Tunnel4", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Tunnel5", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Pandora/Underground/Tunnel6", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "AsylumBedroom", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "AsylumEntrance", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "AsylumMeeting", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "AsylumTherapy", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "AmandaCollarIntro", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "AmandaIntro", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Bar", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "BrickWall", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Cell", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "CollegeCafeteria", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "CollegeDetention", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "CollegeEntrance", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "CollegeTeacherLounge", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "CollegeTennisPlay", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Dressing", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Gambling", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "grey", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "White", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "HorseStableLight", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "HypnoSpiral2", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "HypnoticSpiral", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Magic", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "MagicSchoolLaboratory", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "/Orig/buhne-dekorativ-kino-276179", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "/Orig/Entrance", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "/Orig/Lounge", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "OutsideCells", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "PaddedCell", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "PaddedCell2", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Prison", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "RhythmGame", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "RhythmGameLoading", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "SarahBedroom0", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "SarahBedroom1", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "SarahBedroom2", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "SarahBedroom3", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "SarahIntro", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Sheet", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "SheetWhite", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "Shop", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "SlaveMarket", Tag: [BackgroundsTagIndoor] });
+        BackgroundsList.push({ Name: "SophieIntro", Tag: [BackgroundsTagIndoor] });
+        ChatCreateBackgroundList = BackgroundsGenerateList(BackgroundsTagList);
+        ChatRoomMessage({ Content: "Quick-AccessMenu2: You can use more backgrounds now.", Type: "LocalMessage", Sender: Player.MemberNumber });
     }   
     else if (content.indexOf("/becomeownlover") == 0) {
-    ChatRoomMessage({ Content: "Warning: Uncomfirmed glitch might occur when removing self as lover, during which a random/real lover will be taken Use with risk in mind. Confirm: /becomeownlover yes", Type: "LocalMessage", Sender: Player.MemberNumber });
-        if (content.includes("yes")) {
-        ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
-        ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanOfferBeginWedding" && "Propose" });
-        ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanBeginWedding" && "Accept" });
-        ChatRoomMessage({ Content: "Accomplished. Break-up is done via Club Management.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+        ChatRoomMessage({ Content: "Warning: Uncomfirmed glitch might occur when removing self as lover, during which a random/real lover will be taken Use with risk in mind. Confirm: /becomeownlover yes", Type: "LocalMessage", Sender: Player.MemberNumber });
+           if (content.includes("yes")) {
+           ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
+           ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanOfferBeginWedding" && "Propose" });
+           ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanBeginWedding" && "Accept" });
+           ChatRoomMessage({ Content: "Accomplished. Break-up is done via Club Management.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
     //consider writing a lover break up code to compensate for glitch, if possible.
     else if (content.indexOf("/becomeownowner") == 0) {
-    ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
-    ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "CanOfferEndTrial" && "Propose" });
-    ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "CanEndTrial" && "Accept" });
+        ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
+        ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "CanOfferEndTrial" && "Propose" });
+        ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "CanEndTrial" && "Accept" });
     }
     //can't end free from owner, due to club's extreme mode preventing yet not allowing owner to break. Stupid...
     else if (content.indexOf("/boost") == 0) {
-    LogAdd("ModifierLevel", "SkillModifier", 105);
-    LogAdd("ModifierDuration", "SkillModifier", CurrentTime + 3600000);
-    ChatRoomMessage({ Content: "Quick-AccessMenu2: You feel your senses heightened(bondage/evasion). Can see change in information panel.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        LogAdd("ModifierLevel", "SkillModifier", 105);
+        LogAdd("ModifierDuration", "SkillModifier", CurrentTime + 3600000);
+        ChatRoomMessage({ Content: "Quick-AccessMenu2: You feel your senses heightened(bondage/evasion). Can see change in information panel.", Type: "LocalMessage", Sender: Player.MemberNumber });
     }
     else if (content.indexOf("/chess") == 0) {
     CollegeChessGameEndALT = function () {
@@ -262,36 +262,36 @@ if (CurrentScreen == "ChatRoom") {
     CollegeChessGameEndALT();}
     }
     else if (content.indexOf("/clothes") == 0) {
-    var targetname = content.substring(8).trim();
-    if (targetname == undefined) {targetname = Player.Name};
-    var targetfinder = new RegExp('^'+targetname+'', 'i');
-    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-    if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-    CharacterAppearanceFullRandom(target[0], true);
-    ChatRoomCharacterUpdate(target[0]);
+        var targetname = content.substring(8).trim();
+        if (targetname == undefined) {targetname = Player.Name};
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+        CharacterAppearanceFullRandom(target[0], true);
+        ChatRoomCharacterUpdate(target[0]);
     }
     else if (content.indexOf("/clubmistress") == 0) {
-    LogAdd("ClubMistress", "Management");
+        LogAdd("ClubMistress", "Management");
     }
     else if (content.indexOf("/clubslave") == 0) {
-    LogAdd("ClubSlave", "Management", CurrentTime + 3600000);
+        LogAdd("ClubSlave", "Management", CurrentTime + 3600000);
     }
     else if ((content.indexOf("/collarremove") == 0) || (content.indexOf("/removecollar") == 0)) {
-    ServerSend("ChatRoomChat", { Content: "PlayerOwnerCollarRelease", Type: "Action", Dictionary: [{Tag: "DestinationCharacterName", Text: Player.Name, MemberNumber: Player.MemberNumber}] });
-    LogAdd("Released.Collar", "OwnerRule");
-    InventoryRemove(Player, "ItemNeck");
-    ChatRoomCharacterItemUpdate(Player, "ItemNeck");
+        ServerSend("ChatRoomChat", { Content: "PlayerOwnerCollarRelease", Type: "Action", Dictionary: [{Tag: "DestinationCharacterName", Text: Player.Name, MemberNumber: Player.MemberNumber}] });
+        LogAdd("Released.Collar", "OwnerRule");
+        InventoryRemove(Player, "ItemNeck");
+        ChatRoomCharacterItemUpdate(Player, "ItemNeck");
     }
     else if (content.indexOf("/college") == 0) {
-    ChatRoomSetLastChatRoom("");
-    ServerSend("ChatRoomLeave", "");
-    OnlineGameName = "";
-    CommonSetScreen("Room", "CollegeEntrance");
-    ChatRoomClearAllElements();
-    CollegeEntranceIsWearingTennisClothes = function () { return true; }
-    CollegeEntranceIsWearingCollegeClothes = function () { return true; }
-    CollegeEntranceIsWearingTennisClothes = function () { return true; }
-    CollegeEntranceCanGoTeacher = function () { return true; }
+        ChatRoomSetLastChatRoom("");
+        ServerSend("ChatRoomLeave", "");
+        OnlineGameName = "";
+        CommonSetScreen("Room", "CollegeEntrance");
+        ChatRoomClearAllElements();
+        CollegeEntranceIsWearingTennisClothes = function () { return true; }
+        CollegeEntranceIsWearingCollegeClothes = function () { return true; }
+        CollegeEntranceIsWearingTennisClothes = function () { return true; }
+        CollegeEntranceCanGoTeacher = function () { return true; }
     }
     else if (content.indexOf("/colorchanger") == 0) {
 
@@ -401,22 +401,22 @@ if (CurrentScreen == "ChatRoom") {
         }
     }
     else if (content.indexOf("/cum") == 0) {
-    ActivityOrgasmRuined = false;
-    ActivityOrgasmStart(Player);
+        ActivityOrgasmRuined = false;
+        ActivityOrgasmStart(Player);
     }        
     else if (content.indexOf("/doctor") == 0) {
-    ReputationChange('Asylum', 200);
+        ReputationChange('Asylum', 200);
     }
     else if (content.indexOf("/erase") == 0) {
-    ElementRemove("TextAreaChatLog");
+        ElementRemove("TextAreaChatLog");
     }
     else if (content.indexOf("/gagheavy") == 0) {
-      content = SpeechGarbleByGagLevel(6, content.substring(9).trim());
-      ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
+        content = SpeechGarbleByGagLevel(6, content.substring(9).trim());
+        ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
     }
     else if (content.indexOf("/gaglight") == 0) {
-      content = SpeechGarbleByGagLevel(1, content.substring(9).trim());
-      ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" }); 
+        content = SpeechGarbleByGagLevel(1, content.substring(9).trim());
+        ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" }); 
     }
     else if (content.indexOf("/gagtalk") == 0) {
         if (this.GagTalkOff == undefined | this.GagTalkOff == false) {
@@ -440,47 +440,47 @@ if (CurrentScreen == "ChatRoom") {
     ChatRoomMessage({ Content: "Quick-AccessMenu2: Gag-talk toggled on.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }    
     else if (content.indexOf("/gh") == 0) {
-      content = SpeechGarbleByGagLevel(6, content.substring(3).trim());
-      ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
+        content = SpeechGarbleByGagLevel(6, content.substring(3).trim());
+        ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
     }
     else if (content.indexOf("/giveeverything") == 0) {
-    ChatRoomMessage({ Content: "Quick-AccessMenu2: Every item in the game now added.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    AssetFemale3DCG.forEach(group=>group.Asset.forEach(item=>InventoryAdd(Player, item.Name, group.Group)));
-    ServerPlayerInventorySync();
+        ChatRoomMessage({ Content: "Quick-AccessMenu2: Every item in the game now added.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        AssetFemale3DCG.forEach(group=>group.Asset.forEach(item=>InventoryAdd(Player, item.Name, group.Group)));
+        ServerPlayerInventorySync();
     }
     else if (content.indexOf("/gl") == 0) {
-      content = SpeechGarbleByGagLevel(1, content.substring(3).trim());
-      ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
+        content = SpeechGarbleByGagLevel(1, content.substring(3).trim());
+        ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
     }
     else if (content.indexOf("/headmaid") == 0) {
-    LogAdd("LeadSorority", "Maid");
+        LogAdd("LeadSorority", "Maid");
     }
     else if (content.indexOf("/hiddenmessages") == 0) {
         if (this.HiddenMessagesOn == undefined || this.HiddenMessagesOn == false) {
-        HiddenMessagesOn = true;
-        ChatRoomMessage({ Content: "Hidden messages revealed.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        (typeof oldChatRoomMessage !== 'undefined') && (ChatRoomMessage=oldChatRoomMessage);//reset
-        newChatRoomMessage = function  (data) {
-            if (data.Type == "Hidden") {
-            ChatRoomMessage({ Content: "HiddenMessage:"+data.Content, Type: "LocalMessage", Sender: Player.MemberNumber }); }
-            else { oldChatRoomMessage(data);}}//if modified code unusued, use original
+           HiddenMessagesOn = true;
+           ChatRoomMessage({ Content: "Hidden messages revealed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+           (typeof oldChatRoomMessage !== 'undefined') && (ChatRoomMessage=oldChatRoomMessage);//reset
+           newChatRoomMessage = function  (data) {
+                if (data.Type == "Hidden") {
+                ChatRoomMessage({ Content: "HiddenMessage:"+data.Content, Type: "LocalMessage", Sender: Player.MemberNumber }); }
+                else { oldChatRoomMessage(data);}}//if modified code unusued, use original
             window.oldChatRoomMessage = ChatRoomMessage;
             window.ChatRoomMessage = newChatRoomMessage;}
         else {
-        HiddenMessagesOn = false;
-        newChatRoomMessage = function  (data) {}
-        ChatRoomMessage({ Content: "Hidden messages hidden.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+            HiddenMessagesOn = false;
+            newChatRoomMessage = function  (data) {}
+            ChatRoomMessage({ Content: "Hidden messages hidden.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
     else if (content.indexOf("/kidnapper") == 0) {
-    ReputationChange("Kidnap", 200);
-    ReputationChange("Kidnap", -50);
+        ReputationChange("Kidnap", 200);
+        ReputationChange("Kidnap", -50);
     }
     else if (content.indexOf("/leave") == 0) {
-    ChatRoomSetLastChatRoom("");
-    ServerSend("ChatRoomLeave", "");
-    CommonSetScreen("Online", "ChatSearch");
-    ChatRoomClearAllElements();
-    OnlineGameName = "";
+        ChatRoomSetLastChatRoom("");
+        ServerSend("ChatRoomLeave", "");
+        CommonSetScreen("Online", "ChatSearch");
+        ChatRoomClearAllElements();
+        OnlineGameName = "";
     }
     else if (content.indexOf("/kinkydungeon") == 0)  {
         ArcadeKinkyDungeonEnd = function () {
@@ -557,129 +557,129 @@ if (CurrentScreen == "ChatRoom") {
         }    
     }
     else if (content.indexOf("/login") == 0) {
-    var stringLogin1 = content;
-    var stringLogin2 = stringLogin1.split(/[ ,]+/);
-    this.LoginName = stringLogin2[1];
-    this.LoginPassword = stringLogin2[2];
-    ServerSocket.close();
-    ServerSocket.open();
-    ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });
-    setTimeout(function() {
-    ChatRoomClearAllElements();
-}, 3000);
+        var stringLogin1 = content;
+        var stringLogin2 = stringLogin1.split(/[ ,]+/);
+        this.LoginName = stringLogin2[1];
+        this.LoginPassword = stringLogin2[2];
+        ServerSocket.close();
+        ServerSocket.open();
+        ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });
+        setTimeout(function() {
+        ChatRoomClearAllElements();
+        }, 3000);
     }
     else if (content.indexOf("/maid") == 0) {
-    LogAdd("JoinedSorority", "Management");
+        LogAdd("JoinedSorority", "Management");
     }
     else if (content.indexOf("/masterkidnapper") == 0) {
-    ReputationChange("Kidnap", 200);
+        ReputationChange("Kidnap", 200);
     }
     else if (content.indexOf("/maxdifficulty") == 0) {
-    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: "You will never escape your bindings!" }]});
-    InventorySetDifficulty(Player, "ItemAddon", 99);
-    InventorySetDifficulty(Player, "ItemArms", 99);
-    InventorySetDifficulty(Player, "ItemBoots", 99);
-    InventorySetDifficulty(Player, "ItemBreast", 99);
-    InventorySetDifficulty(Player, "ItemButt", 99);
-    InventorySetDifficulty(Player, "ItemDevices", 99);
-    InventorySetDifficulty(Player, "ItemEars", 99);
-    InventorySetDifficulty(Player, "ItemFeet", 99);
-    InventorySetDifficulty(Player, "ItemHands", 99);
-    InventorySetDifficulty(Player, "ItemHead", 99);
-    InventorySetDifficulty(Player, "ItemHood", 99);
-    InventorySetDifficulty(Player, "ItemLegs", 99);
-    InventorySetDifficulty(Player, "ItemMisc", 99);
-    InventorySetDifficulty(Player, "ItemMouth", 99);
-    InventorySetDifficulty(Player, "ItemMouth2", 99);
-    InventorySetDifficulty(Player, "ItemMouth3", 99);
-    InventorySetDifficulty(Player, "ItemNeck", 99);
-    InventorySetDifficulty(Player, "ItemNeckAccessories", 99);
-    InventorySetDifficulty(Player, "ItemNeckRestraints", 99);
-    InventorySetDifficulty(Player, "ItemNipples", 99);
-    InventorySetDifficulty(Player, "ItemNipplesPiercings", 99);
-    InventorySetDifficulty(Player, "ItemNose", 99);
-    InventorySetDifficulty(Player, "ItemPelvis", 99);
-    InventorySetDifficulty(Player, "ItemTorso", 99) 
-    InventorySetDifficulty(Player, "ItemVulva", 99);
-    InventorySetDifficulty(Player, "ItemVulvaPiercings", 99);
-    ServerPlayerInventorySync();
+        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: "You will never escape your bindings!" }]});
+        InventorySetDifficulty(Player, "ItemAddon", 99);
+        InventorySetDifficulty(Player, "ItemArms", 99);
+        InventorySetDifficulty(Player, "ItemBoots", 99);
+        InventorySetDifficulty(Player, "ItemBreast", 99);
+        InventorySetDifficulty(Player, "ItemButt", 99);
+        InventorySetDifficulty(Player, "ItemDevices", 99);
+        InventorySetDifficulty(Player, "ItemEars", 99);
+        InventorySetDifficulty(Player, "ItemFeet", 99);
+        InventorySetDifficulty(Player, "ItemHands", 99);
+        InventorySetDifficulty(Player, "ItemHead", 99);
+        InventorySetDifficulty(Player, "ItemHood", 99);
+        InventorySetDifficulty(Player, "ItemLegs", 99);
+        InventorySetDifficulty(Player, "ItemMisc", 99);
+        InventorySetDifficulty(Player, "ItemMouth", 99);
+        InventorySetDifficulty(Player, "ItemMouth2", 99);
+        InventorySetDifficulty(Player, "ItemMouth3", 99);
+        InventorySetDifficulty(Player, "ItemNeck", 99);
+        InventorySetDifficulty(Player, "ItemNeckAccessories", 99);
+        InventorySetDifficulty(Player, "ItemNeckRestraints", 99);
+        InventorySetDifficulty(Player, "ItemNipples", 99);
+        InventorySetDifficulty(Player, "ItemNipplesPiercings", 99);
+        InventorySetDifficulty(Player, "ItemNose", 99);
+        InventorySetDifficulty(Player, "ItemPelvis", 99);
+        InventorySetDifficulty(Player, "ItemTorso", 99) 
+        InventorySetDifficulty(Player, "ItemVulva", 99);
+        InventorySetDifficulty(Player, "ItemVulvaPiercings", 99);
+        ServerPlayerInventorySync();
     }
     else if (content.indexOf("/maxstatistics") == 0) {
-    Player.Money = 9999999999;
-    SkillChange("Infiltration", 10);
-    SkillChange("SelfBondage", 10);
-    SkillChange("Willpower", 10);
-    SkillChange("Evasion", 10);
-    SkillChange("Bondage", 10);
-    SkillChange("Dressage", 10);
-    SkillChange("LockPicking", 10)
-    ReputationChange("Gaming", 100);
-    ReputationChange("Gambling", 100);
-    ReputationChange("LARP", 100);
-    ReputationChange("Maid", 100);
-    ReputationChange("ABDL", 100);
-    ReputationChange("Nurse", 100);
-    GameLARPLevelProgress(10000);//fix might be needed
-    CheatAllow = true;
-    LogAdd("BondageCollege", "Import");
-    LogAdd("KidnapSophie", "Sarah");
-    ChatRoomMessage({ Content: "Quick-AccessMenu2: A few things have to be set manually.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "Asylum, type: /doctor or /nurse versus /patient or /permanentpatient", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "Kidnapper's League, type: /kidnapper or /masterkidnapper", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "Management, type: /mistress or /clubmistress", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-    ChatRoomMessage({ Content: "Sorority, type: /maid or /headmaid", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-    ChatRoomMessage({ Content: "ClubSlave, type: /clubslave.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ChatRoomMessage({ Content: "To quit any of the above, type: /quitasylum or /quitmanagement or /quitkidnapper or /quitsorority or /quitclubslave", Type: "LocalMessage", Sender: Player.MemberNumber });
+        Player.Money = 9999999999;
+        SkillChange("Infiltration", 10);
+        SkillChange("SelfBondage", 10);
+        SkillChange("Willpower", 10);
+        SkillChange("Evasion", 10);
+        SkillChange("Bondage", 10);
+        SkillChange("Dressage", 10);
+        SkillChange("LockPicking", 10)
+        ReputationChange("Gaming", 100);
+        ReputationChange("Gambling", 100);
+        ReputationChange("LARP", 100);
+        ReputationChange("Maid", 100);
+        ReputationChange("ABDL", 100);
+        ReputationChange("Nurse", 100);
+        GameLARPLevelProgress(10000);//fix might be needed
+        CheatAllow = true;
+        LogAdd("BondageCollege", "Import");
+        LogAdd("KidnapSophie", "Sarah");
+        ChatRoomMessage({ Content: "Quick-AccessMenu2: A few things have to be set manually.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "Asylum, type: /doctor or /nurse versus /patient or /permanentpatient", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "Kidnapper's League, type: /kidnapper or /masterkidnapper", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "Management, type: /mistress or /clubmistress", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+        ChatRoomMessage({ Content: "Sorority, type: /maid or /headmaid", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+        ChatRoomMessage({ Content: "ClubSlave, type: /clubslave.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "To quit any of the above, type: /quitasylum or /quitmanagement or /quitkidnapper or /quitsorority or /quitclubslave", Type: "LocalMessage", Sender: Player.MemberNumber });
     }
     else if (content.indexOf("/mindifficulty") == 0) {
-    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: "You can easily escape your bindings now!" }]});
-    InventorySetDifficulty(Player, "ItemAddon", 1);
-    InventorySetDifficulty(Player, "ItemArms", 1);
-    InventorySetDifficulty(Player, "ItemBoots", 1);
-    InventorySetDifficulty(Player, "ItemBreast", 1);
-    InventorySetDifficulty(Player, "ItemButt", 1);
-    InventorySetDifficulty(Player, "ItemDevices", 1);
-    InventorySetDifficulty(Player, "ItemEars", 1);
-    InventorySetDifficulty(Player, "ItemFeet", 1);
-    InventorySetDifficulty(Player, "ItemHands", 1);
-    InventorySetDifficulty(Player, "ItemHead", 1);
-    InventorySetDifficulty(Player, "ItemHood", 1);
-    InventorySetDifficulty(Player, "ItemLegs", 1);
-    InventorySetDifficulty(Player, "ItemMisc", 1);
-    InventorySetDifficulty(Player, "ItemMouth", 1);
-    InventorySetDifficulty(Player, "ItemMouth2", 1);
-    InventorySetDifficulty(Player, "ItemMouth3", 1);
-    InventorySetDifficulty(Player, "ItemNeck", 1);
-    InventorySetDifficulty(Player, "ItemNeckAccessories", 1);
-    InventorySetDifficulty(Player, "ItemNeckRestraints", 1);
-    InventorySetDifficulty(Player, "ItemNipples", 1);
-    InventorySetDifficulty(Player, "ItemNipplesPiercings", 1);
-    InventorySetDifficulty(Player, "ItemNose", 1);
-    InventorySetDifficulty(Player, "ItemPelvis", 1);
-    InventorySetDifficulty(Player, "ItemTorso", 1) 
-    InventorySetDifficulty(Player, "ItemVulva", 1);
-    InventorySetDifficulty(Player, "ItemVulvaPiercings", 1);
-    ServerPlayerInventorySync();
+        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: "You can easily escape your bindings now!" }]});
+        InventorySetDifficulty(Player, "ItemAddon", 1);
+        InventorySetDifficulty(Player, "ItemArms", 1);
+        InventorySetDifficulty(Player, "ItemBoots", 1);
+        InventorySetDifficulty(Player, "ItemBreast", 1);
+        InventorySetDifficulty(Player, "ItemButt", 1);
+        InventorySetDifficulty(Player, "ItemDevices", 1);
+        InventorySetDifficulty(Player, "ItemEars", 1);
+        InventorySetDifficulty(Player, "ItemFeet", 1);
+        InventorySetDifficulty(Player, "ItemHands", 1);
+        InventorySetDifficulty(Player, "ItemHead", 1);
+        InventorySetDifficulty(Player, "ItemHood", 1);
+        InventorySetDifficulty(Player, "ItemLegs", 1);
+        InventorySetDifficulty(Player, "ItemMisc", 1);
+        InventorySetDifficulty(Player, "ItemMouth", 1);
+        InventorySetDifficulty(Player, "ItemMouth2", 1);
+        InventorySetDifficulty(Player, "ItemMouth3", 1);
+        InventorySetDifficulty(Player, "ItemNeck", 1);
+        InventorySetDifficulty(Player, "ItemNeckAccessories", 1);
+        InventorySetDifficulty(Player, "ItemNeckRestraints", 1);
+        InventorySetDifficulty(Player, "ItemNipples", 1);
+        InventorySetDifficulty(Player, "ItemNipplesPiercings", 1);
+        InventorySetDifficulty(Player, "ItemNose", 1);
+        InventorySetDifficulty(Player, "ItemPelvis", 1);
+        InventorySetDifficulty(Player, "ItemTorso", 1) 
+        InventorySetDifficulty(Player, "ItemVulva", 1);
+        InventorySetDifficulty(Player, "ItemVulvaPiercings", 1);
+        ServerPlayerInventorySync();
     }
     else if (content.indexOf("/mistress") == 0) {
-    LogAdd("ClubMistress", "Management");
-    ReputationChange("Dominant", 200);
+        LogAdd("ClubMistress", "Management");
+        ReputationChange("Dominant", 200);
     }
     else if (content.indexOf("/money") == 0) {
-    Player.Money = content.substring(6);ServerPlayerSync();
+        Player.Money = content.substring(6);ServerPlayerSync();
     }
     else if (content.indexOf("/naked") == 0) {
-    var targetname = content.substring(6).trim();
-    if (targetname == undefined) {targetname = Player.Name};
-    var targetfinder = new RegExp('^'+targetname+'', 'i');
-    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-    if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-    CharacterNaked(target[0]);
-    ChatRoomCharacterUpdate(target[0]);
+        var targetname = content.substring(6).trim();
+        if (targetname == undefined) {targetname = Player.Name};
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+        CharacterNaked(target[0]);
+        ChatRoomCharacterUpdate(target[0]);
     } 
     else if (content.indexOf("/nurse") == 0) {
-    ReputationChange('Asylum', 200);
-    ReputationChange('Asylum', -50)
+        ReputationChange('Asylum', 200);
+        ReputationChange('Asylum', -50)
     }
     else if (content.indexOf("/outfit") == 0) {
         if (content.includes("reset") || content.includes("revert") ||  content.includes("restore")) {
@@ -744,24 +744,24 @@ if (CurrentScreen == "ChatRoom") {
          ChatRoomMessage({ Content: "Saves lasts only 1 login session.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
     else if (content.indexOf("/patient") == 0) {
-    ReputationChange('Asylum', -200);
-    ReputationChange('Asylum', 50);
+        ReputationChange('Asylum', -200);
+        ReputationChange('Asylum', 50);
     }    
     else if (content.indexOf("/patreoncheats") == 0) {
-    CheatValidate = function () { return true; };
-    CheatAllow = true;
-    CheatRun();
-    document.getElementById("InputChat").style.display = "none";
-    document.getElementById("TextAreaChatLog").style.display = "none";
-    CommonSetScreen("Character", "Cheat");
-    CheatExit = function () {//rewrite cheattexit to return to chatroom
+        CheatValidate = function () { return true; };
+        CheatAllow = true;
+        CheatRun();
+        document.getElementById("InputChat").style.display = "none";
+        document.getElementById("TextAreaChatLog").style.display = "none";
+        CommonSetScreen("Character", "Cheat");
+        CheatExit = function () {//rewrite cheattexit to return to chatroom
 	CheatExport();
 	CommonSetScreen("Online", "ChatRoom");
-    document.getElementById("InputChat").style.display = "inline";
-    document.getElementById("TextAreaChatLog").style.display = "inline";}
+        document.getElementById("InputChat").style.display = "inline";
+        document.getElementById("TextAreaChatLog").style.display = "inline";}
     }
     else if (content.indexOf("/permanentpatient") == 0) {
-    ReputationChange('Asylum', -200);
+        ReputationChange('Asylum', -200);
     }
     else if (content.indexOf("/pose") == 0) {
     var stringPose1 = content;
