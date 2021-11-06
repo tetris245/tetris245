@@ -377,29 +377,29 @@ if (CurrentScreen == "ChatRoom") {
                 if (ColorTargetNameHair !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used colorchanger on you. If this is undesired, blacklist player.", Type: "Whisper", Target: ColorTargetNameHair.MemberNumber })};
             }}, 5000);
         }
-    else if (content.includes("stop") || content.includes("reset")) {
-    ColorChangerCustom = function () {};
-    ColorChangerEyes = function () {};
-    ColorChangerHair = function () {};
-    this.ColorTarget1 = undefined;
-    this.ColorTarget2 = undefined;
-    this.ColorTarget3 = undefined;
-    this.ColorTarget4 = undefined;
-    this.ColorTarget5 = undefined;
-    this.ColorTarget6 = undefined;
-    this.ColorTarget7 = undefined;
-    this.ColorTarget8 = undefined;
-    this.ColorTarget9 = undefined;
-    this.ColorTarget10 = undefined;
-    this.ColorTargetNameCustom = undefined;
+        else if (content.includes("stop") || content.includes("reset")) {
+        ColorChangerCustom = function () {};
+        ColorChangerEyes = function () {};
+        ColorChangerHair = function () {};
+        this.ColorTarget1 = undefined;
+        this.ColorTarget2 = undefined;
+        this.ColorTarget3 = undefined;
+        this.ColorTarget4 = undefined;
+        this.ColorTarget5 = undefined;
+        this.ColorTarget6 = undefined;
+        this.ColorTarget7 = undefined;
+        this.ColorTarget8 = undefined;
+        this.ColorTarget9 = undefined;
+        this.ColorTarget10 = undefined;
+        this.ColorTargetNameCustom = undefined;
         }
-    else if (content.endsWith("/colorchanger")) {
+        else if (content.endsWith("/colorchanger")) {
         ChatRoomMessage({ Content: "Quick-Access Menu2: Manual:", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "To preselect, two choices exist, type: /colorchanger hair or /colorchanger eyes", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "To manually select area, type: /colorchanger set or /colorchanger select or /colorchangercustom", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "Manual selection can only target 10 areas at a time, then requires to be reset to reuse, type: /colorchanger stop or /colorchanger reset", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "Only 1 target can be active at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    }
+        }
     }
     else if (content.indexOf("/cum") == 0) {
     ActivityOrgasmRuined = false;
