@@ -292,7 +292,6 @@ if (CurrentScreen == "ChatRoom") {
     CollegeEntranceIsWearingCollegeClothes = function () { return true; }
     CollegeEntranceIsWearingTennisClothes = function () { return true; }
     CollegeEntranceCanGoTeacher = function () { return true; }
-
     }
     else if (content.indexOf("/colorchanger") == 0) {
 
