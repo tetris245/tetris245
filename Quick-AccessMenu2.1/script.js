@@ -959,50 +959,50 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
     ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: exercise, kneel, sleep, pet, stand, suspension. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
     else if (content.indexOf("/quitasylum") == 0) {
-    DialogSetReputation("Asylum", 0);
+        DialogSetReputation("Asylum", 0);
     }
     else if (content.indexOf("/quitclubslave") == 0) {
-    LogAdd("ClubSlave", "Management", CurrentTime);
-    LogAdd("BlockChange", "Rule", CurrentTime);
-    ManagementIsClubSlave = function () { return false }
-    ManagementClubSlaveDialog = function (Player) {}
-    ManagementFinishClubSlave()
+        LogAdd("ClubSlave", "Management", CurrentTime);
+        LogAdd("BlockChange", "Rule", CurrentTime);
+        ManagementIsClubSlave = function () { return false }
+        ManagementClubSlaveDialog = function (Player) {}
+        ManagementFinishClubSlave()
     }
     else if (content.indexOf("/quitkidnapper") == 0) {
-    DialogSetReputation("Kidnap", 0)
+        DialogSetReputation("Kidnap", 0)
     }
     else if ((content.indexOf("/quitmanagement") == 0) || content.indexOf("/quitmistress") == 0) {
-    LogDelete("ClubMistress", "Management");
-    LogDelete("Mistress", "Management");
+        LogDelete("ClubMistress", "Management");
+        LogDelete("Mistress", "Management");
     }
     else if ((content.indexOf("/quitsorority") == 0) ||  content.indexOf("/quitmaid") == 0)  {
 	LogDelete("JoinedSorority", "Management");
 	LogDelete("LeadSorority", "Maid");
     }
     else if (content.indexOf("/randomize") == 0) {
-    var targetname = content.substring(10).trim();
-    if (targetname == undefined) {targetname = Player.Name};
-    var targetfinder = new RegExp('^'+targetname+'', 'i');
-    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-    if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-    CharacterNaked(target[0]);
-    CharacterRandomUnderwear(target[0]); 
-    CharacterAppearanceFullRandom(target[0], true);
-    CharacterFullRandomRestrain(target[0],"ALL");
-    ChatRoomCharacterUpdate(target[0]);
+        var targetname = content.substring(10).trim();
+        if (targetname == undefined) {targetname = Player.Name};
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+        CharacterNaked(target[0]);
+        CharacterRandomUnderwear(target[0]); 
+        CharacterAppearanceFullRandom(target[0], true);
+        CharacterFullRandomRestrain(target[0],"ALL");
+        ChatRoomCharacterUpdate(target[0]);
     }
     else if (content.indexOf("/release") == 0) {
-    var targetname = content.substring(8).trim();
-    if (targetname == undefined) {targetname = Player.Name};
-    var targetfinder = new RegExp('^'+targetname+'', 'i');
-    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-    if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-    CharacterRelease(target[0]);
-    ChatRoomCharacterUpdate(target[0]);
+        var targetname = content.substring(8).trim();
+        if (targetname == undefined) {targetname = Player.Name};
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+        CharacterRelease(target[0]);
+        ChatRoomCharacterUpdate(target[0]);
     }
     else if (content.indexOf("/relog") == 0) {
-    ServerSocket.close();
-    ServerSocket.open();
+        ServerSocket.close();
+        ServerSocket.open();
     }
     else if (content.indexOf("/resetdifficulty") == 0) {
         if (content.includes("yes")) {
@@ -1011,23 +1011,23 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         else {ChatRoomMessage({ Content: "Quick-AccessMenu2: Warning, resetting difficulty will incur a 7-day waiting period to rechange. Confirm by typing: /resetdifficulty yes", Type: "LocalMessage", Sender: Player.MemberNumber })}
     }
     else if (content.indexOf("/restrain") == 0) {
-    var targetname = content.substring(9).trim();
-    if (targetname == undefined) {targetname = Player.Name};
-    var targetfinder = new RegExp('^'+targetname+'', 'i');
-    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-    if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-    CharacterFullRandomRestrain(target[0],"ALL");
-    ChatRoomCharacterUpdate(target[0]);
+        var targetname = content.substring(9).trim();
+        if (targetname == undefined) {targetname = Player.Name};
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+        CharacterFullRandomRestrain(target[0],"ALL");
+        ChatRoomCharacterUpdate(target[0]);
     }
     else if (content.indexOf("/safewordspecific") == 0) {
-    ChatRoomMessage({ Content: "Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
-    setTimeout(function() {
-    if (CurrentCharacter !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has removed "+InventoryGet(CurrentCharacter, CurrentCharacter.FocusGroup.Name).Asset.Name+" on you via console. If this is undesired, blacklist player.", Type: "Whisper", Target: CurrentCharacter.MemberNumber })};
-    CurrentCharacter.Appearance = CurrentCharacter.Appearance.filter(x => (CurrentCharacter.FocusGroup && CurrentCharacter.FocusGroup.Name) ? x.Asset.Group.Name != 
-    CurrentCharacter.FocusGroup.Name : true);
-    ChatRoomCharacterUpdate(CurrentCharacter);
-    DialogLeave();
-}, 5000);
+        ChatRoomMessage({ Content: "Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        setTimeout(function() {
+        if (CurrentCharacter !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has removed "+InventoryGet(CurrentCharacter, CurrentCharacter.FocusGroup.Name).Asset.Name+" on you via console. If this is undesired, blacklist player.", Type: "Whisper", Target: CurrentCharacter.MemberNumber })};
+        CurrentCharacter.Appearance = CurrentCharacter.Appearance.filter(x => (CurrentCharacter.FocusGroup && CurrentCharacter.FocusGroup.Name) ? x.Asset.Group.Name != 
+        CurrentCharacter.FocusGroup.Name : true);
+        ChatRoomCharacterUpdate(CurrentCharacter);
+        DialogLeave();
+        }, 5000);
     }
     else if (content.indexOf("/search") == 0) {
         if (content.includes("Asylum") || content.includes("asylum")) {
@@ -1063,74 +1063,74 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         }
     }
     else if ((content.indexOf("/speak") == 0) || (content.indexOf("/mouth") == 0) || (content.indexOf("/speech") == 0)) {
-    (typeof OLDtalking !== 'undefined') && (ChatRoomSendChat=OLDtalking); // reset
-    NEWtalking = function (){this.msg = ElementValue("InputChat").trim();
-    if(!this.msg.startsWith("/")&&!this.msg.startsWith("*")&&!this.msg.startsWith("!")) {
-    if(this.msg.length > 10) {RunExpressionAnimation([null, "Grin", "Smirk", null, "Grin", "Smirk", null]);
-    } else {RunExpressionAnimation([null, "Grin", "Smirk", null]);}}OLDtalking();}
-    this.OLDtalking=ChatRoomSendChat;this.ChatRoomSendChat=NEWtalking;
+        (typeof OLDtalking !== 'undefined') && (ChatRoomSendChat=OLDtalking); // reset
+        NEWtalking = function (){this.msg = ElementValue("InputChat").trim();
+        if(!this.msg.startsWith("/")&&!this.msg.startsWith("*")&&!this.msg.startsWith("!")) {
+        if(this.msg.length > 10) {RunExpressionAnimation([null, "Grin", "Smirk", null, "Grin", "Smirk", null]);
+        } else {RunExpressionAnimation([null, "Grin", "Smirk", null]);}}OLDtalking();}
+        this.OLDtalking=ChatRoomSendChat;this.ChatRoomSendChat=NEWtalking;
     }
     else if (content.indexOf("/store") == 0) {
-    Asset.forEach(e => { if (e.Value < 0) e.Value = 1; });
-    ServerSend("ChatRoomLeave", "");
-    CommonSetScreen("Room", "Shop");
-    ChatRoomSetLastChatRoom("");
-    OnlineGameName = "";
-    ChatRoomClearAllElements();
+        Asset.forEach(e => { if (e.Value < 0) e.Value = 1; });
+        ServerSend("ChatRoomLeave", "");
+        CommonSetScreen("Room", "Shop");
+        ChatRoomSetLastChatRoom("");
+        OnlineGameName = "";
+        ChatRoomClearAllElements();
     }
     else if (content.indexOf("/talkbaby") == 0) {
-    ElementValue("InputChat", "");
-        if (this.BabyTalkOn == false || this.BabyTalkOn == undefined) {
-        BabyTalkOn = true;
-        OLDmenu();}
-    else {
-    BabyTalkOn = false;
-    OLDmenu();}
+        ElementValue("InputChat", "");
+             if (this.BabyTalkOn == false || this.BabyTalkOn == undefined) {
+             BabyTalkOn = true;
+             OLDmenu();}
+             else {
+             BabyTalkOn = false;
+             OLDmenu();}
     }
     else if (content.indexOf("/talkgag") == 0) {
         if (content.includes("light")) {
-    ElementValue("InputChat", "");
-        if (this.TalkGagLightOn == false || this.TalkGagLightOn == undefined) {
-        TalkGagLightOn = true;}
-    else {
-    TalkGagLightOn = false;}
-    }
-    else if (content.includes("heavy")) {
-    ElementValue("InputChat", "");
-        if (this.TalkGagHeavyOn == false || this.TalkGagHeavyOn == undefined) {
-        TalkGagHeavyOn = true;}
-    else {
-    TalkGagHeavyOn = false;}
-    }
+           ElementValue("InputChat", "");
+           if (this.TalkGagLightOn == false || this.TalkGagLightOn == undefined) {
+           TalkGagLightOn = true;}
+           else {
+           TalkGagLightOn = false;}
+        }
+        else if (content.includes("heavy")) {
+           ElementValue("InputChat", "");
+           if (this.TalkGagHeavyOn == false || this.TalkGagHeavyOn == undefined) {
+           TalkGagHeavyOn = true;}
+           else {
+           TalkGagHeavyOn = false;}
+        }
     }
     else if (content.indexOf("/timercell") == 0) {
-    var minutes = content.substring(10).trim();
-    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" gets grabbed by two maids and locked in a timer cell for "+minutes+" minutes." }]});
-    DialogLentLockpicks = false;
-    ChatRoomClearAllElements();
-    ServerSend("ChatRoomLeave", "");         
-    CharacterDeleteAllOnline();
-    CellLock(minutes);
-    CharacterFullRandomRestrain(Player,"ALL");
-    ChatRoomCharacterUpdate(Player);
+        var minutes = content.substring(10).trim();
+        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" gets grabbed by two maids and locked in a timer cell for "+minutes+" minutes." }]});
+        DialogLentLockpicks = false;
+        ChatRoomClearAllElements();
+        ServerSend("ChatRoomLeave", "");         
+        CharacterDeleteAllOnline();
+        CellLock(minutes);
+        CharacterFullRandomRestrain(Player,"ALL");
+        ChatRoomCharacterUpdate(Player);
     }
     else if (content.indexOf("/totalrelease") == 0) {
-    var targetname = content.substring(13).trim();
-    if (targetname == undefined) {targetname = Player.Name};
-    var targetfinder = new RegExp('^'+targetname+'', 'i');
-    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-    if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-    CharacterReleaseTotal(target[0]);
-    ChatRoomCharacterUpdate(target[0]);
+        var targetname = content.substring(13).trim();
+        if (targetname == undefined) {targetname = Player.Name};
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+        CharacterReleaseTotal(target[0]);
+        ChatRoomCharacterUpdate(target[0]);
     }
     else if (content.indexOf("/underwear") == 0) {
-    var targetname = content.substring(10).trim();
-    if (targetname == undefined) {targetname = Player.Name};
-    var targetfinder = new RegExp('^'+targetname+'', 'i');
-    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-    if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-    CharacterRandomUnderwear(target[0]);
-    ChatRoomCharacterUpdate(target[0]);
+        var targetname = content.substring(10).trim();
+        if (targetname == undefined) {targetname = Player.Name};
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+        CharacterRandomUnderwear(target[0]);
+        ChatRoomCharacterUpdate(target[0]);
     }
     else if (content.indexOf("/unrestrict") == 0) {
         if (content.includes("soft")) {
@@ -1295,19 +1295,19 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         StruggleLockPickProgressMaxTries = Math.max(1, NumTries - NumPins);}}}
     }   
     else if (content.indexOf("/wardrobe") == 0) {
-    var targetname = content.substring(10).trim();
-    var targetfinder = new RegExp('^'+targetname+'', 'i');
-    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-    target[0].OnlineSharedSettings.AllowFullWardrobeAccess = true;
-    target[0].OnlineSharedSettings.BlockBodyCosplay = false;
-    ChatRoomClickCharacter(ChatRoomTargetMemberNumber = target[0]);
-    ChatRoomChangeClothes();
+        var targetname = content.substring(10).trim();
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        target[0].OnlineSharedSettings.AllowFullWardrobeAccess = true;
+        target[0].OnlineSharedSettings.BlockBodyCosplay = false;
+        ChatRoomClickCharacter(ChatRoomTargetMemberNumber = target[0]);
+        ChatRoomChangeClothes();
     }
     else if (content.indexOf("/whisper") == 0) {
-    var targetname = content.substring(8).trim();
-    var targetfinder = new RegExp('^'+targetname+'', 'i');
-    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-    ChatRoomTargetMemberNumber = target[0].MemberNumber;
+        var targetname = content.substring(8).trim();
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        ChatRoomTargetMemberNumber = target[0].MemberNumber;
     }          
 		else if (content.indexOf('@') == 0) {
 			ElementValue("InputChat", content.replace('@', "?"));
