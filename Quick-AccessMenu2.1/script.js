@@ -670,13 +670,13 @@ if (CurrentScreen == "ChatRoom") {
     Player.Money = content.substring(6);ServerPlayerSync();
     }
     else if (content.indexOf("/naked") == 0) {
-        var targetname = content.substring(6).trim();
-        if (targetname == undefined) {targetname = Player.Name};
-        var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+    var targetname = content.substring(6).trim();
+    if (targetname == undefined) {targetname = Player.Name};
+    var targetfinder = new RegExp('^'+targetname+'', 'i');
+    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
     if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-        CharacterNaked(target[0]);
-        ChatRoomCharacterUpdate(target[0]);
+    CharacterNaked(target[0]);
+    ChatRoomCharacterUpdate(target[0]);
     } 
     else if (content.indexOf("/nurse") == 0) {
     ReputationChange('Asylum', 200);
