@@ -445,24 +445,24 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/gagtalk") == 0) {
         if (this.GagTalkOff == undefined | this.GagTalkOff == false) {
-        SpeechGagLevelLookup = {};
-        GagTalkOff = true;
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: Gag-talk toggled off.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+            SpeechGagLevelLookup = {};
+            GagTalkOff = true;
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Gag-talk toggled off.", Type: "LocalMessage", Sender: Player.MemberNumber });}
         else {
-       SpeechGagLevelLookup = {
-    	GagTotal4: 20,
-    	GagTotal3: 16,
-    	GagTotal2: 12,
-    	GagTotal: 8,
+            SpeechGagLevelLookup = {
+    	    GagTotal4: 20,
+    	    GagTotal3: 16,
+    	    GagTotal2: 12,
+    	    GagTotal: 8,
 	    GagVeryHeavy: 7,
-    	GagHeavy: 6,
+    	    GagHeavy: 6,
 	    GagMedium: 5,
-    	GagNormal: 4,
+    	    GagNormal: 4,
 	    GagEasy: 3,
-    	GagLight: 2,
-    	GagVeryLight: 1,};
-        GagTalkOff = false;
-    ChatRoomMessage({ Content: "Quick-AccessMenu2: Gag-talk toggled on.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+    	    GagLight: 2,
+    	    GagVeryLight: 1,};
+            GagTalkOff = false;
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Gag-talk toggled on.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }    
 	
     else if (content.indexOf("/gh") == 0) {
