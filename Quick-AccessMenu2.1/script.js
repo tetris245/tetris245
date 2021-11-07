@@ -95,12 +95,12 @@ if (CurrentScreen == "ChatRoom") {
            ChatRoomMessage({ Content: "AutoKick: Ready.", Type: "LocalMessage", Sender: Player.MemberNumber });
            AutoKickOn = true;
            AutoKicker = function (data, days = 1, hours = 12, minutes = 0) {
-           minutes *= 60000;
-           hours *= 3600000;
-           days *= 86400000;
-           let character = ChatRoomCharacter.find((c) => c.MemberNumber === data.Sender);
-           if (data.Content == "ServerEnter" && character.Creation > CurrentTime - days - hours - minutes) {
-               ServerSend("ChatRoomAdmin", { MemberNumber: character.MemberNumber, Action: "Ban" });
+               minutes *= 60000;
+               hours *= 3600000;
+               days *= 86400000;
+               let character = ChatRoomCharacter.find((c) => c.MemberNumber === data.Sender);
+               if (data.Content == "ServerEnter" && character.Creation > CurrentTime - days - hours - minutes) {
+                   ServerSend("ChatRoomAdmin", { MemberNumber: character.MemberNumber, Action: "Ban" });
                ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: "AutoKick: Account was 0 days old."}] });};
                };ServerSocket.on("ChatRoomMessage", AutoKicker);}
         else {
@@ -214,10 +214,10 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/becomeownlover") == 0) {
         ChatRoomMessage({ Content: "Warning: Uncomfirmed glitch might occur when removing self as lover, during which a random/real lover will be taken Use with risk in mind. Confirm: /becomeownlover yes", Type: "LocalMessage", Sender: Player.MemberNumber });
            if (content.includes("yes")) {
-           ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
-           ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanOfferBeginWedding" && "Propose" });
-           ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanBeginWedding" && "Accept" });
-           ChatRoomMessage({ Content: "Accomplished. Break-up is done via Club Management.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+               ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
+               ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanOfferBeginWedding" && "Propose" });
+               ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanBeginWedding" && "Accept" });
+               ChatRoomMessage({ Content: "Accomplished. Break-up is done via Club Management.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
     //consider writing a lover break up code to compensate for glitch, if possible.
 	
@@ -235,41 +235,41 @@ if (CurrentScreen == "ChatRoom") {
     }
 	
     else if (content.indexOf("/chess") == 0) {
-    CollegeChessGameEndALT = function () {
-	document.removeEventListener("chessOnMove", CollegeChessGameProgress);
-    MiniGameEnded = true;
-    ChessEndStatus = "Draw";
-    ElementRemove("DivChessBoard");
-    CommonDynamicFunction(MiniGameReturnFunction + "()");
-	CommonSetScreen("Online", "ChatRoom");
-    CurrentScreen = "ChatRoom";
-    ChatRoomDrawCharacter();
-    ChatRoomMenuBuild();
-    ChatRoomDrawBackground();
-    ChatRoomLoad();
-    ChatRoomClearAllElements();
-};
-    CollegeChessGameStartALT = function (Difficulty) {
-    CollegeChessDifficulty = parseInt(Difficulty);
-	const playerStarts = Math.random() < 0.5;
-	ChessCharacterWhite = playerStarts ? Player : CollegeChessOpponent;
-	ChessCharacterBlack = playerStarts ? CollegeChessOpponent : Player;
-	MiniGameStart("Chess", CollegeChessDifficulty, "CollegeChessGameEndALT");
-	document.addEventListener("chessOnMove", CollegeChessGameProgress);
-};
-    var chessdifficulty = content.substring(6).trim();
-    if (this.ChessOn == false || this.ChessOn == undefined) {
-    ChessOn = true;
-	CommonSetScreen("Room", "CollegeChess");
-    CollegeChessGameStartALT(chessdifficulty);
-    setTimeout(function() {
-    	CommonSetScreen("Online", "ChatRoom");
-        ElementPositionFix("DivChessBoard", null, -1000, -480);
-}, 2000);
-    }
-    else {
-    ChessOn = false;
-    CollegeChessGameEndALT();}
+        CollegeChessGameEndALT = function () {
+	    document.removeEventListener("chessOnMove", CollegeChessGameProgress);
+            MiniGameEnded = true;
+            ChessEndStatus = "Draw";
+            ElementRemove("DivChessBoard");
+            CommonDynamicFunction(MiniGameReturnFunction + "()");
+	    CommonSetScreen("Online", "ChatRoom");
+            CurrentScreen = "ChatRoom";
+            ChatRoomDrawCharacter();
+            ChatRoomMenuBuild();
+            ChatRoomDrawBackground();
+            ChatRoomLoad();
+            ChatRoomClearAllElements();
+        };
+        CollegeChessGameStartALT = function (Difficulty) {
+            CollegeChessDifficulty = parseInt(Difficulty);
+	    const playerStarts = Math.random() < 0.5;
+	    ChessCharacterWhite = playerStarts ? Player : CollegeChessOpponent;
+	    ChessCharacterBlack = playerStarts ? CollegeChessOpponent : Player;
+	    MiniGameStart("Chess", CollegeChessDifficulty, "CollegeChessGameEndALT");
+	    document.addEventListener("chessOnMove", CollegeChessGameProgress);
+        };
+        var chessdifficulty = content.substring(6).trim();
+        if (this.ChessOn == false || this.ChessOn == undefined) {
+            ChessOn = true;
+	    CommonSetScreen("Room", "CollegeChess");
+            CollegeChessGameStartALT(chessdifficulty);
+            setTimeout(function() {
+    	    CommonSetScreen("Online", "ChatRoom");
+            ElementPositionFix("DivChessBoard", null, -1000, -480);
+            }, 2000);
+        }
+        else {
+            ChessOn = false;
+            CollegeChessGameEndALT();}
     }
 	
     else if (content.indexOf("/clothes") == 0) {
@@ -332,29 +332,29 @@ if (CurrentScreen == "ChatRoom") {
                 else if (this.ColorTarget10 == undefined) {this.ColorTarget10 = CurrentCharacter.FocusGroup.Name}
 
             ColorChangerCustom = function () {
-            setTimeout(function() {ColorChangerCustom()},1000);
-            RandomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
-            if (this.ColorTarget1) {
-            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget1);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget1);};
-            if (this.ColorTarget2) {
-            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget2);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget2);};
-            if (this.ColorTarget3) {
-            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget3);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget3);};
-            if (this.ColorTarget4) {
-            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget4);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget4);};
-            if (this.ColorTarget5) {
-            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget5);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget5);};
-            if (this.ColorTarget6) {
-            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget6);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget6);};
-            if (this.ColorTarget7) {
-            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget7);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget7);};
-            if (this.ColorTarget8) {
-            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget8);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget8);};
-            if (this.ColorTarget9) {
-            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget9);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget9);};
-            if (this.ColorTarget510) {
-            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget10);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget10);};
-            };ColorChangerCustom();DialogLeave();
+                setTimeout(function() {ColorChangerCustom()},1000);
+                RandomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+                if (this.ColorTarget1) {
+                CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget1);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget1);};
+                if (this.ColorTarget2) {
+                CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget2);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget2);};
+                if (this.ColorTarget3) {
+                CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget3);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget3);};
+                if (this.ColorTarget4) {
+                CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget4);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget4);};
+                if (this.ColorTarget5) {
+                CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget5);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget5);};
+                if (this.ColorTarget6) {
+                CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget6);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget6);};
+                if (this.ColorTarget7) {
+                CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget7);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget7);};
+                if (this.ColorTarget8) {
+                CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget8);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget8);};
+                if (this.ColorTarget9) {
+                CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget9);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget9);};
+                if (this.ColorTarget510) {
+                CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget10);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget10);};
+                };ColorChangerCustom();DialogLeave();
             }}, 5000);
         }
 	    
@@ -364,15 +364,15 @@ if (CurrentScreen == "ChatRoom") {
                 if (CurrentCharacter) {
                 var ColorTargetNameEyes = CurrentCharacter;
                 ColorChangerEyes = function () {
-                setTimeout(function() {ColorChangerEyes()},1000);
-                var RandomColor = null;
-                RandomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
-                InventoryGet(ColorTargetNameEyes, "Eyes").Color = RandomColor
-                InventoryGet(ColorTargetNameEyes, "Eyes2").Color = RandomColor
-                ChatRoomCharacterItemUpdate(ColorTargetNameEyes, "Eyes");
-                ChatRoomCharacterItemUpdate(ColorTargetNameEyes, "Eyes2");
-                };ColorChangerEyes();DialogLeave();
-                    if (ColorTargetNameEyes !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used colorchanger on you. If this is undesired, blacklist player.", Type: "Whisper", Target: ColorTargetNameEyes.MemberNumber })};
+                    setTimeout(function() {ColorChangerEyes()},1000);
+                    var RandomColor = null;
+                    RandomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+                    InventoryGet(ColorTargetNameEyes, "Eyes").Color = RandomColor
+                    InventoryGet(ColorTargetNameEyes, "Eyes2").Color = RandomColor
+                    ChatRoomCharacterItemUpdate(ColorTargetNameEyes, "Eyes");
+                    ChatRoomCharacterItemUpdate(ColorTargetNameEyes, "Eyes2");
+                    };ColorChangerEyes();DialogLeave();
+                        if (ColorTargetNameEyes !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used colorchanger on you. If this is undesired, blacklist player.", Type: "Whisper", Target: ColorTargetNameEyes.MemberNumber })};
             }}, 5000);
         }
 
@@ -382,15 +382,15 @@ if (CurrentScreen == "ChatRoom") {
                 if (CurrentCharacter) {
                 var ColorTargetNameHair = CurrentCharacter;
                 ColorChangerHair = function () {
-                setTimeout(function() {ColorChangerHair()},1000);
-                var RandomColor = null;
-                RandomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
-                InventoryGet(ColorTargetNameHair, "HairFront").Color = RandomColor
-                InventoryGet(ColorTargetNameHair, "HairBack").Color = RandomColor
-                ChatRoomCharacterItemUpdate(ColorTargetNameHair, "HairFront");
-                ChatRoomCharacterItemUpdate(ColorTargetNameHair, "HairBack");
-                };ColorChangerHair();DialogLeave();
-                    if (ColorTargetNameHair !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used colorchanger on you. If this is undesired, blacklist player.", Type: "Whisper", Target: ColorTargetNameHair.MemberNumber })};
+                    setTimeout(function() {ColorChangerHair()},1000);
+                    var RandomColor = null;
+                    RandomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+                    InventoryGet(ColorTargetNameHair, "HairFront").Color = RandomColor
+                    InventoryGet(ColorTargetNameHair, "HairBack").Color = RandomColor
+                    ChatRoomCharacterItemUpdate(ColorTargetNameHair, "HairFront");
+                    ChatRoomCharacterItemUpdate(ColorTargetNameHair, "HairBack");
+                    };ColorChangerHair();DialogLeave();
+                        if (ColorTargetNameHair !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used colorchanger on you. If this is undesired, blacklist player.", Type: "Whisper", Target: ColorTargetNameHair.MemberNumber })};
             }}, 5000);
         }
 	    
@@ -525,33 +525,34 @@ if (CurrentScreen == "ChatRoom") {
 
         if (content.includes("devious")) {
             if (this.DeviousOn == undefined || this.DeviousOn == false) {
-        DeviousOn = true;
-        ArcadeDeviousChallenge = true;
-        LogAdd("DeviousChallenge", "Arcade", 1, true);
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: DeviousChallenge enabled.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+                DeviousOn = true;
+                ArcadeDeviousChallenge = true;
+                LogAdd("DeviousChallenge", "Arcade", 1, true);
+                ChatRoomMessage({ Content: "Quick-AccessMenu2: DeviousChallenge enabled.", Type: "LocalMessage", Sender: Player.MemberNumber });}
             else {
-        DeviousOn = false;
-        ArcadeDeviousChallenge = false;
-        LogDelete("DeviousChallenge", "Arcade", true);
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: DeviousChallenge disabled.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+                DeviousOn = false;
+                ArcadeDeviousChallenge = false;
+                LogDelete("DeviousChallenge", "Arcade", true);
+                ChatRoomMessage({ Content: "Quick-AccessMenu2: DeviousChallenge disabled.", Type: "LocalMessage", Sender: Player.MemberNumber });}
         }
+	    
         else if (content.includes("cheat")) {
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: If cheats aren't loaded first time, quit and restart.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ArcadeRun();
-        ArcadeKinkyDungeonStart(ReputationChange("Gaming"));
-        document.getElementById("InputChat").style.display = "none";
-        document.getElementById("TextAreaChatLog").style.display = "none";
-        setTimeout(function() {
-        KinkyDungeonRedKeys += 999;
-        KinkyDungeonGreenKeys += 999;
-        KinkyDungeonBlueKeys += 999;
-        KinkyDungeonLockpicks += 999;
-        KinkyDungeonAddGold(999999);
-        KinkyDungeonEnchantedBlades += 999;
-        KinkyDungeonNormalBlades += 999;
-        var KinkyDungeonMysticSeals = 999;
-        var KinkyDungeonSpells = [
-{name: "Firebolt", exhaustion: 1, components: ["Arms"], level:1, type:"bolt", projectile:true, onhit:"", power: 3, delay: 0, range: 50, damage: "fire", speed: 1, playerEffect: {name: "Damage"}},
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: If cheats aren't loaded first time, quit and restart.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ArcadeRun();
+            ArcadeKinkyDungeonStart(ReputationChange("Gaming"));
+            document.getElementById("InputChat").style.display = "none";
+            document.getElementById("TextAreaChatLog").style.display = "none";
+            setTimeout(function() {
+            KinkyDungeonRedKeys += 999;
+            KinkyDungeonGreenKeys += 999;
+            KinkyDungeonBlueKeys += 999;
+            KinkyDungeonLockpicks += 999;
+            KinkyDungeonAddGold(999999);
+            KinkyDungeonEnchantedBlades += 999;
+            KinkyDungeonNormalBlades += 999;
+            var KinkyDungeonMysticSeals = 999;
+            var KinkyDungeonSpells = [
+    {name: "Firebolt", exhaustion: 1, components: ["Arms"], level:1, type:"bolt", projectile:true, onhit:"", power: 3, delay: 0, range: 50, damage: "fire", speed: 1, playerEffect: {name: "Damage"}},
 	{name: "Snare", exhaustion: 1, components: ["Legs"], level:1, type:"inert", projectile:false, onhit:"lingering", lifetime:-1, time: 10, delay: 3, range: 1, damage: "stun", playerEffect: {name: "MagicRope", time: 3}},
     {name: "Fireball", exhaustion: 6, components: ["Arms"], level:4, type:"bolt", projectile:true, onhit:"aoe", power: 4, delay: 0, range: 50, aoe: 1.5, size: 3, lifetime:1, damage: "fire", speed: 1, playerEffect: {name: "Damage"}}, // Throws a fireball in a direction that moves 1 square each turn
 	{name: "Icebolt", exhaustion: 4, components: ["Arms"], level:2, type:"bolt", projectile:true, onhit:"", time: 4,  power: 2, delay: 0, range: 50, damage: "ice", speed: 2, playerEffect: {name: "Damage"}},
@@ -570,21 +571,22 @@ if (CurrentScreen == "ChatRoom") {
 	];
             }, 5000);
         }
+	    
         else if (content.endsWith("/kinkydungeon")) {
-        ArcadeRun();
-        ArcadeKinkyDungeonStart(ReputationChange("Gaming"));
-        document.getElementById("InputChat").style.display = "none";
-        document.getElementById("TextAreaChatLog").style.display = "none";
-        setTimeout(function() {
-        KinkyDungeonRedKeys += 0;
-        KinkyDungeonGreenKeys += 0;
-        KinkyDungeonBlueKeys += 0;
-        KinkyDungeonLockpicks += 0;
-        KinkyDungeonAddGold(0);
-        KinkyDungeonEnchantedBlades += 0;
-        KinkyDungeonNormalBlades += 0;
-        var KinkyDungeonMysticSeals = 0;
-        var KinkyDungeonSpells = [];
+            ArcadeRun();
+            ArcadeKinkyDungeonStart(ReputationChange("Gaming"));
+            document.getElementById("InputChat").style.display = "none";
+            document.getElementById("TextAreaChatLog").style.display = "none";
+            setTimeout(function() {
+            KinkyDungeonRedKeys += 0;
+            KinkyDungeonGreenKeys += 0;
+            KinkyDungeonBlueKeys += 0;
+            KinkyDungeonLockpicks += 0;
+            KinkyDungeonAddGold(0);
+            KinkyDungeonEnchantedBlades += 0;
+            KinkyDungeonNormalBlades += 0;
+            var KinkyDungeonMysticSeals = 0;
+            var KinkyDungeonSpells = [];
             }, 5000);
 
         }    
