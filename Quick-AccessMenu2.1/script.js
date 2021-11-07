@@ -5,6 +5,7 @@ var content = ElementValue("InputChat").trim();
 
 //chatcommand
 if (CurrentScreen == "ChatRoom") {
+	
     if (content.indexOf("/help") == 0) {
         ChatRoomMessage({ Content: "ChatRoomHelp", Type: "Action", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "Quick-AccessMenu2: List of commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -74,18 +75,21 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/wardrobe (targetname)  =  opens target wardrobe.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/whisper (targetname) = sets whisper target.", Type: "LocalMessage", Sender: Player.MemberNumber });
     }
+	
     else if ((content.indexOf("/action ") == 0) || (content.indexOf("/a ") == 0))  {
         if (content.includes("/action") == true) {
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (content.substring(7).trim() )}] });}
         else {
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (content.substring(2).trim() )}] });}
     }
+	
     else if (content.indexOf("/arousal") == 0) {
         Player.ArousalSettings.Progress = content.substring(8);ServerPlayerSync();
         if (content.includes("100")) {
            ActivityOrgasmRuined = false;
            ActivityOrgasmStart(Player); }
     }
+	
     else if (content.indexOf("/autokick") == 0) {
         if (this.AutoKickOn == false || this.AutoKickOn == undefined) {
            ChatRoomMessage({ Content: "AutoKick: Ready.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -105,6 +109,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "AutoKick: Disabled.", Type: "LocalMessage", Sender: Player.MemberNumber })
         }
     }
+	
     else if ((content.indexOf("/babytalk") == 0) || content.indexOf("/b ") == 0) {
         if (content.includes("/babytalk")) {
            content = SpeechBabyTalk({Effect: ["RegressedTalk"]}, content);
@@ -113,6 +118,7 @@ if (CurrentScreen == "ChatRoom") {
            content = SpeechBabyTalk({Effect: ["RegressedTalk"]}, content);
            ServerSend("ChatRoomChat", { "Content":content.substring(2).trim(), "Type":"Chat" });}
     }
+	
     else if (content.indexOf("/background") == 0) {
         BackgroundsList.push({ Name: "Pandora/Ground/Entrance", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Second/Cell0", Tag: [BackgroundsTagIndoor] });
@@ -204,6 +210,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatCreateBackgroundList = BackgroundsGenerateList(BackgroundsTagList);
         ChatRoomMessage({ Content: "Quick-AccessMenu2: You can use more backgrounds now.", Type: "LocalMessage", Sender: Player.MemberNumber });
     }   
+	
     else if (content.indexOf("/becomeownlover") == 0) {
         ChatRoomMessage({ Content: "Warning: Uncomfirmed glitch might occur when removing self as lover, during which a random/real lover will be taken Use with risk in mind. Confirm: /becomeownlover yes", Type: "LocalMessage", Sender: Player.MemberNumber });
            if (content.includes("yes")) {
@@ -213,17 +220,20 @@ if (CurrentScreen == "ChatRoom") {
            ChatRoomMessage({ Content: "Accomplished. Break-up is done via Club Management.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
     //consider writing a lover break up code to compensate for glitch, if possible.
+	
     else if (content.indexOf("/becomeownowner") == 0) {
         ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
         ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "CanOfferEndTrial" && "Propose" });
         ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "CanEndTrial" && "Accept" });
     }
     //can't end free from owner, due to club's extreme mode preventing yet not allowing owner to break. Stupid...
+	
     else if (content.indexOf("/boost") == 0) {
         LogAdd("ModifierLevel", "SkillModifier", 105);
         LogAdd("ModifierDuration", "SkillModifier", CurrentTime + 3600000);
         ChatRoomMessage({ Content: "Quick-AccessMenu2: You feel your senses heightened(bondage/evasion). Can see change in information panel.", Type: "LocalMessage", Sender: Player.MemberNumber });
     }
+	
     else if (content.indexOf("/chess") == 0) {
     CollegeChessGameEndALT = function () {
 	document.removeEventListener("chessOnMove", CollegeChessGameProgress);
@@ -261,6 +271,7 @@ if (CurrentScreen == "ChatRoom") {
     ChessOn = false;
     CollegeChessGameEndALT();}
     }
+	
     else if (content.indexOf("/clothes") == 0) {
         var targetname = content.substring(8).trim();
         if (targetname == undefined) {targetname = Player.Name};
@@ -270,18 +281,22 @@ if (CurrentScreen == "ChatRoom") {
         CharacterAppearanceFullRandom(target[0], true);
         ChatRoomCharacterUpdate(target[0]);
     }
+	
     else if (content.indexOf("/clubmistress") == 0) {
         LogAdd("ClubMistress", "Management");
     }
+	
     else if (content.indexOf("/clubslave") == 0) {
         LogAdd("ClubSlave", "Management", CurrentTime + 3600000);
     }
+	
     else if ((content.indexOf("/collarremove") == 0) || (content.indexOf("/removecollar") == 0)) {
         ServerSend("ChatRoomChat", { Content: "PlayerOwnerCollarRelease", Type: "Action", Dictionary: [{Tag: "DestinationCharacterName", Text: Player.Name, MemberNumber: Player.MemberNumber}] });
         LogAdd("Released.Collar", "OwnerRule");
         InventoryRemove(Player, "ItemNeck");
         ChatRoomCharacterItemUpdate(Player, "ItemNeck");
     }
+	
     else if (content.indexOf("/college") == 0) {
         ChatRoomSetLastChatRoom("");
         ServerSend("ChatRoomLeave", "");
@@ -293,6 +308,7 @@ if (CurrentScreen == "ChatRoom") {
         CollegeEntranceIsWearingTennisClothes = function () { return true; }
         CollegeEntranceCanGoTeacher = function () { return true; }
     }
+	
     else if (content.indexOf("/colorchanger") == 0) {
 
         if (content.includes("custom") || content.includes("set") || content.includes("select")) {
@@ -400,24 +416,30 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "Only 1 target can be active at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
     }
+	
     else if (content.indexOf("/cum") == 0) {
         ActivityOrgasmRuined = false;
         ActivityOrgasmStart(Player);
-    }        
+    }  
+	
     else if (content.indexOf("/doctor") == 0) {
         ReputationChange('Asylum', 200);
     }
+	
     else if (content.indexOf("/erase") == 0) {
         ElementRemove("TextAreaChatLog");
     }
+	
     else if (content.indexOf("/gagheavy") == 0) {
         content = SpeechGarbleByGagLevel(6, content.substring(9).trim());
         ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
     }
+	
     else if (content.indexOf("/gaglight") == 0) {
         content = SpeechGarbleByGagLevel(1, content.substring(9).trim());
         ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" }); 
     }
+	
     else if (content.indexOf("/gagtalk") == 0) {
         if (this.GagTalkOff == undefined | this.GagTalkOff == false) {
         SpeechGagLevelLookup = {};
@@ -439,22 +461,27 @@ if (CurrentScreen == "ChatRoom") {
         GagTalkOff = false;
     ChatRoomMessage({ Content: "Quick-AccessMenu2: Gag-talk toggled on.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }    
+	
     else if (content.indexOf("/gh") == 0) {
         content = SpeechGarbleByGagLevel(6, content.substring(3).trim());
         ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
     }
+	
     else if (content.indexOf("/giveeverything") == 0) {
         ChatRoomMessage({ Content: "Quick-AccessMenu2: Every item in the game now added.", Type: "LocalMessage", Sender: Player.MemberNumber });
         AssetFemale3DCG.forEach(group=>group.Asset.forEach(item=>InventoryAdd(Player, item.Name, group.Group)));
         ServerPlayerInventorySync();
     }
+	
     else if (content.indexOf("/gl") == 0) {
         content = SpeechGarbleByGagLevel(1, content.substring(3).trim());
         ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
     }
+	
     else if (content.indexOf("/headmaid") == 0) {
         LogAdd("LeadSorority", "Maid");
     }
+	
     else if (content.indexOf("/hiddenmessages") == 0) {
         if (this.HiddenMessagesOn == undefined || this.HiddenMessagesOn == false) {
            HiddenMessagesOn = true;
@@ -471,10 +498,12 @@ if (CurrentScreen == "ChatRoom") {
             newChatRoomMessage = function  (data) {}
             ChatRoomMessage({ Content: "Hidden messages hidden.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
+	
     else if (content.indexOf("/kidnapper") == 0) {
         ReputationChange("Kidnap", 200);
         ReputationChange("Kidnap", -50);
     }
+	
     else if (content.indexOf("/leave") == 0) {
         ChatRoomSetLastChatRoom("");
         ServerSend("ChatRoomLeave", "");
@@ -482,6 +511,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomClearAllElements();
         OnlineGameName = "";
     }
+	
     else if (content.indexOf("/kinkydungeon") == 0)  {
         ArcadeKinkyDungeonEnd = function () {
         CommonSetScreen("Online", "ChatRoom");
@@ -556,6 +586,7 @@ if (CurrentScreen == "ChatRoom") {
 
         }    
     }
+	
     else if (content.indexOf("/login") == 0) {
         var stringLogin1 = content;
         var stringLogin2 = stringLogin1.split(/[ ,]+/);
@@ -568,12 +599,15 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomClearAllElements();
         }, 3000);
     }
+	
     else if (content.indexOf("/maid") == 0) {
         LogAdd("JoinedSorority", "Management");
     }
+	
     else if (content.indexOf("/masterkidnapper") == 0) {
         ReputationChange("Kidnap", 200);
     }
+	
     else if (content.indexOf("/maxdifficulty") == 0) {
         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: "You will never escape your bindings!" }]});
         InventorySetDifficulty(Player, "ItemAddon", 99);
@@ -604,6 +638,7 @@ if (CurrentScreen == "ChatRoom") {
         InventorySetDifficulty(Player, "ItemVulvaPiercings", 99);
         ServerPlayerInventorySync();
     }
+	
     else if (content.indexOf("/maxstatistics") == 0) {
         Player.Money = 9999999999;
         SkillChange("Infiltration", 10);
@@ -631,6 +666,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "ClubSlave, type: /clubslave.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "To quit any of the above, type: /quitasylum or /quitmanagement or /quitkidnapper or /quitsorority or /quitclubslave", Type: "LocalMessage", Sender: Player.MemberNumber });
     }
+	
     else if (content.indexOf("/mindifficulty") == 0) {
         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: "You can easily escape your bindings now!" }]});
         InventorySetDifficulty(Player, "ItemAddon", 1);
@@ -661,13 +697,16 @@ if (CurrentScreen == "ChatRoom") {
         InventorySetDifficulty(Player, "ItemVulvaPiercings", 1);
         ServerPlayerInventorySync();
     }
+	
     else if (content.indexOf("/mistress") == 0) {
         LogAdd("ClubMistress", "Management");
         ReputationChange("Dominant", 200);
     }
+	
     else if (content.indexOf("/money") == 0) {
         Player.Money = content.substring(6);ServerPlayerSync();
     }
+	
     else if (content.indexOf("/naked") == 0) {
         var targetname = content.substring(6).trim();
         if (targetname == undefined) {targetname = Player.Name};
@@ -677,10 +716,12 @@ if (CurrentScreen == "ChatRoom") {
         CharacterNaked(target[0]);
         ChatRoomCharacterUpdate(target[0]);
     } 
+	
     else if (content.indexOf("/nurse") == 0) {
         ReputationChange('Asylum', 200);
         ReputationChange('Asylum', -50)
     }
+	
     else if (content.indexOf("/outfit") == 0) {
         if (content.includes("reset") || content.includes("revert") ||  content.includes("restore")) {
     Player.Appearance = ChatSearchSafewordAppearance.slice(0);
@@ -958,9 +999,11 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         else if (content.endsWith("/pose")) {
     ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: exercise, kneel, sleep, pet, stand, suspension. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
+	
     else if (content.indexOf("/quitasylum") == 0) {
         DialogSetReputation("Asylum", 0);
     }
+	
     else if (content.indexOf("/quitclubslave") == 0) {
         LogAdd("ClubSlave", "Management", CurrentTime);
         LogAdd("BlockChange", "Rule", CurrentTime);
@@ -968,17 +1011,21 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         ManagementClubSlaveDialog = function (Player) {}
         ManagementFinishClubSlave()
     }
+	
     else if (content.indexOf("/quitkidnapper") == 0) {
         DialogSetReputation("Kidnap", 0)
     }
+	
     else if ((content.indexOf("/quitmanagement") == 0) || content.indexOf("/quitmistress") == 0) {
         LogDelete("ClubMistress", "Management");
         LogDelete("Mistress", "Management");
     }
+	
     else if ((content.indexOf("/quitsorority") == 0) ||  content.indexOf("/quitmaid") == 0)  {
 	LogDelete("JoinedSorority", "Management");
 	LogDelete("LeadSorority", "Maid");
     }
+	
     else if (content.indexOf("/randomize") == 0) {
         var targetname = content.substring(10).trim();
         if (targetname == undefined) {targetname = Player.Name};
@@ -991,6 +1038,7 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         CharacterFullRandomRestrain(target[0],"ALL");
         ChatRoomCharacterUpdate(target[0]);
     }
+	
     else if (content.indexOf("/release") == 0) {
         var targetname = content.substring(8).trim();
         if (targetname == undefined) {targetname = Player.Name};
@@ -1000,16 +1048,19 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         CharacterRelease(target[0]);
         ChatRoomCharacterUpdate(target[0]);
     }
+	
     else if (content.indexOf("/relog") == 0) {
         ServerSocket.close();
         ServerSocket.open();
     }
+	
     else if (content.indexOf("/resetdifficulty") == 0) {
         if (content.includes("yes")) {
         Player.Difficulty = [];
         ChatRoomMessage({ Content: "Quick-AccessMenu2: Difficulty reset, select a new one in settings.", Type: "LocalMessage", Sender: Player.MemberNumber });}
         else {ChatRoomMessage({ Content: "Quick-AccessMenu2: Warning, resetting difficulty will incur a 7-day waiting period to rechange. Confirm by typing: /resetdifficulty yes", Type: "LocalMessage", Sender: Player.MemberNumber })}
     }
+	
     else if (content.indexOf("/restrain") == 0) {
         var targetname = content.substring(9).trim();
         if (targetname == undefined) {targetname = Player.Name};
@@ -1019,6 +1070,7 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         CharacterFullRandomRestrain(target[0],"ALL");
         ChatRoomCharacterUpdate(target[0]);
     }
+	
     else if (content.indexOf("/safewordspecific") == 0) {
         ChatRoomMessage({ Content: "Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
         setTimeout(function() {
@@ -1029,6 +1081,7 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         DialogLeave();
         }, 5000);
     }
+	
     else if (content.indexOf("/search") == 0) {
         if (content.includes("Asylum") || content.includes("asylum")) {
         setTimeout(function() {
@@ -1062,6 +1115,7 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         }, 15000);
         }
     }
+	
     else if ((content.indexOf("/speak") == 0) || (content.indexOf("/mouth") == 0) || (content.indexOf("/speech") == 0)) {
         (typeof OLDtalking !== 'undefined') && (ChatRoomSendChat=OLDtalking); // reset
         NEWtalking = function (){this.msg = ElementValue("InputChat").trim();
@@ -1070,6 +1124,7 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         } else {RunExpressionAnimation([null, "Grin", "Smirk", null]);}}OLDtalking();}
         this.OLDtalking=ChatRoomSendChat;this.ChatRoomSendChat=NEWtalking;
     }
+	
     else if (content.indexOf("/store") == 0) {
         Asset.forEach(e => { if (e.Value < 0) e.Value = 1; });
         ServerSend("ChatRoomLeave", "");
@@ -1078,6 +1133,7 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         OnlineGameName = "";
         ChatRoomClearAllElements();
     }
+	
     else if (content.indexOf("/talkbaby") == 0) {
         ElementValue("InputChat", "");
              if (this.BabyTalkOn == false || this.BabyTalkOn == undefined) {
@@ -1087,6 +1143,7 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
              BabyTalkOn = false;
              OLDmenu();}
     }
+	
     else if (content.indexOf("/talkgag") == 0) {
         if (content.includes("light")) {
            ElementValue("InputChat", "");
@@ -1103,6 +1160,7 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
            TalkGagHeavyOn = false;}
         }
     }
+	
     else if (content.indexOf("/timercell") == 0) {
         var minutes = content.substring(10).trim();
         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" gets grabbed by two maids and locked in a timer cell for "+minutes+" minutes." }]});
@@ -1114,6 +1172,7 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         CharacterFullRandomRestrain(Player,"ALL");
         ChatRoomCharacterUpdate(Player);
     }
+	
     else if (content.indexOf("/totalrelease") == 0) {
         var targetname = content.substring(13).trim();
         if (targetname == undefined) {targetname = Player.Name};
@@ -1123,6 +1182,7 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         CharacterReleaseTotal(target[0]);
         ChatRoomCharacterUpdate(target[0]);
     }
+	
     else if (content.indexOf("/underwear") == 0) {
         var targetname = content.substring(10).trim();
         if (targetname == undefined) {targetname = Player.Name};
@@ -1132,6 +1192,7 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         CharacterRandomUnderwear(target[0]);
         ChatRoomCharacterUpdate(target[0]);
     }
+	
     else if (content.indexOf("/unrestrict") == 0) {
         if (content.includes("soft")) {
         InventoryGroupIsBlocked  = function (C, GroupName) { return false; }
@@ -1294,6 +1355,7 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         Math.ceil(NumPins * (3.25 - BondageLevel/10) - Math.max(0, (StruggleLockPickProgressChallenge + BondageLevel/2)*1.5)));	
         StruggleLockPickProgressMaxTries = Math.max(1, NumTries - NumPins);}}}
     }   
+	
     else if (content.indexOf("/wardrobe") == 0) {
         var targetname = content.substring(10).trim();
         var targetfinder = new RegExp('^'+targetname+'', 'i');
@@ -1303,6 +1365,7 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
         ChatRoomClickCharacter(ChatRoomTargetMemberNumber = target[0]);
         ChatRoomChangeClothes();
     }
+	
     else if (content.indexOf("/whisper") == 0) {
         var targetname = content.substring(8).trim();
         var targetfinder = new RegExp('^'+targetname+'', 'i');
@@ -1368,7 +1431,7 @@ else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied t
 			ElementRemove("InputChat");
 			return;
 		}
-	//	DO NOT continue past this point. Want to add more? Do it after /talkgag
+	//	DO NOT add new commands past this point. 
 
 
 
