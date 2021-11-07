@@ -312,12 +312,12 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/colorchanger") == 0) {
 
         if (content.includes("custom") || content.includes("set") || content.includes("select")) {
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        setTimeout(function() {
-            if (CurrentCharacter.FocusGroup.Name) {
-            var RandomColor = null;
-            var ColorTargetNameCustom = CurrentCharacter;
-                if (ColorTargetNameCustom !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used colorchanger on you. If this is undesired, blacklist player.", Type: "Whisper", Target: ColorTargetNameCustom.MemberNumber })};
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            setTimeout(function() {
+                if (CurrentCharacter.FocusGroup.Name) {
+                var RandomColor = null;
+                var ColorTargetNameCustom = CurrentCharacter;
+                    if (ColorTargetNameCustom !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used colorchanger on you. If this is undesired, blacklist player.", Type: "Whisper", Target: ColorTargetNameCustom.MemberNumber })};
 
 
                 if (this.ColorTarget1 == undefined) {this.ColorTarget1 = CurrentCharacter.FocusGroup.Name}
@@ -331,89 +331,92 @@ if (CurrentScreen == "ChatRoom") {
                 else if (this.ColorTarget9 == undefined) {this.ColorTarget9 = CurrentCharacter.FocusGroup.Name}
                 else if (this.ColorTarget10 == undefined) {this.ColorTarget10 = CurrentCharacter.FocusGroup.Name}
 
-        ColorChangerCustom = function () {
-        setTimeout(function() {ColorChangerCustom()},1000);
-        RandomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
-        if (this.ColorTarget1) {
-        CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget1);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget1);};
-        if (this.ColorTarget2) {
-        CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget2);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget2);};
-        if (this.ColorTarget3) {
-        CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget3);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget3);};
-        if (this.ColorTarget4) {
-        CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget4);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget4);};
-        if (this.ColorTarget5) {
-        CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget5);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget5);};
-        if (this.ColorTarget6) {
-        CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget6);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget6);};
-        if (this.ColorTarget7) {
-        CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget7);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget7);};
-        if (this.ColorTarget8) {
-        CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget8);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget8);};
-        if (this.ColorTarget9) {
-        CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget9);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget9);};
-        if (this.ColorTarget510) {
-        CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget10);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget10);};
-        };ColorChangerCustom();DialogLeave();
+            ColorChangerCustom = function () {
+            setTimeout(function() {ColorChangerCustom()},1000);
+            RandomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+            if (this.ColorTarget1) {
+            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget1);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget1);};
+            if (this.ColorTarget2) {
+            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget2);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget2);};
+            if (this.ColorTarget3) {
+            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget3);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget3);};
+            if (this.ColorTarget4) {
+            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget4);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget4);};
+            if (this.ColorTarget5) {
+            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget5);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget5);};
+            if (this.ColorTarget6) {
+            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget6);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget6);};
+            if (this.ColorTarget7) {
+            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget7);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget7);};
+            if (this.ColorTarget8) {
+            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget8);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget8);};
+            if (this.ColorTarget9) {
+            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget9);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget9);};
+            if (this.ColorTarget510) {
+            CharacterAppearanceSetColorForGroup(ColorTargetNameCustom, RandomColor, ColorTarget10);ChatRoomCharacterItemUpdate(ColorTargetNameCustom, ColorTarget10);};
+            };ColorChangerCustom();DialogLeave();
             }}, 5000);
         }
+	    
         else if (content.includes("eyes")) {
-        ChatRoomMessage({ Content: "You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        setTimeout(function() {
-            if (CurrentCharacter) {
-            var ColorTargetNameEyes = CurrentCharacter;
-            ColorChangerEyes = function () {
-            setTimeout(function() {ColorChangerEyes()},1000);
-            var RandomColor = null;
-            RandomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
-            InventoryGet(ColorTargetNameEyes, "Eyes").Color = RandomColor
-            InventoryGet(ColorTargetNameEyes, "Eyes2").Color = RandomColor
-            ChatRoomCharacterItemUpdate(ColorTargetNameEyes, "Eyes");
-            ChatRoomCharacterItemUpdate(ColorTargetNameEyes, "Eyes2");
-            };ColorChangerEyes();DialogLeave();
-                if (ColorTargetNameEyes !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used colorchanger on you. If this is undesired, blacklist player.", Type: "Whisper", Target: ColorTargetNameEyes.MemberNumber })};
+            ChatRoomMessage({ Content: "You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            setTimeout(function() {
+                if (CurrentCharacter) {
+                var ColorTargetNameEyes = CurrentCharacter;
+                ColorChangerEyes = function () {
+                setTimeout(function() {ColorChangerEyes()},1000);
+                var RandomColor = null;
+                RandomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+                InventoryGet(ColorTargetNameEyes, "Eyes").Color = RandomColor
+                InventoryGet(ColorTargetNameEyes, "Eyes2").Color = RandomColor
+                ChatRoomCharacterItemUpdate(ColorTargetNameEyes, "Eyes");
+                ChatRoomCharacterItemUpdate(ColorTargetNameEyes, "Eyes2");
+                };ColorChangerEyes();DialogLeave();
+                    if (ColorTargetNameEyes !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used colorchanger on you. If this is undesired, blacklist player.", Type: "Whisper", Target: ColorTargetNameEyes.MemberNumber })};
             }}, 5000);
         }
 
         else if (content.includes("hair")) {
-        ChatRoomMessage({ Content: "You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        setTimeout(function() {
-            if (CurrentCharacter) {
-        var ColorTargetNameHair = CurrentCharacter;
-        ColorChangerHair = function () {
-        setTimeout(function() {ColorChangerHair()},1000);
-        var RandomColor = null;
-        RandomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
-        InventoryGet(ColorTargetNameHair, "HairFront").Color = RandomColor
-        InventoryGet(ColorTargetNameHair, "HairBack").Color = RandomColor
-        ChatRoomCharacterItemUpdate(ColorTargetNameHair, "HairFront");
-        ChatRoomCharacterItemUpdate(ColorTargetNameHair, "HairBack");
-        };ColorChangerHair();DialogLeave();
-                if (ColorTargetNameHair !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used colorchanger on you. If this is undesired, blacklist player.", Type: "Whisper", Target: ColorTargetNameHair.MemberNumber })};
+            ChatRoomMessage({ Content: "You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            setTimeout(function() {
+                if (CurrentCharacter) {
+                var ColorTargetNameHair = CurrentCharacter;
+                ColorChangerHair = function () {
+                setTimeout(function() {ColorChangerHair()},1000);
+                var RandomColor = null;
+                RandomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+                InventoryGet(ColorTargetNameHair, "HairFront").Color = RandomColor
+                InventoryGet(ColorTargetNameHair, "HairBack").Color = RandomColor
+                ChatRoomCharacterItemUpdate(ColorTargetNameHair, "HairFront");
+                ChatRoomCharacterItemUpdate(ColorTargetNameHair, "HairBack");
+                };ColorChangerHair();DialogLeave();
+                    if (ColorTargetNameHair !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used colorchanger on you. If this is undesired, blacklist player.", Type: "Whisper", Target: ColorTargetNameHair.MemberNumber })};
             }}, 5000);
         }
+	    
         else if (content.includes("stop") || content.includes("reset")) {
-        ColorChangerCustom = function () {};
-        ColorChangerEyes = function () {};
-        ColorChangerHair = function () {};
-        this.ColorTarget1 = undefined;
-        this.ColorTarget2 = undefined;
-        this.ColorTarget3 = undefined;
-        this.ColorTarget4 = undefined;
-        this.ColorTarget5 = undefined;
-        this.ColorTarget6 = undefined;
-        this.ColorTarget7 = undefined;
-        this.ColorTarget8 = undefined;
-        this.ColorTarget9 = undefined;
-        this.ColorTarget10 = undefined;
-        this.ColorTargetNameCustom = undefined;
+            ColorChangerCustom = function () {};
+            ColorChangerEyes = function () {};
+            ColorChangerHair = function () {};
+            this.ColorTarget1 = undefined;
+            this.ColorTarget2 = undefined;
+            this.ColorTarget3 = undefined;
+            this.ColorTarget4 = undefined;
+            this.ColorTarget5 = undefined;
+            this.ColorTarget6 = undefined;
+            this.ColorTarget7 = undefined;
+            this.ColorTarget8 = undefined;
+            this.ColorTarget9 = undefined;
+            this.ColorTarget10 = undefined;
+            this.ColorTargetNameCustom = undefined;
         }
+	    
         else if (content.endsWith("/colorchanger")) {
-        ChatRoomMessage({ Content: "Quick-Access Menu2: Manual:", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "To preselect, two choices exist, type: /colorchanger hair or /colorchanger eyes", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "To manually select area, type: /colorchanger set or /colorchanger select or /colorchangercustom", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "Manual selection can only target 10 areas at a time, then requires to be reset to reuse, type: /colorchanger stop or /colorchanger reset", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "Only 1 target can be active at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-Access Menu2: Manual:", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "To preselect, two choices exist, type: /colorchanger hair or /colorchanger eyes", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "To manually select area, type: /colorchanger set or /colorchanger select or /colorchangercustom", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Manual selection can only target 10 areas at a time, then requires to be reset to reuse, type: /colorchanger stop or /colorchanger reset", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Only 1 target can be active at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
     }
 	
