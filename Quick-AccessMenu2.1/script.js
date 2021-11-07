@@ -729,70 +729,80 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/outfit") == 0) {
         if (content.includes("reset") || content.includes("revert") ||  content.includes("restore")) {
-    Player.Appearance = ChatSearchSafewordAppearance.slice(0);
-   // Player.ActivePose = ChatSearchSafewordPose; should not be needed
-    CharacterRefresh(Player);
-    ChatRoomCharacterUpdate(Player);}
+            Player.Appearance = ChatSearchSafewordAppearance.slice(0);
+            // Player.ActivePose = ChatSearchSafewordPose; should not be needed
+            CharacterRefresh(Player);
+            ChatRoomCharacterUpdate(Player);
+	 }
+	    
          else if (content.includes("save 1") || content.includes("save1")) {
-         ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
-         setTimeout(function() {
-         this.savedoutfit1 = CurrentCharacter.Appearance.slice(0);
-         DialogLeave();
-             }, 5000);
-        }
-         else if (content.includes("save 2") || content.includes("save2")) {
-         ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
-         setTimeout(function() {
-         this.savedoutfit2 = CurrentCharacter.Appearance.slice(0);
-         DialogLeave();
-             }, 5000);
-        }
-         else if (content.includes("save 3") || content.includes("save3")) {
-         ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
-         setTimeout(function() {
-         this.savedoutfit3 = CurrentCharacter.Appearance.slice(0);
-         DialogLeave();
-             }, 5000);
-        }
-         else if (content.includes("load 1") || content.includes("load1")) {
-         ChatRoomMessage({ Content: "You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
-         setTimeout(function() {
-         CurrentCharacter.Appearance = this.savedoutfit1.slice(0);
-         CharacterRefresh(CurrentCharacter);
-         ChatRoomCharacterUpdate(CurrentCharacter);
-         DialogLeave();
+             ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+             setTimeout(function() {
+             this.savedoutfit1 = CurrentCharacter.Appearance.slice(0);
+             DialogLeave();
              }, 5000);
          }
+	    
+         else if (content.includes("save 2") || content.includes("save2")) {
+             ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+             setTimeout(function() {
+             this.savedoutfit2 = CurrentCharacter.Appearance.slice(0);
+             DialogLeave();
+             }, 5000);
+         }
+	    
+         else if (content.includes("save 3") || content.includes("save3")) {
+             ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+             setTimeout(function() {
+             this.savedoutfit3 = CurrentCharacter.Appearance.slice(0);
+             DialogLeave();
+             }, 5000);
+         }
+	    
+         else if (content.includes("load 1") || content.includes("load1")) {
+             ChatRoomMessage({ Content: "You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+             setTimeout(function() {
+             CurrentCharacter.Appearance = this.savedoutfit1.slice(0);
+             CharacterRefresh(CurrentCharacter);
+             ChatRoomCharacterUpdate(CurrentCharacter);
+             DialogLeave();
+             }, 5000);
+         }
+	    
          else if (content.includes("load 2") || content.includes("load2")) {
-         ChatRoomMessage({ Content: "Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
-         setTimeout(function() {
-         CurrentCharacter.Appearance = savedoutfit2.slice(0);
-         CharacterRefresh(CurrentCharacter);
-         ChatRoomCharacterUpdate(CurrentCharacter);
-         DialogLeave();
+             ChatRoomMessage({ Content: "Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+             setTimeout(function() {
+             CurrentCharacter.Appearance = savedoutfit2.slice(0);
+             CharacterRefresh(CurrentCharacter);
+             ChatRoomCharacterUpdate(CurrentCharacter);
+             DialogLeave();
              }, 8000);
          }
+	    
          else if (content.includes("load 3") || content.includes("load3")) {
-         ChatRoomMessage({ Content: "You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
-         setTimeout(function() {
-         CurrentCharacter.Appearance = savedoutfit3.slice(0);
-         CharacterRefresh(CurrentCharacter);
-         ChatRoomCharacterUpdate(CurrentCharacter);
-         DialogLeave();
+             ChatRoomMessage({ Content: "You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+             setTimeout(function() {
+             CurrentCharacter.Appearance = savedoutfit3.slice(0);
+             CharacterRefresh(CurrentCharacter);
+             ChatRoomCharacterUpdate(CurrentCharacter);
+             DialogLeave();
              }, 5000);
          }
+	    
         else if (content.endsWith("/outfit")) {
-         ChatRoomMessage({ Content: "Quick-Access Menu2: Manual:", Type: "LocalMessage", Sender: Player.MemberNumber });
-         ChatRoomMessage({ Content: "To restore your outfit to what it was before entering room, type: /outfit reset or /outfit revert or /outfit restore", Type: "LocalMessage", Sender: Player.MemberNumber });
-         ChatRoomMessage({ Content: "Three outfits can be saved then must be reset, save your outfit, type: /outfit save", Type: "LocalMessage", Sender: Player.MemberNumber });
-         ChatRoomMessage({ Content: "To reset saved outfits and be able to save new, type: /outfit resetsave or /outfit savereset", Type: "LocalMessage", Sender: Player.MemberNumber });
-         ChatRoomMessage({ Content: "To load saved outfits, type: /outfit 1 or /outfit 2 or /outfit 3", Type: "LocalMessage", Sender: Player.MemberNumber });
-         ChatRoomMessage({ Content: "Saves lasts only 1 login session.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+            ChatRoomMessage({ Content: "Quick-Access Menu2: Manual:", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "To restore your outfit to what it was before entering room, type: /outfit reset or /outfit revert or /outfit restore", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Three outfits can be saved then must be reset, save your outfit, type: /outfit save", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "To reset saved outfits and be able to save new, type: /outfit resetsave or /outfit savereset", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "To load saved outfits, type: /outfit 1 or /outfit 2 or /outfit 3", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Saves lasts only 1 login session.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
+	
     else if (content.indexOf("/patient") == 0) {
         ReputationChange('Asylum', -200);
         ReputationChange('Asylum', 50);
     }    
+	
     else if (content.indexOf("/patreoncheats") == 0) {
         CheatValidate = function () { return true; };
         CheatAllow = true;
@@ -806,78 +816,92 @@ if (CurrentScreen == "ChatRoom") {
         document.getElementById("InputChat").style.display = "inline";
         document.getElementById("TextAreaChatLog").style.display = "inline";}
     }
+	
     else if (content.indexOf("/permanentpatient") == 0) {
         ReputationChange('Asylum', -200);
     }
+	
     else if (content.indexOf("/pose") == 0) {
-    var stringPose1 = content;
-    var stringPose2 = stringPose1.split(/[ ,]+/);
-    var targetname = stringPose2[2];
-    if (targetname  == undefined) {targetname = Player.Name};
-    var targetfinder = new RegExp('^'+targetname+'', 'i');
-    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-    if (target[0] !== Player) {ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (Player.Name+" helps pose "+target[0].Name )}] });};
+        var stringPose1 = content;
+        var stringPose2 = stringPose1.split(/[ ,]+/);
+        var targetname = stringPose2[2];
+        if (targetname  == undefined) {targetname = Player.Name};
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if (target[0] !== Player) {ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (Player.Name+" helps pose "+target[0].Name )}] });};
 
         if (content.includes("kneel")) {
-        CharacterSetActivePose(target[0], "Kneel");
-        ChatRoomCharacterUpdate(target[0]);}
-       else if (content.includes("sleep")) {
-        CharacterSetActivePose(target[0], "Hogtied");
-        ChatRoomCharacterUpdate(target[0]);}
-       else if (content.includes("pet")) {
-        CharacterSetActivePose(target[0], "AllFours");
-        ChatRoomCharacterUpdate(target[0]);}
-       else if (content.includes("stand")) {
-        CharacterSetActivePose(target[0], null);
-        ChatRoomCharacterUpdate(target[0]);}
-       else if (content.includes("suspension")) {
-        CharacterSetActivePose(target[0], "Suspension");
-        ChatRoomCharacterUpdate(target[0]);}
-       else if (content.includes("roof")) {
-       CharacterSetFacialExpression(Player, "Emoticon", "Annoyed", 1);
-       CharacterSetActivePose(Player, null);ChatRoomCharacterUpdate(Player);
-        setTimeout(function() {
-        CharacterSetActivePose(Player, "OverTheHead");ChatRoomCharacterUpdate(Player);
-        }, 500);
-        setTimeout(function() {
-         InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: 250 };
-        CurrentScreen === "ChatRoom"
-        ? ChatRoomCharacterUpdate(Player)
-        : CharacterRefresh(Player);
-        }, 1000);
-        setTimeout(function() {
-         CharacterSetActivePose(Player, "Kneel");ChatRoomCharacterUpdate(Player);
-        }, 2000);
-        setTimeout(function() {
-        CharacterSetActivePose(Player, "BaseUpper");
-         CharacterSetActivePose(Player, null);
-        CharacterSetActivePose(Player, ["Suspension", "Kneel"]);
-         InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: -300 };
-        CurrentScreen === "ChatRoom"
-        ? ChatRoomCharacterUpdate(Player)
-        : CharacterRefresh(Player);
-        }, 3000);}
+            CharacterSetActivePose(target[0], "Kneel");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+	    
+        else if (content.includes("sleep")) {
+            CharacterSetActivePose(target[0], "Hogtied");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+	    
+        else if (content.includes("pet")) {
+            CharacterSetActivePose(target[0], "AllFours");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+	    
+        else if (content.includes("stand")) {
+            CharacterSetActivePose(target[0], null);
+            ChatRoomCharacterUpdate(target[0]);
+	}
+	    
+        else if (content.includes("suspension")) {
+            CharacterSetActivePose(target[0], "Suspension");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+	    
+        else if (content.includes("roof")) {
+            CharacterSetFacialExpression(Player, "Emoticon", "Annoyed", 1);
+            CharacterSetActivePose(Player, null);ChatRoomCharacterUpdate(Player);
+            setTimeout(function() {
+            CharacterSetActivePose(Player, "OverTheHead");ChatRoomCharacterUpdate(Player);
+            }, 500);
+            setTimeout(function() {
+            InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: 250 };
+            CurrentScreen === "ChatRoom"
+            ? ChatRoomCharacterUpdate(Player)
+            : CharacterRefresh(Player);
+            }, 1000);
+            setTimeout(function() {
+            CharacterSetActivePose(Player, "Kneel");ChatRoomCharacterUpdate(Player);
+            }, 2000);
+            setTimeout(function() {
+            CharacterSetActivePose(Player, "BaseUpper");
+            CharacterSetActivePose(Player, null);
+            CharacterSetActivePose(Player, ["Suspension", "Kneel"]);
+            InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: -300 };
+            CurrentScreen === "ChatRoom"
+            ? ChatRoomCharacterUpdate(Player)
+            : CharacterRefresh(Player);
+            }, 3000);
+	}
+	    
         else if (content.includes("jump")) {
-        CharacterSetActivePose(Player, null);
-        setTimeout(function() {
-         InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: 150 };
-        CharacterSetActivePose(Player, "Kneel");
-        CurrentScreen === "ChatRoom"
-        ? ChatRoomCharacterUpdate(Player)
-        : CharacterRefresh(Player);
-        }, 1000);
-        setTimeout(function() {
-         InventoryGet(Player, "Emoticon").Property.OverrideHeight = undefined;
-        CharacterSetActivePose(Player, null);
-        CurrentScreen === "ChatRoom"
-        ? ChatRoomCharacterUpdate(Player)
-        : CharacterRefresh(Player);
-        }, 2000);
-        setTimeout(function() {
-         InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: 150 };
-        CharacterSetActivePose(Player, "Kneel");
-        CurrentScreen === "ChatRoom"
-        ? ChatRoomCharacterUpdate(Player)
+            CharacterSetActivePose(Player, null);
+            setTimeout(function() {
+            InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: 150 };
+            CharacterSetActivePose(Player, "Kneel");
+            CurrentScreen === "ChatRoom"
+            ? ChatRoomCharacterUpdate(Player)
+            : CharacterRefresh(Player);
+           }, 1000);
+            setTimeout(function() {
+            InventoryGet(Player, "Emoticon").Property.OverrideHeight = undefined;
+            CharacterSetActivePose(Player, null);
+            CurrentScreen === "ChatRoom"
+            ? ChatRoomCharacterUpdate(Player)
+            : CharacterRefresh(Player);
+            }, 2000);
+            setTimeout(function() {
+            InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: 150 };
+            CharacterSetActivePose(Player, "Kneel");
+            CurrentScreen === "ChatRoom"
+            ? ChatRoomCharacterUpdate(Player)
         : CharacterRefresh(Player);
         }, 3000);
         setTimeout(function() {
