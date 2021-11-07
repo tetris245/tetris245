@@ -982,46 +982,46 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomCharacterUpdate(target[0]);
             DialogLeaveItemMenu();
             }, 6000);
-           setTimeout(function() {
-           CharacterSetActivePose(target[0], "Yoked");
-           target[0].FocusGroup = AssetGroupGet("Female3DCG", Region);
-           DialogExtendItem(InventoryGet(target[0], Region));
-           DialogFocusItem.Property.OverrideHeight = {Height: 350};
-           ChatRoomCharacterUpdate(target[0]);
-           DialogLeaveItemMenu();
-           }, 7000);
-           setTimeout(function() {
-           CharacterSetActivePose(target[0], "OverTheHead");
-           target[0].FocusGroup = AssetGroupGet("Female3DCG", Region);
-           DialogExtendItem(InventoryGet(target[0], Region));
-           DialogFocusItem.Property.OverrideHeight = {Height: 100};
-           ChatRoomCharacterUpdate(target[0]);
-           DialogLeaveItemMenu();
-           }, 8000);
-           setTimeout(function() {
-           CharacterSetActivePose(target[0], "Yoked");
-           target[0].FocusGroup = AssetGroupGet("Female3DCG", Region);
-           DialogExtendItem(InventoryGet(target[0], Region));
-           DialogFocusItem.Property.OverrideHeight = {Height: 350};
-           ChatRoomCharacterUpdate(target[0]);
-           DialogLeaveItemMenu();
-           }, 9000);
-           setTimeout(function() {
-           CharacterSetActivePose(target[0], "OverTheHead");
-           target[0].FocusGroup = AssetGroupGet("Female3DCG", Region);
-           DialogExtendItem(InventoryGet(target[0], Region));
-           DialogFocusItem.Property.OverrideHeight = {Height: 100};
-           ChatRoomCharacterUpdate(target[0]);
-           DialogLeaveItemMenu();
-           }, 10000);
-           setTimeout(function() {
-           CharacterSetActivePose(target[0], null);
-           target[0].FocusGroup = AssetGroupGet("Female3DCG", Region);
-           DialogExtendItem(InventoryGet(target[0], Region));
-           DialogFocusItem.Property.OverrideHeight = undefined;
-           ChatRoomCharacterUpdate(target[0]);
-           DialogLeaveItemMenu();
-           }, 10000);
+            setTimeout(function() {
+            CharacterSetActivePose(target[0], "Yoked");
+            target[0].FocusGroup = AssetGroupGet("Female3DCG", Region);
+            DialogExtendItem(InventoryGet(target[0], Region));
+            DialogFocusItem.Property.OverrideHeight = {Height: 350};
+            ChatRoomCharacterUpdate(target[0]);
+            DialogLeaveItemMenu();
+            }, 7000);
+            setTimeout(function() {
+            CharacterSetActivePose(target[0], "OverTheHead");
+            target[0].FocusGroup = AssetGroupGet("Female3DCG", Region);
+            DialogExtendItem(InventoryGet(target[0], Region));
+            DialogFocusItem.Property.OverrideHeight = {Height: 100};
+            ChatRoomCharacterUpdate(target[0]);
+            DialogLeaveItemMenu();
+            }, 8000);
+            setTimeout(function() {
+            CharacterSetActivePose(target[0], "Yoked");
+            target[0].FocusGroup = AssetGroupGet("Female3DCG", Region);
+            DialogExtendItem(InventoryGet(target[0], Region));
+            DialogFocusItem.Property.OverrideHeight = {Height: 350};
+            ChatRoomCharacterUpdate(target[0]);
+            DialogLeaveItemMenu();
+            }, 9000);
+            setTimeout(function() {
+            CharacterSetActivePose(target[0], "OverTheHead");
+            target[0].FocusGroup = AssetGroupGet("Female3DCG", Region);
+            DialogExtendItem(InventoryGet(target[0], Region));
+            DialogFocusItem.Property.OverrideHeight = {Height: 100};
+            ChatRoomCharacterUpdate(target[0]);
+            DialogLeaveItemMenu();
+            }, 10000);
+            setTimeout(function() {
+            CharacterSetActivePose(target[0], null);
+            target[0].FocusGroup = AssetGroupGet("Female3DCG", Region);
+            DialogExtendItem(InventoryGet(target[0], Region));
+            DialogFocusItem.Property.OverrideHeight = undefined;
+            ChatRoomCharacterUpdate(target[0]);
+            DialogLeaveItemMenu();
+            }, 10000);
 	}
 	    
         else if (content.includes("reset")) {
