@@ -27,7 +27,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/doctor  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/erase  =  erases chat.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gh", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gv", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gagtalk  =  toggle to decode/not decode gagged people talking.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/giveeverything  =  gives every item.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -465,11 +465,6 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Gag-talk toggled on.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }    
 	
-    else if (content.indexOf("/gh") == 0) {
-        content = SpeechGarbleByGagLevel(6, content.substring(3).trim());
-        ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
-    }
-	
     else if (content.indexOf("/giveeverything") == 0) {
         ChatRoomMessage({ Content: "Quick-AccessMenu2: Every item in the game now added.", Type: "LocalMessage", Sender: Player.MemberNumber });
         AssetFemale3DCG.forEach(group=>group.Asset.forEach(item=>InventoryAdd(Player, item.Name, group.Group)));
@@ -478,6 +473,11 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/gl") == 0) {
         content = SpeechGarbleByGagLevel(1, content.substring(3).trim());
+        ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
+    }
+	
+    else if (content.indexOf("/gv") == 0) {
+        content = SpeechGarbleByGagLevel(6, content.substring(3).trim());
         ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
     }
 	
