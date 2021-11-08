@@ -15,5 +15,6 @@ Version 1.1 - 04/11/21
 Changes for future version 1.2:
 
 * New command: clubhelp to display the standard commands of the game
+* New command: keydeposit to keep your keys safe in the vault
 * Bugfix: gv command in stead of gh to resolve conflict with ghostadd/remove standard commands
 * Restructured the code for an easier reading
