@@ -512,14 +512,6 @@ if (CurrentScreen == "ChatRoom") {
         ReputationChange("Kidnap", -50);
     }
 	
-    else if (content.indexOf("/leave") == 0) {
-        ChatRoomSetLastChatRoom("");
-        ServerSend("ChatRoomLeave", "");
-        CommonSetScreen("Online", "ChatSearch");
-        ChatRoomClearAllElements();
-        OnlineGameName = "";
-    }
-	
     else if (content.indexOf("/kinkydungeon") == 0)  {
         ArcadeKinkyDungeonEnd = function () {
         CommonSetScreen("Online", "ChatRoom");
@@ -595,6 +587,14 @@ if (CurrentScreen == "ChatRoom") {
             }, 5000);
 
         }    
+    }
+	
+    else if (content.indexOf("/leave") == 0) {
+        ChatRoomSetLastChatRoom("");
+        ServerSend("ChatRoomLeave", "");
+        CommonSetScreen("Online", "ChatSearch");
+        ChatRoomClearAllElements();
+        OnlineGameName = "";
     }
 	
     else if (content.indexOf("/login") == 0) {
