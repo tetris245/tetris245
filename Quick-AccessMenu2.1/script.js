@@ -34,6 +34,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/giveeverything  =  gives every item.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/headmaid  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/hiddenmessages  =  sees hidden messages made by game.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/keydeposit (hours) = keeps your keys safe in the vault.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/kidnapper  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/kinkydungeon  =  to the end, add devious to toggle deviouschallenge or cheat to start with cheats or use as is to start vanilla. Remember to wear VR headset if you want others to see you play.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/leave  =  leaves room, even if prevented.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -507,6 +508,12 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "Hidden messages hidden.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
 	
+    else if (content.indexOf("/keydeposit") == 0) {
+        var hours = content.substring(11).trim();
+        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" keys are now safe in the vault for "+hours+" hours." }]});
+        CellDepositKeys(hours);
+    }
+
     else if (content.indexOf("/kidnapper") == 0) {
         ReputationChange("Kidnap", 200);
         ReputationChange("Kidnap", -50);
