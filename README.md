@@ -8,3 +8,12 @@ Version 1.1 - 04/11/21
 * Modified the command background to add the hidden backgrounds to the admin selection screen (and removed part with back and next commands)  
 * Rewrote 2 ben's functions to bypass the stupid 60 minutes limitation in timer cell                                                                                                                                                    
 * Syntaxic bugfixes in the menu and commands such as randomize
+
+
+
+
+Changes for future version 1.2:
+
+* New command: clubhelp to display the standard commands of the game
+* Bugfix: gv command in stead of gh to resolve conflict with ghostadd/remove standard commands
+* Restructured the code for an easier reading
