@@ -19,6 +19,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/boost  =  boosts skills, similar to maid quarters drink.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/chess  (difficulty) =  starts chess, must specify difficulty first (/chess 1 = easy, /chess 3 = hard).", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/clothes (targetname) =  changes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });  
+	ChatRoomMessage({ Content: "/clubhelp = displays the standard commands of the game.", Type: "LocalMessage", Sender: Player.MemberNumber });  
         ChatRoomMessage({ Content: "/clubmistress  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/clubslave  =  becomes club slave. Careful, will be forced to complete contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/collarremove  =  removes slave/owner collar. Can also be: /removecollar", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -282,6 +283,10 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomCharacterUpdate(target[0]);
     }
 	
+    else if (content.indexOf("/clubhelp") == 0) {
+        CommandPrintHelpFor(Commands);
+    }
+
     else if (content.indexOf("/clubmistress") == 0) {
         LogAdd("ClubMistress", "Management");
     }
