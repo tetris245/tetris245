@@ -626,7 +626,7 @@ if (CurrentScreen == "ChatRoom") {
     }
 	
     else if (content.indexOf("/maxdifficulty") == 0) {
-        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: "You will never escape your bindings!" }]});
+	ChatRoomMessage({ Content: "Quick-AccessMenu2: You will never escape your bindings!", Type: "LocalMessage", Sender: Player.MemberNumber });   
         InventorySetDifficulty(Player, "ItemAddon", 99);
         InventorySetDifficulty(Player, "ItemArms", 99);
         InventorySetDifficulty(Player, "ItemBoots", 99);
@@ -685,7 +685,7 @@ if (CurrentScreen == "ChatRoom") {
     }
 	
     else if (content.indexOf("/mindifficulty") == 0) {
-        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: "You can easily escape your bindings now!" }]});
+	ChatRoomMessage({ Content: "Quick-AccessMenu2: You can easily escape your bindings now!", Type: "LocalMessage", Sender: Player.MemberNumber });
         InventorySetDifficulty(Player, "ItemAddon", 1);
         InventorySetDifficulty(Player, "ItemArms", 1);
         InventorySetDifficulty(Player, "ItemBoots", 1);
