@@ -189,8 +189,8 @@ if (CurrentScreen == "ChatRoom") {
         BackgroundsList.push({ Name: "HypnoSpiral2", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "HypnoticSpiral", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Magic", Tag: [BackgroundsTagIndoor] });
+	BackgroundsList.push({ Name: "MagicSchoolEscape", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "MagicSchoolLaboratory", Tag: [BackgroundsTagIndoor] });
-        BackgroundsList.push({ Name: "/Orig/buhne-dekorativ-kino-276179", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "/Orig/Entrance", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "/Orig/Lounge", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "OutsideCells", Tag: [BackgroundsTagIndoor] });
