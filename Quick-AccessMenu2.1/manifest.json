@@ -21,7 +21,7 @@
     "storage",
     "activeTab",
     "https://bondage-europe.com/*",
-    "https://wwww.bondage-europe.com/*",
+    "https://www.bondage-europe.com/*",
     "http://bondageprojects.com/*",
     "https://bondageprojects.com/*",
     "http://www.bondageprojects.com/*",
@@ -36,7 +36,7 @@
       "js": ["contentscript.js"],
       "matches": [
         "https://bondage-europe.com/*",
-        "https://wwww.bondage-europe.com/*",
+        "https://www.bondage-europe.com/*",
         "http://bondageprojects.com/*",
         "https://bondageprojects.com/*",
         "http://www.bondageprojects.com/*",
