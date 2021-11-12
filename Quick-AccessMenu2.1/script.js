@@ -1109,6 +1109,13 @@ if (CurrentScreen == "ChatRoom") {
         else {ChatRoomMessage({ Content: "Quick-AccessMenu2: Warning, resetting difficulty will incur a 7-day waiting period to rechange. Confirm by typing: /resetdifficulty yes", Type: "LocalMessage", Sender: Player.MemberNumber })}
     }
 	
+    else if (content.indexOf("/resetinventory") == 0) {
+          ChatRoomMessage({ Content: "Warning: You will lose many clothes and items in your inventory. It meant that you will need to buy them again. Confirm: /resetinventory yes", Type: "LocalMessage", Sender: Player.MemberNumber });
+          if (content.includes("yes")) {             
+	      Player.Inventory=[];ServerPlayerInventorySync();
+              ChatRoomMessage({ Content: "Accomplished. Visit store to buy new clothes and items.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+    }
+	
     else if (content.indexOf("/restrain") == 0) {
         var targetname = content.substring(9).trim();
         if (targetname == undefined) {targetname = Player.Name};
