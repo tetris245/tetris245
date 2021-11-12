@@ -16,5 +16,8 @@ Changes for future version 1.2:
 
 * New command: clubhelp to display the standard commands of the game
 * New command: keydeposit to keep your keys safe in the vault
+* Updated the background command
+* Bugfix: added missing code for resetinventory command
 * Bugfix: gv command in stead of gh to resolve conflict with ghostadd/remove standard commands
+* Bugfix: private messages instead of public messages for maxdifficulty and mindifficulty commands
 * Restructured the code for an easier reading
