@@ -52,8 +52,8 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/patient  = becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/patreoncheats  =  all except college uniform, is auto toggled by default.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/permanentpatient  = becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber });    
         ChatRoomMessage({ Content: "/pose (posehere) (targetname) =  Poses: exercise, kneel, sleep, pet, stand, suspension. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/puppy  = becomes a fully restrained puppy girl.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/quitasylum  =  stops being a doctor, nurse, patient or permanent patient.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/quitclubslave  =  breaks club slave contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/quitkidnapper  =  stops being a kidnapper or master kidnapper.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -834,6 +834,12 @@ if (CurrentScreen == "ChatRoom") {
         ReputationChange('Asylum', -200);
     }
 	
+    else if (content.indexOf("/pet") == 0) {
+        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" becomes a cute pet girl." }]});
+        DailyJobPuppyLoad(0);
+        ChatRoomCharacterUpdate(Player);
+    }
+	
     else if (content.indexOf("/pose") == 0) {
         var stringPose1 = content;
         var stringPose2 = stringPose1.split(/[ ,]+/);
@@ -1049,11 +1055,6 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: exercise, kneel, sleep, pet, stand, suspension. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
 	
-    else if (content.indexOf("/puppy") == 0) {
-        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" becomes a cute puppy girl." }]});
-        DailyJobPuppyLoad(0);
-    }
-
 	
     else if (content.indexOf("/quitasylum") == 0) {
         DialogSetReputation("Asylum", 0);
