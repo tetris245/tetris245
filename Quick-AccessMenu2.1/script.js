@@ -837,6 +837,7 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/pet") == 0) {
         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" becomes a cute pet girl." }]});
         DailyJobPuppyLoad(0);
+	CharacterRefresh(Player); 
         ChatRoomCharacterUpdate(Player);
     }
 	
