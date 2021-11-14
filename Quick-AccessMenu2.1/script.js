@@ -27,6 +27,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/colorchanger  =  using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/doctor  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/dojogame  =  launches the dojo minigame.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/erase  =  erases chat.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gv", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -436,6 +437,16 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/doctor") == 0) {
         ReputationChange('Asylum', 200);
+    }
+	
+   else if (content.indexOf("/dojogame") == 0) {
+       ServerSend("ChatRoomLeave", "");
+       CommonSetScreen("Room", "Introduction");
+       ChatRoomSetLastChatRoom("");
+       OnlineGameName = "";
+       ChatRoomClearAllElements();  
+       IntroductionJobStart("SubDojo",0)
+       IntroductionJobDojoStart()
     }
 	
     else if (content.indexOf("/erase") == 0) {
