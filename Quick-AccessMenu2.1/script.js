@@ -54,6 +54,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/permanentpatient  = becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber });    
         ChatRoomMessage({ Content: "/pose (posehere) (targetname) =  Poses: exercise, kneel, sleep, pet, stand, suspension. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/puppygame  =  launches the puppy minigame.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/quitasylum  =  stops being a doctor, nurse, patient or permanent patient.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/quitclubslave  =  breaks club slave contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/quitkidnapper  =  stops being a kidnapper or master kidnapper.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1056,6 +1057,15 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: exercise, kneel, sleep, pet, stand, suspension. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
 	
+	else if (content.indexOf("/puppygame") == 0) {
+            ServerSend("ChatRoomLeave", "");
+            CommonSetScreen("Room", "Introduction");
+            ChatRoomSetLastChatRoom("");
+            OnlineGameName = "";
+            ChatRoomClearAllElements();  
+            IntroductionJobStart("DomPuppy",0)
+            IntroductionJobPuppyStart();
+    }
 	
     else if (content.indexOf("/quitasylum") == 0) {
         DialogSetReputation("Asylum", 0);
