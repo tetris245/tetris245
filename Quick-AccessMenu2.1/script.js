@@ -18,7 +18,8 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/becomeownowner  =  becomes your own owner.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/boost  =  boosts skills, similar to maid quarters drink.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/chess  (difficulty) =  starts chess, must specify difficulty first (/chess 1 = easy, /chess 3 = hard).", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/clothes (targetname) =  changes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });  
+        ChatRoomMessage({ Content: "/cleaninggame  =  launches the cleaning minigame. Click on the maid in the Maid Quarters.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/clothes (targetname) =  changes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });  
 	ChatRoomMessage({ Content: "/clubhelp = displays the standard commands of the game.", Type: "LocalMessage", Sender: Player.MemberNumber });  
         ChatRoomMessage({ Content: "/clubmistress  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/clubslave  =  becomes club slave. Careful, will be forced to complete contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -277,6 +278,16 @@ if (CurrentScreen == "ChatRoom") {
         else {
             ChessOn = false;
             CollegeChessGameEndALT();}
+    }
+	
+    else if (content.indexOf("/cleaninggame") == 0) {
+       ServerSend("ChatRoomLeave", "");
+       CommonSetScreen("Room", "MaidQuarters");
+       ChatRoomSetLastChatRoom("");
+       OnlineGameName = "";
+       ChatRoomClearAllElements();  
+       GameType = "MaidCleaning"; 
+       MaidQuartersMaid.Stage = "400";
     }
 	
     else if (content.indexOf("/clothes") == 0) {
