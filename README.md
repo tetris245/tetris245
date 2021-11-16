@@ -14,7 +14,7 @@ Version 1.1 - 04/11/21
 
 Changes for future version 1.2:
 
-* New commands: dojogame - kidnapgame - puppygame to launch minigames while bypassing day/status conditions
+* New commands: cleaninggame - dojogame - drinksgame - kidnapgame - puppygame - rhythmgame to launch minigames while bypassing day/status conditions
 * New command: clubhelp to display the standard commands of the game
 * New command: keydeposit to keep your keys safe in the vault
 * New command: pet to become a fully restrained pet girl
