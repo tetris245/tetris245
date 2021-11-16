@@ -70,6 +70,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/resetdifficulty  =  resets difficulty, thereby quitting it. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
         ChatRoomMessage({ Content: "/resetinventory  =  erases your inventory. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/restrain (targetname) =  adds random restraints.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/rhythmgame  =  launches the rhythm minigame. Click on the maid in the Maid Quarters.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/safewordspecific  =  removes specific item. More info when used.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/search (areaname)  =  opens room search, area is: club or asylum", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/speak  = animates mouth when talking in chat. Can also: /mouth or /speech", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1187,6 +1188,16 @@ if (CurrentScreen == "ChatRoom") {
         if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
         CharacterFullRandomRestrain(target[0],"ALL");
         ChatRoomCharacterUpdate(target[0]);
+    }
+	
+    else if (content.indexOf("/rhythmgame") == 0) {
+       ServerSend("ChatRoomLeave", "");
+       CommonSetScreen("Room", "MaidQuarters");
+       ChatRoomSetLastChatRoom("");
+       OnlineGameName = "";
+       ChatRoomClearAllElements();  
+       GameType = "RhythmGame"; 
+       MaidQuartersMaid.Stage = "500";
     }
 	
     else if (content.indexOf("/safewordspecific") == 0) {
