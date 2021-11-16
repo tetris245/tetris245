@@ -28,6 +28,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/doctor  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/dojogame  =  launches the dojo minigame.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/drinksgame  =  launches the drinks minigame. Click on the maid in the Maid Quarters.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/erase  =  erases chat.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gv", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -446,9 +447,19 @@ if (CurrentScreen == "ChatRoom") {
        OnlineGameName = "";
        ChatRoomClearAllElements();  
        IntroductionJobStart("SubDojo",0)
-       IntroductionJobDojoStart()
+       IntroductionJobDojoStart();
     }
 	
+    else if (content.indexOf("/drinksgame") == 0) {
+       ServerSend("ChatRoomLeave", "");
+       CommonSetScreen("Room", "MaidQuarters");
+       ChatRoomSetLastChatRoom("");
+       OnlineGameName = "";
+       ChatRoomClearAllElements();  
+       GameType = "MaidDrinks"; 
+       MaidQuartersMaid.Stage = "200";
+    }
+
     else if (content.indexOf("/erase") == 0) {
         ElementRemove("TextAreaChatLog");
     }
