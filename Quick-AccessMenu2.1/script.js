@@ -145,6 +145,7 @@ if (CurrentScreen == "ChatRoom") {
         BackgroundsList.push({ Name: "Pandora/Second/Fork4", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Second/Fork5", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Second/Fork6", Tag: [BackgroundsTagIndoor] });
+	BackgroundsList.push({ Name: "Pandora/Second/Rest0", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Second/Tunnel0", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Second/Tunnel1", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Second/Tunnel2", Tag: [BackgroundsTagIndoor] });
@@ -167,6 +168,7 @@ if (CurrentScreen == "ChatRoom") {
         BackgroundsList.push({ Name: "Pandora/Underground/Fork4", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Underground/Fork5", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Underground/Fork6", Tag: [BackgroundsTagIndoor] });
+	BackgroundsList.push({ Name: "Pandora/Underground/Rest0", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Underground/Tunnel0", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Underground/Tunnel1", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Underground/Tunnel2", Tag: [BackgroundsTagIndoor] });
@@ -176,6 +178,7 @@ if (CurrentScreen == "ChatRoom") {
         BackgroundsList.push({ Name: "Pandora/Underground/Tunnel6", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "AsylumBedroom", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "AsylumEntrance", Tag: [BackgroundsTagIndoor] });
+	BackgroundsList.push({ Name: "AsylumGGTSRoom", Tag: [BackgroundsTagIndoor] });    
         BackgroundsList.push({ Name: "AsylumMeeting", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "AsylumTherapy", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "AmandaCollarIntro", Tag: [BackgroundsTagIndoor] });
