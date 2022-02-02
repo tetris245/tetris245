@@ -57,7 +57,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/patreoncheats  =  all except college uniform, is auto toggled by default.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/permanentpatient  = becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber });    
-        ChatRoomMessage({ Content: "/pose (posehere) (targetname) =  Poses: exercise, kneel, sleep, pet, stand, suspension. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/pose2 (posehere) (targetname) =  Poses: exercise, kneel, sleep, pet, stand, suspension. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/puppygame  =  launches the puppy minigame.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/quitasylum  =  stops being a doctor, nurse, patient or permanent patient.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/quitclubslave  =  breaks club slave contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -890,7 +890,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomCharacterUpdate(Player);
     }
 	
-    else if (content.indexOf("/pose") == 0) {
+    else if (content.indexOf("/pose2") == 0) {
         var stringPose1 = content;
         var stringPose2 = stringPose1.split(/[ ,]+/);
         var targetname = stringPose2[2];
@@ -1101,7 +1101,7 @@ if (CurrentScreen == "ChatRoom") {
             : CharacterRefresh(target[0]);
 	}
 	    
-        else if (content.endsWith("/pose")) {
+        else if (content.endsWith("/pose2")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: exercise, kneel, sleep, pet, stand, suspension. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
 	
