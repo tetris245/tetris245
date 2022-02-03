@@ -1167,10 +1167,6 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/relog") == 0) {
         ServerSocket.close();
         ServerSocket.open();
-        ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });
-        setTimeout(function() {
-        ChatRoomClearAllElements();
-        }, 3000);
     }
 	
     else if (content.indexOf("/resetdifficulty") == 0) {
