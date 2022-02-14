@@ -898,14 +898,53 @@ if (CurrentScreen == "ChatRoom") {
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
         if (target[0] !== Player) {ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (Player.Name+" helps pose "+target[0].Name )}] });};
+        if (content.includes("armsfree")) {
+            CharacterSetActivePose(target[0], "BaseUpper");
+            ChatRoomCharacterUpdate(target[0]);
+	}
 
-        if (content.includes("kneel")) {
+        else if (content.includes("boxtied")) {
+            CharacterSetActivePose(target[0], "BackBoxTie");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+
+        else if (content.includes("cuffed")) {
+            CharacterSetActivePose(target[0], "BackCuffs");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+
+        else if (content.includes("elbowtied")) {
+            CharacterSetActivePose(target[0], "BackElbowTouch");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+
+        else if (content.includes("kneel1")) {
             CharacterSetActivePose(target[0], "Kneel");
             ChatRoomCharacterUpdate(target[0]);
 	}
-	    
-        else if (content.includes("sleep")) {
-            CharacterSetActivePose(target[0], "Hogtied");
+
+        else if (content.includes("kneel2")) {
+            CharacterSetActivePose(target[0], "KneelingSpread");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+
+        else if (content.includes("legsclosed")) {
+            CharacterSetActivePose(target[0], "LegsClosed");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+
+        else if (content.includes("legsfree")) {
+            CharacterSetActivePose(target[0], "BaseLower");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+
+        else if (content.includes("legsopen")) {
+            CharacterSetActivePose(target[0], "LegsOpen");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+
+        else if (content.includes("onhorse")) {
+            CharacterSetActivePose(target[0], "Horse");
             ChatRoomCharacterUpdate(target[0]);
 	}
 	    
@@ -913,17 +952,60 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetActivePose(target[0], "AllFours");
             ChatRoomCharacterUpdate(target[0]);
 	}
-	    
+
+        else if (content.includes("sleep")) {
+            CharacterSetActivePose(target[0], "Hogtied");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+
+        else if (content.includes("spreadarms1")) {
+            CharacterSetActivePose(target[0], "Yoked");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+
+        else if (content.includes("spreadarms2")) {
+            CharacterSetActivePose(target[0], "OverTheHead");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+
+
+        else if (content.includes("spreadeagle1")) {
+            CharacterSetActivePose(target[0], "Yoked");
+            CharacterSetActivePose(target[0], "Spread");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+
+        else if (content.includes("spreadeagle2")) {
+            CharacterSetActivePose(target[0], "OverTheHead");
+            CharacterSetActivePose(target[0], "Spread");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+
+        else if (content.includes("spreadlegs")) {
+            CharacterSetActivePose(target[0], "Spread");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+
         else if (content.includes("stand")) {
             CharacterSetActivePose(target[0], null);
             ChatRoomCharacterUpdate(target[0]);
 	}
 	    
-        else if (content.includes("suspension")) {
+        else if (content.includes("suspension1")) {
             CharacterSetActivePose(target[0], "Suspension");
             ChatRoomCharacterUpdate(target[0]);
 	}
-	    
+
+        else if (content.includes("suspension2")) {
+            CharacterSetActivePose(target[0], "SuspensionHogtied");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+
+        else if (content.includes("tapedhands")) {
+            CharacterSetActivePose(target[0], "TapedHands");
+            ChatRoomCharacterUpdate(target[0]);
+	}
+    
         else if (content.includes("roof")) {
             CharacterSetFacialExpression(Player, "Emoticon", "Annoyed", 1);
             CharacterSetActivePose(Player, null);ChatRoomCharacterUpdate(Player);
@@ -1102,7 +1184,7 @@ if (CurrentScreen == "ChatRoom") {
 	}
 	    
         else if (content.endsWith("/pose")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: exercise, kneel, sleep, pet, stand, suspension. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension1, suspension2, tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
 	
 	else if (content.indexOf("/puppygame") == 0) {
