@@ -14,6 +14,7 @@ Version 1.1 - 04/11/21
 
 Changes for future version 1.2:
 
+* New command: anim with a first series of anims. List: angry, blink, chuckle, confused, grin, pout, raisebrows, reset, resetbrows, sad, smile, smirk, wink, worried.
 * New commands: cleaninggame - dojogame - drinksgame - kidnapgame - puppygame - rhythmgame to launch minigames while bypassing day/status conditions
 * New command: clubhelp to display the standard commands of the game
 * New command: keydeposit to keep your keys safe in the vault
