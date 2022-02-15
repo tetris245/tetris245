@@ -10,6 +10,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "ChatRoomHelp", Type: "Action", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "Quick-AccessMenu2: List of commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/action (stuffhere)  = inserts an action. Can also: /a.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/anim (animhere). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/arousal 10  =  sets arousal level. Change value (0-100).", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/autokick  =  toggles on auto kick for 0 day old accounts.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/babytalk (stuffhere) =  speaks as a baby. Can also: /b", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -56,8 +57,8 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/patient  = becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/patreoncheats  =  all except college uniform, is auto toggled by default.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/permanentpatient  = becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber });    
-        ChatRoomMessage({ Content: "/pose (posehere) (targetname) =  Poses: exercise, kneel, sleep, pet, stand, suspension. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber });  
+	ChatRoomMessage({ Content: "/pose (posehere) (targetname). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/puppygame  =  launches the puppy minigame.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/quitasylum  =  stops being a doctor, nurse, patient or permanent patient.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/quitclubslave  =  breaks club slave contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -92,6 +93,84 @@ if (CurrentScreen == "ChatRoom") {
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (content.substring(2).trim() )}] });}
     }
 	
+    else if (content.indexOf("/anim") == 0) {
+        var stringAnim = content;
+
+        if (content.includes("angry")) {
+           CharacterSetFacialExpression(Player,"Mouth","Angry",1000);
+           CharacterSetFacialExpression(Player,"Eyes","Angry",1000);
+           CharacterSetFacialExpression(Player,"Eyes2","Angry",1000);
+           CharacterSetFacialExpression(Player,"Eyebrows","Angry",1000);
+	}
+
+        else if (content.includes("blink")) {
+           CharacterSetFacialExpression(Player,"Eyes","Closed",.06);         
+           CharacterSetFacialExpression(Player,"Eyes2","Closed",.06);
+        }
+
+        else if (content.includes("chuckle")) {
+           CharacterSetFacialExpression(Player,"Mouth","Grin",1.11);
+        }
+
+        else if (content.includes("confused")) {
+            CharacterSetFacialExpression(Player,"Eyebrows","OneRaised",1000);
+        }
+
+        else if (content.includes("grin")) {
+            CharacterSetFacialExpression(Player,"Eyes","Horny",1000);         
+            CharacterSetFacialExpression(Player,"Eyes2","Horny",1000);
+            CharacterSetFacialExpression(Player,"Mouth","Grin",1000);
+        }
+
+        else if (content.includes("pout")) {      
+            CharacterSetFacialExpression(Player,"Mouth","Pout",1000);
+            CharacterSetFacialExpression(Player,"Eyes","Dazed",1000);
+            CharacterSetFacialExpression(Player,"Eyes2","Dazed",1000);
+            CharacterSetFacialExpression(Player,"Eyebrows","Harsh",1000);
+        }
+
+        else if (content.includes("raisebrows")) {
+            CharacterSetFacialExpression(Player,"Eyebrows","Raised",1000);
+        }
+
+        else if (content.includes("reset")) {
+            CharacterResetFacialExpression(Player);
+        }
+
+        else if (content.includes("resetbrows")) {
+            CharacterSetFacialExpression(Player,"Eyebrows","",1000);
+        }
+
+        else if (content.includes("sad")) {           
+            CharacterSetFacialExpression(Player,"Mouth","Frown",1000);
+            CharacterSetFacialExpression(Player,"Eyes","Shy",1000);
+            CharacterSetFacialExpression(Player,"Eyes2","Shy",1000);
+            CharacterSetFacialExpression(Player,"Eyebrows","Soft",1000);
+        }
+
+        else if (content.includes("smile")) {         
+            CharacterSetFacialExpression(Player,"Mouth","Grin",1000);
+        }
+
+        else if (content.includes("smirk")) {       
+	    CharacterSetFacialExpression(Player,"Mouth","Smirk",1000);
+        }
+
+        else if (content.includes("wink")) {           
+           CharacterSetFacialExpression(Player,"Eyes2","Closed",.42);
+        }
+
+        else if (content.includes("worried")) {
+            CharacterSetFacialExpression(Player,"Eyes","Surprised",1000);
+            CharacterSetFacialExpression(Player,"Eyes2","Surprised",1000);
+            CharacterSetFacialExpression(Player,"Eyebrows","Soft",1000);
+        }
+   
+ 	  else if (content.endsWith("/anim")) {
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry, blink, chuckle, confused, grin, pout, raisebrows, reset, resetbrows, sad, smile, smirk, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
+          }
+    }
+
     else if (content.indexOf("/arousal") == 0) {
         Player.ArousalSettings.Progress = content.substring(8);ServerPlayerSync();
         if (content.includes("100")) {
@@ -1184,10 +1263,11 @@ if (CurrentScreen == "ChatRoom") {
 	}
 	    
         else if (content.endsWith("/pose")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension1, suspension2, tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });}
-    }
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension1, suspension2, tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            }
+	}
 	
-	else if (content.indexOf("/puppygame") == 0) {
+    else if (content.indexOf("/puppygame") == 0) {
             ServerSend("ChatRoomLeave", "");
             CommonSetScreen("Room", "Introduction");
             ChatRoomSetLastChatRoom("");
