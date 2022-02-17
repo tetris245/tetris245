@@ -15,8 +15,8 @@ Version 1.1 - 04/11/21
 Changes for future version 1.2:
 
 * New command: anim with many anims. List: angry, bareteeth, blink, chuckle, closeeyes, closemouth, confused, cry, distressed, droolreset, droolsides, frown, glare, grin, happy, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.
-* New commands: cleaninggame - dojogame - drinksgame - kidnapgame - puppygame - rhythmgame to launch minigames while bypassing day/status conditions
 * New command: clubhelp to display the standard commands of the game
+* New commanm: game to launch minigames while bypassing day/status conditions. List: cleaning, dojo, drinks, kidnap, puppy, rhythm.
 * New command: keydeposit to keep your keys safe in the vault
 * New command: pet to become a fully restrained pet girl
 * Updated the background command
