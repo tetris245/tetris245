@@ -14,7 +14,7 @@ Version 1.1 - 04/11/21
 
 Changes for future version 1.2:
 
-* New command: anim with many anims. List: angry, bareteeth, blink, chuckle, closeeyes, closemouth, confused, cry, distressed, droolreset, droolsides, frown, glare, grin, happy, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.
+* New command: anim with many anims. List: angry, bareteeth, blink, chuckle, closeeyes, closemouth, confused, cry, distressed, droolreset, droolsides, frown, giggle, glare, grin, happy, laugh, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.
 * New command: clubhelp to display the standard commands of the game
 * New command: game to launch minigames while bypassing day/status conditions. List: cleaning, dojo, drinks, kidnap, puppy, rhythm.
 * New command: keydeposit to keep your keys safe in the vault
