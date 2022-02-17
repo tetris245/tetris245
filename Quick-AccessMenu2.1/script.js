@@ -340,7 +340,8 @@ if (CurrentScreen == "ChatRoom") {
         BackgroundsList.push({ Name: "Pandora/Underground/Tunnel6", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "AsylumBedroom", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "AsylumEntrance", Tag: [BackgroundsTagIndoor] });
-	BackgroundsList.push({ Name: "AsylumGGTSRoom", Tag: [BackgroundsTagIndoor] });    
+	BackgroundsList.push({ Name: "AsylumGGTSRoom", Tag: [BackgroundsTagIndoor] });   
+	BackgroundsList.push({ Name: "AsylumGGTSRoomAlert", Tag: [BackgroundsTagIndoor] });    
         BackgroundsList.push({ Name: "AsylumMeeting", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "AsylumTherapy", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "AmandaCollarIntro", Tag: [BackgroundsTagIndoor] });
@@ -349,6 +350,7 @@ if (CurrentScreen == "ChatRoom") {
         BackgroundsList.push({ Name: "BrickWall", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Cell", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "CollegeCafeteria", Tag: [BackgroundsTagIndoor] });
+	BackgroundsList.push({ Name: "CollegeClass2", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "CollegeDetention", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "CollegeEntrance", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "CollegeTeacherLounge", Tag: [BackgroundsTagIndoor] });
