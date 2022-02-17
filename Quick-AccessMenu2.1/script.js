@@ -19,7 +19,6 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/becomeownowner  =  becomes your own owner.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/boost  =  boosts skills, similar to maid quarters drink.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/chess  (difficulty) =  starts chess, must specify difficulty first (/chess 1 = easy, /chess 3 = hard).", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/cleaninggame  =  launches the cleaning minigame. Click on the maid in the Maid Quarters.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/clothes (targetname) =  changes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });  
 	ChatRoomMessage({ Content: "/clubhelp = displays the standard commands of the game.", Type: "LocalMessage", Sender: Player.MemberNumber });  
         ChatRoomMessage({ Content: "/clubmistress  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -29,17 +28,15 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/colorchanger  =  using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/doctor  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/dojogame  =  launches the dojo minigame.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/drinksgame  =  launches the drinks minigame. Click on the maid in the Maid Quarters.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/erase  =  erases chat.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gv", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gagtalk  =  toggle to decode/not decode gagged people talking.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/game (minigamehere). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/giveeverything  =  gives every item.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/headmaid  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/hiddenmessages  =  sees hidden messages made by game.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/keydeposit (hours) = keeps your keys safe in the vault.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/kidnapgame  =  launches the kidnap minigame.", Type: "LocalMessage", Sender: Player.MemberNumber });   
+	ChatRoomMessage({ Content: "/keydeposit (hours) = keeps your keys safe in the vault.", Type: "LocalMessage", Sender: Player.MemberNumber });  
         ChatRoomMessage({ Content: "/kidnapper  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/kinkydungeon  =  to the end, add devious to toggle deviouschallenge or cheat to start with cheats or use as is to start vanilla. Remember to wear VR headset if you want others to see you play.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/leave  =  leaves room, even if prevented.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -59,7 +56,6 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/permanentpatient  = becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber });  
 	ChatRoomMessage({ Content: "/pose (posehere) (targetname). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/puppygame  =  launches the puppy minigame.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/quitasylum  =  stops being a doctor, nurse, patient or permanent patient.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/quitclubslave  =  breaks club slave contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/quitkidnapper  =  stops being a kidnapper or master kidnapper.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -71,7 +67,6 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/resetdifficulty  =  resets difficulty, thereby quitting it. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
         ChatRoomMessage({ Content: "/resetinventory  =  erases your inventory. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/restrain (targetname) =  adds random restraints.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/rhythmgame  =  launches the rhythm minigame. Click on the maid in the Maid Quarters.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/safewordspecific  =  removes specific item. More info when used.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/search (areaname)  =  opens room search, area is: club or asylum", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/speak  = animates mouth when talking in chat. Can also: /mouth or /speech", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -448,16 +443,6 @@ if (CurrentScreen == "ChatRoom") {
             CollegeChessGameEndALT();}
     }
 	
-    else if (content.indexOf("/cleaninggame") == 0) {
-       ServerSend("ChatRoomLeave", "");
-       CommonSetScreen("Room", "MaidQuarters");
-       ChatRoomSetLastChatRoom("");
-       OnlineGameName = "";
-       ChatRoomClearAllElements();  
-       GameType = "MaidCleaning"; 
-       MaidQuartersMaid.Stage = "400";
-    }
-	
     else if (content.indexOf("/clothes") == 0) {
         var targetname = content.substring(8).trim();
         if (targetname == undefined) {targetname = Player.Name};
@@ -619,26 +604,6 @@ if (CurrentScreen == "ChatRoom") {
         ReputationChange('Asylum', 200);
     }
 	
-   else if (content.indexOf("/dojogame") == 0) {
-       ServerSend("ChatRoomLeave", "");
-       CommonSetScreen("Room", "Introduction");
-       ChatRoomSetLastChatRoom("");
-       OnlineGameName = "";
-       ChatRoomClearAllElements();  
-       IntroductionJobStart("SubDojo",0)
-       IntroductionJobDojoStart();
-    }
-	
-    else if (content.indexOf("/drinksgame") == 0) {
-       ServerSend("ChatRoomLeave", "");
-       CommonSetScreen("Room", "MaidQuarters");
-       ChatRoomSetLastChatRoom("");
-       OnlineGameName = "";
-       ChatRoomClearAllElements();  
-       GameType = "MaidDrinks"; 
-       MaidQuartersMaid.Stage = "200";
-    }
-
     else if (content.indexOf("/erase") == 0) {
         ElementRemove("TextAreaChatLog");
     }
@@ -675,6 +640,56 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Gag-talk toggled on.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }    
 	
+    else if (content.indexOf("/game") == 0) {
+
+        if (content.endsWith("/game")) {
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a minigame. List: cleaning, dojo, drinks, kidnap, puppy, rhythm. You need to click on the maid in the Maid Quarters for the cleaning, drinks and rhythm games.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	   }
+
+        else {
+	    ServerSend("ChatRoomLeave", "");
+            ChatRoomSetLastChatRoom("");
+            OnlineGameName = "";
+            ChatRoomClearAllElements();  
+
+            if (content.includes("cleaning")) {         
+               CommonSetScreen("Room", "MaidQuarters");
+               GameType = "MaidCleaning"; 
+               MaidQuartersMaid.Stage = "400";
+            }
+
+            else if (content.includes("dojo")) {
+               CommonSetScreen("Room", "Introduction");
+               IntroductionJobStart("SubDojo",0)
+               IntroductionJobDojoStart();
+            }
+	 
+           else if (content.includes("drinks")) {
+               CommonSetScreen("Room", "MaidQuarters");
+               GameType = "MaidDrinks"; 
+               MaidQuartersMaid.Stage = "200";
+           }
+
+           else if (content.includes("kidnap")) {
+               CommonSetScreen("Room", "Introduction");
+               IntroductionJobStart("DomKidnap",0)
+               IntroductionJobBouncerStart();
+           }
+
+           else if (content.includes("puppy")) {
+               CommonSetScreen("Room", "Introduction");
+               IntroductionJobStart("DomPuppy",0)
+               IntroductionJobPuppyStart();
+           }
+
+           else if (content.includes("rhythm")) {
+               CommonSetScreen("Room", "MaidQuarters");
+               GameType = "RhythmGame"; 
+               MaidQuartersMaid.Stage = "500";
+           }
+        } 
+    }    
+
     else if (content.indexOf("/giveeverything") == 0) {
         ChatRoomMessage({ Content: "Quick-AccessMenu2: Every item in the game now added.", Type: "LocalMessage", Sender: Player.MemberNumber });
         AssetFemale3DCG.forEach(group=>group.Asset.forEach(item=>InventoryAdd(Player, item.Name, group.Group)));
@@ -718,16 +733,6 @@ if (CurrentScreen == "ChatRoom") {
         CellDepositKeys(hours);
     }
 	
-    else if (content.indexOf("/kidnapgame") == 0) {
-        ServerSend("ChatRoomLeave", "");
-        CommonSetScreen("Room", "Introduction");
-        ChatRoomSetLastChatRoom("");
-        OnlineGameName = "";
-        ChatRoomClearAllElements();  
-        IntroductionJobStart("DomKidnap",0)
-        IntroductionJobBouncerStart();
-    }
-
     else if (content.indexOf("/kidnapper") == 0) {
         ReputationChange("Kidnap", 200);
         ReputationChange("Kidnap", -50);
@@ -1352,16 +1357,6 @@ if (CurrentScreen == "ChatRoom") {
         }
     }
 	
-    else if (content.indexOf("/puppygame") == 0) {
-            ServerSend("ChatRoomLeave", "");
-            CommonSetScreen("Room", "Introduction");
-            ChatRoomSetLastChatRoom("");
-            OnlineGameName = "";
-            ChatRoomClearAllElements();  
-            IntroductionJobStart("DomPuppy",0)
-            IntroductionJobPuppyStart();
-    }
-	
     else if (content.indexOf("/quitasylum") == 0) {
         DialogSetReputation("Asylum", 0);
     }
@@ -1439,17 +1434,7 @@ if (CurrentScreen == "ChatRoom") {
         CharacterFullRandomRestrain(target[0],"ALL");
         ChatRoomCharacterUpdate(target[0]);
     }
-	
-    else if (content.indexOf("/rhythmgame") == 0) {
-       ServerSend("ChatRoomLeave", "");
-       CommonSetScreen("Room", "MaidQuarters");
-       ChatRoomSetLastChatRoom("");
-       OnlineGameName = "";
-       ChatRoomClearAllElements();  
-       GameType = "RhythmGame"; 
-       MaidQuartersMaid.Stage = "500";
-    }
-	
+		
     else if (content.indexOf("/safewordspecific") == 0) {
         ChatRoomMessage({ Content: "Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
         setTimeout(function() {
