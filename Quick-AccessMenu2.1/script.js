@@ -95,31 +95,110 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/anim") == 0) {
         var stringAnim = content;
+	CharacterResetFacialExpression(Player);
 
         if (content.includes("angry")) {
            CharacterSetFacialExpression(Player,"Mouth","Angry",1000);
            CharacterSetFacialExpression(Player,"Eyes","Angry",1000);
            CharacterSetFacialExpression(Player,"Eyes2","Angry",1000);
            CharacterSetFacialExpression(Player,"Eyebrows","Angry",1000);
+           ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is very angry." }]});
 	}
+	    
+        else if (content.includes("bareteeth")) {         
+            CharacterSetFacialExpression(Player,"Mouth","Angry",1000);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is angry." }]});
+        }
 
         else if (content.includes("blink")) {
            CharacterSetFacialExpression(Player,"Eyes","Closed",.06);         
            CharacterSetFacialExpression(Player,"Eyes2","Closed",.06);
+           ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" blinks her eyes." }]});
         }
-
+        
         else if (content.includes("chuckle")) {
            CharacterSetFacialExpression(Player,"Mouth","Grin",1.11);
+           ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" chuckles." }]});
+        }
+
+	else if (content.includes("closeeyes")) {
+           CharacterSetFacialExpression(Player,"Eyes","Closed",1000);         
+           CharacterSetFacialExpression(Player,"Eyes2","Closed",1000);
+           ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" closes her eyes." }]});
+        }
+
+	else if (content.includes("closemouth")) {         
+           ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" closes her mouth." }]});
         }
 
         else if (content.includes("confused")) {
             CharacterSetFacialExpression(Player,"Eyebrows","OneRaised",1000);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is confused." }]});
+        }  
+
+        else if (content.includes("cry")) {   
+            CharacterSetFacialExpression(Player,"Fluids","TearsMedium",1000,"#000016");
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" cries." }]});
+        }
+  
+        else if (content.includes("distressed")) {      
+            CharacterSetFacialExpression(Player,"Eyes","Scared",1000);
+            CharacterSetFacialExpression(Player,"Eyes2","Scared",1000);
+            CharacterSetFacialExpression(Player,"Eyebrows","Soft",1000);
+            CharacterSetFacialExpression(Player,"Mouth","Angry",1000);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is distressd." }]});
         }
 
+	else if (content.includes("droolreset")) {           
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" stops to drool." }]});
+        }
+
+	else if (content.includes("droolsides")) {         
+            CharacterSetFacialExpression(Player,"Fluids","DroolSides",1000,"#000016");
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is drooling." }]});
+        }
+      
+        else if (content.includes("frown")) {         
+            CharacterSetFacialExpression(Player,"Mouth","Frown",1000);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" disagrees." }]});
+        }
+
+        else if (content.includes("glare")) {   
+            CharacterSetFacialExpression(Player,"Eyes","Angry",1000);
+            CharacterSetFacialExpression(Player,"Eyes2","Angry",1000);
+            CharacterSetFacialExpression(Player,"Eyebrows","Harsh",1000);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" looks at everybody with angry eyes." }]});
+        }
+    
         else if (content.includes("grin")) {
             CharacterSetFacialExpression(Player,"Eyes","Horny",1000);         
             CharacterSetFacialExpression(Player,"Eyes2","Horny",1000);
             CharacterSetFacialExpression(Player,"Mouth","Grin",1000);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" grins." }]});
+        }
+	    
+        else if (content.includes("happy")) {         
+            CharacterSetFacialExpression(Player,"Mouth","Happy",1000);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is happy." }]});
+        }
+
+        else if (content.includes("narroweyes")) {
+           CharacterSetFacialExpression(Player,"Eyes","Horny",1000);         
+           CharacterSetFacialExpression(Player,"Eyes2","Horny",1000);
+           ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" narrows her eyes." }]});
+        }
+
+        else if (content.includes("neutral")) {
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" goes back to a neutral facial expression." }]});	
+        }
+
+	else if (content.includes("openeyes")) {
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" opens her eyes." }]});
+        }
+	    	   
+        else if (content.includes("openmouth")) {         
+            CharacterSetFacialExpression(Player,"Mouth","Moan",1000);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" opens her mouth." }]});   
         }
 
         else if (content.includes("pout")) {      
@@ -127,18 +206,17 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Eyes","Dazed",1000);
             CharacterSetFacialExpression(Player,"Eyes2","Dazed",1000);
             CharacterSetFacialExpression(Player,"Eyebrows","Harsh",1000);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" pouts." }]});
         }
 
         else if (content.includes("raisebrows")) {
             CharacterSetFacialExpression(Player,"Eyebrows","Raised",1000);
-        }
-
-        else if (content.includes("reset")) {
-            CharacterResetFacialExpression(Player);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" raises her brows." }]});
         }
 
         else if (content.includes("resetbrows")) {
             CharacterSetFacialExpression(Player,"Eyebrows","",1000);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" feels reassured." }]});     
         }
 
         else if (content.includes("sad")) {           
@@ -146,28 +224,33 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Eyes","Shy",1000);
             CharacterSetFacialExpression(Player,"Eyes2","Shy",1000);
             CharacterSetFacialExpression(Player,"Eyebrows","Soft",1000);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is sad." }]});
         }
 
         else if (content.includes("smile")) {         
             CharacterSetFacialExpression(Player,"Mouth","Grin",1000);
+	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" smiles." }]});
         }
 
         else if (content.includes("smirk")) {       
 	    CharacterSetFacialExpression(Player,"Mouth","Smirk",1000);
+	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" smirks." }]});
         }
 
         else if (content.includes("wink")) {           
            CharacterSetFacialExpression(Player,"Eyes2","Closed",.42);
+	   ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" winks." }]});
         }
 
         else if (content.includes("worried")) {
             CharacterSetFacialExpression(Player,"Eyes","Surprised",1000);
             CharacterSetFacialExpression(Player,"Eyes2","Surprised",1000);
             CharacterSetFacialExpression(Player,"Eyebrows","Soft",1000);
+	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is worried." }]});
         }
    
- 	  else if (content.endsWith("/anim")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry, blink, chuckle, confused, grin, pout, raisebrows, reset, resetbrows, sad, smile, smirk, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
+ 	  else if (content.endsWith("/anim")) {	  
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry, bareteeth, blink, chuckle, closeeyes, closemouth, confused, cry, distressed, droolreset, droolsides, frown, glare, grin, happy, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
           }
     }
 
@@ -1264,8 +1347,8 @@ if (CurrentScreen == "ChatRoom") {
 	    
         else if (content.endsWith("/pose")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension1, suspension2, tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            }
-	}
+        }
+    }
 	
     else if (content.indexOf("/puppygame") == 0) {
             ServerSend("ChatRoomLeave", "");
