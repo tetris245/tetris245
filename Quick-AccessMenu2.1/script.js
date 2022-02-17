@@ -157,6 +157,11 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Mouth","Frown",1000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" disagrees." }]});
         }
+	    
+	else if (content.includes("giggle")) {  
+            RunExpressionAnimation([null, "Laughing", "Grin", "Happy", "Laughing", "Happy",null]);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" giggles." }]});
+        }
 
         else if (content.includes("glare")) {   
             CharacterSetFacialExpression(Player,"Eyes","Angry",1000);
@@ -175,6 +180,11 @@ if (CurrentScreen == "ChatRoom") {
         else if (content.includes("happy")) {         
             CharacterSetFacialExpression(Player,"Mouth","Happy",1000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is happy." }]});
+        }
+	           
+	else if (content.includes("laugh")) {  
+            RunExpressionAnimation([null, "Laughing", "Grin", "Laughing", "Happy", "Laughing", "Grin", "Laughing", "Happy", null]);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" laughs." }]});
         }
 
         else if (content.includes("narroweyes")) {
@@ -245,7 +255,7 @@ if (CurrentScreen == "ChatRoom") {
         }
    
  	  else if (content.endsWith("/anim")) {	  
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry, bareteeth, blink, chuckle, closeeyes, closemouth, confused, cry, distressed, droolreset, droolsides, frown, glare, grin, happy, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry, bareteeth, blink, chuckle, closeeyes, closemouth, confused, cry, distressed, droolreset, droolsides, frown, giggle, glare, grin, happy, laugh, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
           }
     }
 
@@ -1136,7 +1146,6 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetActivePose(target[0], "OverTheHead");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
 
         else if (content.includes("spreadeagle1")) {
             CharacterSetActivePose(target[0], "Yoked");
