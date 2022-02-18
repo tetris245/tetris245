@@ -21,39 +21,28 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/chess  (difficulty) =  starts chess, must specify difficulty first (/chess 1 = easy, /chess 3 = hard).", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/clothes (targetname) =  changes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });  
 	ChatRoomMessage({ Content: "/clubhelp = displays the standard commands of the game.", Type: "LocalMessage", Sender: Player.MemberNumber });  
-        ChatRoomMessage({ Content: "/clubmistress  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/clubslave  =  becomes club slave. Careful, will be forced to complete contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/collarremove  =  removes slave/owner collar. Can also be: /removecollar", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/college  =  enters college, bypasses requirements.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/colorchanger  =  using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/doctor  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/erase  =  erases chat.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gv", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gagtalk  =  toggle to decode/not decode gagged people talking.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/game (minigamehere). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/giveeverything  =  gives every item.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/headmaid  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/hiddenmessages  =  sees hidden messages made by game.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/keydeposit (hours) = keeps your keys safe in the vault.", Type: "LocalMessage", Sender: Player.MemberNumber });  
-        ChatRoomMessage({ Content: "/kidnapper  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/kinkydungeon  =  to the end, add devious to toggle deviouschallenge or cheat to start with cheats or use as is to start vanilla. Remember to wear VR headset if you want others to see you play.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/leave  =  leaves room, even if prevented.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/login (accountname) (password)  =  logs in a new account.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/maid  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/masterkidnapper  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/maxdifficulty  =  all your current bindings become extremely solid.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics, more info on others.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/mindifficulty  =  all your current bindings become very easy to remove.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/mistress  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/money 9999  =  gives or takes money. Change value.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/naked (targetname) =  removes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/nurse  =  becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/outfit  =  saving/loading, using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/patient  = becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/patreoncheats  =  all except college uniform, is auto toggled by default.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/permanentpatient  = becomes this.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber });  
 	ChatRoomMessage({ Content: "/pose (posehere) (targetname). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/quitasylum  =  stops being a doctor, nurse, patient or permanent patient.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -67,6 +56,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/resetdifficulty  =  resets difficulty, thereby quitting it. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
         ChatRoomMessage({ Content: "/resetinventory  =  erases your inventory. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/restrain (targetname) =  adds random restraints.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/roleplay (rolehere) = starts a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/safewordspecific  =  removes specific item. More info when used.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/search (areaname)  =  opens room search, area is: club or asylum", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/speak  = animates mouth when talking in chat. Can also: /mouth or /speech", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -502,14 +492,6 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/clubhelp") == 0) {
         CommandPrintHelpFor(Commands);
     }
-
-    else if (content.indexOf("/clubmistress") == 0) {
-        LogAdd("ClubMistress", "Management");
-    }
-	
-    else if (content.indexOf("/clubslave") == 0) {
-        LogAdd("ClubSlave", "Management", CurrentTime + 3600000);
-    }
 	
     else if ((content.indexOf("/collarremove") == 0) || (content.indexOf("/removecollar") == 0)) {
         ServerSend("ChatRoomChat", { Content: "PlayerOwnerCollarRelease", Type: "Action", Dictionary: [{Tag: "DestinationCharacterName", Text: Player.Name, MemberNumber: Player.MemberNumber}] });
@@ -646,10 +628,6 @@ if (CurrentScreen == "ChatRoom") {
         ActivityOrgasmStart(Player);
     }  
 	
-    else if (content.indexOf("/doctor") == 0) {
-        ReputationChange('Asylum', 200);
-    }
-	
     else if (content.indexOf("/erase") == 0) {
         ElementRemove("TextAreaChatLog");
     }
@@ -752,10 +730,6 @@ if (CurrentScreen == "ChatRoom") {
         ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
     }
 	
-    else if (content.indexOf("/headmaid") == 0) {
-        LogAdd("LeadSorority", "Maid");
-    }
-	
     else if (content.indexOf("/hiddenmessages") == 0) {
         if (this.HiddenMessagesOn == undefined || this.HiddenMessagesOn == false) {
            HiddenMessagesOn = true;
@@ -777,11 +751,6 @@ if (CurrentScreen == "ChatRoom") {
         var hours = content.substring(11).trim();
         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" keys are now safe in the vault for "+hours+" hours." }]});
         CellDepositKeys(hours);
-    }
-	
-    else if (content.indexOf("/kidnapper") == 0) {
-        ReputationChange("Kidnap", 200);
-        ReputationChange("Kidnap", -50);
     }
 	
     else if (content.indexOf("/kinkydungeon") == 0)  {
@@ -881,15 +850,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomClearAllElements();
         }, 3000);
     }
-	
-    else if (content.indexOf("/maid") == 0) {
-        LogAdd("JoinedSorority", "Management");
-    }
-	
-    else if (content.indexOf("/masterkidnapper") == 0) {
-        ReputationChange("Kidnap", 200);
-    }
-	
+		
     else if (content.indexOf("/maxdifficulty") == 0) {
 	ChatRoomMessage({ Content: "Quick-AccessMenu2: You will never escape your bindings!", Type: "LocalMessage", Sender: Player.MemberNumber });   
         InventorySetDifficulty(Player, "ItemAddon", 99);
@@ -940,13 +901,8 @@ if (CurrentScreen == "ChatRoom") {
         CheatAllow = true;
         LogAdd("BondageCollege", "Import");
         LogAdd("KidnapSophie", "Sarah");
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: A few things have to be set manually.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "Asylum, type: /doctor or /nurse versus /patient or /permanentpatient", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "Kidnapper's League, type: /kidnapper or /masterkidnapper", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "Management, type: /mistress or /clubmistress", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-        ChatRoomMessage({ Content: "Sorority, type: /maid or /headmaid", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-        ChatRoomMessage({ Content: "ClubSlave, type: /clubslave.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "To quit any of the above, type: /quitasylum or /quitmanagement or /quitkidnapper or /quitsorority or /quitclubslave", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "Quick-AccessMenu2: A few things have to be set manually. See the /roleplay command.", Type: "LocalMessage", Sender: Player.MemberNumber });  
+        ChatRoomMessage({ Content: "To quit a role, type: /quitasylum or /quitmanagement or /quitkidnapper or /quitsorority or /quitclubslave", Type: "LocalMessage", Sender: Player.MemberNumber });
     }
 	
     else if (content.indexOf("/mindifficulty") == 0) {
@@ -980,11 +936,6 @@ if (CurrentScreen == "ChatRoom") {
         ServerPlayerInventorySync();
     }
 	
-    else if (content.indexOf("/mistress") == 0) {
-        LogAdd("ClubMistress", "Management");
-        ReputationChange("Dominant", 200);
-    }
-	
     else if (content.indexOf("/money") == 0) {
         Player.Money = content.substring(6);ServerPlayerSync();
     }
@@ -998,12 +949,7 @@ if (CurrentScreen == "ChatRoom") {
         CharacterNaked(target[0]);
         ChatRoomCharacterUpdate(target[0]);
     } 
-	
-    else if (content.indexOf("/nurse") == 0) {
-        ReputationChange('Asylum', 200);
-        ReputationChange('Asylum', -50)
-    }
-	
+		
     else if (content.indexOf("/outfit") == 0) {
         if (content.includes("reset") || content.includes("revert") ||  content.includes("restore")) {
             Player.Appearance = ChatSearchSafewordAppearance.slice(0);
@@ -1075,11 +1021,6 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "Saves lasts only 1 login session.", Type: "LocalMessage", Sender: Player.MemberNumber });}
     }
 	
-    else if (content.indexOf("/patient") == 0) {
-        ReputationChange('Asylum', -200);
-        ReputationChange('Asylum', 50);
-    }    
-	
     else if (content.indexOf("/patreoncheats") == 0) {
         CheatValidate = function () { return true; };
         CheatAllow = true;
@@ -1093,11 +1034,7 @@ if (CurrentScreen == "ChatRoom") {
         document.getElementById("InputChat").style.display = "inline";
         document.getElementById("TextAreaChatLog").style.display = "inline";}
     }
-	
-    else if (content.indexOf("/permanentpatient") == 0) {
-        ReputationChange('Asylum', -200);
-    }
-	
+		
     else if (content.indexOf("/pet") == 0) {
         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" becomes a cute pet girl." }]});
         DailyJobPuppyLoad(0);
@@ -1479,7 +1416,62 @@ if (CurrentScreen == "ChatRoom") {
         CharacterFullRandomRestrain(target[0],"ALL");
         ChatRoomCharacterUpdate(target[0]);
     }
-		
+	
+    else if (content.indexOf("/roleplay") == 0) {
+
+        if (content.includes("clubmistress")) {
+           LogAdd("ClubMistress", "Management");
+        }
+
+        else if (content.includes("clubslave")) {
+            LogAdd("ClubSlave", "Management", CurrentTime + 3600000);
+        }
+
+        else if (content.includes("doctor")) {
+            ReputationChange('Asylum', 200);
+        }
+
+        else if (content.includes("headmaid")) {
+            LogAdd("LeadSorority", "Maid");
+        }
+
+        else if (content.includes("kidnapper")) {
+            ReputationChange("Kidnap", 200);
+            ReputationChange("Kidnap", -50);
+        }
+
+        else if (content.includes("maid")) {
+            LogAdd("JoinedSorority", "Management");
+        }
+	
+        else if (content.includes("masterkidnapper")) {
+            ReputationChange("Kidnap", 200);
+        }
+
+        else if (content.includes("mistress")) {
+            LogAdd("ClubMistress", "Management");
+            ReputationChange("Dominant", 200);
+        }
+
+        else if (content.includes("nurse")) {
+            ReputationChange('Asylum', 200);
+            ReputationChange('Asylum', -50);
+        }
+
+        else if (content.includes("patient")) {
+            ReputationChange('Asylum', -200);
+            ReputationChange('Asylum', 50);
+        }    
+
+        else if (content.includes("permanentpatient")) {
+            ReputationChange('Asylum', -200);
+        }
+
+    	else if (content.endsWith("/roleplay")) {	  
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a role. List: clubmistress, clubslave, doctor, headmaid, kidnapper, maid, masterkidnapper, mistress, nurse, patient, permanentpatient. Be careful with clubslave, you will be forced to complete contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        }
+    }
+	
     else if (content.indexOf("/safewordspecific") == 0) {
         ChatRoomMessage({ Content: "Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
         setTimeout(function() {
