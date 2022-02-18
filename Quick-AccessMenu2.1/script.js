@@ -286,7 +286,7 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Eyebrows","Soft",1000);
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is worried." }]});
         }
-   b
+   
  	else if (content.endsWith("/anim")) {	  
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry, bareteeth, blink, blush1, blush2, blush3, blush4, blush5, chuckle, closeeyes, closemouth, confused, cry, disoriented, distressed, droolreset, droolsides, frown, giggle, glare, grin, happy, laugh, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
