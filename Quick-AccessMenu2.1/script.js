@@ -110,7 +110,32 @@ if (CurrentScreen == "ChatRoom") {
            CharacterSetFacialExpression(Player,"Eyes2","Closed",.06);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" blinks her eyes." }]});
         }
-        
+	    
+	else if (content.includes("blush1")) {
+           CharacterSetFacialExpression(Player,"Blush","Low",2.78);
+           ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" slightly blushes." }]});
+        }
+
+        else if (content.includes("blush2")) {
+           CharacterSetFacialExpression(Player,"Blush","Medium",2.78);
+           ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" blushes." }]});
+        }
+
+        else if (content.includes("blush3")) {
+           CharacterSetFacialExpression(Player,"Blush","High",2.78);
+           ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" blushes a lot." }]});
+        }
+
+        else if (content.includes("blush4")) {
+           CharacterSetFacialExpression(Player,"Blush","VeryHigh",2.78);
+           ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" very strongly blushes." }]});
+        }
+
+        else if (content.includes("blush5")) {
+           CharacterSetFacialExpression(Player,"Blush","Extreme",2.78);
+           ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" extremely blushes." }]});
+        }
+
         else if (content.includes("chuckle")) {
            CharacterSetFacialExpression(Player,"Mouth","Grin",1.11);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" chuckles." }]});
@@ -135,7 +160,15 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Fluids","TearsMedium",1000,"#000016");
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" cries." }]});
         }
-  
+	    
+        else if (content.includes("disoriented")) {      
+            CharacterSetFacialExpression(Player,"Eyes","Dizzy",2.22);
+            CharacterSetFacialExpression(Player,"Eyes2","Dizzy",2.22);
+            CharacterSetFacialExpression(Player,"Eyebrows","Raised",2.22);
+            CharacterSetFacialExpression(Player,"Blush","Medium",2.22);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" feels disoriented." }]});
+        }
+
         else if (content.includes("distressed")) {      
             CharacterSetFacialExpression(Player,"Eyes","Scared",1000);
             CharacterSetFacialExpression(Player,"Eyes2","Scared",1000);
@@ -253,10 +286,10 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Eyebrows","Soft",1000);
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is worried." }]});
         }
-   
- 	  else if (content.endsWith("/anim")) {	  
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry, bareteeth, blink, chuckle, closeeyes, closemouth, confused, cry, distressed, droolreset, droolsides, frown, giggle, glare, grin, happy, laugh, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
-          }
+   b
+ 	else if (content.endsWith("/anim")) {	  
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry, bareteeth, blink, blush1, blush2, blush3, blush4, blush5, chuckle, closeeyes, closemouth, confused, cry, disoriented, distressed, droolreset, droolsides, frown, giggle, glare, grin, happy, laugh, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        }
     }
 
     else if (content.indexOf("/arousal") == 0) {
