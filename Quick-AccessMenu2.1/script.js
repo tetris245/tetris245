@@ -354,16 +354,18 @@ if (CurrentScreen == "ChatRoom") {
         BackgroundsList.push({ Name: "Bar", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "BrickWall", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Cell", Tag: [BackgroundsTagIndoor] });
+	BackgroundsList.push({ Name: "CollegeArtWide", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "CollegeCafeteria", Tag: [BackgroundsTagIndoor] });
 	BackgroundsList.push({ Name: "CollegeClass2", Tag: [BackgroundsTagIndoor] });
+	BackgroundsList.push({ Name: "CollegeClassWide", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "CollegeDetention", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "CollegeEntrance", Tag: [BackgroundsTagIndoor] });
+	BackgroundsList.push({ Name: "CollegeHallWide", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "CollegeTeacherLounge", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "CollegeTennisPlay", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Dressing", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Gambling", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "grey", Tag: [BackgroundsTagIndoor] });
-        BackgroundsList.push({ Name: "White", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "HorseStableLight", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "HypnoSpiral2", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "HypnoticSpiral", Tag: [BackgroundsTagIndoor] });
@@ -388,6 +390,7 @@ if (CurrentScreen == "ChatRoom") {
         BackgroundsList.push({ Name: "Shop", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "SlaveMarket", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "SophieIntro", Tag: [BackgroundsTagIndoor] });
+	BackgroundsList.push({ Name: "White", Tag: [BackgroundsTagIndoor] });
         ChatCreateBackgroundList = BackgroundsGenerateList(BackgroundsTagList);
         ChatRoomMessage({ Content: "Quick-AccessMenu2: You can use more backgrounds now.", Type: "LocalMessage", Sender: Player.MemberNumber });
     }   
