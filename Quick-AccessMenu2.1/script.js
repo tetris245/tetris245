@@ -10,7 +10,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "ChatRoomHelp", Type: "Action", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "Quick-AccessMenu2: List of commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/action (stuffhere)  = inserts an action. Can also: /a.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/anim (animhere). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/anim2 (animhere). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/arousal 10  =  sets arousal level. Change value (0-100).", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/autokick  =  toggles on auto kick for 0 day old accounts.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/babytalk (stuffhere) =  speaks as a baby. Can also: /b", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -44,7 +44,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/outfit  =  saving/loading, using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/patreoncheats  =  all except college uniform, is auto toggled by default.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber });  
-	ChatRoomMessage({ Content: "/pose (posehere) (targetname). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/pose2 (posehere) (targetname). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/randomize (targetname) = naked + underwear + clothes + restrain commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/release (targetname) =  removes all bindings.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/relog  =  relogs.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -74,7 +74,7 @@ if (CurrentScreen == "ChatRoom") {
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (content.substring(2).trim() )}] });}
     }
 	
-    else if (content.indexOf("/anim") == 0) {
+    else if (content.indexOf("/anim2") == 0) {
         var stringAnim = content;
 	CharacterResetFacialExpression(Player);
 
@@ -273,7 +273,7 @@ if (CurrentScreen == "ChatRoom") {
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is worried." }]});
         }
    
- 	else if (content.endsWith("/anim")) {	  
+ 	else if (content.endsWith("/anim2")) {	  
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry, bareteeth, blink, blush1, blush2, blush3, blush4, blush5, chuckle, closeeyes, closemouth, confused, cry, disoriented, distressed, droolreset, droolsides, frown, giggle, glare, grin, happy, laugh, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
     }
@@ -1037,7 +1037,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomCharacterUpdate(Player);
     }
 	
-    else if (content.indexOf("/pose") == 0) {
+    else if (content.indexOf("/pose2") == 0) {
         var stringPose1 = content;
         var stringPose2 = stringPose1.split(/[ ,]+/);
         var targetname = stringPose2[2];
@@ -1329,7 +1329,7 @@ if (CurrentScreen == "ChatRoom") {
             : CharacterRefresh(target[0]);
 	}
 	    
-        else if (content.endsWith("/pose")) {
+        else if (content.endsWith("/pose2")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension1, suspension2, tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
     }
