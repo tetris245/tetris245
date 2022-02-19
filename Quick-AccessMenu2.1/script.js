@@ -45,11 +45,6 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/patreoncheats  =  all except college uniform, is auto toggled by default.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber });  
 	ChatRoomMessage({ Content: "/pose (posehere) (targetname). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/quitasylum  =  stops being a doctor, nurse, patient or permanent patient.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/quitclubslave  =  breaks club slave contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/quitkidnapper  =  stops being a kidnapper or master kidnapper.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/quitmanagement  =  stops being a mistress or club mistress.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/quitsorority  =  stops being a maid or head maid.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/randomize (targetname) = naked + underwear + clothes + restrain commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/release (targetname) =  removes all bindings.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/relog  =  relogs.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -57,6 +52,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/resetinventory  =  erases your inventory. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/restrain (targetname) =  adds random restraints.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/roleplay (rolehere) = starts a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/rolequit (role or clubarea here) = ceases to play a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/safewordspecific  =  removes specific item. More info when used.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/search (areaname)  =  opens room search, area is: club or asylum", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/speak  = animates mouth when talking in chat. Can also: /mouth or /speech", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -901,8 +897,7 @@ if (CurrentScreen == "ChatRoom") {
         CheatAllow = true;
         LogAdd("BondageCollege", "Import");
         LogAdd("KidnapSophie", "Sarah");
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: A few things have to be set manually. See the /roleplay command.", Type: "LocalMessage", Sender: Player.MemberNumber });  
-        ChatRoomMessage({ Content: "To quit a role, type: /quitasylum or /quitmanagement or /quitkidnapper or /quitsorority or /quitclubslave", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "Quick-AccessMenu2: A few things have to be set manually. See the /roleplay and /rolequit commands.", Type: "LocalMessage", Sender: Player.MemberNumber });      
     }
 	
     else if (content.indexOf("/mindifficulty") == 0) {
@@ -1338,33 +1333,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension1, suspension2, tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
     }
-	
-    else if (content.indexOf("/quitasylum") == 0) {
-        DialogSetReputation("Asylum", 0);
-    }
-	
-    else if (content.indexOf("/quitclubslave") == 0) {
-        LogAdd("ClubSlave", "Management", CurrentTime);
-        LogAdd("BlockChange", "Rule", CurrentTime);
-        ManagementIsClubSlave = function () { return false }
-        ManagementClubSlaveDialog = function (Player) {}
-        ManagementFinishClubSlave()
-    }
-	
-    else if (content.indexOf("/quitkidnapper") == 0) {
-        DialogSetReputation("Kidnap", 0)
-    }
-	
-    else if ((content.indexOf("/quitmanagement") == 0) || content.indexOf("/quitmistress") == 0) {
-        LogDelete("ClubMistress", "Management");
-        LogDelete("Mistress", "Management");
-    }
-	
-    else if ((content.indexOf("/quitsorority") == 0) ||  content.indexOf("/quitmaid") == 0)  {
-	LogDelete("JoinedSorority", "Management");
-	LogDelete("LeadSorority", "Maid");
-    }
-	
+		
     else if (content.indexOf("/randomize") == 0) {
         var targetname = content.substring(10).trim();
         if (targetname == undefined) {targetname = Player.Name};
@@ -1420,7 +1389,7 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/roleplay") == 0) {
 
         if (content.includes("clubmistress")) {
-           LogAdd("ClubMistress", "Management");
+            LogAdd("ClubMistress", "Management");
         }
 
         else if (content.includes("clubslave")) {
@@ -1469,6 +1438,44 @@ if (CurrentScreen == "ChatRoom") {
 
     	else if (content.endsWith("/roleplay")) {	  
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a role. List: clubmistress, clubslave, doctor, headmaid, kidnapper, maid, masterkidnapper, mistress, nurse, patient, permanentpatient. Be careful with clubslave, you will be forced to complete contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        }
+    }
+	
+    else if (content.indexOf("/rolequit") == 0) {
+
+        if (content.includes("asylum")) {
+            DialogSetReputation("Asylum", 0);
+        }
+	
+        else if (content.includes("clubslave")) {
+            LogAdd("ClubSlave", "Management", CurrentTime);
+            LogAdd("BlockChange", "Rule", CurrentTime);
+            ManagementIsClubSlave = function () { return false }
+            ManagementClubSlaveDialog = function (Player) {}
+            ManagementFinishClubSlave()
+        }
+	
+        else if (content.includes("kidnapper")) {
+            DialogSetReputation("Kidnap", 0)
+        }
+	
+        else if ((content.includes("management")) || content.includes("mistress")) {
+            LogDelete("ClubMistress", "Management");
+            LogDelete("Mistress", "Management");
+        }
+	
+        else if ((content.includes("sorority")) ||  content.includes("maid"))  {
+	    LogDelete("JoinedSorority", "Management");
+	    LogDelete("LeadSorority", "Maid");
+        }
+
+    	else if (content.endsWith("/rolequit")) {	  
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a role or clubarea. List:",Type: "LocalMessage", Sender: Player.MemberNumber });  
+            ChatRoomMessage({ Content: "asylum to cease being doctor, nurse, patient or permanent patient.",Type: "LocalMessage", Sender: Player.MemberNumber });           
+            ChatRoomMessage({ Content: "clubslave to break the club slave contract.",Type: "LocalMessage", Sender: Player.MemberNumber });           
+            ChatRoomMessage({ Content: "kidnapper to cease being kidnapper or master kidnapper.",Type: "LocalMessage", Sender: Player.MemberNumber }); 
+            ChatRoomMessage({ Content: "management or mistress to cease being mistress or club mistress.",Type: "LocalMessage", Sender: Player.MemberNumber });                
+            ChatRoomMessage({ Content: "sorority or maid to cease being maid or headmaid.",Type: "LocalMessage", Sender: Player.MemberNumber });                    
         }
     }
 	
