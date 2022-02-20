@@ -314,7 +314,20 @@ if (CurrentScreen == "ChatRoom") {
            ServerSend("ChatRoomChat", { "Content":content.substring(2).trim(), "Type":"Chat" });}
     }
 	
-    else if (content.indexOf("/background") == 0) {
+    else if (content.indexOf("/background") == 0) {    
+        var BackgroundsTagList = [
+	      BackgroundsTagNone,
+	      BackgroundsTagIndoor,
+	      BackgroundsTagOutdoor,
+	      BackgroundsTagAquatic,
+	      BackgroundsTagSpecial,
+	      BackgroundsTagSciFiFantasy,
+	      BackgroundsTagClub,
+	      BackgroundsTagHouse,
+	      BackgroundsTagDungeon,                                                                                           
+           BackgroundsTagAsylum          
+        ];
+        var BackgroundsPrivateRoomTagList = BackgroundsTagList;
         BackgroundsList.push({ Name: "Pandora/Ground/Entrance", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Second/Cell0", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Second/Cell1", Tag: [BackgroundsTagIndoor] });
@@ -361,13 +374,8 @@ if (CurrentScreen == "ChatRoom") {
         BackgroundsList.push({ Name: "Pandora/Underground/Tunnel3", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Underground/Tunnel4", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Underground/Tunnel5", Tag: [BackgroundsTagIndoor] });
-        BackgroundsList.push({ Name: "Pandora/Underground/Tunnel6", Tag: [BackgroundsTagIndoor] });
-        BackgroundsList.push({ Name: "AsylumBedroom", Tag: [BackgroundsTagIndoor] });
-        BackgroundsList.push({ Name: "AsylumEntrance", Tag: [BackgroundsTagIndoor] });
-	BackgroundsList.push({ Name: "AsylumGGTSRoom", Tag: [BackgroundsTagIndoor] });   
+        BackgroundsList.push({ Name: "Pandora/Underground/Tunnel6", Tag: [BackgroundsTagIndoor] });  
 	BackgroundsList.push({ Name: "AsylumGGTSRoomAlert", Tag: [BackgroundsTagIndoor] });    
-        BackgroundsList.push({ Name: "AsylumMeeting", Tag: [BackgroundsTagIndoor] });
-        BackgroundsList.push({ Name: "AsylumTherapy", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "AmandaCollarIntro", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "AmandaIntro", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Bar", Tag: [BackgroundsTagIndoor] });
@@ -393,9 +401,6 @@ if (CurrentScreen == "ChatRoom") {
         BackgroundsList.push({ Name: "MagicSchoolLaboratory", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "/Orig/Entrance", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "/Orig/Lounge", Tag: [BackgroundsTagIndoor] });
-        BackgroundsList.push({ Name: "OutsideCells", Tag: [BackgroundsTagIndoor] });
-        BackgroundsList.push({ Name: "PaddedCell", Tag: [BackgroundsTagIndoor] });
-        BackgroundsList.push({ Name: "PaddedCell2", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Prison", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "RhythmGame", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "RhythmGameLoading", Tag: [BackgroundsTagIndoor] });
