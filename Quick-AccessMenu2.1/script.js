@@ -325,9 +325,8 @@ if (CurrentScreen == "ChatRoom") {
 	      BackgroundsTagClub,
 	      BackgroundsTagHouse,
 	      BackgroundsTagDungeon,                                                                                           
-           BackgroundsTagAsylum          
+              BackgroundsTagAsylum          
         ];
-        var BackgroundsPrivateRoomTagList = BackgroundsTagList;
         BackgroundsList.push({ Name: "Pandora/Ground/Entrance", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Second/Cell0", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Second/Cell1", Tag: [BackgroundsTagIndoor] });
