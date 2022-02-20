@@ -20,7 +20,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/boost  =  boosts skills, similar to maid quarters drink.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/chess  (difficulty) =  starts chess, must specify difficulty first (/chess 1 = easy, /chess 3 = hard).", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/clothes (targetname) =  changes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });  
-	ChatRoomMessage({ Content: "/clubhelp = displays the standard commands of the game.", Type: "LocalMessage", Sender: Player.MemberNumber });  
+	ChatRoomMessage({ Content: "/clubhelp = displays the standard commands of the game (and optionaly the BCE commands).", Type: "LocalMessage", Sender: Player.MemberNumber });  
         ChatRoomMessage({ Content: "/collarremove  =  removes slave/owner collar. Can also be: /removecollar", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/college  =  enters college, bypasses requirements.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/colorchanger  =  using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -75,7 +75,7 @@ if (CurrentScreen == "ChatRoom") {
     }
 	
     else if (content.indexOf("/anim2") == 0) {
-        var stringAnim = content;
+        CharacterResetFacialExpression(Player);
 	CharacterResetFacialExpression(Player);
 
         if (content.includes("angry")) {
