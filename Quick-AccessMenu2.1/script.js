@@ -79,15 +79,15 @@ if (CurrentScreen == "ChatRoom") {
 	CharacterResetFacialExpression(Player);
 
         if (content.includes("angry")) {
-           CharacterSetFacialExpression(Player,"Mouth","Angry",1000);
-           CharacterSetFacialExpression(Player,"Eyes","Angry",1000);
-           CharacterSetFacialExpression(Player,"Eyes2","Angry",1000);
-           CharacterSetFacialExpression(Player,"Eyebrows","Angry",1000);
+           CharacterSetFacialExpression(Player,"Mouth","Angry",75000);
+           CharacterSetFacialExpression(Player,"Eyes","Angry",75000);
+           CharacterSetFacialExpression(Player,"Eyes2","Angry",75000);
+           CharacterSetFacialExpression(Player,"Eyebrows","Angry",75000);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is very angry." }]});
 	}
 	    
         else if (content.includes("bareteeth")) {         
-            CharacterSetFacialExpression(Player,"Mouth","Angry",1000);
+            CharacterSetFacialExpression(Player,"Mouth","Angry",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is angry." }]});
         }
 
@@ -128,8 +128,8 @@ if (CurrentScreen == "ChatRoom") {
         }
 
 	else if (content.includes("closeeyes")) {
-           CharacterSetFacialExpression(Player,"Eyes","Closed",1000);         
-           CharacterSetFacialExpression(Player,"Eyes2","Closed",1000);
+           CharacterSetFacialExpression(Player,"Eyes","Closed",75000);         
+           CharacterSetFacialExpression(Player,"Eyes2","Closed",75000);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" closes her eyes." }]});
         }
 
@@ -138,7 +138,7 @@ if (CurrentScreen == "ChatRoom") {
         }
 
         else if (content.includes("confused")) {
-            CharacterSetFacialExpression(Player,"Eyebrows","OneRaised",1000);
+            CharacterSetFacialExpression(Player,"Eyebrows","OneRaised",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is confused." }]});
         }  
 
@@ -156,10 +156,10 @@ if (CurrentScreen == "ChatRoom") {
         }
 
         else if (content.includes("distressed")) {      
-            CharacterSetFacialExpression(Player,"Eyes","Scared",1000);
-            CharacterSetFacialExpression(Player,"Eyes2","Scared",1000);
-            CharacterSetFacialExpression(Player,"Eyebrows","Soft",1000);
-            CharacterSetFacialExpression(Player,"Mouth","Angry",1000);
+            CharacterSetFacialExpression(Player,"Eyes","Scared",75000);
+            CharacterSetFacialExpression(Player,"Eyes2","Scared",75000);
+            CharacterSetFacialExpression(Player,"Eyebrows","Soft",75000);
+            CharacterSetFacialExpression(Player,"Mouth","Angry",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is distressd." }]});
         }
 
@@ -173,7 +173,7 @@ if (CurrentScreen == "ChatRoom") {
         }
       
         else if (content.includes("frown")) {         
-            CharacterSetFacialExpression(Player,"Mouth","Frown",1000);
+            CharacterSetFacialExpression(Player,"Mouth","Frown",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" disagrees." }]});
         }
 	    
@@ -183,21 +183,21 @@ if (CurrentScreen == "ChatRoom") {
         }
 
         else if (content.includes("glare")) {   
-            CharacterSetFacialExpression(Player,"Eyes","Angry",1000);
-            CharacterSetFacialExpression(Player,"Eyes2","Angry",1000);
-            CharacterSetFacialExpression(Player,"Eyebrows","Harsh",1000);
+            CharacterSetFacialExpression(Player,"Eyes","Angry",75000);
+            CharacterSetFacialExpression(Player,"Eyes2","Angry",75000);
+            CharacterSetFacialExpression(Player,"Eyebrows","Harsh",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" looks at everybody with angry eyes." }]});
         }
     
         else if (content.includes("grin")) {
-            CharacterSetFacialExpression(Player,"Eyes","Horny",1000);         
-            CharacterSetFacialExpression(Player,"Eyes2","Horny",1000);
-            CharacterSetFacialExpression(Player,"Mouth","Grin",1000);
+            CharacterSetFacialExpression(Player,"Eyes","Horny",75000);         
+            CharacterSetFacialExpression(Player,"Eyes2","Horny",75000);
+            CharacterSetFacialExpression(Player,"Mouth","Grin",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" grins." }]});
         }
 	    
         else if (content.includes("happy")) {         
-            CharacterSetFacialExpression(Player,"Mouth","Happy",1000);
+            CharacterSetFacialExpression(Player,"Mouth","Happy",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is happy." }]});
         }
 	           
@@ -207,8 +207,8 @@ if (CurrentScreen == "ChatRoom") {
         }
 
         else if (content.includes("narroweyes")) {
-           CharacterSetFacialExpression(Player,"Eyes","Horny",1000);         
-           CharacterSetFacialExpression(Player,"Eyes2","Horny",1000);
+           CharacterSetFacialExpression(Player,"Eyes","Horny",75000);         
+           CharacterSetFacialExpression(Player,"Eyes2","Horny",75000);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" narrows her eyes." }]});
         }
 
@@ -221,43 +221,43 @@ if (CurrentScreen == "ChatRoom") {
         }
 	    	   
         else if (content.includes("openmouth")) {         
-            CharacterSetFacialExpression(Player,"Mouth","Moan",1000);
+            CharacterSetFacialExpression(Player,"Mouth","Moan",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" opens her mouth." }]});   
         }
 
         else if (content.includes("pout")) {      
-            CharacterSetFacialExpression(Player,"Mouth","Pout",1000);
-            CharacterSetFacialExpression(Player,"Eyes","Dazed",1000);
-            CharacterSetFacialExpression(Player,"Eyes2","Dazed",1000);
-            CharacterSetFacialExpression(Player,"Eyebrows","Harsh",1000);
+            CharacterSetFacialExpression(Player,"Mouth","Pout",75000);
+            CharacterSetFacialExpression(Player,"Eyes","Dazed",75000);
+            CharacterSetFacialExpression(Player,"Eyes2","Dazed",75000);
+            CharacterSetFacialExpression(Player,"Eyebrows","Harsh",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" pouts." }]});
         }
 
         else if (content.includes("raisebrows")) {
-            CharacterSetFacialExpression(Player,"Eyebrows","Raised",1000);
+            CharacterSetFacialExpression(Player,"Eyebrows","Raised",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" raises her brows." }]});
         }
 
         else if (content.includes("resetbrows")) {
-            CharacterSetFacialExpression(Player,"Eyebrows","",1000);
+            CharacterSetFacialExpression(Player,"Eyebrows","",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" feels reassured." }]});     
         }
 
         else if (content.includes("sad")) {           
-            CharacterSetFacialExpression(Player,"Mouth","Frown",1000);
-            CharacterSetFacialExpression(Player,"Eyes","Shy",1000);
-            CharacterSetFacialExpression(Player,"Eyes2","Shy",1000);
-            CharacterSetFacialExpression(Player,"Eyebrows","Soft",1000);
+            CharacterSetFacialExpression(Player,"Mouth","Frown",75000);
+            CharacterSetFacialExpression(Player,"Eyes","Shy",75000);
+            CharacterSetFacialExpression(Player,"Eyes2","Shy",75000);
+            CharacterSetFacialExpression(Player,"Eyebrows","Soft",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is sad." }]});
         }
 
         else if (content.includes("smile")) {         
-            CharacterSetFacialExpression(Player,"Mouth","Grin",1000);
+            CharacterSetFacialExpression(Player,"Mouth","Grin",75000);
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" smiles." }]});
         }
 
         else if (content.includes("smirk")) {       
-	    CharacterSetFacialExpression(Player,"Mouth","Smirk",1000);
+	    CharacterSetFacialExpression(Player,"Mouth","Smirk",75000);
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" smirks." }]});
         }
 
@@ -267,9 +267,9 @@ if (CurrentScreen == "ChatRoom") {
         }
 
         else if (content.includes("worried")) {
-            CharacterSetFacialExpression(Player,"Eyes","Surprised",1000);
-            CharacterSetFacialExpression(Player,"Eyes2","Surprised",1000);
-            CharacterSetFacialExpression(Player,"Eyebrows","Soft",1000);
+            CharacterSetFacialExpression(Player,"Eyes","Surprised",75000);
+            CharacterSetFacialExpression(Player,"Eyes2","Surprised",75000);
+            CharacterSetFacialExpression(Player,"Eyebrows","Soft",75000);
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is worried." }]});
         }
    
