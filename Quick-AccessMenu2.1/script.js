@@ -1782,7 +1782,7 @@ if (CurrentScreen == "ChatRoom") {
         target[0].OnlineSharedSettings.AllowFullWardrobeAccess = true;
         target[0].OnlineSharedSettings.BlockBodyCosplay = false;
         ChatRoomClickCharacter(ChatRoomTargetMemberNumber = target[0]);
-        ChatRoomChangeClothes();
+        DialogChangeClothes();
     }
 	
     else if (content.indexOf("/whisper") == 0) {
