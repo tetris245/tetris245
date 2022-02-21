@@ -667,7 +667,7 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/game") == 0) {
 
         if (content.endsWith("/game")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a minigame. List: cleaning, dojo, drinks, kidnap, puppy, rhythm. You need to click on the maid in the Maid Quarters for the cleaning, drinks and rhythm games.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a minigame. List: carrot, cleaning, dojo, drinks, hurdle, kidnap, puppy, rhythm. You need to click on the maid in the Maid Quarters for the cleaning, drinks and rhythm games.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	   }
 
         else {
@@ -675,8 +675,15 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomSetLastChatRoom("");
             OnlineGameName = "";
             ChatRoomClearAllElements();  
-
-            if (content.includes("cleaning")) {         
+		
+            if (content.includes("carrot")) {                    
+                CommonSetScreen("Room", "Stable");
+                StableDressPonyStart();
+                StableWearPonyEquipment(Player);
+                MiniGameStart("HorseWalk", "Carrot", "StablePonyEnd");
+            }
+		
+            else if (content.includes("cleaning")) {         
                CommonSetScreen("Room", "MaidQuarters");
                GameType = "MaidCleaning"; 
                MaidQuartersMaid.Stage = "400";
@@ -693,6 +700,13 @@ if (CurrentScreen == "ChatRoom") {
                GameType = "MaidDrinks"; 
                MaidQuartersMaid.Stage = "200";
            }
+		
+           else if (content.includes("hurdle")) {
+                CommonSetScreen("Room", "Stable");
+                StableDressPonyStart();
+                StableWearPonyEquipment(Player);
+                MiniGameStart("HorseWalk", "Hurdle", "StablePonyEnd");
+            }
 
            else if (content.includes("kidnap")) {
                CommonSetScreen("Room", "Introduction");
@@ -2024,6 +2038,7 @@ function ManagementCanBeClubSlave() {return true }
 function ManagementCannotBeClubSlaveOwnerLock() {}
 function ManagementCannotBeClubSlaveLoverLock() {}
 function AsylumEntranceIsWearingNurseClothes() {return true}
+
 function CellLoad() {
     CellKeyDepositStaff = CharacterLoadNPC("NPC_Cell_KeyDepositStaff");
     CellKeyDepositStaff.AllowItem = false;
@@ -2031,6 +2046,7 @@ function CellLoad() {
     CellOpenTimer = LogValue("Locked", "Cell");
     if (CellOpenTimer == null) CellOpenTimer = 0;
     }
+
 function CellClick() {
     if (MouseIn(1885, 25, 90, 90) && Player.CanKneel() && (CellOpenTimer > CurrentTime)) CharacterSetActivePose(Player, (Player.ActivePose == null) ? "Kneel" : null, true);
     if (MouseIn(750, 0, 500, 1000)) CharacterSetCurrent(Player);
@@ -2044,6 +2060,19 @@ function CellClick() {
     }
 }
 
+function StablePonyEnd() {
+    CommonSetScreen("Room", "Stable");
+    CharacterSetCurrent(StableTrainer);
+    StableTrainer.Stage = "StableTrainingRunOut";
+    CharacterRelease(Player);
+    CharacterNaked(Player);
+    for (let E = Player.Appearance.length - 1; E >= 0; E--)
+		if ((Player.Appearance[E].Asset.Group.Name == "ItemTorso") || (Player.Appearance[E].Asset.Group.Name == "Hat") || (Player.Appearance[E].Asset.Group.Name == "ItemButt")) {
+			Player.Appearance.splice(E, 1);
+		}
+     CharacterDress(Player, StablePlayerAppearance);
+     CharacterRefresh(Player);
+}
 
 //embed engine. Depends on hidden unicode characters, so don't touch or risk corruption... depenencies are in chatroom script.
 var tenorRe = /(?:(?:(?:[A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)(?:(?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)(?:jpg|jpeg|gif|png)/;
