@@ -667,8 +667,9 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/game") == 0) {
 
         if (content.endsWith("/game")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a minigame. List: carrot, cleaning, dojo, drinks, hurdle, kidnap, puppy, rhythm. You need to click on the maid in the Maid Quarters for the cleaning, drinks and rhythm games.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	   }
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a minigame. List: carrot, cleaning, dojo, drinks, hurdle, kidnap, puppy, rhythm, training, whippony.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "Training is the trainer version of the hurdle game. You need to click on the maid in the Maid Quarters for the cleaning, drinks and rhythm games. ", Type: "LocalMessage", Sender: Player.MemberNumber });		     
+        }
 
         else {
 	    ServerSend("ChatRoomLeave", "");
@@ -725,6 +726,22 @@ if (CurrentScreen == "ChatRoom") {
                GameType = "RhythmGame"; 
                MaidQuartersMaid.Stage = "500";
            }
+		
+	   else if (content.includes("training")) {
+                CommonSetScreen("Room", "Stable");
+                StablePlayerAppearance = Player.Appearance.slice();
+	        StableWearTrainerEquipment(Player);
+                MiniGameStart("HorseWalk", "HurdleTraining", "StablePonyEnd");
+            }
+
+           else if (content.includes("whippony")) {
+                CommonSetScreen("Room", "Stable");
+                StablePlayerAppearance = Player.Appearance.slice();
+	        StableWearTrainerEquipment(Player);
+                MiniGameStart("HorseWalk", "WhipPony", "StablePonyEnd");
+            }
+
+		
         } 
     }    
 
