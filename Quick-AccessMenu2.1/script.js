@@ -731,17 +731,15 @@ if (CurrentScreen == "ChatRoom") {
                 CommonSetScreen("Room", "Stable");
                 StablePlayerAppearance = Player.Appearance.slice();
 	        StableWearTrainerEquipment(Player);
-                MiniGameStart("HorseWalk", "HurdleTraining", "StablePonyEnd");
+                MiniGameStart("HorseWalk", "HurdleTraining", "StableTrainerEnd");
             }
 
            else if (content.includes("whippony")) {
                 CommonSetScreen("Room", "Stable");
                 StablePlayerAppearance = Player.Appearance.slice();
 	        StableWearTrainerEquipment(Player);
-                MiniGameStart("HorseWalk", "WhipPony", "StablePonyEnd");
-            }
-
-		
+                MiniGameStart("HorseWalk", "WhipPony", "StableTrainerEnd");
+            }	
         } 
     }    
 
@@ -2089,6 +2087,15 @@ function StablePonyEnd() {
 		}
      CharacterDress(Player, StablePlayerAppearance);
      CharacterRefresh(Player);
+}
+
+function StableTrainerEnd() {
+    CommonSetScreen("Room", "Stable");
+    CharacterSetCurrent(StableTrainer);
+    StableTrainer.Stage = "StableExamTPass";
+    CharacterNaked(Player);
+    CharacterDress(Player, StablePlayerAppearance);
+    CharacterRefresh(Player);
 }
 
 //embed engine. Depends on hidden unicode characters, so don't touch or risk corruption... depenencies are in chatroom script.
