@@ -1524,7 +1524,7 @@ if (CurrentScreen == "ChatRoom") {
         InventorySetDifficulty(Player, "ItemVulva", solidity);
         InventorySetDifficulty(Player, "ItemVulvaPiercings", solidity);
         ServerPlayerInventorySync();
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: The solidity of your current non-modular bindings have been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "Quick-AccessMenu2: The solidity of your current non-modular bindings has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
     }
 
     else if ((content.indexOf("/speak") == 0) || (content.indexOf("/mouth") == 0) || (content.indexOf("/speech") == 0)) {
