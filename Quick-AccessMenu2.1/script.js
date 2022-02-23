@@ -53,7 +53,7 @@ if (CurrentScreen == "ChatRoom") {
 	ChatRoomMessage({ Content: "/rolequit (role or clubarea here) = ceases to play a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/safewordspecific  =  removes specific item. More info when used.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/search (areaname)  =  opens room search, area is: club or asylum", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/solidity (value) = changes the solidity of your current non-modular bindings. The value must be between 1 and 99.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/solidity (value) = changes the solidity of most current bindings. The value must be between 1 and 99.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/speak  = animates mouth when talking in chat. Can also: /mouth or /speech", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/store  =  leaves chatroom, goes to store. Shows hidden items.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/talkbaby  =  toggle on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1521,7 +1521,7 @@ if (CurrentScreen == "ChatRoom") {
         InventorySetDifficulty(Player, "ItemVulva", solidity);
         InventorySetDifficulty(Player, "ItemVulvaPiercings", solidity);
         ServerPlayerInventorySync();
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: The solidity of your current non-modular bindings has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "Quick-AccessMenu2: The solidity of most current bindings has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
     }
 
     else if ((content.indexOf("/speak") == 0) || (content.indexOf("/mouth") == 0) || (content.indexOf("/speech") == 0)) {
