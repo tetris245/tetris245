@@ -379,13 +379,10 @@ if (CurrentScreen == "ChatRoom") {
         BackgroundsList.push({ Name: "Bar", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "BrickWall", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Cell", Tag: [BackgroundsTagIndoor] });
-	BackgroundsList.push({ Name: "CollegeArtWide", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "CollegeCafeteria", Tag: [BackgroundsTagIndoor] });
 	BackgroundsList.push({ Name: "CollegeClass2", Tag: [BackgroundsTagIndoor] });
-	BackgroundsList.push({ Name: "CollegeClassWide", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "CollegeDetention", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "CollegeEntrance", Tag: [BackgroundsTagIndoor] });
-	BackgroundsList.push({ Name: "CollegeHallWide", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "CollegeTeacherLounge", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "CollegeTennisPlay", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Dressing", Tag: [BackgroundsTagIndoor] });
