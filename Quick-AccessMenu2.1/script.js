@@ -36,9 +36,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/kinkydungeon  =  to the end, add devious to toggle deviouschallenge or cheat to start with cheats or use as is to start vanilla. Remember to wear VR headset if you want others to see you play.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/leave  =  leaves room, even if prevented.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/login (accountname) (password)  =  logs in a new account.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/maxdifficulty  =  all your current bindings become extremely solid.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics, more info on others.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/mindifficulty  =  all your current bindings become very easy to remove.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/money 9999  =  gives or takes money. Change value.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/naked (targetname) =  removes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/outfit  =  saving/loading, using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -55,6 +53,7 @@ if (CurrentScreen == "ChatRoom") {
 	ChatRoomMessage({ Content: "/rolequit (role or clubarea here) = ceases to play a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/safewordspecific  =  removes specific item. More info when used.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/search (areaname)  =  opens room search, area is: club or asylum", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/solidity (value) = changes the solidity of your current non-modular bindings. The value must be between 1 and 99.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/speak  = animates mouth when talking in chat. Can also: /mouth or /speech", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/store  =  leaves chatroom, goes to store. Shows hidden items.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/talkbaby  =  toggle on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -879,38 +878,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomClearAllElements();
         }, 3000);
     }
-		
-    else if (content.indexOf("/maxdifficulty") == 0) {
-	ChatRoomMessage({ Content: "Quick-AccessMenu2: You will never escape your bindings!", Type: "LocalMessage", Sender: Player.MemberNumber });   
-        InventorySetDifficulty(Player, "ItemAddon", 99);
-        InventorySetDifficulty(Player, "ItemArms", 99);
-        InventorySetDifficulty(Player, "ItemBoots", 99);
-        InventorySetDifficulty(Player, "ItemBreast", 99);
-        InventorySetDifficulty(Player, "ItemButt", 99);
-        InventorySetDifficulty(Player, "ItemDevices", 99);
-        InventorySetDifficulty(Player, "ItemEars", 99);
-        InventorySetDifficulty(Player, "ItemFeet", 99);
-        InventorySetDifficulty(Player, "ItemHands", 99);
-        InventorySetDifficulty(Player, "ItemHead", 99);
-        InventorySetDifficulty(Player, "ItemHood", 99);
-        InventorySetDifficulty(Player, "ItemLegs", 99);
-        InventorySetDifficulty(Player, "ItemMisc", 99);
-        InventorySetDifficulty(Player, "ItemMouth", 99);
-        InventorySetDifficulty(Player, "ItemMouth2", 99);
-        InventorySetDifficulty(Player, "ItemMouth3", 99);
-        InventorySetDifficulty(Player, "ItemNeck", 99);
-        InventorySetDifficulty(Player, "ItemNeckAccessories", 99);
-        InventorySetDifficulty(Player, "ItemNeckRestraints", 99);
-        InventorySetDifficulty(Player, "ItemNipples", 99);
-        InventorySetDifficulty(Player, "ItemNipplesPiercings", 99);
-        InventorySetDifficulty(Player, "ItemNose", 99);
-        InventorySetDifficulty(Player, "ItemPelvis", 99);
-        InventorySetDifficulty(Player, "ItemTorso", 99) 
-        InventorySetDifficulty(Player, "ItemVulva", 99);
-        InventorySetDifficulty(Player, "ItemVulvaPiercings", 99);
-        ServerPlayerInventorySync();
-    }
-	
+			
     else if (content.indexOf("/maxstatistics") == 0) {
         Player.Money = 9999999999;
         SkillChange("Infiltration", 10);
@@ -931,37 +899,6 @@ if (CurrentScreen == "ChatRoom") {
         LogAdd("BondageCollege", "Import");
         LogAdd("KidnapSophie", "Sarah");
         ChatRoomMessage({ Content: "Quick-AccessMenu2: A few things have to be set manually. See the /roleplay and /rolequit commands.", Type: "LocalMessage", Sender: Player.MemberNumber });      
-    }
-	
-    else if (content.indexOf("/mindifficulty") == 0) {
-	ChatRoomMessage({ Content: "Quick-AccessMenu2: You can easily escape your bindings now!", Type: "LocalMessage", Sender: Player.MemberNumber });
-        InventorySetDifficulty(Player, "ItemAddon", 1);
-        InventorySetDifficulty(Player, "ItemArms", 1);
-        InventorySetDifficulty(Player, "ItemBoots", 1);
-        InventorySetDifficulty(Player, "ItemBreast", 1);
-        InventorySetDifficulty(Player, "ItemButt", 1);
-        InventorySetDifficulty(Player, "ItemDevices", 1);
-        InventorySetDifficulty(Player, "ItemEars", 1);
-        InventorySetDifficulty(Player, "ItemFeet", 1);
-        InventorySetDifficulty(Player, "ItemHands", 1);
-        InventorySetDifficulty(Player, "ItemHead", 1);
-        InventorySetDifficulty(Player, "ItemHood", 1);
-        InventorySetDifficulty(Player, "ItemLegs", 1);
-        InventorySetDifficulty(Player, "ItemMisc", 1);
-        InventorySetDifficulty(Player, "ItemMouth", 1);
-        InventorySetDifficulty(Player, "ItemMouth2", 1);
-        InventorySetDifficulty(Player, "ItemMouth3", 1);
-        InventorySetDifficulty(Player, "ItemNeck", 1);
-        InventorySetDifficulty(Player, "ItemNeckAccessories", 1);
-        InventorySetDifficulty(Player, "ItemNeckRestraints", 1);
-        InventorySetDifficulty(Player, "ItemNipples", 1);
-        InventorySetDifficulty(Player, "ItemNipplesPiercings", 1);
-        InventorySetDifficulty(Player, "ItemNose", 1);
-        InventorySetDifficulty(Player, "ItemPelvis", 1);
-        InventorySetDifficulty(Player, "ItemTorso", 1) 
-        InventorySetDifficulty(Player, "ItemVulva", 1);
-        InventorySetDifficulty(Player, "ItemVulvaPiercings", 1);
-        ServerPlayerInventorySync();
     }
 	
     else if (content.indexOf("/money") == 0) {
@@ -1558,6 +1495,38 @@ if (CurrentScreen == "ChatRoom") {
         }
     }
 	
+    else if (content.indexOf("/solidity") == 0) {
+	var solidity = content.substring(9).trim();
+        InventorySetDifficulty(Player, "ItemAddon", solidity);
+        InventorySetDifficulty(Player, "ItemArms", solidity);
+        InventorySetDifficulty(Player, "ItemBoots", solidity);
+        InventorySetDifficulty(Player, "ItemBreast", solidity);
+        InventorySetDifficulty(Player, "ItemButt", solidity);
+        InventorySetDifficulty(Player, "ItemDevices", solidity);
+        InventorySetDifficulty(Player, "ItemEars", solidity);
+        InventorySetDifficulty(Player, "ItemFeet", solidity);
+        InventorySetDifficulty(Player, "ItemHands", solidity);
+        InventorySetDifficulty(Player, "ItemHead", solidity);
+        InventorySetDifficulty(Player, "ItemHood", solidity);
+        InventorySetDifficulty(Player, "ItemLegs", solidity);
+        InventorySetDifficulty(Player, "ItemMisc", solidity);
+        InventorySetDifficulty(Player, "ItemMouth", solidity);
+        InventorySetDifficulty(Player, "ItemMouth2", solidity);
+        InventorySetDifficulty(Player, "ItemMouth3", solidity);
+        InventorySetDifficulty(Player, "ItemNeck", solidity);
+        InventorySetDifficulty(Player, "ItemNeckAccessories", solidity);
+        InventorySetDifficulty(Player, "ItemNeckRestraints", solidity);
+        InventorySetDifficulty(Player, "ItemNipples", solidity);
+        InventorySetDifficulty(Player, "ItemNipplesPiercings", solidity);
+        InventorySetDifficulty(Player, "ItemNose", solidity);
+        InventorySetDifficulty(Player, "ItemPelvis", solidity);
+        InventorySetDifficulty(Player, "ItemTorso", solidity) 
+        InventorySetDifficulty(Player, "ItemVulva", solidity);
+        InventorySetDifficulty(Player, "ItemVulvaPiercings", solidity);
+        ServerPlayerInventorySync();
+        ChatRoomMessage({ Content: "Quick-AccessMenu2: The solidity of your current non-modular bindings have been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+    }
+
     else if ((content.indexOf("/speak") == 0) || (content.indexOf("/mouth") == 0) || (content.indexOf("/speech") == 0)) {
         (typeof OLDtalking !== 'undefined') && (ChatRoomSendChat=OLDtalking); // reset
         NEWtalking = function (){this.msg = ElementValue("InputChat").trim();
