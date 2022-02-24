@@ -1494,12 +1494,14 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/solidity") == 0) {
 	var solidity = content.substring(9).trim();    
-        if (InventoryGet(Player, "ItemDevices").Asset.Name == "FuturisticCrate") {
-            if (solidity < 2) {
-                 InventoryRemove(Player,"ItemDevices");
-                 ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear the futuristic crate in which "+Player.Name+" was prisoner."}]});      
+	if (InventoryGet(Player, "ItemDevices") != null) {
+            if (InventoryGet(Player, "ItemDevices").Asset.Name == "FuturisticCrate") {
+                if (solidity < 2) {
+                     InventoryRemove(Player,"ItemDevices");
+                     ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear the futuristic crate in which "+Player.Name+" was prisoner."}]});        
+                }
             }
-        }
+        }	
         InventorySetDifficulty(Player, "ItemAddon", solidity);
         InventorySetDifficulty(Player, "ItemArms", solidity);
         InventorySetDifficulty(Player, "ItemBoots", solidity);
