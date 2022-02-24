@@ -53,7 +53,7 @@ if (CurrentScreen == "ChatRoom") {
 	ChatRoomMessage({ Content: "/rolequit (role or clubarea here) = ceases to play a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/safewordspecific  =  removes specific item. More info when used.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/search (areaname)  =  opens room search, area is: club or asylum", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/solidity (value) = changes the solidity of most current bindings. The value must be between 1 and 99.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/solidity (value) = changes the solidity of most current bindings. The value must be between 1 and 99. Value 1 allows to escape the futuristic crate.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/speak  = animates mouth when talking in chat. Can also: /mouth or /speech", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/store  =  leaves chatroom, goes to store. Shows hidden items.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/talkbaby  =  toggle on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1493,7 +1493,13 @@ if (CurrentScreen == "ChatRoom") {
     }
 	
     else if (content.indexOf("/solidity") == 0) {
-	var solidity = content.substring(9).trim();
+	var solidity = content.substring(9).trim();    
+        if (InventoryGet(Player, "ItemDevices").Asset.Name == "FuturisticCrate") {
+            if (solidity < 2) {
+                 InventoryRemove(Player,"ItemDevices");
+                 ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear the futuristic crate in which "+Player.Name+" was prisoner."}]});      
+            }
+        }
         InventorySetDifficulty(Player, "ItemAddon", solidity);
         InventorySetDifficulty(Player, "ItemArms", solidity);
         InventorySetDifficulty(Player, "ItemBoots", solidity);
