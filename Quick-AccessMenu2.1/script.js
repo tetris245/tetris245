@@ -2000,20 +2000,21 @@ ElementCreateInput("TagText", "text", DialogFocusItem.Property.Text, "30");}}
 //Auto enable patreon cheats. Also allows functionality for submissive mistress. If patched, blank functions.
     CheatValidate = function () { return true; };
     CheatAllow = true;
-    CheatActivated.push("ChangeNPCTrait");
-    CheatActivated.push("FreeNPCDress");
-    CheatActivated.push("MiniGameBonus");
-   // CheatActivated.push("FreeCollegeOutfit");withheld to prevent auto cheating
-    CheatActivated.push("CantLoseMistress");
-    CheatActivated.push("NoLoveDecay");
     CheatActivated.push("AutoShowTraits");
-    CheatActivated.push("SkipTrialPeriod");
     CheatActivated.push("BlockRandomKidnap");
+    CheatActivated.push("CantLoseMistress");
+    CheatActivated.push("ChangeNPCTrait");
+    CheatActivated.push("DoubleGGTSTime");
     CheatActivated.push("DoubleItemSpeed");
     CheatActivated.push("DoubleMoney");
-    CheatActivated.push("DoubleSkill");
     CheatActivated.push("DoubleReputation");
-	CheatExport();
+    CheatActivated.push("DoubleSkill");
+ // CheatActivated.push("FreeCollegeOutfit");withheld to prevent auto cheating
+    CheatActivated.push("FreeNPCDress");
+    CheatActivated.push("MiniGameBonus");
+    CheatActivated.push("NoLoveDecay");
+    CheatActivated.push("SkipTrialPeriod");
+    CheatExport();
 
 //Additionaly rule changers for game. 
 Asset.forEach(e => { if (e.Value < 0) e.Value = 1; });
