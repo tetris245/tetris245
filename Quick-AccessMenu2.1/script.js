@@ -681,15 +681,15 @@ if (CurrentScreen == "ChatRoom") {
             }
 		
             else if (content.includes("cleaning")) {         
-               CommonSetScreen("Room", "MaidQuarters");
-               GameType = "MaidCleaning"; 
-               MaidQuartersMaid.Stage = "400";
+                CommonSetScreen("Room", "MaidQuarters");
+                GameType = "MaidCleaning"; 
+                MaidQuartersMaid.Stage = "400";
             }
 
             else if (content.includes("dojo")) {
-               CommonSetScreen("Room", "Introduction");
-               IntroductionJobStart("SubDojo",0)
-               IntroductionJobDojoStart();
+                CommonSetScreen("Room", "Introduction");
+                IntroductionJobStart("SubDojo",0)
+                IntroductionJobDojoStart();
             }
 	 
            else if (content.includes("drinks")) {
@@ -699,10 +699,10 @@ if (CurrentScreen == "ChatRoom") {
            }
 		
            else if (content.includes("hurdle")) {
-                CommonSetScreen("Room", "Stable");
-                StableDressPonyStart();
-                StableWearPonyEquipment(Player);
-                MiniGameStart("HorseWalk", "Hurdle", "StablePonyEnd");
+               CommonSetScreen("Room", "Stable");
+               StableDressPonyStart();
+               StableWearPonyEquipment(Player);
+               MiniGameStart("HorseWalk", "Hurdle", "StablePonyEnd");
             }
 
            else if (content.includes("kidnap")) {
@@ -724,17 +724,17 @@ if (CurrentScreen == "ChatRoom") {
            }
 		
 	   else if (content.includes("training")) {
-                CommonSetScreen("Room", "Stable");
-                StablePlayerAppearance = Player.Appearance.slice();
-	        StableWearTrainerEquipment(Player);
-                MiniGameStart("HorseWalk", "HurdleTraining", "StableTrainerEnd");
+               CommonSetScreen("Room", "Stable");
+               StablePlayerAppearance = Player.Appearance.slice();
+	       StableWearTrainerEquipment(Player);
+               MiniGameStart("HorseWalk", "HurdleTraining", "StableTrainerEnd");
             }
 
            else if (content.includes("whippony")) {
-                CommonSetScreen("Room", "Stable");
-                StablePlayerAppearance = Player.Appearance.slice();
-	        StableWearTrainerEquipment(Player);
-                MiniGameStart("HorseWalk", "WhipPony", "StableTrainerEnd");
+               CommonSetScreen("Room", "Stable");
+               StablePlayerAppearance = Player.Appearance.slice();
+	       StableWearTrainerEquipment(Player);
+               MiniGameStart("HorseWalk", "WhipPony", "StableTrainerEnd");
             }	
         } 
     }    
@@ -1365,8 +1365,9 @@ if (CurrentScreen == "ChatRoom") {
 
         else if (content.includes("doctor")) {
             ReputationChange('Asylum', 200);
+	    LogAdd("Committed", "Asylum", CurrentTime);
         }
-
+ 
         else if (content.includes("headmaid")) {
             LogAdd("LeadSorority", "Maid");
         }
@@ -1392,6 +1393,7 @@ if (CurrentScreen == "ChatRoom") {
         else if (content.includes("nurse")) {
             ReputationChange('Asylum', 200);
             ReputationChange('Asylum', -50);
+	    LogAdd("Committed", "Asylum", CurrentTime);
         }
 
         else if (content.includes("patient")) {
