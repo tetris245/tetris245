@@ -12,6 +12,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/action (stuffhere)  = inserts an action. Can also: /a.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/anim2 (animhere). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/arousal 10  =  sets arousal level. Change value (0-100).", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/asylum (minutes) =  enters asylum, bypasses requirements. Specify minutes if you are a patient.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/autokick  =  toggles on auto kick for 0 day old accounts.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/babytalk (stuffhere) =  speaks as a baby. Can also: /b", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/background =  adds hidden backgrounds to the admin selection screen. Tip for BCX users: activate BCX before using this command.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -282,6 +283,19 @@ if (CurrentScreen == "ChatRoom") {
         if (content.includes("100")) {
            ActivityOrgasmRuined = false;
            ActivityOrgasmStart(Player); }
+    }
+	
+    else if (content.indexOf("/asylum") == 0) {
+        var minutes = content.substring(7).trim();
+        ChatRoomSetLastChatRoom("");
+        ServerSend("ChatRoomLeave", "");
+        OnlineGameName = "";
+        CommonSetScreen("Room", "AsylumEntrance");
+        ChatRoomClearAllElements();
+        AsylumEntranceIsWearingNurseClothes = function () {return true};
+        if (ReputationGet("Asylum") < 0) {
+            LogAdd("Committed", "Asylum", CurrentTime + 60000*minutes);
+        }
     }
 	
     else if (content.indexOf("/autokick") == 0) {
