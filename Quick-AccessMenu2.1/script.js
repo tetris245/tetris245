@@ -1441,7 +1441,15 @@ if (CurrentScreen == "ChatRoom") {
         else if (content.includes("kidnapper")) {
             DialogSetReputation("Kidnap", 0)
         }
-	
+	    
+	 else if (content.includes("magician")) {
+            DialogSetReputation("HouseMaiestas", 0);
+	      DialogSetReputation("HouseVincula", 0);
+	      DialogSetReputation("HouseAmplector", 0);
+	      DialogSetReputation("HouseCorporis", 0);
+	      LogDelete("Mastery", "MagicSchool");
+        }
+
         else if ((content.includes("management")) || content.includes("mistress")) {
             LogDelete("ClubMistress", "Management");
             LogDelete("Mistress", "Management");
@@ -1457,6 +1465,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "asylum to cease being doctor, nurse, patient or permanent patient.",Type: "LocalMessage", Sender: Player.MemberNumber });           
             ChatRoomMessage({ Content: "clubslave to break the club slave contract.",Type: "LocalMessage", Sender: Player.MemberNumber });           
             ChatRoomMessage({ Content: "kidnapper to cease being kidnapper or master kidnapper.",Type: "LocalMessage", Sender: Player.MemberNumber }); 
+	    ChatRoomMessage({ Content: "magician to cease being sage or oracle.",Type: "LocalMessage", Sender: Player.MemberNumber }); 
             ChatRoomMessage({ Content: "management or mistress to cease being mistress or club mistress.",Type: "LocalMessage", Sender: Player.MemberNumber });                
             ChatRoomMessage({ Content: "sorority or maid to cease being maid or headmaid.",Type: "LocalMessage", Sender: Player.MemberNumber });                    
         }
