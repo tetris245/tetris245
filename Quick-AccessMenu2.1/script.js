@@ -1442,12 +1442,12 @@ if (CurrentScreen == "ChatRoom") {
             DialogSetReputation("Kidnap", 0)
         }
 	    
-	 else if (content.includes("magician")) {
+	else if (content.includes("magician")) {
             DialogSetReputation("HouseMaiestas", 0);
-	      DialogSetReputation("HouseVincula", 0);
-	      DialogSetReputation("HouseAmplector", 0);
-	      DialogSetReputation("HouseCorporis", 0);
-	      LogDelete("Mastery", "MagicSchool");
+	    DialogSetReputation("HouseVincula", 0);
+	    DialogSetReputation("HouseAmplector", 0);
+	    DialogSetReputation("HouseCorporis", 0);
+	    LogDelete("Mastery", "MagicSchool");
         }
 
         else if ((content.includes("management")) || content.includes("mistress")) {
