@@ -28,6 +28,7 @@ Changes for future version 1.2:
 * Renamed the pose command as pose2 and added many poses. Complete list: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension1, suspension2, tapedhands. Only on yourself: jump, roof.
 * Bugfix: added missing code for resetinventory command
 * Bugfix: gv command in stead of gh to resolve conflict with ghostadd/remove standard commands
+* Removed the pop-up commands
 * Restructured the code for an easier reading
 
 Note: The new anims and poses are based and/or inspired by the BCE addon https://sidiousious.gitlab.io/bce/ - the command names anim2 and pose2 have been choosen to avoid conflict with this addon. 
