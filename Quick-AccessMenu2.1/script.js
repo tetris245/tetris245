@@ -92,8 +92,8 @@ if (CurrentScreen == "ChatRoom") {
 	}
 	    
         else if (content.includes("blink")) {
-           CharacterSetFacialExpression(Player,"Eyes","Closed",.06);         
-           CharacterSetFacialExpression(Player,"Eyes2","Closed",.06);
+           CharacterSetFacialExpression(Player,"Eyes","Closed",.96);         
+           CharacterSetFacialExpression(Player,"Eyes2","Closed",.96);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" blinks her eyes." }]});
         }
 	    
