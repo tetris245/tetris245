@@ -21,7 +21,7 @@ Changes for future version 1.2:
 * New command: keydeposit to keep your keys safe in the vault
 * New command: pet to become a fully restrained pet girl
 * New command: roleplay which merges several role commands. List of roles: clubmistress, clubslave, doctor, headmaid, kidnapper, maid, masterkidnapper, mistress, nurse, patient, permanentpatient. 
-* New command: rolequit which merges commands to leave a role. List: asylum, clubslave, kidnapper, maid, management, mistress, sorority.
+* New command: rolequit which merges commands to leave a role. List: asylum, clubslave, kidnapper, magician, maid, management, mistress, sorority.
 * New command: solidity to change the solidity of most current bindings (the maxdifficulty and mindifficulty commands have been removed). Value 1 allows to escape the futuristic crate.
 * Updated and improved the background command + added a tip for BCX users
 * Updated the wardrobe commmand
