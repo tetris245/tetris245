@@ -1409,6 +1409,42 @@ if (CurrentScreen == "ChatRoom") {
             ReputationChange('Asylum', -50);
 	    LogAdd("Committed", "Asylum", CurrentTime);
         }
+	    
+	else if (content.includes("oraclea")) {
+            DialogSetReputation("HouseMaiestas", 0);
+	    DialogSetReputation("HouseVincula", 0);
+	    DialogSetReputation("HouseAmplector", 0);
+	    DialogSetReputation("HouseCorporis", 0);
+            LogDelete("Mastery", "MagicSchool");
+            DialogSetReputation("HouseAmplector", 100);
+        }
+
+        else if (content.includes("oraclec")) {
+            DialogSetReputation("HouseMaiestas", 0);
+	    DialogSetReputation("HouseVincula", 0);
+	    DialogSetReputation("HouseAmplector", 0);
+	    DialogSetReputation("HouseCorporis", 0);
+            LogDelete("Mastery", "MagicSchool");
+            DialogSetReputation("HouseCorporis", 100);
+        }
+
+        else if (content.includes("oraclem")) {
+            DialogSetReputation("HouseMaiestas", 0);
+	    DialogSetReputation("HouseVincula", 0);
+	    DialogSetReputation("HouseAmplector", 0);
+	    DialogSetReputation("HouseCorporis", 0);
+            LogDelete("Mastery", "MagicSchool");
+            DialogSetReputation("HouseMaiestas", 100);
+        }
+
+        else if (content.includes("oraclev")) {
+            DialogSetReputation("HouseMaiestas", 0);
+	    DialogSetReputation("HouseVincula", 0);
+	    DialogSetReputation("HouseAmplector", 0);
+	    DialogSetReputation("HouseCorporis", 0);
+            LogDelete("Mastery", "MagicSchool");
+            DialogSetReputation("HouseVincula", 100);
+        }
 
         else if (content.includes("patient")) {
             ReputationChange('Asylum', -200);
@@ -1418,9 +1454,45 @@ if (CurrentScreen == "ChatRoom") {
         else if (content.includes("permanentpatient")) {
             ReputationChange('Asylum', -200);
         }
+	    
+	else if (content.includes("sagea")) {
+            DialogSetReputation("HouseMaiestas", 0);
+	    DialogSetReputation("HouseVincula", 0);
+	    DialogSetReputation("HouseAmplector", 0);
+	    DialogSetReputation("HouseCorporis", 0);
+            LogDelete("Mastery", "MagicSchool");
+            DialogSetReputation("HouseAmplector", 50);
+        }
+
+        else if (content.includes("sagec")) {
+            DialogSetReputation("HouseMaiestas", 0);
+	    DialogSetReputation("HouseVincula", 0);
+	    DialogSetReputation("HouseAmplector", 0);
+	    DialogSetReputation("HouseCorporis", 0);
+            LogDelete("Mastery", "MagicSchool");
+            DialogSetReputation("HouseCorporis", 50);
+        }
+
+        else if (content.includes("sagem")) {
+            DialogSetReputation("HouseMaiestas", 0);
+	    DialogSetReputation("HouseVincula", 0);
+	    DialogSetReputation("HouseAmplector", 0);
+	    DialogSetReputation("HouseCorporis", 0);
+            LogDelete("Mastery", "MagicSchool");
+            DialogSetReputation("HouseMaiestas", 50);
+        }
+
+        else if (content.includes("sagev")) {
+            DialogSetReputation("HouseMaiestas", 0);
+	    DialogSetReputation("HouseVincula", 0);
+	    DialogSetReputation("HouseAmplector", 0);
+	    DialogSetReputation("HouseCorporis", 0);
+            LogDelete("Mastery", "MagicSchool");
+            DialogSetReputation("HouseVincula", 50);
+        }
 
     	else if (content.endsWith("/roleplay")) {	  
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a role. List: clubmistress, clubslave, doctor, headmaid, kidnapper, maid, masterkidnapper, mistress, nurse, patient, permanentpatient. Be careful with clubslave, you will be forced to complete contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a role. List: clubmistress, clubslave, doctor, headmaid, kidnapper, maid, masterkidnapper, mistress, nurse, oraclea, oraclec, oraclem, oraclev, patient, permanentpatient, sagea, sagec, sagem, sagev. Be careful with clubslave, you will be forced to complete contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
     }
 	
