@@ -30,14 +30,14 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gv", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gagtalk  =  toggle to decode/not decode gagged people talking.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/game (minigamehere). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/game (minigamehere) = Launches a minigame. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/giveeverything  =  gives every item.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/hiddenmessages  =  sees hidden messages made by game.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/keydeposit (hours) = keeps your keys safe in the vault.", Type: "LocalMessage", Sender: Player.MemberNumber });  
         ChatRoomMessage({ Content: "/kinkydungeon  =  to the end, add devious to toggle deviouschallenge or cheat to start with cheats or use as is to start vanilla. Remember to wear VR headset if you want others to see you play.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/leave  =  leaves room, even if prevented.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/login (accountname) (password)  =  logs in a new account.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics, more info on others.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics. See also the /roleplay and /rolequit commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/money 9999  =  gives or takes money. Change value.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/naked (targetname) =  removes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/outfit  =  saving/loading, using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
