@@ -14,7 +14,7 @@ Version 1.1 - 04/11/21
 
 Changes for future version 1.2:
 
-* New command: anim2 with many anims. List: angry, bareteeth, blink, blush1, blush2, blush3, blush4, blush5, chuckle, closeeyes, closemouth, confused, cry, disoriented, distressed, droolreset, droolsides, frown, giggle, glare, grin, happy, laugh, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.
+* New command: anim2 with many anims. List: angry1, angry2, blink, blush1, blush2, blush3, blush4, blush5, chuckle, closeeyes, closemouth, confused, cry, disoriented, distressed, droolreset, droolsides, frown, giggle, glare, grin, happy, laugh, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.
 * New command: asylum to enter asylum while bypassing conditions. You need to specify minutes if you are a patient.
 * New command: clubhelp to display the standard commands of the game (+ optionally the BCE commands)
 * New command: game to launch minigames while bypassing day/status conditions. List: carrot, cleaning, dojo, drinks, hurdle, kidnap, puppy, rhythm, training, whippony.
