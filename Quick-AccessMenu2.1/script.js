@@ -148,10 +148,10 @@ if (CurrentScreen == "ChatRoom") {
         }
 	    
         else if (content.includes("disoriented")) {      
-            CharacterSetFacialExpression(Player,"Eyes","Dizzy",2.22);
-            CharacterSetFacialExpression(Player,"Eyes2","Dizzy",2.22);
-            CharacterSetFacialExpression(Player,"Eyebrows","Raised",2.22);
-            CharacterSetFacialExpression(Player,"Blush","Medium",2.22);
+            CharacterSetFacialExpression(Player,"Eyes","Dizzy",8.22);
+            CharacterSetFacialExpression(Player,"Eyes2","Dizzy",8.22);
+            CharacterSetFacialExpression(Player,"Eyebrows","Raised",8.22);
+            CharacterSetFacialExpression(Player,"Blush","Medium",8.22);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" feels disoriented." }]});
         }
 
