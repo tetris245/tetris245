@@ -262,7 +262,7 @@ if (CurrentScreen == "ChatRoom") {
         }
 
         else if (content.includes("wink")) {           
-           CharacterSetFacialExpression(Player,"Eyes2","Closed",.42);
+           CharacterSetFacialExpression(Player,"Eyes2","Closed",1.42);
 	   ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" winks." }]});
         }
 
