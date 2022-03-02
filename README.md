@@ -32,4 +32,6 @@ Changes for future version 1.2:
 * Removed the pop-up commands
 * Restructured the code for an easier reading
 
-Note: The new anims and poses are based and/or inspired by the BCE addon https://sidiousious.gitlab.io/bce/ - the command names anim2 and pose2 have been choosen to avoid conflict with this addon. 
+Notes: 
+* The new anims and poses are based and/or inspired by the BCE addon https://sidiousious.gitlab.io/bce/ - the command names anim2 and pose2 have been choosen to avoid conflict with this addon. The QAM anims are launched by a command, they are not triggered by a specific action or word.
+* The diapers command actually integrates the BC-Diaper-Wetter script created by Firefly - see https://github.com/mrbakucamp/BC-Diaper-Wetter - Thanks for the permission :)
