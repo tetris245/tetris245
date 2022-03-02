@@ -13,6 +13,8 @@ FireFox:
 
 Original version of Quick-AccessMenu2.1 (version 1.0) by KellyLoveyness - Version 1.1 by Nemesea.
 
+Special thanks to Firefly for giving permission to integrate the BC-Diaper-Wetter script.
+
 Thanks for special assistance:
 Shyness, Ada.
 
