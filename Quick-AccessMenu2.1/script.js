@@ -142,6 +142,14 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Eyebrows","OneRaised",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is confused." }]});
         }  
+	    
+	else if (content.includes("cuddle")) {      
+            CharacterSetFacialExpression(Player,"Eyes","ShylyHappy",9.99);
+            CharacterSetFacialExpression(Player,"Eyes2","ShylyHappy",9.99);
+            CharacterSetFacialExpression(Player,"Eyebrows","Raised",9.99);
+            CharacterSetFacialExpression(Player,"Mouth","Happy",9.99);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" cuddles with her friend." }]});
+        }
 
         else if (content.includes("cry")) {   
             CharacterSetFacialExpression(Player,"Fluids","TearsMedium",1000,"#000016");
@@ -307,7 +315,14 @@ if (CurrentScreen == "ChatRoom") {
 	    CharacterSetFacialExpression(Player,"Mouth","Smirk",75000);
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" smirks." }]});
         }
-
+	    
+	else if (content.includes("spanked")) {      
+            CharacterSetFacialExpression(Player,"Eyes","Lewd",2.44);
+            CharacterSetFacialExpression(Player,"Eyes2","Lewd",2.44);
+            CharacterSetFacialExpression(Player,"Eyebrows","Soft",2.44);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" feels the effect of the spanking on her skin." }]});
+        }
+   
         else if (content.includes("wink")) {           
            CharacterSetFacialExpression(Player,"Eyes2","Closed",1.42);
 	   ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" winks." }]});
@@ -321,7 +336,7 @@ if (CurrentScreen == "ChatRoom") {
         }
    
  	else if (content.endsWith("/anim2")) {	  
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry1, angry2, blink, blush1, blush2, blush3, blush4, blush5, chuckle, closeeyes, closemouth, confused, cry, disoriented, distressed, droolreset, droolsides, frown, gaginflate, giggle, glare, grin, happy, iced, kiss1, kiss2, kiss3, laugh, lick, lipbite, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry1, angry2, blink, blush1, blush2, blush3, blush4, blush5, chuckle, closeeyes, closemouth, confused, cuddle, cry, disoriented, distressed, droolreset, droolsides, frown, gaginflate, giggle, glare, grin, happy, iced, kiss1, kiss2, kiss3, laugh, lick, lipbite, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, spanked, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
     }
 
