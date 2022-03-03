@@ -215,6 +215,27 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Mouth","Angry",2.11);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" feels the effect of something very cold on her skin." }]});
         }
+	    
+	else if (content.includes("kiss1")) {         
+            CharacterSetFacialExpression(Player,"Mouth","HalfOpen",1.44);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" gives simple kisses to her friend." }]});
+        }
+
+        else if (content.includes("kiss2")) {  
+            CharacterSetFacialExpression(Player,"Eyes","Closed",2.88);
+            CharacterSetFacialExpression(Player,"Eyes2","Closed",2.88);
+            CharacterSetFacialExpression(Player,"Mouth","HalfOpen",2.88);
+            CharacterSetFacialExpression(Player,"Blush","Low",2.88);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" kisses her friend on the lips." }]});
+        }
+
+        else if (content.includes("kiss3")) {  
+            CharacterSetFacialExpression(Player,"Eyes","Closed",4.22);
+            CharacterSetFacialExpression(Player,"Eyes2","Closed",4.22);
+            CharacterSetFacialExpression(Player,"Mouth","Open",4.22);
+            CharacterSetFacialExpression(Player,"Blush","Medium",5.00);
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" gives a long kiss to her friend." }]});
+        }
 
 	else if (content.includes("laugh")) {  
             RunExpressionAnimation([null, "Laughing", "Grin", "Laughing", "Happy", "Laughing", "Grin", "Laughing", "Happy", null]);
@@ -300,7 +321,7 @@ if (CurrentScreen == "ChatRoom") {
         }
    
  	else if (content.endsWith("/anim2")) {	  
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry1, angry2, blink, blush1, blush2, blush3, blush4, blush5, chuckle, closeeyes, closemouth, confused, cry, disoriented, distressed, droolreset, droolsides, frown, gaginflate, giggle, glare, grin, happy, iced, laugh, lick, lipbite, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry1, angry2, blink, blush1, blush2, blush3, blush4, blush5, chuckle, closeeyes, closemouth, confused, cry, disoriented, distressed, droolreset, droolsides, frown, gaginflate, giggle, glare, grin, happy, iced, kiss1, kiss2, kiss3, laugh, lick, lipbite, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
     }
 
