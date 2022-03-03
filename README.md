@@ -26,7 +26,7 @@ Changes for future version 1.2:
 * New command: solidity to change the solidity of most current bindings (the maxdifficulty and mindifficulty commands have been removed). Value 1 allows to escape the futuristic crate.
 * Updated and improved the background command + added a tip for BCX users
 * Updated the wardrobe commmand
-* Renamed the pose command as pose2 and added many poses. Complete list: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension1, suspension2, tapedhands. Only on yourself: jump, roof.
+* Renamed the pose command as pose2 and added many poses. Complete list: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension, tapedhands. Only on yourself: jump, roof.
 * Bugfix: added missing code for resetinventory command
 * Bugfix: gv command in stead of gh to resolve conflict with ghostadd/remove standard commands
 * Removed the pop-up commands
