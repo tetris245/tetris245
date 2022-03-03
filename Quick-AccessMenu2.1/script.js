@@ -1213,13 +1213,8 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomCharacterUpdate(target[0]);
 	}
 	    
-        else if (content.includes("suspension1")) {
+        else if (content.includes("suspension")) {
             CharacterSetActivePose(target[0], "Suspension");
-            ChatRoomCharacterUpdate(target[0]);
-	}
-
-        else if (content.includes("suspension2")) {
-            CharacterSetActivePose(target[0], "SuspensionHogtied");
             ChatRoomCharacterUpdate(target[0]);
 	}
 
@@ -1406,7 +1401,7 @@ if (CurrentScreen == "ChatRoom") {
 	}
 	    
         else if (content.endsWith("/pose2")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension1, suspension2, tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension, tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
     }
 		
