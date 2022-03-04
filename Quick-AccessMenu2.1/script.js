@@ -26,7 +26,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/college  =  enters college, bypasses requirements.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/colorchanger  =  using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/diaper (actionhere) =  plays with diapers (ABDL game). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/diaper (actionhere) (setnumber) =  plays with diapers (ABDL game). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/erase  =  erases chat.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gv", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -713,6 +713,102 @@ if (CurrentScreen == "ChatRoom") {
         else if (content.includes("change3")) {
             refreshDiaper("both");
         }
+	      
+        else if (content.includes("setdesperation")) {
+            var stringSet1 = content;
+            var stringSet2 = stringSet1.split(/[ ,]+/);
+            var setchange = stringSet2[2];
+            diaperDefaultValues.desperationLevel = setchange; 
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Your desperation level has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        }
+ 
+	else if (content.includes("setmessluck")) {
+            var stringSet1 = content;
+            var stringSet2 = stringSet1.split(/[ ,]+/);
+            var setchange = stringSet2[2];
+            diaperDefaultValues.messChance = setchange; 
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Your luck to mess diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        }
+
+	else if (content.includes("setmess1")) {
+            if (InventoryGet(Player, "Panties") != null) {
+                if (InventoryGet(Player, "Panties").Asset.Name == "BulkyDiaper" || InventoryGet(Player, "Panties").Asset.Name === "PoofyDiaper") {
+                    var stringSet1 = content;
+                    var stringSet2 = stringSet1.split(/[ ,]+/);
+                    var setchange = stringSet2[2];
+                    if (setchange < diaperDefaultValues.wetLevelInner) {
+                        diaperDefaultValues.messLevelInner = setchange;
+                        ChatRoomMessage({ Content: "Quick-AccessMenu2: Your mess level for normal diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+                    }
+                }
+            }
+        }
+	    
+	else if (content.includes("setmess2")) {
+            if (InventoryGet(Player, "ItemPelvis") != null) {
+                if (InventoryGet(Player, "ItemPelvis").Asset.Name == "BulkyDiaper" || InventoryGet(Player, "ItemPelvis").Asset.Name === "PoofyDiaper") {
+                    var stringSet1 = content;
+                    var stringSet2 = stringSet1.split(/[ ,]+/);
+                    var setchange = stringSet2[2];
+                    if (setchange < diaperDefaultValues.wetLevelOuter) {
+                        diaperDefaultValues.messLevelOuter = setchange;
+                        ChatRoomMessage({ Content: "Quick-AccessMenu2: Your mess level for chastity diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+                    }
+                }
+            }
+        }
+	    
+	else if (content.includes("setregression")) {
+            var stringSet1 = content;
+            var stringSet2 = stringSet1.split(/[ ,]+/);
+            var setchange = stringSet2[2];
+            diaperDefaultValues.regressionLevel = setchange;
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Your regression level has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        }
+
+        else if (content.includes("settimer")) {
+            var stringSet1 = content;
+            var stringSet2 = stringSet1.split(/[ ,]+/);
+            var setchange = stringSet2[2];
+            diaperDefaultValues.baseTimer = setchange; 
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Your wet/mess timer has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        }
+
+	else if (content.includes("setwetluck")) {
+            var stringSet1 = content;
+            var stringSet2 = stringSet1.split(/[ ,]+/);
+            var setchange = stringSet2[2];
+            diaperDefaultValues.wetChance = setchange; 
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Your luck to wet diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        }
+	    
+	else if (content.includes("setwet1")) {
+            if (InventoryGet(Player, "Panties") != null) {
+                if (InventoryGet(Player, "Panties").Asset.Name == "BulkyDiaper" || InventoryGet(Player, "Panties").Asset.Name === "PoofyDiaper") {
+                    var stringSet1 = content;
+                    var stringSet2 = stringSet1.split(/[ ,]+/);
+                    var setchange = stringSet2[2];
+                    if (setchange > diaperDefaultValues.messLevelInner) {
+                        diaperDefaultValues.wetLevelInner = setchange;
+                        ChatRoomMessage({ Content: "Quick-AccessMenu2: Your wet level for normal diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+                    }
+                }
+            }
+        }
+
+        else if (content.includes("setwet2")) {
+            if (InventoryGet(Player, "ItemPelvis") != null) {
+                if (InventoryGet(Player, "ItemPelvis").Asset.Name == "BulkyDiaper" || InventoryGet(Player, "ItemPelvis").Asset.Name === "PoofyDiaper") {
+                    var stringSet1 = content;
+                    var stringSet2 = stringSet1.split(/[ ,]+/);
+                    var setchange = stringSet2[2];
+                    if (setchange > diaperDefaultValues.messLevelOuter) {
+                        diaperDefaultValues.wetLevelOuter = setchange;
+                        ChatRoomMessage({ Content: "Quick-AccessMenu2: Your wet level for chastity diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+                    }
+                }
+            }
+        }
 
         else if (content.includes("start")) {
             diaperWetter();
@@ -727,8 +823,10 @@ if (CurrentScreen == "ChatRoom") {
         }
 
         else if (content.endsWith("/diaper")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an action. List: change1, change2, change3, start, stop, tick. You need to wear one or two layers of diapers (only bulky and poofy versions).", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an action. List: change1, change2, change3, setdesperation, setmessluck, setmess1, setmess2, setregression, settimer, setwetluck, setwet1, setwet2, start, stop, tick. You need to wear one or two layers of diapers (only bulky and poofy versions).", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "Use /diaper start to enable the script, /diaper stop (or remove all diapers) to disable it. You can force a tick with /diaper tick.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "You can customize your ABDL fun by using the /diaper set commands before enabling the script. These commands must be followed by a number.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "They will change your level for a specified feature, the timer or your chances to wet/mess the diapers. Wet level needs to be higher than mess level. 1 refers to the normal diapers, 2 to the chastity diapers.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "To get new clean diapers, use /diaper change1 for normal diapers, /diaper change2 for chastity diapers, /diaper change3 for both diapers.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }     
     }
