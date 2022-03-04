@@ -17,7 +17,7 @@ Changes for future version 1.2:
 * New command: anim2 with many anims. List: angry1, angry2, blink, blush1, blush2, blush3, blush4, blush5, chuckle, closeeyes, closemouth, confused, cuddle, cry, disoriented, distressed, droolreset, droolsides, frown, gaginflate, giggle, glare, grin, happy, iced, kiss1, kiss2, kiss3, laugh, lick, lipbite, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, spanked, wink, worried.
 * New command: asylum to enter asylum while bypassing conditions. You need to specify minutes if you are a patient.
 * New command: clubhelp to display the standard commands of the game (+ optionally the BCE commands)
-* New command: diaper to play with diapers (ABDL game). List of actions: refresh1, refresh2, refresh3, start, stop, tick. You need to wear one or two layers of diapers (only bulky and poofy versions).
+* New command: diaper to play with diapers (ABDL game). List of actions: change1, change2, change3, setdesperation, setmessluck, setmess1, setmess2, setregression, settimer, setwetluck, setwet1, setwet2, start, stop, tick. You need to wear one or two layers of diapers (only bulky and poofy versions). The 'set' actions must be followed by a number that will replace the corresponding default value (to be used before the 'start' action).
 * New command: game to launch minigames while bypassing day/status conditions. List: carrot, cleaning, dojo, drinks, hurdle, kidnap, puppy, rhythm, training, whippony.
 * New command: keydeposit to keep your keys safe in the vault
 * New command: pet to become a fully restrained pet girl
