@@ -702,15 +702,15 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/diaper") == 0) {
 
-        if (content.includes("refresh1")) {
+        if (content.includes("change1")) {
             refreshDiaper("panties");
         }
 
-        else if (content.includes("refresh2")) {
+        else if (content.includes("change2")) {
             refreshDiaper("chastity");
         }
 
-        else if (content.includes("refresh3")) {
+        else if (content.includes("change3")) {
             refreshDiaper("both");
         }
 
@@ -727,9 +727,9 @@ if (CurrentScreen == "ChatRoom") {
         }
 
         else if (content.endsWith("/diaper")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an action. List: refresh1, refresh2, refresh3, start, stop, tick. You need to wear one or two layers of diapers (only bulky and poofy versions).", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an action. List: change1, change2, change3, start, stop, tick. You need to wear one or two layers of diapers (only bulky and poofy versions).", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "Use /diaper start to enable the script, /diaper stop (or remove all diapers) to disable it. You can force a tick with /diaper tick.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "To get new clean diapers, use /diaper refresh1 for normal diapers, /diaper refresh2 for chastity diapers, /diaper refresh3 for both diapers.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "To get new clean diapers, use /diaper change1 for normal diapers, /diaper change2 for chastity diapers, /diaper change3 for both diapers.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }     
     }
 
