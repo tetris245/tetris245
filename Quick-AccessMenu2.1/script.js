@@ -2156,6 +2156,7 @@ expressionAnimation[expressionAnimation.length-1]=expressionAnimationEx.Property
 }RunExpressionAnimationStep();}
 //core functionaliy moved to: /speak /mouth /speech
 
+//BC-Diaper-Wetter
 // A simple table for the colors that the script will use.
 DiaperUseLevels = 
 [
