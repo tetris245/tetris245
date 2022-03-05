@@ -703,17 +703,38 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/diaper") == 0) {
 
         if (content.includes("change1")) {
+            var stringChange1 = content;
+            var stringChange2 = stringChange1.split(/[ ,]+/);
+            var targetname = stringChange2[2];
+            if (targetname  == undefined) {targetname = Player.Name};
+            var targetfinder = new RegExp('^'+targetname+'', 'i');
+            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+            if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change your normal diapers and allows you to use the /diaper change1 command.", Type: "Whisper", Target: target[0].MemberNumber })};
             refreshDiaper("panties");
         }
 
         else if (content.includes("change2")) {
+            var stringChange1 = content;
+            var stringChange2 = stringChange1.split(/[ ,]+/);
+            var targetname = stringChange2[2];
+            if (targetname  == undefined) {targetname = Player.Name};
+            var targetfinder = new RegExp('^'+targetname+'', 'i');
+            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+            if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change your chastity diapers and allows you to use the /diaper change2 command.", Type: "Whisper", Target: target[0].MemberNumber })};
             refreshDiaper("chastity");
         }
 
         else if (content.includes("change3")) {
+            var stringChange1 = content;
+            var stringChange2 = stringChange1.split(/[ ,]+/);
+            var targetname = stringChange2[2];
+            if (targetname  == undefined) {targetname = Player.Name};
+            var targetfinder = new RegExp('^'+targetname+'', 'i');
+            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+            if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change all your diapers and allows you to use the /diaper change3 command.", Type: "Whisper", Target: target[0].MemberNumber })};
             refreshDiaper("both");
         }
-	      
+      
         else if (content.includes("setdesperation")) {
             var stringSet1 = content;
             var stringSet2 = stringSet1.split(/[ ,]+/);
