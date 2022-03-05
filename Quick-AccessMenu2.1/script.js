@@ -2334,6 +2334,13 @@ const diaperDefaultValues =
     wetLevelOuter: 0
 };
 
+const diaperHelpMessages = {
+    default: "Welcome to BCDW: Bondage Club Diaper Wetter! Where we make sure babies use their diapers!\nTo get started, use the ->diaper start to begin using your diaper and ->diaper stop to stop. You can also use ->diaper help <command> to get more information on any given command (for example, arguments!).",
+    start: "",
+    change: "",
+    stop: ""
+};
+
 diaperLoop = null;         // Keeps a hold of the loop so it can be exited at any time easily
 
 // Destutter speach. Needed for interations with other mods
@@ -2378,7 +2385,7 @@ function bcdw(data)
         )
         {
             // Parse out data into a queue for easier processing
-            chatCommand = data?.Content.split(" ");
+            chatCommand = data?.Content.toLowerCase().split(" ");
             chatCommand.shift();
 
             // Send to command parser
@@ -2400,7 +2407,7 @@ function bcdwCommands(chatCommand, callerID, type)
             chatCommand.pop()
 
             // Parse arguments for command
-            let commandArguments = ["WetChance", "MessChance", "Desperation", "Regression", "Timer", "WetPanties", "MessPanties", "WetChastity", "MessChastity"];
+            let commandArguments = ["wetchance", "messchance", "desperation", "regression", "timer", "wetpanties", "messpanties", "wetchastity", "messchastity"];
             let caughtArguments = diaperDefaultValues;
             while (commandArguments.includes(chatCommand[chatCommand.length-1]))
             {
