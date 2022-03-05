@@ -26,7 +26,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/college  =  enters college, bypasses requirements.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/colorchanger  =  using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/diaper (actionhere) (targetname or setnumber) =  plays with diapers (ABDL game). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/diaper (actionhere) (targetname or setvalue) =  plays with diapers (ABDL game). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/erase  =  erases chat.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gv", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
