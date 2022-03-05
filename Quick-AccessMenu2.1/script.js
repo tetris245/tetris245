@@ -855,6 +855,11 @@ if (CurrentScreen == "ChatRoom") {
 	    ChatRoomMessage({ Content: "/diaper change3 (targetname) for both diapers", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "Customisation (before using /diaper start):", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "Use /diaper custom for detailed info", Type: "LocalMessage", Sender: Player.MemberNumber });
+       }
+		
+	else if (content.includes("custom")) {
+	    ChatRoomMessage({ Content: "Customisation (before using /diaper start):", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/diaper setdesperation (value between 0 and 3) for desperation level, normally controlled by having a milk bottle used on you", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/diaper setregression (value between 0 and 3) for regression level, normally controlled by wearing Nursery Milk for an extended period of time", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/diaper settimer (minutes) to change the wet/mess timer", Type: "LocalMessage", Sender: Player.MemberNumber });
