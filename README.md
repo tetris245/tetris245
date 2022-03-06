@@ -11,7 +11,7 @@ Google Chrome, Microsoft Edge, similar browsers:
 4. Load as Unpacked. Done. If the file can't be seen, see step 2.
 
 FireFox:
-1. Download file quick-accessmenu2-FIREFOX.xpi
+1. Download file quick-accessmenu2-FIREFOX.xpi (temporary not available)
 2. Go to about:addons, either by posting in link bar or by going to Add-Ons and Themes.
 3. Click to cog wheel symbol.
 4. Click Install Add-On from File.
