@@ -31,7 +31,8 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gv", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gagtalk  =  toggle to decode/not decode gagged people talking.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	ChatRoomMessage({ Content: "/game (minigamehere) = Launches a minigame. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/game (minigamehere) = Launches a minigame. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });    
+        ChatRoomMessage({ Content: "/ggts (minutes) =  enters ggts training in asymum for the specified time.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/giveeverything  =  gives every item.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/hiddenmessages  =  sees hidden messages made by game.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/keydeposit (hours) = keeps your keys safe in the vault.", Type: "LocalMessage", Sender: Player.MemberNumber });  
@@ -985,7 +986,17 @@ if (CurrentScreen == "ChatRoom") {
                MiniGameStart("HorseWalk", "WhipPony", "StableTrainerEnd");
             }	
         } 
-    }    
+    }   
+	
+    else if (content.indexOf("/ggts") == 0) {
+        var minutes = content.substring(5).trim();
+        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" gets grabbed by two maids and locked in the asylum for "+minutes+" minutes of training with the Good Girl Training System." }]});
+        DialogLentLockpicks = false;
+        ChatRoomClearAllElements();
+        ServerSend("ChatRoomLeave", "");         
+        CharacterDeleteAllOnline();
+        AsylumGGTSLock(minutes, TextGet("GGTSIntro"));
+    }
 
     else if (content.indexOf("/giveeverything") == 0) {
         ChatRoomMessage({ Content: "Quick-AccessMenu2: Every item in the game now added.", Type: "LocalMessage", Sender: Player.MemberNumber });
