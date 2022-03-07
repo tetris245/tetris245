@@ -32,7 +32,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/gagtalk  =  toggle to decode/not decode gagged people talking.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/game (minigamehere) = Launches a minigame. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });    
-        ChatRoomMessage({ Content: "/ggts (minutes) =  enters ggts training in asymum for the specified time.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        ChatRoomMessage({ Content: "/ggts (minutes) =  enters ggts training in asylum for the specified time.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/giveeverything  =  gives every item.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/hiddenmessages  =  sees hidden messages made by game.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/keydeposit (hours) = keeps your keys safe in the vault.", Type: "LocalMessage", Sender: Player.MemberNumber });  
