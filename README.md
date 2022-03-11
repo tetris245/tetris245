@@ -28,8 +28,9 @@ Thanks for general assistance:
 Brianna, Better, Miyako, Zeltron, Selina.
 All else I might not have included.
 
-=============================================================================
+===========================================================================
 
 Changes for future version 1.3
 
 * New command: ggts to enter ggts training in asylum for a specified time. More than 180 minutes is possible.
+* Less options and better texts for the outfit command
