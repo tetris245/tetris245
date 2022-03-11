@@ -17,6 +17,8 @@ FireFox:
 4. Click Install Add-On from File.
 5. Select the .xpi file. Done.
 
+After installation, refresh your BC page and relog.
+
 Original version of Quick-AccessMenu2.1 (version 1.0) by KellyLoveyness - Versions 1.1 and 1.2 by Nemesea.
 
 Special thanks to Firefly for giving permission to integrate the BC-Diaper-Wetter script.
