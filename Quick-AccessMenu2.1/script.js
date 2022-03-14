@@ -2286,10 +2286,10 @@ LoginUpdateMessage();
 function ServerDisconnect(data, close = false) {//rewrite disconnect to prevent relog screen
     if (!ServerIsConnected) return;
     ChatRoomMessage({ Content: "Disconnected! Reconnecting...", Type: "LocalMessage", Sender: Player.MemberNumber });
-    AutoRelog();
     const ShouldRelog = Player.Name != "";
     ServerSocket.on("ServerMessage", function (data) { AutoRelog(); });
-    let msg = data;
+    AutoRelog();
+    let msg = data;   
         if (data) {
             console.warn(data);
             msg = data;
@@ -2297,7 +2297,6 @@ function ServerDisconnect(data, close = false) {//rewrite disconnect to prevent 
     ServerSetConnected(false, msg);
         if (close) {
             ServerSocket.disconnect();
-	    AutoRelog(); 
         }
 }
 
