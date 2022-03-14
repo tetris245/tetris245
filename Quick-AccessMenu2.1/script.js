@@ -1586,6 +1586,7 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/relog") == 0) {
         ServerSocket.close();
         ServerSocket.open();
+        AutoRelog();
     }
 	
     else if (content.indexOf("/resetdifficulty") == 0) {
