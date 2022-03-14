@@ -2270,34 +2270,42 @@ ServerSocket.on('ChatRoomMessage', ChatCommandGreeting);
 
 //AutoRelog/AntiDisconnect
 function LoginDoLogin() {//rewrite login to variabilize credentials for later use
-if (!LoginSubmitted && ServerIsConnected) {
-this.LoginName = ElementValue("InputName");
-this.LoginPassword = ElementValue("InputPassword");
-var letters = /^[a-zA-Z0-9]+$/;
-if (LoginName.match(letters) && LoginPassword.match(letters) && (LoginName.length > 0) && (LoginName.length <= 20) && (LoginPassword.length > 0) && (LoginPassword.length <= 20)) {
-LoginSetSubmitted();
-ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });}
-else LoginStatusReset("InvalidNamePassword");}
-LoginUpdateMessage();}
+    if (!LoginSubmitted && ServerIsConnected) {
+        this.LoginName = ElementValue("InputName");
+        this.LoginPassword = ElementValue("InputPassword");
+        var letters = /^[a-zA-Z0-9]+$/;
+        if (LoginName.match(letters) && LoginPassword.match(letters) && (LoginName.length > 0) && (LoginName.length <= 20) && (LoginPassword.length > 0) && (LoginPassword.length <= 20)) {
+            LoginSetSubmitted();
+            ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });
+	}
+        else LoginStatusReset("InvalidNamePassword");
+    }
+LoginUpdateMessage();
+}
 
 function ServerDisconnect(data, close = false) {//rewrite disconnect to prevent relog screen
-if (!ServerIsConnected) return;
-ChatRoomMessage({ Content: "Disconnected! Reconnecting...", Type: "LocalMessage", Sender: Player.MemberNumber });
-	const ShouldRelog = Player.Name != "";
-ServerSocket.on("ServerMessage", function (data) { AutoRelog(); });
-let msg = data;
-if (data) {
-console.warn(data);
-msg = data;
+    if (!ServerIsConnected) return;
+    ChatRoomMessage({ Content: "Disconnected! Reconnecting...", Type: "LocalMessage", Sender: Player.MemberNumber });
+    AutoRelog();
+    const ShouldRelog = Player.Name != "";
+    ServerSocket.on("ServerMessage", function (data) { AutoRelog(); });
+    let msg = data;
+        if (data) {
+            console.warn(data);
+            msg = data;
+        }
+    ServerSetConnected(false, msg);
+        if (close) {
+            ServerSocket.disconnect();
+	    AutoRelog(); 
+        }
 }
-ServerSetConnected(false, msg);
-if (close) {
-ServerSocket.disconnect();
-}}
+
 function AutoRelog () {
     ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });
     ChatRoomMessage({ Content: "Reconnected!", Type: "LocalMessage", Sender: Player.MemberNumber });
-ServerSocket.off("ServerMessage", function (data) { AutoRelog(); });}
+    ServerSocket.off("ServerMessage", function (data) { AutoRelog(); });
+}
 
 //Mouth animator
 var expressionAnimation;var expressionAnimationIndex=0;function RunExpressionAnimationStep() {
