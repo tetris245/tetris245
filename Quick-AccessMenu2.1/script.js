@@ -1130,11 +1130,11 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/login") == 0) {
         var stringLogin1 = content;
         var stringLogin2 = stringLogin1.split(/[ ,]+/);
-        this.LoginName = stringLogin2[1];
-        this.LoginPassword = stringLogin2[2];
+        this.LoginName = SpeechGarbleByGagLevel(6,stringLogin2[1]);
+        this.LoginPassword = SpeechGarbleByGagLevel(6,stringLogin2[2]);
         ServerSocket.close();
         ServerSocket.open();
-        ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });
+        ServerSend("AccountLogin", { AccountName: stringLogin2[1], Password: stringLogin2[2] });
         setTimeout(function() {
         ChatRoomClearAllElements();
         }, 3000);
