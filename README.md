@@ -36,5 +36,6 @@ Changes for future version 1.3
 
 * New command: ggts to enter ggts training in asylum for a specified time. More than 180 minutes is possible.
 * Updated the background and relog commands 
+* Improved the login command
 * Improved texts and simplified options for the outfit command
 * Fixed the AutoRelog function
