@@ -2270,12 +2270,12 @@ ServerSocket.on('ChatRoomMessage', ChatCommandGreeting);
 //AutoRelog/AntiDisconnect
 function LoginDoLogin() {//rewrite login to variabilize credentials for later use
     if (!LoginSubmitted && ServerIsConnected) {
-	this.LoginName = SpeechGarbleByGagLevel(6,ElementValue("InputName"));
-        this.LoginPassword = SpeechGarbleByGagLevel(6,ElementValue("InputPassword"));
+	this.LoginName = ElementValue("InputName");
+        this.LoginPassword = ElementValue("InputPassword");
         var letters = /^[a-zA-Z0-9]+$/;
-        if (ElementValue("InputName").match(letters) && ElementValue("InputPassword").match(letters) && (ElementValue("InputName").length > 0) && (ElementValue("InputName").length <= 20) && (ElementValue("InputPassword").length > 0) && (ElementValue("InputPassword").length <= 20)) {
+        if (LoginName.match(letters) && LoginPassword.match(letters) && (LoginName.length > 0) && (LoginName.length <= 20) && (LoginPassword.length > 0) && (LoginPassword.length <= 20)) {
             LoginSetSubmitted();
-            ServerSend("AccountLogin", { AccountName: ElementValue("InputName"), Password: ElementValue("InputPassword") });
+            ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });
 	}
         else LoginStatusReset("InvalidNamePassword");
     }
@@ -2300,7 +2300,7 @@ function ServerDisconnect(data, close = false) {//rewrite disconnect to prevent 
 }
 
 function AutoRelog () {
-    ServerSend("AccountLogin", { AccountName: ElementValue("InputName"), Password: ElementValue("InputPassword")});
+    ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });
     ChatRoomMessage({ Content: "Reconnected!", Type: "LocalMessage", Sender: Player.MemberNumber });
     ServerSocket.off("ServerMessage", function (data) { AutoRelog(); });   
 }
