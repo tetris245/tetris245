@@ -498,8 +498,11 @@ if (CurrentScreen == "ChatRoom") {
     }   
 	
     else if (content.indexOf("/bcename") == 0) { 
-        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is now known as "+NewName+"." }]});
-        Player.Name = NewName;     
+        if (CutsceneStage > 0) {  
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is now known as "+NewName+"." }]});
+            Player.Name = NewName; 
+            CutsceneStage = 0;
+        }
     }
 
     else if (content.indexOf("/becomeownlover") == 0) {
@@ -2311,6 +2314,7 @@ function ServerDisconnect(data, close = false) {//rewrite disconnect to prevent 
 
 function AutoRelog () {
     NewName = Player.Name;
+    CutsceneStage = 1;
     ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });
     ChatRoomMessage({ Content: "Reconnected!", Type: "LocalMessage", Sender: Player.MemberNumber });
     ServerSocket.off("ServerMessage", function (data) { AutoRelog(); });   
