@@ -34,6 +34,7 @@ All else I might not have included.
 
 Changes for future version 1.3
 
+* New command: bcename to reactivate your BCE nickname after automatic or manual relog
 * New command: ggts to enter ggts training in asylum at some level for a specified time. More than 180 minutes is possible. The level must be between 1 and 6.
 * Updated the background and relog commands 
 * Improved the login command
