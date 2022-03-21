@@ -498,7 +498,9 @@ if (CurrentScreen == "ChatRoom") {
     }   
 	
     else if (content.indexOf("/bcename") == 0) { 
-        if (CutsceneStage > 0) {  
+        if (CutsceneStage != 1) { 
+        }
+        else {
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is now known as "+NewName+"." }]});
             Player.Name = NewName; 
             CutsceneStage = 0;
