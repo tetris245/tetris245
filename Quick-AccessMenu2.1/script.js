@@ -16,7 +16,6 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/autokick  =  toggles on auto kick for 0 day old accounts.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/babytalk (stuffhere) =  speaks as a baby. Can also: /b", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/background =  adds hidden backgrounds to the admin selection screen. Tip for BCX users: activate BCX before using this command.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        ChatRoomMessage({ Content: "/bcename  =  reactivates your BCE nickname after automatic or manual relog.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/becomeownlover  =  becomes your own lover.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/becomeownowner  =  becomes your own owner.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/boost  =  boosts skills, similar to maid quarters drink.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -496,16 +495,6 @@ if (CurrentScreen == "ChatRoom") {
         ChatCreateBackgroundList = BackgroundsGenerateList(BackgroundsTagList);
         ChatRoomMessage({ Content: "Quick-AccessMenu2: You can use more backgrounds now.", Type: "LocalMessage", Sender: Player.MemberNumber });
     }   
-	
-    else if (content.indexOf("/bcename") == 0) { 
-        if (CutsceneStage != 1) { 
-        }
-        else {
-            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is now known as "+NewName+"." }]});
-            Player.Name = NewName; 
-            CutsceneStage = 0;
-        }
-    }
 
     else if (content.indexOf("/becomeownlover") == 0) {
         ChatRoomMessage({ Content: "Warning: Uncomfirmed glitch might occur when removing self as lover, during which a random/real lover will be taken. Use with risk in mind. Confirm: /becomeownlover yes", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -2315,8 +2304,17 @@ function ServerDisconnect(data, close = false) {//rewrite disconnect to prevent 
 }
 
 function AutoRelog () {
-    NewName = Player.Name;
-    CutsceneStage = 1;
+    RelogChatLog = document.getElementById("TextAreaChatLog").cloneNode(true);
+    RelogChatLog.id = "RelogChatLog";
+    RelogChatLog.name = "RelogChatLog";
+    RelogInputText = ElementValue("InputChat").trim();
+    ElementRemove("InputChat");
+    ElementRemove("TextAreaChatLog");
+    CurrentScreen = "ChatSearch";
+    CurrentModule = "Online";
+    CurrentCharacter = null;
+    RelogData = { Screen: CurrentScreen, Module: CurrentModule, Character: CurrentCharacter };
+    CurrentCharacter = null;
     ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });
     ChatRoomMessage({ Content: "Reconnected!", Type: "LocalMessage", Sender: Player.MemberNumber });
     ServerSocket.off("ServerMessage", function (data) { AutoRelog(); });   
