@@ -38,4 +38,4 @@ Changes for future version 1.3
 * Updated the background and relog commands 
 * Improved the login command
 * Improved texts and simplified options for the outfit command
-* Fixed the AutoRelog function
+* Fixed and improved the AutoRelog function
