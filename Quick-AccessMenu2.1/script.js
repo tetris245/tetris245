@@ -2300,7 +2300,6 @@ function ServerDisconnect(data, close = false) {//rewrite disconnect to prevent 
     if (!ServerIsConnected) return;
     ChatRoomMessage({ Content: "Disconnected! Reconnecting...", Type: "LocalMessage", Sender: Player.MemberNumber });
     const ShouldRelog = Player.Name != "";
-    ServerSocket.on("ServerMessage", function (data) { AutoRelog(); });
     AutoRelog();
     let msg = data;   
         if (data) {
@@ -2330,9 +2329,7 @@ function AutoRelog () {
     }
     RelogData = { Screen: CurrentScreen, Module: CurrentModule, Character: CurrentCharacter };
     CurrentCharacter = null;
-    ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });
-    ChatRoomMessage({ Content: "Reconnected!", Type: "LocalMessage", Sender: Player.MemberNumber });
-    ServerSocket.off("ServerMessage", function (data) { AutoRelog(); });   
+    ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });  
 }
 
 //Mouth animator
