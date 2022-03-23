@@ -35,7 +35,8 @@ All else I might not have included.
 Changes for future version 1.3
 
 * New command: ggts to enter ggts training in asylum at some level for a specified time. More than 180 minutes is possible. The level must be between 1 and 6.
+* New command: name to change the name of your character. Can be combined with the similar BCE feature.
 * Updated the background and relog commands 
 * Improved the login command
 * Improved texts and simplified options for the outfit command
-* Fixed and improved the AutoRelog function, especially to preserve your BCE nickname
+* Fixed and improved the AutoRelog function, especially to preserve your QAM or BCE nickname
