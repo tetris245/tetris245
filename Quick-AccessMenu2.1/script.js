@@ -42,6 +42,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics. You will be able to check the changes in your profile. See also the /roleplay and /rolequit commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/money 9999  =  gives or takes money. Change value. You will be able to check the change in your profile.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/naked (targetname) =  removes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/name (newnamehere) =  changes the name of your character.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/outfit  =  saving/loading/restoring, using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/patreoncheats  =  all except college uniform, is auto toggled by default.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber });  
@@ -1179,6 +1180,15 @@ if (CurrentScreen == "ChatRoom") {
         CharacterNaked(target[0]);
         ChatRoomCharacterUpdate(target[0]);
     } 
+	
+    else if (content.indexOf("/name") == 0) { 
+        var NewName = content.substring(5).trim();
+        var LS = /^[a-zA-Z ]+$/;
+        if ((NewName.length <= 20) && (NewName.match(LS))) {  
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is now known as "+NewName+"." }]});
+        Player.Name = NewName; 
+        }
+    }
 		
     else if (content.indexOf("/outfit") == 0) {
         if (content.includes("reset") || content.includes("revert") ||  content.includes("restore")) {
