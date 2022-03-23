@@ -2304,15 +2304,20 @@ function ServerDisconnect(data, close = false) {//rewrite disconnect to prevent 
 }
 
 function AutoRelog () {
-    RelogChatLog = document.getElementById("TextAreaChatLog").cloneNode(true);
-    RelogChatLog.id = "RelogChatLog";
-    RelogChatLog.name = "RelogChatLog";
-    RelogInputText = ElementValue("InputChat").trim();
-    ElementRemove("InputChat");
-    ElementRemove("TextAreaChatLog");
-    CurrentScreen = "ChatSearch";
-    CurrentModule = "Online";
-    CurrentCharacter = null;
+    if (ServerPlayerIsInChatRoom()) {
+        RelogChatLog = document.getElementById("TextAreaChatLog").cloneNode(true);
+        RelogChatLog.id = "RelogChatLog";
+        RelogChatLog.name = "RelogChatLog";
+        RelogInputText = ElementValue("InputChat").trim();
+        ElementRemove("InputChat");
+        ElementRemove("TextAreaChatLog");
+        CurrentScreen = "ChatSearch";
+        CurrentModule = "Online";
+        CurrentCharacter = null;
+    } else {
+	   RelogChatLog = null;
+	   RelogInputText = "";
+    }
     RelogData = { Screen: CurrentScreen, Module: CurrentModule, Character: CurrentCharacter };
     CurrentCharacter = null;
     ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });
