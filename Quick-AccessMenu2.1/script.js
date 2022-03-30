@@ -47,6 +47,7 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "/patreoncheats  =  all except college uniform, is auto toggled by default.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber });  
 	ChatRoomMessage({ Content: "/pose2 (posehere) (targetname). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomMessage({ Content: "/prison (minutes) = stays in Pandora prison. More than 60 minutes is possible.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/randomize (targetname) = naked + underwear + clothes + restrain commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/release (targetname) =  removes all bindings.", Type: "LocalMessage", Sender: Player.MemberNumber });
         ChatRoomMessage({ Content: "/relog  =  relogs.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1573,6 +1574,19 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension, tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
     }
+	
+    else if (content.indexOf("/prison") == 0) {
+        var minutes = content.substring(7).trim();
+        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" gets grabbed by two maids and sent to Pandora prison for "+minutes+" minutes." }]});
+        DialogLentLockpicks = false;
+        ChatRoomClearAllElements();
+        ServerSend("ChatRoomLeave", "");         
+        CharacterDeleteAllOnline();
+        PandoraBackground = "Pandora/Underground/Cell" + Math.floor(Math.random() * 7).toString();
+        PandoraRestrainPlayer(); 
+        PandoraPunishmentSentence(minutes);            
+        PandoraPunishmentStart(); 
+    }
 		
     else if (content.indexOf("/randomize") == 0) {
         var targetname = content.substring(10).trim();
@@ -2986,13 +3000,44 @@ function ManagementCannotBeClubSlaveOwnerLock() {}
 function ManagementCannotBeClubSlaveLoverLock() {}
 function AsylumEntranceIsWearingNurseClothes() {return true}
 
+function PandoraPrisonRun() {
+        // When time is up, a maid comes to escort the player out, validates that prison time cannot go over 1 hour
+        if ((Player.Infiltration.Punishment.Timer < CurrentTime) && (CurrentCharacter == null) && !PandoraPrisonEscaped)
+		PandoraPrisonCharacter = PandoraPrisonMaid;
+	// When the willpower timer ticks, we raise willpower by 1
+	if (PandoraWillpowerTimer < CommonTime()) {
+		if (PandoraWillpower < PandoraMaxWillpower) PandoraWillpower++;
+		PandoraWillpowerTimer = PandoraWillpowerTimer + ((InfiltrationPerksActive("Recovery")) ? 20000 : 30000);
+	}
+	// When the character timer ticks, the guard can come in or leave
+	if ((Player.Infiltration.Punishment.Timer >= CurrentTime) && (PandoraPrisonCharacterTimer < CommonTime()) && (CurrentCharacter == null) && !PandoraPrisonEscaped) {
+		PandoraPrisonBribeEnabled = true;
+		PandoraPrisonCharacter = (PandoraPrisonCharacter == null) ? PandoraPrisonGuard : null;
+		PandoraPrisonCharacterTimer = CommonTime() + 30000 + Math.floor(Math.random() * 30000);
+	}
+	// Draws the character and it's sentence
+	if (PandoraPrisonCharacter != null) {
+		DrawCharacter(Player, 500, 0, 1);
+		DrawCharacter(PandoraPrisonCharacter, 1000, 0, 1);
+	} else DrawCharacter(Player, 750, 0, 1);
+	if (Player.CanKneel()) DrawButton(1885, 25, 90, 90, "", "White", "Icons/Kneel.png", TextGet("Kneel"));
+	DrawButton(1885, 145, 90, 90, "", "White", "Icons/Character.png", TextGet("Profile"));
+	if (Player.Infiltration.Punishment.Timer > CurrentTime) {
+		DrawText(TextGet("Sentence") + " " + Player.Infiltration.Punishment.Minutes.toString() + " " + TextGet("Minutes"), 1800, 870, "White", "Black");
+		DrawText(TextGet("EndsIn") + " " + TimerToString(Player.Infiltration.Punishment.Timer - CurrentTime), 1800, 920, "White", "Black");
+	}
+	// Draw the willpower / max
+	DrawProgressBar(1610, 954, 380, 36, Math.round(PandoraWillpower / PandoraMaxWillpower * 100));
+	DrawText(PandoraWillpower.toString(), 1800, 973, "black", "white");
+}
+
 function CellLoad() {
     CellKeyDepositStaff = CharacterLoadNPC("NPC_Cell_KeyDepositStaff");
     CellKeyDepositStaff.AllowItem = false;
     CharacterSetActivePose(Player, null);
     CellOpenTimer = LogValue("Locked", "Cell");
     if (CellOpenTimer == null) CellOpenTimer = 0;
-    }
+}
 
 function CellClick() {
     if (MouseIn(1885, 25, 90, 90) && Player.CanKneel() && (CellOpenTimer > CurrentTime)) CharacterSetActivePose(Player, (Player.ActivePose == null) ? "Kneel" : null, true);
