@@ -3001,7 +3001,7 @@ function ManagementCannotBeClubSlaveLoverLock() {}
 function AsylumEntranceIsWearingNurseClothes() {return true}
 
 function PandoraPrisonRun() {
-        // When time is up, a maid comes to escort the player out, validates that prison time cannot go over 1 hour
+        // When time is up, a maid comes to escort the player out
         if ((Player.Infiltration.Punishment.Timer < CurrentTime) && (CurrentCharacter == null) && !PandoraPrisonEscaped)
 		PandoraPrisonCharacter = PandoraPrisonMaid;
 	// When the willpower timer ticks, we raise willpower by 1
