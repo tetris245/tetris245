@@ -17,7 +17,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "misc = special commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "pleasure = commands related to pleasure.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "talking = commands related to talking.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "visual = commands related to animationt and background.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "visual = commands related to animations and background.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "zones = commands related to game zones.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
 
