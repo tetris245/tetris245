@@ -38,7 +38,7 @@ Changes for future version 1.3
 * New command: name to change the name of your character. Normal characters (also from non-English alphabets), numbers and spaces are accepted.
 * New command: prison to stay in Pandora prison. More than 60 minutes is possible.
 * Updated the background and relog commands 
-* Organized the help command in categories. Syntax becomes /help (category). Available categories: bondage, character, clothing, escape, misc, pleasure, talking, visual, zones.
+* Organized the help command inso categories. Syntax becomes /help (category). Available categories: bondage, character, clothing, escape, misc, pleasure, talking, visual, zones.
 * Improved the login command
 * Improved texts and simplified options for the outfit command
 * Fixed and improved the AutoRelog function, especially to preserve your QAM or BCE nickname
