@@ -1640,9 +1640,9 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/profile") == 0) {
         var targetname = content.substring(8).trim();
+	if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-        ChatRoomTargetMemberNumber = target[0].MemberNumber;
         InformationSheetLoadCharacter(target[0]);
         OnlineProfileRun();
         document.getElementById("InputChat").style.display = "none";
