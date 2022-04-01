@@ -38,6 +38,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics. You will be able to check the changes in your profile. See also the /roleplay and /rolequit commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/money 9999  =  gives or takes money. Change value. You will be able to check the change in your profile.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/name (newnamehere) =  changes the name of your character.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "/profile (targetname) =  gives direct access to the profile description of any player in the chat room.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/resetinventory  =  erases your inventory. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/roleplay (rolehere) = starts a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/rolequit (role or clubarea here) = ceases to play a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1636,7 +1637,19 @@ if (CurrentScreen == "ChatRoom") {
         PandoraPunishmentSentence(minutes);            
         PandoraPunishmentStart(); 
     }
-		
+	
+    else if (content.indexOf("/profile") == 0) {
+        var targetname = content.substring(8).trim();
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        ChatRoomTargetMemberNumber = target[0].MemberNumber;
+        InformationSheetLoadCharacter(target[0]);
+        OnlineProfileRun();
+        document.getElementById("InputChat").style.display = "none";
+        document.getElementById("TextAreaChatLog").style.display = "none";
+        CommonSetScreen("Character", "OnlineProfile");
+    }          
+	
     else if (content.indexOf("/randomize") == 0) {
         var targetname = content.substring(10).trim();
         if (targetname == undefined) {targetname = Player.Name};
