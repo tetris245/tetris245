@@ -37,6 +37,7 @@ Changes for future version 1.3
 * New command: ggts to enter ggts training in asylum at some level for a specified time. More than 180 minutes is possible. The level must be between 1 and 6.
 * New command: name to change the name of your character. Normal characters (also from non-English alphabets), numbers and spaces are accepted.
 * New command: prison to stay in Pandora prison. More than 60 minutes is possible.
+* New command: profile to have direct access to the profile description of any player in the chat room
 * Updated the background and relog commands 
 * Organized the help command into categories. Syntax becomes /help (category). Available categories: bondage, character, clothing, escape, misc, pleasure, talking, visual, zones.
 * Improved the login command
