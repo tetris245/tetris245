@@ -945,13 +945,13 @@ if (CurrentScreen == "ChatRoom") {
             ElementRemove("InputSearch");
 	    FriendListReturn = { Screen: CurrentScreen , Module: CurrentModule };
             CommonSetScreen("Character", "FriendList");
-            }, 3000);
-       setTimeout(function() {
-           FriendListExit();
-	   CommonSetScreen("Online", "ChatRoom");
-           document.getElementById("InputChat").style.display = "inline";
-           document.getElementById("TextAreaChatLog").style.display = "inline";
-           }, 15000);
+        }, 3000);
+        setTimeout(function() {
+            FriendListExit();
+	    CommonSetScreen("Online", "ChatRoom");
+            document.getElementById("InputChat").style.display = "inline";
+            document.getElementById("TextAreaChatLog").style.display = "inline";
+        }, 15000);
     }
 	
     else if (content.indexOf("/gagheavy") == 0) {
@@ -1914,19 +1914,19 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/search") == 0) {
         if (content.includes("Asylum") || content.includes("asylum")) {
             setTimeout(function() {
-            ChatRoomSpace = "Asylum";
-    	    ChatSearchLeaveRoom = "AsylumEntrance";
-    	    ChatSearchBackground = "AsylumEntrance";
-    	    ChatCreateBackgroundList = BackgroundsTagAsylum
-    	    CommonSetScreen("Online", "ChatSearch");
-            ChatRoomSetLastChatRoom("");
-            document.getElementById("InputChat").style.display = "none";
-            document.getElementById("TextAreaChatLog").style.display = "none";
+                ChatRoomSpace = "Asylum";
+    	        ChatSearchLeaveRoom = "AsylumEntrance";
+    	        ChatSearchBackground = "AsylumEntrance";
+    	        ChatCreateBackgroundList = BackgroundsTagAsylum
+    	        CommonSetScreen("Online", "ChatSearch");
+                ChatRoomSetLastChatRoom("");
+                document.getElementById("InputChat").style.display = "none";
+                document.getElementById("TextAreaChatLog").style.display = "none";
             }, 3000);
             setTimeout(function() {
-            CommonSetScreen("Online", "ChatRoom");
-            document.getElementById("InputChat").style.display = "inline";
-            document.getElementById("TextAreaChatLog").style.display = "inline";
+                CommonSetScreen("Online", "ChatRoom");
+                document.getElementById("InputChat").style.display = "inline";
+                document.getElementById("TextAreaChatLog").style.display = "inline";
             }, 15000);
         }
 	    
