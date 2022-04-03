@@ -2243,7 +2243,7 @@ if (CurrentScreen == "ChatRoom") {
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
         target[0].OnlineSharedSettings.AllowFullWardrobeAccess = true;
         target[0].OnlineSharedSettings.BlockBodyCosplay = false;
-        ChatRoomClickCharacter(ChatRoomTargetMemberNumber = target[0]);
+        ChatRoomClickCharacter(target[0]);
         DialogChangeClothes();
     }
 	
