@@ -71,6 +71,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/autokick  =  toggles on auto kick for 0 day old accounts.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/clubhelp = displays the standard commands of the game (and optionaly the BCE commands).", Type: "LocalMessage", Sender: Player.MemberNumber });  
             ChatRoomMessage({ Content: "/erase  =  erases chat.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "/friendlist = gives access to friendlist with clickable links during 15 seconds.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/help (category) = displays the QAM commands. Available categories: bondage, character, clothing, escape, misc, pleasure, talking, visual, zones.", Type: "LocalMessage", Sender: Player.MemberNumber });  
             ChatRoomMessage({ Content: "/hiddenmessages  =  sees hidden messages made by game.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/login (accountname) (password)  =  logs in a new account.", Type: "LocalMessage", Sender: Player.MemberNumber });  
@@ -932,6 +933,25 @@ if (CurrentScreen == "ChatRoom") {
 
     else if (content.indexOf("/erase") == 0) {
         ElementRemove("TextAreaChatLog");
+    }
+	
+    else if (content.indexOf("/friendlist") == 0) {
+        setTimeout(function() {
+            ChatRoomSpace = "";
+	    CommonSetScreen("Online", "ChatSearch");
+            ChatRoomSetLastChatRoom("");
+            document.getElementById("InputChat").style.display = "none";
+            document.getElementById("TextAreaChatLog").style.display = "none";
+            ElementRemove("InputSearch");
+	    FriendListReturn = { Screen: CurrentScreen , Module: CurrentModule };
+            CommonSetScreen("Character", "FriendList");
+            }, 3000);
+       setTimeout(function() {
+           FriendListExit();
+	   CommonSetScreen("Online", "ChatRoom");
+           document.getElementById("InputChat").style.display = "inline";
+           document.getElementById("TextAreaChatLog").style.display = "inline";
+           }, 15000);
     }
 	
     else if (content.indexOf("/gagheavy") == 0) {
