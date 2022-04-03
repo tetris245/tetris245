@@ -12,6 +12,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: QAM help is organized into categories. Use /help (category). List of available categories:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "bondage = commands related to bondage.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "character = commands related to your character.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "chat = commands with extra features in chat room.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "clothing = commands related to the clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "escape = commands related to escape.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "misc = special commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
