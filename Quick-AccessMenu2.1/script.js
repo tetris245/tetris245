@@ -3088,6 +3088,26 @@ function ManagementCannotBeClubSlaveOwnerLock() {}
 function ManagementCannotBeClubSlaveLoverLock() {}
 function AsylumEntranceIsWearingNurseClothes() {return true}
 
+function ServerAppearanceLoadFromBundle(C, AssetFamily, Bundle, SourceMemberNumber, AppearanceFull=false) {
+    const appearanceDiffs = ServerBuildAppearanceDiff(AssetFamily, C.Appearance, Bundle);
+    ServerAddRequiredAppearance(AssetFamily, appearanceDiffs);
+    if (SourceMemberNumber == null) SourceMemberNumber = C.MemberNumber;
+        const updateParams = ValidationCreateDiffParams(C, SourceMemberNumber);                       
+        let { appearance, updateValid } = Object.keys(appearanceDiffs)
+        .reduce(({ appearance, updateValid }, key) => {
+            const diff = appearanceDiffs[key];
+            const { item, valid } = ValidationResolveAppearanceDiff(diff[0], diff[1], updateParams);
+            if (item) appearance.push(item);
+            updateValid = updateValid && valid;
+            return { appearance, updateValid };
+        }, { appearance: [], updateValid: true }); 
+     if (AppearanceFull) {
+        C.AppearanceFull = appearance;
+    } else {
+        C.Appearance = appearance;
+    } 
+}
+
 function PandoraPrisonRun() {
         // When time is up, a maid comes to escort the player out
         if ((Player.Infiltration.Punishment.Timer < CurrentTime) && (CurrentCharacter == null) && !PandoraPrisonEscaped)
