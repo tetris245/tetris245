@@ -46,4 +46,4 @@ Changes for future version 1.3
 * Fixed and improved the AutoRelog function, especially to preserve your QAM or BCE nickname
 * Fixed a bug in wardrobe command
 * Rewrote function !o allow more than 60 minutes in Pandora prison
-* Rewrote function to neutralize validation (only for your own character - it means that other players will not see your real full appearance)
+* Rewrote function to neutralize validation only for characters using QAM, it means that other players will not see your real full appearance. Important note for BCX users: don't curse items that are incompatible according validation rules!
