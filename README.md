@@ -45,4 +45,4 @@ Changes for future version 1.3
 * Improved texts and simplified options for the outfit command
 * Fixed and improved the AutoRelog function, especially to preserve your QAM or BCE nickname
 * Fixed a bug in wardrobe command
-* Rewrote function to neutralize validation (only for your own character - it means other players will not see your real full appearance)
+* Rewrote function to neutralize validation (only for your own character - it means that other players will not see your real full appearance)
