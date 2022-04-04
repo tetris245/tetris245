@@ -45,6 +45,6 @@ Changes for future version 1.3
 * Improved texts and simplified options for the outfit command
 * Fixed and improved the AutoRelog function, especially to preserve your QAM or BCE nickname
 * Fixed a bug for the spanking toys in the unrestrict command
-* Fixed a bug in wardrobe command
+* Fixed a bug in the wardrobe command
 * Rewrote function to allow more than 60 minutes in Pandora prison
 * Rewrote function to neutralize validation only for yourself, it means that other players will not see your real full appearance. 
