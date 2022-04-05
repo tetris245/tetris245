@@ -2074,6 +2074,7 @@ if (CurrentScreen == "ChatRoom") {
             InventoryGroupIsBlocked  = function (C, GroupName) { return false; }
             InventoryPrerequisiteMessage    = function (C, Prerequisit) { return ""; }
             Player.GameplaySettings.BlindDisableExamine = false;
+            Asset.forEach(e => { if (e.Value < 0) e.Value = 1; });
             Player.Inventory.forEach(item => item.Asset.Enable = true);
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Unrestricted softly. Can do most things you couldn't do before. Store also includes hidden items. This can only be reset via relog.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
@@ -2089,6 +2090,7 @@ if (CurrentScreen == "ChatRoom") {
             InventoryGroupIsBlocked  = function (C, GroupName) { return false; }
             InventoryPrerequisiteMessage    = function (C, Prerequisit) { return ""; }
             Player.GameplaySettings.BlindDisableExamine = false;
+	    Asset.forEach(e => { if (e.Value < 0) e.Value = 1; });
             Player.Inventory.forEach(item => item.Asset.Enable = true);
             DialogHasKey = function (C, Item) {return true}
             StruggleLockPickProgressStart = function (C, Item) {
