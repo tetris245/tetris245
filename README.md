@@ -43,8 +43,9 @@ Changes for future version 1.3
 * Organized the help command into categories. Syntax becomes /help (category). Available categories: bondage, character, chat, clothing, escape, misc, pleasure, talking, visual, zones.
 * Improved the login command
 * Improved texts and simplified options for the outfit command
+* Added missing line for the hidden items in the unrestrict command
 * Fixed and improved the AutoRelog function, especially to preserve your QAM or BCE nickname
-* Fixed a bug for the spanking toys in the unrestrict command
+* Fixed a bug for the spanking toys in the unrestrict command (note: only the Sleeping Pill can't be used with this change while using of spanking toys was broken before)
 * Fixed a bug in the wardrobe command
 * Rewrote function to allow more than 60 minutes in Pandora prison
 * Rewrote function to neutralize validation only for yourself, it means that other players will not see your real full appearance. 
