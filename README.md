@@ -39,8 +39,9 @@ Changes for future version 1.3
 * New command: name to change the name of your character. Normal characters (also from non-English alphabets), numbers and spaces are accepted.
 * New command: prison to stay in Pandora prison. More than 60 minutes is possible.
 * New command: profile to have direct access to the profile description of any player in the chat room
+* New command: superdice to rolls a superdice, with a number of sides that can vary between 2 and 999999999
 * Updated the background and relog commands 
-* Organized the help command into categories. Syntax becomes /help (category). Available categories: bondage, character, chat, clothing, escape, misc, pleasure, talking, visual, zones.
+* Organized the help command into categories. Syntax becomes /help (category). Available categories: bondage, character, chat, clothing, escape, fun, misc, talking, visual, zones.
 * Improved the login command
 * Improved texts and simplified options for the outfit command
 * Added missing line for the hidden items in the unrestrict command
