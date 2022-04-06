@@ -2010,6 +2010,15 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomClearAllElements();
     }
 	
+    else if (content.indexOf("/superdice") == 0) {
+	var sides = content.substring(10).trim();
+        if ((sides < 2) || (sides > 1000000000)) sides = 6;
+        const Result = [];
+        let Roll = Math.floor(Math.random() * sides) + 1;
+	Result.push(Roll);
+        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" rolls a superdice of "+sides+" sides. The result is "+Result+"." }]});
+    }
+	
     else if (content.indexOf("/talkbaby") == 0) {
         ElementValue("InputChat", "");
              if (this.BabyTalkOn == false || this.BabyTalkOn == undefined) {
