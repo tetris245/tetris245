@@ -3118,22 +3118,58 @@ function ServerAppearanceLoadFromBundle(C, AssetFamily, Bundle, SourceMemberNumb
     } 
 }
 
+function ChatRoomSyncItem(data) {
+    if ((data == null) || (typeof data !== "object") || (data.Source == null) || (typeof data.Source !== "number") || (data.Item == null) || (typeof data.Item !== "object") || (data.Item.Target == null) || (typeof data.Item.Target !== "number") || (data.Item.Group == null) || (typeof data.Item.Group !== "string")) return;
+    for (let C = 0; C < ChatRoomCharacter.length; C++)
+	if (ChatRoomCharacter[C].MemberNumber === data.Item.Target) {
+	    const updateParams = ValidationCreateDiffParams(ChatRoomCharacter[C], data.Source);
+	    const previousItem = InventoryGet(ChatRoomCharacter[C], data.Item.Group);
+	    const newItem = ServerBundledItemToAppearanceItem(ChatRoomCharacter[C].AssetFamily, data.Item);
+	    let { item, valid } = ValidationResolveAppearanceDiff(previousItem, newItem, updateParams);
+	    ChatRoomAllowCharacterUpdate = false;
+	        if (!item || (previousItem && previousItem.Asset.Name !== item.Asset.Name)) {
+		    InventoryRemove(ChatRoomCharacter[C], data.Item.Group, false);
+		}
+		if (item) {
+		    CharacterAppearanceSetItem(
+		    ChatRoomCharacter[C], data.Item.Group, item.Asset, item.Color, item.Difficulty, null, false);
+		    InventoryGet(ChatRoomCharacter[C], data.Item.Group).Property = item.Property;
+		    /** @type {AppearanceDiffMap} */
+		    const diffMap = {};
+		    for (const appearanceItem of ChatRoomCharacter[C].Appearance) {
+		        const groupName = appearanceItem.Asset.Group.Name;
+			    if (groupName === data.Item.Group) {
+			        diffMap[groupName] = [previousItem, appearanceItem];
+			    } else {
+			        diffMap[groupName] = [appearanceItem, appearanceItem];
+			    }
+		     }
+		     const cyclicBlockSanitizationResult = ValidationResolveCyclicBlocks(ChatRoomCharacter[C].Appearance, diffMap);
+		     ChatRoomCharacter[C].Appearance = cyclicBlockSanitizationResult.appearance;
+		     valid = valid && cyclicBlockSanitizationResult.valid;
+	    }
+	    ChatRoomAllowCharacterUpdate = true;
+	    CharacterRefresh(ChatRoomCharacter[C]);
+	    for (let R = 0; R < ChatRoomData.Character.length; R++) {
+	        if (ChatRoomData.Character[R].MemberNumber == data.Item.Target)
+		    ChatRoomData.Character[R].Appearance = ChatRoomCharacter[C].Appearance;
+		}
+		return;
+	    }
+}
+
 function PandoraPrisonRun() {
-        // When time is up, a maid comes to escort the player out
         if ((Player.Infiltration.Punishment.Timer < CurrentTime) && (CurrentCharacter == null) && !PandoraPrisonEscaped)
 		PandoraPrisonCharacter = PandoraPrisonMaid;
-	// When the willpower timer ticks, we raise willpower by 1
 	if (PandoraWillpowerTimer < CommonTime()) {
 		if (PandoraWillpower < PandoraMaxWillpower) PandoraWillpower++;
 		PandoraWillpowerTimer = PandoraWillpowerTimer + ((InfiltrationPerksActive("Recovery")) ? 20000 : 30000);
 	}
-	// When the character timer ticks, the guard can come in or leave
 	if ((Player.Infiltration.Punishment.Timer >= CurrentTime) && (PandoraPrisonCharacterTimer < CommonTime()) && (CurrentCharacter == null) && !PandoraPrisonEscaped) {
 		PandoraPrisonBribeEnabled = true;
 		PandoraPrisonCharacter = (PandoraPrisonCharacter == null) ? PandoraPrisonGuard : null;
 		PandoraPrisonCharacterTimer = CommonTime() + 30000 + Math.floor(Math.random() * 30000);
 	}
-	// Draws the character and it's sentence
 	if (PandoraPrisonCharacter != null) {
 		DrawCharacter(Player, 500, 0, 1);
 		DrawCharacter(PandoraPrisonCharacter, 1000, 0, 1);
@@ -3144,7 +3180,6 @@ function PandoraPrisonRun() {
 		DrawText(TextGet("Sentence") + " " + Player.Infiltration.Punishment.Minutes.toString() + " " + TextGet("Minutes"), 1800, 870, "White", "Black");
 		DrawText(TextGet("EndsIn") + " " + TimerToString(Player.Infiltration.Punishment.Timer - CurrentTime), 1800, 920, "White", "Black");
 	}
-	// Draw the willpower / max
 	DrawProgressBar(1610, 954, 380, 36, Math.round(PandoraWillpower / PandoraMaxWillpower * 100));
 	DrawText(PandoraWillpower.toString(), 1800, 973, "black", "white");
 }
