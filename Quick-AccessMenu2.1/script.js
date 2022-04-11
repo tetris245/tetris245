@@ -604,7 +604,7 @@ if (CurrentScreen == "ChatRoom") {
             CollegeChessGameStartALT(chessdifficulty);
             setTimeout(function() {
     	    CommonSetScreen("Online", "ChatRoom");
-            ElementPositionFix("DivChessBoard", null, -1000, -480);
+            ElementPositionFix("DivChessBoard", null, -1000, 0);
             }, 2000);
         }
         else {
@@ -2323,8 +2323,7 @@ if (CurrentScreen == "ChatRoom") {
 
 
 //IDEAS
-// -make an auto change background and select 10 of which should cycle
-//-fix chess sizing 
+// -make an auto change background and select 10 of which should cycle 
 //-make code to auto promote admin lovers, owner, sub,
 //-make a background rezier that can be seen by others and restorer
 //-make a "move closer togheter" code that can be seen by others and restorer
