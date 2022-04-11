@@ -510,11 +510,6 @@ if (CurrentScreen == "ChatRoom") {
         BackgroundsList.push({ Name: "Pandora/Underground/Tunnel4", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Underground/Tunnel5", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "Pandora/Underground/Tunnel6", Tag: [BackgroundsTagIndoor] });  
-	BackgroundsList.push({ Name: "Platform/CastleHall1", Tag: [BackgroundsTagIndoor] }); 
-	BackgroundsList.push({ Name: "Platform/CastleHall2", Tag: [BackgroundsTagIndoor] });  
-	BackgroundsList.push({ Name: "Platform/CollegeArt1", Tag: [BackgroundsTagIndoor] });  
-	BackgroundsList.push({ Name: "Platform/CollegeClass1", Tag: [BackgroundsTagIndoor] }); 
-	BackgroundsList.push({ Name: "Platform/CollegeHall1", Tag: [BackgroundsTagIndoor] }); 
         BackgroundsList.push({ Name: "AmandaCollarIntro", Tag: [BackgroundsTagIndoor] });
         BackgroundsList.push({ Name: "AmandaIntro", Tag: [BackgroundsTagIndoor] });
 	BackgroundsList.push({ Name: "AsylumGGTSRoomAlert", Tag: [BackgroundsTagIndoor] });   
