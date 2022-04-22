@@ -59,7 +59,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/clothes (targetname) =  changes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });  
 	    ChatRoomMessage({ Content: "/diaper (actionhere) (targetname or setvalue) =  plays with diapers (ABDL game). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/naked (targetname) =  removes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/outfit  =  saving/loading/restoring, using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/outfit  =  restores/saves/loads outfit. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/underwear (targetname) =  changes underwear.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/wardrobe (targetname)  =  opens target wardrobe.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
@@ -1326,7 +1326,7 @@ if (CurrentScreen == "ChatRoom") {
          }
 	    
         else if (content.endsWith("/outfit")) {
-            ChatRoomMessage({ Content: "Quick-Access Menu2: Manual:", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-Access Menu2: Options for outfit command:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "To restore your outfit to what it was before entering room, type: /outfit reset or /outfit restore or /outfit revert", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "Three outfits can be saved by using /outfit save1 or /outfit save2 or /outfit save3", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "To load saved outfits, type: /outfit load1 or /outfit load2 or /outfit load3", Type: "LocalMessage", Sender: Player.MemberNumber });
