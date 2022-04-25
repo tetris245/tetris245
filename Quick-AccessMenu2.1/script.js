@@ -108,7 +108,7 @@ if (CurrentScreen == "ChatRoom") {
         else if (content.includes("visual")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Visual commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/anim2 (animhere). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/background =  adds hidden backgrounds to the admin selection screen. Tip for BCX users: activate BCX before using this command.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/bg1 =  adds hidden backgrounds to the admin selection screen. Tip for BCX users: activate BCX before using this command.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/colorchanger  =  using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/pose2 (posehere) (targetname). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/speak  = animates mouth when talking in chat. Can also: /mouth or /speech", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -450,7 +450,7 @@ if (CurrentScreen == "ChatRoom") {
            ServerSend("ChatRoomChat", { "Content":content.substring(2).trim(), "Type":"Chat" });}
     }
 	
-    else if (content.indexOf("/background") == 0) {    
+    else if (content.indexOf("/bg1") == 0) {    
         var BackgroundsTagList = [
 	      BackgroundsTagNone,
 	      BackgroundsTagIndoor,
