@@ -109,7 +109,8 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Visual commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/anim2 (animhere). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/bg1 =  adds hidden backgrounds to the admin selection screen. Tip for BCX users: activate BCX before using this command.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/colorchanger  =  using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/bg2 (number) = uses a hidden platform background. Number must be between 1 and 44. Use /bg2 0 to get the list.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "/colorchanger  =  using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/pose2 (posehere) (targetname). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/speak  = animates mouth when talking in chat. Can also: /mouth or /speech", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
@@ -450,6 +451,23 @@ if (CurrentScreen == "ChatRoom") {
            ServerSend("ChatRoomChat", { "Content":content.substring(2).trim(), "Type":"Chat" });}
     }
 	
+    else if (content.indexOf("/becomeownlover") == 0) {
+        ChatRoomMessage({ Content: "Warning: Uncomfirmed glitch might occur when removing self as lover, during which a random/real lover will be taken. Use with risk in mind. Confirm: /becomeownlover yes", Type: "LocalMessage", Sender: Player.MemberNumber });
+           if (content.includes("yes")) {
+               ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
+               ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanOfferBeginWedding" && "Propose" });
+               ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanBeginWedding" && "Accept" });
+               ChatRoomMessage({ Content: "Accomplished. Break-up is done via Club Management.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+    }
+    //consider writing a lover break up code to compensate for glitch, if possible.
+	
+    else if (content.indexOf("/becomeownowner") == 0) {
+        ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
+        ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "CanOfferEndTrial" && "Propose" });
+        ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "CanEndTrial" && "Accept" });
+    }
+    //can't end free from owner, due to club's extreme mode preventing yet not allowing owner to break. Stupid...
+	
     else if (content.indexOf("/bg1") == 0) {    
         var BackgroundsTagList = [
 	      BackgroundsTagNone,
@@ -551,22 +569,202 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "Quick-AccessMenu2: You can use more backgrounds now.", Type: "LocalMessage", Sender: Player.MemberNumber });
     }   
 
-    else if (content.indexOf("/becomeownlover") == 0) {
-        ChatRoomMessage({ Content: "Warning: Uncomfirmed glitch might occur when removing self as lover, during which a random/real lover will be taken. Use with risk in mind. Confirm: /becomeownlover yes", Type: "LocalMessage", Sender: Player.MemberNumber });
-           if (content.includes("yes")) {
-               ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
-               ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanOfferBeginWedding" && "Propose" });
-               ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanBeginWedding" && "Accept" });
-               ChatRoomMessage({ Content: "Accomplished. Break-up is done via Club Management.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+    else if (content.indexOf("/bg2") == 0) {
+	var bg = content.substring(4).trim();
+        if (bg == 0) {
+             ChatRoomMessage({ Content: "Quick-AccessMenu2: List of hidden platform backgrounds:", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "1 and 2 - Balcony; 3 - Ballroom", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "4 and 5 - Bathroom Olivia", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "6 - Bedroom Dungeon; 7 - Bedroom Edward", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "8 and 9 - Bedroom Isabella; 10 - Bedroom Melody", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "11, 12, 13 - Bedroom Olivia; 14 - Black", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "15 - Castle Hall; 16 - College Art 1", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "17 - College Class 1; 18 - College Hall 1", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "19, 20, 21 - Countess Hall", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "22 and 23 - Dungeon 1", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "24 and 25 - Dungeon Cell", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "26, 27, 28 - Dungeon Storage", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "29 to 39 - Hall (1 to 4); 40 - Maid Bed", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "41 and 42 - Terrace; 43 and 44 - Wine Cell", Type: "LocalMessage", Sender: Player.MemberNumber });           
+        }
+        else if (bg == 1) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Balcony';
+             updateBackground();
+        }
+        else if (bg == 2) {
+             ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/Balcony';
+             updateBackground();
+        }
+        else if (bg == 3) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Ballroom';
+             updateBackground();
+        }
+        else if (bg == 4) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/BathroomOlivia';
+            updateBackground();
+        }
+        else if (bg == 5) {
+             ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/BathroomOlivia';
+             updateBackground();
+        }
+        else if (bg == 6) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/BedroomDungeon';
+             updateBackground();
+        }
+        else if (bg == 7) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/BedroomEdward';
+             updateBackground();
+        }
+        else if (bg == 8) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/BedroomIsabella';
+             updateBackground();
+        }
+        else if (bg == 9) {
+             ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/BedroomIsabella';
+             updateBackground();
+        }
+        else if (bg == 10) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/BedroomMelody';
+             updateBackground();
+        }
+        else if (bg == 11) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/BedroomOlivia';
+             updateBackground();
+        }
+        else if (bg == 12) {
+             ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/BedroomOlivia';
+             updateBackground();
+        }
+        else if (bg == 13) {
+             ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/BedroomOliviaDark';
+             updateBackground();
+        }
+        else if (bg == 14) {
+             ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/Black';
+             updateBackground();
+        }
+        else if (bg == 15) {
+             ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/CastleHall';
+             updateBackground();
+        }
+        else if (bg == 16) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/College/CollegeArt1';
+             updateBackground();
+        }
+        else if (bg == 17) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/College/CollegeClass1';
+             updateBackground();
+        }
+        else if (bg == 18) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/College/CollegeHall1';
+             updateBackground();
+        }
+        else if (bg == 19) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/CountessHall';
+             updateBackground();
+        }
+        else if (bg == 20) {
+             ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/CountessHall';
+             updateBackground();
+        }
+        else if (bg == 21) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/CountessHallDeadEnd';
+             updateBackground();
+        }
+        else if (bg == 22) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Dungeon1C';
+             updateBackground();
+        }
+        else if (bg == 23) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Dungeon1W';
+             updateBackground();
+        }
+        else if (bg == 24) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/DungeonCell';
+             updateBackground();
+        }
+        else if (bg == 25) {
+             ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/DungeonCell';
+             updateBackground();
+        }
+        else if (bg == 26) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/DungeonStorage';
+             updateBackground();
+        }
+        else if (bg == 27) {
+             ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/DungeonStorage';
+             updateBackground();
+        }
+        else if (bg == 28) {
+             ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/DungeonStorageDark';
+             updateBackground();
+        }
+        else if (bg == 29) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall1C';
+             updateBackground();
+        }
+        else if (bg == 30) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall1W';
+             updateBackground();
+        }
+        else if (bg == 31) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall2C';
+             updateBackground();
+        }
+        else if (bg == 32) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall3C';
+             updateBackground();
+        }
+        else if (bg == 33) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall3Cv2';
+             updateBackground();
+        }
+        else if (bg == 34) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall3E';
+             updateBackground();
+        }
+        else if (bg == 35) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall3W';
+             updateBackground();
+        }
+        else if (bg == 36) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall4C';
+             updateBackground();
+        }
+        else if (bg == 37) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall4E';
+             updateBackground();
+        }
+        else if (bg == 38) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall4W1';
+             updateBackground();
+        }
+        else if (bg == 39) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall4W2';
+            updateBackground();
+        }
+        else if (bg == 40) {
+             ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/MaidBed';
+             updateBackground();
+        }
+        else if (bg == 41) {
+             ChatCreateBackgroundSelect =   '../Screens/Room/Platform/Background/Castle/Terrace';
+             updateBackground();
+        }
+        else if (bg == 42) {
+             ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/Terrace';
+             updateBackground();
+        }
+        else if (bg == 43) {
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/WineCellar';
+             updateBackground();
+        }
+         else if (bg == 44) {
+             ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/WineCellar';
+             updateBackground();
+        }      
     }
-    //consider writing a lover break up code to compensate for glitch, if possible.
-	
-    else if (content.indexOf("/becomeownowner") == 0) {
-        ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
-        ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "CanOfferEndTrial" && "Propose" });
-        ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "CanEndTrial" && "Accept" });
-    }
-    //can't end free from owner, due to club's extreme mode preventing yet not allowing owner to break. Stupid...
+
 	
     else if (content.indexOf("/boost") == 0) {
         LogAdd("ModifierLevel", "SkillModifier", 105);
