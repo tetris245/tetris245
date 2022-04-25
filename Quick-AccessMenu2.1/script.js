@@ -2439,7 +2439,7 @@ function AutoRelog () {
 }
 
 function updateBackground() {
-     var UpdatedRoom = {
+    var UpdatedRoom = {
         Name: ChatRoomData.Name,
         Description: ChatRoomData.Description,
         Background: ChatCreateBackgroundSelect,
