@@ -2438,6 +2438,26 @@ function AutoRelog () {
     ServerSend("AccountLogin", { AccountName: LoginName, Password: LoginPassword });  
 }
 
+function updateBackground() {
+     var UpdatedRoom = {
+        Name: ChatRoomData.Name,
+        Description: ChatRoomData.Description,
+        Background: ChatCreateBackgroundSelect,
+        Limit: "" + ChatRoomData.Limit,
+        Admin: ChatRoomData.Admin,
+        Ban: ChatRoomData.Ban,
+        BlockCategory: ChatRoomData.BlockCategory,
+        Game: ChatRoomData.Game,
+        Private: ChatRoomData.Private,
+        Locked: ChatRoomData.Locked,
+    };
+    ServerSend("ChatRoomAdmin", {
+        MemberNumber: Player.ID,
+        Room: UpdatedRoom,
+        Action: "Update",
+    });
+}
+
 //Mouth animator
 var expressionAnimation;var expressionAnimationIndex=0;function RunExpressionAnimationStep() {
 CharacterSetFacialExpression(Player, "Mouth", expressionAnimation[expressionAnimationIndex++]);
