@@ -760,7 +760,7 @@ if (CurrentScreen == "ChatRoom") {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/WineCellar';
              updateBackground();
         }
-         else if (bg == 44) {
+        else if (bg == 44) {
              ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/WineCellar';
              updateBackground();
         }      
