@@ -41,6 +41,7 @@ Changes for future version 1.3
 * New command: prison to stay in Pandora prison. More than 60 minutes is possible.
 * New command: profile to have direct access to the profile description of any player in the chat room
 * New command: superdice to roll a superdice, with a number of sides that can vary between 2 and 999999999
+* New command: unlock to remove all locks on yourself or another player. Of course, usual restrictions for the owner and lover locks.
 * Renamed the background command as bg1 command
 * Updated the bg1 and relog commands 
 * Organized the help command into categories. Syntax becomes /help (category). Available categories: bondage, character, chat, clothing, escape, fun, misc, talking, visual, zones.
