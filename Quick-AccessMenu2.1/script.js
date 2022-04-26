@@ -764,7 +764,6 @@ if (CurrentScreen == "ChatRoom") {
              updateBackground();
         }      
     }
-
 	
     else if (content.indexOf("/boost") == 0) {
         LogAdd("ModifierLevel", "SkillModifier", 105);
