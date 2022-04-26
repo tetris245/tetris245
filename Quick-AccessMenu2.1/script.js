@@ -748,7 +748,7 @@ if (CurrentScreen == "ChatRoom") {
              updateBackground();
         }
         else if (bg == 41) {
-             ChatCreateBackgroundSelect =   '../Screens/Room/Platform/Background/Castle/Terrace';
+             ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Terrace';
              updateBackground();
         }
         else if (bg == 42) {
