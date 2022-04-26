@@ -75,7 +75,8 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/safewordspecific  =  removes specific item. More info when used.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/solidity (value) = changes the solidity of most current bindings. Use low values to escape! Value 1 allows to escape the futuristic crate.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/totalrelease (targetname) =  removes all bindings, collar, harness, chastity, toys.", Type: "LocalMessage", Sender: Player.MemberNumber });       
-        }
+            ChatRoomMessage({ Content: "/unlock (targetname) =  removes all locks.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+	}
 	    
 	 else if (content.includes("fun")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Pleasure commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -2268,6 +2269,31 @@ if (CurrentScreen == "ChatRoom") {
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
         if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
         CharacterRandomUnderwear(target[0]);
+        ChatRoomCharacterUpdate(target[0]);
+    }
+	
+    else if (content.indexOf("/unlock") == 0) {
+        var targetname = content.substring(7).trim();
+        if (targetname == undefined) {targetname = Player.Name};
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+        CharacterReleaseFromLock(target[0], "CombinationPadlock");
+        CharacterReleaseFromLock(target[0], "ExclusivePadlock");
+        CharacterReleaseFromLock(target[0], "HighSecurityPadlock");
+        CharacterReleaseFromLock(target[0], "IntricatePadlock");
+        CharacterReleaseFromLock(target[0], "LoversPadlock");
+        CharacterReleaseFromLock(target[0], "LoversTimerPadlock");
+        CharacterReleaseFromLock(target[0], "MetalPadlock");
+        CharacterReleaseFromLock(target[0], "MistressPadlock");
+        CharacterReleaseFromLock(target[0], "MistressTimerPadlock");
+        CharacterReleaseFromLock(target[0], "OwnerPadlock");
+        CharacterReleaseFromLock(target[0], "OwnerTimerPadlock");
+        CharacterReleaseFromLock(target[0], "PandoraPadlock");
+        CharacterReleaseFromLock(target[0], "PasswordPadlock");
+        CharacterReleaseFromLock(target[0], "SafewordPadlock");
+        CharacterReleaseFromLock(target[0], "TimerPadlock");
+        CharacterReleaseFromLock(target[0], "TimerPasswordPadlock");
         ChatRoomCharacterUpdate(target[0]);
     }
 	
