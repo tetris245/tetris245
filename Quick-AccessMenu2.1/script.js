@@ -2277,6 +2277,7 @@ if (CurrentScreen == "ChatRoom") {
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear the locks on "+target[0].Name+" body."}]});        
         if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
         CharacterReleaseFromLock(target[0], "CombinationPadlock");
         CharacterReleaseFromLock(target[0], "ExclusivePadlock");
