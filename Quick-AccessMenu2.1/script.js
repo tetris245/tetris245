@@ -79,7 +79,7 @@ if (CurrentScreen == "ChatRoom") {
 	}
 	    
 	 else if (content.includes("fun")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Pleasure commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Fun commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/arousal 10  =  sets arousal level. Change value (0-100).", Type: "LocalMessage", Sender: Player.MemberNumber });    
             ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/superdice (sides)  = rolls a superdice. Sides can be between 2 and 999999999.", Type: "LocalMessage", Sender: Player.MemberNumber });
