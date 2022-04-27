@@ -45,6 +45,7 @@ Changes for future version 1.3
 * Renamed the background command as bg1 command
 * Updated the bg1 and relog commands 
 * Organized the help command into categories. Syntax becomes /help (category). Available categories: bondage, character, chat, clothing, escape, fun, misc, talking, visual, zones.
+* Added message for the clothes, naked, randomize, release, restraint, totalrelease and underwear commands
 * Improved the login command
 * Improved texts and simplified options for the outfit command
 * Added missing line for the hidden items in the unrestrict command
