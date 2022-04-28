@@ -24,6 +24,7 @@ if (CurrentScreen == "ChatRoom") {
 
         else if (content.includes("bondage")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Bondage commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "/lock (targetname) (locktype) = adds locks on all lockable items. Locktype is a number between 1 and 8: 1 - Metal; 2 - Exclusive; 3 - Intricate; 4 - High Security; 5 - Pandora; 6 - Mistress; 7 - Lover; 8 - Owner.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
             ChatRoomMessage({ Content: "/randomize (targetname) = naked + underwear + clothes + restrain commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/restrain (targetname) =  adds random restraints.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1416,7 +1417,70 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomClearAllElements();
         }, 3000);
     }
-			
+	
+    else if (content.indexOf("/lock") == 0) {
+        var stringLock1 = content;
+        var stringLock2 = stringLock1.split(/[ ,]+/);
+        var lk = stringLock2[2];
+        if (lk == 1) {
+            Lock = "MetalPadlock";     
+        }
+        else if (lk == 2) {
+            Lock = "ExclusivePadlock";     
+        }
+        else if (lk == 3) {
+            Lock = "IntricatePadlock";     
+        }
+        else if (lk == 4) {
+            Lock = "HighSecurityPadlock";   
+        }
+        else if (lk == 5) {
+            Lock = "PandoraPadlock";    
+        }
+        else if (lk == 6) {
+            Lock = "MistressPadlock";    
+        }
+        else if (lk == 7) {
+            Lock = "LoversPadlock";    
+        }
+        else if (lk == 8) {
+            Lock = "OwnerPadlock";     
+        }
+        var targetname = stringLock2[1];
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make appear locks on "+target[0].Name+" body."}]});        
+        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+        mn = Player.MemberNumber;
+        InventoryLock(target[0], "ItemAddon", Lock, mn);
+        InventoryLock(target[0], "ItemArms", Lock, mn);
+        InventoryLock(target[0], "ItemBoots", Lock, mn);
+        InventoryLock(target[0], "ItemBreast", Lock, mn);
+        InventoryLock(target[0], "ItemButt", Lock, mn);
+        InventoryLock(target[0], "ItemDevices", Lock, mn);
+        InventoryLock(target[0], "ItemEars", Lock, mn);
+        InventoryLock(target[0], "ItemFeet", Lock, mn);
+        InventoryLock(target[0], "ItemHands", Lock, mn);
+        InventoryLock(target[0], "ItemHead", Lock, mn);
+        InventoryLock(target[0], "ItemHood", Lock, mn);
+        InventoryLock(target[0], "ItemLegs", Lock, mn);
+        InventoryLock(target[0], "ItemMisc", Lock, mn);
+        InventoryLock(target[0], "ItemMouth", Lock, mn);
+        InventoryLock(target[0], "ItemMouth2", Lock, mn);
+        InventoryLock(target[0], "ItemMouth3", Lock, mn);
+        InventoryLock(target[0], "ItemNeck", Lock, mn);
+        InventoryLock(target[0], "ItemNeckAccessories", Lock, mn);
+        InventoryLock(target[0], "ItemNeckRestraints", Lock, mn);
+        InventoryLock(target[0], "ItemNipples", Lock, mn);
+        InventoryLock(target[0], "ItemNipplesPiercings", Lock, mn);
+        InventoryLock(target[0], "ItemNose", Lock, mn);
+        InventoryLock(target[0], "ItemPelvis", Lock, mn);
+        InventoryLock(target[0], "ItemTorso", Lock, mn);
+        InventoryLock(target[0], "ItemVulva", Lock, mn);
+        InventoryLock(target[0], "ItemVulvaPiercings", Lock, mn);
+        ChatRoomCharacterUpdate(target[0]);
+    }
+		
     else if (content.indexOf("/maxstatistics") == 0) {
         Player.Money = 9999999999;
         SkillChange("Infiltration", 10);
