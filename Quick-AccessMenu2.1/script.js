@@ -29,7 +29,6 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/randomize (targetname) = naked + underwear + clothes + restrain commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/restrain (targetname) =  adds random restraints.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/solidity (value) = changes the solidity of most current bindings. The value must be between 1 and 99. Use high values to make escape impossible!", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/timercell (minutes) = stays randomly tied in the isolation cell. More than 60 minutes is possible.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
 
         else if (content.includes("character")) {
@@ -128,7 +127,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/patreoncheats  =  all except college uniform, is auto toggled by default.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/prison (minutes) = stays in Pandora prison. More than 60 minutes is possible.", Type: "LocalMessage", Sender: Player.MemberNumber });           
             ChatRoomMessage({ Content: "/store  =  leaves chatroom, goes to store. Shows hidden items.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/timercell (minutes) = stays randomly tied in the isolation cell. More than 60 minutes is possible.", Type: "LocalMessage", Sender: Player.MemberNumber });         
+            ChatRoomMessage({ Content: "/timercell (minutes) = stays in the isolation cell. More than 60 minutes is possible. Tip: use bondage commands before!", Type: "LocalMessage", Sender: Player.MemberNumber });         
           }
     }
 	
@@ -2317,8 +2316,6 @@ if (CurrentScreen == "ChatRoom") {
         ServerSend("ChatRoomLeave", "");         
         CharacterDeleteAllOnline();
         CellLock(minutes);
-        CharacterFullRandomRestrain(Player,"ALL");
-        ChatRoomCharacterUpdate(Player);
     }
 	
     else if (content.indexOf("/totalrelease") == 0) {
