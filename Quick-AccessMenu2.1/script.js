@@ -1405,19 +1405,6 @@ if (CurrentScreen == "ChatRoom") {
         OnlineGameName = "";
     }
 	
-    else if (content.indexOf("/login") == 0) {
-        var stringLogin1 = content;
-        var stringLogin2 = stringLogin1.split(/[ ,]+/);
-        this.LoginName = SpeechGarbleByGagLevel(6,stringLogin2[1]);
-        this.LoginPassword = SpeechGarbleByGagLevel(6,stringLogin2[2]);
-        ServerSocket.close();
-        ServerSocket.open();
-        ServerSend("AccountLogin", { AccountName: stringLogin2[1], Password: stringLogin2[2] });
-        setTimeout(function() {
-        ChatRoomClearAllElements();
-        }, 3000);
-    }
-	
     else if (content.indexOf("/lock") == 0) {
         var stringLock1 = content;
         var stringLock2 = stringLock1.split(/[ ,]+/);
@@ -1479,6 +1466,19 @@ if (CurrentScreen == "ChatRoom") {
         InventoryLock(target[0], "ItemVulva", Lock, mn);
         InventoryLock(target[0], "ItemVulvaPiercings", Lock, mn);
         ChatRoomCharacterUpdate(target[0]);
+    }
+	
+    else if (content.indexOf("/login") == 0) {
+        var stringLogin1 = content;
+        var stringLogin2 = stringLogin1.split(/[ ,]+/);
+        this.LoginName = SpeechGarbleByGagLevel(6,stringLogin2[1]);
+        this.LoginPassword = SpeechGarbleByGagLevel(6,stringLogin2[2]);
+        ServerSocket.close();
+        ServerSocket.open();
+        ServerSend("AccountLogin", { AccountName: stringLogin2[1], Password: stringLogin2[2] });
+        setTimeout(function() {
+        ChatRoomClearAllElements();
+        }, 3000);
     }
 		
     else if (content.indexOf("/maxstatistics") == 0) {
