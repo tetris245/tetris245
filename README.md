@@ -49,6 +49,7 @@ Changes for future version 1.3
 * Added message for the clothes, naked, randomize, release, restraint, totalrelease and underwear commands
 * Improved the login command
 * Improved texts and simplified options for the outfit command
+* Removed random bondage from timercell command. Tip: use bondage commands before!
 * Added missing line for the hidden items in the unrestrict command
 * Fixed and improved the AutoRelog function, especially to preserve your QAM or BCE nickname
 * Added a slightly modified version of the updateBackground function, which was previously removed
