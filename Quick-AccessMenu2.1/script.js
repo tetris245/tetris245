@@ -24,7 +24,7 @@ if (CurrentScreen == "ChatRoom") {
 
         else if (content.includes("bondage")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Bondage commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/lock (targetname) (locktype) = adds locks on all lockable items. Locktype is a number between 1 and 8:", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "/lock (targetname) (locktype) = adds locks on all lockable items. Locktype is a number between 1 and 9:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "1: Metal 2: Exclusive 3: Intricate 4: High Security", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "5: Pandora 6: Mistress 7: Lover 8: Owner 9: 5 Minutes", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
