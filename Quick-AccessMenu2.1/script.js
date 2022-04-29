@@ -1443,7 +1443,7 @@ if (CurrentScreen == "ChatRoom") {
 	ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make appear locks on "+target[0].Name+" body."}]});        
         if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
         mn = Player.MemberNumber;
-                if (InventoryGet(target[0], "ItemAddon") != null) {
+        if (InventoryGet(target[0], "ItemAddon") != null) {
             if (((InventoryGet(target[0], "ItemAddon").Property != null) && (InventoryGet(target[0], "ItemAddon").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemAddon").Property == null))  {  
                 InventoryLock(target[0], "ItemAddon", Lock, mn);
             }
