@@ -24,9 +24,10 @@ if (CurrentScreen == "ChatRoom") {
 
         else if (content.includes("bondage")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Bondage commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/lock (targetname) (locktype) = adds locks on all lockable items. Locktype is a number between 1 and 9:", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "1: Metal 2: Exclusive 3: Intricate 4: High Security", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "5: Pandora 6: Mistress 7: Lover 8: Owner 9: 5 Minutes", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "/lock (targetname) (locktype) (r)= adds locks on all lockable items. Locktype is a number between 1 and 9:", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "1 Metal - 2 Exclusive - 3 Intricate - 4 High Security", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "5 Pandora - 6 Mistress - 7 Lover - 8 Owner - 9 5 Minutes", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "Use r (= remove item) only for locktype 9.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
             ChatRoomMessage({ Content: "/randomize (targetname) = naked + underwear + clothes + restrain commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/restrain (targetname) =  adds random restraints.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1435,7 +1436,8 @@ if (CurrentScreen == "ChatRoom") {
             Lock = "OwnerPadlock";     
         }
 	else if (lk == 9) {
-            Lock = "TimerPadlock";     
+            Lock = "TimerPadlock"; 
+	    var removeitem = stringLock2[3];   
         }
         var targetname = stringLock2[1];
         var targetfinder = new RegExp('^'+targetname+'', 'i');
@@ -1446,131 +1448,209 @@ if (CurrentScreen == "ChatRoom") {
         if (InventoryGet(target[0], "ItemAddon") != null) {
             if (((InventoryGet(target[0], "ItemAddon").Property != null) && (InventoryGet(target[0], "ItemAddon").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemAddon").Property == null))  {  
                 InventoryLock(target[0], "ItemAddon", Lock, mn);
+		    if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemAddon").Property.RemoveItem = true;
+                    }
             }
         }
         if (InventoryGet(target[0], "ItemArms") != null) {
             if (((InventoryGet(target[0], "ItemArms").Property != null) && (InventoryGet(target[0], "ItemArms").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemArms").Property == null))  {  
                 InventoryLock(target[0], "ItemArms", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemArms").Property.RemoveItem = true;
+                    }	    
             }
         }
         if (InventoryGet(target[0], "ItemBoots") != null) {
             if (((InventoryGet(target[0], "ItemBoots").Property != null) && (InventoryGet(target[0], "ItemBoots").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemBoots").Property == null))  {  
                 InventoryLock(target[0], "ItemBoots", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemBoots").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemBreast") != null) {
             if (((InventoryGet(target[0], "ItemBreast").Property != null) && (InventoryGet(target[0], "ItemBreast").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemBreast").Property == null))  {  
                 InventoryLock(target[0], "ItemBreast", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemBreast").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemButt") != null) {
             if (((InventoryGet(target[0], "ItemButt").Property != null) && (InventoryGet(target[0], "ItemButt").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemButt").Property == null))  {  
                 InventoryLock(target[0], "ItemButt", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemButt").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemDevices") != null) {
             if (((InventoryGet(target[0], "ItemDevices").Property != null) && (InventoryGet(target[0], "ItemDevices").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemDevices").Property == null))  {  
                 InventoryLock(target[0], "ItemDevices", Lock, mn);
+		    if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemDevices").Property.RemoveItem = true;
+                    }	    
             }
         }
         if (InventoryGet(target[0], "ItemEars") != null) {
             if (((InventoryGet(target[0], "ItemEars").Property != null) && (InventoryGet(target[0], "ItemEars").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemEars").Property == null))  {  
                 InventoryLock(target[0], "ItemEars", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemEars").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemFeet") != null) {
             if (((InventoryGet(target[0], "ItemFeet").Property != null) && (InventoryGet(target[0], "ItemFeet").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemFeet").Property == null))  {  
                 InventoryLock(target[0], "ItemFeet", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemFeet").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemHands") != null) {
             if (((InventoryGet(target[0], "ItemHands").Property != null) && (InventoryGet(target[0], "ItemHands").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemHands").Property == null))  {  
                 InventoryLock(target[0], "ItemHands", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemHands").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemHead") != null) {
             if (((InventoryGet(target[0], "ItemHead").Property != null) && (InventoryGet(target[0], "ItemHead").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemHead").Property == null))  {  
                 InventoryLock(target[0], "ItemHead", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemHead").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemHood") != null) {
             if (((InventoryGet(target[0], "ItemHood").Property != null) && (InventoryGet(target[0], "ItemHood").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemHood").Property == null))  {  
                 InventoryLock(target[0], "ItemHood", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemHood").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemLegs") != null) {
             if (((InventoryGet(target[0], "ItemLegs").Property != null) && (InventoryGet(target[0], "ItemLegs").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemLegs").Property == null))  {  
                 InventoryLock(target[0], "ItemLegs", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemLegs").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemMisc") != null) {
             if (((InventoryGet(target[0], "ItemMisc").Property != null) && (InventoryGet(target[0], "ItemMisc").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemMisc").Property == null))  {  
                 InventoryLock(target[0], "ItemMisc", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemMisc").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemMouth") != null) {
             if (((InventoryGet(target[0], "ItemMouth").Property != null) && (InventoryGet(target[0], "ItemMouth").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemMouth").Property == null))  {  
                 InventoryLock(target[0], "ItemMouth", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemMouth").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemMouth2") != null) {
             if (((InventoryGet(target[0], "ItemMouth2").Property != null) && (InventoryGet(target[0], "ItemMouth2").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemMouth2").Property == null))  {  
                 InventoryLock(target[0], "ItemMouth2", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemMouth2").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemMouth3") != null) {
             if (((InventoryGet(target[0], "ItemMouth3").Property != null) && (InventoryGet(target[0], "ItemMouth3").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemMouth3").Property == null))  {  
                 InventoryLock(target[0], "ItemMouth3", Lock, mn);
+		     if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemMouth3").Property.RemoveItem = true;
+                    }	        
             }
         }
         if (InventoryGet(target[0], "ItemNeck") != null) {
             if (((InventoryGet(target[0], "ItemNeck").Property != null) && (InventoryGet(target[0], "ItemNeck").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemNeck").Property == null))  {  
                 InventoryLock(target[0], "ItemNeck", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemNeck").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemNeckAccessories") != null) {
             if (((InventoryGet(target[0], "ItemNeckAccessories").Property != null) && (InventoryGet(target[0], "ItemNeckAccessories").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemNeckAccessories").Property == null))  {  
                 InventoryLock(target[0], "ItemNeckAccessories", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemNeckAccessories").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemNeckRestraints") != null) {
             if (((InventoryGet(target[0], "ItemNeckRestraints").Property != null) && (InventoryGet(target[0], "ItemNeckRestraints").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemNeckRestraints").Property == null))  {  
                 InventoryLock(target[0], "ItemNeckRestraints", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemNeckRestraints").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemNipples") != null) {
             if (((InventoryGet(target[0], "ItemNipples").Property != null) && (InventoryGet(target[0], "ItemNipples").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemNipples").Property == null))  {  
                 InventoryLock(target[0], "ItemNipples", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemNipples").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemNipplesPiercings") != null) {
             if (((InventoryGet(target[0], "ItemNipplesPiercings").Property != null) && (InventoryGet(target[0], "ItemNipplesPiercings").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemNipplesPiercings").Property == null))  {  
                 InventoryLock(target[0], "ItemNipplesPiercings", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemNipplesPiercings").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemNose") != null) {
             if (((InventoryGet(target[0], "ItemNose").Property != null) && (InventoryGet(target[0], "ItemNose").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemNose").Property == null))  {  
                 InventoryLock(target[0], "ItemNose", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemNose").Property.RemoveItem = true;
+                    }	    	    
             }
         }        
         if (InventoryGet(target[0], "ItemPelvis") != null) {
             if (((InventoryGet(target[0], "ItemPelvis").Property != null) && (InventoryGet(target[0], "ItemPelvis").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemPelvis").Property == null))  {  
                 InventoryLock(target[0], "ItemPelvis", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemPelvis").Property.RemoveItem = true;
+                    }	    	    
             }
         }       
         if (InventoryGet(target[0], "ItemTorso") != null) {
             if (((InventoryGet(target[0], "ItemTorso").Property != null) && (InventoryGet(target[0], "ItemTorso").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemTorso").Property == null))  {  
                 InventoryLock(target[0], "ItemTorso", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemTorso").Property.RemoveItem = true;
+                    }	    	    
             }
         }      
         if (InventoryGet(target[0], "ItemVulva") != null) {
             if (((InventoryGet(target[0], "ItemVulva").Property != null) && (InventoryGet(target[0], "ItemVulva").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemVulva").Property == null))  {  
                 InventoryLock(target[0], "ItemVulva", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemVulva").Property.RemoveItem = true;
+                    }	    	    
             }
         }
         if (InventoryGet(target[0], "ItemVulvaPiercings") != null) {
             if (((InventoryGet(target[0], "ItemVulvaPiercings").Property != null) && (InventoryGet(target[0], "ItemVulvaPiercings").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemVulvaPiercings").Property == null))  {  
                 InventoryLock(target[0], "ItemVulvaPiercings", Lock, mn);
+	            if (removeitem == "r") {
+                    InventoryGet(target[0], "ItemVulvaPiercings").Property.RemoveItem = true;
+                    }	    	    
             }
         }         
         ChatRoomCharacterUpdate(target[0]);
