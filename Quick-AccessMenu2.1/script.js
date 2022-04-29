@@ -24,8 +24,10 @@ if (CurrentScreen == "ChatRoom") {
 
         else if (content.includes("bondage")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Bondage commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/lock (targetname) (locktype) = adds locks on all lockable items. Locktype is a number between 1 and 8: 1 - Metal; 2 - Exclusive; 3 - Intricate; 4 - High Security; 5 - Pandora; 6 - Mistress; 7 - Lover; 8 - Owner.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+	    ChatRoomMessage({ Content: "/lock (targetname) (locktype) = adds locks on all lockable items. Locktype is a number between 1 and 8:", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "1: Metal 2: Exclusive 3: Intricate 4: High Security", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "5: Pandora 6: Mistress 7: Lover 8: Owner 9: 5 Minutes", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
             ChatRoomMessage({ Content: "/randomize (targetname) = naked + underwear + clothes + restrain commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/restrain (targetname) =  adds random restraints.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/solidity (value) = changes the solidity of most current bindings. The value must be between 1 and 99. Use high values to make escape impossible!", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1431,6 +1433,9 @@ if (CurrentScreen == "ChatRoom") {
         }
         else if (lk == 8) {
             Lock = "OwnerPadlock";     
+        }
+	else if (lk == 9) {
+            Lock = "TimerPadlock";     
         }
         var targetname = stringLock2[1];
         var targetfinder = new RegExp('^'+targetname+'', 'i');
