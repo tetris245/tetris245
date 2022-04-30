@@ -27,7 +27,7 @@ if (CurrentScreen == "ChatRoom") {
 	    ChatRoomMessage({ Content: "/lock (targetname) (locktype) = adds locks on all lockable items. Locktype is a number between 1 and 9:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "1 Metal - 2 Exclusive - 3 Intricate - 4 High Security", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "5 Pandora - 6 Mistress - 7 Lover - 8 Owner - 9 5 Minutes", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "10 Mistress Timer - 11 Lover Timer - 12 Owner Timer", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "13 Mistress Timer - 14 Lover Timer - 15 Owner Timer", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
             ChatRoomMessage({ Content: "/randomize (targetname) = naked + underwear + clothes + restrain commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1440,20 +1440,29 @@ if (CurrentScreen == "ChatRoom") {
             Lock = "TimerPadlock"; 
 	    var removeitem = stringLock2[3];   
         }   
-        else if (lk == 10) {
+        else if (lk == 13) {
             Lock = "MistressTimerPadlock";
             var minutes = stringLock2[3];
-            time = (minutes - 5);   
+            time = (minutes - 5);  
+	    var hidetimer = stringLock2[4];
+	    var enableinput = stringLock2[5];
+	    var removeitem = stringLock2[6]; 	
         }
-        else if (lk == 11) {
+        else if (lk == 14) {
             Lock = "LoversTimerPadlock";  
             var minutes = stringLock2[3];
-            time = (minutes - 5);   
+            time = (minutes - 5); 
+	    var hidetimer = stringLock2[4];
+	    var enableinput = stringLock2[5];
+	    var removeitem = stringLock2[6]; 
         }
-        else if (lk == 12) {
+        else if (lk == 15) {
             Lock = "OwnerTimerPadlock"; 
             var minutes = stringLock2[3];
-            time = (minutes - 5);   
+            time = (minutes - 5);  
+	    var hidetimer = stringLock2[4];
+	    var enableinput = stringLock2[5];
+	    var removeitem = stringLock2[6]; 
         }            
         var targetname = stringLock2[1];
         var targetfinder = new RegExp('^'+targetname+'', 'i');
@@ -1463,13 +1472,19 @@ if (CurrentScreen == "ChatRoom") {
         mn = Player.MemberNumber;
         if (InventoryGet(target[0], "ItemAddon") != null) {
             if (((InventoryGet(target[0], "ItemAddon").Property != null) && (InventoryGet(target[0], "ItemAddon").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemAddon").Property == null))  {  
-                InventoryLock(target[0], "ItemAddon", Lock, mn);
+                InventoryLock(target[0], "ItemAddon", Lock, mn);		    
 		    if (removeitem == "r") {
                         InventoryGet(target[0], "ItemAddon").Property.RemoveItem = true;
                     }
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemAddon").Property.RemoveTimer = InventoryGet(target[0], "ItemAddon").Property.RemoveTimer + (time*60*1000);
                     }
+	            if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemAddon").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemAddon").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemArms") != null) {
@@ -1481,6 +1496,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemArms").Property.RemoveTimer = InventoryGet(target[0], "ItemArms").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemArms").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemArms").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemBoots") != null) {
@@ -1492,6 +1513,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemBoots").Property.RemoveTimer = InventoryGet(target[0], "ItemBoots").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemBoots").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemBoots").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemBreast") != null) {
@@ -1503,6 +1530,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemBreast").Property.RemoveTimer = InventoryGet(target[0], "ItemBreast").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemBreast").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemBreast").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemButt") != null) {
@@ -1514,6 +1547,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemButt").Property.RemoveTimer = InventoryGet(target[0], "ItemButt").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemButt").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemButt").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemDevices") != null) {
@@ -1525,6 +1564,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemDevices").Property.RemoveTimer = InventoryGet(target[0], "ItemDevices").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemDevices").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemDevices").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemEars") != null) {
@@ -1536,6 +1581,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemEars").Property.RemoveTimer = InventoryGet(target[0], "ItemEars").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemEars").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemEars").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemFeet") != null) {
@@ -1547,6 +1598,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemFeet").Property.RemoveTimer = InventoryGet(target[0], "ItemFeet").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemFeet").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemFeet").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemHands") != null) {
@@ -1558,6 +1615,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemHands").Property.RemoveTimer = InventoryGet(target[0], "ItemHands").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemHands").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemHands").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemHead") != null) {
@@ -1569,6 +1632,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemHead").Property.RemoveTimer = InventoryGet(target[0], "ItemHead").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemHead").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemHead").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemHood") != null) {
@@ -1580,6 +1649,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemHood").Property.RemoveTimer = InventoryGet(target[0], "ItemHood").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemHood").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemHood").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemLegs") != null) {
@@ -1591,6 +1666,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemLegs").Property.RemoveTimer = InventoryGet(target[0], "ItemLegs").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemLegs").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemLegs").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemMisc") != null) {
@@ -1602,6 +1683,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemMisc").Property.RemoveTimer = InventoryGet(target[0], "ItemMisc").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemMisc").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemMisc").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemMouth") != null) {
@@ -1613,6 +1700,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemMouth").Property.RemoveTimer = InventoryGet(target[0], "ItemMouth").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemMouth").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemMouth").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemMouth2") != null) {
@@ -1624,6 +1717,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemMouth2").Property.RemoveTimer = InventoryGet(target[0], "ItemMouth2").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemMouth2").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemMouth2").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemMouth3") != null) {
@@ -1635,6 +1734,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                     InventoryGet(target[0], "ItemMouth3").Property.RemoveTimer = InventoryGet(target[0], "ItemMouth3").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemMouth3").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemMouth3").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemNeck") != null) {
@@ -1646,6 +1751,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemNeck").Property.RemoveTimer = InventoryGet(target[0], "ItemNeck").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemNeck").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemNek").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemNeckAccessories") != null) {
@@ -1657,6 +1768,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemNeckAccessories").Property.RemoveTimer = InventoryGet(target[0], "ItemNeckAccessories").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemNeckAccessories").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemNeckAccessories").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemNeckRestraints") != null) {
@@ -1668,6 +1785,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemNeckRestraints").Property.RemoveTimer = InventoryGet(target[0], "ItemNeckRestraints").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemNeckRestraints").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemNeckRestraints").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemNipples") != null) {
@@ -1679,6 +1802,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemNipples").Property.RemoveTimer = InventoryGet(target[0], "ItemNipples").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemNipples").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemNipples").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemNipplesPiercings") != null) {
@@ -1690,6 +1819,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemNipplesPiercings").Property.RemoveTimer = InventoryGet(target[0], "ItemNipplesPiercings").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemNipplesPiercings").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemNipplesPiercings").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemNose") != null) {
@@ -1701,6 +1836,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemNose").Property.RemoveTimer = InventoryGet(target[0], "ItemNose").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemNose").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemNose").Property.EnableRandomInput = true; 
+		    }
             }
         }        
         if (InventoryGet(target[0], "ItemPelvis") != null) {
@@ -1712,6 +1853,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemPelvis").Property.RemoveTimer = InventoryGet(target[0], "ItemPelvis").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemPelvis").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemPelvis").Property.EnableRandomInput = true; 
+		    }
             }
         }       
         if (InventoryGet(target[0], "ItemTorso") != null) {
@@ -1723,6 +1870,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemTorso").Property.RemoveTimer = InventoryGet(target[0], "ItemTorso").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemTorso").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemTorso").Property.EnableRandomInput = true; 
+		    }
             }
         }      
         if (InventoryGet(target[0], "ItemVulva") != null) {
@@ -1734,6 +1887,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemVulva").Property.RemoveTimer = InventoryGet(target[0], "ItemVulva").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemVulva").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemVulva").Property.EnableRandomInput = true; 
+		    }
             }
         }
         if (InventoryGet(target[0], "ItemVulvaPiercings") != null) {
@@ -1745,6 +1904,12 @@ if (CurrentScreen == "ChatRoom") {
 		    if (minutes != null) {
                         InventoryGet(target[0], "ItemVulvaPiercings").Property.RemoveTimer = InventoryGet(target[0], "ItemVulvaPiercings").Property.RemoveTimer + (time*60*1000);
                     }
+		    if (hidetimer == "h") {
+                        InventoryGet(target[0], "ItemVulvaPiercings").Property.ShowTimer = false;  
+		    }    
+		    if (enableinput == "i") {
+                        InventoryGet(target[0], "ItemVulvaPiercings").Property.EnableRandomInput = true; 
+		    }
             }
         }         
         ChatRoomCharacterUpdate(target[0]);
