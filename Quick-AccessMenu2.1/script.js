@@ -1439,6 +1439,10 @@ if (CurrentScreen == "ChatRoom") {
 	else if (lk == 9) {
             Lock = "TimerPadlock"; 
 	    var removeitem = stringLock2[3];   
+        } 
+	else if (lk == 10) {
+            Lock = "CombinationPadlock"; 
+	    var code = stringLock2[3];   
         }   
         else if (lk == 13) {
             Lock = "MistressTimerPadlock";
@@ -1485,6 +1489,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemAddon").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemAddon").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemArms") != null) && (InventoryGet(target[0], "ItemArms").Asset.AllowLock == true)) {
@@ -1502,6 +1509,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemArms").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemArms").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemBoots") != null) && (InventoryGet(target[0], "ItemBoots").Asset.AllowLock == true)) {
@@ -1519,6 +1529,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemBoots").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemBoots").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemBreast") != null) && (InventoryGet(target[0], "ItemBreast").Asset.AllowLock == true)) {
@@ -1536,6 +1549,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemBreast").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemBreast").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemButt") != null) && (InventoryGet(target[0], "ItemButt").Asset.AllowLock == true)) {
@@ -1553,6 +1569,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemButt").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemButt").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemDevices") != null) && (InventoryGet(target[0], "ItemDevices").Asset.AllowLock == true)) {
@@ -1570,6 +1589,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemDevices").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemDevices").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemEars") != null) && (InventoryGet(target[0], "ItemEars").Asset.AllowLock == true)) {
@@ -1587,6 +1609,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemEars").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemEars").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemFeet") != null) && (InventoryGet(target[0], "ItemFeet").Asset.AllowLock == true)) {
@@ -1604,6 +1629,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemFeet").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemFeet").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemHands") != null) && (InventoryGet(target[0], "ItemHands").Asset.AllowLock == true)) {
@@ -1621,6 +1649,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemHands").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemHands").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemHead") != null) && (InventoryGet(target[0], "ItemHead").Asset.AllowLock == true)) {
@@ -1638,6 +1669,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemHead").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemHead").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemHood") != null) && (InventoryGet(target[0], "ItemHood").Asset.AllowLock == true)) {
@@ -1655,6 +1689,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemHood").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemHood").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemLegs") != null) && (InventoryGet(target[0], "ItemLegs").Asset.AllowLock == true)) {
@@ -1672,6 +1709,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemLegs").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemLegs").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemMisc") != null) && (InventoryGet(target[0], "ItemMisc").Asset.AllowLock == true)) {
@@ -1689,6 +1729,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemMisc").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemMisc").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemMouth") != null) && (InventoryGet(target[0], "ItemMouth").Asset.AllowLock == true)) {
@@ -1706,6 +1749,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemMouth").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemMouth").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemMouth2") != null) && (InventoryGet(target[0], "ItemMouth2").Asset.AllowLock == true)) {
@@ -1723,6 +1769,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemMouth2").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemMouth2").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemMouth3") != null) && (InventoryGet(target[0], "ItemMouth3").Asset.AllowLock == true)) {
@@ -1740,6 +1789,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemMouth3").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemMouth3").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemNeck") != null) && (InventoryGet(target[0], "ItemNeck").Asset.AllowLock == true)) {
@@ -1757,6 +1809,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemNek").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemNeck").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemNeckAccessories") != null) && (InventoryGet(target[0], "ItemNeckAccessories").Asset.AllowLock == true)) {
@@ -1774,6 +1829,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemNeckAccessories").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemNeckAccessories").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemNeckRestraints") != null) && (InventoryGet(target[0], "ItemNeckRestraints").Asset.AllowLock == true)) {
@@ -1791,6 +1849,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemNeckRestraints").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemNeckRestraints").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemNipples") != null) && (InventoryGet(target[0], "ItemNipples").Asset.AllowLock == true)) {
@@ -1808,6 +1869,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemNipples").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemNipples").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemNipplesPiercings") != null) && (InventoryGet(target[0], "ItemNipplesPiercings").Asset.AllowLock == true)) {
@@ -1825,6 +1889,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemNipplesPiercings").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemNipplesPiercings").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemNose") != null) && (InventoryGet(target[0], "ItemNose").Asset.AllowLock == true)) {
@@ -1842,6 +1909,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemNose").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemNose").Property.CombinationNumber = code; 
+	            }
             }
         }        
         if ((InventoryGet(target[0], "ItemPelvis") != null) && (InventoryGet(target[0], "ItemPelvis").Asset.AllowLock == true)) {
@@ -1859,6 +1929,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemPelvis").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemPelvis").Property.CombinationNumber = code; 
+	            }
             }
         }       
         if ((InventoryGet(target[0], "ItemTorso") != null) && (InventoryGet(target[0], "ItemTorso").Asset.AllowLock == true)) {
@@ -1876,6 +1949,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemTorso").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemTorso").Property.CombinationNumber = code; 
+	            }
             }
         }      
         if ((InventoryGet(target[0], "ItemVulva") != null) && (InventoryGet(target[0], "ItemVulva").Asset.AllowLock == true)) {
@@ -1893,6 +1969,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemVulva").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemVulva").Property.CombinationNumber = code; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemVulvaPiercings") != null) && (InventoryGet(target[0], "ItemVulvaPiercings").Asset.AllowLock == true)) {
@@ -1910,6 +1989,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if (enableinput == "i") {
                         InventoryGet(target[0], "ItemVulvaPiercings").Property.EnableRandomInput = true; 
 		    }
+		    if ((code != null) && (code > -1) && (code < 10000)) {
+                        InventoryGet(target[0], "ItemVulvaPiercings").Property.CombinationNumber = code; 
+	            }
             }
         }         
         ChatRoomCharacterUpdate(target[0]);
