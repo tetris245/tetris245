@@ -37,7 +37,7 @@ Changes for future version 1.3
 * New command: bg2 to use the hidden Platform backgrounds. Must be followed by a number between 1 and 44. /bg2 0 will give the list of the concerned backgrounds.
 * New command: friendlist to have access to friendlist inside a chat room, with clickable links to other rooms during 15 seconds.
 * New command: ggts to enter ggts training in asylum at some level for a specified time. More than 180 minutes is possible. The level must be between 1 and 6.
-* New command: lock to add locks on all lockable items, on yourself or another player. The lock type is specified by a number between 1 and 16. The syntax is different according the used lock, at all concerned parameters (except the hint for locks with password) can be defined.
+* New command: lock to add locks on all lockable items, on yourself or another player. The lock type is specified by a number between 1 and 16. The syntax is different according the used lock, a§ all concerned parameters (except the hint for locks with password) can be defined.
 * New command: name to change the name of your character. Normal characters (also from non-English alphabets), numbers and spaces are accepted.
 * New command: prison to stay in Pandora prison. More than 60 minutes is possible.
 * New command: profile to have direct access to the profile description of any player in the chat room
