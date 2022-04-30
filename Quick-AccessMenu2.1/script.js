@@ -1443,6 +1443,18 @@ if (CurrentScreen == "ChatRoom") {
 	else if (lk == 10) {
             Lock = "CombinationPadlock"; 
 	    var code = stringLock2[3];   
+        }    
+        else if (lk == 11) {
+            Lock = "SafewordPadlock"; 
+            var PS = /^[A-Z]+$/; 
+	    var pw = stringLock2[3].toUpperCase(); 
+            var removeitem = stringLock2[4];   
+        }   
+        else if (lk == 12) {
+            Lock = "PasswordPadlock"; 
+            var PS = /^[A-Z]+$/; 
+	    var pw = stringLock2[3].toUpperCase(); 
+            var removeitem = stringLock2[4];   
         }   
         else if (lk == 13) {
             Lock = "MistressTimerPadlock";
@@ -1467,7 +1479,17 @@ if (CurrentScreen == "ChatRoom") {
 	    var hidetimer = stringLock2[4];
 	    var enableinput = stringLock2[5];
 	    var removeitem = stringLock2[6]; 
-        }            
+        }   
+	else if (lk == 16) {
+            Lock = "TimerPasswordPadlock"; 
+            var PS = /^[A-Z]+$/; 
+	    var pw = stringLock2[3].toUpperCase(); 
+            var minutes = stringLock2[4];
+            time = (minutes - 5);  
+	    var hidetimer = stringLock2[5];
+	    var enableinput = stringLock2[6];
+            var removeitem = stringLock2[7]; 
+        } 
         var targetname = stringLock2[1];
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
@@ -1492,6 +1514,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemAddon").Property.CombinationNumber = code; 
 	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemAddon").Property.Password = pw; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemArms") != null) && (InventoryGet(target[0], "ItemArms").Asset.AllowLock == true)) {
@@ -1511,6 +1536,9 @@ if (CurrentScreen == "ChatRoom") {
 		    }
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemArms").Property.CombinationNumber = code; 
+	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemArms").Property.Password = pw; 
 	            }
             }
         }
@@ -1532,6 +1560,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemBoots").Property.CombinationNumber = code; 
 	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemBoots").Property.Password = pw; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemBreast") != null) && (InventoryGet(target[0], "ItemBreast").Asset.AllowLock == true)) {
@@ -1551,6 +1582,9 @@ if (CurrentScreen == "ChatRoom") {
 		    }
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemBreast").Property.CombinationNumber = code; 
+	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemBreast").Property.Password = pw; 
 	            }
             }
         }
@@ -1572,6 +1606,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemButt").Property.CombinationNumber = code; 
 	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemButt").Property.Password = pw; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemDevices") != null) && (InventoryGet(target[0], "ItemDevices").Asset.AllowLock == true)) {
@@ -1591,6 +1628,9 @@ if (CurrentScreen == "ChatRoom") {
 		    }
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemDevices").Property.CombinationNumber = code; 
+	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemDevices").Property.Password = pw; 
 	            }
             }
         }
@@ -1612,6 +1652,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemEars").Property.CombinationNumber = code; 
 	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemEars").Property.Password = pw; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemFeet") != null) && (InventoryGet(target[0], "ItemFeet").Asset.AllowLock == true)) {
@@ -1631,6 +1674,9 @@ if (CurrentScreen == "ChatRoom") {
 		    }
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemFeet").Property.CombinationNumber = code; 
+	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemFeet").Property.Password = pw; 
 	            }
             }
         }
@@ -1652,6 +1698,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemHands").Property.CombinationNumber = code; 
 	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemHands").Property.Password = pw; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemHead") != null) && (InventoryGet(target[0], "ItemHead").Asset.AllowLock == true)) {
@@ -1671,6 +1720,9 @@ if (CurrentScreen == "ChatRoom") {
 		    }
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemHead").Property.CombinationNumber = code; 
+	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemHead").Property.Password = pw; 
 	            }
             }
         }
@@ -1692,6 +1744,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemHood").Property.CombinationNumber = code; 
 	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemHood").Property.Password = pw; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemLegs") != null) && (InventoryGet(target[0], "ItemLegs").Asset.AllowLock == true)) {
@@ -1711,6 +1766,9 @@ if (CurrentScreen == "ChatRoom") {
 		    }
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemLegs").Property.CombinationNumber = code; 
+	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemLegs").Property.Password = pw; 
 	            }
             }
         }
@@ -1732,6 +1790,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemMisc").Property.CombinationNumber = code; 
 	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemMisc").Property.Password = pw; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemMouth") != null) && (InventoryGet(target[0], "ItemMouth").Asset.AllowLock == true)) {
@@ -1751,6 +1812,9 @@ if (CurrentScreen == "ChatRoom") {
 		    }
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemMouth").Property.CombinationNumber = code; 
+	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemMouth").Property.Password = pw; 
 	            }
             }
         }
@@ -1772,6 +1836,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemMouth2").Property.CombinationNumber = code; 
 	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemMouth2").Property.Password = pw; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemMouth3") != null) && (InventoryGet(target[0], "ItemMouth3").Asset.AllowLock == true)) {
@@ -1791,6 +1858,9 @@ if (CurrentScreen == "ChatRoom") {
 		    }
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemMouth3").Property.CombinationNumber = code; 
+	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemMouth3").Property.Password = pw; 
 	            }
             }
         }
@@ -1812,6 +1882,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemNeck").Property.CombinationNumber = code; 
 	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemNeck").Property.Password = pw; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemNeckAccessories") != null) && (InventoryGet(target[0], "ItemNeckAccessories").Asset.AllowLock == true)) {
@@ -1831,6 +1904,9 @@ if (CurrentScreen == "ChatRoom") {
 		    }
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemNeckAccessories").Property.CombinationNumber = code; 
+	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemNeckAccessories").Property.Password = pw; 
 	            }
             }
         }
@@ -1852,6 +1928,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemNeckRestraints").Property.CombinationNumber = code; 
 	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemNeckRestraints").Property.Password = pw; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemNipples") != null) && (InventoryGet(target[0], "ItemNipples").Asset.AllowLock == true)) {
@@ -1871,6 +1950,9 @@ if (CurrentScreen == "ChatRoom") {
 		    }
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemNipples").Property.CombinationNumber = code; 
+	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemNipples").Property.Password = pw; 
 	            }
             }
         }
@@ -1892,6 +1974,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemNipplesPiercings").Property.CombinationNumber = code; 
 	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemNipplesPiercings").Property.Password = pw; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemNose") != null) && (InventoryGet(target[0], "ItemNose").Asset.AllowLock == true)) {
@@ -1911,6 +1996,9 @@ if (CurrentScreen == "ChatRoom") {
 		    }
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemNose").Property.CombinationNumber = code; 
+	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemNose").Property.Password = pw; 
 	            }
             }
         }        
@@ -1932,6 +2020,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemPelvis").Property.CombinationNumber = code; 
 	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemPelvis").Property.Password = pw; 
+	            }
             }
         }       
         if ((InventoryGet(target[0], "ItemTorso") != null) && (InventoryGet(target[0], "ItemTorso").Asset.AllowLock == true)) {
@@ -1951,6 +2042,9 @@ if (CurrentScreen == "ChatRoom") {
 		    }
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemTorso").Property.CombinationNumber = code; 
+	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemTorso").Property.Password = pw; 
 	            }
             }
         }      
@@ -1972,6 +2066,9 @@ if (CurrentScreen == "ChatRoom") {
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemVulva").Property.CombinationNumber = code; 
 	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemVulva").Property.Password = pw; 
+	            }
             }
         }
         if ((InventoryGet(target[0], "ItemVulvaPiercings") != null) && (InventoryGet(target[0], "ItemVulvaPiercings").Asset.AllowLock == true)) {
@@ -1991,6 +2088,9 @@ if (CurrentScreen == "ChatRoom") {
 		    }
 		    if ((code != null) && (code > -1) && (code < 10000)) {
                         InventoryGet(target[0], "ItemVulvaPiercings").Property.CombinationNumber = code; 
+	            }
+		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                        InventoryGet(target[0], "ItemVulvaPiercings").Property.Password = pw; 
 	            }
             }
         }         
