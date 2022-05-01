@@ -3463,6 +3463,7 @@ function AutoRelog () {
 function updateBackground() {
     var UpdatedRoom = {
         Name: ChatRoomData.Name,
+	Language: ChatRoomData.Language,
         Description: ChatRoomData.Description,
         Background: ChatCreateBackgroundSelect,
         Limit: "" + ChatRoomData.Limit,
