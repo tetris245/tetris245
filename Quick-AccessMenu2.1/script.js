@@ -143,7 +143,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Visual commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/anim2 (animhere). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/bg1 =  adds hidden backgrounds to the admin selection screen. Tip for BCX users: activate BCX before using this command.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/bg2 (number) = uses a hidden platform background. Number must be between 1 and 44. Use /bg2 0 to get the list.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/bg2 (number) = uses a hidden platform background. Number must be between 1 and 45. Use /bg2 0 to get the list.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/colorchanger  =  using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/pose2 (posehere) (targetname). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/speak  = animates mouth when talking in chat. Can also: /mouth or /speech", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -608,18 +608,18 @@ if (CurrentScreen == "ChatRoom") {
         if (bg == 0) {
              ChatRoomMessage({ Content: "Quick-AccessMenu2: List of hidden platform backgrounds:", Type: "LocalMessage", Sender: Player.MemberNumber });
              ChatRoomMessage({ Content: "1 and 2 - Balcony; 3 - Ballroom", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "4 and 5 - Bathroom Olivia", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "6 - Bedroom Dungeon; 7 - Bedroom Edward", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "8 and 9 - Bedroom Isabella; 10 - Bedroom Melody", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "11, 12, 13 - Bedroom Olivia; 14 - Black", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "15 - Castle Hall; 16 - College Art 1", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "17 - College Class 1; 18 - College Hall 1", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "19, 20, 21 - Countess Hall", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "22 and 23 - Dungeon 1", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "24 and 25 - Dungeon Cell", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "26, 27, 28 - Dungeon Storage", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "29 to 39 - Hall (1 to 4); 40 - Maid Bed", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "41 and 42 - Terrace; 43 and 44 - Wine Cell", Type: "LocalMessage", Sender: Player.MemberNumber });           
+             ChatRoomMessage({ Content: "4, 5, 6 - Bathroom Olivia", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "7 - Bedroom Dungeon; 8 - Bedroom Edward", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "9 and 10 - Bedroom Isabella; 11 - Bedroom Melody", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "12, 13, 14 - Bedroom Olivia; 15 - Black", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "16 - Castle Hall; 17 - College Art 1", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "18 - College Class 1; 19 - College Hall 1", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "20, 21, 22 - Countess Hall", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "23 and 24 - Dungeon 1", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "25 and 26 - Dungeon Cell", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "27, 28, 29 - Dungeon Storage", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "30 to 40 - Hall (1 to 4); 41 - Maid Bed", Type: "LocalMessage", Sender: Player.MemberNumber });
+             ChatRoomMessage({ Content: "42 and 43 - Terrace; 44 and 45 - Wine Cell", Type: "LocalMessage", Sender: Player.MemberNumber });           
         }
         else if (bg == 1) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Balcony';
@@ -633,167 +633,171 @@ if (CurrentScreen == "ChatRoom") {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Ballroom';
              updateBackground();
         }
-        else if (bg == 4) {
+	else if (bg == 4) {
+             ChatCreateBackgroundSelect = '../Screens/Room//Platform/Background/Castle/Orig/BathroomOlivia';
+             updateBackground();
+        }   
+        else if (bg == 5) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/BathroomOlivia';
             updateBackground();
         }
-        else if (bg == 5) {
+        else if (bg == 6) {
              ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/BathroomOlivia';
              updateBackground();
         }
-        else if (bg == 6) {
+        else if (bg == 7) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/BedroomDungeon';
              updateBackground();
         }
-        else if (bg == 7) {
+        else if (bg == 8) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/BedroomEdward';
              updateBackground();
         }
-        else if (bg == 8) {
+        else if (bg == 9) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/BedroomIsabella';
              updateBackground();
         }
-        else if (bg == 9) {
+        else if (bg == 10) {
              ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/BedroomIsabella';
              updateBackground();
         }
-        else if (bg == 10) {
+        else if (bg == 11) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/BedroomMelody';
              updateBackground();
         }
-        else if (bg == 11) {
+        else if (bg == 12) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/BedroomOlivia';
              updateBackground();
         }
-        else if (bg == 12) {
+        else if (bg == 13) {
              ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/BedroomOlivia';
              updateBackground();
         }
-        else if (bg == 13) {
+        else if (bg == 14) {
              ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/BedroomOliviaDark';
              updateBackground();
         }
-        else if (bg == 14) {
+        else if (bg == 15) {
              ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/Black';
              updateBackground();
         }
-        else if (bg == 15) {
+        else if (bg == 16) {
              ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/CastleHall';
              updateBackground();
         }
-        else if (bg == 16) {
+        else if (bg == 17) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/College/CollegeArt1';
              updateBackground();
         }
-        else if (bg == 17) {
+        else if (bg == 18) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/College/CollegeClass1';
              updateBackground();
         }
-        else if (bg == 18) {
+        else if (bg == 19) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/College/CollegeHall1';
              updateBackground();
         }
-        else if (bg == 19) {
+        else if (bg == 20) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/CountessHall';
              updateBackground();
         }
-        else if (bg == 20) {
+        else if (bg == 21) {
              ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/CountessHall';
              updateBackground();
         }
-        else if (bg == 21) {
+        else if (bg == 22) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/CountessHallDeadEnd';
              updateBackground();
         }
-        else if (bg == 22) {
+        else if (bg == 23) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Dungeon1C';
              updateBackground();
         }
-        else if (bg == 23) {
+        else if (bg == 24) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Dungeon1W';
              updateBackground();
         }
-        else if (bg == 24) {
+        else if (bg == 25) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/DungeonCell';
              updateBackground();
         }
-        else if (bg == 25) {
+        else if (bg == 26) {
              ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/DungeonCell';
              updateBackground();
         }
-        else if (bg == 26) {
+        else if (bg == 27) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/DungeonStorage';
              updateBackground();
         }
-        else if (bg == 27) {
+        else if (bg == 28) {
              ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/DungeonStorage';
              updateBackground();
         }
-        else if (bg == 28) {
+        else if (bg == 29) {
              ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/DungeonStorageDark';
              updateBackground();
         }
-        else if (bg == 29) {
+        else if (bg == 30) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall1C';
              updateBackground();
         }
-        else if (bg == 30) {
+        else if (bg == 31) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall1W';
              updateBackground();
         }
-        else if (bg == 31) {
+        else if (bg == 32) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall2C';
              updateBackground();
         }
-        else if (bg == 32) {
+        else if (bg == 33) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall3C';
              updateBackground();
         }
-        else if (bg == 33) {
+        else if (bg == 34) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall3Cv2';
              updateBackground();
         }
-        else if (bg == 34) {
+        else if (bg == 35) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall3E';
              updateBackground();
         }
-        else if (bg == 35) {
+        else if (bg == 36) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall3W';
              updateBackground();
         }
-        else if (bg == 36) {
+        else if (bg == 37) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall4C';
              updateBackground();
         }
-        else if (bg == 37) {
+        else if (bg == 38) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall4E';
              updateBackground();
         }
-        else if (bg == 38) {
+        else if (bg == 39) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall4W1';
              updateBackground();
         }
-        else if (bg == 39) {
+        else if (bg == 40) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall4W2';
             updateBackground();
         }
-        else if (bg == 40) {
+        else if (bg == 41) {
              ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/MaidBed';
              updateBackground();
         }
-        else if (bg == 41) {
+        else if (bg == 42) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Terrace';
              updateBackground();
         }
-        else if (bg == 42) {
+        else if (bg == 43) {
              ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/Terrace';
              updateBackground();
         }
-        else if (bg == 43) {
+        else if (bg == 44) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/WineCellar';
              updateBackground();
         }
-        else if (bg == 44) {
+        else if (bg == 45) {
              ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/WineCellar';
              updateBackground();
         }      
