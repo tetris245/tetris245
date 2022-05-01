@@ -75,7 +75,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/safewordspecific  =  removes specific item. More info when used.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/solidity (value) = changes the solidity of most current bindings. Use low values to escape! Value 1 allows to escape the futuristic crate.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/totalrelease (targetname) =  removes all bindings, collar, harness, chastity, toys.", Type: "LocalMessage", Sender: Player.MemberNumber });       
-            ChatRoomMessage({ Content: "/unlock (targetname) =  removes all locks.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+            ChatRoomMessage({ Content: "/unlock (targetname) (locktype) =  removes all locks or only a specified type of lock. More info with /help unl.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
 	}
 	    
 	 else if (content.includes("fun")) {
@@ -138,7 +138,20 @@ if (CurrentScreen == "ChatRoom") {
 	    ChatRoomMessage({ Content: "/talkgag light/heavy  =  toggles on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/whisper (targetname) = sets whisper target.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	}
-
+	    
+        else if (content.includes("unl")) {
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: The unlock command:", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+            ChatRoomMessage({ Content: "/unlock (targetname) (locktype).", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+            ChatRoomMessage({ Content: "All locks of any type will be removed if you don't specify the lock type.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+            ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "The lock types:", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+	    ChatRoomMessage({ Content: "1 Metal 2 Exclusive - 3 Intricate - 4 High Security", Type: "LocalMessage", Sender: Player.MemberNumber });  
+	    ChatRoomMessage({ Content: "5 Pandora - 6 Mistress - 7 Lover - 8 Owner", Type: "LocalMessage", Sender: Player.MemberNumber });    
+	    ChatRoomMessage({ Content: "9 Five Minutes - 10 Combination - 11 Safeword", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+	    ChatRoomMessage({ Content: "12 Password - 13 Mistress Timer - 14 Lover Timer", Type: "LocalMessage", Sender: Player.MemberNumber });  
+	    ChatRoomMessage({ Content: "15 Owner Timer - 16 Timer Password", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+        }
+   
         else if (content.includes("visual")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Visual commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/anim2 (animhere). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -3004,30 +3017,84 @@ if (CurrentScreen == "ChatRoom") {
     }
 	
     else if (content.indexOf("/unlock") == 0) {
-        var targetname = content.substring(7).trim();
+        var stringUnlock1 = content;
+        var stringUnlock2 = stringUnlock1.split(/[ ,]+/);
+        var lk = stringUnlock2[2];
+        var targetname = stringUnlock2[1];
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear the locks on "+target[0].Name+" body."}]});        
+	ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear locks on "+target[0].Name+" body."}]});        
         if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-        CharacterReleaseFromLock(target[0], "CombinationPadlock");
-        CharacterReleaseFromLock(target[0], "ExclusivePadlock");
-        CharacterReleaseFromLock(target[0], "HighSecurityPadlock");
-        CharacterReleaseFromLock(target[0], "IntricatePadlock");
-        CharacterReleaseFromLock(target[0], "LoversPadlock");
-        CharacterReleaseFromLock(target[0], "LoversTimerPadlock");
-        CharacterReleaseFromLock(target[0], "MetalPadlock");
-        CharacterReleaseFromLock(target[0], "MistressPadlock");
-        CharacterReleaseFromLock(target[0], "MistressTimerPadlock");
-        CharacterReleaseFromLock(target[0], "OwnerPadlock");
-        CharacterReleaseFromLock(target[0], "OwnerTimerPadlock");
-        CharacterReleaseFromLock(target[0], "PandoraPadlock");
-        CharacterReleaseFromLock(target[0], "PasswordPadlock");
-        CharacterReleaseFromLock(target[0], "SafewordPadlock");
-        CharacterReleaseFromLock(target[0], "TimerPadlock");
-        CharacterReleaseFromLock(target[0], "TimerPasswordPadlock");
+        if (lk == null) {
+            CharacterReleaseFromLock(target[0], "CombinationPadlock");
+            CharacterReleaseFromLock(target[0], "ExclusivePadlock");
+            CharacterReleaseFromLock(target[0], "HighSecurityPadlock");
+            CharacterReleaseFromLock(target[0], "IntricatePadlock");
+            CharacterReleaseFromLock(target[0], "LoversPadlock");
+            CharacterReleaseFromLock(target[0], "LoversTimerPadlock");
+            CharacterReleaseFromLock(target[0], "MetalPadlock");
+            CharacterReleaseFromLock(target[0], "MistressPadlock");
+            CharacterReleaseFromLock(target[0], "MistressTimerPadlock");
+            CharacterReleaseFromLock(target[0], "OwnerPadlock");
+            CharacterReleaseFromLock(target[0], "OwnerTimerPadlock");
+            CharacterReleaseFromLock(target[0], "PandoraPadlock");
+            CharacterReleaseFromLock(target[0], "PasswordPadlock");
+            CharacterReleaseFromLock(target[0], "SafewordPadlock");
+            CharacterReleaseFromLock(target[0], "TimerPadlock");
+            CharacterReleaseFromLock(target[0], "TimerPasswordPadlock");
+        }
+        else if (lk == 1) {
+            CharacterReleaseFromLock(target[0], "MetalPadlock");   
+        }
+        else if (lk == 2) {
+            CharacterReleaseFromLock(target[0], "ExclusivePadlock");    
+        }
+        else if (lk == 3) {
+             CharacterReleaseFromLock(target[0], "IntricatePadlock");   
+        }
+        else if (lk == 4) {
+            CharacterReleaseFromLock(target[0], "HighSecurityPadlock");
+        }
+        else if (lk == 5) {
+            CharacterReleaseFromLock(target[0], "PandoraPadlock");
+        }
+        else if (lk == 6) {
+            CharacterReleaseFromLock(target[0], "MistressTimerPadlock");
+        }
+        else if (lk == 7) {
+            CharacterReleaseFromLock(target[0], "LoversPadlock");
+        }
+        else if (lk == 8) {
+            CharacterReleaseFromLock(target[0], "OwnerPadlock");
+        }
+        else if (lk == 9) {
+            CharacterReleaseFromLock(target[0], "TimerPadlock");
+        }
+        else if (lk == 10) {
+            CharacterReleaseFromLock(target[0], "CombinationPadlock");
+        }
+        else if (lk == 11) {
+            CharacterReleaseFromLock(target[0], "SafewordPadlock");
+        }
+        else if (lk == 12) {
+            CharacterReleaseFromLock(target[0], "PasswordPadlock");
+        }
+        else if (lk == 13) {
+            CharacterReleaseFromLock(target[0], "MistressTimerPadlock");
+        }
+        else if (lk == 14) {
+            CharacterReleaseFromLock(target[0], "LoversTimerPadlock");
+        }
+        else if (lk == 15) {
+            CharacterReleaseFromLock(target[0], "OwnerTimerPadlock");
+        }
+        else if (lk == 16) {
+            CharacterReleaseFromLock(target[0], "TimerPasswordPadlock");
+        }
         ChatRoomCharacterUpdate(target[0]);
     }
+
 	
     else if (content.indexOf("/unrestrict") == 0) {
         if (content.includes("soft")) {
