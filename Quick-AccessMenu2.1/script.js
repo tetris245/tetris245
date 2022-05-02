@@ -3348,6 +3348,7 @@ expressionAnimation[expressionAnimation.length-1]=expressionAnimationEx.Property
 
 //Moaner
 //Boot up sequence
+
 window.addEventListener("load", () => {
 
   function M_MOANER_AddExternalScript(scriptLink) {
@@ -3364,20 +3365,1126 @@ window.addEventListener("load", () => {
   }
   
   const M_MOANER_externalScripts = [];
-  
+    
   const M_MOANER_scripts = [
-  	"moaner/system/util.js",
-  	"moaner/system/controls.js",
-  	"moaner/Reactions/moansManagement.js",
-  	"moaner/system/ChatRoom.js",
-  	"moaner/Reactions/Reactions.js",
-	"moaner/moans.js"
+	"js/system/util.js",
+	"js/system/controls.js",
+	"js/Reactions/moansManagement.js",
+	"js/system/ChatRoom.js",
+	"js/Reactions/Reactions.js",
+	"js/moans.js"
   ];
-
+  
   M_MOANER_externalScripts.forEach(M_MOANER_AddExternalScript);
   M_MOANER_scripts.forEach(M_MOANER_AddScript);
   
+
 });
+
+//ChatRoom
+/*var backupChatRoomSendChat;
+var backupActivityOrgasmPrepare;
+var backupActivityOrgasmStart;
+var backupChatRoomMessage;
+var backupChatRoomFirstTimeHelp;*/
+var M_MOANER_scriptOn=true;
+
+function M_MOANER_MoanerInitAlteredFns(){
+	//interpreter les commandes
+	M_MOANER_initChatRoomSendChatCommands();
+	//gemissements quand on parle
+	M_MOANER_initChatRoomSendChatOverride();
+	//initActivityOrgasmPrepareOverride();
+	M_MOANER_initActivityOrgasmStart();
+	//gemissements quand on recoit une stimulation
+	M_MOANER_initChatRoomMessageOverride ();
+	//message d'aide
+	M_MOANER_initChatRoomFirstTimeHelpOverride();	
+}
+
+function M_MOANER_initChatRoomFirstTimeHelpOverride() {
+	let backupChatRoomFirstTimeHelp = ChatRoomFirstTimeHelp;
+	ChatRoomFirstTimeHelp = () => {
+		firstHelp();
+		backupChatRoomFirstTimeHelp();
+	}
+}
+
+var M_MOANER_tempChatRoomData;
+function M_MOANER_initChatRoomMessageOverride (){
+	M_MOANER_logDebug("Entree initChatRoomOverride pour ChatRoomMessage");
+	let backupChatRoomMessage = ChatRoomMessage;
+	ChatRoomMessage = (data) => {
+		if(M_MOANER_scriptOn && window.CurrentScreen=="ChatRoom"){
+			M_MOANER_tempChatRoomData=data;	
+			if(data!=null && data.Content!= undefined && data.Content!=null){	
+				M_MOANER_logDebug("lancerM_MOANER_reactionTrigger");
+				M_MOANER_reactionTrigger(data);
+			}
+		}
+		backupChatRoomMessage(data);
+	};
+}
+
+function M_MOANER_initChatRoomSendChatOverride(){
+	M_MOANER_logDebug("Entree M_MOANER_MoanerInitAlteredFns pour ChatRoomSendChat");
+	let backupChatRoomSendChat = ChatRoomSendChat;
+	ChatRoomSendChat = (...rest) => {
+	  
+	  let msg = ElementValue("InputChat").trim();
+	  if(M_MOANER_scriptOn && M_MOANER_isSimpleChat(msg)){
+		msg=M_MOANER_reactionExcitation(Player,msg);
+		ElementValue("InputChat",msg);
+	  }
+	  M_MOANER_logDebug("msg="+msg);
+	  backupChatRoomSendChat(...rest);
+	  M_MOANER_logDebug("Sortie ChatRoomSendChat");
+	};
+}
+
+function M_MOANER_initChatRoomSendChatCommands(){
+	let backupChatRoomSendChat = ChatRoomSendChat;
+	ChatRoomSendChat = (...rest) => {
+	  
+	  let msg = ElementValue("InputChat").trim();
+	  if(M_MOANER_isCommande(msg)){
+		msg=M_MOANER_traiterCommande(msg);//fonction qui lance l'interpretation des commandes
+		ElementValue("InputChat",msg);
+	  }
+	  backupChatRoomSendChat(...rest);
+	};
+}
+
+function M_MOANER_initActivityOrgasmStart(){
+	
+	let backupActivityOrgasmStart = ActivityOrgasmStart;
+		ActivityOrgasmStart = (C) => {	
+		
+		if(M_MOANER_scriptOn){
+			M_MOANER_reactionOrgasm(C);
+		}
+		backupActivityOrgasmStart(C);
+	};
+}
+
+/*function M_MOANER_startMoanScript(){
+	M_MOANER_scriptOn=true;
+}*/
+function M_MOANER_stopMoanScript(){
+	M_MOANER_scriptOn=false;
+}
+function M_MOANER_isCommande(msg){
+	return msg.startsWith("/")&&ChatRoomTargetMemberNumber==null;
+}
+function M_MOANER_isSimpleChat(msg){
+	return msg.trim().length>0 && !msg.startsWith("/")&&!msg.startsWith("(")&&!msg.startsWith("*")&&ChatRoomTargetMemberNumber==null;
+}
+
+function M_MOANER_isInChatRoom(){
+	return window.CurrentScreen=="ChatRoom";
+}
+
+//MoanerCommands
+//commande:
+//@moaner feature commande
+//feature: talk (quand on parle), orgasm, startVibrator, spank
+//commande On, OFF
+
+var M_MOANER_moanerKey="bc_moaner_";
+
+//commandes
+const M_MOANER_commandeOn="on";
+const M_MOANER_commandeOff="off";
+
+//features
+const M_MOANER_featureTalk="talk";
+const M_MOANER_featureOrgasm="orgasm";
+const M_MOANER_featureVibrator="vibe";
+const M_MOANER_featureSpank="spank";
+const M_MOANER_featureHelp="help";
+const M_MOANER_featureVerbose="verbose";
+const M_MOANER_featureProfile="profile";
+
+var M_MOANER_talkActive=true;
+var M_MOANER_orgasmActive=true;
+var M_MOANER_vibratorActive=true;
+var M_MOANER_spankActive=true;
+var M_MOANER_verboseActive=true;
+var M_MOANER_firstHelpSeen=false;
+
+var M_MOANER_scriptStatus=["The moaner is active.","The moaner is not active."];
+var M_MOANER_orgasmStatus=["The orgasm moan is active. You will moan while cumming.","The orgasm moan is not active. You will not moan while cumming anymore."];
+var M_MOANER_vibratorStatus=["The vibes moan is active. If your vibrator's setting changes, you will moan.","The vibes moan is not active. If your vibrator's setting changes, you will not moan."];
+var M_MOANER_spankStatus=["The spank moan is active. You will moan while being spanked.","The spank moan is not active. You will not moan while being spanked."];
+var M_MOANER_talkStatus=["The talk moan is active. If you're vibed, you will moan while speaking.","The talk moan is not active. If you're vibed, you will not moan while speaking anymore."];
+var M_MOANER_verboseStatus=["Moaner is verbose.","Moaner is not verbose."];
+var M_MOANER_profileStatus=["No custom profile loaded.","Current moans profile: "];
+var M_MOANER_profileListM_MOANER_intro="Available moaning profiles: ";
+
+var M_MOANER_scriptHelp="Moaner commands available: /moaner help: show this help text. /moaner on: start the moaner. /moaner off: stop the moaner. /moaner talk on: start the talk moan. /moaner talk off: stop the talk moan. /moaner orgasm on: start the orgasm moan. /moaner orgasm off: stop the orgasm moan. /moaner vibe on: start the vibes moan. /moaner vibe off: stop the vibes moan. /moaner spank on: start the spank moan. /moaner spank off: stop the spank moan. /moaner verbose on: make the script verbose. /moaner verbose off: make the script not verbose. /moaner profile: show profiles help. /moaner profile [profile name]: use [profile name] moans";
+
+var M_MOANER_intro="Myrhanda Moaner installed. Type /moaner help for more informations.";
+var M_MOANER_unknownCommand="Unknown command";
+
+function M_MOANER_traiterCommande(msg){
+	if(!msg.toLowerCase().startsWith("/moaner".toLowerCase())){
+		return msg;
+	}
+	var list=msg.split(" ");
+	var feature=list[1];
+	var commande=list[2];
+	if(feature==M_MOANER_commandeOn||feature==M_MOANER_commandeOff){
+		scriptControl(feature);		
+	}
+	else if(feature==M_MOANER_featureTalk){
+		talkControl(commande);
+	}
+	else if(feature==M_MOANER_featureOrgasm){
+		orgasmControl(commande);
+	}
+	else if(feature==M_MOANER_featureVibrator){
+		vibeControl(commande);
+	}
+	else if(feature==M_MOANER_featureSpank){
+		spankControl(commande);
+	}
+	else if(feature==M_MOANER_featureHelp){
+		helpControl(commande);
+	}
+	else if(feature==M_MOANER_featureVerbose){
+		verboseControl(commande);
+	}
+	else if(feature==M_MOANER_featureProfile){
+		profileControl(commande);
+	}
+	else{
+		sendM_MOANER_unknownCommand();
+		return "";
+	}
+	M_MOANER_saveControls();
+	return "";
+}
+
+function sendM_MOANER_unknownCommand(){
+	M_MOANER_sendMessageToWearer(M_MOANER_unknownCommand);
+}
+
+function M_MOANER_initControls(){
+	var datas=JSON.parse(localStorage.getItem(M_MOANER_moanerKey+"_"+Player.MemberNumber));
+	
+	if(datas==null||datas==undefined){
+		M_MOANER_talkActive=true;
+		M_MOANER_orgasmActive=true;
+		M_MOANER_vibratorActive=true;
+		M_MOANER_spankActive=true;
+		M_MOANER_scriptOn=true;
+		profileName="default";
+		//M_MOANER_saveControls();
+	}else{
+		M_MOANER_talkActive=datas.talkMoan;
+		M_MOANER_orgasmActive=datas.orgasmMoan;
+		M_MOANER_vibratorActive=datas.vibeMoan;
+		M_MOANER_spankActive=datas.spankMoan;
+		M_MOANER_scriptOn=datas.script;
+		profileName=datas.moanProfile;
+	}	
+	
+}
+
+function M_MOANER_saveControls(){
+	var controls={
+		"talkMoan":M_MOANER_talkActive,
+		"orgasmMoan":M_MOANER_orgasmActive,
+		"vibeMoan":M_MOANER_vibratorActive,
+		"spankMoan":M_MOANER_spankActive,
+		"script":M_MOANER_scriptOn,
+		"moanProfile":profileName
+	};
+	localStorage.setItem(M_MOANER_moanerKey+"_"+Player.MemberNumber,JSON.stringify(controls));
+	
+}
+
+function M_MOANER_deleteControls(){
+	for (var i = 0; i < localStorage.length; i++) {
+		var key=localStorage.key(i);
+		if(key.startsWith(M_MOANER_moanerKey) && key.endsWith(Player.MemberNumber)){
+			localStorage.removeItem(key);			
+		}
+	  }
+}
+
+function M_MOANER_startMoanScript(){
+	M_MOANER_scriptOn=true;
+}
+
+//controle sur les profils
+function profileControl(commande){
+	
+	if(commande==undefined || commande==M_MOANER_featureHelp){
+		profilesList();
+	}
+	else {
+		M_MOANER_activerProfile(commande);
+	}
+	showM_MOANER_profileStatus();
+}
+
+//controle sur le script entier
+function scriptControl(commande){
+	if(commande==M_MOANER_commandeOn){
+		M_MOANER_scriptOn=true;
+	}
+	else if(commande==M_MOANER_commandeOff){
+		M_MOANER_scriptOn=false;
+	}
+	else{
+		sendM_MOANER_unknownCommand();
+		return;
+	}
+	showM_MOANER_scriptStatus();
+}
+
+//controle sur le mode verbose
+function verboseControl(commande){
+	if(commande==M_MOANER_commandeOn){
+		M_MOANER_verboseActive=true;
+	}
+	else if(commande==M_MOANER_commandeOff){
+		M_MOANER_verboseActive=false;
+	}
+	else{
+		sendM_MOANER_unknownCommand();
+		return;
+	}
+	showM_MOANER_verboseStatus();
+}
+
+//controle sur les gÃ©missements quand on parle
+function talkControl(commande){
+	if(commande==M_MOANER_commandeOn){
+		M_MOANER_talkActive=true;
+	}
+	else if(commande==M_MOANER_commandeOff){
+		M_MOANER_talkActive=false;
+	}
+	else{
+		sendM_MOANER_unknownCommand();
+		return;
+	}
+	showM_MOANER_talkStatus();
+}
+
+//controle sur les gÃ©missements Ã  l'orgasme
+function orgasmControl(commande){
+	if(commande==M_MOANER_commandeOn){
+		M_MOANER_orgasmActive=true;
+	}
+	else if(commande==M_MOANER_commandeOff){
+		M_MOANER_orgasmActive=false;
+	} 
+	else{
+		sendM_MOANER_unknownCommand();
+		return;
+	}
+	showM_MOANER_orgasmStatus();
+}
+//controle sur les gÃ©missements au lancement d'un vibrateur
+function vibeControl(commande){
+	if(commande==M_MOANER_commandeOn){
+		M_MOANER_vibratorActive=true;
+	}
+	else if(commande==M_MOANER_commandeOff){
+		M_MOANER_vibratorActive=false;
+	} 
+	else{
+		sendM_MOANER_unknownCommand();
+		return;
+	}
+	showM_MOANER_vibratorStatus();
+}
+//controle sur les gÃ©missements Ã  la fessÃ©e
+function spankControl(commande){
+	if(commande==M_MOANER_commandeOn){
+		M_MOANER_spankActive=true;
+	}
+	else if(commande==M_MOANER_commandeOff){
+		M_MOANER_spankActive=false;
+	} 
+	else{
+		sendM_MOANER_unknownCommand();
+		return;
+	}
+	showM_MOANER_spankStatus();
+}
+function firstHelp(){
+	//console.log("ChatRoomHelpSeen="+ChatRoomHelpSeen);
+	if (!M_MOANER_firstHelpSeen){
+		M_MOANER_firstHelpSeen=true;
+		console.log("firstHelp! "+ChatRoomHelpSeen);
+		M_MOANER_sendMessageToWearer(M_MOANER_intro);
+	}
+}
+//controle de l'aide
+function helpControl(){
+	M_MOANER_sendMessageToWearer(M_MOANER_scriptHelp);
+	showStatus();
+}
+
+function profilesList(){
+	let liste=M_MOANER_getKeys(M_MOANER_moansProfiles);
+	let msg=M_MOANER_profileListM_MOANER_intro+liste;
+	M_MOANER_sendMessageToWearer(msg);
+}
+
+function showStatus(){
+	showM_MOANER_scriptStatus();
+	showM_MOANER_profileStatus();
+	showM_MOANER_talkStatus();
+	showM_MOANER_orgasmStatus();
+	showM_MOANER_vibratorStatus();
+	showM_MOANER_spankStatus();	
+	showM_MOANER_verboseStatus();	
+}
+
+function showM_MOANER_profileStatus(){
+	if(!M_MOANER_verboseActive){return;}
+	let msg;
+	if(profileName=="default"){
+		msg=M_MOANER_profileStatus[0];
+	}else{
+		msg=M_MOANER_profileStatus[1]+profileName;
+	}
+	M_MOANER_sendMessageToWearer(msg);
+}
+
+function showM_MOANER_verboseStatus(){
+	if(!M_MOANER_verboseActive){return;}
+	let msg;
+	if(M_MOANER_scriptOn){
+		msg=M_MOANER_verboseStatus[0];
+	}else{
+		msg=M_MOANER_verboseStatus[1];
+	}
+	M_MOANER_sendMessageToWearer(msg);
+}
+
+function showM_MOANER_scriptStatus(){
+	if(!M_MOANER_verboseActive){return;}
+	let msg;
+	if(M_MOANER_scriptOn){
+		msg=M_MOANER_scriptStatus[0];
+	}else{
+		msg=M_MOANER_scriptStatus[1];
+	}
+	M_MOANER_sendMessageToWearer(msg);
+}
+
+function showM_MOANER_talkStatus(){
+	if(!M_MOANER_verboseActive){return;}
+	let msg;
+	if(M_MOANER_talkActive){
+		msg=M_MOANER_talkStatus[0];
+	}else{
+		msg=M_MOANER_talkStatus[1];
+	}
+	M_MOANER_sendMessageToWearer(msg);
+}
+
+function showM_MOANER_orgasmStatus(){
+	if(!M_MOANER_verboseActive){return;}
+	let msg;
+	if(M_MOANER_orgasmActive){
+		msg=M_MOANER_orgasmStatus[0];
+	}else{
+		msg=M_MOANER_orgasmStatus[1];
+	}
+	M_MOANER_sendMessageToWearer(msg);
+}
+
+function showM_MOANER_vibratorStatus(){
+	if(!M_MOANER_verboseActive){return;}
+	let msg;
+	if(M_MOANER_vibratorActive){
+		msg=M_MOANER_vibratorStatus[0];
+	}else{
+		msg=M_MOANER_vibratorStatus[1];
+	}
+	M_MOANER_sendMessageToWearer(msg);
+}
+
+function showM_MOANER_spankStatus(){
+	if(!M_MOANER_verboseActive){return;}
+	let msg;
+	if(M_MOANER_spankActive){
+		msg=M_MOANER_spankStatus[0];
+	}else{
+		msg=M_MOANER_spankStatus[1];
+	}
+	M_MOANER_sendMessageToWearer(msg);
+}
+
+//MoanerUtils
+function M_MOANER_logDebug(msg){}
+
+function startDebug(){
+	M_MOANER_logDebug =(msg) =>{
+		console.log("DEBUG: "+msg);
+	};
+}
+
+function stopDebug(){	
+	M_MOANER_logDebug =(msg) =>{
+		console.log("DEBUG: "+msg);
+	};
+}
+
+let MoanerIsLoaded;
+
+MoanerLoginListener();
+
+async function MoanerLoginListener() {
+  while (!MoanerIsLoaded) {
+    try {
+      while ((!window.CurrentScreen || window.CurrentScreen == "Login" || (typeof window.CursedStarter === "function" && window.cursedConfig === undefined)) && !MoanerIsLoaded) {
+		  //console.log("cherche isLoaded");
+		  //console.log("window.CurrentScreen="+window.CurrentScreen);
+        await new Promise(r => setTimeout(r, 2000));
+      }
+	  //console.log("window.CurrentScreen="+window.CurrentScreen);
+	  //console.log("MoanerIsLoaded trouvÃ©");
+      MoanerIsLoaded = true; 
+	  M_MOANER_MoanerInitAlteredFns();
+	  M_MOANER_initControls();
+      
+    } catch (err) { console.log(err); }
+    await new Promise(r => setTimeout(r, 2000));
+  }
+}
+
+function M_MOANER_getKeys(obj){
+   var keys = [];
+   for(var key in obj){
+      keys.push(key);
+   }
+   return keys;
+}
+
+function M_MOANER_shuffle(array,seed) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  // While there remain elements to M_MOANER_shuffle...
+  while (0 !== currentIndex) {
+	seed=M_MOANER_getRandomNumber(seed);
+
+    // Pick a remaining element...
+    randomIndex = seed%(array.length-1);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+function M_MOANER_sendMessageToWearer(msg){
+	ServerSend("ChatRoomChat", {
+		Type: "Action",
+		Content: "gag",
+		Target: Player.MemberNumber,
+		Dictionary: [{Tag: "gag", Text: msg}],
+	});
+}
+
+function M_MOANER_getRandomNumber(seed){
+	let number=Math.floor(Math.abs(Math.sin(seed)*1000));
+	return number;
+}
+
+//MoanerManagement
+/*const baseM_MOANER_factor4Moans=["n... Nyahâ™¥","Oooh","mmmmmh!","NYyaaAâ™¥"];
+const baseM_MOANER_factor3Moans=["mm","aaaah","nyAhâ™¥"];
+const baseM_MOANER_factor2Moans=["nyahâ™¥","Aah!","mh","oh!â™¥","mhâ™¥"];
+const basefactor1Moans=["mh","â™¥ohâ™¥","ah","...â™¥"];
+
+const baseM_MOANER_orgasmMoans=["Nya...Ny...NyaaAAaah!","Mmmmh... MMmh... Hhhmmmm...","Oooooh... Mmmmh... OooOOOOh!","Mmmhnn... Nyhmm... Nyah!"];
+
+const basePainMoans=["Aie!","Aoouch!","Eek","ouch","Aow"];*/
+
+var M_MOANER_profileName="default";
+
+M_MOANER_defaultMoans={
+	"hot":["n... Nyahâ™¥","Oooh","mmmmmh!","NYyaaAâ™¥"],
+	"medium":["mm","aaaah","nyAhâ™¥"],
+	"light":["nyahâ™¥","Aah!","mh","oh!â™¥","mhâ™¥"],
+	"low":["mh","â™¥ohâ™¥","ah","...â™¥"],
+	"orgasm":["Nya...Ny...NyaaAAaah!","Mmmmh... MMmh... Hhhmmmm...","Oooooh... Mmmmh... OooOOOOh!","Mmmhnn... Nyhmm... Nyah!"],
+	"pain":["Aie!","Aoouch!","Aaaaie!","Ouch","Aow"]
+}
+
+M_MOANER_customMoans={
+	"hot":[],
+	"medium":[],
+	"light":[],
+	"low":[],
+	"orgasm":[],
+	"pain":[]
+}
+
+/*nekoMoans={
+	"hot":["n... Nyahâ™¥","NYyaaAâ™¥"],
+	"medium":["nyAhâ™¥","nyyy","..yah"],
+	"light":["nyahâ™¥","Yah!","myuh","mhâ™¥"],
+	"low":["myu","nyâ™¥","mh","â™¥yhâ™¥","nyâ™¥"],
+	"orgasm":["Nya...Ny...NyaaAAaah!","Mmmhnn... Nyhmm... Nyah!","mmmh... mmmeeeee.... meeeoooow!"],
+	"pain":[]
+}*/
+
+var M_MOANER_moansProfiles=[];
+
+function M_MOANER_activerProfile(name){
+	if(M_MOANER_moansProfiles[name]==undefined){
+		profileName="default";
+		resetMoans(Math.random()*300);
+	}
+	else{
+		profileName=name;
+		resetMoans(Math.random()*300);
+	}
+}
+
+function M_MOANER_getMoans(name){
+	var pleasureMoans=M_MOANER_moansProfiles[name];
+	if(pleasureMoans==undefined){
+		pleasureMoans=M_MOANER_defaultMoans;
+	}
+	return pleasureMoans;
+}
+
+function M_MOANER_addMoansProfile(name,pleasure){
+	if(pleasure.hot==undefined || pleasure.hot.length==0){
+		pleasure.hot=M_MOANER_defaultMoans.hot;
+	}
+	if(pleasure.medium==undefined || pleasure.medium.length==0){
+		pleasure.medium=M_MOANER_defaultMoans.medium;
+	}
+	if(pleasure.light==undefined || pleasure.light.length==0){
+		pleasure.light=M_MOANER_defaultMoans.light;
+	}
+	if(pleasure.low==undefined || pleasure.low.length==0){
+		pleasure.low=M_MOANER_defaultMoans.low;
+	}
+	if(pleasure.orgasm==undefined || pleasure.orgasm.length==0){
+		pleasure.orgasm=M_MOANER_defaultMoans.orgasm;
+	}
+	if(pleasure.pain==undefined || pleasure.pain.length==0){
+		pleasure.pain=M_MOANER_defaultMoans.pain;
+	}
+
+	M_MOANER_moansProfiles[name]=pleasure;
+
+}
+
+function addLowMoans(name,pleasureList){
+
+	var profile=M_MOANER_moansProfiles[name];
+	if(profile==undefined){
+		profiledefaultPleasureMoans;
+	}
+	profile.low=pleasureList;
+	addMoansProfile(name,profile);
+
+}
+M_MOANER_addMoansProfile("default",M_MOANER_defaultMoans);
+
+//MoanerReactions
+var M_MOANER_orgasmMoans=[];
+
+var M_MOANER_factor4Moans=[];
+var M_MOANER_factor3Moans=[];
+var M_MOANER_factor2Moans=[];
+var factor1Moans=[];
+var PROPORTION_MAX = 40;
+
+/******************************************************************/
+//rÃ©agir au chat
+/******************************************************************/
+function M_MOANER_reactionExcitation(C, CD) {
+	
+	if(M_MOANER_talkActive && IsStimulated(C)){
+
+		// Validate nulls
+		if (CD == null) CD = "";
+
+		// Validates that the preferences allow stuttering
+		/*if ((C.ArousalSettings == null) || (C.ArousalSettings.AffectStutter == null) || (C.ArousalSettings.AffectStutter != "None")) {
+			return M_MOANER_applyMoanToMsg(C,CD);
+			
+		}*/
+		return M_MOANER_applyMoanToMsg(C,CD);
+	}
+
+	// No stutter effect, we return the regular text
+	return CD;
+}
+
+function M_MOANER_reactionOrgasm(C){
+	if(M_MOANER_orgasmActive && M_MOANER_scriptOn && C.MemberNumber==Player.MemberNumber && window.CurrentScreen=="ChatRoom"){
+		if(C.ID==0 && C.MemberNumber==Player.MemberNumber){
+			var moan;
+			var backupChatRoomTargetMemberNumber=null;
+			//doit pas se lancer en prive
+			//doit pas se lancer en /me
+			//doit se lancer uniquement en chat simple
+			msg=ElementValue("InputChat");
+			if(M_MOANER_isSimpleChat(msg)){
+				
+				moan=msg+"... "+getOrgasmMoan();
+				
+				ElementValue("InputChat",moan);
+				msg="";
+				ChatRoomSendChat();
+			}
+			else{
+				backupChatRoomTargetMemberNumber=ChatRoomTargetMemberNumber;
+				ChatRoomTargetMemberNumber=null;
+				moan="... "+getOrgasmMoan();
+				ElementValue("InputChat",moan);
+				ChatRoomSendChat();
+				ChatRoomTargetMemberNumber=backupChatRoomTargetMemberNumber;
+				ElementValue("InputChat",msg);
+			} 
+		}
+	}
+}
+
+function M_MOANER_reactionTrigger(data){	
+	if(M_MOANER_isPlayerTarget(data)){	
+		var msg=ElementValue("InputChat");
+		if(M_MOANER_isSimpleChat(msg)){
+			M_MOANER_reactionVibeWithChat(data);
+			M_MOANER_reactionSpankWithChat(data);
+		}
+		else{
+			M_MOANER_reactionSpankWithoutChat(data);
+			M_MOANER_reactionVibeWithoutChat(data);
+		}
+	}
+}
+
+function M_MOANER_reactionSpankWithChat(data){
+	if(M_MOANER_spankActive && M_MOANER_isSpank(data)){
+		//rÃ©cupÃ©rer le gÃ©missement Ã  appliquer
+		//datas pour gÃ©nÃ©ration des gÃ©missements
+		var Factor = Math.floor(Player.ArousalSettings.Progress / 20);
+		var moan = getSpankMoan(Factor, Math.random() * 300);
+		var msg=ElementValue("InputChat");
+		if(msg!=""){
+			moan=msg+"... "+moan;						
+		}
+		ElementValue("InputChat",moan);
+		ChatRoomSendChat();		
+	}
+}
+
+function M_MOANER_reactionSpankWithoutChat(data){
+	if(M_MOANER_spankActive && M_MOANER_isSpank(data)){
+		//rÃ©cupÃ©rer le gÃ©missement Ã  appliquer
+		//datas pour gÃ©nÃ©ration des gÃ©missements
+		var Factor = Math.floor(Player.ArousalSettings.Progress / 20);
+		var moan = getSpankMoan(Factor, Math.random() * 300);
+		var msg=ElementValue("InputChat");
+		let backtarget=ChatRoomTargetMemberNumber;
+		ChatRoomTargetMemberNumber=null;
+		ElementValue("InputChat",moan);
+		ChatRoomSendChat();		
+		ElementValue("InputChat",msg);
+		ChatRoomTargetMemberNumber=backtarget;
+	}
+}
+
+function M_MOANER_reactionVibeWithoutChat(data){
+	if(M_MOANER_vibratorActive && M_MOANER_isVibes(data)){
+		//rÃ©cupÃ©rer le gÃ©missement Ã  appliquer
+		//datas pour gÃ©nÃ©ration des gÃ©missements
+		var Factor = Math.floor(Player.ArousalSettings.Progress / 20);
+		var moan = getMoan(Factor, true,Math.random() * 300);
+		var msg=ElementValue("InputChat");
+		let backtarget=ChatRoomTargetMemberNumber;
+		ChatRoomTargetMemberNumber=null;
+		ElementValue("InputChat",moan);
+		ChatRoomSendChat();	
+		ElementValue("InputChat",msg);	
+		ChatRoomTargetMemberNumber=backtarget;
+	}
+}
+
+function M_MOANER_reactionVibeWithChat(data){
+	if(M_MOANER_vibratorActive && M_MOANER_isVibes(data)){
+		//rÃ©cupÃ©rer le gÃ©missement Ã  appliquer
+		//datas pour gÃ©nÃ©ration des gÃ©missements
+		var Factor = Math.floor(Player.ArousalSettings.Progress / 20);
+		var moan = getMoan(Factor, true,Math.random() * 300);
+		var msg=ElementValue("InputChat");
+		console.log("msg="+msg);
+		if(msg!=""){
+			moan=msg+"... "+moan;						
+		}
+		ElementValue("InputChat",moan);
+		ChatRoomSendChat();		
+	}
+}
+
+function M_MOANER_isSpank(data){
+	var array=data.Dictionary;
+	if(data.Content=="ActionActivitySpankItem"){
+		return true;
+	}
+	for(index in array){
+		let elem = array[index];  
+        if(elem.Tag=="ActivityName"){
+			if(elem.Text=="Spank" || elem.Text=="Slap" ){
+				return true;
+			}
+        }  
+	}
+    return false;	
+}
+
+function M_MOANER_isVibes(data){
+	if(data.Type=="Action" && data.Content.includes("Vibe")){
+		return true;
+	}
+	return false;	
+}
+
+function M_MOANER_isPlayerTarget(data){
+	var array=data.Dictionary;
+	for(index in array){
+		let elem = array[index];  
+        if((elem.Tag=="DestinationCharacter" || elem.Tag=="TargetCharacter" || elem.Tag=="DestinationCharacterName")&& elem.MemberNumber==Player.MemberNumber){
+            return true;
+        }
+	}
+    return false;
+}
+
+function M_MOANER_applyMoanToMsg(C,CD){
+	//dÃ©terminer le nombre de gÃ©missements
+		//calculer Ã§a en fonction du nombre de mots
+		//proportion: PROPORTION_MAX*niveauExcitation
+		//PROPORTION_MAX=40%
+		var proportion = C.ArousalSettings.Progress * PROPORTION_MAX/10000;
+		M_MOANER_logDebug("proportion: "+proportion);
+		var CDList = CD.split(" ");
+		
+		var currentIndex=0;
+		var stop=false;
+		var finalTextList=[];
+		
+		//rÃ©cupÃ©rer les gÃ©missements Ã  appliquer
+		//datas pour gÃ©nÃ©ration des gÃ©missements
+		var Factor = Math.floor(C.ArousalSettings.Progress / 20);
+		while(currentIndex<CDList.length){
+			//si le prochain mot contient une parenthÃ¨se, on arrÃ¨te la rÃ©partission des gÃ©missements)
+			var currentWord=CDList[currentIndex++];
+			var presenceParenthese=M_MOANER_detectParentheses(currentWord);
+			if(presenceParenthese==1){
+				stop=true;
+			}
+			if(stop){
+				finalTextList.push(currentWord);
+			}
+			else{
+				let random=Math.ceil(Math.random()*100)
+				let result;
+				if(random<=proportion*100){
+					if(random%2==0){
+						result=currentWord+"..."+getMoan(Factor, true,CD.length);
+					}
+					else{
+						result=getMoan(Factor, true,CD.length)+" "+currentWord;
+					}
+					finalTextList.push(result);					
+				}
+				else{
+					finalTextList.push(currentWord);
+				}
+			}
+			if(presenceParenthese==2){
+				stop=false;
+			}
+		}
+		
+		return finalTextList.join(" ");
+}
+
+//return 1 if opening bracket, 2 of closing bracket, 0 otherwise
+function M_MOANER_detectParentheses(CD){
+	if(!CD.includes("(") && !CD.includes(")")){
+		return 0;
+	}
+	for(i=CD.length;i>=0;i--){
+		if(CD.charAt(i)==")"){
+			return 2;
+		}
+		if(CD.charAt(i)=="("){
+			return 1;
+		}
+	}
+	return 0;
+}
+
+function transformText(isStimulated,L,ArouseFactor,CD){
+	if(isStimulated){
+		return CD.substring(0, L) + CD.charAt(L) + getMoan(ArouseFactor, isStimulated) + CD.substring(L, CD.length);
+	}
+	else{
+		return CD.substring(0, L) + CD.charAt(L) + "-" + CD.substring(L, CD.length);
+	}
+}
+
+function getMoan(Factor, isStimulated,seed){
+	//M_MOANER_logDebug("getMoan: factor="+Factor);
+	//M_MOANER_logDebug("getMoan: isStimulated="+isStimulated);
+	if(!isStimulated) return "";
+	//sÃ©lectionner un gÃ©missement
+	return " "+selectMoan(Factor,seed);
+}
+
+function getSpankMoan(Factor, seed){
+	let gemissement;
+	//selon le niveau de fetichisme fessÃ©e
+	let activity=getActivityTaste("Spank");
+	if(activity== undefined) return "";
+	let activityTaste = activity.Self;
+	
+	let seuilDouleur=Math.min(10,(4-activityTaste)*25);
+	let seuilPlaisir=seuilDouleur+40
+	let douleur=Player.ArousalSettings.Progress <=seuilDouleur;
+	let plaisir=Player.ArousalSettings.Progress>seuilPlaisir;
+	if(douleur){
+		gemissement=getPainMoan();
+	}
+	else if(plaisir){
+		gemissement="â™¥"+getMoan(Factor,true,300)+"â™¥";
+	}
+	else{
+		gemissement=getPainMoan()+"â™¥"+getMoan(Factor,true,300)+"â™¥";
+	}
+	
+	
+	return gemissement;
+}
+
+function getZoneTaste(data){
+	let zone;
+	let taste;
+	for(index in data.Dictionary){
+        var elem=data.Dictionary[index];
+		if(elem.Tag=="ActivityGroup") zone= getZone(elem.Text);
+	}
+	if(zone==undefined||zone==null||zone.Factor==undefined){
+		return undefined;
+	}
+	taste=zone.Factor;
+	if(zone.Orgasm==true){
+		taste*=2;
+	}
+	
+	return taste;
+}
+
+function getZone(name){
+	for(index in Player.ArousalSettings.Activity){
+        var zone=Player.ArousalSettings.Zone[index];
+		if(zone.Name==name) return zone;
+	}
+}
+
+function getActivityTaste(name){
+	for(index in Player.ArousalSettings.Activity){
+        var activity=Player.ArousalSettings.Activity[index];
+		if(activity.Name==name) return activity;
+	}
+}
+
+function resetMoans(seed){
+	//M_MOANER_logDebug("resetMoans IN");
+	
+	factor1Moans=M_MOANER_shuffle(basefactor1Moans.concat([]),seed);
+	M_MOANER_factor2Moans=M_MOANER_shuffle(factor1Moans.concat(baseM_MOANER_factor2Moans),seed);
+	M_MOANER_factor3Moans=M_MOANER_shuffle(M_MOANER_factor2Moans.concat(baseM_MOANER_factor3Moans),seed);
+	M_MOANER_factor4Moans=M_MOANER_shuffle(M_MOANER_factor3Moans.concat(baseM_MOANER_factor4Moans),seed);
+	//M_MOANER_logDebug("resetMoans OUT");
+}
+
+function getPainMoanBACK(){
+	let index=Math.floor(Math.random()*basePainMoans.length);
+	return basePainMoans[index];
+}
+
+function resetMoans(seed){
+	//M_MOANER_logDebug("resetMoans IN");
+	moanProfile=M_MOANER_getMoans(profileName);
+	factor1Moans=M_MOANER_shuffle(moanProfile.low.concat([]),seed);
+	M_MOANER_factor2Moans=M_MOANER_shuffle(factor1Moans.concat(moanProfile.light),seed);
+	M_MOANER_factor3Moans=M_MOANER_shuffle(M_MOANER_factor2Moans.concat(moanProfile.medium),seed);
+	M_MOANER_factor4Moans=M_MOANER_shuffle(M_MOANER_factor3Moans.concat(moanProfile.hot),seed);
+	//M_MOANER_logDebug("resetMoans OUT");
+}
+
+function getPainMoan(){
+	moanProfile=M_MOANER_getMoans(profileName);
+	let index=Math.floor(Math.random()*moanProfile.pain.length);
+	return moanProfile.pain[index];
+}
+
+function getOrgasmMoan(){
+	var gemissement;
+	
+	if(M_MOANER_orgasmMoans.length==0){
+		M_MOANER_logDebug("getOrgasmMoan: reset list");
+		let seed=3000;
+		M_MOANER_logDebug("getOrgasmMoan: seed="+seed);
+		moanProfile=M_MOANER_getMoans(profileName);
+		M_MOANER_orgasmMoans=M_MOANER_shuffle(moanProfile.orgasm.concat([]),seed);
+	}
+	gemissement=M_MOANER_orgasmMoans.shift();
+	return gemissement;
+}
+
+function selectMoan(Factor,seed){
+	if(Factor<2){
+			//M_MOANER_logDebug("factor1Moans.length="+factor1Moans.length);
+		if(factor1Moans.length <= 0){
+			resetMoans(seed);
+			return selectMoan(Factor, seed);
+		}else{
+			return factor1Moans.shift();
+		}
+	}
+	else if(Factor<3){
+			//M_MOANER_logDebug("M_MOANER_factor2Moans.length="+M_MOANER_factor2Moans.length);
+		if(M_MOANER_factor2Moans.length <= 0){
+			resetMoans(seed);
+			return selectMoan(Factor, seed);
+		}else{
+			return M_MOANER_factor2Moans.shift();
+		}
+	}
+	else if(Factor<4){
+			//M_MOANER_logDebug("M_MOANER_factor3Moans.length="+M_MOANER_factor3Moans.length);
+		if(M_MOANER_factor3Moans.length <= 0){
+			resetMoans(seed);
+			return selectMoan(Factor, seed);
+		}else{
+			return M_MOANER_factor3Moans.shift();
+		}
+	}
+	else if(Factor>=4){
+			//M_MOANER_logDebug("M_MOANER_factor4Moans.length="+M_MOANER_factor4Moans.length);
+		if(M_MOANER_factor4Moans.length <= 0){
+			resetMoans(seed);
+			return selectMoan(Factor, seed);
+		}else{
+			return M_MOANER_factor4Moans.shift();
+		}
+	}
+}
+
+
+function IsStimulated(C){
+	if (C.IsEgged() && ((C.ArousalSettings == null) || (C.ArousalSettings.AffectStutter == null) || (C.ArousalSettings.AffectStutter == "Vibration") || (C.ArousalSettings.AffectStutter == "All")))
+			for (let A = 0; A < C.Appearance.length; A++) {
+				var Item = C.Appearance[A];
+				if (InventoryItemHasEffect(Item, "Vibrating", true))
+					return true;
+			}
+	return false;
+}
+
+//MoanerProfiles
+//customMoans={
+//	"hot":[],
+//	"medium":[],
+//	"light":[],
+//	"low":[],
+//	"orgasm":[],
+//	"pain":[]
+//}
+
+//addMoansProfile("neko",nekoMoans);
+
+M_MOANER_nekoMoans={
+	"hot":["n... Nyahâ™¥","NYyaaAâ™¥"],
+	"medium":["nyAhâ™¥","nyyy","..yah"],
+	"light":["nyahâ™¥","Yah!","myuh","mhâ™¥"],
+	"low":["myu","nyâ™¥","mh","â™¥yhâ™¥","nyâ™¥"],
+	"orgasm":["Nya...Ny...NyaaAAaah!","Mmmhnn... Nyhmm... Nyah!","mmmh... mmmeeeee.... meeeoooow!"],
+	"pain":[]
+}
+
+M_MOANER_addMoansProfile("neko",M_MOANER_nekoMoans);
+
+//fox
+//base: wif, yif, aouh
+//thanks to Noriko
+M_MOANER_foxMoans={
+	"hot":["w... Wiiifâ™¥","Yiiifâ™¥"],
+	"medium":["wiiifâ™¥","Yiii","..yif"],
+	"light":["Wiffâ™¥","Yif!","yiâ™¥iif","Wiif"],
+	"low":["wif","Wyâ™¥","ifâ™¥","â™¥yiâ™¥","Yiâ™¥"],
+	"orgasm":["Wiffâ™¥ W... Wiii... WIIF!!","Mmmhnn... Wiiif... Yiiiif!!","mmmh... Aouuuh.... Aouhhhh!"],
+	"pain":[]
+}
+M_MOANER_addMoansProfile("fox",M_MOANER_foxMoans);
+
+//dog
+M_MOANER_dogMoans={
+	"hot":["w... Wouuufâ™¥","aouuhâ™¥"],
+	"medium":["waaafâ™¥","kyÅ«Å«Å«n","..wouf"],
+	"light":["Ouaffâ™¥","Aouh!","Ouaâ™¥af","KyÅ«nâ™¥"],
+	"low":["wou..","ouahâ™¥","Woufâ™¥","â™¥kyÅ«nâ™¥","kyÅ«â™¥"],
+	"orgasm":["ouafâ™¥ O... Ouuw... Ouaaaa!!","Mmmhnn... aaaa... Ouuuaaaaaf!!","mmmh... Aouuuh.... Aouhhhh!"],
+	"pain":["KaÃ¯!","Aoouch!","KaaaÃ¯!","Ouch","Aow"]
+}
+M_MOANER_addMoansProfile("dog",M_MOANER_dogMoans);
+
+//mouse
+//base coui
+
+M_MOANER_mouseMoans={
+	"hot":["Scouiiicâ™¥","couiiicâ™¥"],
+	"medium":["scouiiiâ™¥","Couyk","..scoui"],
+	"light":["Scouiiâ™¥","Coui!","kouuâ™¥ic","Couic â™¥"],
+	"low":["coui..","scouiâ™¥","couâ™¥i","Couic ","kouiâ™¥"],
+	"orgasm":["Couicâ™¥ sc.. couIIIiic!!","Mmmhnn... ooo... ouiiiic!!","mmmh... Scouuu.... Scouiiic!"],
+	"pain":[]
+}
+M_MOANER_addMoansProfile("mouse",M_MOANER_mouseMoans);
+
+M_MOANER_wildFoxMoans={
+	"hot":["w... Wiiifâ™¥","Yiiifâ™¥","Waâ™¥ouu"],
+	"medium":["wiiifâ™¥","Yiii","..yif","waouuu"],
+	"light":["Wiffâ™¥","Yif!","yiâ™¥iif","Wiif","waou"],
+	"low":["wif","Wyâ™¥","ifâ™¥","â™¥yiâ™¥","Yiâ™¥","aou"],
+	"orgasm":["WAAAAOUUUUUUUHHHHH!","Mmmhnn... Wiiif... Yiiiif!!","AOUUUUUH!","WAHOOOOOOOUUUUH!","WAAAAAAAAHH!","WAAAAOUUUUUUUHHHHH!","AOUUUUUH!","WAHOOOOOOOUUUUH!","WAAAAAAAAHH!"],
+	"pain":[]
+}
+M_MOANER_addMoansProfile("wildFox",M_MOANER_wildFoxMoans);
+
+//pig
+M_MOANER_pigMoans={
+	"hot":["Gruiikâ™¥","gruikâ™¥"],
+	"medium":["gruiiiâ™¥","Gruik","..Grui.."],
+	"light":["Gruiâ™¥","Gruik!","gruuiiiâ™¥ic","gruik â™¥"],
+	"low":["grui.. gruiikâ™¥","gruiikâ™¥","gruâ™¥i","Gruik ","Groiâ™¥"],
+	"orgasm":["Gruâ™¥ gr.. gruiIIIiick!!","Mmmhnn... uii... gruiiik!!","mmmh... Gruiik.... Gruiiiiik!"],
+	"pain":["Gruuik!!","Aoouch!","Awo... gruik!","Ouch","Gruiiik"]
+}
+M_MOANER_addMoansProfile("pig",M_MOANER_pigMoans);
 
 //BC-Diaper-Wetter
 // A simple table for the colors that the script will use.
