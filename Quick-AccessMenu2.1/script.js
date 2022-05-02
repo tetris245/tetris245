@@ -21,7 +21,6 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "visual = commands related to animations and background.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "zones = commands related to game zones.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
-
         else if (content.includes("bondage")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Bondage commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/lock = adds locks on all lockable items. Use /help lock for more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -30,7 +29,6 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/restrain (targetname) =  adds random restraints.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/solidity (value) = changes the solidity of most current bindings. The value must be between 1 and 99. Use high values to make escape impossible!", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
-
         else if (content.includes("character")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Character commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/becomeownlover  =  becomes your own lover.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -42,8 +40,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/resetinventory  =  erases your inventory. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/roleplay (rolehere) = starts a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/rolequit (role or clubarea here) = ceases to play a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        }
-	    
+        }    
 	else if (content.includes("chat")) {
 	    ChatRoomMessage({ Content: "Quick-AccessMenu2: Chat commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/autokick  =  toggles on auto kick for 0 day old accounts.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -52,8 +49,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/hiddenmessages  =  sees hidden messages made by game.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/profile (targetname) =  gives direct access to the profile description of any player in the chat room.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/search (areaname)  =  opens room search, area is: club or asylum", Type: "LocalMessage", Sender: Player.MemberNumber });
-	}
-		
+	}	
         else if (content.includes("clothing")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Clothing commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/clothes (targetname) =  changes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });  
@@ -63,7 +59,6 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/underwear (targetname) =  changes underwear.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/wardrobe (targetname)  =  opens target wardrobe.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
-
         else if (content.includes("escape")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Escape commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/boost  =  boosts skills, similar to maid quarters drink.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -76,15 +71,13 @@ if (CurrentScreen == "ChatRoom") {
 	    ChatRoomMessage({ Content: "/solidity (value) = changes the solidity of most current bindings. Use low values to escape! Value 1 allows to escape the futuristic crate.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/totalrelease (targetname) =  removes all bindings, collar, harness, chastity, toys.", Type: "LocalMessage", Sender: Player.MemberNumber });       
             ChatRoomMessage({ Content: "/unlock (targetname) (locktype) =  removes all locks or only a specified type of lock. More info with /help unl.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	}
-	    
+	}    
 	 else if (content.includes("fun")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Fun commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/arousal 10  =  sets arousal level. Change value (0-100).", Type: "LocalMessage", Sender: Player.MemberNumber });    
             ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/superdice (sides)  = rolls a superdice. Sides can be between 2 and 999999999.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        }
-	    
+        }    
 	else if (content.includes("lock")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: The lock command has several syntaxes:", Type: "LocalMessage", Sender: Player.MemberNumber }); 
             ChatRoomMessage({ Content: "/lock (targetname) (locktype) for locks 1 to 8", Type: "LocalMessage", Sender: Player.MemberNumber }); 
@@ -102,7 +95,6 @@ if (CurrentScreen == "ChatRoom") {
 	    ChatRoomMessage({ Content: "15 Owner Timer - 16 Timer Password", Type: "LocalMessage", Sender: Player.MemberNumber });   
 	    ChatRoomMessage({ Content: "Use /help lpar for info about other parameters", Type: "LocalMessage", Sender: Player.MemberNumber });   
         }
-	
         else if (content.includes("lpar")) {
            ChatRoomMessage({ Content: "Special parameters:", Type: "LocalMessage", Sender: Player.MemberNumber });
            ChatRoomMessage({ Content: "code must be between 0 and 9999.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -117,7 +109,6 @@ if (CurrentScreen == "ChatRoom") {
            ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
 	   ChatRoomMessage({ Content: "Tip: replace h and/or i by another character when you need to skip them.", Type: "LocalMessage", Sender: Player.MemberNumber });    
         }
-
         else if (content.includes("misc")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Misc commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/clubhelp = displays the standard commands of the game (and optionaly the BCE commands).", Type: "LocalMessage", Sender: Player.MemberNumber });  
@@ -126,7 +117,6 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/relog  =  relogs.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/unrestrict  = Using will give more info.  Removes all restrictions from game. Can use maid drink tray/other stuff. Submissives should use /unrestrict soft", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
-
         else if (content.includes("talking")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Talking commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/action (stuffhere)  = inserts an action. Can also: /a.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -137,8 +127,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/talkbaby  =  toggle on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/talkgag light/heavy  =  toggles on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/whisper (targetname) = sets whisper target.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	}
-	    
+	}    
         else if (content.includes("unl")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: The unlock command:", Type: "LocalMessage", Sender: Player.MemberNumber }); 
             ChatRoomMessage({ Content: "/unlock (targetname) (locktype).", Type: "LocalMessage", Sender: Player.MemberNumber }); 
@@ -151,7 +140,6 @@ if (CurrentScreen == "ChatRoom") {
 	    ChatRoomMessage({ Content: "12 Password - 13 Mistress Timer - 14 Lover Timer", Type: "LocalMessage", Sender: Player.MemberNumber });  
 	    ChatRoomMessage({ Content: "15 Owner Timer - 16 Timer Password", Type: "LocalMessage", Sender: Player.MemberNumber }); 
         }
-   
         else if (content.includes("visual")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Visual commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/anim2 (animhere). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -161,7 +149,6 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/pose2 (posehere) (targetname). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/speak  = animates mouth when talking in chat. Can also: /mouth or /speech", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
-
         else if (content.includes("zones")) {  
 	    ChatRoomMessage({ Content: "/asylum (minutes) =  enters asylum, bypasses requirements. Specify minutes if you are a patient.", Type: "LocalMessage", Sender: Player.MemberNumber });        
             ChatRoomMessage({ Content: "/chess  (difficulty) =  starts chess, must specify difficulty first (/chess 1 = easy, /chess 3 = hard).", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -186,72 +173,59 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/anim2") == 0) {
         CharacterResetFacialExpression(Player);
-	CharacterResetFacialExpression(Player);
-	    
+	CharacterResetFacialExpression(Player);    
 	if (content.includes("angry1")) {         
             CharacterSetFacialExpression(Player,"Mouth","Angry",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is angry." }]});
         } 
-
         else if (content.includes("angry2")) {
            CharacterSetFacialExpression(Player,"Mouth","Angry",75000);
            CharacterSetFacialExpression(Player,"Eyes","Angry",75000);
            CharacterSetFacialExpression(Player,"Eyes2","Angry",75000);
            CharacterSetFacialExpression(Player,"Eyebrows","Angry",75000);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is very angry." }]});
-	}
-	    
+	}	    
         else if (content.includes("blink")) {
            CharacterSetFacialExpression(Player,"Eyes","Closed",.96);         
            CharacterSetFacialExpression(Player,"Eyes2","Closed",.96);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" blinks her eyes." }]});
-        }
-	    
+        }    
 	else if (content.includes("blush1")) {
            CharacterSetFacialExpression(Player,"Blush","Low",2.78);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" slightly blushes." }]});
         }
-
         else if (content.includes("blush2")) {
            CharacterSetFacialExpression(Player,"Blush","Medium",2.78);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" blushes." }]});
         }
-
         else if (content.includes("blush3")) {
            CharacterSetFacialExpression(Player,"Blush","High",2.78);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" blushes a lot." }]});
         }
-
         else if (content.includes("blush4")) {
            CharacterSetFacialExpression(Player,"Blush","VeryHigh",2.78);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" very strongly blushes." }]});
         }
-
         else if (content.includes("blush5")) {
            CharacterSetFacialExpression(Player,"Blush","Extreme",2.78);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" extremely blushes." }]});
         }
-
         else if (content.includes("chuckle")) {
            CharacterSetFacialExpression(Player,"Mouth","Grin",1.11);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" chuckles." }]});
         }
-
 	else if (content.includes("closeeyes")) {
            CharacterSetFacialExpression(Player,"Eyes","Closed",75000);         
            CharacterSetFacialExpression(Player,"Eyes2","Closed",75000);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" closes her eyes." }]});
         }
-
 	else if (content.includes("closemouth")) {         
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" closes her mouth." }]});
         }
-
         else if (content.includes("confused")) {
             CharacterSetFacialExpression(Player,"Eyebrows","OneRaised",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is confused." }]});
-        }  
-	    
+        }  	    
 	else if (content.includes("cuddle")) {      
             CharacterSetFacialExpression(Player,"Eyes","ShylyHappy",9.99);
             CharacterSetFacialExpression(Player,"Eyes2","ShylyHappy",9.99);
@@ -259,12 +233,10 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Mouth","Happy",9.99);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" cuddles with her friend." }]});
         }
-
         else if (content.includes("cry")) {   
             CharacterSetFacialExpression(Player,"Fluids","TearsMedium",1000,"#000016");
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" cries." }]});
-        }
-	    
+        }	    
         else if (content.includes("disoriented")) {      
             CharacterSetFacialExpression(Player,"Eyes","Dizzy",8.22);
             CharacterSetFacialExpression(Player,"Eyes2","Dizzy",8.22);
@@ -272,7 +244,6 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Blush","Medium",8.22);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" feels disoriented." }]});
         }
-
         else if (content.includes("distressed")) {      
             CharacterSetFacialExpression(Player,"Eyes","Scared",75000);
             CharacterSetFacialExpression(Player,"Eyes2","Scared",75000);
@@ -280,64 +251,53 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Mouth","Angry",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is distressd." }]});
         }
-
 	else if (content.includes("droolreset")) {           
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" stops to drool." }]});
         }
-
 	else if (content.includes("droolsides")) {         
             CharacterSetFacialExpression(Player,"Fluids","DroolSides",1000,"#000016");
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is drooling." }]});
-        }
-      
+        }    
         else if (content.includes("frown")) {         
             CharacterSetFacialExpression(Player,"Mouth","Frown",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" disagrees." }]});
-        }
-	    
+        }	    
 	else if (content.includes("gaginflate")) {      
             CharacterSetFacialExpression(Player,"Eyes","Lewd",4.11);
             CharacterSetFacialExpression(Player,"Eyes2","Lewd",4.11);
             CharacterSetFacialExpression(Player,"Blush","Medium",4.11);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is excited by the inflation of her gag." }]});
         }
-
 	else if (content.includes("giggle")) {  
             RunExpressionAnimation([null, "Laughing", "Grin", "Happy", "Laughing", "Happy",null]);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" giggles." }]});
         }
-
         else if (content.includes("glare")) {   
             CharacterSetFacialExpression(Player,"Eyes","Angry",75000);
             CharacterSetFacialExpression(Player,"Eyes2","Angry",75000);
             CharacterSetFacialExpression(Player,"Eyebrows","Harsh",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" looks at everybody with angry eyes." }]});
-        }
-    
+        }    
         else if (content.includes("grin")) {
             CharacterSetFacialExpression(Player,"Eyes","Horny",75000);         
             CharacterSetFacialExpression(Player,"Eyes2","Horny",75000);
             CharacterSetFacialExpression(Player,"Mouth","Grin",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" grins." }]});
-        }
-	    
+        }	    
         else if (content.includes("happy")) {         
             CharacterSetFacialExpression(Player,"Mouth","Happy",75000);
-            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is happy." }]});
-        }
-	        
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is happy." }]});        }
+	}       
 	else if (content.includes("iced")) {      
             CharacterSetFacialExpression(Player,"Eyes","Surprised",1.83);
             CharacterSetFacialExpression(Player,"Eyes2","Surprised",1.83);
             CharacterSetFacialExpression(Player,"Mouth","Angry",2.11);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" feels the effect of something very cold on her skin." }]});
-        }
-	    
+        }	    
 	else if (content.includes("kiss1")) {         
             CharacterSetFacialExpression(Player,"Mouth","HalfOpen",1.44);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" gives simple kisses to her friend." }]});
         }
-
         else if (content.includes("kiss2")) {  
             CharacterSetFacialExpression(Player,"Eyes","Closed",2.88);
             CharacterSetFacialExpression(Player,"Eyes2","Closed",2.88);
@@ -345,7 +305,6 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Blush","Low",2.88);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" kisses her friend on the lips." }]});
         }
-
         else if (content.includes("kiss3")) {  
             CharacterSetFacialExpression(Player,"Eyes","Closed",4.22);
             CharacterSetFacialExpression(Player,"Eyes2","Closed",4.22);
@@ -353,42 +312,34 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Blush","Medium",5.00);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" gives a long kiss to her friend." }]});
         }
-
 	else if (content.includes("laugh")) {  
             RunExpressionAnimation([null, "Laughing", "Grin", "Laughing", "Happy", "Laughing", "Grin", "Laughing", "Happy", null]);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" laughs." }]});
-        }
-	    
+        }	    
 	else if (content.includes("lick")) {      
             CharacterSetFacialExpression(Player,"Mouth","Ahegao",4.11);
             CharacterSetFacialExpression(Player,"Blush","Low",4.11);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" licks sensitive body zones of her friend." }]});
-        }
-  
+        }  
         else if (content.includes("lipbite")) {         
             CharacterSetFacialExpression(Player,"Mouth","LipBite",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" bites her lips." }]});
         }
-
         else if (content.includes("narroweyes")) {
            CharacterSetFacialExpression(Player,"Eyes","Horny",75000);         
            CharacterSetFacialExpression(Player,"Eyes2","Horny",75000);
            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" narrows her eyes." }]});
         }
-
         else if (content.includes("neutral")) {
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" goes back to a neutral facial expression." }]});	
         }
-
 	else if (content.includes("openeyes")) {
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" opens her eyes." }]});
-        }
-	    	   
+        }	    	   
         else if (content.includes("openmouth")) {         
             CharacterSetFacialExpression(Player,"Mouth","Moan",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" opens her mouth." }]});   
         }
-
         else if (content.includes("pout")) {      
             CharacterSetFacialExpression(Player,"Mouth","Pout",75000);
             CharacterSetFacialExpression(Player,"Eyes","Dazed",75000);
@@ -396,17 +347,14 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Eyebrows","Harsh",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" pouts." }]});
         }
-
         else if (content.includes("raisebrows")) {
             CharacterSetFacialExpression(Player,"Eyebrows","Raised",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" raises her brows." }]});
         }
-
         else if (content.includes("resetbrows")) {
             CharacterSetFacialExpression(Player,"Eyebrows","",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" feels reassured." }]});     
         }
-
         else if (content.includes("sad")) {           
             CharacterSetFacialExpression(Player,"Mouth","Frown",75000);
             CharacterSetFacialExpression(Player,"Eyes","Shy",75000);
@@ -414,36 +362,30 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetFacialExpression(Player,"Eyebrows","Soft",75000);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is sad." }]});
         }
-
         else if (content.includes("smile")) {         
             CharacterSetFacialExpression(Player,"Mouth","Grin",75000);
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" smiles." }]});
         }
-
         else if (content.includes("smirk")) {       
 	    CharacterSetFacialExpression(Player,"Mouth","Smirk",75000);
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" smirks." }]});
-        }
-	    
+        }	    
 	else if (content.includes("spanked")) {      
             CharacterSetFacialExpression(Player,"Eyes","Lewd",2.44);
             CharacterSetFacialExpression(Player,"Eyes2","Lewd",2.44);
             CharacterSetFacialExpression(Player,"Eyebrows","Soft",2.44);
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" feels the effect of the spanking on her skin." }]});
-        }
-   
+        }   
         else if (content.includes("wink")) {           
            CharacterSetFacialExpression(Player,"Eyes2","Closed",1.42);
 	   ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" winks." }]});
         }
-
         else if (content.includes("worried")) {
             CharacterSetFacialExpression(Player,"Eyes","Surprised",75000);
             CharacterSetFacialExpression(Player,"Eyes2","Surprised",75000);
             CharacterSetFacialExpression(Player,"Eyebrows","Soft",75000);
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is worried." }]});
-        }
-   
+        }   
  	else if (content.endsWith("/anim2")) {	  
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry1, angry2, blink, blush1, blush2, blush3, blush4, blush5, chuckle, closeeyes, closemouth, confused, cuddle, cry, disoriented, distressed, droolreset, droolsides, frown, gaginflate, giggle, glare, grin, happy, iced, kiss1, kiss2, kiss3, laugh, lick, lipbite, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, spanked, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
@@ -895,7 +837,6 @@ if (CurrentScreen == "ChatRoom") {
     }
 	
     else if (content.indexOf("/colorchanger") == 0) {
-
         if (content.includes("custom") || content.includes("set") || content.includes("select")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
             setTimeout(function() {
@@ -903,7 +844,6 @@ if (CurrentScreen == "ChatRoom") {
                 var RandomColor = null;
                 var ColorTargetNameCustom = CurrentCharacter;
                     if (ColorTargetNameCustom !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used colorchanger on you. If this is undesired, blacklist player.", Type: "Whisper", Target: ColorTargetNameCustom.MemberNumber })};
-
 
                 if (this.ColorTarget1 == undefined) {this.ColorTarget1 = CurrentCharacter.FocusGroup.Name}
                 else if (this.ColorTarget2 == undefined) {this.ColorTarget2 = CurrentCharacter.FocusGroup.Name}
@@ -1011,7 +951,6 @@ if (CurrentScreen == "ChatRoom") {
     }  
 	
     else if (content.indexOf("/diaper") == 0) {
-
         if (content.includes("change1")) {
             var stringChange1 = content;
             var stringChange2 = stringChange1.split(/[ ,]+/);
@@ -1022,7 +961,6 @@ if (CurrentScreen == "ChatRoom") {
             if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change your normal diapers and allows you to use the /diaper change1 command.", Type: "Whisper", Target: target[0].MemberNumber })};
             refreshDiaper("panties");
         }
-
         else if (content.includes("change2")) {
             var stringChange1 = content;
             var stringChange2 = stringChange1.split(/[ ,]+/);
@@ -1033,7 +971,6 @@ if (CurrentScreen == "ChatRoom") {
             if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change your chastity diapers and allows you to use the /diaper change2 command.", Type: "Whisper", Target: target[0].MemberNumber })};
             refreshDiaper("chastity");
         }
-
         else if (content.includes("change3")) {
             var stringChange1 = content;
             var stringChange2 = stringChange1.split(/[ ,]+/);
@@ -1043,8 +980,7 @@ if (CurrentScreen == "ChatRoom") {
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
             if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change all your diapers and allows you to use the /diaper change3 command.", Type: "Whisper", Target: target[0].MemberNumber })};
             refreshDiaper("both");
-        }
-      
+        }   
         else if (content.includes("setdesperation")) {
             var stringSet1 = content;
             var stringSet2 = stringSet1.split(/[ ,]+/);
@@ -1052,7 +988,6 @@ if (CurrentScreen == "ChatRoom") {
             diaperDefaultValues.desperationLevel = setchange; 
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Your desperation level has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
- 
 	else if (content.includes("setmesschance")) {
             var stringSet1 = content;
             var stringSet2 = stringSet1.split(/[ ,]+/);
@@ -1060,7 +995,6 @@ if (CurrentScreen == "ChatRoom") {
             diaperDefaultValues.messChance = setchange; 
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Your chance to mess diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
-
 	else if (content.includes("setmess1")) {
             if (InventoryGet(Player, "Panties") != null) {
                 if (InventoryGet(Player, "Panties").Asset.Name == "BulkyDiaper" || InventoryGet(Player, "Panties").Asset.Name === "PoofyDiaper") {
@@ -1073,8 +1007,7 @@ if (CurrentScreen == "ChatRoom") {
                     }
                 }
             }
-        }
-	    
+        }	    
 	else if (content.includes("setmess2")) {
             if (InventoryGet(Player, "ItemPelvis") != null) {
                 if (InventoryGet(Player, "ItemPelvis").Asset.Name == "BulkyDiaper" || InventoryGet(Player, "ItemPelvis").Asset.Name === "PoofyDiaper") {
@@ -1087,8 +1020,7 @@ if (CurrentScreen == "ChatRoom") {
                     }
                 }
             }
-        }
-	    
+        }	    
 	else if (content.includes("setregression")) {
             var stringSet1 = content;
             var stringSet2 = stringSet1.split(/[ ,]+/);
@@ -1096,7 +1028,6 @@ if (CurrentScreen == "ChatRoom") {
             diaperDefaultValues.regressionLevel = setchange;
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Your regression level has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
-
         else if (content.includes("settimer")) {
             var stringSet1 = content;
             var stringSet2 = stringSet1.split(/[ ,]+/);
@@ -1104,15 +1035,13 @@ if (CurrentScreen == "ChatRoom") {
             diaperDefaultValues.baseTimer = setchange; 
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Your wet/mess timer has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
-
 	else if (content.includes("setwetchance")) {
             var stringSet1 = content;
             var stringSet2 = stringSet1.split(/[ ,]+/);
             var setchange = stringSet2[2];
             diaperDefaultValues.wetChance = setchange; 
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Your chance to wet diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        }
-	    
+        }	    
 	else if (content.includes("setwet1")) {
             if (InventoryGet(Player, "Panties") != null) {
                 if (InventoryGet(Player, "Panties").Asset.Name == "BulkyDiaper" || InventoryGet(Player, "Panties").Asset.Name === "PoofyDiaper") {
@@ -1126,7 +1055,6 @@ if (CurrentScreen == "ChatRoom") {
                 }
             }
         }
-
         else if (content.includes("setwet2")) {
             if (InventoryGet(Player, "ItemPelvis") != null) {
                 if (InventoryGet(Player, "ItemPelvis").Asset.Name == "BulkyDiaper" || InventoryGet(Player, "ItemPelvis").Asset.Name === "PoofyDiaper") {
@@ -1140,19 +1068,15 @@ if (CurrentScreen == "ChatRoom") {
                 }
             }
         }
-
         else if (content.includes("start")) {
             diaperWetter();
         }
-
         else if (content.includes("stop")) {
             stopWetting();
         }
-
         else if (content.includes("tick")) {
             diaperTick();
         }
-
         else if (content.endsWith("/diaper")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an action. You need to wear one or two layers of diapers (only bulky and poofy versions).", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/diaper start to enable the script", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1166,8 +1090,7 @@ if (CurrentScreen == "ChatRoom") {
 	    ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "Customisation (before using /diaper start):", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "Use /diaper custom for detailed info", Type: "LocalMessage", Sender: Player.MemberNumber });
-       }
-		
+       }		
 	else if (content.includes("custom")) {
 	    ChatRoomMessage({ Content: "Customisation (before using /diaper start):", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/diaper setdesperation (value between 0 and 3) for desperation level, normally controlled by having a milk bottle used on you", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1238,75 +1161,63 @@ if (CurrentScreen == "ChatRoom") {
     }    
 	
     else if (content.indexOf("/game") == 0) {
-
         if (content.endsWith("/game")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a minigame. List: carrot, cleaning, dojo, drinks, hurdle, kidnap, puppy, rhythm, training, whippony.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "Training is the trainer version of the hurdle game. You need to click on the maid in the Maid Quarters for the cleaning, drinks and rhythm games. ", Type: "LocalMessage", Sender: Player.MemberNumber });		     
         }
-
         else {
 	    ServerSend("ChatRoomLeave", "");
             ChatRoomSetLastChatRoom("");
             OnlineGameName = "";
-            ChatRoomClearAllElements();  
-		
+            ChatRoomClearAllElements();  		
             if (content.includes("carrot")) {                    
                 CommonSetScreen("Room", "Stable");
                 StableDressPonyStart();
                 StableWearPonyEquipment(Player);
                 MiniGameStart("HorseWalk", "Carrot", "StablePonyEnd");
-            }
-		
+            }		
             else if (content.includes("cleaning")) {         
                 CommonSetScreen("Room", "MaidQuarters");
                 GameType = "MaidCleaning"; 
                 MaidQuartersMaid.Stage = "400";
             }
-
             else if (content.includes("dojo")) {
                 CommonSetScreen("Room", "Introduction");
                 IntroductionJobStart("SubDojo",0)
                 IntroductionJobDojoStart();
-            }
-	 
+            }	 
            else if (content.includes("drinks")) {
                CommonSetScreen("Room", "MaidQuarters");
                GameType = "MaidDrinks"; 
                MaidQuartersMaid.Stage = "200";
-           }
-		
+           }		
            else if (content.includes("hurdle")) {
                CommonSetScreen("Room", "Stable");
                StableDressPonyStart();
                StableWearPonyEquipment(Player);
                MiniGameStart("HorseWalk", "Hurdle", "StablePonyEnd");
             }
-
            else if (content.includes("kidnap")) {
                CommonSetScreen("Room", "Introduction");
                IntroductionJobStart("DomKidnap",0)
                IntroductionJobBouncerStart();
            }
-
            else if (content.includes("puppy")) {
                CommonSetScreen("Room", "Introduction");
                IntroductionJobStart("DomPuppy",0)
                IntroductionJobPuppyStart();
            }
-
            else if (content.includes("rhythm")) {
                CommonSetScreen("Room", "MaidQuarters");
                GameType = "RhythmGame"; 
                MaidQuartersMaid.Stage = "500";
-           }
-		
+           }		
 	   else if (content.includes("training")) {
                CommonSetScreen("Room", "Stable");
                StablePlayerAppearance = Player.Appearance.slice();
 	       StableWearTrainerEquipment(Player);
                MiniGameStart("HorseWalk", "HurdleTraining", "StableTrainerEnd");
             }
-
            else if (content.includes("whippony")) {
                CommonSetScreen("Room", "Stable");
                StablePlayerAppearance = Player.Appearance.slice();
@@ -2208,32 +2119,28 @@ if (CurrentScreen == "ChatRoom") {
             // Player.ActivePose = ChatSearchSafewordPose; should not be needed
             CharacterRefresh(Player);
             ChatRoomCharacterUpdate(Player);
-	 }
-	    
+	 }    
          else if (content.includes("save1")) {
              ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
              setTimeout(function() {
              this.savedoutfit1 = CurrentCharacter.Appearance.slice(0);
              DialogLeave();
              }, 5000);
-         }
-	    
+         }	    
          else if (content.includes("save2")) {
              ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
              setTimeout(function() {
              this.savedoutfit2 = CurrentCharacter.Appearance.slice(0);
              DialogLeave();
              }, 5000);
-         }
-	    
+         }	    
          else if (content.includes("save3")) {
              ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
              setTimeout(function() {
              this.savedoutfit3 = CurrentCharacter.Appearance.slice(0);
              DialogLeave();
              }, 5000);
-         }
-	    
+         }	    
          else if (content.includes("load1")) {
              ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
              setTimeout(function() {
@@ -2242,8 +2149,7 @@ if (CurrentScreen == "ChatRoom") {
              ChatRoomCharacterUpdate(CurrentCharacter);
              DialogLeave();
              }, 5000);
-         }
-	    
+         }	    
          else if (content.includes("load2")) {
              ChatRoomMessage({ Content: "Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
              setTimeout(function() {
@@ -2252,8 +2158,7 @@ if (CurrentScreen == "ChatRoom") {
              ChatRoomCharacterUpdate(CurrentCharacter);
              DialogLeave();
              }, 8000);
-         }
-	    
+         }	    
          else if (content.includes("load3")) {
              ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
              setTimeout(function() {
@@ -2262,8 +2167,7 @@ if (CurrentScreen == "ChatRoom") {
              ChatRoomCharacterUpdate(CurrentCharacter);
              DialogLeave();
              }, 5000);
-         }
-	    
+         }	    
         else if (content.endsWith("/outfit")) {
             ChatRoomMessage({ Content: "Quick-Access Menu2: Options for outfit command:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "To restore your outfit to what it was before entering room, type: /outfit reset or /outfit restore or /outfit revert", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -2306,104 +2210,84 @@ if (CurrentScreen == "ChatRoom") {
             CharacterSetActivePose(target[0], "BaseUpper");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("boxtied")) {
             CharacterSetActivePose(target[0], "BackBoxTie");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("cuffed")) {
             CharacterSetActivePose(target[0], "BackCuffs");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("elbowtied")) {
             CharacterSetActivePose(target[0], "BackElbowTouch");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("kneel1")) {
             CharacterSetActivePose(target[0], "Kneel");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("kneel2")) {
             CharacterSetActivePose(target[0], "KneelingSpread");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("legsclosed")) {
             CharacterSetActivePose(target[0], "LegsClosed");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("legsfree")) {
             CharacterSetActivePose(target[0], "BaseLower");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("legsopen")) {
             CharacterSetActivePose(target[0], "LegsOpen");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("onhorse")) {
             CharacterSetActivePose(target[0], "Horse");
             ChatRoomCharacterUpdate(target[0]);
-	}
-	    
+	}	    
         else if (content.includes("pet")) {
             CharacterSetActivePose(target[0], "AllFours");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("sleep")) {
             CharacterSetActivePose(target[0], "Hogtied");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("spreadarms1")) {
             CharacterSetActivePose(target[0], "Yoked");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("spreadarms2")) {
             CharacterSetActivePose(target[0], "OverTheHead");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("spreadeagle1")) {
             CharacterSetActivePose(target[0], "Yoked");
             CharacterSetActivePose(target[0], "Spread");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("spreadeagle2")) {
             CharacterSetActivePose(target[0], "OverTheHead");
             CharacterSetActivePose(target[0], "Spread");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("spreadlegs")) {
             CharacterSetActivePose(target[0], "Spread");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("stand")) {
             CharacterSetActivePose(target[0], null);
             ChatRoomCharacterUpdate(target[0]);
-	}
-	    
+	}	    
         else if (content.includes("suspension")) {
             CharacterSetActivePose(target[0], "Suspension");
             ChatRoomCharacterUpdate(target[0]);
 	}
-
         else if (content.includes("tapedhands")) {
             CharacterSetActivePose(target[0], "TapedHands");
             ChatRoomCharacterUpdate(target[0]);
-	}
-    
+	}    
         else if (content.includes("roof")) {
             CharacterSetFacialExpression(Player, "Emoticon", "Annoyed", 1);
             CharacterSetActivePose(Player, null);ChatRoomCharacterUpdate(Player);
@@ -2428,8 +2312,7 @@ if (CurrentScreen == "ChatRoom") {
             ? ChatRoomCharacterUpdate(Player)
             : CharacterRefresh(Player);
             }, 3000);
-	}
-	    
+	}	    
         else if (content.includes("jump")) {
             CharacterSetActivePose(Player, null);
             setTimeout(function() {
@@ -2460,11 +2343,9 @@ if (CurrentScreen == "ChatRoom") {
             ? ChatRoomCharacterUpdate(Player)
             : CharacterRefresh(Player);
             }, 4000);
-	}
-	    
+	}	    
         else if (content.includes("exercise")) {
             var Region = undefined;
-
             if (InventoryGet(target[0], "ItemButt") == null) {
                 InventoryWear(target[0], "AnalHook", "ItemButt", "#272727");
                 Region = "ItemButt"}
@@ -2482,8 +2363,7 @@ if (CurrentScreen == "ChatRoom") {
                  Region = "ItemPelvis"}
             else if (InventoryGet(target[0], "ItemPelvis").Asset.Name == "HempRope") {
                  Region = "ItemPelvis"}
-            else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied to excercise.", Type: "LocalMessage", Sender: Player.MemberNumber })};
-		
+            else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied to excercise.", Type: "LocalMessage", Sender: Player.MemberNumber })};		
             CharacterSetActivePose(target[0], null);ChatRoomCharacterUpdate(target[0]);
             setTimeout(function() {
             CharacterSetActivePose(target[0], "OverTheHead");
@@ -2667,48 +2547,38 @@ if (CurrentScreen == "ChatRoom") {
     }
 	
     else if (content.indexOf("/roleplay") == 0) {
-
         if (content.includes("clubmistress")) {
             LogAdd("ClubMistress", "Management");
         }
-
         else if (content.includes("clubslave")) {
             LogAdd("ClubSlave", "Management", CurrentTime + 3600000);
         }
-
         else if (content.includes("doctor")) {
             ReputationChange('Asylum', 200);
 	    LogAdd("Committed", "Asylum", CurrentTime);
         }
- 
         else if (content.includes("headmaid")) {
             LogAdd("LeadSorority", "Maid");
         }
-
         else if (content.includes("kidnapper")) {
             ReputationChange("Kidnap", 200);
             ReputationChange("Kidnap", -50);
         }
-
         else if (content.includes("maid")) {
             LogAdd("JoinedSorority", "Management");
-        }
-	
+        }	
         else if (content.includes("masterkidnapper")) {
             ReputationChange("Kidnap", 200);
         }
-
         else if (content.includes("mistress")) {
             LogAdd("ClubMistress", "Management");
             ReputationChange("Dominant", 200);
         }
-
         else if (content.includes("nurse")) {
             ReputationChange('Asylum', 200);
             ReputationChange('Asylum', -50);
 	    LogAdd("Committed", "Asylum", CurrentTime);
-        }
-	    
+        }	    
 	else if (content.includes("oraclea")) {
             DialogSetReputation("HouseMaiestas", 0);
 	    DialogSetReputation("HouseVincula", 0);
@@ -2717,7 +2587,6 @@ if (CurrentScreen == "ChatRoom") {
             LogDelete("Mastery", "MagicSchool");
             DialogSetReputation("HouseAmplector", 100);
         }
-
         else if (content.includes("oraclec")) {
             DialogSetReputation("HouseMaiestas", 0);
 	    DialogSetReputation("HouseVincula", 0);
@@ -2726,7 +2595,6 @@ if (CurrentScreen == "ChatRoom") {
             LogDelete("Mastery", "MagicSchool");
             DialogSetReputation("HouseCorporis", 100);
         }
-
         else if (content.includes("oraclem")) {
             DialogSetReputation("HouseMaiestas", 0);
 	    DialogSetReputation("HouseVincula", 0);
@@ -2735,7 +2603,6 @@ if (CurrentScreen == "ChatRoom") {
             LogDelete("Mastery", "MagicSchool");
             DialogSetReputation("HouseMaiestas", 100);
         }
-
         else if (content.includes("oraclev")) {
             DialogSetReputation("HouseMaiestas", 0);
 	    DialogSetReputation("HouseVincula", 0);
@@ -2744,16 +2611,13 @@ if (CurrentScreen == "ChatRoom") {
             LogDelete("Mastery", "MagicSchool");
             DialogSetReputation("HouseVincula", 100);
         }
-
         else if (content.includes("patient")) {
             ReputationChange('Asylum', -200);
             ReputationChange('Asylum', 50);
-        }    
-
+        }   
         else if (content.includes("permanentpatient")) {
             ReputationChange('Asylum', -200);
-        }
-	    
+        }	    
 	else if (content.includes("sagea")) {
             DialogSetReputation("HouseMaiestas", 0);
 	    DialogSetReputation("HouseVincula", 0);
@@ -2762,7 +2626,6 @@ if (CurrentScreen == "ChatRoom") {
             LogDelete("Mastery", "MagicSchool");
             DialogSetReputation("HouseAmplector", 50);
         }
-
         else if (content.includes("sagec")) {
             DialogSetReputation("HouseMaiestas", 0);
 	    DialogSetReputation("HouseVincula", 0);
@@ -2771,7 +2634,6 @@ if (CurrentScreen == "ChatRoom") {
             LogDelete("Mastery", "MagicSchool");
             DialogSetReputation("HouseCorporis", 50);
         }
-
         else if (content.includes("sagem")) {
             DialogSetReputation("HouseMaiestas", 0);
 	    DialogSetReputation("HouseVincula", 0);
@@ -2780,7 +2642,6 @@ if (CurrentScreen == "ChatRoom") {
             LogDelete("Mastery", "MagicSchool");
             DialogSetReputation("HouseMaiestas", 50);
         }
-
         else if (content.includes("sagev")) {
             DialogSetReputation("HouseMaiestas", 0);
 	    DialogSetReputation("HouseVincula", 0);
@@ -2789,7 +2650,6 @@ if (CurrentScreen == "ChatRoom") {
             LogDelete("Mastery", "MagicSchool");
             DialogSetReputation("HouseVincula", 50);
         }
-
     	else if (content.endsWith("/roleplay")) {	  
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a role. List: clubmistress, clubslave, doctor, headmaid, kidnapper, maid, masterkidnapper, mistress, nurse, oraclea, oraclec, oraclem, oraclev, patient, permanentpatient, sagea, sagec, sagem, sagev. Be careful with clubslave, you will be forced to complete contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "You will be able to check the changes in your profile.",Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -2797,23 +2657,19 @@ if (CurrentScreen == "ChatRoom") {
     }
 	
     else if (content.indexOf("/rolequit") == 0) {
-
         if (content.includes("asylum")) {
             DialogSetReputation("Asylum", 0);
-        }
-	
+        }	
         else if (content.includes("clubslave")) {
             LogAdd("ClubSlave", "Management", CurrentTime);
             LogAdd("BlockChange", "Rule", CurrentTime);
             ManagementIsClubSlave = function () { return false }
             ManagementClubSlaveDialog = function (Player) {}
             ManagementFinishClubSlave()
-        }
-	
+        }	
         else if (content.includes("kidnapper")) {
             DialogSetReputation("Kidnap", 0)
-        }
-	    
+        }	    
 	else if (content.includes("magician")) {
             DialogSetReputation("HouseMaiestas", 0);
 	    DialogSetReputation("HouseVincula", 0);
@@ -2821,17 +2677,14 @@ if (CurrentScreen == "ChatRoom") {
 	    DialogSetReputation("HouseCorporis", 0);
 	    LogDelete("Mastery", "MagicSchool");
         }
-
         else if ((content.includes("management")) || content.includes("mistress")) {
             LogDelete("ClubMistress", "Management");
             LogDelete("Mistress", "Management");
-        }
-	
+        }	
         else if ((content.includes("sorority")) ||  content.includes("maid"))  {
 	    LogDelete("JoinedSorority", "Management");
 	    LogDelete("LeadSorority", "Maid");
         }
-
     	else if (content.endsWith("/rolequit")) {	  
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a role or clubarea. List:",Type: "LocalMessage", Sender: Player.MemberNumber });  
             ChatRoomMessage({ Content: "asylum to cease being doctor, nurse, patient or permanent patient.",Type: "LocalMessage", Sender: Player.MemberNumber });           
@@ -3407,7 +3260,6 @@ ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)}}
 setTimeout(function() {
 ServerSocket.on('ChatRoomMessage', ChatCommandGreeting);
 }, 5000);
-
 
 //AutoRelog/AntiDisconnect
 function LoginDoLogin() {//rewrite login to variabilize credentials for later use
