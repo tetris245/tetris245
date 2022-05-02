@@ -36,6 +36,7 @@ All else I might not have included.
 
 Changes for future version 1.3
 
+* Organized the help command into categories. Syntax becomes /help (category). Available categories: bondage, character, chat, clothing, escape, fun, misc, talking, visual, zones.
 * Integrated the Moaner script, thanks to Myrhanda and Kimei for their permissions :) - The moaner commands are unchanged. Tip: To avoid conflict with BCX, enable BCX before loging.
 * New command: bg2 to use the hidden Platform backgrounds. Must be followed by a number between 1 and 45. /bg2 0 will give the list of the concerned backgrounds.
 * New command: friendlist to have access to friendlist inside a chat room, with clickable links to other rooms during 15 seconds.
@@ -48,7 +49,6 @@ Changes for future version 1.3
 * New command: unlock to remove all locks or only a specified type of lock on yourself or another player. The lock type is specified by a number between 1 and 16. Of course, usual restrictions for the owner and lover locks.
 * Renamed the background command as bg1 command
 * Updated the bg1 and relog commands 
-* Organized the help command into categories. Syntax becomes /help (category). Available categories: bondage, character, chat, clothing, escape, fun, misc, talking, visual, zones.
 * Added message for the clothes, naked, randomize, release, restraint, totalrelease and underwear commands
 * Improved the login command
 * Improved texts and simplified options for the outfit command
