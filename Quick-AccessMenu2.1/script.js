@@ -155,7 +155,7 @@ if (CurrentScreen == "ChatRoom") {
         else if (content.includes("visual")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Visual commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/anim2 (animhere). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/bg1 =  adds hidden backgrounds to the admin selection screen. Tip for BCX users: activate BCX before using this command.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/bg1 =  adds hidden backgrounds to the admin selection screen. Tip for BCX users: activate BCX before login.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/bg2 (number) = uses a hidden platform background. Number must be between 1 and 45. Use /bg2 0 to get the list.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/colorchanger  =  using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/pose2 (posehere) (targetname). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -3401,7 +3401,8 @@ var ChatRoomSendChat = NEWmenu;
 //greeting message.
 ChatCommandGreeting = function (data) {
 if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
-ChatRoomMessage({ Content: "Quick-AccessMenu2.1: Ready, type /help. For any inquiries, join https://discord.gg/YukepB6RVp", Type: "LocalMessage", Sender: Player.MemberNumber })
+ChatRoomMessage({ Content: "Quick-AccessMenu2.1: Ready, type /help. For any inquiries, join https://discord.gg/YukepB6RVp", Type: "LocalMessage", Sender: Player.MemberNumber });
+ChatRoomMessage({ Content: "Important tip for BCX users: always enable BCX before loging.", Type: "LocalMessage", Sender: Player.MemberNumber });
 ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)}}
 
 setTimeout(function() {
