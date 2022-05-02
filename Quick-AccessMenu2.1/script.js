@@ -3346,6 +3346,39 @@ expressionAnimation[expressionAnimation.length-1]=expressionAnimationEx.Property
 }RunExpressionAnimationStep();}
 //core functionaliy moved to: /speak /mouth /speech
 
+//Moaner
+//Boot up sequence
+window.addEventListener("load", () => {
+
+  function M_MOANER_AddExternalScript(scriptLink) {
+	let script = document.createElement("script");
+	script.src = scriptLink;
+	script.src.async = false;
+	return document.head.appendChild(script);
+  }
+  
+  function M_MOANER_AddScript(scriptFileName) {
+	let script = document.createElement("script");
+	script.src = chrome.runtime.getURL(scriptFileName);
+	return document.head.appendChild(script);
+  }
+  
+  const M_MOANER_externalScripts = [];
+  
+  const M_MOANER_scripts = [
+  	"moaner/system/util.js",
+  	"moaner/system/controls.js",
+  	"moaner/Reactions/moansManagement.js",
+  	"moaner/system/ChatRoom.js",
+  	"moaner/Reactions/Reactions.js",
+	"moaner/moans.js"
+  ];
+
+  M_MOANER_externalScripts.forEach(M_MOANER_AddExternalScript);
+  M_MOANER_scripts.forEach(M_MOANER_AddScript);
+  
+});
+
 //BC-Diaper-Wetter
 // A simple table for the colors that the script will use.
 DiaperUseLevels = 
