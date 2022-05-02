@@ -23,6 +23,8 @@ Original version of Quick-AccessMenu2.1 (version 1.0) by KellyLoveyness - Versio
 
 Special thanks to Firefly for giving permission to integrate the BC-Diaper-Wetter script.
 
+Special thanks to Myrhanda and Kimei for giving permission to integrate the Moaner script.
+
 Thanks for special assistance:
 Shyness, Ada.
 
