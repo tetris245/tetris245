@@ -83,7 +83,9 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/arousal 10  =  sets arousal level. Change value (0-100).", Type: "LocalMessage", Sender: Player.MemberNumber });    
             ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/superdice (sides)  = rolls a superdice. Sides can be between 2 and 999999999.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        }
+            ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "You can also use the moaner commands. Use /moaner help to get the list and the current moaner status. ", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+	 }
 	    
 	else if (content.includes("lock")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: The lock command has several syntaxes:", Type: "LocalMessage", Sender: Player.MemberNumber }); 
