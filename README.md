@@ -61,3 +61,4 @@ Changes for future version 1.3
 * Rewrote two functions to neutralize validation only for yourself, it means that other players will not see your real full appearance, except if they use QAM too.
 * Fixed a bug for the spanking toys in the unrestrict command (note: only the Sleeping Pill can't be used with this change while using of spanking toys was broken before)
 * Fixed a bug in the chess and wardrobe commands
+* Updated manifest to version 3
