@@ -2,20 +2,21 @@
   "name": "Quick-AccessMenu2.1",
   "description": "Everything you'll ever need.",
   "version": "1.2",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "icons": {
     "128": "icon128.png",
     "48": "icon48.png",
     "16": "icon16.png"
   },
   "background": {
-    "scripts": ["background.js"],
-    "persistent": true
+    "service_worker": "background.js"
   },
   "permissions": [
     "tabs",
     "storage",
-    "activeTab",
+    "activeTab"
+  ],
+  "host_permissions": [
     "https://bondage-europe.com/*",
     "https://www.bondage-europe.com/*",
     "http://bondageprojects.com/*",
@@ -44,5 +45,21 @@
       ]
     }
   ],
-  "web_accessible_resources": ["script.js"]
+  "web_accessible_resources": [
+    {
+      "resources": ["script.js"],
+      "matches": [
+        "https://bondage-europe.com/*",
+        "https://www.bondage-europe.com/*",
+        "http://bondageprojects.com/*",
+        "https://bondageprojects.com/*",
+        "http://www.bondageprojects.com/*",
+        "https://www.bondageprojects.com/*",
+        "http://bondageprojects.elementfx.com/*",
+        "https://bondageprojects.elementfx.com/*",
+        "http://www.bondageprojects.elementfx.com/*",
+        "https://www.bondageprojects.elementfx.com/*"
+      ]
+  }
+]
 }
