@@ -1,9 +1,9 @@
 var s = document.createElement('script');
 s.src = chrome.runtime.getURL('script.js');
 (document.head || document.documentElement).appendChild(s);
-// s.onload = function () {
-//   s.parentNode.removeChild(s);
-// };
+ s.onload = function () {
+   s.parentNode.removeChild(s);
+ };
 
 document.addEventListener('BCCheatsResponce', function (e) {
   sendToExtension(e.detail);
