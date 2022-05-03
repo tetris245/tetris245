@@ -36,7 +36,8 @@ All else I might not have included.
 
 Changes for future version 1.3
 
-* Organized the help command into categories. Syntax becomes /help (category). Available categories: bondage, character, chat, clothing, escape, fun, misc, talking, visual, zones.
+* Organized the help command into categories. Syntax becomes /help (category). Available categories: bondage, character, chat, clothing, escape, fun, misc, talking, visual, zones. 
+* Created a wiki structured in the same way as the help command: https://github.com/tetris245/tetris245/wiki
 * Integrated the Moaner script, thanks to Myrhanda and Kimei for their permissions :) - The moaner commands are unchanged. Tip: To avoid conflict with BCX, enable BCX before loging.
 * New command: bg2 to use the hidden Platform backgrounds. Must be followed by a number between 1 and 45. /bg2 0 will give the list of the concerned backgrounds.
 * New command: friendlist to have access to friendlist inside a chat room, with clickable links to other rooms during 15 seconds.
