@@ -4032,22 +4032,20 @@ function M_MOANER_getRandomNumber(seed){
 
 //MoanerManagement
 
-/*const baseM_MOANER_factor4Moans=["n... Nyahâ™¥","Oooh","mmmmmh!","NYyaaAâ™¥"];
-const baseM_MOANER_factor3Moans=["mm","aaaah","nyAhâ™¥"];
-const baseM_MOANER_factor2Moans=["nyahâ™¥","Aah!","mh","oh!â™¥","mhâ™¥"];
-const basefactor1Moans=["mh","â™¥ohâ™¥","ah","...â™¥"];
-
+/*const baseM_MOANER_factor4Moans=["n... Nyah♥","Oooh","mmmmmh!","NYyaaA♥"];
+const baseM_MOANER_factor3Moans=["mm","aaaah","nyAh♥"];
+const baseM_MOANER_factor2Moans=["nyah♥","Aah!","mh","oh!♥","mh♥"];
+const basefactor1Moans=["mh","♥oh♥","ah","...♥"];
 const baseM_MOANER_orgasmMoans=["Nya...Ny...NyaaAAaah!","Mmmmh... MMmh... Hhhmmmm...","Oooooh... Mmmmh... OooOOOOh!","Mmmhnn... Nyhmm... Nyah!"];
-
 const basePainMoans=["Aie!","Aoouch!","Eek","ouch","Aow"];*/
 
 var M_MOANER_profileName="default";
 
 M_MOANER_defaultMoans={
-	"hot":["n... Nyahâ™¥","Oooh","mmmmmh!","NYyaaAâ™¥"],
-	"medium":["mm","aaaah","nyAhâ™¥"],
-	"light":["nyahâ™¥","Aah!","mh","oh!â™¥","mhâ™¥"],
-	"low":["mh","â™¥ohâ™¥","ah","...â™¥"],
+	"hot":["n... Nyah♥","Oooh","mmmmmh!","NYyaaA♥"],
+	"medium":["mm","aaaah","nyAh♥"],
+	"light":["nyah♥","Aah!","mh","oh!♥","mh♥"],
+	"low":["mh","♥oh♥","ah","...♥"],
 	"orgasm":["Nya...Ny...NyaaAAaah!","Mmmmh... MMmh... Hhhmmmm...","Oooooh... Mmmmh... OooOOOOh!","Mmmhnn... Nyhmm... Nyah!"],
 	"pain":["Aie!","Aoouch!","Aaaaie!","Ouch","Aow"]
 }
@@ -4062,13 +4060,15 @@ M_MOANER_customMoans={
 }
 
 /*nekoMoans={
-	"hot":["n... Nyahâ™¥","NYyaaAâ™¥"],
-	"medium":["nyAhâ™¥","nyyy","..yah"],
-	"light":["nyahâ™¥","Yah!","myuh","mhâ™¥"],
-	"low":["myu","nyâ™¥","mh","â™¥yhâ™¥","nyâ™¥"],
+	"hot":["n... Nyah♥","NYyaaA♥"],
+	"medium":["nyAh♥","nyyy","..yah"],
+	"light":["nyah♥","Yah!","myuh","mh♥"],
+	"low":["myu","ny♥","mh","♥yh♥","ny♥"],
 	"orgasm":["Nya...Ny...NyaaAAaah!","Mmmhnn... Nyhmm... Nyah!","mmmh... mmmeeeee.... meeeoooow!"],
 	"pain":[]
 }*/
+
+
 
 
 
