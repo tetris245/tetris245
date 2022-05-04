@@ -1,6 +1,8 @@
 Quick-AccessMenu2.1 - Addon for Ben987's BondageClub game 
 
-Most recent release is version 1.2. - Visit also our WIP wiki: https://github.com/tetris245/tetris245/wiki
+Most recent release is version 1.3. - Visit also our WIP wiki: https://github.com/tetris245/tetris245/wiki
+
+Note: I've updated the zip file to correct a mistake when copying the moans part. If you like the Moaner script, please download the updated zip file if you get the file in the 9 first hours of the releaseL
 
 Installation and credits
 
