@@ -1352,17 +1352,21 @@ if (CurrentScreen == "ChatRoom") {
         if (this.HiddenMessagesOn == undefined || this.HiddenMessagesOn == false) {
            HiddenMessagesOn = true;
            ChatRoomMessage({ Content: "Hidden messages revealed.", Type: "LocalMessage", Sender: Player.MemberNumber });
-           (typeof oldChatRoomMessage !== 'undefined') && (ChatRoomMessage=oldChatRoomMessage);//reset
-           newChatRoomMessage = function  (data) {
-                if (data.Type == "Hidden") {
-                ChatRoomMessage({ Content: "HiddenMessage:"+data.Content, Type: "LocalMessage", Sender: Player.MemberNumber }); }
-                else { oldChatRoomMessage(data);}}//if modified code unusued, use original
-            window.oldChatRoomMessage = ChatRoomMessage;
-            window.ChatRoomMessage = newChatRoomMessage;}
+           (typeof oldChatRoomMessage !== 'undefined') && (ChatRoomMessage=oldChatRoomMessage);//reset     
+           newChatRoomMessage = function (data) {
+               if (data.Type == "Hidden") {
+                  ChatRoomMessage({ Content: "HiddenMessage:"+data.Content, Type: "LocalMessage", Sender: Player.MemberNumber });
+               }
+               oldChatRoomMessage(data);
+            }		
+        window.oldChatRoomMessage = ChatRoomMessage;
+        window.ChatRoomMessage = newChatRoomMessage;
+	}
         else {
             HiddenMessagesOn = false;
             newChatRoomMessage = function  (data) {}
-            ChatRoomMessage({ Content: "Hidden messages hidden.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+            ChatRoomMessage({ Content: "Hidden messages hidden.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	}
     }
 	
     else if (content.indexOf("/keydeposit") == 0) {
