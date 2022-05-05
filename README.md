@@ -36,6 +36,7 @@ All else I might not have included.
 
 Changes for future version 1.4
 
+* Improved the hiddenmessages command
 * Fixed the issue with special characters in moans by using their Unicode format
 
 
