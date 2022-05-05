@@ -1363,9 +1363,10 @@ if (CurrentScreen == "ChatRoom") {
         window.ChatRoomMessage = newChatRoomMessage;
 	}
         else {
-            HiddenMessagesOn = false;
+            HiddenMessagesOn = false;               
+	    ChatRoomMessage({ Content: "Hidden messages hidden.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            (typeof oldChatRoomMessage !== 'undefined') && (ChatRoomMessage=oldChatRoomMessage);//reset  
             newChatRoomMessage = function  (data) {}
-            ChatRoomMessage({ Content: "Hidden messages hidden.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	}
     }
 	
