@@ -29,7 +29,7 @@ Thanks for special assistance:
 Shyness, Ada.
 
 Thanks for general assistance:
-Brianna, Better, Miyako, Zeltron, Selina.
+Brianna, Better, Miyako, Zeltron, Selina, Estsanatlehi.
 All else I might not have included.
 
 ===========================================================================
