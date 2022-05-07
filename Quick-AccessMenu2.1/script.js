@@ -2185,6 +2185,27 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "Quick-AccessMenu2: A few things have to be set manually. See the /roleplay and /rolequit commands.", Type: "LocalMessage", Sender: Player.MemberNumber });      
     }
 	
+        else if (content.indexOf("/moaner") == 0) {
+        if (content.endsWith("/moaner")) {
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Several actions are possible with the moaner command:", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/moaner on  = starts the moaner",Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/moaner off  = stops the moaner",Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/moaner profile  = moaner profile help",Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/moaner profile (profilename) = selecte a moaner profile",Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/moaner verbose (on/off)  = enables/disables verbose",Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "You can also enable/disable parts of the Moaner with:",Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/moaner orgasm (on/off): moans when you cum",Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/moaner spank (on/off): moans when you are spanked",Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/moaner talk (on/off): moans when talking if vibed",Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/moaner vibe (on/off): moans when vibes settings changed",Type: "LocalMessage", Sender: Player.MemberNumber });
+       }    
+       else {
+       let msg = ElementValue("InputChat").trim();
+       M_MOANER_traiterCommande(msg);
+       }    
+    }
+	
     else if (content.indexOf("/money") == 0) {
         Player.Money = content.substring(6);ServerPlayerSync();
     }
@@ -3572,7 +3593,7 @@ function M_MOANER_initChatRoomSendChatCommands(){
 	  
 	  let msg = ElementValue("InputChat").trim();
 	  if(M_MOANER_isCommande(msg)){
-		msg=M_MOANER_traiterCommande(msg);//fonction qui lance l'interpretation des commandes
+		//msg=M_MOANER_traiterCommande(msg);//fonction qui lance l'interpretation des commandes
 		ElementValue("InputChat",msg);
 	  }
 	  backupChatRoomSendChat(...rest);
@@ -3681,10 +3702,10 @@ function M_MOANER_traiterCommande(msg){
 	else if(feature==M_MOANER_featureProfile){
 		profileControl(commande);
 	}
-	else{
-		sendM_MOANER_unknownCommand();
-		return "";
-	}
+	//else{
+	//	sendM_MOANER_unknownCommand();
+	//	return "";
+	//}
 	M_MOANER_saveControls();
 	return "";
 }
@@ -3853,7 +3874,7 @@ function firstHelp(){
 
 //controle de l'aide
 function helpControl(){
-	M_MOANER_sendMessageToWearer(M_MOANER_scriptHelp);
+	//M_MOANER_sendMessageToWearer(M_MOANER_scriptHelp);
 	showStatus();
 }
 
