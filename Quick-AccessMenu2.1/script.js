@@ -2200,10 +2200,6 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/moaner talk (on/off): moans when talking if vibed",Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/moaner vibe (on/off): moans when vibes settings changed",Type: "LocalMessage", Sender: Player.MemberNumber });
        }    
-       else {
-       let msg = ElementValue("InputChat").trim();
-       M_MOANER_traiterCommande(msg);
-       }    
     }
 	
     else if (content.indexOf("/money") == 0) {
@@ -3592,8 +3588,10 @@ function M_MOANER_initChatRoomSendChatCommands(){
 	ChatRoomSendChat = (...rest) => {
 	  
 	  let msg = ElementValue("InputChat").trim();
-	  if(M_MOANER_isCommande(msg)){
-		//msg=M_MOANER_traiterCommande(msg);//fonction qui lance l'interpretation des commandes
+	  if (msg.endsWith("/moaner")) {
+          } 
+	  else if(M_MOANER_isCommande(msg)){
+		msg=M_MOANER_traiterCommande(msg);//fonction qui lance l'interpretation des commandes
 		ElementValue("InputChat",msg);
 	  }
 	  backupChatRoomSendChat(...rest);
