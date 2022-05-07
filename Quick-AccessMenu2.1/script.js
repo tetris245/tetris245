@@ -3626,6 +3626,7 @@ const M_MOANER_featureOrgasm="orgasm";
 const M_MOANER_featureVibrator="vibe";
 const M_MOANER_featureSpank="spank";
 const M_MOANER_featureHelp="help";
+const M_MOANER_featureStatus="status";
 const M_MOANER_featureVerbose="verbose";
 const M_MOANER_featureProfile="profile";
 
@@ -3647,7 +3648,7 @@ var M_MOANER_profileListM_MOANER_intro="Available moaning profiles: ";
 
 var M_MOANER_scriptHelp="Moaner commands available: /moaner help: show this help text. /moaner on: start the moaner. /moaner off: stop the moaner. /moaner talk on: start the talk moan. /moaner talk off: stop the talk moan. /moaner orgasm on: start the orgasm moan. /moaner orgasm off: stop the orgasm moan. /moaner vibe on: start the vibes moan. /moaner vibe off: stop the vibes moan. /moaner spank on: start the spank moan. /moaner spank off: stop the spank moan. /moaner verbose on: make the script verbose. /moaner verbose off: make the script not verbose. /moaner profile: show profiles help. /moaner profile [profile name]: use [profile name] moans";
 
-var M_MOANER_intro="Myrhanda Moaner installed. Type /moaner help for more informations.";
+var M_MOANER_intro="Myrhanda Moaner installed. Type /moaner help for more info, /moaner status for current status.";
 var M_MOANER_unknownCommand="Unknown command";
 
 function M_MOANER_traiterCommande(msg){
@@ -3674,6 +3675,9 @@ function M_MOANER_traiterCommande(msg){
 	}
 	else if(feature==M_MOANER_featureHelp){
 		helpControl(commande);
+	}
+	else if(feature==M_MOANER_featureStatus){
+		showStatus();
 	}
 	else if(feature==M_MOANER_featureVerbose){
 		verboseControl(commande);
@@ -3854,7 +3858,7 @@ function firstHelp(){
 //controle de l'aide
 function helpControl(){
 	M_MOANER_sendMessageToWearer(M_MOANER_scriptHelp);
-	showStatus();
+	//showStatus();
 }
 
 function profilesList(){
@@ -3863,6 +3867,7 @@ function profilesList(){
 	M_MOANER_sendMessageToWearer(msg);
 }
 
+//Status
 function showStatus(){
 	showM_MOANER_scriptStatus();
 	showM_MOANER_profileStatus();
