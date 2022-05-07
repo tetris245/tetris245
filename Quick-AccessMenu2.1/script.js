@@ -81,10 +81,9 @@ if (CurrentScreen == "ChatRoom") {
 	 else if (content.includes("fun")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Fun commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/arousal 10  =  sets arousal level. Change value (0-100).", Type: "LocalMessage", Sender: Player.MemberNumber });    
-            ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/superdice (sides)  = rolls a superdice. Sides can be between 2 and 999999999.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "You can also use the moaner commands. Use /moaner help to get the list and the current moaner status. ", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+            ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });	
+            ChatRoomMessage({ Content: "/moaner  =  moans when horny and stimulated. Use /moaner help for more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/superdice (sides)  = rolls a superdice. Sides can be between 2 and 999999999.", Type: "LocalMessage", Sender: Player.MemberNumber });  
 	 }
 	    
 	else if (content.includes("lock")) {
@@ -135,7 +134,8 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/babytalk (stuffhere) =  speaks as a baby. Can also: /b", Type: "LocalMessage", Sender: Player.MemberNumber });     
             ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gv", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/gagtalk  =  toggle to decode/not decode gagged people talking.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/gagtalk  =  toggle to decode/not decode gagged people talking.", Type: "LocalMessage", Sender: Player.MemberNumber });	
+            ChatRoomMessage({ Content: "/moaner  =  moans when horny and stimulated. Use /moaner help for more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/talkbaby  =  toggle on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/talkgag light/heavy  =  toggles on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/whisper (targetname) = sets whisper target.", Type: "LocalMessage", Sender: Player.MemberNumber });
