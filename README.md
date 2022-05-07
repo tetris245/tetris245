@@ -36,6 +36,9 @@ All else I might not have included.
 
 Changes for future version 1.4
 
+
+* Changes in the Moaner: 
+  - Separated help and status (/moaner help and /moaner status as commands)
 * Improved the hiddenmessages command
 * Fixed the issue with special characters in moans by using their Unicode format
 
