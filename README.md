@@ -36,7 +36,6 @@ All else I might not have included.
 
 Changes for future version 1.4
 
-* Integrated the Moaner help in QAM help: /moaner without any parameter will display this help without the Moaner status
 * Improved the hiddenmessages command
 * Fixed the issue with special characters in moans by using their Unicode format
 
