@@ -81,9 +81,10 @@ if (CurrentScreen == "ChatRoom") {
 	 else if (content.includes("fun")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Fun commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/arousal 10  =  sets arousal level. Change value (0-100).", Type: "LocalMessage", Sender: Player.MemberNumber });    
-            ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });	
-            ChatRoomMessage({ Content: "/moaner  =  moans when horny and stimulated. Use /moaner help for more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/superdice (sides)  = rolls a superdice. Sides can be between 2 and 999999999.", Type: "LocalMessage", Sender: Player.MemberNumber });  
+            ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/superdice (sides)  = rolls a superdice. Sides can be between 2 and 999999999.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "You can also use the moaner commands. Use /moaner help to get the list and the current moaner status. ", Type: "LocalMessage", Sender: Player.MemberNumber }); 
 	 }
 	    
 	else if (content.includes("lock")) {
@@ -134,8 +135,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/babytalk (stuffhere) =  speaks as a baby. Can also: /b", Type: "LocalMessage", Sender: Player.MemberNumber });     
             ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gv", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/gagtalk  =  toggle to decode/not decode gagged people talking.", Type: "LocalMessage", Sender: Player.MemberNumber });	
-            ChatRoomMessage({ Content: "/moaner  =  moans when horny and stimulated. Use /moaner help for more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/gagtalk  =  toggle to decode/not decode gagged people talking.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/talkbaby  =  toggle on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/talkgag light/heavy  =  toggles on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/whisper (targetname) = sets whisper target.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -2185,23 +2185,6 @@ if (CurrentScreen == "ChatRoom") {
         ChatRoomMessage({ Content: "Quick-AccessMenu2: A few things have to be set manually. See the /roleplay and /rolequit commands.", Type: "LocalMessage", Sender: Player.MemberNumber });      
     }
 	
-        else if (content.indexOf("/moaner") == 0) {
-        if (content.endsWith("/moaner")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Several actions are possible with the moaner command:", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner on  = starts the moaner",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner off  = stops the moaner",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner profile  = moaner profile help",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner profile (profilename) = selecte a moaner profile",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner verbose (on/off)  = enables/disables verbose",Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "You can also enable/disable parts of the Moaner with:",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner orgasm (on/off): moans when you cum",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner spank (on/off): moans when you are spanked",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner talk (on/off): moans when talking if vibed",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner vibe (on/off): moans when vibes settings changed",Type: "LocalMessage", Sender: Player.MemberNumber });
-       }    
-    }
-	
     else if (content.indexOf("/money") == 0) {
         Player.Money = content.substring(6);ServerPlayerSync();
     }
@@ -3588,9 +3571,7 @@ function M_MOANER_initChatRoomSendChatCommands(){
 	ChatRoomSendChat = (...rest) => {
 	  
 	  let msg = ElementValue("InputChat").trim();
-	  if (msg.endsWith("/moaner")) {
-          } 
-	  else if(M_MOANER_isCommande(msg)){
+	  if(M_MOANER_isCommande(msg)){
 		msg=M_MOANER_traiterCommande(msg);//fonction qui lance l'interpretation des commandes
 		ElementValue("InputChat",msg);
 	  }
@@ -3700,10 +3681,10 @@ function M_MOANER_traiterCommande(msg){
 	else if(feature==M_MOANER_featureProfile){
 		profileControl(commande);
 	}
-	//else{
-	//	sendM_MOANER_unknownCommand();
-	//	return "";
-	//}
+	else{
+		sendM_MOANER_unknownCommand();
+		return "";
+	}
 	M_MOANER_saveControls();
 	return "";
 }
@@ -3801,7 +3782,7 @@ function verboseControl(commande){
 	showM_MOANER_verboseStatus();
 }
 
-//controle sur les gÃ©missements quand on parle
+//controle sur les gÃƒÂ©missements quand on parle
 function talkControl(commande){
 	if(commande==M_MOANER_commandeOn){
 		M_MOANER_talkActive=true;
@@ -3816,7 +3797,7 @@ function talkControl(commande){
 	showM_MOANER_talkStatus();
 }
 
-//controle sur les gÃ©missements Ã  l'orgasme
+//controle sur les gÃƒÂ©missements ÃƒÂ  l'orgasme
 function orgasmControl(commande){
 	if(commande==M_MOANER_commandeOn){
 		M_MOANER_orgasmActive=true;
@@ -3831,7 +3812,7 @@ function orgasmControl(commande){
 	showM_MOANER_orgasmStatus();
 }
 
-//controle sur les gÃ©missements au lancement d'un vibrateur
+//controle sur les gÃƒÂ©missements au lancement d'un vibrateur
 function vibeControl(commande){
 	if(commande==M_MOANER_commandeOn){
 		M_MOANER_vibratorActive=true;
@@ -3846,7 +3827,7 @@ function vibeControl(commande){
 	showM_MOANER_vibratorStatus();
 }
 
-//controle sur les gÃ©missements Ã  la fessÃ©e
+//controle sur les gÃƒÂ©missements ÃƒÂ  la fessÃƒÂ©e
 function spankControl(commande){
 	if(commande==M_MOANER_commandeOn){
 		M_MOANER_spankActive=true;
@@ -3872,7 +3853,7 @@ function firstHelp(){
 
 //controle de l'aide
 function helpControl(){
-	//M_MOANER_sendMessageToWearer(M_MOANER_scriptHelp);
+	M_MOANER_sendMessageToWearer(M_MOANER_scriptHelp);
 	showStatus();
 }
 
@@ -3998,7 +3979,7 @@ async function MoanerLoginListener() {
         await new Promise(r => setTimeout(r, 2000));
       }
 	  //console.log("window.CurrentScreen="+window.CurrentScreen);
-	  //console.log("MoanerIsLoaded trouvÃ©");
+	  //console.log("MoanerIsLoaded trouvÃƒÂ©");
       MoanerIsLoaded = true; 
 	  M_MOANER_MoanerInitAlteredFns();
 	  M_MOANER_initControls();
@@ -4152,7 +4133,7 @@ var factor1Moans=[];
 var PROPORTION_MAX = 40;
 
 /******************************************************************/
-//rÃ©agir au chat
+//rÃƒÂ©agir au chat
 /******************************************************************/
 function M_MOANER_reactionExcitation(C, CD) {
 	
@@ -4219,8 +4200,8 @@ function M_MOANER_reactionTrigger(data){
 
 function M_MOANER_reactionSpankWithChat(data){
 	if(M_MOANER_spankActive && M_MOANER_isSpank(data)){
-		//rÃ©cupÃ©rer le gÃ©missement Ã  appliquer
-		//datas pour gÃ©nÃ©ration des gÃ©missements
+		//rÃƒÂ©cupÃƒÂ©rer le gÃƒÂ©missement ÃƒÂ  appliquer
+		//datas pour gÃƒÂ©nÃƒÂ©ration des gÃƒÂ©missements
 		var Factor = Math.floor(Player.ArousalSettings.Progress / 20);
 		var moan = getSpankMoan(Factor, Math.random() * 300);
 		var msg=ElementValue("InputChat");
@@ -4234,8 +4215,8 @@ function M_MOANER_reactionSpankWithChat(data){
 
 function M_MOANER_reactionSpankWithoutChat(data){
 	if(M_MOANER_spankActive && M_MOANER_isSpank(data)){
-		//rÃ©cupÃ©rer le gÃ©missement Ã  appliquer
-		//datas pour gÃ©nÃ©ration des gÃ©missements
+		//rÃƒÂ©cupÃƒÂ©rer le gÃƒÂ©missement ÃƒÂ  appliquer
+		//datas pour gÃƒÂ©nÃƒÂ©ration des gÃƒÂ©missements
 		var Factor = Math.floor(Player.ArousalSettings.Progress / 20);
 		var moan = getSpankMoan(Factor, Math.random() * 300);
 		var msg=ElementValue("InputChat");
@@ -4250,8 +4231,8 @@ function M_MOANER_reactionSpankWithoutChat(data){
 
 function M_MOANER_reactionVibeWithoutChat(data){
 	if(M_MOANER_vibratorActive && M_MOANER_isVibes(data)){
-		//rÃ©cupÃ©rer le gÃ©missement Ã  appliquer
-		//datas pour gÃ©nÃ©ration des gÃ©missements
+		//rÃƒÂ©cupÃƒÂ©rer le gÃƒÂ©missement ÃƒÂ  appliquer
+		//datas pour gÃƒÂ©nÃƒÂ©ration des gÃƒÂ©missements
 		var Factor = Math.floor(Player.ArousalSettings.Progress / 20);
 		var moan = getMoan(Factor, true,Math.random() * 300);
 		var msg=ElementValue("InputChat");
@@ -4266,8 +4247,8 @@ function M_MOANER_reactionVibeWithoutChat(data){
 
 function M_MOANER_reactionVibeWithChat(data){
 	if(M_MOANER_vibratorActive && M_MOANER_isVibes(data)){
-		//rÃ©cupÃ©rer le gÃ©missement Ã  appliquer
-		//datas pour gÃ©nÃ©ration des gÃ©missements
+		//rÃƒÂ©cupÃƒÂ©rer le gÃƒÂ©missement ÃƒÂ  appliquer
+		//datas pour gÃƒÂ©nÃƒÂ©ration des gÃƒÂ©missements
 		var Factor = Math.floor(Player.ArousalSettings.Progress / 20);
 		var moan = getMoan(Factor, true,Math.random() * 300);
 		var msg=ElementValue("InputChat");
@@ -4315,8 +4296,8 @@ function M_MOANER_isPlayerTarget(data){
 }
 
 function M_MOANER_applyMoanToMsg(C,CD){
-	//dÃ©terminer le nombre de gÃ©missements
-		//calculer Ã§a en fonction du nombre de mots
+	//dÃƒÂ©terminer le nombre de gÃƒÂ©missements
+		//calculer ÃƒÂ§a en fonction du nombre de mots
 		//proportion: PROPORTION_MAX*niveauExcitation
 		//PROPORTION_MAX=40%
 		var proportion = C.ArousalSettings.Progress * PROPORTION_MAX/10000;
@@ -4327,11 +4308,11 @@ function M_MOANER_applyMoanToMsg(C,CD){
 		var stop=false;
 		var finalTextList=[];
 		
-		//rÃ©cupÃ©rer les gÃ©missements Ã  appliquer
-		//datas pour gÃ©nÃ©ration des gÃ©missements
+		//rÃƒÂ©cupÃƒÂ©rer les gÃƒÂ©missements ÃƒÂ  appliquer
+		//datas pour gÃƒÂ©nÃƒÂ©ration des gÃƒÂ©missements
 		var Factor = Math.floor(C.ArousalSettings.Progress / 20);
 		while(currentIndex<CDList.length){
-			//si le prochain mot contient une parenthÃ¨se, on arrÃ¨te la rÃ©partission des gÃ©missements)
+			//si le prochain mot contient une parenthÃƒÂ¨se, on arrÃƒÂ¨te la rÃƒÂ©partission des gÃƒÂ©missements)
 			var currentWord=CDList[currentIndex++];
 			var presenceParenthese=M_MOANER_detectParentheses(currentWord);
 			if(presenceParenthese==1){
@@ -4392,13 +4373,13 @@ function getMoan(Factor, isStimulated,seed){
 	//M_MOANER_logDebug("getMoan: factor="+Factor);
 	//M_MOANER_logDebug("getMoan: isStimulated="+isStimulated);
 	if(!isStimulated) return "";
-	//sÃ©lectionner un gÃ©missement
+	//sÃƒÂ©lectionner un gÃƒÂ©missement
 	return " "+selectMoan(Factor,seed);
 }
 
 function getSpankMoan(Factor, seed){
 	let gemissement;
-	//selon le niveau de fetichisme fessÃ©e
+	//selon le niveau de fetichisme fessÃƒÂ©e
 	let activity=getActivityTaste("Spank");
 	if(activity== undefined) return "";
 	let activityTaste = activity.Self;
@@ -4581,11 +4562,11 @@ M_MOANER_addMoansProfile("fox",M_MOANER_foxMoans);
 //dog
 M_MOANER_dogMoans={
 	"hot":["w... Wouuuf\u2665","aouuh\u2665"],
-	"medium":["waaaf\u2665","kyūūūn","..wouf"],
-	"light":["Ouaff\u2665","Aouh!","Oua\u2665af","Kyūn\u2665"],
-	"low":["wou..","ouah\u2665","Wouf\u2665","\u2665kyūn\u2665","kyū\u2665"],
+	"medium":["waaaf\u2665","kyÅ«Å«Å«n","..wouf"],
+	"light":["Ouaff\u2665","Aouh!","Oua\u2665af","KyÅ«n\u2665"],
+	"low":["wou..","ouah\u2665","Wouf\u2665","\u2665kyÅ«n\u2665","kyÅ«\u2665"],
 	"orgasm":["ouaf\u2665 O... Ouuw... Ouaaaa!!","Mmmhnn... aaaa... Ouuuaaaaaf!!","mmmh... Aouuuh.... Aouhhhh!"],
-	"pain":["Kaï!","Aoouch!","Kaaaï!","Ouch","Aow"]
+	"pain":["KaÃ¯!","Aoouch!","KaaaÃ¯!","Ouch","Aow"]
 }
 M_MOANER_addMoansProfile("dog",M_MOANER_dogMoans);
 
@@ -5572,6 +5553,20 @@ if (X > 1500) {
 X = 25;
 Y = Y + 109;
 }}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
