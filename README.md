@@ -38,7 +38,8 @@ Changes for future version 1.4
 
 
 * Changes in the Moaner: 
-  - Separated help and status (/moaner help and /moaner status as commands)
+  - Integrated the help in QAM help (the command is now /moaner instead of /moaner help)
+  - Separated help and status (/moaner and /moaner status as commands)
   -  Fixed the issue with special characters in moans by using their Unicode format
 * Improved the hiddenmessages command
 
