@@ -42,7 +42,7 @@ Changes for future version 1.4
   - Separated help and status (/moaner and /moaner status as commands)
   -  Fixed the issue with special characters in moans by using their Unicode format
 * Improved the hiddenmessages command
-* Fixed a bug in profile command (no more crash when targetname not found)
+* Fixed a bug in profile command (no more crash when targetname not found) and applied this fix to other commands with targetname
 
 
 
