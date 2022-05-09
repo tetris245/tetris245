@@ -867,10 +867,12 @@ if (CurrentScreen == "ChatRoom") {
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers put random clothes on "+target[0].Name+" body."}]});        
-        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-        CharacterAppearanceFullRandom(target[0], true);
-        ChatRoomCharacterUpdate(target[0]);
+	if (target[0] != null) { 
+	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers put random clothes on "+target[0].Name+" body."}]});        
+            if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+            CharacterAppearanceFullRandom(target[0], true);
+            ChatRoomCharacterUpdate(target[0]);
+	}	
     }
 	
     else if (content.indexOf("/clubhelp") == 0) {
@@ -1021,8 +1023,10 @@ if (CurrentScreen == "ChatRoom") {
             if (targetname  == undefined) {targetname = Player.Name};
             var targetfinder = new RegExp('^'+targetname+'', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-            if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change your normal diapers and allows you to use the /diaper change1 command.", Type: "Whisper", Target: target[0].MemberNumber })};
-            refreshDiaper("panties");
+            if (target[0] != null) {
+                if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change your normal diapers and allows you to use the /diaper change1 command.", Type: "Whisper", Target: target[0].MemberNumber })};
+                refreshDiaper("panties");
+	    }    
         }
 
         else if (content.includes("change2")) {
@@ -1032,8 +1036,10 @@ if (CurrentScreen == "ChatRoom") {
             if (targetname  == undefined) {targetname = Player.Name};
             var targetfinder = new RegExp('^'+targetname+'', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-            if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change your chastity diapers and allows you to use the /diaper change2 command.", Type: "Whisper", Target: target[0].MemberNumber })};
-            refreshDiaper("chastity");
+	    if (target[0] != null) {
+                if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change your chastity diapers and allows you to use the /diaper change2 command.", Type: "Whisper", Target: target[0].MemberNumber })};
+                refreshDiaper("chastity");
+	    }
         }
 
         else if (content.includes("change3")) {
@@ -1043,8 +1049,10 @@ if (CurrentScreen == "ChatRoom") {
             if (targetname  == undefined) {targetname = Player.Name};
             var targetfinder = new RegExp('^'+targetname+'', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-            if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change all your diapers and allows you to use the /diaper change3 command.", Type: "Whisper", Target: target[0].MemberNumber })};
-            refreshDiaper("both");
+	    if (target[0] != null) {
+                if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change all your diapers and allows you to use the /diaper change3 command.", Type: "Whisper", Target: target[0].MemberNumber })};
+                refreshDiaper("both");
+	    }    
         }
       
         else if (content.includes("setdesperation")) {
@@ -1546,10 +1554,11 @@ if (CurrentScreen == "ChatRoom") {
         var targetname = stringLock2[1];
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make appear locks on "+target[0].Name+" body."}]});        
-        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-        mn = Player.MemberNumber;
-	if ((InventoryGet(target[0], "ItemAddon") != null) && (InventoryGet(target[0], "ItemAddon").Asset.AllowLock == true)) {
+	if (target[0] != null) {
+	  ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make appear locks on "+target[0].Name+" body."}]});        
+          if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+          mn = Player.MemberNumber;
+	  if ((InventoryGet(target[0], "ItemAddon") != null) && (InventoryGet(target[0], "ItemAddon").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemAddon").Property != null) && (InventoryGet(target[0], "ItemAddon").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemAddon").Property == null))  {  
                 InventoryLock(target[0], "ItemAddon", Lock, mn);		    
 		    if (removeitem == "r") {
@@ -1571,8 +1580,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemAddon").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemArms") != null) && (InventoryGet(target[0], "ItemArms").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemArms") != null) && (InventoryGet(target[0], "ItemArms").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemArms").Property != null) && (InventoryGet(target[0], "ItemArms").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemArms").Property == null))  {  
                 InventoryLock(target[0], "ItemArms", Lock, mn);
 	            if (removeitem == "r") {
@@ -1594,8 +1603,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemArms").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemBoots") != null) && (InventoryGet(target[0], "ItemBoots").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemBoots") != null) && (InventoryGet(target[0], "ItemBoots").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemBoots").Property != null) && (InventoryGet(target[0], "ItemBoots").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemBoots").Property == null))  {  
                 InventoryLock(target[0], "ItemBoots", Lock, mn);
 	            if (removeitem == "r") {
@@ -1617,8 +1626,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemBoots").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemBreast") != null) && (InventoryGet(target[0], "ItemBreast").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemBreast") != null) && (InventoryGet(target[0], "ItemBreast").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemBreast").Property != null) && (InventoryGet(target[0], "ItemBreast").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemBreast").Property == null))  {  
                 InventoryLock(target[0], "ItemBreast", Lock, mn);
 	            if (removeitem == "r") {
@@ -1640,8 +1649,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemBreast").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemButt") != null) && (InventoryGet(target[0], "ItemButt").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemButt") != null) && (InventoryGet(target[0], "ItemButt").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemButt").Property != null) && (InventoryGet(target[0], "ItemButt").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemButt").Property == null))  {  
                 InventoryLock(target[0], "ItemButt", Lock, mn);
 	            if (removeitem == "r") {
@@ -1663,8 +1672,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemButt").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemDevices") != null) && (InventoryGet(target[0], "ItemDevices").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemDevices") != null) && (InventoryGet(target[0], "ItemDevices").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemDevices").Property != null) && (InventoryGet(target[0], "ItemDevices").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemDevices").Property == null))  {  
                 InventoryLock(target[0], "ItemDevices", Lock, mn);
 		    if (removeitem == "r") {
@@ -1686,8 +1695,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemDevices").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemEars") != null) && (InventoryGet(target[0], "ItemEars").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemEars") != null) && (InventoryGet(target[0], "ItemEars").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemEars").Property != null) && (InventoryGet(target[0], "ItemEars").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemEars").Property == null))  {  
                 InventoryLock(target[0], "ItemEars", Lock, mn);
 	            if (removeitem == "r") {
@@ -1709,8 +1718,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemEars").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemFeet") != null) && (InventoryGet(target[0], "ItemFeet").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemFeet") != null) && (InventoryGet(target[0], "ItemFeet").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemFeet").Property != null) && (InventoryGet(target[0], "ItemFeet").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemFeet").Property == null))  {  
                 InventoryLock(target[0], "ItemFeet", Lock, mn);
 	            if (removeitem == "r") {
@@ -1732,8 +1741,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemFeet").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemHands") != null) && (InventoryGet(target[0], "ItemHands").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemHands") != null) && (InventoryGet(target[0], "ItemHands").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemHands").Property != null) && (InventoryGet(target[0], "ItemHands").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemHands").Property == null))  {  
                 InventoryLock(target[0], "ItemHands", Lock, mn);
 	            if (removeitem == "r") {
@@ -1755,8 +1764,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemHands").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemHead") != null) && (InventoryGet(target[0], "ItemHead").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemHead") != null) && (InventoryGet(target[0], "ItemHead").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemHead").Property != null) && (InventoryGet(target[0], "ItemHead").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemHead").Property == null))  {  
                 InventoryLock(target[0], "ItemHead", Lock, mn);
 	            if (removeitem == "r") {
@@ -1778,8 +1787,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemHead").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemHood") != null) && (InventoryGet(target[0], "ItemHood").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemHood") != null) && (InventoryGet(target[0], "ItemHood").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemHood").Property != null) && (InventoryGet(target[0], "ItemHood").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemHood").Property == null))  {  
                 InventoryLock(target[0], "ItemHood", Lock, mn);
 	            if (removeitem == "r") {
@@ -1801,8 +1810,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemHood").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemLegs") != null) && (InventoryGet(target[0], "ItemLegs").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemLegs") != null) && (InventoryGet(target[0], "ItemLegs").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemLegs").Property != null) && (InventoryGet(target[0], "ItemLegs").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemLegs").Property == null))  {  
                 InventoryLock(target[0], "ItemLegs", Lock, mn);
 	            if (removeitem == "r") {
@@ -1824,8 +1833,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemLegs").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemMisc") != null) && (InventoryGet(target[0], "ItemMisc").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemMisc") != null) && (InventoryGet(target[0], "ItemMisc").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemMisc").Property != null) && (InventoryGet(target[0], "ItemMisc").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemMisc").Property == null))  {  
                 InventoryLock(target[0], "ItemMisc", Lock, mn);
 	            if (removeitem == "r") {
@@ -1847,8 +1856,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemMisc").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemMouth") != null) && (InventoryGet(target[0], "ItemMouth").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemMouth") != null) && (InventoryGet(target[0], "ItemMouth").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemMouth").Property != null) && (InventoryGet(target[0], "ItemMouth").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemMouth").Property == null))  {  
                 InventoryLock(target[0], "ItemMouth", Lock, mn);
 	            if (removeitem == "r") {
@@ -1870,8 +1879,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemMouth").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemMouth2") != null) && (InventoryGet(target[0], "ItemMouth2").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemMouth2") != null) && (InventoryGet(target[0], "ItemMouth2").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemMouth2").Property != null) && (InventoryGet(target[0], "ItemMouth2").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemMouth2").Property == null))  {  
                 InventoryLock(target[0], "ItemMouth2", Lock, mn);
 	            if (removeitem == "r") {
@@ -1893,8 +1902,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemMouth2").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemMouth3") != null) && (InventoryGet(target[0], "ItemMouth3").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemMouth3") != null) && (InventoryGet(target[0], "ItemMouth3").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemMouth3").Property != null) && (InventoryGet(target[0], "ItemMouth3").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemMouth3").Property == null))  {  
                 InventoryLock(target[0], "ItemMouth3", Lock, mn);
 		    if (removeitem == "r") {
@@ -1916,8 +1925,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemMouth3").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemNeck") != null) && (InventoryGet(target[0], "ItemNeck").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemNeck") != null) && (InventoryGet(target[0], "ItemNeck").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemNeck").Property != null) && (InventoryGet(target[0], "ItemNeck").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemNeck").Property == null))  {  
                 InventoryLock(target[0], "ItemNeck", Lock, mn);
 	            if (removeitem == "r") {
@@ -1939,8 +1948,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemNeck").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemNeckAccessories") != null) && (InventoryGet(target[0], "ItemNeckAccessories").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemNeckAccessories") != null) && (InventoryGet(target[0], "ItemNeckAccessories").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemNeckAccessories").Property != null) && (InventoryGet(target[0], "ItemNeckAccessories").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemNeckAccessories").Property == null))  {  
                 InventoryLock(target[0], "ItemNeckAccessories", Lock, mn);
 	            if (removeitem == "r") {
@@ -1962,8 +1971,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemNeckAccessories").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemNeckRestraints") != null) && (InventoryGet(target[0], "ItemNeckRestraints").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemNeckRestraints") != null) && (InventoryGet(target[0], "ItemNeckRestraints").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemNeckRestraints").Property != null) && (InventoryGet(target[0], "ItemNeckRestraints").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemNeckRestraints").Property == null))  {  
                 InventoryLock(target[0], "ItemNeckRestraints", Lock, mn);
 	            if (removeitem == "r") {
@@ -1985,8 +1994,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemNeckRestraints").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemNipples") != null) && (InventoryGet(target[0], "ItemNipples").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemNipples") != null) && (InventoryGet(target[0], "ItemNipples").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemNipples").Property != null) && (InventoryGet(target[0], "ItemNipples").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemNipples").Property == null))  {  
                 InventoryLock(target[0], "ItemNipples", Lock, mn);
 	            if (removeitem == "r") {
@@ -2008,8 +2017,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemNipples").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemNipplesPiercings") != null) && (InventoryGet(target[0], "ItemNipplesPiercings").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemNipplesPiercings") != null) && (InventoryGet(target[0], "ItemNipplesPiercings").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemNipplesPiercings").Property != null) && (InventoryGet(target[0], "ItemNipplesPiercings").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemNipplesPiercings").Property == null))  {  
                 InventoryLock(target[0], "ItemNipplesPiercings", Lock, mn);
 	            if (removeitem == "r") {
@@ -2031,8 +2040,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemNipplesPiercings").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemNose") != null) && (InventoryGet(target[0], "ItemNose").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemNose") != null) && (InventoryGet(target[0], "ItemNose").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemNose").Property != null) && (InventoryGet(target[0], "ItemNose").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemNose").Property == null))  {  
                 InventoryLock(target[0], "ItemNose", Lock, mn);
 	            if (removeitem == "r") {
@@ -2054,8 +2063,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemNose").Property.Password = pw; 
 	            }
             }
-        }        
-        if ((InventoryGet(target[0], "ItemPelvis") != null) && (InventoryGet(target[0], "ItemPelvis").Asset.AllowLock == true)) {
+          }        
+          if ((InventoryGet(target[0], "ItemPelvis") != null) && (InventoryGet(target[0], "ItemPelvis").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemPelvis").Property != null) && (InventoryGet(target[0], "ItemPelvis").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemPelvis").Property == null))  {  
                 InventoryLock(target[0], "ItemPelvis", Lock, mn);
 	            if (removeitem == "r") {
@@ -2077,8 +2086,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemPelvis").Property.Password = pw; 
 	            }
             }
-        }       
-        if ((InventoryGet(target[0], "ItemTorso") != null) && (InventoryGet(target[0], "ItemTorso").Asset.AllowLock == true)) {
+          }       
+          if ((InventoryGet(target[0], "ItemTorso") != null) && (InventoryGet(target[0], "ItemTorso").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemTorso").Property != null) && (InventoryGet(target[0], "ItemTorso").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemTorso").Property == null))  {  
                 InventoryLock(target[0], "ItemTorso", Lock, mn);
 	            if (removeitem == "r") {
@@ -2100,8 +2109,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemTorso").Property.Password = pw; 
 	            }
             }
-        }      
-        if ((InventoryGet(target[0], "ItemVulva") != null) && (InventoryGet(target[0], "ItemVulva").Asset.AllowLock == true)) {
+          }      
+          if ((InventoryGet(target[0], "ItemVulva") != null) && (InventoryGet(target[0], "ItemVulva").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemVulva").Property != null) && (InventoryGet(target[0], "ItemVulva").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemVulva").Property == null))  {  
                 InventoryLock(target[0], "ItemVulva", Lock, mn);
 	            if (removeitem == "r") {
@@ -2123,8 +2132,8 @@ if (CurrentScreen == "ChatRoom") {
                         InventoryGet(target[0], "ItemVulva").Property.Password = pw; 
 	            }
             }
-        }
-        if ((InventoryGet(target[0], "ItemVulvaPiercings") != null) && (InventoryGet(target[0], "ItemVulvaPiercings").Asset.AllowLock == true)) {
+          }
+          if ((InventoryGet(target[0], "ItemVulvaPiercings") != null) && (InventoryGet(target[0], "ItemVulvaPiercings").Asset.AllowLock == true)) {
             if (((InventoryGet(target[0], "ItemVulvaPiercings").Property != null) && (InventoryGet(target[0], "ItemVulvaPiercings").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemVulvaPiercings").Property == null))  {  
                 InventoryLock(target[0], "ItemVulvaPiercings", Lock, mn);
 	            if (removeitem == "r") {
@@ -2145,9 +2154,10 @@ if (CurrentScreen == "ChatRoom") {
 		    if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
                         InventoryGet(target[0], "ItemVulvaPiercings").Property.Password = pw; 
 	            }
-            }
-        }         
-        ChatRoomCharacterUpdate(target[0]);
+            }     
+          }         
+          ChatRoomCharacterUpdate(target[0]);
+	}  
     }
 	
     else if (content.indexOf("/login") == 0) {
@@ -2212,10 +2222,12 @@ if (CurrentScreen == "ChatRoom") {
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear the clothes on "+target[0].Name+" body."}]});        
-        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-        CharacterNaked(target[0]);
-        ChatRoomCharacterUpdate(target[0]);
+	if (target[0] != null) {
+	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear the clothes on "+target[0].Name+" body."}]});        
+            if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+            CharacterNaked(target[0]);
+            ChatRoomCharacterUpdate(target[0]);
+	}	
     } 
 	
     else if (content.indexOf("/name") == 0) { 
@@ -2223,7 +2235,7 @@ if (CurrentScreen == "ChatRoom") {
         var LS = /[/\p{L}\p{N}\p{Z}'-]/gu;
         if ((NewName.length <= 20) && (NewName.match(LS))) {  
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is now known as "+NewName+"." }]});
-        Player.Name = NewName; 
+            Player.Name = NewName; 
         }
     }
 		
@@ -2642,14 +2654,16 @@ if (CurrentScreen == "ChatRoom") {
         var targetname = content.substring(10).trim();
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));	    
-        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers apply random clothes and bindings on "+target[0].Name+" body."}]});        
-        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-        CharacterNaked(target[0]);
-        CharacterRandomUnderwear(target[0]); 
-        CharacterAppearanceFullRandom(target[0], true);
-        CharacterFullRandomRestrain(target[0],"ALL");
-        ChatRoomCharacterUpdate(target[0]);
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	if (target[0] != null) {
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers apply random clothes and bindings on "+target[0].Name+" body."}]});        
+            if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+            CharacterNaked(target[0]);
+            CharacterRandomUnderwear(target[0]); 
+            CharacterAppearanceFullRandom(target[0], true);
+            CharacterFullRandomRestrain(target[0],"ALL");
+            ChatRoomCharacterUpdate(target[0]);
+	} 	
     }
 	
     else if (content.indexOf("/release") == 0) {
@@ -2657,10 +2671,12 @@ if (CurrentScreen == "ChatRoom") {
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear the bindings on "+target[0].Name+" body."}]});        
-        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-        CharacterRelease(target[0]);
-        ChatRoomCharacterUpdate(target[0]);
+	if (target[0] != null) {
+	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear the bindings on "+target[0].Name+" body."}]});        
+            if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+            CharacterRelease(target[0]);
+            ChatRoomCharacterUpdate(target[0]);
+	} 	
     }
 	
     else if (content.indexOf("/relog") == 0) {
@@ -2687,10 +2703,12 @@ if (CurrentScreen == "ChatRoom") {
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers apply random restraints on "+target[0].Name+" body."}]});        
-        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-        CharacterFullRandomRestrain(target[0],"ALL");
-        ChatRoomCharacterUpdate(target[0]);
+	if (target[0] != null) {
+	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers apply random restraints on "+target[0].Name+" body."}]});        
+            if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+            CharacterFullRandomRestrain(target[0],"ALL");
+            ChatRoomCharacterUpdate(target[0]);
+	}	
     }
 	
     else if (content.indexOf("/roleplay") == 0) {
@@ -3026,10 +3044,12 @@ if (CurrentScreen == "ChatRoom") {
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear all bindings and toys on "+target[0].Name+" body."}]});        
-        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-        CharacterReleaseTotal(target[0]);
-        ChatRoomCharacterUpdate(target[0]);
+	if (target[0] != null) {
+	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear all bindings and toys on "+target[0].Name+" body."}]});        
+            if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+            CharacterReleaseTotal(target[0]);
+            ChatRoomCharacterUpdate(target[0]);
+	}	
     }
 	
     else if (content.indexOf("/underwear") == 0) {
@@ -3037,10 +3057,12 @@ if (CurrentScreen == "ChatRoom") {
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers put "+target[0].Name+" in random underwear."}]});        
-        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-        CharacterRandomUnderwear(target[0]);
-        ChatRoomCharacterUpdate(target[0]);
+	if (target[0] != null) {
+	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers put "+target[0].Name+" in random underwear."}]});        
+            if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+            CharacterRandomUnderwear(target[0]);
+            ChatRoomCharacterUpdate(target[0]);
+	}	
     }
 	
     else if (content.indexOf("/unlock") == 0) {
@@ -3051,9 +3073,10 @@ if (CurrentScreen == "ChatRoom") {
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear locks on "+target[0].Name+" body."}]});        
-        if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
-        if (lk == null) {
+	if (target[0] != null) {
+	  ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear locks on "+target[0].Name+" body."}]});        
+          if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
+          if (lk == null) {
             CharacterReleaseFromLock(target[0], "CombinationPadlock");
             CharacterReleaseFromLock(target[0], "ExclusivePadlock");
             CharacterReleaseFromLock(target[0], "HighSecurityPadlock");
@@ -3070,58 +3093,58 @@ if (CurrentScreen == "ChatRoom") {
             CharacterReleaseFromLock(target[0], "SafewordPadlock");
             CharacterReleaseFromLock(target[0], "TimerPadlock");
             CharacterReleaseFromLock(target[0], "TimerPasswordPadlock");
-        }
-        else if (lk == 1) {
+          }
+          else if (lk == 1) {
             CharacterReleaseFromLock(target[0], "MetalPadlock");   
-        }
-        else if (lk == 2) {
+          }
+          else if (lk == 2) {
             CharacterReleaseFromLock(target[0], "ExclusivePadlock");    
-        }
-        else if (lk == 3) {
+          }
+          else if (lk == 3) {
              CharacterReleaseFromLock(target[0], "IntricatePadlock");   
-        }
-        else if (lk == 4) {
+          }
+          else if (lk == 4) {
             CharacterReleaseFromLock(target[0], "HighSecurityPadlock");
-        }
-        else if (lk == 5) {
+          }
+          else if (lk == 5) {
             CharacterReleaseFromLock(target[0], "PandoraPadlock");
-        }
-        else if (lk == 6) {
+          }
+          else if (lk == 6) {
             CharacterReleaseFromLock(target[0], "MistressTimerPadlock");
-        }
-        else if (lk == 7) {
+          }
+          else if (lk == 7) {
             CharacterReleaseFromLock(target[0], "LoversPadlock");
-        }
-        else if (lk == 8) {
+          }
+          else if (lk == 8) {
             CharacterReleaseFromLock(target[0], "OwnerPadlock");
-        }
-        else if (lk == 9) {
+          }
+          else if (lk == 9) {
             CharacterReleaseFromLock(target[0], "TimerPadlock");
-        }
-        else if (lk == 10) {
+          }
+          else if (lk == 10) {
             CharacterReleaseFromLock(target[0], "CombinationPadlock");
-        }
-        else if (lk == 11) {
+          }
+          else if (lk == 11) {
             CharacterReleaseFromLock(target[0], "SafewordPadlock");
-        }
-        else if (lk == 12) {
+          }
+          else if (lk == 12) {
             CharacterReleaseFromLock(target[0], "PasswordPadlock");
-        }
-        else if (lk == 13) {
+          }
+          else if (lk == 13) {
             CharacterReleaseFromLock(target[0], "MistressTimerPadlock");
-        }
-        else if (lk == 14) {
+          }
+          else if (lk == 14) {
             CharacterReleaseFromLock(target[0], "LoversTimerPadlock");
-        }
-        else if (lk == 15) {
+          }
+          else if (lk == 15) {
             CharacterReleaseFromLock(target[0], "OwnerTimerPadlock");
-        }
-        else if (lk == 16) {
+          }
+          else if (lk == 16) {
             CharacterReleaseFromLock(target[0], "TimerPasswordPadlock");
-        }
-        ChatRoomCharacterUpdate(target[0]);
+          }
+          ChatRoomCharacterUpdate(target[0]);
+      }	
     }
-
 	
     else if (content.indexOf("/unrestrict") == 0) {
         if (content.includes("soft")) {
@@ -3296,77 +3319,86 @@ if (CurrentScreen == "ChatRoom") {
         var targetname = content.substring(10).trim();
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-        target[0].OnlineSharedSettings.AllowFullWardrobeAccess = true;
-        target[0].OnlineSharedSettings.BlockBodyCosplay = false;
-        ChatRoomClickCharacter(target[0]);
-        DialogChangeClothes();
+	if (target[0] != null) {
+            target[0].OnlineSharedSettings.AllowFullWardrobeAccess = true;
+            target[0].OnlineSharedSettings.BlockBodyCosplay = false;
+            ChatRoomClickCharacter(target[0]);
+            DialogChangeClothes();
+	}	
     }
 	
     else if (content.indexOf("/whisper") == 0) {
         var targetname = content.substring(8).trim();
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-        ChatRoomTargetMemberNumber = target[0].MemberNumber;
-    }          
-		else if (content.indexOf('@') == 0) {
-			ElementValue("InputChat", content.replace('@', "?"));
-			OLDmenu();
-			return;
-		}
-		else if (tenorRe.test(ElementValue("InputChat"))) {
-			if (ChatRoomTargetMemberNumber == null) {
-				sendHiddenMessageAll(content);
-			} else {
-				sendHiddenMessageTarget('CheckMediaSupport', ChatRoomTargetMemberNumber);
-				sendHiddenMessageTarget('whisper ' + content, ChatRoomTargetMemberNumber);
-				var msg = createMessageElement();
-				getChatWindowElement().append(msg);
-				var senderName = document.createElement("div");
-				senderName.innerText = `Whisper to ${findCharacterInRoom(ChatRoomTargetMemberNumber).Name}:`;
-				senderName.classList.add("ChatMessage", "ChatMessageWhisper");
-				senderName.style.paddingLeft = "0";
-				var a = document.createElement("a");
-				a.target = '_blank';
-				a.href = `${content}`;
-				var img = createImgElement(content);
-				img.style.maxWidth = '40%';
-				img.style.maxHeight = '40%';
-				msg.append(senderName);
-				a.append(img);
-				msg.append(a);
-				img.addEventListener('load', () => {
-					ElementScrollToEnd("TextAreaChatLog");
-				})
-			}
-			ElementRemove("InputChat");
-			return;
-		} else if (tubeRe.test(ElementValue("InputChat"))) {
-			if (ChatRoomTargetMemberNumber == null) {
-				sendHiddenMessageAll(content);
-			} else {
-				sendHiddenMessageTarget('CheckMediaSupport', ChatRoomTargetMemberNumber);
-				sendHiddenMessageTarget('whisper ' + content, ChatRoomTargetMemberNumber);
-				var videoCode = content.match(tubeRe)[5];
-				var msg = createMessageElement();
-				getChatWindowElement().append(msg);
-				var link = `https://www.youtube.com/embed/${videoCode}`;
-				var senderName = document.createElement("div");
-				senderName.innerText = `Whisper to ${findCharacterInRoom(ChatRoomTargetMemberNumber).Name}:`;
-				senderName.classList.add("ChatMessage", "ChatMessageWhisper");
-				senderName.style.paddingLeft = "0";
-				var iframe = document.createElement('iframe');
-				iframe.src = link;
-				iframe.style.width = '50%';
-				iframe.style.height = '8em';
-				msg.append(senderName);
-				msg.append(iframe);
-				iframe.addEventListener('load', () => {
-					ElementScrollToEnd("TextAreaChatLog");
-				})
-			}
-			ElementRemove("InputChat");
-			return;
-		}
+	if (target[0] != null) {
+            ChatRoomTargetMemberNumber = target[0].MemberNumber;
+	}	
+    }   
+	
+    else if (content.indexOf('@') == 0) {
+	ElementValue("InputChat", content.replace('@', "?"));
+	OLDmenu();
+	return;
+    }
+	
+    else if (tenorRe.test(ElementValue("InputChat"))) {
+	if (ChatRoomTargetMemberNumber == null) {
+	    sendHiddenMessageAll(content);
+	} else {
+	    sendHiddenMessageTarget('CheckMediaSupport', ChatRoomTargetMemberNumber);
+	    sendHiddenMessageTarget('whisper ' + content, ChatRoomTargetMemberNumber);
+	    var msg = createMessageElement();
+	    getChatWindowElement().append(msg);
+	    var senderName = document.createElement("div");
+	    senderName.innerText = `Whisper to ${findCharacterInRoom(ChatRoomTargetMemberNumber).Name}:`;
+	    senderName.classList.add("ChatMessage", "ChatMessageWhisper");
+	    senderName.style.paddingLeft = "0";
+	    var a = document.createElement("a");
+	    a.target = '_blank';
+	    a.href = `${content}`;
+	    var img = createImgElement(content);
+	    img.style.maxWidth = '40%';
+	    img.style.maxHeight = '40%';
+	    msg.append(senderName);
+	    a.append(img);
+	    msg.append(a);
+	    img.addEventListener('load', () => {
+	        ElementScrollToEnd("TextAreaChatLog");
+	    })
+        }
+        ElementRemove("InputChat");
+        return;
+    } 
+	
+    else if (tubeRe.test(ElementValue("InputChat"))) {
+        if (ChatRoomTargetMemberNumber == null) {
+            sendHiddenMessageAll(content);
+	} else {
+	    sendHiddenMessageTarget('CheckMediaSupport', ChatRoomTargetMemberNumber);
+	    sendHiddenMessageTarget('whisper ' + content, ChatRoomTargetMemberNumber);
+	    var videoCode = content.match(tubeRe)[5];
+	    var msg = createMessageElement();
+	    getChatWindowElement().append(msg);
+	    var link = `https://www.youtube.com/embed/${videoCode}`;
+	    var senderName = document.createElement("div");
+	    senderName.innerText = `Whisper to ${findCharacterInRoom(ChatRoomTargetMemberNumber).Name}:`;
+	    senderName.classList.add("ChatMessage", "ChatMessageWhisper");
+	    senderName.style.paddingLeft = "0";
+	    var iframe = document.createElement('iframe');
+	    iframe.src = link;
+	    iframe.style.width = '50%';
+	    iframe.style.height = '8em';
+	    msg.append(senderName);
+	    msg.append(iframe);
+	    iframe.addEventListener('load', () => {
+	        ElementScrollToEnd("TextAreaChatLog");
+	    })
+	}
+	ElementRemove("InputChat");
+	return;
+    }
+	
 	//	DO NOT add new commands past this point. 
 
 
