@@ -2629,11 +2629,13 @@ if (CurrentScreen == "ChatRoom") {
 	if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
         var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-        InformationSheetLoadCharacter(target[0]);
-        OnlineProfileRun();
-        document.getElementById("InputChat").style.display = "none";
-        document.getElementById("TextAreaChatLog").style.display = "none";
-        CommonSetScreen("Character", "OnlineProfile");
+        if (target[0] != null) {
+            InformationSheetLoadCharacter(target[0]);
+            OnlineProfileRun();
+            document.getElementById("InputChat").style.display = "none";
+            document.getElementById("TextAreaChatLog").style.display = "none";
+            CommonSetScreen("Character", "OnlineProfile");
+        }          
     }          
 	
     else if (content.indexOf("/randomize") == 0) {
