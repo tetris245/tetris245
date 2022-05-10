@@ -2228,7 +2228,7 @@ if (CurrentScreen == "ChatRoom") {
                else if (feature == "profile") {
                    profileName = commande;
                    profileControl(commande);
-	             M_MOANER_saveControls();
+	           M_MOANER_saveControls();
                }
                else if (feature == "spank") {
                    spankControl(commande);	
@@ -2239,15 +2239,15 @@ if (CurrentScreen == "ChatRoom") {
                }
                else if (feature == "talk") {
                    talkControl(commande);
-	              M_MOANER_saveControls();
+	           M_MOANER_saveControls();
                }
                else if (feature == "verbose") {
                    verboseControl(commande);
-	              M_MOANER_saveControls();
+	           M_MOANER_saveControls();
                }
                else if (feature == "vibe") {
                    vibeControl(commande);
-	              M_MOANER_saveControls();
+	           M_MOANER_saveControls();
                }
            }
        }
