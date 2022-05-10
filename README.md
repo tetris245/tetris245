@@ -40,7 +40,8 @@ Changes for future version 1.4
 * Changes in the Moaner: 
   - Integrated the help in QAM help (the command is now /moaner instead of /moaner help)
   - Separated help and status (/moaner and /moaner status as commands)
-  -  Fixed the issue with special characters in moans by using their Unicode format
+  - Integrated all Moaner commands in the QAM commands
+  - Fixed the issue with special characters in moans by using their Unicode format
 * Improved the hiddenmessages command
 * Fixed a bug in profile command (no more crash when targetname not found) and applied this fix to other commands with targetname
 
