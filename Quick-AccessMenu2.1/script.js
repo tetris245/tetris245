@@ -3501,7 +3501,7 @@ var ChatRoomSendChat = NEWmenu;
 ChatCommandGreeting = function (data) {
 if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 ChatRoomMessage({ Content: "Quick-AccessMenu2.1: Ready, type /help. For any inquiries, join https://discord.gg/YukepB6RVp", Type: "LocalMessage", Sender: Player.MemberNumber });
-ChatRoomMessage({ Content: "Important tip for BCX/BCE users: always enable these addons before loging.", Type: "LocalMessage", Sender: Player.MemberNumber });
+ChatRoomMessage({ Content: "Important tip for BCX users: always enable BCX before loging.", Type: "LocalMessage", Sender: Player.MemberNumber });
 ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)}}
 
 setTimeout(function() {
@@ -3665,15 +3665,14 @@ function M_MOANER_initActivityOrgasmStart(){
 	};
 }
 
-/*function M_MOANER_startMoanScript(){
-	M_MOANER_scriptOn=true;
-}*/
 function M_MOANER_stopMoanScript(){
 	M_MOANER_scriptOn=false;
 }
+
 function M_MOANER_isCommande(msg){
 	return msg.startsWith("/")&&ChatRoomTargetMemberNumber==null;
 }
+
 function M_MOANER_isSimpleChat(msg){
 	return msg.trim().length>0 && !msg.startsWith("/")&&!msg.startsWith("(")&&!msg.startsWith("*")&&ChatRoomTargetMemberNumber==null;
 }
@@ -3689,10 +3688,6 @@ function M_MOANER_isInChatRoom(){
 //commande On, OFF
 
 var M_MOANER_moanerKey="bc_moaner_";
-
-//commandes
-const M_MOANER_commandeOn="on";
-const M_MOANER_commandeOff="off";
 
 //features
 var M_MOANER_talkActive=true;
@@ -3777,10 +3772,10 @@ function profileControl(commande){
 
 //controle sur le script entier
 function scriptControl(commande){
-	if(commande==M_MOANER_commandeOn){
+	if(commande == "on"){
 		M_MOANER_scriptOn=true;
 	}
-	else if(commande==M_MOANER_commandeOff){
+	else if(commande == "off"){
 		M_MOANER_scriptOn=false;
 	}
 	else{
@@ -3792,10 +3787,10 @@ function scriptControl(commande){
 
 //controle sur le mode verbose
 function verboseControl(commande){
-	if(commande==M_MOANER_commandeOn){
+	if(commande == "on"){
 		M_MOANER_verboseActive=true;
 	}
-	else if(commande==M_MOANER_commandeOff){
+	else if(commande == "off"){
 		M_MOANER_verboseActive=false;
 	}
 	else{
@@ -3807,10 +3802,10 @@ function verboseControl(commande){
 
 //controle sur les gÃƒÂ©missements quand on parle
 function talkControl(commande){
-	if(commande==M_MOANER_commandeOn){
+	if(commande == "on"){
 		M_MOANER_talkActive=true;
 	}
-	else if(commande==M_MOANER_commandeOff){
+	else if(commande == "off"){
 		M_MOANER_talkActive=false;
 	}
 	else{
@@ -3822,10 +3817,10 @@ function talkControl(commande){
 
 //controle sur les gÃƒÂ©missements ÃƒÂ  l'orgasme
 function orgasmControl(commande){
-	if(commande==M_MOANER_commandeOn){
+	if(commande == "on"){
 		M_MOANER_orgasmActive=true;
 	}
-	else if(commande==M_MOANER_commandeOff){
+	else if(commande == "off"){
 		M_MOANER_orgasmActive=false;
 	} 
 	else{
@@ -3837,10 +3832,10 @@ function orgasmControl(commande){
 
 //controle sur les gÃƒÂ©missements au lancement d'un vibrateur
 function vibeControl(commande){
-	if(commande==M_MOANER_commandeOn){
+	if(commande == "on"){
 		M_MOANER_vibratorActive=true;
 	}
-	else if(commande==M_MOANER_commandeOff){
+	else if(commande == "off"){
 		M_MOANER_vibratorActive=false;
 	} 
 	else{
@@ -3852,10 +3847,10 @@ function vibeControl(commande){
 
 //controle sur les gÃƒÂ©missements ÃƒÂ  la fessÃƒÂ©e
 function spankControl(commande){
-	if(commande==M_MOANER_commandeOn){
+	if(commande == "on"){
 		M_MOANER_spankActive=true;
 	}
-	else if(commande==M_MOANER_commandeOff){
+	else if(commande == "off"){
 		M_MOANER_spankActive=false;
 	} 
 	else{
@@ -4076,15 +4071,6 @@ M_MOANER_customMoans={
 	"orgasm":[],
 	"pain":[]
 }
-
-/*nekoMoans={
-	"hot":["n... Nyah\u2665","NYyaaA\u2665"],
-	"medium":["nyAh\u2665","nyyy","..yah"],
-	"light":["nyah\u2665","Yah!","myuh","mh\u2665"],
-	"low":["myu","ny\u2665","mh","\u2665yh\u2665","ny\u2665"],
-	"orgasm":["Nya...Ny...NyaaAAaah!","Mmmhnn... Nyhmm... Nyah!","mmmh... mmmeeeee.... meeeoooow!"],
-	"pain":[]
-}*/
 
 var M_MOANER_moansProfiles=[];
 
@@ -4544,25 +4530,16 @@ function IsStimulated(C){
 }
 
 //MoanerProfiles
-//customMoans={
-//	"hot":[],
-//	"medium":[],
-//	"light":[],
-//	"low":[],
-//	"orgasm":[],
-//	"pain":[]
-//}
-
-//addMoansProfile("neko",nekoMoans);
-M_MOANER_nekoMoans={
-	"hot":["n... Nyah\u2665","NYyaaA\u2665"],
-	"medium":["nyAh\u2665","nyyy","..yah"],
-	"light":["nyah\u2665","Yah!","myuh","mh\u2665"],
-	"low":["myu","ny\u2665","mh","\u2665yh\u2665","ny\u2665"],
-	"orgasm":["Nya...Ny...NyaaAAaah!","Mmmhnn... Nyhmm... Nyah!","mmmh... mmmeeeee.... meeeoooow!"],
-	"pain":[]
+//dog
+M_MOANER_dogMoans={
+	"hot":["w... Wouuuf\u2665","aouuh\u2665"],
+	"medium":["waaaf\u2665","kyÅ«Å«Å«n","..wouf"],
+	"light":["Ouaff\u2665","Aouh!","Oua\u2665af","KyÅ«n\u2665"],
+	"low":["wou..","ouah\u2665","Wouf\u2665","\u2665kyÅ«n\u2665","kyÅ«\u2665"],
+	"orgasm":["ouaf\u2665 O... Ouuw... Ouaaaa!!","Mmmhnn... aaaa... Ouuuaaaaaf!!","mmmh... Aouuuh.... Aouhhhh!"],
+	"pain":["KaÃ¯!","Aoouch!","KaaaÃ¯!","Ouch","Aow"]
 }
-M_MOANER_addMoansProfile("neko",M_MOANER_nekoMoans);
+M_MOANER_addMoansProfile(" dog",M_MOANER_dogMoans);
 
 //fox
 //base: wif, yif, aouh
@@ -4575,18 +4552,7 @@ M_MOANER_foxMoans={
 	"orgasm":["Wiff\u2665 W... Wiii... WIIF!!","Mmmhnn... Wiiif... Yiiiif!!","mmmh... Aouuuh.... Aouhhhh!"],
 	"pain":[]
 }
-M_MOANER_addMoansProfile("fox",M_MOANER_foxMoans);
-
-//dog
-M_MOANER_dogMoans={
-	"hot":["w... Wouuuf\u2665","aouuh\u2665"],
-	"medium":["waaaf\u2665","kyūūūn","..wouf"],
-	"light":["Ouaff\u2665","Aouh!","Oua\u2665af","Kyūn\u2665"],
-	"low":["wou..","ouah\u2665","Wouf\u2665","\u2665kyūn\u2665","kyū\u2665"],
-	"orgasm":["ouaf\u2665 O... Ouuw... Ouaaaa!!","Mmmhnn... aaaa... Ouuuaaaaaf!!","mmmh... Aouuuh.... Aouhhhh!"],
-	"pain":["Kaï!","Aoouch!","Kaaaï!","Ouch","Aow"]
-}
-M_MOANER_addMoansProfile("dog",M_MOANER_dogMoans);
+M_MOANER_addMoansProfile(" fox",M_MOANER_foxMoans);
 
 //mouse
 //base coui
@@ -4598,18 +4564,18 @@ M_MOANER_mouseMoans={
 	"orgasm":["Couic\u2665 sc.. couIIIiic!!","Mmmhnn... ooo... ouiiiic!!","mmmh... Scouuu.... Scouiiic!"],
 	"pain":[]
 }
-M_MOANER_addMoansProfile("mouse",M_MOANER_mouseMoans);
+M_MOANER_addMoansProfile(" mouse",M_MOANER_mouseMoans);
 
-//wildFox
-M_MOANER_wildFoxMoans={
-	"hot":["w... Wiiif\u2665","Yiiif\u2665","Wa\u2665ouu"],
-	"medium":["wiiif\u2665","Yiii","..yif","waouuu"],
-	"light":["Wiff\u2665","Yif!","yi\u2665iif","Wiif","waou"],
-	"low":["wif","Wy\u2665","if\u2665","\u2665yi\u2665","Yi\u2665","aou"],
-	"orgasm":["WAAAAOUUUUUUUHHHHH!","Mmmhnn... Wiiif... Yiiiif!!","AOUUUUUH!","WAHOOOOOOOUUUUH!","WAAAAAAAAHH!","WAAAAOUUUUUUUHHHHH!","AOUUUUUH!","WAHOOOOOOOUUUUH!","WAAAAAAAAHH!"],
+//neko
+M_MOANER_nekoMoans={
+	"hot":["n... Nyah\u2665","NYyaaA\u2665"],
+	"medium":["nyAh\u2665","nyyy","..yah"],
+	"light":["nyah\u2665","Yah!","myuh","mh\u2665"],
+	"low":["myu","ny\u2665","mh","\u2665yh\u2665","ny\u2665"],
+	"orgasm":["Nya...Ny...NyaaAAaah!","Mmmhnn... Nyhmm... Nyah!","mmmh... mmmeeeee.... meeeoooow!"],
 	"pain":[]
 }
-M_MOANER_addMoansProfile("wildFox",M_MOANER_wildFoxMoans);
+M_MOANER_addMoansProfile(" neko",M_MOANER_nekoMoans);
 
 //pig
 M_MOANER_pigMoans={
@@ -4620,7 +4586,18 @@ M_MOANER_pigMoans={
 	"orgasm":["Gru\u2665 gr.. gruiIIIiick!!","Mmmhnn... uii... gruiiik!!","mmmh... Gruiik.... Gruiiiiik!"],
 	"pain":["Gruuik!!","Aoouch!","Awo... gruik!","Ouch","Gruiiik"]
 }
-M_MOANER_addMoansProfile("pig",M_MOANER_pigMoans);
+M_MOANER_addMoansProfile(" pig",M_MOANER_pigMoans);
+
+//wildFox
+M_MOANER_wildFoxMoans={
+	"hot":["w... Wiiif\u2665","Yiiif\u2665","Wa\u2665ouu"],
+	"medium":["wiiif\u2665","Yiii","..yif","waouuu"],
+	"light":["Wiff\u2665","Yif!","yi\u2665iif","Wiif","waou"],
+	"low":["wif","Wy\u2665","if\u2665","\u2665yi\u2665","Yi\u2665","aou"],
+	"orgasm":["WAAAAOUUUUUUUHHHHH!","Mmmhnn... Wiiif... Yiiiif!!","AOUUUUUH!","WAHOOOOOOOUUUUH!","WAAAAAAAAHH!","WAAAAOUUUUUUUHHHHH!","AOUUUUUH!","WAHOOOOOOOUUUUH!","WAAAAAAAAHH!"],
+	"pain":[]
+}
+M_MOANER_addMoansProfile(" wildFox",M_MOANER_wildFoxMoans);
 
 
 //BC-Diaper-Wetter
