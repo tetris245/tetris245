@@ -2193,26 +2193,66 @@ if (CurrentScreen == "ChatRoom") {
         LogAdd("BondageCollege", "Import");
         LogAdd("KidnapSophie", "Sarah");
         ChatRoomMessage({ Content: "Quick-AccessMenu2: A few things have to be set manually. See the /roleplay and /rolequit commands.", Type: "LocalMessage", Sender: Player.MemberNumber });      
-    }
+    } 
 	  
     else if (content.indexOf("/moaner") == 0) {
         if (content.endsWith("/moaner")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Several actions are possible with the moaner command:", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner on  = starts the moaner",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner off  = stops the moaner",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner profile  = moaner profile help",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner profile (profilename) = selects a moaner profile",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner status = displays current moaner status",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner verbose (on/off)  = enable/disable verbose mode",Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "You can also enable/disable parts of the Moaner with:",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner orgasm (on/off): moans when you cum",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner spank (on/off): moans when you are spanked",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner talk (on/off): moans when talking if vibed",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner vibe (on/off): moans when vibes settings changed",Type: "LocalMessage", Sender: Player.MemberNumber });
+           ChatRoomMessage({ Content: "Quick-AccessMenu2: Several actions are possible with the moaner command:", Type: "LocalMessage", Sender: Player.MemberNumber });
+           ChatRoomMessage({ Content: "/moaner on  = starts the moaner",Type: "LocalMessage", Sender: Player.MemberNumber });
+           ChatRoomMessage({ Content: "/moaner off  = stops the moaner",Type: "LocalMessage", Sender: Player.MemberNumber });
+           ChatRoomMessage({ Content: "/moaner profile  = moaner profile help",Type: "LocalMessage", Sender: Player.MemberNumber });
+           ChatRoomMessage({ Content: "/moaner profile (profilename) = selects a moaner profile",Type: "LocalMessage", Sender: Player.MemberNumber });
+           ChatRoomMessage({ Content: "/moaner status = displays current moaner status",Type: "LocalMessage", Sender: Player.MemberNumber });
+           ChatRoomMessage({ Content: "/moaner verbose (on/off)  = enable/disable verbose mode",Type: "LocalMessage", Sender: Player.MemberNumber });
+	   ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
+           ChatRoomMessage({ Content: "You can also enable/disable parts of the Moaner with:",Type: "LocalMessage", Sender: Player.MemberNumber });
+           ChatRoomMessage({ Content: "/moaner orgasm (on/off): moans when you cum",Type: "LocalMessage", Sender: Player.MemberNumber });
+           ChatRoomMessage({ Content: "/moaner spank (on/off): moans when you are spanked",Type: "LocalMessage", Sender: Player.MemberNumber });
+           ChatRoomMessage({ Content: "/moaner talk (on/off): moans when talking if vibed",Type: "LocalMessage", Sender: Player.MemberNumber });
+           ChatRoomMessage({ Content: "/moaner vibe (on/off): moans when vibes settings changed",Type: "LocalMessage", Sender: Player.MemberNumber });
        }    
+       else {
+           var stringMoan1 = content;
+           var stringMoan2 = stringMoan1.split(/[ ,]+/);
+           var feature = stringMoan2[1];
+           if ((feature == "on")||(feature == "off")) {
+               scriptControl(feature);	
+               M_MOANER_saveControls();
+           }
+           else {
+               var commande = stringMoan2[2];
+               if (feature == "orgasm") {
+                   orgasmControl(commande);	
+                   M_MOANER_saveControls();
+               }
+               else if (feature == "profile") {
+                   profileName = commande;
+                   profileControl(commande);
+	             M_MOANER_saveControls();
+               }
+               else if (feature == "spank") {
+                   spankControl(commande);	
+                   M_MOANER_saveControls();
+               }
+               else if (feature == "status") {
+                   showStatus();
+               }
+               else if (feature == "talk") {
+                   talkControl(commande);
+	              M_MOANER_saveControls();
+               }
+               else if (feature == "verbose") {
+                   verboseControl(commande);
+	              M_MOANER_saveControls();
+               }
+               else if (feature == "vibe") {
+                   vibeControl(commande);
+	              M_MOANER_saveControls();
+               }
+           }
+       }
     }
-
+    
     else if (content.indexOf("/money") == 0) {
         Player.Money = content.substring(6);ServerPlayerSync();
     }
@@ -3565,8 +3605,6 @@ var backupChatRoomFirstTimeHelp;*/
 var M_MOANER_scriptOn=true;
 
 function M_MOANER_MoanerInitAlteredFns(){
-	//interpreter les commandes
-	M_MOANER_initChatRoomSendChatCommands();
 	//gemissements quand on parle
 	M_MOANER_initChatRoomSendChatOverride();
 	//initActivityOrgasmPrepareOverride();
@@ -3617,20 +3655,6 @@ function M_MOANER_initChatRoomSendChatOverride(){
 	};
 }
 
-function M_MOANER_initChatRoomSendChatCommands(){
-	let backupChatRoomSendChat = ChatRoomSendChat;
-	ChatRoomSendChat = (...rest) => {  
-        let msg = ElementValue("InputChat").trim();
-           if (msg.endsWith("/moaner")) {
-           } 
-	   else if(M_MOANER_isCommande(msg)){
-		msg=M_MOANER_traiterCommande(msg);//fonction qui lance l'interpretation des commandes
-		ElementValue("InputChat",msg);
-	   }
-	   backupChatRoomSendChat(...rest);
-	};
-}
-
 function M_MOANER_initActivityOrgasmStart(){	
 	let backupActivityOrgasmStart = ActivityOrgasmStart;
 		ActivityOrgasmStart = (C) => {			
@@ -3671,15 +3695,6 @@ const M_MOANER_commandeOn="on";
 const M_MOANER_commandeOff="off";
 
 //features
-const M_MOANER_featureTalk="talk";
-const M_MOANER_featureOrgasm="orgasm";
-const M_MOANER_featureVibrator="vibe";
-const M_MOANER_featureSpank="spank";
-//const M_MOANER_featureHelp="help";
-const M_MOANER_featureStatus="status";
-const M_MOANER_featureVerbose="verbose";
-const M_MOANER_featureProfile="profile";
-
 var M_MOANER_talkActive=true;
 var M_MOANER_orgasmActive=true;
 var M_MOANER_vibratorActive=true;
@@ -3696,52 +3711,8 @@ var M_MOANER_verboseStatus=["Moaner is verbose.","Moaner is not verbose."];
 var M_MOANER_profileStatus=["No custom profile loaded.","Current moans profile: "];
 var M_MOANER_profileListM_MOANER_intro="Available moaning profiles: ";
 
-//var M_MOANER_scriptHelp="Moaner commands available: /moaner help: show this help text. /moaner on: start the moaner. /moaner off: stop the moaner. /moaner talk on: start the talk moan. /moaner talk off: stop the talk moan. /moaner orgasm on: start the orgasm moan. /moaner orgasm off: stop the orgasm moan. /moaner vibe on: start the vibes moan. /moaner vibe off: stop the vibes moan. /moaner spank on: start the spank moan. /moaner spank off: stop the spank moan. /moaner verbose on: make the script verbose. /moaner verbose off: make the script not verbose. /moaner profile: show profiles help. /moaner profile [profile name]: use [profile name] moans";
-
 var M_MOANER_intro="Myrhanda Moaner installed. Type /moaner for more info, /moaner status for current status.";
 var M_MOANER_unknownCommand="Unknown command";
-
-function M_MOANER_traiterCommande(msg){
-	if(!msg.toLowerCase().startsWith("/moaner".toLowerCase())){
-		return msg;
-	}
-	var list=msg.split(" ");
-	var feature=list[1];
-	var commande=list[2];
-	if(feature==M_MOANER_commandeOn||feature==M_MOANER_commandeOff){
-		scriptControl(feature);		
-	}
-	else if(feature==M_MOANER_featureTalk){
-		talkControl(commande);
-	}
-	else if(feature==M_MOANER_featureOrgasm){
-		orgasmControl(commande);
-	}
-	else if(feature==M_MOANER_featureVibrator){
-		vibeControl(commande);
-	}
-	else if(feature==M_MOANER_featureSpank){
-		spankControl(commande);
-	}
-	//else if(feature==M_MOANER_featureHelp){
-	//	helpControl(commande);
-	//}
-	else if(feature==M_MOANER_featureStatus){
-		showStatus();
-	}
-	else if(feature==M_MOANER_featureVerbose){
-		verboseControl(commande);
-	}
-	else if(feature==M_MOANER_featureProfile){
-		profileControl(commande);
-	}
-	else{
-		sendM_MOANER_unknownCommand();
-		return "";
-	}
-	M_MOANER_saveControls();
-	return "";
-}
 
 function sendM_MOANER_unknownCommand(){
 	M_MOANER_sendMessageToWearer(M_MOANER_unknownCommand);
@@ -3794,9 +3765,8 @@ function M_MOANER_startMoanScript(){
 }
 
 //controle sur les profils
-function profileControl(commande){
-	
-	if(commande==undefined || commande==M_MOANER_featureHelp){
+function profileControl(commande){	
+	if(commande==undefined) {
 		profilesList();
 	}
 	else {
@@ -3903,12 +3873,6 @@ function firstHelp(){
 		M_MOANER_sendMessageToWearer(M_MOANER_intro);
 	}
 }
-
-//controle de l'aide
-//function helpControl(){
-	//M_MOANER_sendMessageToWearer(M_MOANER_scriptHelp);
-	//showStatus();
-//}
 
 function profilesList(){
 	let liste=M_MOANER_getKeys(M_MOANER_moansProfiles);
