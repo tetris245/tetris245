@@ -4539,7 +4539,7 @@ M_MOANER_dogMoans={
 	"orgasm":["ouaf\u2665 O... Ouuw... Ouaaaa!!","Mmmhnn... aaaa... Ouuuaaaaaf!!","mmmh... Aouuuh.... Aouhhhh!"],
 	"pain":["KaÃ¯!","Aoouch!","KaaaÃ¯!","Ouch","Aow"]
 }
-M_MOANER_addMoansProfile(" dog",M_MOANER_dogMoans);
+M_MOANER_addMoansProfile("dog",M_MOANER_dogMoans);
 
 //fox
 //base: wif, yif, aouh
@@ -4552,7 +4552,7 @@ M_MOANER_foxMoans={
 	"orgasm":["Wiff\u2665 W... Wiii... WIIF!!","Mmmhnn... Wiiif... Yiiiif!!","mmmh... Aouuuh.... Aouhhhh!"],
 	"pain":[]
 }
-M_MOANER_addMoansProfile(" fox",M_MOANER_foxMoans);
+M_MOANER_addMoansProfile("fox",M_MOANER_foxMoans);
 
 //mouse
 //base coui
@@ -4564,7 +4564,7 @@ M_MOANER_mouseMoans={
 	"orgasm":["Couic\u2665 sc.. couIIIiic!!","Mmmhnn... ooo... ouiiiic!!","mmmh... Scouuu.... Scouiiic!"],
 	"pain":[]
 }
-M_MOANER_addMoansProfile(" mouse",M_MOANER_mouseMoans);
+M_MOANER_addMoansProfile("mouse",M_MOANER_mouseMoans);
 
 //neko
 M_MOANER_nekoMoans={
@@ -4575,7 +4575,7 @@ M_MOANER_nekoMoans={
 	"orgasm":["Nya...Ny...NyaaAAaah!","Mmmhnn... Nyhmm... Nyah!","mmmh... mmmeeeee.... meeeoooow!"],
 	"pain":[]
 }
-M_MOANER_addMoansProfile(" neko",M_MOANER_nekoMoans);
+M_MOANER_addMoansProfile("neko",M_MOANER_nekoMoans);
 
 //pig
 M_MOANER_pigMoans={
@@ -4586,7 +4586,7 @@ M_MOANER_pigMoans={
 	"orgasm":["Gru\u2665 gr.. gruiIIIiick!!","Mmmhnn... uii... gruiiik!!","mmmh... Gruiik.... Gruiiiiik!"],
 	"pain":["Gruuik!!","Aoouch!","Awo... gruik!","Ouch","Gruiiik"]
 }
-M_MOANER_addMoansProfile(" pig",M_MOANER_pigMoans);
+M_MOANER_addMoansProfile("pig",M_MOANER_pigMoans);
 
 //wildFox
 M_MOANER_wildFoxMoans={
@@ -4597,7 +4597,7 @@ M_MOANER_wildFoxMoans={
 	"orgasm":["WAAAAOUUUUUUUHHHHH!","Mmmhnn... Wiiif... Yiiiif!!","AOUUUUUH!","WAHOOOOOOOUUUUH!","WAAAAAAAAHH!","WAAAAOUUUUUUUHHHHH!","AOUUUUUH!","WAHOOOOOOOUUUUH!","WAAAAAAAAHH!"],
 	"pain":[]
 }
-M_MOANER_addMoansProfile(" wildFox",M_MOANER_wildFoxMoans);
+M_MOANER_addMoansProfile("wildFox",M_MOANER_wildFoxMoans);
 
 
 //BC-Diaper-Wetter
