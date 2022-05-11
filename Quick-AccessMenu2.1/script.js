@@ -5265,6 +5265,28 @@ function ChatRoomSyncItem(data) {
 	    }
 }
 
+function CharacterNickname(C) {
+	let Regex = /[/\p{L}\p{N}\p{Z}'-]/gu;
+	let Nick = C.Nickname;
+	if (Nick == null) Nick = "";
+	Nick = Nick.trim().substring(0, 20);
+	if ((Nick != "") && Regex.test(Nick)) return Nick;
+	else return C.Name;
+}
+
+function TitleExit() {
+	let Regex = /[/\p{L}\p{N}\p{Z}'-]/gu;
+	let Nick = ElementValue("InputNickname");
+	if (Nick == null) Nick = "";
+	Nick = Nick.trim().substring(0, 20);
+	if (Regex.test(Nick)) {
+		Player.Nickname = Nick;
+		ServerAccountUpdate.QueueData({ Nickname: Nick });
+		ElementRemove("InputNickname");
+		CommonSetScreen("Character", "InformationSheet");
+	}
+}
+
 function PandoraPrisonRun() {
         if ((Player.Infiltration.Punishment.Timer < CurrentTime) && (CurrentCharacter == null) && !PandoraPrisonEscaped)
 		PandoraPrisonCharacter = PandoraPrisonMaid;
