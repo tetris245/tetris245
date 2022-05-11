@@ -44,6 +44,7 @@ Changes for future version 1.4
   - Fixed the issue with special characters in moans by using their Unicode format
   - Fixed the crash issue with BCX (it is no more required to enable BCX before login)
 * Improved the hiddenmessages command
+* Updated the name command
 * Fixed a bug in profile command (no more crash when targetname not found) and applied this fix to other commands with targetname
 
 
