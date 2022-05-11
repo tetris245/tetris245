@@ -3666,10 +3666,6 @@ function M_MOANER_initActivityOrgasmStart(){
 	};
 }
 
-function M_MOANER_stopMoanScript(){
-	M_MOANER_scriptOn=false;
-}
-
 function M_MOANER_isCommande(msg){
 	return msg.startsWith("/")&&ChatRoomTargetMemberNumber==null;
 }
@@ -3708,11 +3704,6 @@ var M_MOANER_profileStatus=["No custom profile loaded.","Current moans profile: 
 var M_MOANER_profileListM_MOANER_intro="Available moaning profiles: ";
 
 var M_MOANER_intro="Myrhanda Moaner installed. Type /moaner for more info, /moaner status for current status.";
-var M_MOANER_unknownCommand="Unknown command";
-
-function sendM_MOANER_unknownCommand(){
-	M_MOANER_sendMessageToWearer(M_MOANER_unknownCommand);
-}
 
 function M_MOANER_initControls(){
 	var datas=JSON.parse(localStorage.getItem(M_MOANER_moanerKey+"_"+Player.MemberNumber));
@@ -3756,10 +3747,6 @@ function M_MOANER_deleteControls(){
 	  }
 }
 
-function M_MOANER_startMoanScript(){
-	M_MOANER_scriptOn=true;
-}
-
 //controle sur les profils
 function profileControl(commande){	
 	if(commande==undefined) {
@@ -3779,10 +3766,6 @@ function scriptControl(commande){
 	else if(commande == "off"){
 		M_MOANER_scriptOn=false;
 	}
-	else{
-		sendM_MOANER_unknownCommand();
-		return;
-	}
 	showM_MOANER_scriptStatus();
 }
 
@@ -3793,10 +3776,6 @@ function verboseControl(commande){
 	}
 	else if(commande == "off"){
 		M_MOANER_verboseActive=false;
-	}
-	else{
-		sendM_MOANER_unknownCommand();
-		return;
 	}
 	showM_MOANER_verboseStatus();
 }
@@ -3809,10 +3788,6 @@ function talkControl(commande){
 	else if(commande == "off"){
 		M_MOANER_talkActive=false;
 	}
-	else{
-		sendM_MOANER_unknownCommand();
-		return;
-	}
 	showM_MOANER_talkStatus();
 }
 
@@ -3824,10 +3799,6 @@ function orgasmControl(commande){
 	else if(commande == "off"){
 		M_MOANER_orgasmActive=false;
 	} 
-	else{
-		sendM_MOANER_unknownCommand();
-		return;
-	}
 	showM_MOANER_orgasmStatus();
 }
 
@@ -3839,10 +3810,6 @@ function vibeControl(commande){
 	else if(commande == "off"){
 		M_MOANER_vibratorActive=false;
 	} 
-	else{
-		sendM_MOANER_unknownCommand();
-		return;
-	}
 	showM_MOANER_vibratorStatus();
 }
 
@@ -3854,10 +3821,6 @@ function spankControl(commande){
 	else if(commande == "off"){
 		M_MOANER_spankActive=false;
 	} 
-	else{
-		sendM_MOANER_unknownCommand();
-		return;
-	}
 	showM_MOANER_spankStatus();
 }
 
