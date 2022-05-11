@@ -2275,7 +2275,7 @@ if (CurrentScreen == "ChatRoom") {
         var LS = /[/\p{L}\p{N}\p{Z}'-]/gu;
         if ((NewName.length <= 20) && (NewName.match(LS))) {  
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is now known as "+NewName+"." }]});
-            Player.Name = NewName; 
+            Player.Nickname = NewName; 
         }
     }
 		
