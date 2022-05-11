@@ -3501,7 +3501,6 @@ var ChatRoomSendChat = NEWmenu;
 ChatCommandGreeting = function (data) {
 if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 ChatRoomMessage({ Content: "Quick-AccessMenu2.1: Ready, type /help. For any inquiries, join https://discord.gg/YukepB6RVp", Type: "LocalMessage", Sender: Player.MemberNumber });
-ChatRoomMessage({ Content: "Important tip for BCX users: always enable BCX before loging.", Type: "LocalMessage", Sender: Player.MemberNumber });
 ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)}}
 
 setTimeout(function() {
@@ -3602,7 +3601,9 @@ var backupActivityOrgasmPrepare;
 var backupActivityOrgasmStart;
 var backupChatRoomMessage;
 var backupChatRoomFirstTimeHelp;*/
+
 var M_MOANER_scriptOn=true;
+let backupChatRoomMessage = ChatRoomMessage;
 
 function M_MOANER_MoanerInitAlteredFns(){
 	//gemissements quand on parle
