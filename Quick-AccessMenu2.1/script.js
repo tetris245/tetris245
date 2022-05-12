@@ -2274,10 +2274,7 @@ if (CurrentScreen == "ChatRoom") {
         var NewName = content.substring(5).trim();
         var LS = /[/\p{L}\p{N}\p{Z}'-]/gu;
         if ((NewName.length <= 20) && (NewName.match(LS))) {  
-            if (NewName == Player.Name) {   
-                ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+tmpname+" is now known as "+Player.Name+"." }]});
-            }
-            if ((NewName != Player.Name) && (NewName != tmpname)) {
+            if (NewName != tmpname) {   
                 ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+tmpname+" is now known as "+NewName+"." }]});
             }
             Player.Nickname = NewName;
@@ -5287,10 +5284,7 @@ function TitleExit() {
 	if (Nick == null) Nick = "";
 	Nick = Nick.trim().substring(0, 20);
 	if (Regex.test(Nick)) {
-            if (Nick == Player.Name) {   
-                ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+tmpname+" is now known as "+Player.Name+"." }]});
-            }
-            if ((Nick != Player.Name) && (Nick != tmpname)) {
+            if (Nick != tmpname) {   
                ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+tmpname+" is now known as "+Nick+"." }]});
             }
             Player.Nickname = Nick;
