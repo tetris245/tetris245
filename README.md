@@ -46,6 +46,6 @@ Changes for future version 1.4
 * Improved the hiddenmessages command
 * Updated the name command (to change the nickname instead of the name)
 * Fixed a bug in profile command (no more crash when targetname not found) and applied this fix to other commands with targetname
-* Rewrote two functions related to nickname, so you are not limited to standard characters from English alphabet and spaces
+* Rewrote two functions related to nickname, so you are not limited to standard characters from English alphabet and spaces and you get correct messages when changing the nickname in the title menu
 
 
