@@ -1,7 +1,7 @@
 (typeof OLDmenu !== "undefined") && (ChatRoomSendChat = OLDmenu);//reset
 function NEWmenu() {
 var content = ElementValue("InputChat").trim();
-
+var tmpname = Player.Nickname;
 
 //chatcommand
 if (CurrentScreen == "ChatRoom") {
@@ -2274,8 +2274,14 @@ if (CurrentScreen == "ChatRoom") {
         var NewName = content.substring(5).trim();
         var LS = /[/\p{L}\p{N}\p{Z}'-]/gu;
         if ((NewName.length <= 20) && (NewName.match(LS))) {  
-            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is now known as "+NewName+"." }]});
-            Player.Nickname = NewName; 
+            if (NewName == Player.Name) {   
+                ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+tmpname+" is now known as "+Player.Name+"." }]});
+            }
+            if ((NewName != Player.Name) && (NewName != tmpname)) {
+                ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+tmpname+" is now known as "+NewName+"." }]});
+            }
+            Player.Nickname = NewName;
+            var tmpname = NewName;
         }
     }
 		
@@ -5277,13 +5283,20 @@ function CharacterNickname(C) {
 function TitleExit() {
 	let Regex = /[/\p{L}\p{N}\p{Z}'-]/gu;
 	let Nick = ElementValue("InputNickname");
+        var tmpname = Player.Nickname;
 	if (Nick == null) Nick = "";
 	Nick = Nick.trim().substring(0, 20);
 	if (Regex.test(Nick)) {
-		Player.Nickname = Nick;
-		ServerAccountUpdate.QueueData({ Nickname: Nick });
-		ElementRemove("InputNickname");
-		CommonSetScreen("Character", "InformationSheet");
+            if (Nick == Player.Name) {   
+                ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+tmpname+" is now known as "+Player.Name+"." }]});
+            }
+            if ((Nick != Player.Name) && (Nick != tmpname)) {
+               ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+tmpname+" is now known as "+Nick+"." }]});
+            }
+            Player.Nickname = Nick;
+	    ServerAccountUpdate.QueueData({ Nickname: Nick });
+	    ElementRemove("InputNickname");
+            CommonSetScreen("Character", "InformationSheet");
 	}
 }
 
