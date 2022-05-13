@@ -44,7 +44,7 @@ Changes for future version 1.4
   - Fixed the issue with special characters in moans by using their Unicode format
   - Fixed the crash issue with BCX (it is no more required to enable BCX before login)
 * Improved the hiddenmessages command
-* Updated the name command (to change the nickname instead of the name)
+* Updated the name command (to choosa a temporary nickname instead of the name)
 * Extended targetname to the nickname, so you can use the current nickname in the commands with targetname
 * Fixed a bug in profile command (no more crash when targetname not found) and applied this fix to other commands with targetname
 * Rewrote two functions related to nickname, so you are not limited to standard characters from English alphabet and spaces and you get correct messages when changing the nickname in the title menu
