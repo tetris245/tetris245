@@ -38,11 +38,12 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/giveeverything  =  gives every item.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
             ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics. You will be able to check the changes in your profile. See also the /roleplay and /rolequit commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/money 9999  =  gives or takes money. Change value. You will be able to check the change in your profile.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/name (newnamehere) =  changes the nickname of your character.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "/name (newnamehere) =  chooses a temporary new nickname.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/resetinventory  =  erases your inventory. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/roleplay (rolehere) = starts a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/rolequit (role or clubarea here) = ceases to play a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        }
+            ChatRoomMessage({ Content: "/savename = gives definitive status to a temporary nickname.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	}
 	    
 	else if (content.includes("chat")) {
 	    ChatRoomMessage({ Content: "Quick-AccessMenu2: Chat commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -2943,6 +2944,12 @@ if (CurrentScreen == "ChatRoom") {
         }, 5000);
     }
 	
+    else if (content.indexOf("/savename") == 0) { 
+        var NewName = Player.Nickname;
+        ServerAccountUpdate.QueueData({ Nickname: NewName });
+        ChatRoomMessage({ Content: "Quick-AccessMenu2: Your temporary nickname has now a definitive status.", Type: "LocalMessage", Sender: Player.MemberNumber });   
+    }
+
     else if (content.indexOf("/search") == 0) {
         if (content.includes("Asylum") || content.includes("asylum")) {
             setTimeout(function() {
