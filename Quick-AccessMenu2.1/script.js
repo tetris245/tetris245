@@ -69,7 +69,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Escape commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/boost  =  boosts skills, similar to maid quarters drink.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/collarremove  =  removes slave/owner collar. Can also be: /removecollar", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/friendlist = gives access to friendlist with clickable links to other rooms during 15 seconds.", Type: "LocalMessage",  Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/frlist = gives access to friendlist with clickable links to other rooms during 15 seconds.", Type: "LocalMessage",  Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/leave  =  leaves room, even if prevented.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/release (targetname) =  removes all bindings.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/resetdifficulty  =  resets difficulty, thereby quitting it. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
@@ -1197,7 +1197,7 @@ if (CurrentScreen == "ChatRoom") {
         ElementRemove("TextAreaChatLog");
     }
 	
-    else if (content.indexOf("/friendlist") == 0) {
+    else if (content.indexOf("/frlist") == 0) {
         setTimeout(function() {
             ChatRoomSpace = "";
 	    CommonSetScreen("Online", "ChatSearch");
