@@ -2227,8 +2227,10 @@ if (CurrentScreen == "ChatRoom") {
                    M_MOANER_saveControls();
                }
 		else if (feature == "profile") {
-                   profilesList();
-                   if (commande != null) {
+                   if (commande == null) {
+                       profilesList();
+	           }
+                   else if (commande != null) {
                        M_MOANER_activerProfile(commande);
                        M_MOANER_saveControls();
 	           }
