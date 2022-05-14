@@ -2226,10 +2226,13 @@ if (CurrentScreen == "ChatRoom") {
                    orgasmControl(commande);	
                    M_MOANER_saveControls();
                }
-               else if (feature == "profile") {
-                   profileName = commande;
-                   profileControl(commande);
-	           M_MOANER_saveControls();
+		else if (feature == "profile") {
+                   profilesList();
+                   if (commande != null) {
+                       M_MOANER_activerProfile(commande);
+                       M_MOANER_saveControls();
+	           }
+                   showM_MOANER_profileStatus();
                }
                else if (feature == "spank") {
                    spankControl(commande);	
@@ -3757,17 +3760,6 @@ function M_MOANER_deleteControls(){
 	  }
 }
 
-//controle sur les profils
-function profileControl(commande){	
-	if(commande==undefined) {
-		profilesList();
-	}
-	else {
-		M_MOANER_activerProfile(commande);
-	}
-	showM_MOANER_profileStatus();
-}
-
 //controle sur le script entier
 function scriptControl(commande){
 	if(commande == "on"){
@@ -4511,7 +4503,7 @@ M_MOANER_dogMoans={
 	"light":["Ouaff\u2665","Aouh!","Oua\u2665af","Ky\u016bn\u2665"],
 	"low":["wou..","ouah\u2665","Wouf\u2665","\u2665ky\u016bn\u2665","ky\u016b\u2665"],
 	"orgasm":["ouaf\u2665 O... Ouuw... Ouaaaa!!","Mmmhnn... aaaa... Ouuuaaaaaf!!","mmmh... Aouuuh.... Aouhhhh!"],
-     "pain":["Ka\u00ef!","Aoouch!","Kaaa\u00ef!","Ouch","Aow"]
+        "pain":["Ka\u00ef!","Aoouch!","Kaaa\u00ef!","Ouch","Aow"]
 }
 M_MOANER_addMoansProfile("dog",M_MOANER_dogMoans);
 
