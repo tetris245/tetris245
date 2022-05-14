@@ -4507,11 +4507,11 @@ function IsStimulated(C){
 //dog
 M_MOANER_dogMoans={
 	"hot":["w... Wouuuf\u2665","aouuh\u2665"],
-	"medium":["waaaf\u2665","kyÅ«Å«Å«n","..wouf"],
-	"light":["Ouaff\u2665","Aouh!","Oua\u2665af","KyÅ«n\u2665"],
-	"low":["wou..","ouah\u2665","Wouf\u2665","\u2665kyÅ«n\u2665","kyÅ«\u2665"],
+	"medium":["waaaf\u2665","ky\u016b\u016b\n","..wouf"],
+	"light":["Ouaff\u2665","Aouh!","Oua\u2665af","Ky\u016bn\u2665"],
+	"low":["wou..","ouah\u2665","Wouf\u2665","\u2665ky\u016bn\u2665","ky\u016b\u2665"],
 	"orgasm":["ouaf\u2665 O... Ouuw... Ouaaaa!!","Mmmhnn... aaaa... Ouuuaaaaaf!!","mmmh... Aouuuh.... Aouhhhh!"],
-	"pain":["KaÃ¯!","Aoouch!","KaaaÃ¯!","Ouch","Aow"]
+     "pain":["Ka\u00ef!","Aoouch!","Kaaa\u00ef!","Ouch","Aow"]
 }
 M_MOANER_addMoansProfile("dog",M_MOANER_dogMoans);
 
