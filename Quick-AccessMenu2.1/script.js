@@ -2260,7 +2260,8 @@ if (CurrentScreen == "ChatRoom") {
     }
     
     else if (content.indexOf("/money") == 0) {
-        Player.Money = content.substring(6);ServerPlayerSync();
+        Player.Money = content.substring(6);
+	ServerPlayerSync();
     }
 	
     else if (content.indexOf("/naked") == 0) {
