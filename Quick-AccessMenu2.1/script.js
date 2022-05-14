@@ -2948,7 +2948,7 @@ if (CurrentScreen == "ChatRoom") {
     }
 	
     else if (content.indexOf("/savename") == 0) { 
-        var NewName = Player.Nickname;
+        var NewName = tmpname;
         ServerAccountUpdate.QueueData({ Nickname: NewName });
         ChatRoomMessage({ Content: "Quick-AccessMenu2: Your temporary nickname has now a definitive status.", Type: "LocalMessage", Sender: Player.MemberNumber });   
     }
