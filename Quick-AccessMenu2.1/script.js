@@ -43,6 +43,7 @@ if (CurrentScreen == "ChatRoom") {
 	    ChatRoomMessage({ Content: "/roleplay (rolehere) = starts a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/rolequit (role or clubarea here) = ceases to play a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/savename = gives definitive status to a temporary nickname.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "/title (newtitlehere) =  chooses a new title. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	}
 	    
 	else if (content.includes("chat")) {
@@ -2737,15 +2738,18 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/resetdifficulty") == 0) {
         if (content.includes("yes")) {
             Player.Difficulty = [];
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Difficulty reset, select a new one in settings.", Type: "LocalMessage", Sender: Player.MemberNumber });}
-        else {ChatRoomMessage({ Content: "Quick-AccessMenu2: Warning, resetting difficulty will incur a 7-day waiting period to rechange. Confirm by typing: /resetdifficulty yes", Type: "LocalMessage", Sender: Player.MemberNumber })}
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Difficulty reset, select a new one in settings.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	}
+        else {ChatRoomMessage({ Content: "Quick-AccessMenu2: Warning, resetting difficulty will incur a 7-day waiting period to rechange. Confirm by typing: /resetdifficulty yes", Type: "LocalMessage", Sender: Player.MemberNumber });
+	}
     }
 	
     else if (content.indexOf("/resetinventory") == 0) {
           ChatRoomMessage({ Content: "Warning: You will lose many clothes and items in your inventory. It meant that you will need to buy them again. Confirm: /resetinventory yes", Type: "LocalMessage", Sender: Player.MemberNumber });
-          if (content.includes("yes")) {             
-	      Player.Inventory=[];ServerPlayerInventorySync();
-              ChatRoomMessage({ Content: "Accomplished. Visit store to buy new clothes and items.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+              if (content.includes("yes")) {             
+	          Player.Inventory=[];ServerPlayerInventorySync();
+                  ChatRoomMessage({ Content: "Accomplished. Visit store to buy new clothes and items.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	      }
     }
 	
     else if (content.indexOf("/restrain") == 0) {
@@ -3093,6 +3097,20 @@ if (CurrentScreen == "ChatRoom") {
         ServerSend("ChatRoomLeave", "");         
         CharacterDeleteAllOnline();
         CellLock(minutes);
+    }
+	
+    else if (content.indexOf("/title") == 0) {
+        if (content.endsWith("/title")) {
+            ChatRoomMessage({ Content: "Quick-Access Menu2: Must be followed by a title.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Only a few titles can be used without satisfying conditions:", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Angel, Bunny, Demon, Doll, Foxy, Kitten, Puppy, Succubus, Switch.", Type: "LocalMessage", Sender: Player.MemberNumber });  
+            ChatRoomMessage({ Content: "This command will also work in the future for the conditional titles, by handling the conditions.", Type: "LocalMessage", Sender: Player.MemberNumber });   
+            ChatRoomMessage({ Content: "You will be able to check the change in your profile.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        }
+        else {
+            var title = content.substring(6).trim();
+            TitleSet(title);  
+        }
     }
 	
     else if (content.indexOf("/totalrelease") == 0) {
