@@ -37,6 +37,7 @@ All else I might not have included.
 Changes for future version 1.4
 
 * New command: savename to give a definitive status to a temporary nickname
+* New command: title to change your title without using the title menu (so you can preserve a temporary nickname!)
 * Changes in the Moaner: 
   - Integrated the help in QAM help (the command is now /moaner instead of /moaner help)
   - Separated help and status (/moaner and /moaner status as commands)
