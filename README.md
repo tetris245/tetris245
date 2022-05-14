@@ -44,6 +44,7 @@ Changes for future version 1.4
   - Fixed the issue with special characters in moans by using their Unicode format
   - Fixed the message with 'undefined' moans profile
   - Fixed the crash issue with BCX (it is no more required to enable BCX before login)
+* Renamed the friendlist command as frlist to solve conflict with standard BC commands
 * Improved the hiddenmessages command
 * Updated the name command (to choose a temporary nickname instead of the name)
 * Extended targetname to the nickname, so you can use the current nickname in the commands with targetname
