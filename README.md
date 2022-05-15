@@ -47,7 +47,7 @@ Changes for future version 1.4
   - Fixed the crash issue with BCX (it is no more required to enable BCX before login)
 * Renamed the friendlist command as frlist to solve conflict with standard BC commands
 * Improved the hiddenmessages command
-* Updated the name command (to choose a temporary nickname instead of the name)
+* Updated the name command to choose a temporary nickname instead of the name
 * Updated the roleplay command with the correct names for the 8 magic roles
 * Extended targetname to the nickname, so you can use the current nickname in the commands with targetname
 * Rewrote two functions related to nickname, so you are not limited to standard characters from English alphabet and spaces
