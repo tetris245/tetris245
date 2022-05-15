@@ -49,8 +49,9 @@ Changes for future version 1.4
 * Improved the hiddenmessages command
 * Updated the name command (to choose a temporary nickname instead of the name)
 * Extended targetname to the nickname, so you can use the current nickname in the commands with targetname
+* Rewrote two functions related to nickname, so you are not limited to standard characters from English alphabet and spaces
 * Fixed a bug in profile command (no more crash when targetname not found) and applied this fix to other commands with targetname
 * Fixed a bug in roleplay command for masterkidnapper reputation
-* Rewrote two functions related to nickname, so you are not limited to standard characters from English alphabet and spaces
+
 
 
