@@ -2788,7 +2788,25 @@ if (CurrentScreen == "ChatRoom") {
             ReputationChange("Kidnap", 100);
             ReputationChange("Kidnap", -50);
         }
+	    
+	 else if (content.includes("magician")) {
+            DialogSetReputation("HouseMaiestas", 0);
+	    DialogSetReputation("HouseVincula", 0);
+	    DialogSetReputation("HouseAmplector", 0);
+	    DialogSetReputation("HouseCorporis", 0);
+            LogDelete("Mastery", "MagicSchool");
+            DialogSetReputation("HouseVincula", 50);
+        }
 
+        else if (content.includes("magus")) {
+            DialogSetReputation("HouseMaiestas", 0);
+	    DialogSetReputation("HouseVincula", 0);
+	    DialogSetReputation("HouseAmplector", 0);
+	    DialogSetReputation("HouseCorporis", 0);
+            LogDelete("Mastery", "MagicSchool");
+            DialogSetReputation("HouseMaiestas", 100);
+        }
+   
         else if (content.includes("maid")) {
             LogAdd("JoinedSorority", "Management");
         }
@@ -2808,40 +2826,13 @@ if (CurrentScreen == "ChatRoom") {
 	    LogAdd("Committed", "Asylum", CurrentTime);
         }
 	    
-	else if (content.includes("oraclea")) {
+	else if (content.includes("oracle")) {
             DialogSetReputation("HouseMaiestas", 0);
 	    DialogSetReputation("HouseVincula", 0);
 	    DialogSetReputation("HouseAmplector", 0);
 	    DialogSetReputation("HouseCorporis", 0);
             LogDelete("Mastery", "MagicSchool");
             DialogSetReputation("HouseAmplector", 100);
-        }
-
-        else if (content.includes("oraclec")) {
-            DialogSetReputation("HouseMaiestas", 0);
-	    DialogSetReputation("HouseVincula", 0);
-	    DialogSetReputation("HouseAmplector", 0);
-	    DialogSetReputation("HouseCorporis", 0);
-            LogDelete("Mastery", "MagicSchool");
-            DialogSetReputation("HouseCorporis", 100);
-        }
-
-        else if (content.includes("oraclem")) {
-            DialogSetReputation("HouseMaiestas", 0);
-	    DialogSetReputation("HouseVincula", 0);
-	    DialogSetReputation("HouseAmplector", 0);
-	    DialogSetReputation("HouseCorporis", 0);
-            LogDelete("Mastery", "MagicSchool");
-            DialogSetReputation("HouseMaiestas", 100);
-        }
-
-        else if (content.includes("oraclev")) {
-            DialogSetReputation("HouseMaiestas", 0);
-	    DialogSetReputation("HouseVincula", 0);
-	    DialogSetReputation("HouseAmplector", 0);
-	    DialogSetReputation("HouseCorporis", 0);
-            LogDelete("Mastery", "MagicSchool");
-            DialogSetReputation("HouseVincula", 100);
         }
 
         else if (content.includes("patient")) {
@@ -2853,7 +2844,7 @@ if (CurrentScreen == "ChatRoom") {
             ReputationChange('Asylum', -200);
         }
 	    
-	else if (content.includes("sagea")) {
+        else if (content.includes("sage")) {
             DialogSetReputation("HouseMaiestas", 0);
 	    DialogSetReputation("HouseVincula", 0);
 	    DialogSetReputation("HouseAmplector", 0);
@@ -2862,7 +2853,25 @@ if (CurrentScreen == "ChatRoom") {
             DialogSetReputation("HouseAmplector", 50);
         }
 
-        else if (content.includes("sagec")) {
+      else if (content.includes("sorcerer")) {
+            DialogSetReputation("HouseMaiestas", 0);
+	    DialogSetReputation("HouseVincula", 0);
+	    DialogSetReputation("HouseAmplector", 0);
+	    DialogSetReputation("HouseCorporis", 0);
+            LogDelete("Mastery", "MagicSchool");
+            DialogSetReputation("HouseVincula", 100);
+        }
+  
+        else if (content.includes("warlock")) {
+            DialogSetReputation("HouseMaiestas", 0);
+	    DialogSetReputation("HouseVincula", 0);
+	    DialogSetReputation("HouseAmplector", 0);
+	    DialogSetReputation("HouseCorporis", 0);
+            LogDelete("Mastery", "MagicSchool");
+            DialogSetReputation("HouseCorporis", 100);
+        }
+
+        else if (content.includes("witch")) {
             DialogSetReputation("HouseMaiestas", 0);
 	    DialogSetReputation("HouseVincula", 0);
 	    DialogSetReputation("HouseAmplector", 0);
@@ -2871,7 +2880,7 @@ if (CurrentScreen == "ChatRoom") {
             DialogSetReputation("HouseCorporis", 50);
         }
 
-        else if (content.includes("sagem")) {
+        else if (content.includes("wizard")) {
             DialogSetReputation("HouseMaiestas", 0);
 	    DialogSetReputation("HouseVincula", 0);
 	    DialogSetReputation("HouseAmplector", 0);
@@ -2880,17 +2889,11 @@ if (CurrentScreen == "ChatRoom") {
             DialogSetReputation("HouseMaiestas", 50);
         }
 
-        else if (content.includes("sagev")) {
-            DialogSetReputation("HouseMaiestas", 0);
-	    DialogSetReputation("HouseVincula", 0);
-	    DialogSetReputation("HouseAmplector", 0);
-	    DialogSetReputation("HouseCorporis", 0);
-            LogDelete("Mastery", "MagicSchool");
-            DialogSetReputation("HouseVincula", 50);
-        }
-
     	else if (content.endsWith("/roleplay")) {	  
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a role. List: clubmistress, clubslave, doctor, headmaid, kidnapper, maid, masterkidnapper, mistress, nurse, oraclea, oraclec, oraclem, oraclev, patient, permanentpatient, sagea, sagec, sagem, sagev. Be careful with clubslave, you will be forced to complete contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a role.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "List: clubmistress, clubslave, doctor, headmaid, kidnapper, maid, magician, magus, masterkidnapper, mistress, nurse, oracle, patient, permanentpatient, sage, sorcerer, warlock, witch, wizard.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Be careful with clubslave, you will be forced to complete contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
+
             ChatRoomMessage({ Content: "You will be able to check the changes in your profile.",Type: "LocalMessage", Sender: Player.MemberNumber });
 	}
     }
@@ -2936,7 +2939,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "asylum to cease being doctor, nurse, patient or permanent patient.",Type: "LocalMessage", Sender: Player.MemberNumber });           
             ChatRoomMessage({ Content: "clubslave to break the club slave contract.",Type: "LocalMessage", Sender: Player.MemberNumber });           
             ChatRoomMessage({ Content: "kidnapper to cease being kidnapper or master kidnapper.",Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	    ChatRoomMessage({ Content: "magician to cease being sage or oracle.",Type: "LocalMessage", Sender: Player.MemberNumber }); 
+	    ChatRoomMessage({ Content: "magician to cease one of the 8 magic roles.",Type: "LocalMessage", Sender: Player.MemberNumber }); 
             ChatRoomMessage({ Content: "management or mistress to cease being mistress or club mistress.",Type: "LocalMessage", Sender: Player.MemberNumber });                
             ChatRoomMessage({ Content: "sorority or maid to cease being maid or headmaid.",Type: "LocalMessage", Sender: Player.MemberNumber }); 
 	    ChatRoomMessage({ Content: "You will be able to check the changes in your profile.",Type: "LocalMessage", Sender: Player.MemberNumber });
