@@ -2785,7 +2785,7 @@ if (CurrentScreen == "ChatRoom") {
         }
 
         else if (content.includes("kidnapper")) {
-            ReputationChange("Kidnap", 200);
+            ReputationChange("Kidnap", 100);
             ReputationChange("Kidnap", -50);
         }
 
@@ -2794,7 +2794,7 @@ if (CurrentScreen == "ChatRoom") {
         }
 	
         else if (content.includes("masterkidnapper")) {
-            ReputationChange("Kidnap", 200);
+            ReputationChange("Kidnap", 100);
         }
 
         else if (content.includes("mistress")) {
