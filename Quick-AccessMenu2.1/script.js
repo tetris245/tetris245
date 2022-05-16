@@ -39,6 +39,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics. You will be able to check the changes in your profile.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/money 9999  =  gives or takes money. Change value. You will be able to check the change in your profile.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/name (newnamehere) =  chooses a temporary new nickname.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "/reputation (reputation) (level) =  changes a reputation. *", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/resetinventory  =  erases your inventory. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/roleplay (rolehere) = starts a role. *", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/rolequit (role or clubarea here) = ceases to play a role. *", Type:  "LocalMessage", Sender: Player.MemberNumber });
@@ -2738,6 +2739,45 @@ if (CurrentScreen == "ChatRoom") {
         ServerSocket.open();
     }
 	
+    else if (content.indexOf("/reputation") == 0) {
+         if (content.endsWith("/reputation")) {
+            ChatRoomMessage({ Content: "Quick-Access Menu2: Must be followed by a reputation and a level.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "You will be able to check the change in your profile.",Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: " ",Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Reputations with level between 0 and 100: abdl, gambling, gaming, kidnap, larp, maid.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        }
+        else {
+            var stringReputation1 = content;
+            var stringReputation2 = stringReputation1.split(/[ ,]+/);
+            var reputation = stringReputation2[1];
+            var level = stringReputation2[2]; 
+            if (reputation == "abdl") {
+                var current = ReputationGet("ABDL");
+                ReputationChange("ABDL", (level-current));
+            }
+            else if (reputation == "gambling") {
+                var current = ReputationGet("Gambling");
+                ReputationChange("Gambling", (level-current));
+            }
+            else if (reputation == "gaming") {
+                var current = ReputationGet("Gaming");
+                ReputationChange("Gaming", (level-current));
+            }
+            else if (reputation == "kidnap") {
+                var current = ReputationGet("Kidnap");
+                ReputationChange("Kidnap", (level-current));
+            }
+            else if (reputation == "larp") {
+                var current = ReputationGet("LARP");
+                ReputationChange("LARP", (level-current));
+            }
+            else if (reputation == "maid") {
+                var current = ReputationGet("Maid");
+                ReputationChange("Maid", (level-current));
+            }
+        }
+    }
+	
     else if (content.indexOf("/resetdifficulty") == 0) {
         if (content.includes("yes")) {
             Player.Difficulty = [];
@@ -3004,6 +3044,8 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/skill") == 0) {
          if (content.endsWith("/skill")) {
             ChatRoomMessage({ Content: "Quick-Access Menu2: Must be followed by a skill and a level.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "You will be able to check the change in your profile.",Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: " ",Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "Available skills: bondage, dressage, evasion, infiltration, lockpicking, selfbondage, willpower.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "Level must be between 0 and 10.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
