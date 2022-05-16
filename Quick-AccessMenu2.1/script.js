@@ -32,20 +32,21 @@ if (CurrentScreen == "ChatRoom") {
         }
 
         else if (content.includes("character")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Character commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Character commands - * = more info when using", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/becomeownlover  =  becomes your own lover.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/becomeownowner  =  becomes your own owner.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/giveeverything  =  gives every item.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-            ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics. You will be able to check the changes in your profile. See also the /roleplay and /rolequit commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics. You will be able to check the changes in your profile.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/money 9999  =  gives or takes money. Change value. You will be able to check the change in your profile.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/name (newnamehere) =  chooses a temporary new nickname.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/resetinventory  =  erases your inventory. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/roleplay (rolehere) = starts a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/rolequit (role or clubarea here) = ceases to play a role. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "/roleplay (rolehere) = starts a role. *", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "/rolequit (role or clubarea here) = ceases to play a role. *", Type:  "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/savename = gives definitive status to a temporary nickname.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/title (newtitlehere) =  chooses a new title. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	}
-	    
+            ChatRoomMessage({ Content: "/skill (skill) (level) =  changes a skill. *", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/title (newtitlehere) =  chooses a new title. *", Type: "LocalMessage", Sender: Player.MemberNumber });
+        }
+   
 	else if (content.includes("chat")) {
 	    ChatRoomMessage({ Content: "Quick-AccessMenu2: Chat commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/autokick  =  toggles on auto kick for 0 day old accounts.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -3000,6 +3001,41 @@ if (CurrentScreen == "ChatRoom") {
         }
     }
 	
+    else if (content.indexOf("/skill") == 0) {
+         if (content.endsWith("/skill")) {
+            ChatRoomMessage({ Content: "Quick-Access Menu2: Must be followed by a skill and a level.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Available skills: bondage, dressage, evasion, infiltration, lockpicking, selfbondage, willpower.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Level must be between 0 and 10.", Type: "LocalMessage", Sender: Player.MemberNumber });
+        }
+        else {
+            var stringSkill1 = content;
+            var stringSkill2 = stringSkill1.split(/[ ,]+/);
+            var skill = stringSkill2[1];
+            var level = stringSkill2[2]; 
+            if (skill == "bondage") {
+                SkillChange("Bondage", level);
+            }
+            else if (skill == "dressage") {
+                SkillChange("Dressage", level);
+            }
+            else if (skill == "evasion") {
+                SkillChange("Evasion", level);
+            }
+            else if (skill == "infiltration") {
+                SkillChange("Infiltration", level);
+            }
+            else if (skill == "lockpicking") {
+                SkillChange("LockPicking", level);
+            }
+            else if (skill == "selfbondage") {
+                SkillChange("SelfBondage", level);
+            }
+            else if (skill == "willpower") {
+                SkillChange("Willpower", level);
+            }
+        }
+    }
+
     else if (content.indexOf("/solidity") == 0) {
 	var solidity = content.substring(9).trim();    
 	if (InventoryGet(Player, "ItemDevices") != null) {
