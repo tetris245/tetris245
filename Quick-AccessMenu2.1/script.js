@@ -3142,18 +3142,121 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/title") == 0) {
         if (content.endsWith("/title")) {
-            ChatRoomMessage({ Content: "Quick-Access Menu2: Must be followed by a title.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Only a few titles can be used without satisfying conditions:", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Angel, Bunny, Demon, Doll, Foxy, Kitten, Puppy, Succubus, Switch.", Type: "LocalMessage", Sender: Player.MemberNumber });  
-            ChatRoomMessage({ Content: "This command will also work in the future for the conditional titles, by handling the conditions.", Type: "LocalMessage", Sender: Player.MemberNumber });   
-            ChatRoomMessage({ Content: "You will be able to check the change in your profile.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-Access Menu2: Must be followed by a title. Will also change required parameters to get the title.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "You will be able to check the change in your profile.",Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: " ",Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Supported titles:", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "agent, angel, bunny, coldbloodhorse, collegestudent,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "demon, duchess, farmhorse, flyingpegasus, foal,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "foxy, hotbloodhorse, houdini, infiltrator, kitten,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "majesticalicorn, mole, nawashi, operative, patron,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "puppy, shiningunicorn, succubus, superspy, switch,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "warmbloodhorse, wildmustang.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
         else {
             var title = content.substring(6).trim();
-            TitleSet(title);  
+            if (title == "agent") {
+                SkillChange("Infiltration", 6);
+                TitleSet("InfilrationAgent");  
+            }
+            else if (title == "angel") {
+                TitleSet("Angel");  
+            }
+            else if (title == "bunny") {
+                TitleSet("Bunny");  
+            }
+            else if (title == "coldbloodhorse") {
+                SkillChange("Dressage", 3);
+                TitleSet("PonyCold");  
+            }
+            else if (title == "collegestudent") {
+                LogAdd("BondageCollege", "Import");
+                TitleSet("CollegeStudent");  
+            }
+            else if (title == "demon") {
+                TitleSet("Demon");  
+            }
+            else if (title == "duchess") {
+                LogAdd("KidnapSophie", "Sarah");
+                TitleSet("Duchess");  
+            }
+            else if (title == "farmhorse") {
+                SkillChange("Dressage", 2);
+                TitleSet("PonyFarm");  
+            }
+            else if (title == "flyingpegasus") {
+                SkillChange("Dressage", 8);
+                TitleSet("PonyPegasus");  
+            }
+            else if (title == "foal") {
+                SkillChange("Dressage", 1);
+                TitleSet("PonyFoal");  
+            }
+            else if (title == "foxy") {
+                TitleSet("Foxy"); 
+            }
+            else if (title == "hotbloodhorse") {
+                SkillChange("Dressage", 5);
+                TitleSet("PonyHot");  
+            }  
+            else if (title == "houdini") {
+                SkillChange("Evasion", 10);
+                TitleSet("Houdini");  
+            }
+            else if (title == "infiltrator") {
+                SkillChange("Infiltration", 4);
+                TitleSet("InfilrationInfiltrator");  
+            }
+            else if (title == "kitten") {
+                TitleSet("Kitten");  
+            }
+            else if (title == "majesticalicorn") {
+                SkillChange("Dressage", 10);
+                TitleSet("PonyAlicorn");  
+            }
+            else if (title == "mole") {
+                SkillChange("Infiltration", 2);
+                TitleSet("InfilrationMole");  
+            }
+            else if (title == "nawashi") {
+                SkillChange("Bondage", 10);
+                TitleSet("Nawashi");  
+            }
+            else if (title == "operative") {
+                SkillChange("Infiltration", 8);
+                TitleSet("InfilrationOperative");  
+            }
+            else if (title == "patron") {
+                TitleSet("Patron");  
+            }
+            else if (title == "puppy") {
+                TitleSet("Puppy");  
+            }
+            else if (title == "shiningunicorn") {
+                SkillChange("Dressage", 7);
+                TitleSet("PonyUnicorn");  
+            }
+            else if (title == "succubus") {
+                TitleSet("Succubus");  
+            }
+            else if (title == "superspy") {
+                SkillChange("Infiltration", 10);
+                TitleSet("InfilrationSuperspy");  
+            }
+            else if (title == "switch") {
+                TitleSet("Switch");  
+            }
+            else if (title == "warmbloodhorse") {
+                SkillChange("Dressage", 4);
+                TitleSet("PonyWarm");  
+            }
+            else if (title == "wildmustang") {
+                SkillChange("Dressage", 6);
+                TitleSet("PonyWild");  
+            }
         }
     }
-	
+
     else if (content.indexOf("/totalrelease") == 0) {
         var targetname = content.substring(13).trim();
         if (targetname == undefined) {targetname = Player.Name};
