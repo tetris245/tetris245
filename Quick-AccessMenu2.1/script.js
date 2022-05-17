@@ -2851,6 +2851,7 @@ if (CurrentScreen == "ChatRoom") {
         }
    
         else if (content.includes("maid")) {
+	    LogDelete("LeadSorority", "Maid");
             LogAdd("JoinedSorority", "Management");
         }
 	
