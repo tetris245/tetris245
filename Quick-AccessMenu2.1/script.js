@@ -2752,28 +2752,54 @@ if (CurrentScreen == "ChatRoom") {
             var reputation = stringReputation2[1];
             var level = stringReputation2[2]; 
             if (reputation == "abdl") {
-                var current = ReputationGet("ABDL");
-                ReputationChange("ABDL", (level-current));
+                DialogSetReputation("ABDL", level);
+            }
+            else if (reputation == "amplector") {
+                DialogSetReputation("HouseMaiestas", 0);
+	        DialogSetReputation("HouseVincula", 0);
+	        DialogSetReputation("HouseAmplector", 0);
+	        DialogSetReputation("HouseCorporis", 0);
+                LogDelete("Mastery", "MagicSchool");
+                DialogSetReputation("HouseAmplector", level);
+            }
+            else if (reputation == "corporis") {
+                DialogSetReputation("HouseMaiestas", 0);
+	        DialogSetReputation("HouseVincula", 0);
+	        DialogSetReputation("HouseAmplector", 0);
+	        DialogSetReputation("HouseCorporis", 0);
+                LogDelete("Mastery", "MagicSchool");
+                DialogSetReputation("HouseCorporis", level);
             }
             else if (reputation == "gambling") {
-                var current = ReputationGet("Gambling");
-                ReputationChange("Gambling", (level-current));
-            }
+                DialogSetReputation("Gambling", level);          
+	    }
             else if (reputation == "gaming") {
-                var current = ReputationGet("Gaming");
-                ReputationChange("Gaming", (level-current));
-            }
+                DialogSetReputation("Gaming", level);           
+	    }
             else if (reputation == "kidnap") {
-                var current = ReputationGet("Kidnap");
-                ReputationChange("Kidnap", (level-current));
-            }
+                DialogSetReputation("Kidnap", level); 
+	    }
             else if (reputation == "larp") {
-                var current = ReputationGet("LARP");
-                ReputationChange("LARP", (level-current));
+                DialogSetReputation("LARP", level);
             }
             else if (reputation == "maid") {
-                var current = ReputationGet("Maid");
-                ReputationChange("Maid", (level-current));
+                DialogSetReputation("Maid", level);
+	    }
+            else if (reputation == "maiestas") {
+                DialogSetReputation("HouseMaiestas", 0);
+	        DialogSetReputation("HouseVincula", 0);
+	        DialogSetReputation("HouseAmplector", 0);
+	        DialogSetReputation("HouseCorporis", 0);
+                LogDelete("Mastery", "MagicSchool");
+                DialogSetReputation("HouseMaiestas", level);
+            }
+            else if (reputation == "vincula") {
+                DialogSetReputation("HouseMaiestas", 0);
+	        DialogSetReputation("HouseVincula", 0);
+	        DialogSetReputation("HouseAmplector", 0);
+	        DialogSetReputation("HouseCorporis", 0);
+                LogDelete("Mastery", "MagicSchool");
+                DialogSetReputation("HouseVincula", level);
             }
         }
     }
