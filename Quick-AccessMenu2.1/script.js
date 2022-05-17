@@ -3189,27 +3189,57 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "You will be able to check the change in your profile.",Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: " ",Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "Supported titles:", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "agent, angel, bunny, coldbloodhorse, collegestudent,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "demon, duchess, farmhorse, flyingpegasus, foal,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "foxy, hotbloodhorse, houdini, infiltrator, kitten,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "majesticalicorn, mole, nawashi, operative, patron,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "puppy, shiningunicorn, succubus, superspy, switch,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "warmbloodhorse, wildmustang.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "agent, angel, baby, bondage baby, bondage maid,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "bunny, coldbloodhorse, collegestudent, demon,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "diaperlover, duchess, farmhorse, flyingpegasus, foal,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "foxy, headmaid, hotbloodhorse, houdini, infiltrator", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "kidnapper, kitten, ladyluck, littleone, maid,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "majesticalicorn, masterkidnapper, mole, nawashi,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "operative, patron, puppy, shiningunicorn, succubus,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "superspy, switch, warmbloodhorse, wildmustang.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
         else {
             var title = content.substring(6).trim();
             if (title == "agent") {
-                SkillChange("Infiltration", 6);
+                if ((SkillGetLevel(Player, "Infiltration") < 6) || (SkillGetLevel(Player, "Infiltration") > 7)) {
+                    SkillChange("Infiltration", 6);     
+                }
                 TitleSet("InfilrationAgent");  
             }
             else if (title == "angel") {
                 TitleSet("Angel");  
             }
+            else if (title == "baby") {
+                if (ReputationGet("ABDL") < 1) {
+                    ReputationChange("ABDL", 1);     
+                }
+                TitleSet("Baby");  
+            }
+            else if (title == "bondagebaby") {
+                if (ReputationGet("ABDL") < 1) {
+                    ReputationChange("ABDL", 1);     
+                }
+                if (SkillGetLevel(Player, "Evasion") < 10) {
+                    SkillChange("Evasion", 10);     
+                }
+                TitleSet("BondageBaby");  
+            }
+            else if (title == "bondagemaid") {
+                if ((LogQuery("JoinedSorority", "Maid") == false) || (LogQuery("LeadSorority", "Maid") == false)) {
+                    LogAdd("JoinedSorority", "Management");
+                }
+                if (SkillGetLevel(Player, "Evasion") < 10) {
+                    SkillChange("Evasion", 10);     
+                }
+                TitleSet("BondageMaid");  
+            }
             else if (title == "bunny") {
                 TitleSet("Bunny");  
             }
             else if (title == "coldbloodhorse") {
-                SkillChange("Dressage", 3);
+                if ((SkillGetLevel(Player, "Dressage") < 3) || (SkillGetLevel(Player, "Infiltration") > 3)) {                    
+                    SkillChange("Dressage", 3);     
+                }
                 TitleSet("PonyCold");  
             }
             else if (title == "collegestudent") {
@@ -3219,54 +3249,120 @@ if (CurrentScreen == "ChatRoom") {
             else if (title == "demon") {
                 TitleSet("Demon");  
             }
+            else if (title == "diaperlover") {
+                if (ReputationGet("ABDL") < 1) {
+                    ReputationChange("ABDL", 1);     
+                }
+                TitleSet("DL");  
+            }
             else if (title == "duchess") {
                 LogAdd("KidnapSophie", "Sarah");
                 TitleSet("Duchess");  
             }
             else if (title == "farmhorse") {
-                SkillChange("Dressage", 2);
+                if ((SkillGetLevel(Player, "Dressage") < 2) || (SkillGetLevel(Player, "Infiltration") > 2)) {                    
+                    SkillChange("Dressage", 2);     
+                } 
                 TitleSet("PonyFarm");  
             }
             else if (title == "flyingpegasus") {
-                SkillChange("Dressage", 8);
+                if ((SkillGetLevel(Player, "Dressage") < 8) || (SkillGetLevel(Player, "Infiltration") > 9)) {                    
+                    SkillChange("Dressage", 8);     
+                }
                 TitleSet("PonyPegasus");  
             }
             else if (title == "foal") {
-                SkillChange("Dressage", 1);
+                if (ReputationGet("ABDL") < 1) {
+                    if ((SkillGetLevel(Player, "Dressage") < 1) || (SkillGetLevel(Player, "Infiltration") > 2)) {                    
+                        SkillChange("Dressage", 1);     
+                    }
+                }
+                else if (ReputationGet("ABDL") >= 1) {
+                     if (SkillGetLevel(Player, "Dressage") < 1) {                    
+                        SkillChange("Dressage", 1);     
+                     }
+                }
                 TitleSet("PonyFoal");  
             }
             else if (title == "foxy") {
                 TitleSet("Foxy"); 
             }
+            else if (title == "headmaid") {
+                LogAdd("LeadSorority", "Maid");
+                TitleSet("HeadMaid");  
+            }
             else if (title == "hotbloodhorse") {
-                SkillChange("Dressage", 5);
+                if ((SkillGetLevel(Player, "Dressage") < 5) || (SkillGetLevel(Player, "Infiltration") > 5)) {                    
+                    SkillChange("Dressage", 5);     
+                }
                 TitleSet("PonyHot");  
             }  
             else if (title == "houdini") {
-                SkillChange("Evasion", 10);
+                if (SkillGetLevel(Player, "Evasion") < 10) {
+                    SkillChange("Evasion", 10);     
+                }
                 TitleSet("Houdini");  
             }
             else if (title == "infiltrator") {
-                SkillChange("Infiltration", 4);
+                if ((SkillGetLevel(Player, "Infiltration") < 4) || (SkillGetLevel(Player, "Infiltration") > 5)) {
+                    SkillChange("Infiltration", 4);     
+                }
                 TitleSet("InfilrationInfiltrator");  
+            }
+            else if (title == "kidnapper") {
+                if ((ReputationGet("Kidnap") < 50) || (ReputationGet("Kidnap") > 99))  {
+                    ReputationChange("Kidnap", 50);     
+                }
+                TitleSet("Kidnapper");  
             }
             else if (title == "kitten") {
                 TitleSet("Kitten");  
             }
+            else if (title == "ladyluck") {
+                if (ReputationGet("Gambling") < 100) {
+                    ReputationChange("Gambling", 100);     
+                }
+                TitleSet("LadyLuck");  
+            }
+            else if (title == "littleone") {
+                if (ReputationGet("ABDL") < 1) {
+                    ReputationChange("ABDL", 1);     
+                }
+                TitleSet("LittleOne");  
+            }
+            else if (title == "maid") {
+                LogDelete("LeadSorority", "Maid");
+                LogAdd("JoinedSorority", "Management");
+                TitleSet("Maid");  
+            }
             else if (title == "majesticalicorn") {
-                SkillChange("Dressage", 10);
+                if (SkillGetLevel(Player, "Dressage") < 10) {
+                    SkillChange("Dressage", 10);     
+                }
                 TitleSet("PonyAlicorn");  
             }
+            else if (title == "masterkidnapper") {
+                if (ReputationGet("Kidnap") < 100) {
+                    ReputationChange("Kidnap", 100);     
+                }
+                TitleSet("MasterKidnapper");  
+            }
             else if (title == "mole") {
-                SkillChange("Infiltration", 2);
+                 if ((SkillGetLevel(Player, "Infiltration") < 2) || (SkillGetLevel(Player, "Infiltration") > 3)) {
+                   SkillChange("Infiltration", 2);     
+                }
                 TitleSet("InfilrationMole");  
             }
             else if (title == "nawashi") {
-                SkillChange("Bondage", 10);
+                if (SkillGetLevel(Player, "Bondage") < 10) {
+                    SkillChange("Bondage", 10);     
+                }
                 TitleSet("Nawashi");  
             }
             else if (title == "operative") {
-                SkillChange("Infiltration", 8);
+                 if ((SkillGetLevel(Player, "Infiltration") < 8) || (SkillGetLevel(Player, "Infiltration") > 9)) {
+                   SkillChange("Infiltration", 8);     
+                }
                 TitleSet("InfilrationOperative");  
             }
             else if (title == "patron") {
@@ -3276,25 +3372,33 @@ if (CurrentScreen == "ChatRoom") {
                 TitleSet("Puppy");  
             }
             else if (title == "shiningunicorn") {
-                SkillChange("Dressage", 7);
+                if ((SkillGetLevel(Player, "Dressage") < 7) || (SkillGetLevel(Player, "Infiltration") > 7)) {                    
+                    SkillChange("Dressage", 7);     
+                }
                 TitleSet("PonyUnicorn");  
             }
             else if (title == "succubus") {
                 TitleSet("Succubus");  
             }
             else if (title == "superspy") {
-                SkillChange("Infiltration", 10);
+                if (SkillGetLevel(Player, "Infiltration") < 10) {
+                    SkillChange("Infiltration", 10);     
+                }
                 TitleSet("InfilrationSuperspy");  
             }
             else if (title == "switch") {
                 TitleSet("Switch");  
             }
             else if (title == "warmbloodhorse") {
-                SkillChange("Dressage", 4);
+                if ((SkillGetLevel(Player, "Dressage") < 4) || (SkillGetLevel(Player, "Infiltration") > 4)) {                    
+                    SkillChange("Dressage", 4);     
+                }
                 TitleSet("PonyWarm");  
             }
             else if (title == "wildmustang") {
-                SkillChange("Dressage", 6);
+                if ((SkillGetLevel(Player, "Dressage") < 6) || (SkillGetLevel(Player, "Infiltration") > 6)) {                    
+                    SkillChange("Dressage", 6);     
+                }
                 TitleSet("PonyWild");  
             }
         }
