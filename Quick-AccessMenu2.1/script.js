@@ -870,7 +870,10 @@ if (CurrentScreen == "ChatRoom") {
         var targetname = content.substring(8).trim();
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+	var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if (target[0] == null) {
+           var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	}
 	if (target[0] != null) { 
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers put random clothes on "+target[0].Name+" body."}]});        
             if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
@@ -1026,7 +1029,10 @@ if (CurrentScreen == "ChatRoom") {
             var targetname = stringChange2[2];
             if (targetname  == undefined) {targetname = Player.Name};
             var targetfinder = new RegExp('^'+targetname+'', 'i');
-            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+	    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+            if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	    }	
             if (target[0] != null) {
                 if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change your normal diapers and allows you to use the /diaper change1 command.", Type: "Whisper", Target: target[0].MemberNumber })};
                 refreshDiaper("panties");
@@ -1039,7 +1045,10 @@ if (CurrentScreen == "ChatRoom") {
             var targetname = stringChange2[2];
             if (targetname  == undefined) {targetname = Player.Name};
             var targetfinder = new RegExp('^'+targetname+'', 'i');
-            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+            if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	    }	
 	    if (target[0] != null) {
                 if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change your chastity diapers and allows you to use the /diaper change2 command.", Type: "Whisper", Target: target[0].MemberNumber })};
                 refreshDiaper("chastity");
@@ -1052,7 +1061,10 @@ if (CurrentScreen == "ChatRoom") {
             var targetname = stringChange2[2];
             if (targetname  == undefined) {targetname = Player.Name};
             var targetfinder = new RegExp('^'+targetname+'', 'i');
-            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+            if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	    }	
 	    if (target[0] != null) {
                 if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change all your diapers and allows you to use the /diaper change3 command.", Type: "Whisper", Target: target[0].MemberNumber })};
                 refreshDiaper("both");
@@ -1557,7 +1569,10 @@ if (CurrentScreen == "ChatRoom") {
         } 
         var targetname = stringLock2[1];
         var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	}	
 	if (target[0] != null) {
 	  ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make appear locks on "+target[0].Name+" body."}]});        
           if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
@@ -2271,7 +2286,10 @@ if (CurrentScreen == "ChatRoom") {
         var targetname = content.substring(6).trim();
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	}	
 	if (target[0] != null) {
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear the clothes on "+target[0].Name+" body."}]});        
             if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
@@ -2390,7 +2408,10 @@ if (CurrentScreen == "ChatRoom") {
         var targetname = stringPose2[2];
         if (targetname  == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	}	
 	if (target[0] != null) {   
             if (target[0] !== Player) {ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (Player.Name+" helps pose "+target[0].Name )}] });};
             if (content.includes("armsfree")) {
@@ -2695,7 +2716,10 @@ if (CurrentScreen == "ChatRoom") {
         var targetname = content.substring(8).trim();
 	if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	}	
         if (target[0] != null) {
             InformationSheetLoadCharacter(target[0]);
             OnlineProfileRun();
@@ -2709,7 +2733,10 @@ if (CurrentScreen == "ChatRoom") {
         var targetname = content.substring(10).trim();
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	}	
 	if (target[0] != null) {
             ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers apply random clothes and bindings on "+target[0].Name+" body."}]});        
             if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
@@ -2725,7 +2752,10 @@ if (CurrentScreen == "ChatRoom") {
         var targetname = content.substring(8).trim();
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	}	
 	if (target[0] != null) {
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear the bindings on "+target[0].Name+" body."}]});        
             if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
@@ -2799,7 +2829,10 @@ if (CurrentScreen == "ChatRoom") {
         var targetname = content.substring(9).trim();
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	}	
 	if (target[0] != null) {
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers apply random restraints on "+target[0].Name+" body."}]});        
             if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
@@ -3408,7 +3441,10 @@ if (CurrentScreen == "ChatRoom") {
         var targetname = content.substring(13).trim();
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	}	
 	if (target[0] != null) {
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear all bindings and toys on "+target[0].Name+" body."}]});        
             if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
@@ -3421,7 +3457,10 @@ if (CurrentScreen == "ChatRoom") {
         var targetname = content.substring(10).trim();
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	}	
 	if (target[0] != null) {
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers put "+target[0].Name+" in random underwear."}]});        
             if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
@@ -3437,7 +3476,10 @@ if (CurrentScreen == "ChatRoom") {
         var targetname = stringUnlock2[1];
         if (targetname == undefined) {targetname = Player.Name};
         var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	}
 	if (target[0] != null) {
 	  ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text:"Magical lasers make disappear locks on "+target[0].Name+" body."}]});        
           if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has used console to alter appearance. If this is undesired, blacklist player.", Type: "Whisper", Target: target[0].MemberNumber })};
@@ -3683,7 +3725,10 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/wardrobe") == 0) {
         var targetname = content.substring(10).trim();
         var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	}
 	if (target[0] != null) {
             target[0].OnlineSharedSettings.AllowFullWardrobeAccess = true;
             target[0].OnlineSharedSettings.BlockBodyCosplay = false;
@@ -3695,7 +3740,10 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/whisper") == 0) {
         var targetname = content.substring(8).trim();
         var targetfinder = new RegExp('^'+targetname+'', 'i');
-        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)) || (A.Nickname.match(targetfinder)));
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        if (target[0] == null) {
+               var target = ChatRoomCharacter.filter(A => (A.Nickname.match(targetfinder)));
+	}
 	if (target[0] != null) {
             ChatRoomTargetMemberNumber = target[0].MemberNumber;
 	}	
