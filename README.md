@@ -39,7 +39,7 @@ Changes for future version 1.4
 * New command: reputation to change the level of a specified reputation
 * New command: savename to give a definitive status to a temporary nickname
 * New command: skill to change the level of a specified skill
-* New command: title to change your title without using the title menu (so you can preserve a temporary nickname and you will have more options than the title menu, because this command also changes required parameters to get the specified title)
+* New command: title to change your title without using the title menu (so you can preserve a temporary nickname!) - you have more options than the title menu , because this command also changes required parameters to get the specified title
 * Changes in the Moaner: 
   - Integrated the help in QAM help (the command is now /moaner instead of /moaner help)
   - Separated help and status (/moaner and /moaner status as commands)
