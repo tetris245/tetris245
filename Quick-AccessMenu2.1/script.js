@@ -3304,6 +3304,24 @@ if (CurrentScreen == "ChatRoom") {
                 }
                 TitleSet("LittleOne");  
             }
+	    else if (title == "magician") {
+                if ((ReputationGet("HouseVincula") < 50) || (ReputationGet("HouseVincula") > 99))  {
+                    ReputationChange("HouseAmplector", 0); 
+                    ReputationChange("HouseCorporis", 0);       
+                    ReputationChange("HouseMaiestas", 0);     
+                    ReputationChange("HouseVincula", 50);     
+                }
+                TitleSet("MagicSchoolMagician");  
+            }
+            else if (title == "magus") {
+                if (ReputationGet("HouseMaiestas") < 100) {
+                    ReputationChange("HouseAmplector", 0); 
+                    ReputationChange("HouseCorporis", 0);       
+                    ReputationChange("HouseVincula", 0);     
+                    ReputationChange("HouseMaiestas", 100);     
+                }
+                TitleSet("MagicSchoolMagus");  
+            }	
             else if (title == "maid") {
                 LogDelete("LeadSorority", "Maid");
                 LogAdd("JoinedSorority", "Management");
@@ -3339,11 +3357,29 @@ if (CurrentScreen == "ChatRoom") {
                 }
                 TitleSet("InfilrationOperative");  
             }
+	    else if (title == "oracle") {
+                if (ReputationGet("HouseAmplector") < 100) {
+                    ReputationChange("HouseCorporis", 0); 
+                    ReputationChange("HouseMaiestas", 0);      
+                    ReputationChange("HouseVincula", 0);     
+                    ReputationChange("HouseAmplector", 100);     
+                }
+                TitleSet("MagicSchoolOracle");  
+            }
             else if (title == "patron") {
                 TitleSet("Patron");  
             }
             else if (title == "puppy") {
                 TitleSet("Puppy");  
+            }
+	    else if (title == "sage") {
+                if ((ReputationGet("HouseAmplector") < 50) || (ReputationGet("HouseAmplector") > 99)) {
+                    ReputationChange("HouseCorporis", 0); 
+                    ReputationChange("HouseMaiestas", 0);      
+                    ReputationChange("HouseVincula", 0);     
+                    ReputationChange("HouseAmplector", 50);  
+                }
+                TitleSet("MagicSchoolSage");  
             }
             else if (title == "shiningunicorn") {
                 if ((SkillGetLevel(Player, "Dressage") < 7) || (SkillGetLevel(Player, "Infiltration") > 7)) {                    
@@ -3351,6 +3387,15 @@ if (CurrentScreen == "ChatRoom") {
                 }
                 TitleSet("PonyUnicorn");  
             }
+	    else if (title == "sorcerer") {
+                if (ReputationGet("HouseVincula") < 100) {
+                    ReputationChange("HouseAmplector", 0); 
+                    ReputationChange("HouseCorporis", 0);       
+                    ReputationChange("HouseMaiestas", 0);     
+                    ReputationChange("HouseVincula", 100);     
+                }
+                TitleSet("MagicSchoolSorcerer");  
+            }	
             else if (title == "succubus") {
                 TitleSet("Succubus");  
             }
@@ -3363,6 +3408,15 @@ if (CurrentScreen == "ChatRoom") {
             else if (title == "switch") {
                 TitleSet("Switch");  
             }
+	    else if (title == "warlock") {
+                if (ReputationGet("HouseCorporis") < 100) {
+                    ReputationChange("HouseAmplector", 0); 
+                    ReputationChange("HouseMaiestas", 0);      
+                    ReputationChange("HouseVincula", 0);     
+                    ReputationChange("HouseCorporis", 100);     
+                }
+                TitleSet("MagicSchoolWarlock");  
+            }	
             else if (title == "warmbloodhorse") {
                 if ((SkillGetLevel(Player, "Dressage") < 4) || (SkillGetLevel(Player, "Infiltration") > 4)) {                    
                     SkillChange("Dressage", 4);     
@@ -3374,6 +3428,24 @@ if (CurrentScreen == "ChatRoom") {
                     SkillChange("Dressage", 6);     
                 }
                 TitleSet("PonyWild");  
+            }
+	    else if (title == "witch") {
+                if ((ReputationGet("HouseCorporis") < 50) || (ReputationGet("HouseCorporis") > 99)) {
+                    ReputationChange("HouseAmplector", 0); 
+                    ReputationChange("HouseMaiestas", 0);      
+                    ReputationChange("HouseVincula", 0);     
+                    ReputationChange("HouseCorporis", 50);     
+                }
+                TitleSet("MagicSchoolWitch");  
+            }
+            else if (title == "wizard") {
+                if ((ReputationGet("HouseMaiestas") < 50) || (ReputationGet("HouseMaiestas") > 99)) {
+                    ReputationChange("HouseAmplector", 0); 
+                    ReputationChange("HouseCorporis", 0);       
+                    ReputationChange("HouseVincula", 0);     
+                    ReputationChange("HouseMaiestas", 50);     
+                }
+                TitleSet("MagicSchoolWizard");  
             }
         }
     }
