@@ -2873,9 +2873,9 @@ if (CurrentScreen == "ChatRoom") {
 	    LogAdd("Committed", "Asylum", CurrentTime);
         }	    
 	else if (content.includes("oracle")) {
+	    DialogSetReputation("HouseCorporis", 0);
             DialogSetReputation("HouseMaiestas", 0);
 	    DialogSetReputation("HouseVincula", 0);
-	    DialogSetReputation("HouseCorporis", 0);
             DialogSetReputation("HouseAmplector", 100);
         }
         else if (content.includes("patient")) {
