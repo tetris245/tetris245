@@ -2720,7 +2720,8 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "Quick-Access Menu2: Must be followed by a reputation and a level.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "You will be able to check the change in your profile.",Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: " ",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Reputations with level between 0 and 100: abdl, gambling, gaming, kidnap, larp, maid.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Available reputations: abdl, amplector, corporis, dominant, gambling, gaming, kidnap, larp, maid, maiestas, nurse, patient, submissive, vincula.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Level must be between 0 and 100.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
         else {
             var stringReputation1 = content;
@@ -2744,6 +2745,9 @@ if (CurrentScreen == "ChatRoom") {
 		LogDelete("Mastery", "MagicSchool");
                 DialogSetReputation("HouseCorporis", level);
             }
+	    else if (reputation == "dominant") {
+                DialogSetReputation("Dominant", level);          
+	    }
             else if (reputation == "gambling") {
                 DialogSetReputation("Gambling", level);          
 	    }
@@ -2766,6 +2770,15 @@ if (CurrentScreen == "ChatRoom") {
 		LogDelete("Mastery", "MagicSchool");
                 DialogSetReputation("HouseMaiestas", level);
             }
+	    else if (reputation == "nurse") {
+                DialogSetReputation("Asylum", level);          
+	    }
+            else if (reputation == "patient") {
+                DialogSetReputation("Asylum", -level);          
+	    }
+           else if (reputation == "submissive") {
+                DialogSetReputation("Dominant", -level);          
+	    }
             else if (reputation == "vincula") { 
 	        DialogSetReputation("HouseAmplector", 0);
 	        DialogSetReputation("HouseCorporis", 0);
