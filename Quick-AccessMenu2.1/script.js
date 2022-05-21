@@ -2817,6 +2817,9 @@ if (CurrentScreen == "ChatRoom") {
             ReputationChange('Asylum', 200);
 	    LogAdd("Committed", "Asylum", CurrentTime);
         }
+	else if (content.includes("escapedpatient")) {
+            LogAdd("Escaped", "Asylum", CurrentTime + 86400000);
+        }
         else if (content.includes("headmaid")) {
             LogAdd("LeadSorority", "Maid");
         }
@@ -2904,15 +2907,19 @@ if (CurrentScreen == "ChatRoom") {
             DialogSetReputation("HouseMaiestas", 50);
         }
     	else if (content.endsWith("/roleplay")) {	  
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a role.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "List: clubmistress, clubslave, doctor, headmaid, kidnapper, maid, magician, magus, masterkidnapper, mistress, nurse, oracle, patient, permanentpatient, sage, sorcerer, warlock, witch, wizard.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Be careful with clubslave, you will be forced to complete contract.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "You will be able to check the changes in your profile.",Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a role. You will be able to check the changes in your profile. ", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "List: clubmistress, clubslave, doctor, escapedpatient,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "headmaid, kidnapper, maid, magician, magus,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "masterkidnapper, mistress, nurse, oracle, patient,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "permanentpatient, sage, sorcerer, warlock, witch, wizard.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Be careful with clubslave, you will be forced to complete contract. Similar warning for escapedpatient.", Type: "LocalMessage", Sender: Player.MemberNumber });           
 	}
     }
 	
     else if (content.indexOf("/rolequit") == 0) {
         if (content.includes("asylum")) {
+            LogAdd("Escaped", "Asylum", CurrentTime);
+            LogAdd("Committed", "Asylum", CurrentTime);
             DialogSetReputation("Asylum", 0);
         }	
         else if (content.includes("clubslave")) {
