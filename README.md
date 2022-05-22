@@ -53,7 +53,7 @@ Changes for future version 1.4
 * Updated the roleplay command with the correct names for the 8 magic roles and addition of the escapedpatient role
 * Rewrote two functions related to nickname, so you are not limited to standard characters from English alphabet and spaces
 * Fixed a bug in profile command (no more crash when targetname not found) and applied this fix to other commands with targetname
-* Fixed bugs in roleplay command for masterkidnapper reputation and maid role
+* Fixed bugs in roleplay command for maid and masterkidnapper roles
  
 
 
