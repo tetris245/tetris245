@@ -2827,8 +2827,8 @@ if (CurrentScreen == "ChatRoom") {
             LogAdd("ClubSlave", "Management", CurrentTime + 3600000);
         }
         else if (content.includes("doctor")) {
-            ReputationChange('Asylum', 200);
 	    LogAdd("Committed", "Asylum", CurrentTime);
+	    ReputationChange('Asylum', 200);
         }
 	else if (content.includes("escapedpatient")) {
             LogAdd("Escaped", "Asylum", CurrentTime + 86400000);
@@ -2837,8 +2837,7 @@ if (CurrentScreen == "ChatRoom") {
             LogAdd("LeadSorority", "Maid");
         }
         else if (content.includes("kidnapper")) {
-            ReputationChange("Kidnap", 100);
-            ReputationChange("Kidnap", -50);
+            DialogSetReputation("Kidnap", 50);  
         }	    
 	else if (content.includes("magician")) {
 	    DialogSetReputation("HouseAmplector", 0);
@@ -2866,9 +2865,8 @@ if (CurrentScreen == "ChatRoom") {
             ReputationChange("Dominant", 200);
         }
         else if (content.includes("nurse")) {
-            ReputationChange('Asylum', 200);
-            ReputationChange('Asylum', -50);
 	    LogAdd("Committed", "Asylum", CurrentTime);
+	    DialogSetReputation("Asylum", 50);          
         }	    
 	else if (content.includes("oracle")) {
 	    DialogSetReputation("HouseCorporis", 0);
@@ -2878,8 +2876,7 @@ if (CurrentScreen == "ChatRoom") {
             DialogSetReputation("HouseAmplector", 100);
         }
         else if (content.includes("patient")) {
-            ReputationChange('Asylum', -200);
-            ReputationChange('Asylum', 50);
+            DialogSetReputation("Asylum", -50);         
         }    
         else if (content.includes("permanentpatient")) {
             ReputationChange('Asylum', -200);
