@@ -3178,8 +3178,8 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "majesticalicorn, masterkidnapper, mistress, mole,", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "nawashi, nurse, operative, oracle, patient,", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "patron, permanentpatient, puppy, sage, shiningunicorn,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "sorcerer, succubus, superspy, switch, warlock,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "warmbloodhorse, wildmustang, wizard, witch.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "sorcerer, succubus, superspy, switch, warmbloodhorse,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "warlock, wildmustang, witch, wizard.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
         else {
             var title = content.substring(6).trim();
