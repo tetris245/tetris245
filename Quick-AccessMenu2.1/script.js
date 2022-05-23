@@ -3169,13 +3169,17 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: " ",Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "Supported titles:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "agent, angel, baby, bondage baby, bondage maid,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "bunny, coldbloodhorse, collegestudent, demon,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "diaperlover, duchess, farmhorse, flyingpegasus, foal,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "foxy, headmaid, hotbloodhorse, houdini, infiltrator", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "kidnapper, kitten, ladyluck, littleone, maid,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "majesticalicorn, masterkidnapper, mole, nawashi,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "operative, patron, puppy, shiningunicorn, succubus,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "superspy, switch, warmbloodhorse, wildmustang.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "bunny, clubslave, coldbloodhorse, collegestudent,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "demon, diaperlover, doctor, doll, drone, duchess,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "escapedpatient, farmhorse, flyingpegasus, foal, foxy,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "goodgirl, goodslave, goodslavegirl, headmaid,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "hotbloodhorse, houdini, infiltrator, kidnapper,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "kitten, ladyluck, littleone, magician, magus, maid,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "majesticalicorn, masterkidnapper, mistress, mole,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "nawashi, nurse, operative, oracle, patient,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "patron, permanentpatient, puppy, sage, shiningunicorn,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "sorcerer, succubus, superspy, switch, warlock,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "warmbloodhorse, wildmustang, wizard, witch.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
         else {
             var title = content.substring(6).trim();
@@ -3215,6 +3219,9 @@ if (CurrentScreen == "ChatRoom") {
             else if (title == "bunny") {
                 TitleSet("Bunny");  
             }
+	    else if (title == "clubslave") {
+                LogAdd("ClubSlave", "Management", CurrentTime + 3600000);
+            }	
             else if (title == "coldbloodhorse") {
                 if ((SkillGetLevel(Player, "Dressage") < 3) || (SkillGetLevel(Player, "Infiltration") > 3)) {                    
                     SkillChange("Dressage", 3);     
@@ -3233,10 +3240,30 @@ if (CurrentScreen == "ChatRoom") {
                     ReputationChange("ABDL", 1);     
                 }
                 TitleSet("DL");  
+            }	
+            else if (title == "doctor") {
+                if (ReputationGet("Asylum") < 100) {
+                    ReputationChange("Asylum", 100);     
+                }
+                LogAdd("Committed", "Asylum", CurrentTime);
+                TitleSet("Doctor");  
+            }
+            else if (title == "doll") {
+                TitleSet("Doll");  
+            }
+            else if (title == "drone") {
+                if (AsylumGGTSGetLevel(Player) < 6) { 
+                    Player.Game.GGTS.Level = 6;
+                    ServerAccountUpdate.QueueData({ Game: Player.Game });
+                }
+                TitleSet("Drone");   
             }
             else if (title == "duchess") {
                 LogAdd("KidnapSophie", "Sarah");
                 TitleSet("Duchess");  
+            }
+	    else if (title == "escapedpatient") {
+                LogAdd("Escaped", "Asylum", CurrentTime + 86400000);
             }
             else if (title == "farmhorse") {
                 if ((SkillGetLevel(Player, "Dressage") < 2) || (SkillGetLevel(Player, "Infiltration") > 2)) {                    
@@ -3266,7 +3293,28 @@ if (CurrentScreen == "ChatRoom") {
             else if (title == "foxy") {
                 TitleSet("Foxy"); 
             }
-            else if (title == "headmaid") {
+	    else if (title == "goodgirl") {
+                if (AsylumGGTSGetLevel(Player) < 4) { 
+                    Player.Game.GGTS.Level = 4;
+                    ServerAccountUpdate.QueueData({ Game: Player.Game });
+                }
+                TitleSet("GoodGirl");   
+           }
+           else if (title == "goodslave") {
+               if (AsylumGGTSGetLevel(Player) < 6) { 
+                    Player.Game.GGTS.Level = 6;
+                    ServerAccountUpdate.QueueData({ Game: Player.Game });
+               }
+               TitleSet("GoodSlave");   
+           }
+           else if (title == "goodslavegirl") {
+               if (AsylumGGTSGetLevel(Player) < 5) { 
+                    Player.Game.GGTS.Level = 5;
+                    ServerAccountUpdate.QueueData({ Game: Player.Game });
+               }	
+               TitleSet("GoodSlaveGirl");   
+           }   
+           else if (title == "headmaid") {
                 LogAdd("LeadSorority", "Maid");
                 TitleSet("HeadMaid");  
             }
@@ -3346,6 +3394,9 @@ if (CurrentScreen == "ChatRoom") {
                 }
                 TitleSet("MasterKidnapper");  
             }
+	    else if (title == "mistress") {
+                LogAdd("ClubMistress", "Management"); 
+            }	
             else if (title == "mole") {
                  if ((SkillGetLevel(Player, "Infiltration") < 2) || (SkillGetLevel(Player, "Infiltration") > 3)) {
                    SkillChange("Infiltration", 2);     
@@ -3357,6 +3408,13 @@ if (CurrentScreen == "ChatRoom") {
                     SkillChange("Bondage", 10);     
                 }
                 TitleSet("Nawashi");  
+            }
+	    else if (title == "nurse") {
+                if ((ReputationGet("Asylum") < 50) || (ReputationGet("Asylum") > 99)) {
+                    ReputationChange("Asylum", 50);     
+                }
+                LogAdd("Committed", "Asylum", CurrentTime);
+                TitleSet("Nurse");  
             }
             else if (title == "operative") {
                  if ((SkillGetLevel(Player, "Infiltration") < 8) || (SkillGetLevel(Player, "Infiltration") > 9)) {
@@ -3374,8 +3432,20 @@ if (CurrentScreen == "ChatRoom") {
                 }
                 TitleSet("MagicSchoolOracle");  
             }
+	    else if (title == "patient") {
+                if ((ReputationGet("Asylum") > -50) || (ReputationGet("Asylum") < -99)) {
+                    ReputationChange("Asylum", -50);     
+                }
+                TitleSet("Patient");  
+            }
             else if (title == "patron") {
                 TitleSet("Patron");  
+            }
+	    else if (title == "permanentpatient") {
+                if (ReputationGet("Asylum") > -100) {
+                    ReputationChange("Asylum", -100);     
+                }
+                TitleSet("PermanentPatient");  
             }
             else if (title == "puppy") {
                 TitleSet("Puppy");  
