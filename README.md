@@ -51,6 +51,7 @@ Changes for future version 1.4
 * Improved the hiddenmessages command
 * Updated the name command to choose a temporary nickname instead of the name
 * Updated the roleplay command with the correct names for the 8 magic roles and addition of the escapedpatient role
+* Updated the rolequit command with the ggts option (back to level 0 of ggts training)
 * Rewrote two functions related to nickname, so you are not limited to standard characters from English alphabet and spaces
 * Fixed a bug in profile command (no more crash when targetname not found) and applied this fix to other commands with targetname
 * Fixed bugs in roleplay command for maid and masterkidnapper roles
