@@ -1,6 +1,6 @@
 Quick-AccessMenu2.1 - Addon for Ben987's BondageClub game 
 
-Most recent release is version 1.3. - Visit also our WIP wiki: https://github.com/tetris245/tetris245/wiki
+Most recent release is version 1.3. - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
 Installation and credits
 
