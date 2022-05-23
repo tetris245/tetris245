@@ -126,7 +126,7 @@ if (CurrentScreen == "ChatRoom") {
         else if (content.includes("misc")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Misc commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/clubhelp = displays the standard commands of the game (and optionaly the BCE commands).", Type: "LocalMessage", Sender: Player.MemberNumber });  
-            ChatRoomMessage({ Content: "/help (category) = displays the QAM commands. Available categories: bondage, character, clothing, escape, misc, pleasure, talking, visual, zones.", Type: "LocalMessage", Sender: Player.MemberNumber });  
+            ChatRoomMessage({ Content: "/help (category) = displays the QAM commands. Available categories: bondage, character, clothing, escape, fun, misc, pleasure, talking, visual, zones.", Type: "LocalMessage", Sender: Player.MemberNumber });  
             ChatRoomMessage({ Content: "/login (accountname) (password)  =  logs in a new account.", Type: "LocalMessage", Sender: Player.MemberNumber });  
             ChatRoomMessage({ Content: "/relog  =  relogs.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/unrestrict  = Using will give more info.  Removes all restrictions from game. Can use maid drink tray/other stuff. Submissives should use /unrestrict soft", Type: "LocalMessage", Sender: Player.MemberNumber });
