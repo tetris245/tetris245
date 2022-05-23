@@ -2938,7 +2938,12 @@ if (CurrentScreen == "ChatRoom") {
             ManagementIsClubSlave = function () { return false }
             ManagementClubSlaveDialog = function (Player) {}
             ManagementFinishClubSlave()
-        }	
+        }
+	else if (content.includes("ggts")) {
+            Level = parseInt(0);
+            Player.Game.GGTS.Level = 0;
+            ServerAccountUpdate.QueueData({ Game: Player.Game });   
+	}	
         else if (content.includes("kidnapper")) {
             DialogSetReputation("Kidnap", 0)
         }	    
@@ -2960,7 +2965,8 @@ if (CurrentScreen == "ChatRoom") {
     	else if (content.endsWith("/rolequit")) {	  
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a role or clubarea. List:",Type: "LocalMessage", Sender: Player.MemberNumber });  
             ChatRoomMessage({ Content: "asylum to cease being doctor, nurse, patient or permanent patient.",Type: "LocalMessage", Sender: Player.MemberNumber });           
-            ChatRoomMessage({ Content: "clubslave to break the club slave contract.",Type: "LocalMessage", Sender: Player.MemberNumber });           
+            ChatRoomMessage({ Content: "clubslave to break the club slave contract.",Type: "LocalMessage", Sender: Player.MemberNumber });  
+	    ChatRoomMessage({ Content: "ggts to leave ggts training (back to level 0).",Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "kidnapper to cease being kidnapper or master kidnapper.",Type: "LocalMessage", Sender: Player.MemberNumber }); 
 	    ChatRoomMessage({ Content: "magician to cease one of the 8 magic roles.",Type: "LocalMessage", Sender: Player.MemberNumber }); 
             ChatRoomMessage({ Content: "management or mistress to cease being mistress or club mistress.",Type: "LocalMessage", Sender: Player.MemberNumber });                
@@ -3253,6 +3259,7 @@ if (CurrentScreen == "ChatRoom") {
             }
             else if (title == "drone") {
                 if (AsylumGGTSGetLevel(Player) < 6) { 
+		    Level = parseInt(6);
                     Player.Game.GGTS.Level = 6;
                     ServerAccountUpdate.QueueData({ Game: Player.Game });
                 }
@@ -3295,6 +3302,7 @@ if (CurrentScreen == "ChatRoom") {
             }
 	    else if (title == "goodgirl") {
                 if (AsylumGGTSGetLevel(Player) < 4) { 
+		    Level = parseInt(4);
                     Player.Game.GGTS.Level = 4;
                     ServerAccountUpdate.QueueData({ Game: Player.Game });
                 }
@@ -3302,6 +3310,7 @@ if (CurrentScreen == "ChatRoom") {
            }
            else if (title == "goodslave") {
                if (AsylumGGTSGetLevel(Player) < 6) { 
+		    Level = parseInt(6);
                     Player.Game.GGTS.Level = 6;
                     ServerAccountUpdate.QueueData({ Game: Player.Game });
                }
@@ -3309,6 +3318,7 @@ if (CurrentScreen == "ChatRoom") {
            }
            else if (title == "goodslavegirl") {
                if (AsylumGGTSGetLevel(Player) < 5) { 
+		    Level = parseInt(5);
                     Player.Game.GGTS.Level = 5;
                     ServerAccountUpdate.QueueData({ Game: Player.Game });
                }	
