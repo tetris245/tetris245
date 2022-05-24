@@ -4118,7 +4118,7 @@ function M_MOANER_initControls(){
 		M_MOANER_orgasmActive=true;
 		M_MOANER_vibratorActive=true;
 		M_MOANER_spankActive=true;
-		M_MOANER_scriptOn=true;
+		M_MOANER_scriptOn=false;
 		profileName="default";
 		//M_MOANER_saveControls();
 	}else{
