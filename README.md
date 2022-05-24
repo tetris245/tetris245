@@ -41,6 +41,7 @@ Changes for future version 1.4
 * New command: skill to change the level of a specified skill
 * New command: title to change your title without using the title menu (so you can preserve a temporary nickname!) - you have more options than the title menu, because this command also changes required parameters to get the specified title
 * Changes in the Moaner: 
+  - Is now disabled (with default moans profile) when you have fully closed the browser and open it again
   - Integrated the help in QAM help (the command is now /moaner instead of /moaner help)
   - Separated help and status (/moaner and /moaner status as commands)
   - Integrated all Moaner commands in the QAM commands
