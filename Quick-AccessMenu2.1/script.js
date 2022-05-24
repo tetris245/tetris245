@@ -974,7 +974,6 @@ if (CurrentScreen == "ChatRoom") {
     }  
 	
     else if (content.indexOf("/diaper") == 0) {
-
         if (content.includes("change1")) {
             var stringChange1 = content;
             var stringChange2 = stringChange1.split(/[ ,]+/);
@@ -987,7 +986,6 @@ if (CurrentScreen == "ChatRoom") {
                 refreshDiaper("panties");
 	    }    
         }
-
         else if (content.includes("change2")) {
             var stringChange1 = content;
             var stringChange2 = stringChange1.split(/[ ,]+/);
@@ -1000,7 +998,6 @@ if (CurrentScreen == "ChatRoom") {
                 refreshDiaper("chastity");
 	    }
         }
-
         else if (content.includes("change3")) {
             var stringChange1 = content;
             var stringChange2 = stringChange1.split(/[ ,]+/);
@@ -1012,16 +1009,14 @@ if (CurrentScreen == "ChatRoom") {
                 if ((target[0].Name == Player.Name) == false) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" will change all your diapers and allows you to use the /diaper change3 command.", Type: "Whisper", Target: target[0].MemberNumber })};
                 refreshDiaper("both");
 	    }    
-        }
-      
+        }      
         else if (content.includes("setdesperation")) {
             var stringSet1 = content;
             var stringSet2 = stringSet1.split(/[ ,]+/);
             var setchange = stringSet2[2];
             diaperDefaultValues.desperationLevel = setchange; 
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Your desperation level has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        }
- 
+        } 
 	else if (content.includes("setmesschance")) {
             var stringSet1 = content;
             var stringSet2 = stringSet1.split(/[ ,]+/);
@@ -1029,7 +1024,6 @@ if (CurrentScreen == "ChatRoom") {
             diaperDefaultValues.messChance = setchange; 
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Your chance to mess diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
-
 	else if (content.includes("setmess1")) {
             if (InventoryGet(Player, "Panties") != null) {
                 if (InventoryGet(Player, "Panties").Asset.Name == "BulkyDiaper" || InventoryGet(Player, "Panties").Asset.Name === "PoofyDiaper") {
@@ -1042,8 +1036,7 @@ if (CurrentScreen == "ChatRoom") {
                     }
                 }
             }
-        }
-	    
+        }	    
 	else if (content.includes("setmess2")) {
             if (InventoryGet(Player, "ItemPelvis") != null) {
                 if (InventoryGet(Player, "ItemPelvis").Asset.Name == "BulkyDiaper" || InventoryGet(Player, "ItemPelvis").Asset.Name === "PoofyDiaper") {
@@ -1056,8 +1049,7 @@ if (CurrentScreen == "ChatRoom") {
                     }
                 }
             }
-        }
-	    
+        }	    
 	else if (content.includes("setregression")) {
             var stringSet1 = content;
             var stringSet2 = stringSet1.split(/[ ,]+/);
@@ -1065,7 +1057,6 @@ if (CurrentScreen == "ChatRoom") {
             diaperDefaultValues.regressionLevel = setchange;
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Your regression level has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
-
         else if (content.includes("settimer")) {
             var stringSet1 = content;
             var stringSet2 = stringSet1.split(/[ ,]+/);
@@ -1073,15 +1064,13 @@ if (CurrentScreen == "ChatRoom") {
             diaperDefaultValues.baseTimer = setchange; 
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Your wet/mess timer has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
-
 	else if (content.includes("setwetchance")) {
             var stringSet1 = content;
             var stringSet2 = stringSet1.split(/[ ,]+/);
             var setchange = stringSet2[2];
             diaperDefaultValues.wetChance = setchange; 
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Your chance to wet diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        }
-	    
+        }	    
 	else if (content.includes("setwet1")) {
             if (InventoryGet(Player, "Panties") != null) {
                 if (InventoryGet(Player, "Panties").Asset.Name == "BulkyDiaper" || InventoryGet(Player, "Panties").Asset.Name === "PoofyDiaper") {
@@ -1095,7 +1084,6 @@ if (CurrentScreen == "ChatRoom") {
                 }
             }
         }
-
         else if (content.includes("setwet2")) {
             if (InventoryGet(Player, "ItemPelvis") != null) {
                 if (InventoryGet(Player, "ItemPelvis").Asset.Name == "BulkyDiaper" || InventoryGet(Player, "ItemPelvis").Asset.Name === "PoofyDiaper") {
@@ -1109,19 +1097,15 @@ if (CurrentScreen == "ChatRoom") {
                 }
             }
         }
-
         else if (content.includes("start")) {
             diaperWetter();
         }
-
         else if (content.includes("stop")) {
             stopWetting();
         }
-
         else if (content.includes("tick")) {
             diaperTick();
         }
-
         else if (content.endsWith("/diaper")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an action. You need to wear one or two layers of diapers (only bulky and poofy versions).", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/diaper start to enable the script", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1135,8 +1119,7 @@ if (CurrentScreen == "ChatRoom") {
 	    ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "Customisation (before using /diaper start):", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "Use /diaper custom for detailed info", Type: "LocalMessage", Sender: Player.MemberNumber });
-       }
-		
+       }		
 	else if (content.includes("custom")) {
 	    ChatRoomMessage({ Content: "Customisation (before using /diaper start):", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/diaper setdesperation (value between 0 and 3) for desperation level, normally controlled by having a milk bottle used on you", Type: "LocalMessage", Sender: Player.MemberNumber });
