@@ -406,8 +406,15 @@ if (CurrentScreen == "ChatRoom") {
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is worried." }]});
         }  
  	else if (content.endsWith("/anim2")) {	  
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List: angry1, angry2, blink, blush1, blush2, blush3, blush4, blush5, chuckle, closeeyes, closemouth, confused, cuddle, cry, disoriented, distressed, droolreset, droolsides, frown, gaginflate, giggle, glare, grin, happy, iced, kiss1, kiss2, kiss3, laugh, lick, lipbite, narroweyes, neutral, openeyes, openmouth, pout, raisebrows, resetbrows, sad, smile, smirk, spanked, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        }
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List:", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "angry1, angry2, blink, blush1, blush2, blush3, blush4,", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "blush5, chuckle, closeeyes, closemouth, confused, cuddle,", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "cry, disoriented, distressed, droolreset, droolsides, frown,", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "gaginflate, giggle, glare, grin, happy, iced, kiss1, kiss2,", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "kiss3, laugh, lick, lipbite, narroweyes, neutral, openeyes,", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "openmouth, pout, raisebrows, resetbrows, sad, smile,", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "smirk, spanked, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	}
     }
 
     else if (content.indexOf("/arousal") == 0) {
@@ -2329,8 +2336,8 @@ if (CurrentScreen == "ChatRoom") {
 	    ChatRoomMessage({ Content: "armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, ", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "kneel2, legsclosed, legsfree, legsopen, onhorse, pet,", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "sleep, spreadarms1, spreadarms2, spreadeagle1,", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "spreadeagle2, spreadlegs, stand, suspension, tapedhands.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "spreadeagle2, spreadlegs, stand, suspension,", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "Use /pose2 reset (targetname) to back to neutral pose.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	}
         else {    
