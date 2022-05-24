@@ -2324,8 +2324,15 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/pose2") == 0) {
 	if (content.endsWith("/pose2")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must be followed by a pose and optionally a targetname. List: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension, tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        }
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must be followed by a pose and optionally a targetname.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Available poses:", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, ", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "kneel2, legsclosed, legsfree, legsopen, onhorse, pet,", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "sleep, spreadarms1, spreadarms2, spreadeagle1,", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "spreadeagle2, spreadlegs, stand, suspension, tapedhands.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Use /pose2 reset (targetname) to back to neutral pose.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	}
         else {    
             var stringPose1 = content;
             var stringPose2 = stringPose1.split(/[ ,]+/);
