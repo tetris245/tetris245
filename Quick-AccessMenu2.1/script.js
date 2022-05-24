@@ -2341,7 +2341,7 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/pose2") == 0) {
 	if (content.endsWith("/pose2")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a pose. List: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension, tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must be followed by a pose and optionally a targetname. List: armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, kneel2, legsclosed, legsfree, legsopen, onhorse, pet, sleep, spreadarms1, spreadarms2, spreadeagle1, spreadeagle2, spreadlegs, stand, suspension, tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
         }
         else {    
             var stringPose1 = content;
@@ -2352,7 +2352,8 @@ if (CurrentScreen == "ChatRoom") {
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 	    if (target[0] != null) {   
                 if (target[0] !== Player) {ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (Player.Name+" helps pose "+target[0].Name )}] });};
-                if (content.includes("armsfree")) {
+            //poses for any player    
+		if (content.includes("armsfree")) {
                     CharacterSetActivePose(target[0], "BaseUpper");
                     ChatRoomCharacterUpdate(target[0]);
 	        }
@@ -2434,32 +2435,8 @@ if (CurrentScreen == "ChatRoom") {
                     CharacterSetActivePose(target[0], "TapedHands");
                     ChatRoomCharacterUpdate(target[0]);
 	        }
-                else if (content.includes("roof")) {
-                    CharacterSetFacialExpression(Player, "Emoticon", "Annoyed", 1);
-                    CharacterSetActivePose(Player, null);ChatRoomCharacterUpdate(Player);
-                    setTimeout(function() {
-                    CharacterSetActivePose(Player, "OverTheHead");ChatRoomCharacterUpdate(Player);
-                    }, 500);
-                    setTimeout(function() {
-                    InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: 250 };
-                    CurrentScreen === "ChatRoom"
-                    ? ChatRoomCharacterUpdate(Player)
-                    : CharacterRefresh(Player);
-                    }, 1000);
-                    setTimeout(function() {
-                    CharacterSetActivePose(Player, "Kneel");ChatRoomCharacterUpdate(Player);
-                    }, 2000);
-                    setTimeout(function() {
-                    CharacterSetActivePose(Player, "BaseUpper");
-                    CharacterSetActivePose(Player, null);
-                    CharacterSetActivePose(Player, ["Suspension", "Kneel"]);
-                    InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: -300 };
-                    CurrentScreen === "ChatRoom"
-                    ? ChatRoomCharacterUpdate(Player)
-                    : CharacterRefresh(Player);
-                    }, 3000);
-	         }   
-                else if (content.includes("jump")) {
+		//poses only on yourself
+		else if (content.includes("jump")) {
                     CharacterSetActivePose(Player, null);
                     setTimeout(function() {
                     InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: 150 };
@@ -2489,7 +2466,33 @@ if (CurrentScreen == "ChatRoom") {
                     ? ChatRoomCharacterUpdate(Player)
                     : CharacterRefresh(Player);
                     }, 4000);
-	        }
+	        }      
+                else if (content.includes("roof")) {
+                    CharacterSetFacialExpression(Player, "Emoticon", "Annoyed", 1);
+                    CharacterSetActivePose(Player, null);ChatRoomCharacterUpdate(Player);
+                    setTimeout(function() {
+                    CharacterSetActivePose(Player, "OverTheHead");ChatRoomCharacterUpdate(Player);
+                    }, 500);
+                    setTimeout(function() {
+                    InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: 250 };
+                    CurrentScreen === "ChatRoom"
+                    ? ChatRoomCharacterUpdate(Player)
+                    : CharacterRefresh(Player);
+                    }, 1000);
+                    setTimeout(function() {
+                    CharacterSetActivePose(Player, "Kneel");ChatRoomCharacterUpdate(Player);
+                    }, 2000);
+                    setTimeout(function() {
+                    CharacterSetActivePose(Player, "BaseUpper");
+                    CharacterSetActivePose(Player, null);
+                    CharacterSetActivePose(Player, ["Suspension", "Kneel"]);
+                    InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: -300 };
+                    CurrentScreen === "ChatRoom"
+                    ? ChatRoomCharacterUpdate(Player)
+                    : CharacterRefresh(Player);
+                    }, 3000);
+	         }   
+                // exercises on any player
                 else if (content.includes("exercise")) {
                     var Region = undefined;
                     if (InventoryGet(target[0], "ItemButt") == null) {
