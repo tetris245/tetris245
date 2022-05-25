@@ -37,6 +37,7 @@ All else I might not have included.
 Changes for future version 1.4
 
 * New command: difficulty to directly access a specified game difficulty screen (note: you still need to confirm your choice)
+* New command: font to change font type and size used in BC. The effect will be visible in the chat after an automatic relog.
 * New command: reputation to change the level of a specified reputation
 * New command: savename to give a definitive status to a temporary nickname
 * New command: skill to change the level of a specified skill
