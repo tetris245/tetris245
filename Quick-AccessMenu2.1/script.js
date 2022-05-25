@@ -53,6 +53,7 @@ if (CurrentScreen == "ChatRoom") {
 	    ChatRoomMessage({ Content: "Quick-AccessMenu2: Chat commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/autokick  =  toggles on auto kick for 0 day old accounts.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/erase  =  erases chat.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "/font (newfont) (size) = changes font in BC. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/frlist = gives access to friendlist with clickable links to other rooms during 15 seconds.", Type: "LocalMessage",  Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/hiddenmessages  =  sees hidden messages made by game.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/profile (targetname) =  gives direct access to the profile description of any player in the chat room.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1163,6 +1164,36 @@ if (CurrentScreen == "ChatRoom") {
         ElementRemove("TextAreaChatLog");
     }
 	
+    else if (content.indexOf("/font") == 0) {
+        if (content.endsWith("/font")) {
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must be followed by a font number and optionally a size number.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "The effect will be visible in the chat after an automatic relog.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Supported fonts: 0 Arial - 1 Times New Roman", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "2 Papyrus - 3 Comic Sans - 4 Impact", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "5 Helvetica Neue - 6 Verdana - 7 Century Gothic", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "8 Georgia - 9 Courrier New - 10 Copperplate", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Sizes: 0 Small - 1 Medium - 2 Large", Sender: Player.MemberNumber });      
+        }
+        else {
+            var stringFont1 = content;
+            var stringFont2 = stringFont1.split(/[ ,]+/);
+            var font = stringFont2[1];
+            var size = stringFont2[2];
+            Player.GraphicsSettings.Font = PreferenceGraphicsFontList[font];
+            CommonGetFont.clearCache();
+	    CommonGetFontName.clearCache();
+	    DrawingGetTextSize.clearCache()
+            if ((size > -1) && (size < 3)) {
+                Player.ChatSettings.FontSize = PreferenceChatFontSizeList[size];
+                ChatRoomRefreshFontSize();
+            }   
+            ServerAccountUpdate.QueueData({ ChatSettings: Player.ChatSettings }); 
+            ServerAccountUpdate.QueueData({ GraphicsSettings: Player.GraphicsSettings });
+            ServerSocket.close();
+            ServerSocket.open();
+        }
+    }
+
     else if (content.indexOf("/frlist") == 0) {
         setTimeout(function() {
             ChatRoomSpace = "";
