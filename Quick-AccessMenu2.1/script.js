@@ -1182,7 +1182,7 @@ if (CurrentScreen == "ChatRoom") {
             Player.GraphicsSettings.Font = PreferenceGraphicsFontList[font];
             CommonGetFont.clearCache();
 	    CommonGetFontName.clearCache();
-	    DrawingGetTextSize.clearCache()
+	    DrawingGetTextSize.clearCache();
             if ((size > -1) && (size < 3)) {
                 Player.ChatSettings.FontSize = PreferenceChatFontSizeList[size];
                 ChatRoomRefreshFontSize();
