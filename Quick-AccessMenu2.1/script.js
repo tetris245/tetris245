@@ -32,12 +32,13 @@ if (CurrentScreen == "ChatRoom") {
         }
 
         else if (content.includes("character")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Character commands - * = more info when using", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "Quick-AccessMenu2: Character commands - * = more info when using ** = changes can be seen in your profile", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/becomeownlover  =  becomes your own lover.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/becomeownowner  =  becomes your own owner.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/difficulty (number)  =  access to game difficulty screen. 0 roleplay - 1 regular - 2 hardcore - 3 extreme", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/giveeverything  =  gives every item.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-            ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics. You will be able to check the changes in your profile.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/money 9999  =  gives or takes money. Change value. You will be able to check the change in your profile.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics. **", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/money (value)  =  gives or takes money. **", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/name (newnamehere) =  chooses a temporary new nickname.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/reputation (reputation) (level) =  changes a reputation. *", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/resetinventory  =  erases your inventory. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -100,7 +101,7 @@ if (CurrentScreen == "ChatRoom") {
 	    ChatRoomMessage({ Content: "/lock (targetname) (locktype) (password) (minutes) (h) (i) (r) for lock 16", Type: "LocalMessage", Sender: Player.MemberNumber }); 
             ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "The lock types:", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	    ChatRoomMessage({ Content: "1 Metal 2 Exclusive - 3 Intricate - 4 High Security", Type: "LocalMessage", Sender: Player.MemberNumber });  
+	    ChatRoomMessage({ Content: "1 Metal - 2 Exclusive - 3 Intricate - 4 High Security", Type: "LocalMessage", Sender: Player.MemberNumber });  
 	    ChatRoomMessage({ Content: "5 Pandora - 6 Mistress - 7 Lover - 8 Owner", Type: "LocalMessage", Sender: Player.MemberNumber });    
 	    ChatRoomMessage({ Content: "9 Five Minutes - 10 Combination - 11 Safeword", Type: "LocalMessage", Sender: Player.MemberNumber }); 
 	    ChatRoomMessage({ Content: "12 Password - 13 Mistress Timer - 14 Lover Timer", Type: "LocalMessage", Sender: Player.MemberNumber });  
@@ -151,7 +152,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "All locks of any type will be removed if you don't specify the lock type.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
             ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "The lock types:", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	    ChatRoomMessage({ Content: "1 Metal 2 Exclusive - 3 Intricate - 4 High Security", Type: "LocalMessage", Sender: Player.MemberNumber });  
+	    ChatRoomMessage({ Content: "1 Metal - 2 Exclusive - 3 Intricate - 4 High Security", Type: "LocalMessage", Sender: Player.MemberNumber });  
 	    ChatRoomMessage({ Content: "5 Pandora - 6 Mistress - 7 Lover - 8 Owner", Type: "LocalMessage", Sender: Player.MemberNumber });    
 	    ChatRoomMessage({ Content: "9 Five Minutes - 10 Combination - 11 Safeword", Type: "LocalMessage", Sender: Player.MemberNumber }); 
 	    ChatRoomMessage({ Content: "12 Password - 13 Mistress Timer - 14 Lover Timer", Type: "LocalMessage", Sender: Player.MemberNumber });  
@@ -1139,6 +1140,23 @@ if (CurrentScreen == "ChatRoom") {
 	    ChatRoomMessage({ Content: "/diaper setmess1 (value between 0 and 2) for mess level of normal diapers", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/diaper setmess2 (value between 0 and 2) for mess level of chastity diapers", Type: "LocalMessage", Sender: Player.MemberNumber });   
         }     
+    }
+	
+    else if (content.indexOf("/difficulty") == 0) {
+        if (content.endsWith("/difficulty")) {
+            var difficulty =  Player.Difficulty.Level; 
+        }
+        else {
+            var difficulty = content.substring(11).trim();   
+        }
+        if ((difficulty > -1) && (difficulty < 4)) {
+            InformationSheetLoadCharacter(Player);
+            document.getElementById("InputChat").style.display = "none";  
+	    document.getElementById("TextAreaChatLog").style.display = "none";
+            PreferenceSubscreen = "Difficulty";
+            CommonSetScreen("Character", "Preference");
+            PreferenceDifficultyLevel = difficulty;
+        }
     }
 
     else if (content.indexOf("/erase") == 0) {
