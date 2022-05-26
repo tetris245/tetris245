@@ -2402,6 +2402,12 @@ if (CurrentScreen == "ChatRoom") {
 		if (content.includes("armsfree")) {
                     CharacterSetActivePose(target[0], "BaseUpper");
                     ChatRoomCharacterUpdate(target[0]);
+		    if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" relaxes her arms." }]});
+	             }  
+                     else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" lets "+target[0].Name+" relax their arms." }]});}  
+	             }
 	        }
 		 else if (content.includes("belly")) {
                      CharacterSetActivePose(target[0], "Hogtied");
@@ -2416,14 +2422,32 @@ if (CurrentScreen == "ChatRoom") {
                 else if (content.includes("boxtied")) {
                     CharacterSetActivePose(target[0], "BackBoxTie");
                     ChatRoomCharacterUpdate(target[0]);
+		    if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" puts the arms behind her back." }]});
+	            }  
+                    else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" forces "+target[0].Name+" to put the arms behind their back." }]});}  
+	           }
 	        }
                 else if (content.includes("cuffed")) {
                     CharacterSetActivePose(target[0], "BackCuffs");
                     ChatRoomCharacterUpdate(target[0]);
+		    if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" puts her arms out like she's handcuffed." }]});
+	            }  
+                    else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" forces "+target[0].Name+" to put the arms out like she's handcuffed." }]});}  
+	           }
 	        }
                 else if (content.includes("elbowtied")) {
                     CharacterSetActivePose(target[0], "BackElbowTouch");
                     ChatRoomCharacterUpdate(target[0]);
+		    if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" puts the arms behind her back, elbows almost touching." }]});
+	            }  
+                    else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" forces "+target[0].Name+" to put the arms behind their back, elbows almost touching." }]});}  
+	           }
 	        }
                 else if (content.includes("kneel1")) {
                     CharacterSetActivePose(target[0], "Kneel");
@@ -2520,6 +2544,12 @@ if (CurrentScreen == "ChatRoom") {
                 else if (content.includes("tapedhands")) {
                     CharacterSetActivePose(target[0], "TapedHands");
                     ChatRoomCharacterUpdate(target[0]);
+		    if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" puts her arms out like her hands are taped." }]});
+	            }  
+                    else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" forces "+target[0].Name+" to put the arms out like their hands are taped." }]});}  
+	           }
 	        }
 		//poses only on yourself
 		else if (content.includes("jump")) {
