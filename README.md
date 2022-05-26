@@ -54,6 +54,7 @@ Changes for future version 1.4
 * Renamed the friendlist command as frlist to solve conflict with standard BC commands
 * Improved the hiddenmessages command
 * Updated the name command to choose a temporary nickname instead of the name
+* Updated the pose2 command with messages + removal of legsfree/onhorse options + renamed 'sleep' option as 'belly'
 * Updated the roleplay command with the correct names for the 8 magic roles and addition of the escapedpatient role
 * Updated the rolequit command with the ggts option (back to level 0 of ggts training)
 * Rewrote two functions related to nickname, so you are not limited to standard characters from English alphabet and spaces
