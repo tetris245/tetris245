@@ -58,6 +58,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "/hiddenmessages  =  sees hidden messages made by game.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/profile (targetname) =  gives direct access to the profile description of any player in the chat room.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "/search (areaname)  =  opens room search, area is: club or asylum", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "/theme (number) = changes chat color theme after automatic relog. Number must be between 0 and 3.", Type: "LocalMessage", Sender: Player.MemberNumber });
 	}
 		
         else if (content.includes("clothing")) {
@@ -3162,6 +3163,16 @@ if (CurrentScreen == "ChatRoom") {
         }
     }
 	
+	else if (content.indexOf("/theme") == 0) {
+        var theme = content.substring(6).trim();
+        if ((theme > -1) && (theme < 4)) {
+            Player.ChatSettings.ColorTheme = PreferenceChatColorThemeList[theme] 
+            ServerAccountUpdate.QueueData({ ChatSettings: Player.ChatSettings });  
+            ServerSocket.close();
+            ServerSocket.open();
+        }
+    } 
+
     else if (content.indexOf("/timercell") == 0) {
         var minutes = content.substring(10).trim();
         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" gets grabbed by two maids and locked in a timer cell for "+minutes+" minutes." }]});
