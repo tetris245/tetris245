@@ -41,6 +41,7 @@ Changes for future version 1.4
 * New command: reputation to change the level of a specified reputation
 * New command: savename to give a definitive status to a temporary nickname
 * New command: skill to change the level of a specified skill
+* New command: theme to change chat color theme after automatic relog
 * New command: title to change your title without using the title menu (so you can preserve a temporary nickname!) - you have more options than the title menu, because this command also changes required parameters to get the specified title
 * Changes in the Moaner: 
   - Is now disabled (with default moans profile) when you have fully closed the browser and open it again
