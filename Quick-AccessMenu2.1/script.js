@@ -2403,6 +2403,16 @@ if (CurrentScreen == "ChatRoom") {
                     CharacterSetActivePose(target[0], "BaseUpper");
                     ChatRoomCharacterUpdate(target[0]);
 	        }
+		 else if (content.includes("belly")) {
+                     CharacterSetActivePose(target[0], "Hogtied");
+                     ChatRoomCharacterUpdate(target[0]);
+		     if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" relaxes on her belly." }]});
+	             }  
+                     else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" forces "+target[0].Name+" to stay on their belly." }]});}  
+	             }
+	        }       
                 else if (content.includes("boxtied")) {
                     CharacterSetActivePose(target[0], "BackBoxTie");
                     ChatRoomCharacterUpdate(target[0]);
@@ -2440,30 +2450,30 @@ if (CurrentScreen == "ChatRoom") {
                      ChatRoomCharacterUpdate(target[0]);
 		     if (target[0].Name == Player.Name) {  
                         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" stands up and closes her legs." }]});
-	              }  
-                    else { 
+	             }  
+                     else { 
                         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" helps "+target[0].Name+" to stand up with their legs closed." }]});}  
 	            }
-	        }
-                else if (content.includes("legsfree")) {
-                    CharacterSetActivePose(target[0], "BaseLower");
-                    ChatRoomCharacterUpdate(target[0]);
 	        }
                 else if (content.includes("legsopen")) {
                     CharacterSetActivePose(target[0], "LegsOpen");
                     ChatRoomCharacterUpdate(target[0]);
-	        }
-                else if (content.includes("onhorse")) {
-                     CharacterSetActivePose(target[0], "Horse");
-                     ChatRoomCharacterUpdate(target[0]);
+		    if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" stands up normally on her feet." }]});
+	             }  
+                     else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" helps "+target[0].Name+" to stand up normally on their feet." }]});}  
+	            }
 	        }
                 else if (content.includes("pet")) {
                      CharacterSetActivePose(target[0], "AllFours");
                      ChatRoomCharacterUpdate(target[0]);
-	        }
-                else if (content.includes("sleep")) {
-                     CharacterSetActivePose(target[0], "Hogtied");
-                     ChatRoomCharacterUpdate(target[0]);
+		     if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" relaxes on all fours." }]});
+	             }  
+                     else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" forces "+target[0].Name+" on all fours." }]});}  
+	             }
 	        }
                 else if (content.includes("spreadarms1")) {
                     CharacterSetActivePose(target[0], "Yoked");
@@ -2486,6 +2496,12 @@ if (CurrentScreen == "ChatRoom") {
                  else if (content.includes("spreadlegs")) {
                       CharacterSetActivePose(target[0], "Spread");
                       ChatRoomCharacterUpdate(target[0]);
+		      if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" spreads her legs." }]});
+	             }  
+                     else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" forces "+target[0].Name+" to spread their legs." }]});}  
+	             }
 	        }
                 else if (content.includes("stand")) {
                      CharacterSetActivePose(target[0], null);
