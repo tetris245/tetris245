@@ -3163,7 +3163,7 @@ if (CurrentScreen == "ChatRoom") {
         }
     }
 	
-	else if (content.indexOf("/theme") == 0) {
+    else if (content.indexOf("/theme") == 0) {
         var theme = content.substring(6).trim();
         if ((theme > -1) && (theme < 4)) {
             Player.ChatSettings.ColorTheme = PreferenceChatColorThemeList[theme] 
