@@ -2404,20 +2404,20 @@ if (CurrentScreen == "ChatRoom") {
                     ChatRoomCharacterUpdate(target[0]);
 		    if (target[0].Name == Player.Name) {  
                         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" relaxes her arms." }]});
-	             }  
-                     else { 
+	            }  
+                    else { 
                         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" lets "+target[0].Name+" relax their arms." }]});  
-	             }
+	            }
 	        }
 		else if (content.includes("belly")) {
-                     CharacterSetActivePose(target[0], "Hogtied");
-                     ChatRoomCharacterUpdate(target[0]);
-		     if (target[0].Name == Player.Name) {  
+                    CharacterSetActivePose(target[0], "Hogtied");
+                    ChatRoomCharacterUpdate(target[0]);
+		    if (target[0].Name == Player.Name) {  
                         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" relaxes on her belly." }]});
-	             }  
-                     else { 
+	            }  
+                    else { 
                         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" forces "+target[0].Name+" to stay on their belly." }]});  
-	             }
+	            }
 	        }       
                 else if (content.includes("boxtied")) {
                     CharacterSetActivePose(target[0], "BackBoxTie");
@@ -2502,20 +2502,44 @@ if (CurrentScreen == "ChatRoom") {
                 else if (content.includes("spreadarms1")) {
                     CharacterSetActivePose(target[0], "Yoked");
                     ChatRoomCharacterUpdate(target[0]);
+		    if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" raises her hands." }]});
+	             }  
+                     else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" helps "+target[0].Name+" to raise their hands." }]});  
+	            }
 	        }
                 else if (content.includes("spreadarms2")) {
                     CharacterSetActivePose(target[0], "OverTheHead");
                     ChatRoomCharacterUpdate(target[0]);
+		    if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" raises the hands above her head." }]});
+	             }  
+                     else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" forces "+target[0].Name+" to raise the hands above their head." }]});  
+	            }
 	        }
                 else if (content.includes("spreadeagle1")) {
                     CharacterSetActivePose(target[0], "Yoked");
                     CharacterSetActivePose(target[0], "Spread");
                     ChatRoomCharacterUpdate(target[0]);
+		    if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" raises her hands and spreads her legs." }]});
+	             }  
+                     else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" forces "+target[0].Name+" to raise their hands and spread their legs." }]});  
+	            }
 	        }
                  else if (content.includes("spreadeagle2")) {
                       CharacterSetActivePose(target[0], "OverTheHead");
                       CharacterSetActivePose(target[0], "Spread");
                       ChatRoomCharacterUpdate(target[0]);
+		      if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" raises the hands above her head and spreads her legs." }]});
+	             }  
+                     else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" forces "+target[0].Name+" to raise the hands above their head and spread their legs." }]});  
+	            }
 	         }
                  else if (content.includes("spreadlegs")) {
                       CharacterSetActivePose(target[0], "Spread");
@@ -2539,7 +2563,13 @@ if (CurrentScreen == "ChatRoom") {
 	        }
                 else if (content.includes("suspension")) {
                     CharacterSetActivePose(target[0], "Suspension");
-                     ChatRoomCharacterUpdate(target[0]);
+                    ChatRoomCharacterUpdate(target[0]);
+		    if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is now in an acrobatic pose in suspension." }]});
+	            }  
+                    else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" forces "+target[0].Name+" in an acrobatic pose in suspension." }]});  
+	           } 
 	        }
                 else if (content.includes("tapedhands")) {
                     CharacterSetActivePose(target[0], "TapedHands");
@@ -2553,6 +2583,7 @@ if (CurrentScreen == "ChatRoom") {
 	        }
 		//poses only on yourself
 		else if (content.includes("jump")) {
+		    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" jumps with joy." }]});
                     CharacterSetActivePose(Player, null);
                     setTimeout(function() {
                     InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: 150 };
@@ -2584,6 +2615,7 @@ if (CurrentScreen == "ChatRoom") {
                     }, 4000);
 	        }      
                 else if (content.includes("roof")) {
+		    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" jumps to the ceiling." }]});
                     CharacterSetFacialExpression(Player, "Emoticon", "Annoyed", 1);
                     CharacterSetActivePose(Player, null);ChatRoomCharacterUpdate(Player);
                     setTimeout(function() {
@@ -2613,23 +2645,37 @@ if (CurrentScreen == "ChatRoom") {
                     var Region = undefined;
                     if (InventoryGet(target[0], "ItemButt") == null) {
                         InventoryWear(target[0], "AnalHook", "ItemButt", "#272727");
-                        Region = "ItemButt"}
+                        Region = "ItemButt";
+		    }
                     else if (InventoryGet(target[0], "ItemButt").Asset.Name == "AnalHook") {
-                        Region = "ItemButt"}
+                        Region = "ItemButt";
+		    }
                     else if (InventoryGet(target[0], "ItemTorso") == null) {
                         InventoryWear(target[0], "HempRopeHarness", "ItemTorso", "#272727");
                         InventoryGet(target[0], "ItemTorso").Property = {Type: "Waist"};
-                        Region = "ItemTorso"}
+                        Region = "ItemTorso";
+		    }
                     else if (InventoryGet(target[0], "ItemTorso").Asset.Name == "HempRopeHarness") {
                         InventoryGet(target[0], "ItemTorso").Property = {Type: "Waist"};
-                        Region = "ItemTorso"}
+                        Region = "ItemTorso";
+		    }
                     else if (InventoryGet(target[0], "ItemPelvis") == null) {
                         InventoryWear(target[0], "HempRope", "ItemPelvis", "#272727");
-                        Region = "ItemPelvis"}
+                        Region = "ItemPelvis";
+		    }
                     else if (InventoryGet(target[0], "ItemPelvis").Asset.Name == "HempRope") {
-                        Region = "ItemPelvis"}
-                    else {ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied to excercise.", Type: "LocalMessage", Sender: Player.MemberNumber })};
-                    CharacterSetActivePose(target[0], null);ChatRoomCharacterUpdate(target[0]);
+                        Region = "ItemPelvis";
+		    }
+                    else {
+			ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied to excercise.", Type: "LocalMessage", Sender: Player.MemberNumber })};
+                    }
+		    if (target[0].Name == Player.Name) {  
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" makes her workout." }]});
+	            }  
+                    else { 
+                        ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" helps "+target[0].Name+" to make her workout." }]});  
+	            }
+		    CharacterSetActivePose(target[0], null);ChatRoomCharacterUpdate(target[0]);
                     setTimeout(function() {
                     CharacterSetActivePose(target[0], "OverTheHead");
                     ChatRoomCharacterUpdate(target[0]);
