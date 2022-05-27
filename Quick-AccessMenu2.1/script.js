@@ -2409,7 +2409,7 @@ if (CurrentScreen == "ChatRoom") {
                         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" lets "+target[0].Name+" relax their arms." }]});}  
 	             }
 	        }
-		 else if (content.includes("belly")) {
+		else if (content.includes("belly")) {
                      CharacterSetActivePose(target[0], "Hogtied");
                      ChatRoomCharacterUpdate(target[0]);
 		     if (target[0].Name == Player.Name) {  
@@ -2570,7 +2570,7 @@ if (CurrentScreen == "ChatRoom") {
                     }, 2000);
                     setTimeout(function() {
                     InventoryGet(Player, "Emoticon").Property.OverrideHeight = { Height: 150 };
-                   CharacterSetActivePose(Player, "Kneel");
+                    CharacterSetActivePose(Player, "Kneel");
                     CurrentScreen === "ChatRoom"
                     ? ChatRoomCharacterUpdate(Player)
                     : CharacterRefresh(Player);
