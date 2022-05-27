@@ -10,7 +10,7 @@ Google Chrome, Microsoft Edge, similar browsers:
 3. Go to browser extensions. Enable developer mode.
 4. Load as Unpacked. Done. If the file can't be seen, see step 2.
 
-FireFox:
+FireFox is not supported atm.
 1. Download file quick-accessmenu2-FIREFOX.xpi (temporary not available)
 2. Go to about:addons, either by posting in link bar or by going to Add-Ons and Themes.
 3. Click to cog wheel symbol.
