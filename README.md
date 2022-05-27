@@ -1,4 +1,4 @@
-Quick-AccessMenu2.1 - Addon for Ben987's BondageClub game 
+Quick-AccessMenu2.1 by Nemesea - Addon for Ben987's BondageClub game 
 
 Most recent release is version 1.3. - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
@@ -19,7 +19,7 @@ FireFox:
 
 After installation, refresh your BC page and relog.
 
-Original version of Quick-AccessMenu2.1 (version 1.0) by KellyLoveyness - Versions 1.1, 1.2 and 1.3 by Nemesea.
+Special thanks to KellyLoveyness for creating the original version.
 
 Special thanks to Firefly for giving permission to integrate the BC-Diaper-Wetter script.
 
@@ -34,32 +34,9 @@ All else I might not have included.
 
 ===========================================================================
 
-Changes for future version 1.4
+Changes for future version 1.5
 
-* New command: difficulty to directly access a specified game difficulty screen (note: you still need to confirm your choice)
-* New command: font to change font type and size used in BC. The effect will be visible in the chat after an automatic relog.
-* New command: reputation to change the level of a specified reputation
-* New command: savename to give a definitive status to a temporary nickname
-* New command: skill to change the level of a specified skill
-* New command: theme to change chat color theme after automatic relog
-* New command: title to change your title without using the title menu (so you can preserve a temporary nickname!) - you have more options than the title menu, because this command also changes required parameters to get the specified title
-* Changes in the Moaner: 
-  - Is now disabled (with default moans profile) when you have fully closed the browser and open it again
-  - Integrated the help in QAM help (the command is now /moaner instead of /moaner help)
-  - Separated help and status (/moaner and /moaner status as commands)
-  - Integrated all Moaner commands in the QAM commands
-  - Fixed the issue with special characters in moans by using their Unicode format
-  - Fixed the message with 'undefined' moans profile
-  - Fixed the crash issue with BCX (it is no more required to enable BCX before login)
-* Renamed the friendlist command as frlist to solve conflict with standard BC commands
-* Improved the hiddenmessages command
-* Updated the name command to choose a temporary nickname instead of the name
-* Updated the pose2 command by adding messages, removing legsfree/onhorse options and renaming 'sleep' option as 'belly'
-* Updated the roleplay command with the correct names for the 8 magic roles and addition of the escapedpatient role
-* Updated the rolequit command with the ggts option (back to level 0 of ggts training)
-* Rewrote two functions related to nickname, so you are not limited to standard characters from English alphabet and spaces
-* Fixed a bug in profile command (no more crash when targetname not found) and applied this fix to other commands with targetname
-* Fixed bugs in roleplay command for maid and masterkidnapper roles
+(...)
  
 
 
