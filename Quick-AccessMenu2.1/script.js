@@ -2383,8 +2383,8 @@ if (CurrentScreen == "ChatRoom") {
 	if (content.endsWith("/pose2")) {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Must be followed by a pose and optionally a targetname.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "Available poses:", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "armsfree, boxtied, cuffed, elbowtied, exercise, kneel1, ", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "kneel2, legsclosed, legsfree, legsopen, onhorse, pet,", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "armsfree, belly, boxtied, cuffed, elbowtied, exercise, ", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomMessage({ Content: "kneel1, kneel2, legsclosed, legsopen, pet,", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "sleep, spreadarms1, spreadarms2, spreadeagle1,", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "spreadeagle2, spreadlegs, stand, suspension,", Type: "LocalMessage", Sender: Player.MemberNumber });
 	    ChatRoomMessage({ Content: "tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
