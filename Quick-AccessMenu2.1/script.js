@@ -2668,7 +2668,6 @@ if (CurrentScreen == "ChatRoom") {
 		    }
                     else {
 			ChatRoomMessage({ Content: "Quick-AccessMenu2.1: You're too heavily tied to excercise.", Type: "LocalMessage", Sender: Player.MemberNumber })};
-                    }
 		    if (target[0].Name == Player.Name) {  
                         ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" makes her workout." }]});
 	            }  
