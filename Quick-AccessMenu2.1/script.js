@@ -424,7 +424,8 @@ if (CurrentScreen == "ChatRoom") {
         Player.ArousalSettings.Progress = content.substring(8);ServerPlayerSync();
         if (content.includes("100")) {
            ActivityOrgasmRuined = false;
-           ActivityOrgasmStart(Player); }
+           ActivityOrgasmStart(Player); 
+	}
     }
 	
     else if (content.indexOf("/asylum") == 0) {
