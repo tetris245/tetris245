@@ -35,7 +35,7 @@ if (CurrentScreen == "ChatRoom") {
             ChatRoomMessage({ Content: "Quick-AccessMenu2: Character commands - * = more info when using ** = changes can be seen in your profile", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/becomeownlover  =  becomes your own lover.", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/becomeownowner  =  becomes your own owner.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/difficulty (number)  =  access to game difficulty screen. 0 roleplay - 1 regular - 2 hardcore - 3 extreme", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomMessage({ Content: "/difficulty (number)  =  changes game difficulty. 0 roleplay - 1 regular - 2 hardcore - 3 extreme **", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/giveeverything  =  gives every item.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
             ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics. **", Type: "LocalMessage", Sender: Player.MemberNumber });
             ChatRoomMessage({ Content: "/money (value)  =  gives or takes money. **", Type: "LocalMessage", Sender: Player.MemberNumber });
@@ -1148,18 +1148,17 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/difficulty") == 0) {
         if (content.endsWith("/difficulty")) {
-            var difficulty =  Player.Difficulty.Level; 
+            PreferenceDifficultyLevel =  Player.Difficulty.Level; 
         }
         else {
-            var difficulty = content.substring(11).trim();   
+            PreferenceDifficultyLevel = content.substring(11).trim() *1;   
         }
-        if ((difficulty > -1) && (difficulty < 4)) {
-            InformationSheetLoadCharacter(Player);
-            document.getElementById("InputChat").style.display = "none";  
-	    document.getElementById("TextAreaChatLog").style.display = "none";
-            PreferenceSubscreen = "Difficulty";
-            CommonSetScreen("Character", "Preference");
-            PreferenceDifficultyLevel = difficulty;
+        if ((PreferenceDifficultyLevel > -1) && (PreferenceDifficultyLevel < 4)) {
+            PreferenceDifficultyAccept = true;
+            Player.Difficulty = { LastChange: CurrentTime, Level: PreferenceDifficultyLevel };					         
+            ServerSend("AccountDifficulty", PreferenceDifficultyLevel);					
+            PreferenceInitPlayer();
+            LoginDifficulty(true);
         }
     }
 
