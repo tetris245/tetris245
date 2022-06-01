@@ -9,27 +9,29 @@ if (CurrentScreen == "ChatRoom") {
     if (content.indexOf("/help") == 0) {   
 	if (content.endsWith("/help")) {	 
             ChatRoomSendLocal(
-                  "<b>Quick-AccessMenu2</b>: QAM help is organized into categories. Use <b>/help</b> (category). List of categories:\n" +
-                  "<b>bondage</b> = commands related to bondage.\n" +
-                  "<b>character</b> = commands related to your character.\n" +
-                  "<b>chat</b> = commands with extra features in chat room.\n" +
-                  "<b>clothing</b> = commands related to the clothes.\n" +
-                  "<b>escape</b> = commands related to escape.\n" +
-                  "<b>fun</b> = commands related to fun, pain and pleasure.\n" +
-                  "<b>misc</b> = special commands.\n" +
-                  "<b>talking</b> = commands related to talking.\n" +
-                  "<b>visual</b> = commands related to animations and background.\n" +
-                  "<b>zones</b> = commands related to game zones." 
+                "<b>Quick-AccessMenu2</b>: QAM help is organized into categories. Use <b>/help</b> (category). List of categories:\n" +
+                "<b>bondage</b> = commands related to bondage.\n" +
+                "<b>character</b> = commands related to your character.\n" +
+                "<b>chat</b> = commands with extra features in chat room.\n" +
+                "<b>clothing</b> = commands related to the clothes.\n" +
+                "<b>escape</b> = commands related to escape.\n" +
+                "<b>fun</b> = commands related to fun, pain and pleasure.\n" +
+                "<b>misc</b> = special commands.\n" +
+                "<b>talking</b> = commands related to talking.\n" +
+                "<b>visual</b> = commands related to animations and background.\n" +
+                "<b>zones</b> = commands related to game zones." 
             );        
         }
 
         else if (content.includes("bondage")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Bondage commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/lock = adds locks on all lockable items. Use /help lock for more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/pet  = becomes a fully restrained pet girl.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-            ChatRoomMessage({ Content: "/randomize (targetname) = naked + underwear + clothes + restrain commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/restrain (targetname) =  adds random restraints.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/solidity (value) = changes the solidity of most current bindings. The value must be between 1 and 99. Use high values to make escape impossible!", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: Bondage commands:\n" +	
+		"<b>lock</b> = adds locks on all lockable items. Use /help lock for more info.\n" +
+		"<b>pet</b> = becomes a fully restrained pet girl.\n" +
+		"<b>randomize</b> (targetname) = naked + underwear + clothes + restrain commands.\n" +
+                "<b>restrain</b> (targetname) =  adds random restraints.\n" +
+	        "<b>solidity</b> (value) = changes the solidity of most current bindings. Value must be between 1 and 99. Use high values to make escape impossible!" 
+	     );      
         }
 
         else if (content.includes("character")) {
