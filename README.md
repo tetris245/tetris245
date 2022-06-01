@@ -37,6 +37,6 @@ All else I might not have included.
 Changes for future version 1.5
 
 * Improved the difficulty command: the change is now direct and automatic, even when a rule normally prevents it.
- 
+* Fixed mistress title and titles based on reputation in the title command
 
 
