@@ -26,30 +26,32 @@ if (CurrentScreen == "ChatRoom") {
         else if (content.includes("bondage")) {
 	    ChatRoomSendLocal(
                 "<b>Quick-AccessMenu2</b>: Bondage commands:\n" +	
-		"<b>lock</b> = adds locks on all lockable items. Use /help lock for more info.\n" +
-		"<b>pet</b> = becomes a fully restrained pet girl.\n" +
-		"<b>randomize</b> (targetname) = naked + underwear + clothes + restrain commands.\n" +
-                "<b>restrain</b> (targetname) =  adds random restraints.\n" +
-	        "<b>solidity</b> (value) = changes the solidity of most current bindings. Value must be between 1 and 99. Use high values to make escape impossible!" 
+		"<b>/lock</b> = adds locks on all lockable items. Use /help lock for more info.\n" +
+		"<b>/pet</b> = becomes a fully restrained pet girl.\n" +
+		"<b>/randomize</b> (targetname) = naked + underwear + clothes + restrain commands.\n" +
+                "<b>/restrain</b> (targetname) = adds random restraints.\n" +
+	        "<b>/solidity</b> (value) = changes the solidity of most current bindings. Value must be between 1 and 99. Use high values to make escape impossible!" 
 	     );      
         }
 
         else if (content.includes("character")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Character commands - * = more info when using ** = changes can be seen in your profile", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/becomeownlover  =  becomes your own lover.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/becomeownowner  =  becomes your own owner.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/difficulty (number)  =  changes game difficulty. 0 roleplay - 1 regular - 2 hardcore - 3 extreme **", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/giveeverything  =  gives every item.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-            ChatRoomMessage({ Content: "/maxstatistics  =  gives max statistics. **", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/money (value)  =  gives or takes money. **", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/name (newnamehere) =  chooses a temporary new nickname.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/reputation (reputation) (level) =  changes a reputation. *", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/resetinventory  =  erases your inventory. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/roleplay (rolehere) = starts a role. *", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/rolequit (role or clubarea here) = ceases to play a role. *", Type:  "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/savename = gives definitive status to a temporary nickname.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/skill (skill) (level) =  changes a skill. *", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/title (newtitlehere) =  chooses a new title. *", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: Character commands - * = more info when using ** = changes can be seen in your profile\n" +
+		"<b>/becomeownlover</b> = becomes your own lover.\n" +
+		"<b>/becomeownowner</b> = becomes your own owner.\n" +
+		"<b>/difficulty</b> (number) = changes game difficulty. 0 roleplay - 1 regular - 2 hardcore - 3 extreme **\n" +
+		"<b>/giveeverything</b> = gives every item.\n" +
+		"<b>/maxstatistics</b> = gives max statistics.\n" +  
+		"<b>/money</b> (value) = gives or takes money.\n" +   
+                "<b>/name</b> (newnamehere) = chooses a temporary new nickname.\n" +
+                "<b>/reputation</b> (reputation) (level) = changes a reputation. *\n" +
+		"<b>/resetinventory</b> = erases your inventory. Will warn first.\n" +
+                "<b>/roleplay</b> (rolehere) = starts a role. *\n" +
+	        "<b>/rolequit</b> (role or clubarea here) = ceases to play a role. *\n" +
+	        "<b>/savename</b> (newnamehere) = gives definitive status to a temporary nickname.\n" +
+                "<b>/skill</b> (skill) (level) = changes a skill. *\n" +
+	        "<b>/title</b> (newtitlehere) = chooses a new title. *"
+	    ); 
         }
    
 	else if (content.includes("chat")) {
