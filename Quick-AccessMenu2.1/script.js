@@ -55,15 +55,17 @@ if (CurrentScreen == "ChatRoom") {
         }
    
 	else if (content.includes("chat")) {
-	    ChatRoomMessage({ Content: "Quick-AccessMenu2: Chat commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/autokick  =  toggles on auto kick for 0 day old accounts.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/erase  =  erases chat.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/font (newfont) (size) = changes font in BC. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/frlist = gives access to friendlist with clickable links to other rooms during 15 seconds.", Type: "LocalMessage",  Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/hiddenmessages  =  sees hidden messages made by game.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/profile (targetname) =  gives direct access to the profile description of any player in the chat room.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/search (areaname)  =  opens room search, area is: club or asylum", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/theme (number) = changes chat color theme after automatic relog. Number must be between 0 and 3.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: Chat commands:\n" +		
+		"<b>/autokick</b> = toggles on auto kick for 0 day old accounts.\n" +
+		"<b>/erase</b> = erases chat.\n" +
+		"<b>/font</b> (newfont) (size) = changes font in BC. Using will give more info.\n" +
+		"<b>/frlist</b> = gives access to friendlist with clickable links to other rooms during 15 seconds.\n" +
+	        "<b>/hiddenmessages</b> = toggles on show hidden messages made by game.\n" +
+	        "<b>/profile</b> (targetname) = gives direct access to the profile description of any player in the chat room.\n" +
+	        "<b>/search</b> (areaname) = opens room search, area is: club or asylum.\n" +
+	        "<b>/theme</b> (number) = changes chat color theme after automatic relog. Number must be between 0 and 3."
+	    );     
 	}
 		
         else if (content.includes("clothing")) {
