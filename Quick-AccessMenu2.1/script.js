@@ -7,19 +7,20 @@ var tmpname = Player.Nickname;
 if (CurrentScreen == "ChatRoom") {
 	
     if (content.indexOf("/help") == 0) {   
-	if (content.endsWith("/help")) {	  
-            ChatRoomMessage({ Content: "ChatRoomHelp", Type: "Action", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: QAM help is organized into categories. Use /help (category). List of categories:", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "bondage = commands related to bondage.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "character = commands related to your character.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "chat = commands with extra features in chat room.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "clothing = commands related to the clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "escape = commands related to escape.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "fun = commands related to fun, pain and pleasure.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "misc = special commands.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "talking = commands related to talking.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "visual = commands related to animations and background.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "zones = commands related to game zones.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	if (content.endsWith("/help")) {	 
+            ChatRoomSendLocal(
+                  "<b>Quick-AccessMenu2</b>: QAM help is organized into categories. Use <b>/help</b> (category). List of categories:\n" +
+                  "<b>bondage</b> = commands related to bondage.\n" +
+                  "<b>character</b> = commands related to your character.\n" +
+                  "<b>chat</b> = commands with extra features in chat room.\n" +
+                  "<b>clothing</b> = commands related to the clothes.\n" +
+                  "<b>escape</b> = commands related to escape.\n" +
+                  "<b>fun</b> = commands related to fun, pain and pleasure.\n" +
+                  "<b>misc</b> = special commands.\n" +
+                  "<b>talking</b> = commands related to talking.\n" +
+                  "<b>visual</b> = commands related to animations and background.\n" +
+                  "<b>zones</b> = commands related to game zones." 
+            );        
         }
 
         else if (content.includes("bondage")) {
