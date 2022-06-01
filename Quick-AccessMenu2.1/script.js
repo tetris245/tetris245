@@ -1153,7 +1153,7 @@ if (CurrentScreen == "ChatRoom") {
         else {
             PreferenceDifficultyLevel = content.substring(11).trim() *1;   
         }
-        if ((PreferenceDifficultyLevel > -1) && (PreferenceDifficultyLevel < 4)) {
+        if ((PreferenceDifficultyLevel > -1) && (PreferenceDifficultyLevel < 4) && (PreferenceDifficultyLevel != Player.Difficulty.Level)) {
             PreferenceDifficultyAccept = true;
             Player.Difficulty = { LastChange: CurrentTime, Level: PreferenceDifficultyLevel };					         
             ServerSend("AccountDifficulty", PreferenceDifficultyLevel);					
