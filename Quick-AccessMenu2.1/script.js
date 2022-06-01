@@ -69,13 +69,15 @@ if (CurrentScreen == "ChatRoom") {
 	}
 		
         else if (content.includes("clothing")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Clothing commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/clothes (targetname) =  changes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });  
-	    ChatRoomMessage({ Content: "/diaper (actionhere) (targetname or setvalue) =  plays with diapers (ABDL game). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/naked (targetname) =  removes clothes.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/outfit  =  restores/saves/loads outfit. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/underwear (targetname) =  changes underwear.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/wardrobe (targetname)  =  opens target wardrobe.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: Clothing commands:\n" +		
+		"<b>/clothes</b> (targetname) = changes clothes.\n" +
+		"<b>/diaper</b> (actionhere) (targetname or setvalue) = plays with diapers (ABDL game). Using will give more info.\n" +
+		"<b>/naked</b> (targetname) = removes clothes.\n" +
+                "<b>/outfit</b> (targetname) = restores/saves/loads outfit. Using will give more info.\n" +
+                "<b>/underwear</b> (targetname) = changes underwear.\n" +
+		"<b>/wardrobe</b> (number) (targetname) = opens target wardrobe."   
+            );    
         }
 
         else if (content.includes("escape")) {
