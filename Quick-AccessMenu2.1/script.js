@@ -151,16 +151,18 @@ if (CurrentScreen == "ChatRoom") {
         }
 
         else if (content.includes("talking")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Talking commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/action (stuffhere)  = inserts an action. Can also: /a.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/babytalk (stuffhere) =  speaks as a baby. Can also: /b", Type: "LocalMessage", Sender: Player.MemberNumber });     
-            ChatRoomMessage({ Content: "/gagheavy (stuffhere)  =  speaks once in heavy gag talk. Can also: /gv", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/gaglight (stuffhere) =  speaks once in light gag talk. Can also: /gl", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/gagtalk  =  toggle to decode/not decode gagged people talking.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/moaner  =  moans when horny and stimulated. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/talkbaby  =  toggle on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/talkgag light/heavy  =  toggles on gag talk. Remember to only use one at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/whisper (targetname) = sets whisper target.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: Talking commands:\n" +
+		"<b>/action</b> (stuffhere) = inserts an action. Can also: /a.\n" +
+		"<b>/babytalk</b> (stuffhere) = speaks as a baby. Can also: /b.\n" +
+		"<b>/gagheavy</b> (stuffhere) = speaks once in heavy gag talk. Can also: /gv.\n" +
+		"<b>/gaglight</b> (stuffhere) = speaks once in light gag talk. Can also: /gl.\n" +
+		"<b>/gagtalk</b> = toggle to decode/not decode gagged people talking.\n" +
+                "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
+		"<b>/talkbaby</b> = toggle on gag talk. Remember to only use one at a time.\n" +
+	        "<b>/talkgag light/heavy</b> = toggle on gag talk. Remember to only use one at a time.\n" +
+                "<b>/whisper</b> (targetname) = sets whisper target."
+             );   
 	}
 	    
         else if (content.includes("unl")) {
