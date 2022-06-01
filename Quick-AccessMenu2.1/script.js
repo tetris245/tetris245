@@ -3331,13 +3331,13 @@ if (CurrentScreen == "ChatRoom") {
             }
             else if (title == "baby") {
                 if (ReputationGet("ABDL") < 1) {
-                    ReputationChange("ABDL", 1);     
+                    DialogSetReputation("ABDL", 1);     
                 }
                 TitleSet("Baby");  
             }
             else if (title == "bondagebaby") {
                 if (ReputationGet("ABDL") < 1) {
-                    ReputationChange("ABDL", 1);     
+                    DialogSetReputation("ABDL", 1);     
                 }
                 if (SkillGetLevel(Player, "Evasion") < 10) {
                     SkillChange("Evasion", 10);     
@@ -3374,13 +3374,13 @@ if (CurrentScreen == "ChatRoom") {
             }
             else if (title == "diaperlover") {
                 if (ReputationGet("ABDL") < 1) {
-                    ReputationChange("ABDL", 1);     
+                    DialogSetReputation("ABDL", 1);     
                 }
                 TitleSet("DL");  
             }	
             else if (title == "doctor") {
                 if (ReputationGet("Asylum") < 100) {
-                    ReputationChange("Asylum", 100);     
+                    DialogSetReputation("Asylum", 100);     
                 }
                 LogAdd("Committed", "Asylum", CurrentTime);
                 TitleSet("Doctor");  
@@ -3479,7 +3479,7 @@ if (CurrentScreen == "ChatRoom") {
             }
             else if (title == "kidnapper") {
                 if ((ReputationGet("Kidnap") < 50) || (ReputationGet("Kidnap") > 99))  {
-                    ReputationChange("Kidnap", 50);     
+                    DialogSetReputation("Kidnap", 50);     
                 }
                 TitleSet("Kidnapper");  
             }
@@ -3488,33 +3488,33 @@ if (CurrentScreen == "ChatRoom") {
             }
             else if (title == "ladyluck") {
                 if (ReputationGet("Gambling") < 100) {
-                    ReputationChange("Gambling", 100);     
+                    DialogSetReputation("Gambling", 100);     
                 }
                 TitleSet("LadyLuck");  
             }
             else if (title == "littleone") {
                 if (ReputationGet("ABDL") < 1) {
-                    ReputationChange("ABDL", 1);     
+                    DialogSetReputation("ABDL", 1);     
                 }
                 TitleSet("LittleOne");  
             }
 	    else if (title == "magician") {
                 if ((ReputationGet("HouseVincula") < 50) || (ReputationGet("HouseVincula") > 99))  {
-                    ReputationChange("HouseAmplector", 0); 
-                    ReputationChange("HouseCorporis", 0);       
-                    ReputationChange("HouseMaiestas", 0);  
+                    DialogSetReputation("HouseAmplector", 0); 
+                    DialogSetReputation("HouseCorporis", 0);       
+                    DialogSetReputation("HouseMaiestas", 0);  
 		    LogDelete("Mastery", "MagicSchool");
-                    ReputationChange("HouseVincula", 50);     
+                    DialogSetReputation("HouseVincula", 50);     
                 }
                 TitleSet("MagicSchoolMagician");  
             }
             else if (title == "magus") {
                 if (ReputationGet("HouseMaiestas") < 100) {
-                    ReputationChange("HouseAmplector", 0); 
-                    ReputationChange("HouseCorporis", 0);       
-                    ReputationChange("HouseVincula", 0);   
+                    DialogSetReputation("HouseAmplector", 0); 
+                    DialogSetReputation("HouseCorporis", 0);       
+                    DialogSetReputation("HouseVincula", 0);   
 		    LogDelete("Mastery", "MagicSchool");
-                    ReputationChange("HouseMaiestas", 100);     
+                    DialogSetReputation("HouseMaiestas", 100);     
                 }
                 TitleSet("MagicSchoolMagus");  
             }	
@@ -3531,12 +3531,13 @@ if (CurrentScreen == "ChatRoom") {
             }
             else if (title == "masterkidnapper") {
                 if (ReputationGet("Kidnap") < 100) {
-                    ReputationChange("Kidnap", 100);     
+                    DialogSetReputation("Kidnap", 100);     
                 }
                 TitleSet("MasterKidnapper");  
             }
 	    else if (title == "mistress") {
                 LogAdd("ClubMistress", "Management"); 
+		TitleSet("Mistress");     
             }	
             else if (title == "mole") {
                  if ((SkillGetLevel(Player, "Infiltration") < 2) || (SkillGetLevel(Player, "Infiltration") > 3)) {
@@ -3552,7 +3553,7 @@ if (CurrentScreen == "ChatRoom") {
             }
 	    else if (title == "nurse") {
                 if ((ReputationGet("Asylum") < 50) || (ReputationGet("Asylum") > 99)) {
-                    ReputationChange("Asylum", 50);     
+                    DialogSetReputation("Asylum", 50);     
                 }
                 LogAdd("Committed", "Asylum", CurrentTime);
                 TitleSet("Nurse");  
@@ -3565,17 +3566,17 @@ if (CurrentScreen == "ChatRoom") {
             }
 	    else if (title == "oracle") {
                 if (ReputationGet("HouseAmplector") < 100) {
-                    ReputationChange("HouseCorporis", 0); 
-                    ReputationChange("HouseMaiestas", 0);      
-                    ReputationChange("HouseVincula", 0);  
+                    DialogSetReputation("HouseCorporis", 0); 
+                    DialogSetReputation("HouseMaiestas", 0);      
+                    DialogSetReputation("HouseVincula", 0);  
 		    LogDelete("Mastery", "MagicSchool");
-                    ReputationChange("HouseAmplector", 100);     
+                    DialogSetReputation("HouseAmplector", 100);     
                 }
                 TitleSet("MagicSchoolOracle");  
             }
 	    else if (title == "patient") {
                 if ((ReputationGet("Asylum") > -50) || (ReputationGet("Asylum") < -99)) {
-                    ReputationChange("Asylum", -50);     
+                    DialogSetReputation("Asylum", -50);     
                 }
                 TitleSet("Patient");  
             }
@@ -3584,7 +3585,7 @@ if (CurrentScreen == "ChatRoom") {
             }
 	    else if (title == "permanentpatient") {
                 if (ReputationGet("Asylum") > -100) {
-                    ReputationChange("Asylum", -100);     
+                    DialogSetReputation("Asylum", -100);     
                 }
                 TitleSet("PermanentPatient");  
             }
@@ -3593,11 +3594,11 @@ if (CurrentScreen == "ChatRoom") {
             }
 	    else if (title == "sage") {
                 if ((ReputationGet("HouseAmplector") < 50) || (ReputationGet("HouseAmplector") > 99)) {
-                    ReputationChange("HouseCorporis", 0); 
-                    ReputationChange("HouseMaiestas", 0);      
-                    ReputationChange("HouseVincula", 0);   
+                    DialogSetReputation("HouseCorporis", 0); 
+                    DialogSetReputation("HouseMaiestas", 0);      
+                    DialogSetReputation("HouseVincula", 0);   
 		    LogDelete("Mastery", "MagicSchool");
-                    ReputationChange("HouseAmplector", 50);  
+                    DialogSetReputation("HouseAmplector", 50);  
                 }
                 TitleSet("MagicSchoolSage");  
             }
@@ -3609,11 +3610,11 @@ if (CurrentScreen == "ChatRoom") {
             }
 	    else if (title == "sorcerer") {
                 if (ReputationGet("HouseVincula") < 100) {
-                    ReputationChange("HouseAmplector", 0); 
-                    ReputationChange("HouseCorporis", 0);       
-                    ReputationChange("HouseMaiestas", 0);  
+                    DialogSetReputation("HouseAmplector", 0); 
+                    DialogSetReputation("HouseCorporis", 0);       
+                    DialogSetReputation("HouseMaiestas", 0);  
 		    LogDelete("Mastery", "MagicSchool");
-                    ReputationChange("HouseVincula", 100);     
+                    DialogSetReputation("HouseVincula", 100);     
                 }
                 TitleSet("MagicSchoolSorcerer");  
             }	
@@ -3631,11 +3632,11 @@ if (CurrentScreen == "ChatRoom") {
             }
 	    else if (title == "warlock") {
                 if (ReputationGet("HouseCorporis") < 100) {
-                    ReputationChange("HouseAmplector", 0); 
-                    ReputationChange("HouseMaiestas", 0);      
-                    ReputationChange("HouseVincula", 0);  
+                    DialogSetReputation("HouseAmplector", 0); 
+                    DialogSetReputation("HouseMaiestas", 0);      
+                    DialogSetReputation("HouseVincula", 0);  
 		    LogDelete("Mastery", "MagicSchool");
-                    ReputationChange("HouseCorporis", 100);     
+                    DialogSetReputation("HouseCorporis", 100);     
                 }
                 TitleSet("MagicSchoolWarlock");  
             }	
@@ -3653,21 +3654,21 @@ if (CurrentScreen == "ChatRoom") {
             }
 	    else if (title == "witch") {
                 if ((ReputationGet("HouseCorporis") < 50) || (ReputationGet("HouseCorporis") > 99)) {
-                    ReputationChange("HouseAmplector", 0); 
-                    ReputationChange("HouseMaiestas", 0);      
-                    ReputationChange("HouseVincula", 0);  
+                    DialogSetReputation("HouseAmplector", 0); 
+                    DialogSetReputation("HouseMaiestas", 0);      
+                    DialogSetReputation("HouseVincula", 0);  
 		    LogDelete("Mastery", "MagicSchool");
-                    ReputationChange("HouseCorporis", 50);     
+                    DialogSetReputation("HouseCorporis", 50);     
                 }
                 TitleSet("MagicSchoolWitch");  
             }
             else if (title == "wizard") {
                 if ((ReputationGet("HouseMaiestas") < 50) || (ReputationGet("HouseMaiestas") > 99)) {
-                    ReputationChange("HouseAmplector", 0); 
-                    ReputationChange("HouseCorporis", 0);       
-                    ReputationChange("HouseVincula", 0); 
+                    DialogSetReputation("HouseAmplector", 0); 
+                    DialogSetReputation("HouseCorporis", 0);       
+                    DialogSetReputation("HouseVincula", 0); 
 		    LogDelete("Mastery", "MagicSchool");
-                    ReputationChange("HouseMaiestas", 50);     
+                    DialogSetReputation("HouseMaiestas", 50);     
                 }
                 TitleSet("MagicSchoolWizard");  
             }
