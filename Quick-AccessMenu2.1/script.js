@@ -179,13 +179,15 @@ if (CurrentScreen == "ChatRoom") {
         }
    
         else if (content.includes("visual")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Visual commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/anim2 (animhere). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/bg1 =  adds hidden backgrounds to the admin selection screen. Tip for BCX users: activate BCX before login.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/bg2 (number) = uses a hidden platform background. Number must be between 1 and 45. Use /bg2 0 to get the list.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/colorchanger  =  using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/pose2 (posehere) (targetname). Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/speak  = animates mouth when talking in chat. Can also: /mouth or /speech", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: Visual commands:\n" +
+		"<b>/anim2</b> (animhere) = changes your facial expression. Using will give more info.\n" +
+		"<b>/bg1</b> = adds hidden backgrounds to the admin selection screen. Tip for BCX users: activate BCX before login.\n" +
+		"<b>/bg2</b> (number) = uses a hidden platform background. Number must be between 1 and 45. Use /bg2 0 to get the list.\n" +
+                "<b>/colorchanger</b> (animhere) = gets an animation with color change. Using will give more info.\n" +
+		"<b>/pose2</b> (posehere) (targetname) = changes the pose of any player. Using will give more info.\n" +   
+                "<b>/speak</b> = animates mouth when talking in chat. Can also: /mouth or /speech."
+            );   
         }
 
         else if (content.includes("zones")) {  
