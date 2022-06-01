@@ -191,18 +191,21 @@ if (CurrentScreen == "ChatRoom") {
         }
 
         else if (content.includes("zones")) {  
-	    ChatRoomMessage({ Content: "/asylum (minutes) =  enters asylum, bypasses requirements. Specify minutes if you are a patient.", Type: "LocalMessage", Sender: Player.MemberNumber });        
-            ChatRoomMessage({ Content: "/chess  (difficulty) =  starts chess, must specify difficulty first (/chess 1 = easy, /chess 3 = hard).", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/college  =  enters college, bypasses requirements.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/game (minigamehere) = Launches a minigame. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });    
-            ChatRoomMessage({ Content: "/ggts (minutes) (level) =  enters ggts training in asylum for the specified time. Level must be between 1 and 6.", Type: "LocalMessage", Sender: Player.MemberNumber });   
-	    ChatRoomMessage({ Content: "/keydeposit (hours) = keeps your keys safe in the vault.", Type: "LocalMessage", Sender: Player.MemberNumber });  
-            ChatRoomMessage({ Content: "/kinkydungeon  =  to the end, add devious to toggle deviouschallenge or cheat to start with cheats or use as is to start vanilla. Remember to wear VR headset if you want others to see you play.", Type: "LocalMessage", Sender: Player.MemberNumber });  
-            ChatRoomMessage({ Content: "/patreoncheats  =  all except college uniform, is auto toggled by default.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/prison (minutes) = stays in Pandora prison. More than 60 minutes is possible.", Type: "LocalMessage", Sender: Player.MemberNumber });           
-            ChatRoomMessage({ Content: "/store  =  leaves chatroom, goes to store. Shows hidden items.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/timercell (minutes) = stays in the isolation cell. More than 60 minutes is possible. Tip: use bondage commands before!", Type: "LocalMessage", Sender: Player.MemberNumber });         
-          }
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: Zones commands:\n" +	
+		"<b>/asylum</b> (minutes) = enters asylum, bypasses requirements. Specify minutes if you are a patient.\n" +
+		"<b>/chess</b> (difficulty) = starts chess, must specify difficulty first (1 easy - 2 normal - 3 hard).\n" +
+		"<b>/college</b> = enters college, bypasses requirements.\n" +
+	        "<b>/game</b> (minigamehere) = launches a minigame. Using will give more info.\n" +   
+		"<b>/ggts</b> (minutes) (level) = enters ggts training in asylum for the specified time. Level must be between 1 and 6.\n" +   
+                "<b>/keydeposit</b> (hours) = keeps your keys safe in the vault.\n" +
+	        "<b>/kinkydungeon</b> = launches Kinky Dungeon. Options: devious to toggle deviouschallenge, cheat to start with cheats.\n" +
+		"<b>/patreoncheats</b> = changes settings of patreon cheats. all except college uniform, is auto toggled by default.\n" +   
+	        "<b>/prison</b> (minutes) = stays in Pandora prison. More than 60 minutes is possible.\n" +
+                "<b>/store</b> = leaves chatroom, goes to store. Shows hidden items.\n" +
+	        "<b>/timercell</b> (minutes) = stays in the isolation cell. More than 60 minutes is possible. Tip: use bondage commands before!"      
+             );  	        
+         }   
     }
 	
     else if ((content.indexOf("/action ") == 0) || (content.indexOf("/a ") == 0))  {
