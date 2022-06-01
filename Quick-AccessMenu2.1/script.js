@@ -76,22 +76,24 @@ if (CurrentScreen == "ChatRoom") {
 		"<b>/naked</b> (targetname) = removes clothes.\n" +
                 "<b>/outfit</b> (targetname) = restores/saves/loads outfit. Using will give more info.\n" +
                 "<b>/underwear</b> (targetname) = changes underwear.\n" +
-		"<b>/wardrobe</b> (number) (targetname) = opens target wardrobe."   
+		"<b>/wardrobe</b> (targetname) = opens target wardrobe."   
             );    
         }
 
         else if (content.includes("escape")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Escape commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/boost  =  boosts skills, similar to maid quarters drink.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/collarremove  =  removes slave/owner collar. Can also be: /removecollar", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/frlist = gives access to friendlist with clickable links to other rooms during 15 seconds.", Type: "LocalMessage",  Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/leave  =  leaves room, even if prevented.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/release (targetname) =  removes all bindings.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/resetdifficulty  =  resets difficulty, thereby quitting it. Will warn first.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-            ChatRoomMessage({ Content: "/safewordspecific  =  removes specific item. More info when used.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/solidity (value) = changes the solidity of most current bindings. Use low values to escape! Value 1 allows to escape the futuristic crate.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/totalrelease (targetname) =  removes all bindings, collar, harness, chastity, toys.", Type: "LocalMessage", Sender: Player.MemberNumber });       
-            ChatRoomMessage({ Content: "/unlock (targetname) (locktype) =  removes all locks or only a specified type of lock. More info with /help unl.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: Escape commands:\n" +	
+		"<b>/boost</b> = boosts skills, similar to maid quarters drink.\n" +
+		"<b>/collarremove</b> = removes slave/owner collar. Can also be: /removecollar.\n" +
+                "<b>/frlist</b> = gives access to friendlist with clickable links to other rooms during 15 seconds.\n" +
+                "<b>/leave</b> = leaves room, even if prevented.\n" +
+		"<b>/release</b> (targetname) = removes all bindings.\n" +   
+		"<b>/resetdifficulty</b> = resets difficulty, thereby quitting it. Will warn first.\n" +   
+		"<b>/safewordspecific</b> = removes specific item. More info when used.\n" +   
+                "<b>/solidity</b> (value) = changes the solidity of most current bindings. Use low values to escape! Value 1 allows to escape the futuristic crate.\n" +
+		"<b>/totalrelease</b> (targetname) = removes all bindings, collar, harness, chastity, toys.\n" +     
+		"<b>/unlock</b> (targetname) (locktype) = removes all locks or only a specified type of lock. More info with /help unl."   
+            );   
 	}
 	    
 	 else if (content.includes("fun")) {
