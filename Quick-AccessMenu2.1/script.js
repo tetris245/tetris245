@@ -97,11 +97,13 @@ if (CurrentScreen == "ChatRoom") {
 	}
 	    
 	 else if (content.includes("fun")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Fun commands:", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/arousal 10  =  sets arousal level. Change value (0-100).", Type: "LocalMessage", Sender: Player.MemberNumber });    
-            ChatRoomMessage({ Content: "/cum  =  causes an orgasm.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/moaner  =  moans when horny and stimulated. Using will give more info.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/superdice (sides)  = rolls a superdice. Sides can be between 2 and 999999999.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	     ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: Fun commands:\n" +	 
+		"<b>/arousal</b> (level) = sets arousal level. Level must be between 0 and 100.\n" +
+		"<b>/cum</b> = causes an orgasm.\n" +
+		"<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" + 
+		"<b>/superdice</b> (sides)  = rolls a superdice. Sides can be between 2 and 999999999."     
+	    );	 
 	 }
 	    
 	else if (content.includes("lock")) {
