@@ -217,9 +217,11 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if ((content.indexOf("/action ") == 0) || (content.indexOf("/a ") == 0))  {
         if (content.includes("/action") == true) {
-            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (content.substring(7).trim() )}] });}
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (content.substring(7).trim() )}] });
+	}
         else {
-            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (content.substring(2).trim() )}] });}
+            ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: (content.substring(2).trim() )}] });
+	}
     }
 	
     else if (content.indexOf("/anim2") == 0) {
@@ -495,20 +497,27 @@ if (CurrentScreen == "ChatRoom") {
     else if ((content.indexOf("/babytalk") == 0) || content.indexOf("/b ") == 0) {
         if (content.includes("/babytalk")) {
            content = SpeechBabyTalk({Effect: ["RegressedTalk"]}, content);
-           ServerSend("ChatRoomChat", { "Content":content.substring(9).trim(), "Type":"Chat" });}
+           ServerSend("ChatRoomChat", { "Content":content.substring(9).trim(), "Type":"Chat" });
+	}
         else {
            content = SpeechBabyTalk({Effect: ["RegressedTalk"]}, content);
-           ServerSend("ChatRoomChat", { "Content":content.substring(2).trim(), "Type":"Chat" });}
+           ServerSend("ChatRoomChat", { "Content":content.substring(2).trim(), "Type":"Chat" });
+	}
     }
 	
     else if (content.indexOf("/becomeownlover") == 0) {
-        ChatRoomMessage({ Content: "Warning: Uncomfirmed glitch might occur when removing self as lover, during which a random/real lover will be taken. Use with risk in mind. Confirm: /becomeownlover yes", Type: "LocalMessage", Sender: Player.MemberNumber });
-           if (content.includes("yes")) {
-               ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
-               ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanOfferBeginWedding" && "Propose" });
-               ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanBeginWedding" && "Accept" });
-               ChatRoomMessage({ Content: "Accomplished. Break-up is done via Club Management.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	   }
+	if (content.includes("yes")) {
+            ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
+            ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanOfferBeginWedding" && "Propose" });
+            ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanBeginWedding" && "Accept" });
+            ChatRoomSendLocal("Accomplished. Break-up is done via Club Management.");
+	}    
+	else {    
+	    ChatRoomSendLocal(
+                "<b>Warning</b>: Uncomfirmed glitch might occur when removing self as lover, during which a random/real lover will be taken\n" +    
+	        "Use with risk in mind. Confirm: /becomeownlover yes"    
+	    );   
+        }
     }
     //consider writing a lover break up code to compensate for glitch, if possible.
 	
@@ -617,7 +626,7 @@ if (CurrentScreen == "ChatRoom") {
         BackgroundsList.push({ Name: "SophieIntro", Tag: [BackgroundsTagIndoor] });
 	BackgroundsList.push({ Name: "White", Tag: [BackgroundsTagIndoor] });
         ChatCreateBackgroundList = BackgroundsGenerateList(BackgroundsTagList);
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: You can use more backgrounds now.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomSendLocal("Quick-AccessMenu2: You can use more backgrounds now.");  
     }   
 
     else if (content.indexOf("/bg2") == 0) {
