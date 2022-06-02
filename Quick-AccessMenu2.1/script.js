@@ -107,36 +107,41 @@ if (CurrentScreen == "ChatRoom") {
 	 }
 	    
 	else if (content.includes("lock")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: The lock command has several syntaxes:", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-            ChatRoomMessage({ Content: "/lock (targetname) (locktype) for locks 1 to 8", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	    ChatRoomMessage({ Content: "/lock (targetname) (locktype) (r) for lock 9", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	    ChatRoomMessage({ Content: "/lock (targetname) (locktype) (code) for lock 10", Type: "LocalMessage", Sender: Player.MemberNumber });  
-	    ChatRoomMessage({ Content: "/lock (targetname) (locktype) (password) (r) for locks 11 and 12", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	    ChatRoomMessage({ Content: "/lock (targetname) (locktype) (minutes) (h) (i) (r) for locks 13 to 15", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	    ChatRoomMessage({ Content: "/lock (targetname) (locktype) (password) (minutes) (h) (i) (r) for lock 16", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-            ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "The lock types:", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	    ChatRoomMessage({ Content: "1 Metal - 2 Exclusive - 3 Intricate - 4 High Security", Type: "LocalMessage", Sender: Player.MemberNumber });  
-	    ChatRoomMessage({ Content: "5 Pandora - 6 Mistress - 7 Lover - 8 Owner", Type: "LocalMessage", Sender: Player.MemberNumber });    
-	    ChatRoomMessage({ Content: "9 Five Minutes - 10 Combination - 11 Safeword", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	    ChatRoomMessage({ Content: "12 Password - 13 Mistress Timer - 14 Lover Timer", Type: "LocalMessage", Sender: Player.MemberNumber });  
-	    ChatRoomMessage({ Content: "15 Owner Timer - 16 Timer Password", Type: "LocalMessage", Sender: Player.MemberNumber });   
-	    ChatRoomMessage({ Content: "Use /help lpar for info about other parameters", Type: "LocalMessage", Sender: Player.MemberNumber });   
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: The lock command has several syntaxes:\n" +	
+		"/lock (targetname) (locktype) for locks 1 to 8\n" +
+		"/lock (targetname) (locktype) (r) for lock 9\n" +
+		"/lock (targetname) (locktype) (code) for lock 10\n" +
+		"/lock (targetname) (locktype) (password) (r) for locks 11 and 12\n" +
+                "/lock (targetname) (locktype) (minutes) (h) (i) (r) for locks 13 to 15\n" +
+                "/lock (targetname) (locktype) (password) (minutes) (h) (i) (r) for lock 16\n" +
+	        " \n" +
+                "The lock types:\n" +
+		"1 Metal - 2 Exclusive - 3 Intricate - 4 High Security\n" +   
+		"5 Pandora - 6 Mistress - 7 Lover - 8 Owner\n" +   
+                "9 Five Minutes - 10 Combination - 11 Safeword\n" + 
+                "12 Password - 13 Mistress Timer - 14 Lover Timer\n" + 
+		"15 Owner Timer - 16 Timer Password\n" +
+	        "Use /help lpar for info about other parameters"     
+	    );	 
         }
 	
         else if (content.includes("lpar")) {
-           ChatRoomMessage({ Content: "Special parameters:", Type: "LocalMessage", Sender: Player.MemberNumber });
-           ChatRoomMessage({ Content: "code must be between 0 and 9999.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	   ChatRoomMessage({ Content: "password is limited to 8 characters.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	   ChatRoomMessage({ Content: "maximum time = 240 minutes for locks 13 and 16,", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	   ChatRoomMessage({ Content: "10080 minutes for locks 14 and 15.", Type: "LocalMessage", Sender: Player.MemberNumber });  
-           ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
-	   ChatRoomMessage({ Content: "Optional parameters: h to hide the timer,", Type: "LocalMessage", Sender: Player.MemberNumber });
-	   ChatRoomMessage({ Content: "i to enable time input from other players,", Type: "LocalMessage", Sender: Player.MemberNumber });       
-	   ChatRoomMessage({ Content: "r for item removal when correct password entered", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	   ChatRoomMessage({ Content: "or lock timer runs out.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-           ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
-	   ChatRoomMessage({ Content: "Tip: replace h and/or i by another character when you need to skip them.", Type: "LocalMessage", Sender: Player.MemberNumber });    
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: Special parameters of lock command:\n" +		
+		"code must be between 0 and 9999.\n" +
+		"password is limited to 8 characters.\n" +
+		"maximum time = 240 minutes for locks 13 and 16,\n" +
+                "10080 minutes for locks 14 and 15.\n" +
+                " \n" +
+	        "Optional parameters\n" +
+		"h to hide the timer,\n" +  
+	        "i to enable time input from other players,\n" +
+                "r for item removal when correct password entered\n" +
+	        "or lock timer runs out.\n" +
+		" \n" +  
+	        "Tip: replace h and/or i by another character when you need to skip them."   
+	    );     
         }
 
         else if (content.includes("misc")) {
