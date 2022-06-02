@@ -134,7 +134,7 @@ if (CurrentScreen == "ChatRoom") {
 		"maximum time = 240 minutes for locks 13 and 16,\n" +
                 "10080 minutes for locks 14 and 15.\n" +
                 " \n" +
-	        "Optional parameters\n" +
+	        "Optional parameters:\n" +
 		"h to hide the timer,\n" +  
 	        "i to enable time input from other players,\n" +
                 "r for item removal when correct password entered\n" +
@@ -2226,19 +2226,20 @@ if (CurrentScreen == "ChatRoom") {
 	  
     else if (content.indexOf("/moaner") == 0) {
         if (content.endsWith("/moaner")) {
-           ChatRoomMessage({ Content: "Quick-AccessMenu2: Several actions are possible with the moaner command:", Type: "LocalMessage", Sender: Player.MemberNumber });
-           ChatRoomMessage({ Content: "/moaner on  = starts the moaner",Type: "LocalMessage", Sender: Player.MemberNumber });
-           ChatRoomMessage({ Content: "/moaner off  = stops the moaner",Type: "LocalMessage", Sender: Player.MemberNumber });
-           ChatRoomMessage({ Content: "/moaner profile  = moaner profile help",Type: "LocalMessage", Sender: Player.MemberNumber });
-           ChatRoomMessage({ Content: "/moaner profile (profilename) = selects a moaner profile",Type: "LocalMessage", Sender: Player.MemberNumber });
-           ChatRoomMessage({ Content: "/moaner status = displays current moaner status",Type: "LocalMessage", Sender: Player.MemberNumber });
-           ChatRoomMessage({ Content: "/moaner verbose (on/off)  = enable/disable verbose mode",Type: "LocalMessage", Sender: Player.MemberNumber });
-	   ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
-           ChatRoomMessage({ Content: "You can also enable/disable parts of the Moaner with:",Type: "LocalMessage", Sender: Player.MemberNumber });
-           ChatRoomMessage({ Content: "/moaner orgasm (on/off): moans when you cum",Type: "LocalMessage", Sender: Player.MemberNumber });
-           ChatRoomMessage({ Content: "/moaner spank (on/off): moans when you are spanked",Type: "LocalMessage", Sender: Player.MemberNumber });
-           ChatRoomMessage({ Content: "/moaner talk (on/off): moans when talking if vibed",Type: "LocalMessage", Sender: Player.MemberNumber });
-           ChatRoomMessage({ Content: "/moaner vibe (on/off): moans when vibes settings changed",Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: Several actions are possible with the moaner command:\n" +	
+		"<b>/moaner on</b> = starts the moaner\n" +
+                "<b>/moaner off</b> = stops the moaner\n" +
+                "<b>/moaner profile</b> (profilename) =  selects a moaner profile. Without profilename, access to moaner profile help\n" +
+		"<b>/moaner status</b> = displays current moaner status\n" +  
+                "<b>/moaner verbose</b> (on/off) = enable/disable verbose mode\n" + 
+                " \n" +
+                "You can also enable/disable parts of the Moaner with:\n" +
+                "<b>/moaner orgasm</b> (on/off): moans when you cum\n" + 
+                "<b>/moaner spank</b> (on/off): moans when you are spanked\n" +
+                "<b>/moaner talk</b> (on/off): moans when talking if vibed\n" +
+                "<b>/moaner vibe</b> (on/off): moans when vibes settings changed"     
+	    );	 
        }    
        else {
            var stringMoan1 = content;
