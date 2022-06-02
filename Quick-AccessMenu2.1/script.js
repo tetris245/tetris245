@@ -650,7 +650,7 @@ if (CurrentScreen == "ChatRoom") {
                 "27, 28, 29 - Dungeon Storage"\n" +
                 "30 to 40 - Hall (1 to 4); 41 - Maid Bed"\n" +
                 "42 and 43 - Terrace; 44 and 45 - Wine Cell"
-            ;            
+            );           
         }
         else if (bg == 1) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Balcony';
