@@ -146,7 +146,7 @@ if (CurrentScreen == "ChatRoom") {
 		"<b>/help</b> (category) = displays the QAM commands. Available categories: bondage, character, clothing, escape, fun, misc, pleasure, talking, visual, zones.\n" +
 		"<b>/login</b> (accountname) (password) = logs in a new account.\n" + 
 		"<b>/relog</b> = relogs.\n" +   
-		"<b>/unrestrict/b> =  removes all restrictions from game. Can use maid drink tray/other stuff. Using will give more info. Submissives should use /unrestrict soft."     
+		"<b>/unrestrict</b> =  removes all restrictions from game. Can use maid drink tray/other stuff. Using will give more info. Submissives should use /unrestrict soft."     
 	    );	                
         }
 
@@ -166,16 +166,18 @@ if (CurrentScreen == "ChatRoom") {
 	}
 	    
         else if (content.includes("unl")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: The unlock command:", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-            ChatRoomMessage({ Content: "/unlock (targetname) (locktype).", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-            ChatRoomMessage({ Content: "All locks of any type will be removed if you don't specify the lock type.", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-            ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "The lock types:", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	    ChatRoomMessage({ Content: "1 Metal - 2 Exclusive - 3 Intricate - 4 High Security", Type: "LocalMessage", Sender: Player.MemberNumber });  
-	    ChatRoomMessage({ Content: "5 Pandora - 6 Mistress - 7 Lover - 8 Owner", Type: "LocalMessage", Sender: Player.MemberNumber });    
-	    ChatRoomMessage({ Content: "9 Five Minutes - 10 Combination - 11 Safeword", Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	    ChatRoomMessage({ Content: "12 Password - 13 Mistress Timer - 14 Lover Timer", Type: "LocalMessage", Sender: Player.MemberNumber });  
-	    ChatRoomMessage({ Content: "15 Owner Timer - 16 Timer Password", Type: "LocalMessage", Sender: Player.MemberNumber }); 
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: The unlock command:\n" +	
+		"<b>/unlock</b> (targetname) (locktype).\n" +
+		"All locks of any type will be removed if you don't specify the lock type.\n" +
+                " \n" +
+                "The lock types:\n" +
+		"1 Metal - 2 Exclusive - 3 Intricate - 4 High Security\n" +   
+		"5 Pandora - 6 Mistress - 7 Lover - 8 Owner\n" +   
+                "9 Five Minutes - 10 Combination - 11 Safeword\n" + 
+                "12 Password - 13 Mistress Timer - 14 Lover Timer\n" + 
+		"15 Owner Timer - 16 Timer Password"
+             );  
         }
    
         else if (content.includes("visual")) {
@@ -200,7 +202,7 @@ if (CurrentScreen == "ChatRoom") {
 		"<b>/ggts</b> (minutes) (level) = enters ggts training in asylum for the specified time. Level must be between 1 and 6.\n" +   
                 "<b>/keydeposit</b> (hours) = keeps your keys safe in the vault.\n" +
 	        "<b>/kinkydungeon</b> = launches Kinky Dungeon. Options: devious to toggle deviouschallenge, cheat to start with cheats.\n" +
-		"<b>/patreoncheats</b> = changes settings of patreon cheats. all except college uniform, is auto toggled by default.\n" +   
+		"<b>/patreoncheats</b> = changes settings of patreon cheats. All except college uniform, is auto toggled by default.\n" +   
 	        "<b>/prison</b> (minutes) = stays in Pandora prison. More than 60 minutes is possible.\n" +
                 "<b>/store</b> = leaves chatroom, goes to store. Shows hidden items.\n" +
 	        "<b>/timercell</b> (minutes) = stays in the isolation cell. More than 60 minutes is possible. Tip: use bondage commands before!"      
