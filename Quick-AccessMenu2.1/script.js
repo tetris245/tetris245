@@ -1171,11 +1171,12 @@ if (CurrentScreen == "ChatRoom") {
 		"<b>/diaper setregression</b> (value between 0 and 3) for regression level, normally controlled by wearing Nursery Milk for an extended period of time\n" +
 		"<b>/diaper settimer</b> (minutes) to change the wet/mess timer\n" +
 		"<b>/diaper setwetchance</b> (value between 0 and 1) to control how often you will wet\n" +
-	        "<b>/diaper setmesschance</b> (value between 0 and 1) to control how often you will mess. Make sure this is lower than wetchance\n" +
-		"<b>/diaper setwet1</b> (value between 0 and 2) for wet level of normal diapers\n" +    
-	        "<b>/diaper setwet2</b> (value between 0 and 2) for wet level of chastity diapers\n" +
-	        "<b>/diaper setmess1</b> (value between 0 and 2) for mess level of normal diapers\n" +    
-	        "<b>/diaper setmess2</b> (value between 0 and 2) for mess level of chastity diapers"	    
+	        "<b>/diaper setmesschance</b> (value between 0 and 1) to control how often you will mess. Make sure this is lower than wetchance.\n" +
+		"<b>/diaper setwet1</b> (value)* for wet level of normal diapers\n" +    
+	        "<b>/diaper setwet2</b> (value)* for wet level of chastity diapers\n" +
+	        "<b>/diaper setmess1</b> (value)* for mess level of normal diapers\n" +    
+	        "<b>/diaper setmess2</b> (value)* for mess level of chastity diapers\n"	+ 
+		"* = value between 0 and 2"     
 	    );    
         }     
     }
