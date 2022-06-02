@@ -476,7 +476,7 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/autokick") == 0) {
         if (this.AutoKickOn == false || this.AutoKickOn == undefined) {
-           ChatRoomMessage({ Content: "AutoKick: Ready.", Type: "LocalMessage", Sender: Player.MemberNumber });
+           ChatRoomSendLocal("AutoKick: Ready.");
            AutoKickOn = true;
            AutoKicker = function (data, days = 1, hours = 12, minutes = 0) {
                minutes *= 60000;
@@ -485,12 +485,15 @@ if (CurrentScreen == "ChatRoom") {
                let character = ChatRoomCharacter.find((c) => c.MemberNumber === data.Sender);
                if (data.Content == "ServerEnter" && character.Creation > CurrentTime - days - hours - minutes) {
                    ServerSend("ChatRoomAdmin", { MemberNumber: character.MemberNumber, Action: "Ban" });
-               ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: "AutoKick: Account was 0 days old."}] });};
-               };ServerSocket.on("ChatRoomMessage", AutoKicker);}
+                   ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: "AutoKick: Account was 0 days old."}] });
+	       };
+           };
+	   ServerSocket.on("ChatRoomMessage", AutoKicker);
+	}
         else {
             AutoKickOn = false;
             ServerSocket.off("ChatRoomMessage", AutoKicker);
-            ChatRoomMessage({ Content: "AutoKick: Disabled.", Type: "LocalMessage", Sender: Player.MemberNumber })
+	    ChatRoomSendLocal("AutoKick: Disabled.");
         }
     }
 	
@@ -632,20 +635,22 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/bg2") == 0) {
 	var bg = content.substring(4).trim();
         if (bg == 0) {
-             ChatRoomMessage({ Content: "Quick-AccessMenu2: List of hidden platform backgrounds:", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "1 and 2 - Balcony; 3 - Ballroom", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "4, 5, 6 - Bathroom Olivia", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "7 - Bedroom Dungeon; 8 - Bedroom Edward", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "9 and 10 - Bedroom Isabella; 11 - Bedroom Melody", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "12, 13, 14 - Bedroom Olivia; 15 - Black", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "16 - Castle Hall; 17 - College Art 1", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "18 - College Class 1; 19 - College Hall 1", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "20, 21, 22 - Countess Hall", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "23 and 24 - Dungeon 1", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "25 and 26 - Dungeon Cell", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "27, 28, 29 - Dungeon Storage", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "30 to 40 - Hall (1 to 4); 41 - Maid Bed", Type: "LocalMessage", Sender: Player.MemberNumber });
-             ChatRoomMessage({ Content: "42 and 43 - Terrace; 44 and 45 - Wine Cell", Type: "LocalMessage", Sender: Player.MemberNumber });           
+            ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: List of hidden platform backgrounds:\n" +
+		"1 and 2 - Balcony; 3 - Ballroom"\n" +   
+                "4, 5, 6 - Bathroom Olivia"\n" +
+		"7 - Bedroom Dungeon; 8 - Bedroom Edward"\n" +
+		"9 and 10 - Bedroom Isabella; 11 - Bedroom Melody"\n" +
+                "12, 13, 14 - Bedroom Olivia; 15 - Black"\n" +
+		"16 - Castle Hall; 17 - College Art 1"\n" +   
+                "18 - College Class 1; 19 - College Hall 1"\n" +
+                "20, 21, 22 - Countess Hall"\n" +
+                "23 and 24 - Dungeon 1"\n" +
+                "25 and 26 - Dungeon Cell"\n" +
+                "27, 28, 29 - Dungeon Storage"\n" +
+                "30 to 40 - Hall (1 to 4); 41 - Maid Bed"\n" +
+                "42 and 43 - Terrace; 44 and 45 - Wine Cell"
+            ;            
         }
         else if (bg == 1) {
              ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Balcony';
@@ -832,7 +837,7 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/boost") == 0) {
         LogAdd("ModifierLevel", "SkillModifier", 105);
         LogAdd("ModifierDuration", "SkillModifier", CurrentTime + 3600000);
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: You feel your senses heightened(bondage/evasion). Can see change in information panel.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomSendLocal("Quick-AccessMenu2: You feel your senses heightened(bondage/evasion). Can see change in information panel.");   
     }
 	
     else if (content.indexOf("/chess") == 0) {
