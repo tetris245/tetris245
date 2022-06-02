@@ -917,7 +917,7 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/colorchanger") == 0) {
 
         if (content.includes("custom") || content.includes("set") || content.includes("select")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.");  
             setTimeout(function() {
                 if (CurrentCharacter.FocusGroup.Name) {
                 var RandomColor = null;
@@ -964,7 +964,7 @@ if (CurrentScreen == "ChatRoom") {
         }
 	    
         else if (content.includes("eyes")) {
-            ChatRoomMessage({ Content: "You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry."); 
             setTimeout(function() {
                 if (CurrentCharacter) {
                 var ColorTargetNameEyes = CurrentCharacter;
@@ -982,7 +982,7 @@ if (CurrentScreen == "ChatRoom") {
         }
 
         else if (content.includes("hair")) {
-            ChatRoomMessage({ Content: "You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry."); 
             setTimeout(function() {
                 if (CurrentCharacter) {
                 var ColorTargetNameHair = CurrentCharacter;
@@ -1017,11 +1017,14 @@ if (CurrentScreen == "ChatRoom") {
         }
 	    
         else if (content.endsWith("/colorchanger")) {
-            ChatRoomMessage({ Content: "Quick-Access Menu2: Manual:", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "To preselect, two choices exist, type: /colorchanger hair or /colorchanger eyes", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "To manually select area, type: /colorchanger set or /colorchanger select or /colorchangercustom", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Manual selection can only target 10 areas at a time, then requires to be reset to reuse, type: /colorchanger stop or /colorchanger reset", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Only 1 target can be active at a time.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: The colorchanger command:\n" +
+                "To preselect, two choices exist, type: <b>/colorchanger hair</b> or <b>/colorchanger eyes</b>\n" +
+		"To manually select area, type: <b>/colorchanger set</b> or <b>/colorchanger select</b> or <b>/colorchanger custom</b>\n" +
+		"Manual selection can only target 10 areas at a time,\n" +
+                "then requires to be reset to reuse, type: <b>/colorchanger stop</b> or <b>/colorchanger reset</b>\n" +
+                "Only 1 target can be active at a time" 
+            );    
         }
     }
 	
