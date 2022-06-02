@@ -438,14 +438,16 @@ if (CurrentScreen == "ChatRoom") {
 	    ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+Player.Name+" is worried." }]});
         }  
  	else if (content.endsWith("/anim2")) {	  
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an anim. List:", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "angry1, angry2, blink, blush1, blush2, blush3, blush4,", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "blush5, chuckle, closeeyes, closemouth, confused, cuddle,", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "cry, disoriented, distressed, droolreset, droolsides, frown,", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "gaginflate, giggle, glare, grin, happy, iced, kiss1, kiss2,", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "kiss3, laugh, lick, lipbite, narroweyes, neutral, openeyes,", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "openmouth, pout, raisebrows, resetbrows, sad, smile,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "smirk, spanked, wink, worried.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	     ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: The anim2 command must include an anim. List:\n" +	
+		"angry1, angry2, blink, blush1, blush2, blush3, blush4,\n" +   
+		"blush5, chuckle, closeeyes, closemouth, confused, cuddle,\n" +
+                "cry, disoriented, distressed, droolreset, droolsides, frown,\n" +
+                "gaginflate, giggle, glare, grin, happy, iced, kiss1, kiss2,\n" +
+	        "kiss3, laugh, lick, lipbite, narroweyes, neutral, openeyes,\n" +
+		"openmouth, pout, raisebrows, resetbrows, sad, smile,\n" +    
+		"smirk, spanked, wink, worried."   
+	    );    
 	}
     }
 
