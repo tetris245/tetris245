@@ -1148,30 +1148,35 @@ if (CurrentScreen == "ChatRoom") {
             diaperTick();
         }
         else if (content.endsWith("/diaper")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include an action. You need to wear one or two layers of diapers (only bulky and poofy versions).", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/diaper start to enable the script", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/diaper stop to disable the script", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "/diaper tick to force a tick", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "To get new clean diapers:", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/diaper change1 (targetname) for normal diapers", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/diaper change2 (targetname) for chastity diapers", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/diaper change3 (targetname) for both diapers", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: " ", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "Customisation (before using /diaper start):", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "Use /diaper custom for detailed info", Type: "LocalMessage", Sender: Player.MemberNumber });
-       }		
+            ChatRoomSendLocal(
+		"<b>Quick-AccessMenu2</b>: The diaper command must include an action.\n" +	  
+                "You need to wear one or two layers of diapers (only bulky and poofy versions)\n" +	
+		"<b>/diaper start</b> to enable the script\n" +
+                "<b>/diaper stop</b> to disable the script\n" +
+		"<b>/diaper tick</b> to force a tick\n" +
+		" \n" +
+		"To get new clean diapers:\n" +   
+		"<b>/diaper change1</b> (targetname) for normal diapers\n" +
+	        "<b>/diaper change2</b> (targetname) for chastity diapers\n" +
+                "<b>/diaper change3</b> (targetname) for both diapers\n" +
+	        " \n" +
+	        "Customisation (before using /diaper start):\n" + 
+	        "Use /diaper custom for detailed info"     
+	    );	 
+        }		
 	else if (content.includes("custom")) {
-	    ChatRoomMessage({ Content: "Customisation (before using /diaper start):", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/diaper setdesperation (value between 0 and 3) for desperation level, normally controlled by having a milk bottle used on you", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/diaper setregression (value between 0 and 3) for regression level, normally controlled by wearing Nursery Milk for an extended period of time", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/diaper settimer (minutes) to change the wet/mess timer", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/diaper setwetchance (value between 0 and 1) to control how often you will wet", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/diaper setmesschance (value between 0 and 1) to control how often you will mess. Make sure this is lower than wetchance", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/diaper setwet1 (value between 0 and 2) for wet level of normal diapers", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/diaper setwet2 (value between 0 and 2) for wet level of chastity diapers", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/diaper setmess1 (value between 0 and 2) for mess level of normal diapers", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "/diaper setmess2 (value between 0 and 2) for mess level of chastity diapers", Type: "LocalMessage", Sender: Player.MemberNumber });   
+	    ChatRoomSendLocal(
+		"<b>Quick-AccessMenu2</b>: Diaper customisation (before using /diaper start):\n" +
+		"<b>/diaper setdesperation</b> (value between 0 and 3) for desperation level, normally controlled by having a milk bottle used on you\n" +
+		"<b>/diaper setregression</b> (value between 0 and 3) for regression level, normally controlled by wearing Nursery Milk for an extended period of time\n" +
+		"<b>/diaper settimer</b> (minutes) to change the wet/mess timer\n" +
+		"<b>/diaper setwetchance</b> (value between 0 and 1) to control how often you will wet\n" +
+	        "<b>/diaper setmesschance</b> (value between 0 and 1) to control how often you will mess. Make sure this is lower than wetchance\n" +
+		"<b>/diaper setwet1</b> (value between 0 and 2) for wet level of normal diapers\n" +    
+	        "<b>/diaper setwet2</b> (value between 0 and 2) for wet level of chastity diapers\n" +
+	        "<b>/diaper setmess1</b> (value between 0 and 2) for mess level of normal diapers\n" +    
+	        "<b>/diaper setmess2</b> (value between 0 and 2) for mess level of chastity diapers"	    
+	    );    
         }     
     }
 	
