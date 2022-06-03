@@ -3098,13 +3098,18 @@ if (CurrentScreen == "ChatRoom") {
 	    LogDelete("Mastery", "MagicSchool");
             DialogSetReputation("HouseMaiestas", 50);
         }
-    	else if (content.endsWith("/roleplay")) {	  
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a role. You will be able to check the changes in your profile. ", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "List: clubmistress, clubslave, doctor, escapedpatient,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "headmaid, kidnapper, maid, magician, magus,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "masterkidnapper, mistress, nurse, oracle, patient,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "permanentpatient, sage, sorcerer, warlock, witch, wizard.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Be careful with clubslave, you will be forced to complete contract. Similar warning for escapedpatient.", Type: "LocalMessage", Sender: Player.MemberNumber });           
+    	else if (content.endsWith("/roleplay")) {
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: The roleplay command must include a role.\n" +
+		"You will be able to check the changes in your profile.\n" + 
+		" \n" +    
+		"Available roles:\n" +     
+		"clubmistress, clubslave, doctor, escapedpatient,\n" +   
+		"headmaid, kidnapper, maid, magician, magus,\n" +
+                "masterkidnapper, mistress, nurse, oracle, patient,\n" + 
+		"permanentpatient, sage, sorcerer, warlock, witch, wizard.\n" +       
+	        "Be careful with clubslave, you will be forced to complete contract. Similar warning for escapedpatient."   
+	    );               
 	}
     }
 	
@@ -3144,21 +3149,25 @@ if (CurrentScreen == "ChatRoom") {
 	    LogDelete("JoinedSorority", "Management");
 	    LogDelete("LeadSorority", "Maid");
         }
-    	else if (content.endsWith("/rolequit")) {	  
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a role or clubarea. List:",Type: "LocalMessage", Sender: Player.MemberNumber });  
-            ChatRoomMessage({ Content: "asylum to cease being doctor, nurse, patient or permanent patient.",Type: "LocalMessage", Sender: Player.MemberNumber });           
-            ChatRoomMessage({ Content: "clubslave to break the club slave contract.",Type: "LocalMessage", Sender: Player.MemberNumber });  
-	    ChatRoomMessage({ Content: "ggts to leave ggts training (back to level 0).",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "kidnapper to cease being kidnapper or master kidnapper.",Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	    ChatRoomMessage({ Content: "magician to cease one of the 8 magic roles.",Type: "LocalMessage", Sender: Player.MemberNumber }); 
-            ChatRoomMessage({ Content: "management or mistress to cease being mistress or club mistress.",Type: "LocalMessage", Sender: Player.MemberNumber });                
-            ChatRoomMessage({ Content: "sorority or maid to cease being maid or headmaid.",Type: "LocalMessage", Sender: Player.MemberNumber }); 
-	    ChatRoomMessage({ Content: "You will be able to check the changes in your profile.",Type: "LocalMessage", Sender: Player.MemberNumber });
+    	else if (content.endsWith("/rolequit")) {
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: The rolequit command must include a role or clubarea.\n" +
+		"You will be able to check the changes in your profile.\n" + 
+		" \n" +    
+		"Available roles or areas:\n" +     
+		"asylum to cease being doctor, nurse, patient or permanent patient.\n" +   
+		"clubslave to break the club slave contract.\n" +
+                "ggts to leave ggts training (back to level 0).\n" + 
+		"kidnapper to cease being kidnapper or master kidnapper.\n" +   
+		"magician to cease one of the 8 magic roles.\n" +    
+		"management or mistress to cease being mistress or club mistress.\n" +       
+	        "sorority or maid to cease being maid or headmaid."   
+	    );              
         }
     }
 	
     else if (content.indexOf("/safewordspecific") == 0) {
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click  on target, select area. If successful, will be returned. If not, retry.");
         setTimeout(function() {
         if (CurrentCharacter !== Player) {ServerSend("ChatRoomChat", { Content: "Quick-Access Menu2: "+Player.Name+" has removed "+InventoryGet(CurrentCharacter, CurrentCharacter.FocusGroup.Name).Asset.Name+" on you via console. If this is undesired, blacklist player.", Type: "Whisper", Target: CurrentCharacter.MemberNumber })};
         CurrentCharacter.Appearance = CurrentCharacter.Appearance.filter(x => (CurrentCharacter.FocusGroup && CurrentCharacter.FocusGroup.Name) ? x.Asset.Group.Name != 
@@ -3171,7 +3180,7 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/savename") == 0) { 
         var NewName = tmpname;
         ServerAccountUpdate.QueueData({ Nickname: NewName });
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: Your temporary nickname has now a definitive status.", Type: "LocalMessage", Sender: Player.MemberNumber });   
+	ChatRoomSendLocal("Quick-AccessMenu2: Your temporary nickname has now a definitive status");  
     }
 
     else if (content.indexOf("/search") == 0) {
@@ -3191,8 +3200,7 @@ if (CurrentScreen == "ChatRoom") {
                 document.getElementById("InputChat").style.display = "inline";
                 document.getElementById("TextAreaChatLog").style.display = "inline";
             }, 15000);
-        }
-	    
+        }    
         if (content.includes("club") || content.includes("Club") || content.includes("LARP") || content.includes("larp")) {
             setTimeout(function() {
             ChatRoomSpace = "";
