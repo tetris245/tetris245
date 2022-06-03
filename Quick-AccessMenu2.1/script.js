@@ -441,7 +441,9 @@ if (CurrentScreen == "ChatRoom") {
         }  
  	else if (content.endsWith("/anim2")) {	  
 	     ChatRoomSendLocal(
-                "<b>Quick-AccessMenu2</b>: The anim2 command must include an anim. List:\n" +	
+                "<b>Quick-AccessMenu2</b>: The anim2 command must include an anim.\n" +
+		" \n" +
+		"Available anims:\n" +   
 		"angry1, angry2, blink, blush1, blush2, blush3, blush4,\n" +   
 		"blush5, chuckle, closeeyes, closemouth, confused, cuddle,\n" +
                 "cry, disoriented, distressed, droolreset, droolsides, frown,\n" +
@@ -513,12 +515,12 @@ if (CurrentScreen == "ChatRoom") {
             ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
             ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanOfferBeginWedding" && "Propose" });
             ServerSend("AccountLovership", { MemberNumber: Player.MemberNumber, Action: "CanBeginWedding" && "Accept" });
-            ChatRoomSendLocal("Accomplished. Break-up is done via Club Management.");
+            ChatRoomSendLocal("Quick-AccessMenu2: Accomplished. Break-up is done via Club Management.");
 	}    
 	else {    
 	    ChatRoomSendLocal(
                 "<b>Warning</b>: Uncomfirmed glitch might occur when removing self as lover, during which a random/real lover will be taken\n" +    
-	        "Use with risk in mind. Confirm: /becomeownlover yes"    
+	        "Use with risk in mind. Confirm by typing: <b>/becomeownlover yes</b>"    
 	    );   
         }
     }
@@ -528,6 +530,7 @@ if (CurrentScreen == "ChatRoom") {
         ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "Propose" && "Accept" })
         ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "CanOfferEndTrial" && "Propose" });
         ServerSend("AccountOwnership", { MemberNumber: Player.MemberNumber, Action: "CanEndTrial" && "Accept" });
+	ChatRoomSendLocal("Quick-AccessMenu2: Accomplished. Break-up is done via Club Management.");
     }
     //can't end free from owner, due to club's extreme mode preventing yet not allowing owner to break. Stupid...
 	
@@ -2429,14 +2432,17 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/pose2") == 0) {
 	if (content.endsWith("/pose2")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must be followed by a pose and optionally a targetname.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Available poses:", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "armsfree, belly, boxtied, cuffed, elbowtied, exercise, ", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "kneel1, kneel2, legsclosed, legsopen, pet,", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "sleep, spreadarms1, spreadarms2, spreadeagle1,", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "spreadeagle2, spreadlegs, stand, suspension,", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "tapedhands. Only on yourself: jump, roof.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Use /pose2 reset (targetname) to back to neutral pose.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: The pose2 command must be followed by a pose and optionally a targetname.\n" +
+		" \n" +  
+		"Available poses:\n" +     
+		"armsfree, belly, boxtied, cuffed, elbowtied, exercise,\n" +   
+		"kneel1, kneel2, legsclosed, legsopen, pet,\n" +
+                "sleep, spreadarms1, spreadarms2, spreadeagle1\n" +
+                "spreadeagle2, spreadlegs, stand, suspension,\n" +
+	        "tapedhands. Only on yourself: jump, roof.\n" +    
+		"Use <b>/pose2 reset</b> (targetname) to back to neutral pose."   
+	    );    
 	}
         else {    
             var stringPose1 = content;
@@ -2688,7 +2694,7 @@ if (CurrentScreen == "ChatRoom") {
                     : CharacterRefresh(Player);
                     }, 3000);
 	         }   
-                // exercises on any player
+                //exercises on any player
                 else if (content.includes("exercise")) {
                     var Region = undefined;
                     if (InventoryGet(target[0], "ItemButt") == null) {
@@ -2809,7 +2815,8 @@ if (CurrentScreen == "ChatRoom") {
                     ChatRoomCharacterUpdate(target[0]);
                     DialogLeaveItemMenu();
                     }, 10000);
-	        }	   
+	        }
+		//reset
                 else if (content.includes("reset")) {
                     CharacterSetActivePose(target[0], null);
                     delete InventoryGet(target[0], 'Emoticon').Property.OverrideHeight;
@@ -2884,11 +2891,16 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/reputation") == 0) {
          if (content.endsWith("/reputation")) {
-            ChatRoomMessage({ Content: "Quick-Access Menu2: Must be followed by a reputation and a level.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "You will be able to check the change in your profile.",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: " ",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Available reputations: abdl, amplector, corporis, dominant, gambling, gaming, kidnap, larp, maid, maiestas, nurse, patient, submissive, vincula.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Level must be between 0 and 100.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	     ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: The reputation command must be followed by a reputation and a level.\n" +
+		"You will be able to check the change in your profile.\n" + 
+		" \n" +    
+		"Available reputations:\n" +     
+		"abdl, amplector, corporis, dominant, gambling,\n" +   
+		"gaming, kidnap, larp, maid, maiestas, nurse,\n" +
+                "patient, submissive, vincula.\n" +  
+	        "Level must be between 0 and 100."   
+	    );     
         }
         else {
             var stringReputation1 = content;
@@ -2959,19 +2971,21 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/resetdifficulty") == 0) {
         if (content.includes("yes")) {
             Player.Difficulty = [];
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Difficulty reset, select a new one in settings.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal("Quick-AccessMenu2: Difficulty reset, select a new one in settings.");
 	}
         else {
-	    ChatRoomMessage({ Content: "Quick-AccessMenu2: Warning, resetting difficulty will incur a 7-day waiting period to rechange. Confirm by typing: /resetdifficulty yes", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal("<b>Warning</b>: Resetting difficulty will incur a 7-day waiting period to rechange. Confirm by typing: <b>/resetdifficulty yes</b>");
 	}
     }
 	
     else if (content.indexOf("/resetinventory") == 0) {
-          ChatRoomMessage({ Content: "Warning: You will lose many clothes and items in your inventory. It meant that you will need to buy them again. Confirm: /resetinventory yes", Type: "LocalMessage", Sender: Player.MemberNumber });
-              if (content.includes("yes")) {             
-	          Player.Inventory=[];ServerPlayerInventorySync();
-                  ChatRoomMessage({ Content: "Accomplished. Visit store to buy new clothes and items.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	      }
+        if (content.includes("yes")) {             
+	    Player.Inventory=[];ServerPlayerInventorySync();
+	    ChatRoomSendLocal("Quick-AccessMenu2: Accomplished. Visit store to buy new clothes and items..");
+        }	    
+	else {
+	    ChatRoomSendLocal("<b>Warning</b>: You will lose many clothes and items, you will need to buy them again. Confirm by typing: <b>/resetinventory yes</b>");
+	}   
     }
 	
     else if (content.indexOf("/restrain") == 0) {
