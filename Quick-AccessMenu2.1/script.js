@@ -1180,7 +1180,7 @@ if (CurrentScreen == "ChatRoom") {
                 "<b>/diaper change3</b> (targetname) for both diapers\n" +
 	        " \n" +
 	        "Customisation (before using /diaper start):\n" + 
-	        "Use /diaper custom for detailed info"     
+	        "Use <b>/diaper custom</b> for detailed info"     
 	    );	 
         }		
 	else if (content.includes("custom")) {
@@ -2242,7 +2242,7 @@ if (CurrentScreen == "ChatRoom") {
         CheatAllow = true;
         LogAdd("BondageCollege", "Import");
         LogAdd("KidnapSophie", "Sarah");
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: A few things have to be set manually. See the /roleplay and /rolequit commands.", Type: "LocalMessage", Sender: Player.MemberNumber });      
+	ChatRoomSendLocal("Quick-AccessMenu2: A few things have to be set manually. See the /roleplay and /rolequit commands.");      
     } 
 	  
     else if (content.indexOf("/moaner") == 0) {
@@ -2339,60 +2339,27 @@ if (CurrentScreen == "ChatRoom") {
         }
     }
 		
-    else if (content.indexOf("/outfit") == 0) {
-        if (content.includes("reset") || content.includes("revert") ||  content.includes("restore")) {
-            Player.Appearance = ChatSearchSafewordAppearance.slice(0);
-            // Player.ActivePose = ChatSearchSafewordPose; should not be needed
-            CharacterRefresh(Player);
-            ChatRoomCharacterUpdate(Player);
-	 }
-	    
-         else if (content.includes("save1")) {
-             ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
-             setTimeout(function() {
-             this.savedoutfit1 = CurrentCharacter.Appearance.slice(0);
-             DialogLeave();
-             }, 5000);
-         }
-	    
-         else if (content.includes("save2")) {
-             ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
-             setTimeout(function() {
-             this.savedoutfit2 = CurrentCharacter.Appearance.slice(0);
-             DialogLeave();
-             }, 5000);
-         }
-	    
-         else if (content.includes("save3")) {
-             ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
-             setTimeout(function() {
-             this.savedoutfit3 = CurrentCharacter.Appearance.slice(0);
-             DialogLeave();
-             }, 5000);
-         }
-	    
-         else if (content.includes("load1")) {
-             ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+    else if (content.indexOf("/outfit") == 0) {   
+         if (content.includes("load1")) {
+	     ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry."); 
              setTimeout(function() {
              CurrentCharacter.Appearance = this.savedoutfit1.slice(0);
              CharacterRefresh(CurrentCharacter);
              ChatRoomCharacterUpdate(CurrentCharacter);
              DialogLeave();
              }, 5000);
-         }
-	    
+         }	    
          else if (content.includes("load2")) {
-             ChatRoomMessage({ Content: "Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	     ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry."); 
              setTimeout(function() {
              CurrentCharacter.Appearance = savedoutfit2.slice(0);
              CharacterRefresh(CurrentCharacter);
              ChatRoomCharacterUpdate(CurrentCharacter);
              DialogLeave();
              }, 8000);
-         }
-	    
+         }    
          else if (content.includes("load3")) {
-             ChatRoomMessage({ Content: "You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	     ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
              setTimeout(function() {
              CurrentCharacter.Appearance = savedoutfit3.slice(0);
              CharacterRefresh(CurrentCharacter);
@@ -2400,14 +2367,42 @@ if (CurrentScreen == "ChatRoom") {
              DialogLeave();
              }, 5000);
          }
-	    
+	 else if (content.includes("reset") || content.includes("revert") ||  content.includes("restore")) {
+            Player.Appearance = ChatSearchSafewordAppearance.slice(0);
+            // Player.ActivePose = ChatSearchSafewordPose; should not be needed
+            CharacterRefresh(Player);
+            ChatRoomCharacterUpdate(Player);
+	 }    
+         else if (content.includes("save1")) {
+	     ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry."); 
+             setTimeout(function() {
+             this.savedoutfit1 = CurrentCharacter.Appearance.slice(0);
+             DialogLeave();
+             }, 5000);
+         }    
+         else if (content.includes("save2")) {
+	     ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry."); 
+             setTimeout(function() {
+             this.savedoutfit2 = CurrentCharacter.Appearance.slice(0);
+             DialogLeave();
+             }, 5000);
+         }    
+         else if (content.includes("save3")) {
+	     ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.");
+             setTimeout(function() {
+             this.savedoutfit3 = CurrentCharacter.Appearance.slice(0);
+             DialogLeave();
+             }, 5000);
+         }        
         else if (content.endsWith("/outfit")) {
-            ChatRoomMessage({ Content: "Quick-Access Menu2: Options for outfit command:", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "To restore your outfit to what it was before entering room, type: /outfit reset or /outfit restore or /outfit revert", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Three outfits can be saved by using /outfit save1 or /outfit save2 or /outfit save3", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "To load saved outfits, type: /outfit load1 or /outfit load2 or /outfit load3", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "You will have 5 seconds to click on target. Retry if the saving/loading was unsuccessful.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Saves last only 1 login session.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+	    ChatRoomSendLocal(
+		"<b>Quick-AccessMenu2</b>: Options for outfit command:\n" +	
+		"To restore your outfit to what it was before entering room, type: <b>/outfit reset</b> or <b>/outfit restore</b> or <b>/outfit revert</b>\n" +   
+		"Three outfits can be saved by using <b>/outfit save1</b> or <b>/outfit save2</b> or <b>/outfit save3</b>\n" +    
+		"To load saved outfits, type: <b>/outfit load1</b> or <b>/outfit load2</b> or <b>/outfit load3</b>\n" +  
+		"You will have 5 seconds to click on target. Retry if the saving/loading was unsuccessful\n" +    
+                "Saves last only 1 login session."     
+	    );	    		
     }
 	
     else if (content.indexOf("/patreoncheats") == 0) {
