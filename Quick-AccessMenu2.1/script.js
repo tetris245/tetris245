@@ -1075,14 +1075,14 @@ if (CurrentScreen == "ChatRoom") {
             var stringSet2 = stringSet1.split(/[ ,]+/);
             var setchange = stringSet2[2];
             diaperDefaultValues.desperationLevel = setchange; 
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Your desperation level has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal("Quick-AccessMenu2: Your desperation level has been changed."); 
         } 
 	else if (content.includes("setmesschance")) {
             var stringSet1 = content;
             var stringSet2 = stringSet1.split(/[ ,]+/);
             var setchange = stringSet2[2];
             diaperDefaultValues.messChance = setchange; 
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Your chance to mess diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal("Quick-AccessMenu2: Your chance to mess diapers has been changed.");
         }
 	else if (content.includes("setmess1")) {
             if (InventoryGet(Player, "Panties") != null) {
@@ -1092,7 +1092,7 @@ if (CurrentScreen == "ChatRoom") {
                     var setchange = stringSet2[2];
                     if (setchange < diaperDefaultValues.wetLevelInner) {
                         diaperDefaultValues.messLevelInner = setchange;
-                        ChatRoomMessage({ Content: "Quick-AccessMenu2: Your mess level for normal diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+			ChatRoomSendLocal("Quick-AccessMenu2: Your mess level for normal diapers has been changed.");   
                     }
                 }
             }
@@ -1105,7 +1105,7 @@ if (CurrentScreen == "ChatRoom") {
                     var setchange = stringSet2[2];
                     if (setchange < diaperDefaultValues.wetLevelOuter) {
                         diaperDefaultValues.messLevelOuter = setchange;
-                        ChatRoomMessage({ Content: "Quick-AccessMenu2: Your mess level for chastity diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+			ChatRoomSendLocal("Quick-AccessMenu2: Your mess level for chastity diapers has been changed.");   
                     }
                 }
             }
@@ -1115,21 +1115,21 @@ if (CurrentScreen == "ChatRoom") {
             var stringSet2 = stringSet1.split(/[ ,]+/);
             var setchange = stringSet2[2];
             diaperDefaultValues.regressionLevel = setchange;
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Your regression level has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal("Quick-AccessMenu2: Your regression level has been changed."); 
         }
         else if (content.includes("settimer")) {
             var stringSet1 = content;
             var stringSet2 = stringSet1.split(/[ ,]+/);
             var setchange = stringSet2[2];
             diaperDefaultValues.baseTimer = setchange; 
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Your wet/mess timer has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal("Quick-AccessMenu2: Your wet/mess timer has been changed."); 
         }
 	else if (content.includes("setwetchance")) {
             var stringSet1 = content;
             var stringSet2 = stringSet1.split(/[ ,]+/);
             var setchange = stringSet2[2];
             diaperDefaultValues.wetChance = setchange; 
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Your chance to wet diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal("Quick-AccessMenu2: Your chance to wet diapers has been changed."); 
         }	    
 	else if (content.includes("setwet1")) {
             if (InventoryGet(Player, "Panties") != null) {
@@ -1139,7 +1139,7 @@ if (CurrentScreen == "ChatRoom") {
                     var setchange = stringSet2[2];
                     if (setchange > diaperDefaultValues.messLevelInner) {
                         diaperDefaultValues.wetLevelInner = setchange;
-                        ChatRoomMessage({ Content: "Quick-AccessMenu2: Your wet level for normal diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+			ChatRoomSendLocal("Quick-AccessMenu2: Your wet level for normal diapers has been changed."); 
                     }
                 }
             }
@@ -1152,7 +1152,7 @@ if (CurrentScreen == "ChatRoom") {
                     var setchange = stringSet2[2];
                     if (setchange > diaperDefaultValues.messLevelOuter) {
                         diaperDefaultValues.wetLevelOuter = setchange;
-                        ChatRoomMessage({ Content: "Quick-AccessMenu2: Your wet level for chastity diapers has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+			ChatRoomSendLocal("Quick-AccessMenu2: Your wet level for chastity diapers has been changed."); 
                     }
                 }
             }
@@ -1222,13 +1222,15 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/font") == 0) {
         if (content.endsWith("/font")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must be followed by a font number and optionally a size number.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "The effect will be visible in the chat after an automatic relog.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Supported fonts: 0 Arial - 1 Times New Roman", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "2 Papyrus - 3 Comic Sans - 4 Impact", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "5 Helvetica Neue - 6 Verdana - 7 Century Gothic", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "8 Georgia - 9 Courrier New - 10 Copperplate", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Sizes: 0 Small - 1 Medium - 2 Large", Sender: Player.MemberNumber });      
+            ChatRoomSendLocal(
+		"<b>Quick-AccessMenu2</b>: The font command must be followed by a font number and optionally a size number.\n" +	  
+                "The effect will be visible in the chat after an automatic relog.\n" +
+		"Supported fonts: 0 Arial - 1 Times New Roman\n" +
+		"2 Papyrus - 3 Comic Sans - 4 Impact\n" +
+                "5 Helvetica Neue - 6 Verdana - 7 Century Gothic\n" +
+		"8 Georgia - 9 Courrier New - 10 Copperplate\n" +   
+                "Sizes: 0 Small - 1 Medium - 2 Large"     
+	    );	    
         }
         else {
             var stringFont1 = content;
@@ -1283,7 +1285,8 @@ if (CurrentScreen == "ChatRoom") {
         if (this.GagTalkOff == undefined | this.GagTalkOff == false) {
             SpeechGagLevelLookup = {};
             GagTalkOff = true;
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Gag-talk toggled off.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+	    ChatRoomSendLocal("Quick-AccessMenu2: Gag-talk toggled off."); 
+	}
         else {
             SpeechGagLevelLookup = {
     	    GagTotal4: 20,
@@ -1298,7 +1301,8 @@ if (CurrentScreen == "ChatRoom") {
     	    GagLight: 2,
     	    GagVeryLight: 1,};
             GagTalkOff = false;
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Gag-talk toggled on.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+            ChatRoomSendLocal("Quick-AccessMenu2: Gag-talk toggled on."); 
+	}
     }    
 	
     else if (content.indexOf("/game") == 0) {
