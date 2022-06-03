@@ -122,7 +122,7 @@ if (CurrentScreen == "ChatRoom") {
                 "9 Five Minutes - 10 Combination - 11 Safeword\n" + 
                 "12 Password - 13 Mistress Timer - 14 Lover Timer\n" + 
 		"15 Owner Timer - 16 Timer Password\n" +
-	        "Use /help lpar for info about other parameters"     
+	        "Use <b>/help lpar</b> for info about other parameters"     
 	    );	 
         }
 	
@@ -2394,7 +2394,7 @@ if (CurrentScreen == "ChatRoom") {
              DialogLeave();
              }, 5000);
          }        
-        else if (content.endsWith("/outfit")) {
+         else if (content.endsWith("/outfit")) {
 	    ChatRoomSendLocal(
 		"<b>Quick-AccessMenu2</b>: Options for outfit command:\n" +	
 		"To restore your outfit to what it was before entering room, type: <b>/outfit reset</b> or <b>/outfit restore</b> or <b>/outfit revert</b>\n" +   
@@ -2402,7 +2402,8 @@ if (CurrentScreen == "ChatRoom") {
 		"To load saved outfits, type: <b>/outfit load1</b> or <b>/outfit load2</b> or <b>/outfit load3</b>\n" +  
 		"You will have 5 seconds to click on target. Retry if the saving/loading was unsuccessful\n" +    
                 "Saves last only 1 login session."     
-	    );	    		
+	    );
+	}	
     }
 	
     else if (content.indexOf("/patreoncheats") == 0) {
