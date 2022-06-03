@@ -1306,75 +1306,69 @@ if (CurrentScreen == "ChatRoom") {
     }    
 	
     else if (content.indexOf("/game") == 0) {
-
         if (content.endsWith("/game")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Must include a minigame. List: carrot, cleaning, dojo, drinks, hurdle, kidnap, puppy, rhythm, training, whippony.", Type: "LocalMessage", Sender: Player.MemberNumber });
-	    ChatRoomMessage({ Content: "Training is the trainer version of the hurdle game. You need to click on the maid in the Maid Quarters for the cleaning, drinks and rhythm games. ", Type: "LocalMessage", Sender: Player.MemberNumber });		     
+            ChatRoomSendLocal(
+		"<b>Quick-AccessMenu2</b>: The game command must include a minigame.\n" +	  
+                "Available minigames:\n" +
+		"carrot, cleaning, dojo, drinks, hurdle, kidnap, puppy,\n" +
+		"rhythm, training, whippony.\n" +
+                "Training is the trainer version of the hurdle game.\n" +  
+                "You need to click on the maid in the Maid Quarters for the cleaning, drinks and rhythm games."     
+	    );	    		     
         }
-
         else {
 	    ServerSend("ChatRoomLeave", "");
             ChatRoomSetLastChatRoom("");
             OnlineGameName = "";
-            ChatRoomClearAllElements();  
-		
+            ChatRoomClearAllElements();  	
             if (content.includes("carrot")) {                    
                 CommonSetScreen("Room", "Stable");
                 StableDressPonyStart();
                 StableWearPonyEquipment(Player);
                 MiniGameStart("HorseWalk", "Carrot", "StablePonyEnd");
-            }
-		
+            }	
             else if (content.includes("cleaning")) {         
                 CommonSetScreen("Room", "MaidQuarters");
                 GameType = "MaidCleaning"; 
                 MaidQuartersMaid.Stage = "400";
             }
-
             else if (content.includes("dojo")) {
                 CommonSetScreen("Room", "Introduction");
                 IntroductionJobStart("SubDojo",0)
                 IntroductionJobDojoStart();
-            }
-	 
+            }	 
            else if (content.includes("drinks")) {
                CommonSetScreen("Room", "MaidQuarters");
                GameType = "MaidDrinks"; 
                MaidQuartersMaid.Stage = "200";
-           }
-		
+           }		
            else if (content.includes("hurdle")) {
                CommonSetScreen("Room", "Stable");
                StableDressPonyStart();
                StableWearPonyEquipment(Player);
                MiniGameStart("HorseWalk", "Hurdle", "StablePonyEnd");
             }
-
            else if (content.includes("kidnap")) {
                CommonSetScreen("Room", "Introduction");
                IntroductionJobStart("DomKidnap",0)
                IntroductionJobBouncerStart();
            }
-
            else if (content.includes("puppy")) {
                CommonSetScreen("Room", "Introduction");
                IntroductionJobStart("DomPuppy",0)
                IntroductionJobPuppyStart();
            }
-
            else if (content.includes("rhythm")) {
                CommonSetScreen("Room", "MaidQuarters");
                GameType = "RhythmGame"; 
                MaidQuartersMaid.Stage = "500";
-           }
-		
+           }		
 	   else if (content.includes("training")) {
                CommonSetScreen("Room", "Stable");
                StablePlayerAppearance = Player.Appearance.slice();
 	       StableWearTrainerEquipment(Player);
                MiniGameStart("HorseWalk", "HurdleTraining", "StableTrainerEnd");
             }
-
            else if (content.includes("whippony")) {
                CommonSetScreen("Room", "Stable");
                StablePlayerAppearance = Player.Appearance.slice();
@@ -1399,7 +1393,7 @@ if (CurrentScreen == "ChatRoom") {
     }
 
     else if (content.indexOf("/giveeverything") == 0) {
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: Every item in the game now added.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomSendLocal("Quick-AccessMenu2: Every item in the game now added.");    
         AssetFemale3DCG.forEach(group=>group.Asset.forEach(item=>InventoryAdd(Player, item.Name, group.Group)));
         ServerPlayerInventorySync();
     }
@@ -1417,7 +1411,7 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/hiddenmessages") == 0) {
         if (this.HiddenMessagesOn == undefined || this.HiddenMessagesOn == false) {
            HiddenMessagesOn = true;
-           ChatRoomMessage({ Content: "Hidden messages revealed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	   ChatRoomSendLocal("Quick-AccessMenu2: Hidden messages revealed.");	
            (typeof oldChatRoomMessage !== 'undefined') && (ChatRoomMessage=oldChatRoomMessage);//reset     
            newChatRoomMessage = function (data) {
                if (data.Type == "Hidden") {
@@ -1430,7 +1424,7 @@ if (CurrentScreen == "ChatRoom") {
 	}
         else {
             HiddenMessagesOn = false;               
-	    ChatRoomMessage({ Content: "Hidden messages hidden.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal("Quick-AccessMenu2: Hidden messages hidden.");
             (typeof oldChatRoomMessage !== 'undefined') && (ChatRoomMessage=oldChatRoomMessage);//reset  
             newChatRoomMessage = function  (data) {}
 	}
@@ -1444,27 +1438,27 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/kinkydungeon") == 0)  {
         ArcadeKinkyDungeonEnd = function () {
-        CommonSetScreen("Online", "ChatRoom");
-        document.getElementById("InputChat").style.display = "inline";
-        document.getElementById("TextAreaChatLog").style.display = "inline";
+            CommonSetScreen("Online", "ChatRoom");
+            document.getElementById("InputChat").style.display = "inline";
+            document.getElementById("TextAreaChatLog").style.display = "inline";
         };//rewrite end to return to chatroom and restore chat
         ArcadeDeviousChallengeAllowed = function () {}//null to always allow
-
         if (content.includes("devious")) {
             if (this.DeviousOn == undefined || this.DeviousOn == false) {
                 DeviousOn = true;
                 ArcadeDeviousChallenge = true;
                 LogAdd("DeviousChallenge", "Arcade", 1, true);
-                ChatRoomMessage({ Content: "Quick-AccessMenu2: DeviousChallenge enabled.", Type: "LocalMessage", Sender: Player.MemberNumber });}
+		ChatRoomSendLocal("Quick-AccessMenu2: DeviousChallenge enabled"); 
+	    }
             else {
                 DeviousOn = false;
                 ArcadeDeviousChallenge = false;
                 LogDelete("DeviousChallenge", "Arcade", true);
-                ChatRoomMessage({ Content: "Quick-AccessMenu2: DeviousChallenge disabled.", Type: "LocalMessage", Sender: Player.MemberNumber });}
-        }
-	    
+		ChatRoomSendLocal("Quick-AccessMenu2: DeviousChallenge disabled");  
+	    }
+        }	    
         else if (content.includes("cheat")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: If cheats aren't loaded first time, quit and restart.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal("Quick-AccessMenu2: If cheats aren't loaded first time, quit and restart.");
             ArcadeRun();
             ArcadeKinkyDungeonStart(ReputationChange("Gaming"));
             document.getElementById("InputChat").style.display = "none";
@@ -1497,25 +1491,23 @@ if (CurrentScreen == "ChatRoom") {
 	{name: "Shroud", exhaustion: 4, components: ["Verbal"], level:3, type:"inert", projectile:false, buffs: [{type: "Evasion", power: 0.75, player: true, enemies: true, tags: ["darkness"], range: 1.5}], onhit:"", aoe: 1.5, power: 0, delay: 8, range: 4, size: 3, damage: ""},
 	];
             }, 5000);
-        }
-	    
+        }    
         else if (content.endsWith("/kinkydungeon")) {
             ArcadeRun();
             ArcadeKinkyDungeonStart(ReputationChange("Gaming"));
             document.getElementById("InputChat").style.display = "none";
             document.getElementById("TextAreaChatLog").style.display = "none";
             setTimeout(function() {
-            KinkyDungeonRedKeys += 0;
-            KinkyDungeonGreenKeys += 0;
-            KinkyDungeonBlueKeys += 0;
-            KinkyDungeonLockpicks += 0;
-            KinkyDungeonAddGold(0);
-            KinkyDungeonEnchantedBlades += 0;
-            KinkyDungeonNormalBlades += 0;
-            var KinkyDungeonMysticSeals = 0;
-            var KinkyDungeonSpells = [];
+                KinkyDungeonRedKeys += 0;
+                KinkyDungeonGreenKeys += 0;
+                KinkyDungeonBlueKeys += 0;
+                KinkyDungeonLockpicks += 0;
+                KinkyDungeonAddGold(0);
+                KinkyDungeonEnchantedBlades += 0;
+                KinkyDungeonNormalBlades += 0;
+                var KinkyDungeonMysticSeals = 0;
+                var KinkyDungeonSpells = [];
             }, 5000);
-
         }    
     }
 	
