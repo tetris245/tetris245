@@ -9,7 +9,7 @@
 // @match https://bondage-europe.com/*
 // @match https://www.bondage-europe.com/*
 // @match http://localhost:*/*
-// @icon data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @icon  https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @grant none
 // @run-at document-end
 // ==/UserScript==
