@@ -9,7 +9,7 @@
 // @match        https://bondage-europe.com/*
 // @match        https://www.bondage-europe.com/*
 // @match        http://localhost:*/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=tampermonkey.net
 // @grant        none
 // ==/UserScript==
 
