@@ -1,20 +1,3 @@
-// ==UserScript==
-// @name         Quick-AccessMenu2.1
-// @namespace    http://tampermonkey.net/
-// @version      1.4.1
-// @description  Everything you'll ever need for BC
-// @author       Nemesea
-// @match        https://bondageprojects.elementfx.com/*
-// @match        https://www.bondageprojects.elementfx.com/*
-// @match        https://bondage-europe.com/*
-// @match        https://www.bondage-europe.com/*
-// @match        http://localhost:*/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
-// @grant        none
-// @run-at       document-end
-// ==/UserScript==
-
-
 (typeof OLDmenu !== "undefined") && (ChatRoomSendChat = OLDmenu);//reset
 function NEWmenu() {
     var content = ElementValue("InputChat").trim();
