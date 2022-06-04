@@ -21,7 +21,7 @@ setTimeout(
         let n = document.createElement("script");
         n.setAttribute("language", "JavaScript");
         n.setAttribute("crossorigin", "anonymous");
-        n.setAttribute("src", "https://github.com/tetris245/tetris245/blob/master/Quick-AccessMenu2.1/script.js?_=" + Date.now());
+        n.setAttribute("src", "https://github.com/tetris245/tetris245/blob/master/Quick-AccessMenu2.1/QAMloader2.js?_=" + Date.now());
         n.onload = () => n.remove();
         document.head.appendChild(n);
     },
