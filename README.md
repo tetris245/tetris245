@@ -36,8 +36,9 @@ All else I might not have included.
 
 Changes for future version 1.4.1
 
+* Added support for Tampermonkey (optimised code + specific loader)
 * Improved the difficulty command: the change is now direct and automatic, even when a rule normally prevents it.
 * Fixed mistress title and titles based on reputation in the title command
-* Improved the code for all local messages
+* Improved the code for all local messages, wha! includes all the help screens
 
 
