@@ -1,23 +1,20 @@
 Quick-AccessMenu2.1 by Nemesea - Addon for Ben987's BondageClub game 
 
-Most recent release is version 1.4. - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
+Most recent release is version 1.4.1. - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
-Installation and credits
+Installation 
 
-Google Chrome, Microsoft Edge, similar browsers:
-1. Download the Quick-AccessMenu2.1 zip file
+Recommended methode with Tampermonkey - link to the QAM loader: https://tetris245.github.io/QAMloader.js
+
+Al!ernative methoe for Google Chrome, Microsoft Edge, similar browsers:
+1. Download the Quick-AccessMenu2.1-version1.4.1.zip file on the Releases page
 2. Depending on browser, the .zip might have to be extracted. few browsers accept a .zip, a few requires a folder.
 3. Go to browser extensions. Enable developer mode.
 4. Load as Unpacked. Done. If the file can't be seen, see step 2.
 
-FireFox is not supported atm.
-1. Download file quick-accessmenu2-FIREFOX.xpi (temporary not available)
-2. Go to about:addons, either by posting in link bar or by going to Add-Ons and Themes.
-3. Click to cog wheel symbol.
-4. Click Install Add-On from File.
-5. Select the .xpi file. Done.
-
 After installation, refresh your BC page and relog.
+
+Credits
 
 Special thanks to KellyLoveyness for creating the original version.
 
@@ -34,11 +31,8 @@ All else I might not have included.
 
 ===========================================================================
 
-Changes for future version 1.4.1
+Changes for future version 1.4.2
 
-* Added support for Tampermonkey (optimised code + specific loader)
-* Improved the difficulty command: the change is now direct and automatic, even when a rule normally prevents it.
-* Fixed mistress title and titles based on reputation in the title command
-* Improved the code for all local messages, wha! includes all the help screens
+(...)
 
 
