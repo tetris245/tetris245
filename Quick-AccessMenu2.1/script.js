@@ -3180,7 +3180,7 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/savename") == 0) { 
         var NewName = tmpname;
         ServerAccountUpdate.QueueData({ Nickname: NewName });
-	ChatRoomSendLocal("Quick-AccessMenu2: Your temporary nickname has now a definitive status");  
+	ChatRoomSendLocal("Quick-AccessMenu2: Your temporary nickname has now a definitive status.");  
     }
 
     else if (content.indexOf("/search") == 0) {
@@ -3219,11 +3219,15 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/skill") == 0) {
          if (content.endsWith("/skill")) {
-            ChatRoomMessage({ Content: "Quick-Access Menu2: Must be followed by a skill and a level.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "You will be able to check the change in your profile.",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: " ",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Available skills: bondage, dressage, evasion, infiltration, lockpicking, selfbondage, willpower.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Level must be between 0 and 10.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	     ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: The skill command must be followed by a skill and a level.\n" +
+		"You will be able to check the change in your profile.\n" + 
+		" \n" +    
+		"Available skills:\n" +     
+		"bondage, dressage, evasion, infiltration,\n" +   
+		"lockpicking, selfbondage, willpower.\n" + 
+	        "Level must be between 0 and 10."   
+	    );      
         }
         else {
             var stringSkill1 = content;
@@ -3291,15 +3295,17 @@ if (CurrentScreen == "ChatRoom") {
         InventorySetDifficulty(Player, "ItemVulva", solidity);
         InventorySetDifficulty(Player, "ItemVulvaPiercings", solidity);
         ServerPlayerInventorySync();
-        ChatRoomMessage({ Content: "Quick-AccessMenu2: The solidity of most current bindings has been changed.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	ChatRoomSendLocal("Quick-AccessMenu2: The solidity of most current bindings has been changed."); 
     }
 
     else if ((content.indexOf("/speak") == 0) || (content.indexOf("/mouth") == 0) || (content.indexOf("/speech") == 0)) {
         (typeof OLDtalking !== 'undefined') && (ChatRoomSendChat=OLDtalking); // reset
         NEWtalking = function (){this.msg = ElementValue("InputChat").trim();
         if(!this.msg.startsWith("/")&&!this.msg.startsWith("*")&&!this.msg.startsWith("!")) {
-        if(this.msg.length > 10) {RunExpressionAnimation([null, "Grin", "Smirk", null, "Grin", "Smirk", null]);
-        } else {RunExpressionAnimation([null, "Grin", "Smirk", null]);}}OLDtalking();}
+            if(this.msg.length > 10) {RunExpressionAnimation([null, "Grin", "Smirk", null, "Grin", "Smirk", null]);
+            } else {
+	    RunExpressionAnimation([null, "Grin", "Smirk", null]);}}OLDtalking();
+        }
         this.OLDtalking=ChatRoomSendChat;this.ChatRoomSendChat=NEWtalking;
     }
 	
@@ -3324,27 +3330,33 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/talkbaby") == 0) {
         ElementValue("InputChat", "");
              if (this.BabyTalkOn == false || this.BabyTalkOn == undefined) {
-             BabyTalkOn = true;
-             OLDmenu();}
+                 BabyTalkOn = true;
+                 OLDmenu();
+	     }
              else {
-             BabyTalkOn = false;
-             OLDmenu();}
+                 BabyTalkOn = false;
+                 OLDmenu();
+	     }
     }
 	
     else if (content.indexOf("/talkgag") == 0) {
         if (content.includes("light")) {
            ElementValue("InputChat", "");
            if (this.TalkGagLightOn == false || this.TalkGagLightOn == undefined) {
-           TalkGagLightOn = true;}
+               TalkGagLightOn = true;
+	   }
            else {
-           TalkGagLightOn = false;}
+               TalkGagLightOn = false;
+	   }
         }
         else if (content.includes("heavy")) {
            ElementValue("InputChat", "");
            if (this.TalkGagHeavyOn == false || this.TalkGagHeavyOn == undefined) {
-           TalkGagHeavyOn = true;}
+               TalkGagHeavyOn = true;
+	   }
            else {
-           TalkGagHeavyOn = false;}
+               TalkGagHeavyOn = false;
+	   }
         }
     }
 	
@@ -3370,22 +3382,25 @@ if (CurrentScreen == "ChatRoom") {
 	
     else if (content.indexOf("/title") == 0) {
         if (content.endsWith("/title")) {
-            ChatRoomMessage({ Content: "Quick-Access Menu2: Must be followed by a title. Will also change required parameters to get the title.", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "You will be able to check the change in your profile.",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: " ",Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "Supported titles:", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "agent, angel, baby, bondage baby, bondage maid,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "bunny, clubslave, coldbloodhorse, collegestudent,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "demon, diaperlover, doctor, doll, drone, duchess,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "escapedpatient, farmhorse, flyingpegasus, foal, foxy,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "goodgirl, goodslave, goodslavegirl, headmaid,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "hotbloodhorse, houdini, infiltrator, kidnapper,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "kitten, ladyluck, littleone, magician, magus, maid,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "majesticalicorn, masterkidnapper, mistress, mole,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "nawashi, nurse, operative, oracle, patient,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "patron, permanentpatient, puppy, sage, shiningunicorn,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "sorcerer, succubus, superspy, switch, warmbloodhorse,", Type: "LocalMessage", Sender: Player.MemberNumber });
-            ChatRoomMessage({ Content: "warlock, wildmustang, witch, wizard.", Type: "LocalMessage", Sender: Player.MemberNumber });
+            ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: The title command must be followed by a title.\n" +
+		"It will also change required parameters to get the title.\n" + 
+		"You will be able to check the changes in your profile.\n" + 
+		" \n" +    
+		"Available titles:\n" +     
+		"agent, angel, baby, bondage baby, bondage maid,\n" +   
+		"bunny, clubslave, coldbloodhorse, collegestudent,\n" +  
+		"demon, diaperlover, doctor, doll, drone, duchess,\n" +  
+		"escapedpatient, farmhorse, flyingpegasus, foal, foxy,\n" + 
+		"goodgirl, goodslave, goodslavegirl, headmaid,\n" +  
+		"hotbloodhorse, houdini, infiltrator, kidnapper,\n" +   
+		"kitten, ladyluck, littleone, magician, magus, maid,\n" +    
+		"majesticalicorn, masterkidnapper, mistress, mole,\n" +   
+		"nawashi, nurse, operative, oracle, patient,\n" +   
+		"patron, permanentpatient, puppy, sage, shiningunicorn,\n" +    
+		"sorcerer, succubus, superspy, switch, warmbloodhorse,\n" +       
+	        "warlock, wildmustang, witch, wizard."   
+	    );      
         }
         else {
             var title = content.substring(6).trim();
@@ -3858,11 +3873,16 @@ if (CurrentScreen == "ChatRoom") {
             Player.GameplaySettings.BlindDisableExamine = false;
             Asset.forEach(e => { if (e.Value < 0) e.Value = 1; });
             Player.Inventory.forEach(item => item.Asset.Enable = true);
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Unrestricted softly. Can do most things you couldn't do before. Store also includes hidden items. This can only be reset via relog.", Type: "LocalMessage", Sender: Player.MemberNumber });
-        }
-	    
+            ChatRoomSendLocal(
+                "Quick-AccessMenu2: Unrestricted softly. Can do most things you couldn't do before.\n" +
+	        "Store also includes hidden items. This can only be reset via a full relog."   
+	    );      
+	}	    
         else if (content.includes("total")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Unrestricted totally. Can do most things you couldn't do before. Store also includes hidden items. This can only be reset via relog.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal(
+                "Quick-AccessMenu2: Unrestricted totally. Can do most things you couldn't do before.\n" +
+	        "Store also includes hidden items. This can only be reset via a full relog."   
+	    );  	
             Player.CanInteract       = function () { return true; }
             Player.CanWalk           = function () { return true; }
             Player.CanTalk           = function () { return true; }
@@ -3885,14 +3905,17 @@ if (CurrentScreen == "ChatRoom") {
             StruggleProgressCurrentMinigame = "Strength";StruggleStrengthStart(C, PrevItem, NextItem);}}else {
             InventoryUnlock(CurrentCharacter, CurrentCharacter.FocusGroup.Name);InventoryRemove(CurrentCharacter, CurrentCharacter.FocusGroup.Name);
             ChatRoomCharacterItemUpdate(CurrentCharacter, CurrentCharacter.FocusGroup.Name);}}
-	}
-	    
+	}    
         if (content.endsWith("/unrestrict")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Manual. For total, type /unrestrict total. For submissives, type /unrestrict soft. To reset, type /unrestrict reset", Type: "LocalMessage", Sender: Player.MemberNumber });
-	}
-	    
+	    ChatRoomSendLocal(
+                "<b>Quick-AccessMenu2</b>: The unrestrict command:\n" +
+		"For total, type <b>/unrestrict total</b>\n" +   
+		"For submissives, type <b>/unrestrict soft</b>\n" +    
+	        "To reset, type <b>/unrestrict reset</b>"   
+	    );  		
+	}    
         else if (content.includes("reset")) {
-            ChatRoomMessage({ Content: "Quick-AccessMenu2: Unrestrict reset.", Type: "LocalMessage", Sender: Player.MemberNumber });
+	    ChatRoomSendLocal("Quick-AccessMenu2: Unrestrict reset."); 
             Player.CanInteract = function () { return (this.Effect.indexOf("Block") < 0)}
             Player.CanTalk = function () {
             (this.Effect.indexOf("GagVeryLight") < 0) &&
@@ -4141,37 +4164,42 @@ if (CurrentScreen == "ChatRoom") {
 
 else {//check which speech mode should be used
     if (this.BabyTalkOn == true) {
-    content = SpeechBabyTalk({Effect: ["RegressedTalk"]}, content);
-    ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" })
-    ElementValue("InputChat", "");
+        content = SpeechBabyTalk({Effect: ["RegressedTalk"]}, content);
+        ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" })
+        ElementValue("InputChat", "");
     }
     else if (this.TalkGagLightOn == true) {
-    content = SpeechGarbleByGagLevel(1, content);
-    ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
-    ElementValue("InputChat", "");
+        content = SpeechGarbleByGagLevel(1, content);
+        ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
+        ElementValue("InputChat", "");
     }
     else if (this.TalkGagHeavyOn == true) {
-    content = SpeechGarbleByGagLevel(6, content);
-    ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
-    ElementValue("InputChat", "");
+         content = SpeechGarbleByGagLevel(6, content);
+         ServerSend("ChatRoomChat", { "Content":content, "Type":"Chat" });
+         ElementValue("InputChat", "");
     }
-    else {OLDmenu()}
-}ElementValue("InputChat", "");
-}}//if modified code above is not called, use original.
+    else {
+	OLDmenu()
+    }
+}
+ElementValue("InputChat", "");
+}}
+//if modified code above is not called, use original.
 var OLDmenu = ChatRoomSendChat;
 var ChatRoomSendChat = NEWmenu;
+
 //below is additional stuff
 
 //greeting message.
 ChatCommandGreeting = function (data) {
-if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
-ChatRoomMessage({ Content: "Quick-AccessMenu2.1: Ready, type /help. For any inquiries, join https://discord.gg/YukepB6RVp", Type: "LocalMessage", Sender: Player.MemberNumber });
-ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)}}
-
+    if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
+        ChatRoomSendLocal("Quick-AccessMenu2.1: Ready, type /help. For any inquiries, join https://discord.gg/YukepB6RVp");	
+        ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)
+    }
+}
 setTimeout(function() {
-ServerSocket.on('ChatRoomMessage', ChatCommandGreeting);
+    ServerSocket.on('ChatRoomMessage', ChatCommandGreeting);
 }, 5000);
-
 
 //AutoRelog/AntiDisconnect
 function LoginDoLogin() {//rewrite login to variabilize credentials for later use
@@ -4190,7 +4218,7 @@ LoginUpdateMessage();
 
 function ServerDisconnect(data, close = false) {//rewrite disconnect to prevent relog screen
     if (!ServerIsConnected) return;
-    ChatRoomMessage({ Content: "Disconnected! Reconnecting...", Type: "LocalMessage", Sender: Player.MemberNumber });
+    ChatRoomSendLocal("Disconnected! Reconnecting...");
     const ShouldRelog = Player.Name != "";
     AutoRelog();
     let msg = data;   
@@ -4246,16 +4274,29 @@ function updateBackground() {
 }
 
 //Mouth animator
-var expressionAnimation;var expressionAnimationIndex=0;function RunExpressionAnimationStep() {
-CharacterSetFacialExpression(Player, "Mouth", expressionAnimation[expressionAnimationIndex++]);
-if(expressionAnimationIndex<expressionAnimation.length) {setTimeout(RunExpressionAnimationStep, 1000);
-} else {expressionAnimation=null;}}
-function RunExpressionAnimation(list) {if(expressionAnimation) {return;}
-expressionAnimation=list;expressionAnimationIndex=0;
-expressionAnimationEx=InventoryGet(Player, "Mouth");
-if(expressionAnimationEx && expressionAnimationEx.Property && expressionAnimationEx.Property.Expression) {
-expressionAnimation[expressionAnimation.length-1]=expressionAnimationEx.Property.Expression;//set last to current
-}RunExpressionAnimationStep();}
+var expressionAnimation;
+var expressionAnimationIndex=0;
+function RunExpressionAnimationStep() {
+    CharacterSetFacialExpression(Player, "Mouth", expressionAnimation[expressionAnimationIndex++]);
+    if(expressionAnimationIndex<expressionAnimation.length) {
+        setTimeout(RunExpressionAnimationStep, 1000);
+    } 
+    else {
+        expressionAnimation=null;
+    }
+}
+function RunExpressionAnimation(list) {
+    if(expressionAnimation) {
+        return;
+    }
+    expressionAnimation=list;
+    expressionAnimationIndex=0;
+    expressionAnimationEx=InventoryGet(Player, "Mouth");
+    if(expressionAnimationEx && expressionAnimationEx.Property && expressionAnimationEx.Property.Expression) {
+        expressionAnimation[expressionAnimation.length-1]=expressionAnimationEx.Property.Expression;//set last to current
+    }
+    RunExpressionAnimationStep();
+}
 //core functionaliy moved to: /speak /mouth /speech
 
 
