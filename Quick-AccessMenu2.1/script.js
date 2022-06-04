@@ -1,7 +1,24 @@
+// ==UserScript==
+// @name Quick-AccessMenu2.1
+// @namespace https://www.bondageprojects.com/
+// @version 1.4.1
+// @description Everything you'll ever need for BC
+// @author Nemesea
+// @match https://bondageprojects.elementfx.com/*
+// @match https://www.bondageprojects.elementfx.com/*
+// @match https://bondage-europe.com/*
+// @match https://www.bondage-europe.com/*
+// @match http://localhost:*/*
+// @icon data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @grant none
+// @run-at document-end
+// ==/UserScript==
+
+
 (typeof OLDmenu !== "undefined") && (ChatRoomSendChat = OLDmenu);//reset
 function NEWmenu() {
 var content = ElementValue("InputChat").trim();
-var tmpname = Player.Nickname;
+//var tmpname = Player.Nickname;
 
 //chatcommand
 if (CurrentScreen == "ChatRoom") {
@@ -2333,6 +2350,7 @@ if (CurrentScreen == "ChatRoom") {
     else if (content.indexOf("/name") == 0) { 
         var NewName = content.substring(5).trim();
         var LS = /[/\p{L}\p{N}\p{Z}'-]/gu;
+        var tmpname = Player.Nickname;
         if ((NewName.length <= 20) && (NewName.match(LS))) {  
             if (NewName != tmpname) {   
                 ServerSend("ChatRoomChat", { Content: "Beep", Type: "Action", Dictionary: [{Tag: "Beep", Text: ""+tmpname+" is now known as "+NewName+"." }]});
@@ -6233,36 +6251,6 @@ if (X > 1500) {
 X = 25;
 Y = Y + 109;
 }}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
-
 
 
 
