@@ -11,7 +11,6 @@
 // @match http://localhost:*/*
 // @icon  https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @grant none
-// @run-at document-end
 // ==/UserScript==
 
 (typeof OLDmenu !== "undefined") && (ChatRoomSendChat = OLDmenu);//reset
