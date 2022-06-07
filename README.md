@@ -10,6 +10,8 @@ Recommended methode with Tampermonkey - link to the QAM loader: https://tetris24
 
 You can find Tampermonkey here: https://www.tampermonkey.net/ (it's available for several browsers: Chrome, Microsoft Edge, Safari, Opera Next, Firefox, Dolphin, UC)
 
+Inside Tampermonkey: Add new script / Utilities / Insert link to QAM loader in last option/ Click on "Install"
+
 Alternative methode for Google Chrome, Microsoft Edge, similar browsers:
 1. Download the Quick-AccessMenu2.1-version1.4.1.zip file on the Releases page
 2. Depending on browser, the .zip might have to be extracted. few browsers accept a .zip, a few requires a folder.
