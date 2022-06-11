@@ -3257,19 +3257,41 @@ async function NEWmenu() {
                 CommonSetScreen("Online", "ChatRoom");
                 document.getElementById("InputChat").style.display = "inline";
                 document.getElementById("TextAreaChatLog").style.display = "inline";
-            }
+            }       
         } else if (content.indexOf("/pet") == 0) {
+            var targetname = content.substring(4).trim();
+            if (targetname == undefined) {
+                targetname = Player.Name
+            };
+            var targetfinder = new RegExp('^' + targetname + '', 'i');
+            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+            if (target[0] != null) {
             ServerSend("ChatRoomChat", {
                 Content: "Beep",
                 Type: "Action",
                 Dictionary: [{
                     Tag: "Beep",
-                    Text: "" + Player.Name + " becomes a cute pet girl."
+                    Text: "" + target[0].Name + " becomes a cute pet girl."
                 }]
             });
-            DailyJobPuppyLoad(0);
-            CharacterRefresh(Player);
-            ChatRoomCharacterUpdate(Player);
+            if ((target[0].Name == Player.Name) == false) {
+                    ServerSend("ChatRoomChat", {
+                        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
+                        Type: "Whisper",
+                        Target: target[0].MemberNumber
+                    })
+            };
+            CharacterNaked(target[0]);
+	        InventoryWearRandom(target[0], "ItemArms", 8, null, false, true, ["ArmbinderJacket", "BitchSuit", "BitchSuitExposed", "Bolero", "BoxTieArmbinder", "Chains", "FullLatexSuit", "HempRope", "InflatableStraightLeotard", "LatexBoxtieLeotard", "LatexButterflyLeotard", "LatexSleevelessLeotard", "LeatherStraitJacket", "StraitLeotard", "StrictLeatherPetCrawler"], true);
+	        InventoryWearRandom(target[0], "HairAccessory1", 8, null, false, true, ["Antennae", "BunnyEars1", "BunnyEars2", "CowHorns", "Ears1", "Ears2", "ElfEars", "FoxEars1", "FoxEars2", "FoxEars3", "KittenEars1", "KittenEars2", "MouseEars1", "MouseEars2", "PonyEars1", "PuppyEars1", "PuppyEars2", "RaccoonEars1", "WolfEars1", "WolfEars2"], true);
+	        InventoryWearRandom(target[0], "TailStraps", 8, null, false, true, ["CowtailStrap", "FoxTailsStrap", "FoxTailStrap1", "FoxTailStrap2", "HorseTailStrap", "HorseTailStrap1", "KittenTailStrap1", "KittenTailStrap2", "MouseTailStrap1", "MouseTailStrap2", "PuppyTailStrap", "PuppyTailStrap1", "RaccoonStrap", "WolfTailStrap1", "WolfTailStrap2", "WolfTailStrap3"], true);
+	        if (InventoryGet(target[0], "ItemMouth") == null) InventoryWearRandom(target[0], "ItemMouth", 8);
+	        if (InventoryGet(target[0], "ItemNeck") == null) InventoryWearRandom(target[0], "ItemNeck", 8);
+	        if (InventoryGet(target[0], "ItemNeckRestraints") == null) InventoryWear(target[0], "ChainLeash", "ItemNeckRestraints", null, 8);
+	        CharacterSetActivePose(target[0], "Kneel", true);
+            CharacterRefresh(target[0]);
+            ChatRoomCharacterUpdate(target[0]);
+          };
         } else if (content.indexOf("/pose2") == 0) {
             if (content.endsWith("/pose2")) {
                 ChatRoomSendLocal(
