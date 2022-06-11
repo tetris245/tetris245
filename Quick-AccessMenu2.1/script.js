@@ -40,7 +40,7 @@ async function NEWmenu() {
                 ChatRoomSendLocal(
                     "<b>Quick-AccessMenu2</b>: Bondage commands:\n" +
                     "<b>/lock</b> = adds locks on all lockable items. Use /help lock for more info.\n" +
-                    "<b>/pet</b> = becomes a fully restrained pet girl.\n" +
+                    "<b>/pet</b> (targetname) = becomes a fully restrained pet girl.\n" +
                     "<b>/randomize</b> (targetname) = naked + underwear + clothes + restrain commands.\n" +
                     "<b>/restrain</b> (targetname) = adds random restraints.\n" +
                     "<b>/solidity</b> (value) = changes the solidity of most current bindings. Value must be between 1 and 99. Use high values to make escape impossible!"
