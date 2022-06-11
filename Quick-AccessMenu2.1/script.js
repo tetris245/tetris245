@@ -1072,6 +1072,10 @@ async function NEWmenu() {
                 Tag: [BackgroundsTagIndoor]
             });
             BackgroundsList.push({
+                Name: "CraftingWorkshop",
+                Tag: [BackgroundsTagIndoor]
+            });
+            BackgroundsList.push({
                 Name: "Dressing",
                 Tag: [BackgroundsTagIndoor]
             });
