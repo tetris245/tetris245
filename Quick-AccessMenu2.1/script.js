@@ -34,15 +34,17 @@ async function NEWmenu() {
                     "<b>misc</b> = special commands.\n" +
                     "<b>talking</b> = commands related to talking.\n" +
                     "<b>visual</b> = commands related to animations and background.\n" +
-                    "<b>zones</b> = commands related to game zones."
+                    "<b>zones</b> = commands related to game zones.\n" +
+		    " \n" +
+		    "Several commands require to specify a target. It can be a real name or a member number."	
                 );
             } else if (content.includes("bondage")) {
                 ChatRoomSendLocal(
                     "<b>Quick-AccessMenu2</b>: Bondage commands:\n" +
                     "<b>/lock</b> = adds locks on all lockable items. Use /help lock for more info.\n" +
-                    "<b>/pet</b> (targetname) = becomes a fully restrained pet girl.\n" +
-                    "<b>/randomize</b> (targetname) = naked + underwear + clothes + restrain commands.\n" +
-                    "<b>/restrain</b> (targetname) = adds random restraints.\n" +
+                    "<b>/pet</b> (target) = becomes a fully restrained pet girl.\n" +
+                    "<b>/randomize</b> (target) = naked + underwear + clothes + restrain commands.\n" +
+                    "<b>/restrain</b> (target) = adds random restraints.\n" +
                     "<b>/solidity</b> (value) = changes the solidity of most current bindings. Value must be between 1 and 99. Use high values to make escape impossible!"
                 );
             } else if (content.includes("character")) {
@@ -71,19 +73,19 @@ async function NEWmenu() {
                     "<b>/font</b> (newfont) (size) = changes font in BC. Using will give more info.\n" +
                     "<b>/frlist</b> = gives access to friendlist with clickable links to other rooms during 15 seconds.\n" +
                     "<b>/hiddenmessages</b> = toggles on show hidden messages made by game.\n" +
-                    "<b>/profile</b> (targetname) = gives direct access to the profile description of any player in the chat room.\n" +
+                    "<b>/profile</b> (target) = gives direct access to the profile description of any player in the chat room.\n" +
                     "<b>/search</b> (areaname) = opens room search, area is: club or asylum.\n" +
                     "<b>/theme</b> (number) = changes chat color theme after automatic relog. Number must be between 0 and 3."
                 );
             } else if (content.includes("clothing")) {
                 ChatRoomSendLocal(
                     "<b>Quick-AccessMenu2</b>: Clothing commands:\n" +
-                    "<b>/clothes</b> (targetname) = changes clothes.\n" +
+                    "<b>/clothes</b> (target) = changes clothes.\n" +
                     "<b>/diaper</b> (actionhere) (targetname or setvalue) = plays with diapers (ABDL game). Using will give more info.\n" +
-                    "<b>/naked</b> (targetname) = removes clothes.\n" +
-                    "<b>/outfit</b> (targetname) = restores/saves/loads outfit. Using will give more info.\n" +
-                    "<b>/underwear</b> (targetname) = changes underwear.\n" +
-                    "<b>/wardrobe</b> (targetname) = opens target wardrobe."
+                    "<b>/naked</b> (target) = removes clothes.\n" +
+                    "<b>/outfit</b> = restores/saves/loads outfit. Using will give more info.\n" +
+                    "<b>/underwear</b> (target) = changes underwear.\n" +
+                    "<b>/wardrobe</b> (target) = opens target wardrobe."
                 );
             } else if (content.includes("escape")) {
                 ChatRoomSendLocal(
@@ -92,12 +94,12 @@ async function NEWmenu() {
                     "<b>/collarremove</b> = removes slave/owner collar. Can also be: /removecollar.\n" +
                     "<b>/frlist</b> = gives access to friendlist with clickable links to other rooms during 15 seconds.\n" +
                     "<b>/leave</b> = leaves room, even if prevented.\n" +
-                    "<b>/release</b> (targetname) = removes all bindings.\n" +
+                    "<b>/release</b> (target) = removes all bindings.\n" +
                     "<b>/resetdifficulty</b> = resets difficulty, thereby quitting it. Will warn first.\n" +
                     "<b>/safewordspecific</b> = removes specific item. More info when used.\n" +
                     "<b>/solidity</b> (value) = changes the solidity of most current bindings. Use low values to escape! Value 1 allows to escape the futuristic crate.\n" +
-                    "<b>/totalrelease</b> (targetname) = removes all bindings, collar, harness, chastity, toys.\n" +
-                    "<b>/unlock</b> (targetname) (locktype) = removes all locks or only a specified type of lock. More info with /help unl."
+                    "<b>/totalrelease</b> (target) = removes all bindings, collar, harness, chastity, toys.\n" +
+                    "<b>/unlock</b> (target) (locktype) = removes all locks or only a specified type of lock. More info with /help unl."
                 );
             } else if (content.includes("fun")) {
                 ChatRoomSendLocal(
@@ -110,12 +112,12 @@ async function NEWmenu() {
             } else if (content.includes("lock")) {
                 ChatRoomSendLocal(
                     "<b>Quick-AccessMenu2</b>: The lock command has several syntaxes:\n" +
-                    "/lock (targetname) (locktype) for locks 1 to 8\n" +
-                    "/lock (targetname) (locktype) (r) for lock 9\n" +
-                    "/lock (targetname) (locktype) (code) for lock 10\n" +
-                    "/lock (targetname) (locktype) (password) (r) for locks 11 and 12\n" +
-                    "/lock (targetname) (locktype) (minutes) (h) (i) (r) for locks 13 to 15\n" +
-                    "/lock (targetname) (locktype) (password) (minutes) (h) (i) (r) for lock 16\n" +
+                    "/lock (target) (locktype) for locks 1 to 8\n" +
+                    "/lock (target) (locktype) (r) for lock 9\n" +
+                    "/lock (target) (locktype) (code) for lock 10\n" +
+                    "/lock (target) (locktype) (password) (r) for locks 11 and 12\n" +
+                    "/lock (target) (locktype) (minutes) (h) (i) (r) for locks 13 to 15\n" +
+                    "/lock (target) (locktype) (password) (minutes) (h) (i) (r) for lock 16\n" +
                     " \n" +
                     "The lock types:\n" +
                     "1 Metal - 2 Exclusive - 3 Intricate - 4 High Security\n" +
@@ -161,12 +163,12 @@ async function NEWmenu() {
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
                     "<b>/talkbaby</b> = toggle on gag talk. Remember to only use one at a time.\n" +
                     "<b>/talkgag light/heavy</b> = toggle on gag talk. Remember to only use one at a time.\n" +
-                    "<b>/whisper</b> (targetname) = sets whisper target."
+                    "<b>/whisper</b> (target) = sets whisper target."
                 );
             } else if (content.includes("unl")) {
                 ChatRoomSendLocal(
                     "<b>Quick-AccessMenu2</b>: The unlock command:\n" +
-                    "<b>/unlock</b> (targetname) (locktype).\n" +
+                    "<b>/unlock</b> (target) (locktype).\n" +
                     "All locks of any type will be removed if you don't specify the lock type.\n" +
                     " \n" +
                     "The lock types:\n" +
@@ -183,7 +185,7 @@ async function NEWmenu() {
                     "<b>/bg1</b> = adds hidden backgrounds to the admin selection screen. Tip for BCX users: activate BCX before login.\n" +
                     "<b>/bg2</b> (number) = uses a hidden platform background. Number must be between 1 and 45. Use /bg2 0 to get the list.\n" +
                     "<b>/colorchanger</b> (animhere) = gets an animation with color change. Using will give more info.\n" +
-                    "<b>/pose2</b> (posehere) (targetname) = changes the pose of any player. Using will give more info.\n" +
+                    "<b>/pose2</b> (posehere) (target) = changes the pose of any player. Using will give more info.\n" +
                     "<b>/speak</b> = animates mouth when talking in chat. Can also: /mouth or /speech."
                 );
             } else if (content.includes("zones")) {
@@ -1766,9 +1768,9 @@ async function NEWmenu() {
                     "<b>/diaper tick</b> to force a tick\n" +
                     " \n" +
                     "To get new clean diapers:\n" +
-                    "<b>/diaper change1</b> (targetname) for normal diapers\n" +
-                    "<b>/diaper change2</b> (targetname) for chastity diapers\n" +
-                    "<b>/diaper change3</b> (targetname) for both diapers\n" +
+                    "<b>/diaper change1</b> (target) for normal diapers\n" +
+                    "<b>/diaper change2</b> (target) for chastity diapers\n" +
+                    "<b>/diaper change3</b> (target) for both diapers\n" +
                     " \n" +
                     "Customisation (before using /diaper start):\n" +
                     "Use <b>/diaper custom</b> for detailed info"
@@ -3311,7 +3313,7 @@ async function NEWmenu() {
         } else if (content.indexOf("/pose2") == 0) {
             if (content.endsWith("/pose2")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The pose2 command must be followed by a pose and optionally a targetname.\n" +
+                    "<b>Quick-AccessMenu2</b>: The pose2 command must be followed by a pose and optionally a target.\n" +
                     " \n" +
                     "Available poses:\n" +
                     "armsfree, belly, boxtied, cuffed, elbowtied, exercise,\n" +
