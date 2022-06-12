@@ -1389,11 +1389,8 @@ async function NEWmenu() {
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
-                    ServerSend("ChatRoomChat", {
-                        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
-                        Type: "Whisper",
-                        Target: target[0].MemberNumber
-                    })
+                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
+                    consoleWhisper();
                 };
                 CharacterAppearanceFullRandom(target[0], true);
                 ChatRoomCharacterUpdate(target[0]);
@@ -2444,11 +2441,8 @@ async function NEWmenu() {
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
-                    ServerSend("ChatRoomChat", {
-                        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
-                        Type: "Whisper",
-                        Target: target[0].MemberNumber
-                    })
+                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
+                    consoleWhisper();
                 };
                 mn = Player.MemberNumber;
                 if ((InventoryGet(target[0], "ItemAddon") != null) && (InventoryGet(target[0], "ItemAddon").Asset.AllowLock == true)) {
@@ -3158,11 +3152,8 @@ async function NEWmenu() {
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
-                    ServerSend("ChatRoomChat", {
-                        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
-                        Type: "Whisper",
-                        Target: target[0].MemberNumber
-                    })
+                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
+                    consoleWhisper();
                 };
                 CharacterNaked(target[0]);
                 ChatRoomCharacterUpdate(target[0]);
@@ -3275,11 +3266,8 @@ async function NEWmenu() {
                 }]
             });
             if ((target[0].Name == Player.Name) == false) {
-                    ServerSend("ChatRoomChat", {
-                        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
-                        Type: "Whisper",
-                        Target: target[0].MemberNumber
-                    })
+                ChatRoomTargetMemberNumber = target[0].MemberNumber;
+                consoleWhisper();
             };
             CharacterNaked(target[0]);
 	        InventoryWearRandom(target[0], "ItemArms", 8, null, false, true, ["ArmbinderJacket", "BitchSuit", "BitchSuitExposed", "Bolero", "BoxTieArmbinder", "Chains", "FullLatexSuit", "HempRope", "InflatableStraightLeotard", "LatexBoxtieLeotard", "LatexButterflyLeotard", "LatexSleevelessLeotard", "LeatherStraitJacket", "StraitLeotard", "StrictLeatherPetCrawler"], true);
@@ -4014,11 +4002,8 @@ async function NEWmenu() {
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
-                    ServerSend("ChatRoomChat", {
-                        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
-                        Type: "Whisper",
-                        Target: target[0].MemberNumber
-                    })
+                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
+                    consoleWhisper();
                 };
                 CharacterNaked(target[0]);
                 CharacterRandomUnderwear(target[0]);
@@ -4043,11 +4028,8 @@ async function NEWmenu() {
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
-                    ServerSend("ChatRoomChat", {
-                        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
-                        Type: "Whisper",
-                        Target: target[0].MemberNumber
-                    })
+                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
+                    consoleWhisper();
                 };
                 CharacterRelease(target[0]);
                 ChatRoomCharacterUpdate(target[0]);
@@ -4150,11 +4132,8 @@ async function NEWmenu() {
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
-                    ServerSend("ChatRoomChat", {
-                        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
-                        Type: "Whisper",
-                        Target: target[0].MemberNumber
-                    })
+                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
+                    consoleWhisper();
                 };
                 CharacterFullRandomRestrain(target[0], "ALL");
                 ChatRoomCharacterUpdate(target[0]);
@@ -4859,11 +4838,8 @@ async function NEWmenu() {
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
-                    ServerSend("ChatRoomChat", {
-                        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
-                        Type: "Whisper",
-                        Target: target[0].MemberNumber
-                    })
+                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
+                    consoleWhisper();
                 };
                 CharacterReleaseTotal(target[0]);
                 ChatRoomCharacterUpdate(target[0]);
@@ -4885,11 +4861,8 @@ async function NEWmenu() {
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
-                    ServerSend("ChatRoomChat", {
-                        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
-                        Type: "Whisper",
-                        Target: target[0].MemberNumber
-                    })
+                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
+                    consoleWhisper();
                 };
                 CharacterRandomUnderwear(target[0]);
                 ChatRoomCharacterUpdate(target[0]);
@@ -4914,11 +4887,8 @@ async function NEWmenu() {
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
-                    ServerSend("ChatRoomChat", {
-                        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
-                        Type: "Whisper",
-                        Target: target[0].MemberNumber
-                    })
+                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
+                    consoleWhisper();
                 };
                 if (lk == null) {
                     CharacterReleaseFromLock(target[0], "CombinationPadlock");
@@ -5512,6 +5482,15 @@ function AutoRelog() {
         Password: LoginPassword
     });
 }
+
+//Other functions
+function consoleWhisper() {
+    ServerSend("ChatRoomChat", {
+        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
+        Type: "Whisper",
+        Target: ChatRoomTargetMemberNumber
+    })
+};
 
 function updateBackground() {
     var UpdatedRoom = {
