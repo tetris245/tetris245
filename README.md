@@ -41,6 +41,7 @@ Changes for future version 1.4.2
 
 * Improved the pet command with more random appearance and extension to any player
 * Updated the bg1 command
+* Added consoleWhisper function, used by several commands with targetname
 * Fixed a bug in help misc screen
 
 
