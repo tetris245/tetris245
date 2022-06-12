@@ -1379,6 +1379,10 @@ async function NEWmenu() {
             };
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	    if (target[0] == null) {
+                var targetnumber = parseInt(targetname);
+                target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
             if (target[0] != null) {
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
@@ -1609,6 +1613,10 @@ async function NEWmenu() {
                 };
                 var targetfinder = new RegExp('^' + targetname + '', 'i');
                 var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+		if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+                };
                 if (target[0] != null) {
                     if ((target[0].Name == Player.Name) == false) {
                         ServerSend("ChatRoomChat", {
@@ -1628,6 +1636,10 @@ async function NEWmenu() {
                 };
                 var targetfinder = new RegExp('^' + targetname + '', 'i');
                 var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+		if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+                };
                 if (target[0] != null) {
                     if ((target[0].Name == Player.Name) == false) {
                         ServerSend("ChatRoomChat", {
@@ -1647,6 +1659,10 @@ async function NEWmenu() {
                 };
                 var targetfinder = new RegExp('^' + targetname + '', 'i');
                 var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+		if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+                };
                 if (target[0] != null) {
                     if ((target[0].Name == Player.Name) == false) {
                         ServerSend("ChatRoomChat", {
@@ -2431,6 +2447,10 @@ async function NEWmenu() {
             var targetname = stringLock2[1];
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+            if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
             if (target[0] != null) {
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
@@ -3142,6 +3162,10 @@ async function NEWmenu() {
             };
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	    if (target[0] == null) {
+                var targetnumber = parseInt(targetname);
+                target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);              
+            };
             if (target[0] != null) {
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
@@ -3256,6 +3280,10 @@ async function NEWmenu() {
             };
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+            if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
             if (target[0] != null) {
             ServerSend("ChatRoomChat", {
                 Content: "Beep",
@@ -3302,6 +3330,10 @@ async function NEWmenu() {
                 };
                 var targetfinder = new RegExp('^' + targetname + '', 'i');
                 var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+		if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+                };
                 if (target[0] != null) {
                     //poses for any player
                     if (content.includes("armsfree")) {
@@ -3978,6 +4010,10 @@ async function NEWmenu() {
             };
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	    if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
             if (target[0] != null) {
                 InformationSheetLoadCharacter(target[0]);
                 OnlineProfileRun();
@@ -3992,6 +4028,10 @@ async function NEWmenu() {
             };
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	    if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
             if (target[0] != null) {
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
@@ -4018,6 +4058,10 @@ async function NEWmenu() {
             };
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	    if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
             if (target[0] != null) {
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
@@ -4122,6 +4166,10 @@ async function NEWmenu() {
             };
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	    if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
             if (target[0] != null) {
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
@@ -4828,6 +4876,10 @@ async function NEWmenu() {
             };
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	    if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
             if (target[0] != null) {
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
@@ -4851,6 +4903,10 @@ async function NEWmenu() {
             };
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	    if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
             if (target[0] != null) {
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
@@ -4877,6 +4933,10 @@ async function NEWmenu() {
             };
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	    if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
             if (target[0] != null) {
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
@@ -5272,6 +5332,10 @@ async function NEWmenu() {
             var targetname = content.substring(10).trim();
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	    if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
             if (target[0] != null) {
                 target[0].OnlineSharedSettings.AllowFullWardrobeAccess = true;
                 target[0].OnlineSharedSettings.BlockBodyCosplay = false;
@@ -5282,6 +5346,10 @@ async function NEWmenu() {
             var targetname = content.substring(8).trim();
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	    if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
             if (target[0] != null) {
                 ChatRoomTargetMemberNumber = target[0].MemberNumber;
             }
