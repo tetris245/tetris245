@@ -61,7 +61,7 @@ async function NEWmenu() {
                     "<b>/resetinventory</b> = erases your inventory. Will warn first.\n" +
                     "<b>/roleplay</b> (rolehere) = starts a role. *\n" +
                     "<b>/rolequit</b> (role or clubarea here) = ceases to play a role. *\n" +
-                    "<b>/savename</b> (newnamehere) = gives definitive status to a temporary nickname.\n" +
+                    "<b>/savename</b> = gives definitive status to a temporary nickname.\n" +
                     "<b>/skill</b> (skill) (level) = changes a skill. *\n" +
                     "<b>/title</b> (newtitlehere) = chooses a new title. *"
                 );
