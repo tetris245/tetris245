@@ -3321,7 +3321,7 @@ async function NEWmenu() {
                     "sleep, spreadarms1, spreadarms2, spreadeagle1\n" +
                     "spreadeagle2, spreadlegs, stand, suspension,\n" +
                     "tapedhands. Only on yourself: jump, roof.\n" +
-                    "Use <b>/pose2 reset</b> (targetname) to back to neutral pose."
+                    "Use <b>/pose2 reset</b> (target) to back to neutral pose."
                 );
             } else {
                 var stringPose1 = content;
