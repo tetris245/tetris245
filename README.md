@@ -41,6 +41,7 @@ Changes for future version 1.4.2
 
 * Improved the pet command with more random appearance and extension to any player
 * Improved all commands with targetname by adding support for the Member Number of the target
+* Added 'new' option in help command to get info about changes in current QAM version
 * Updated the bg1 command
 * Added consoleWhisper function, which is used by several commands with targetname
 * Fixed some details in help screens
