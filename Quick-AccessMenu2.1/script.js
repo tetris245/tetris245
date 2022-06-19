@@ -3992,7 +3992,7 @@ async function NEWmenu() {
                     else if (content.includes("reset")) {
                         CharacterSetActivePose(target[0], null);
                         delete InventoryGet(target[0], 'Emoticon').Property.OverrideHeight;
-                        ChatRoomCharacterUpdate(target[0]) :
+                        ChatRoomCharacterUpdate(target[0]);
                         CharacterRefresh(target[0]);
                     }
                 }
@@ -5496,7 +5496,7 @@ var ChatRoomSendChat = NEWmenu;
 ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	ChatRoomSendLocal(
-                    "Quick-AccessMenu2 - version 1.4.2: Ready, type <b>/help<b> for general menu.\n" +
+                    "Quick-AccessMenu2 - version 1.4.2: Ready, type <b>/help</b> for general menu.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
                     "For any inquiries, join https://discord.gg/YukepB6RVp"
                 );   	    	  	    	    
