@@ -2,7 +2,7 @@
 
 Quick-AccessMenu2.1 by Nemesea - Addon for Ben987's BondageClub game 
 
-Most recent release is version 1.4.1. - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
+Most recent release is version 1.4.2. - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
 Installation 
 
@@ -37,14 +37,10 @@ All else I might not have included.
 
 ===========================================================================
 
-Changes for future version 1.4.2
+Changes for future version 1.4.3
 
-* Improved the pet command with more random appearance and extension to any player
-* Improved all commands with targetname by adding support for the Member Number of the target
-* Added 'new' option in help command to get info about changes in current QAM version
-* Updated the bg1 command
-* Added consoleWhisper function, which is used by several commands with targetname
-* Fixed bug with pose2 exercise command by rewriting 2 BC functions
-* Fixed some details in help screens
+(...)
+
+
 
 
