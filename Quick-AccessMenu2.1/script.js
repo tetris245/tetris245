@@ -7413,6 +7413,34 @@ function ChatRoomSyncItem(data) {
         }
 }
 
+function DialogExtendItem(Item, SourceItem) {
+	const C = CharacterGetCurrent();
+	StruggleProgress = -1;
+	StruggleLockPickOrder = null;
+	DialogLockMenu = false;
+	DialogCraftingMenu = false;
+	DialogColor = null;
+	DialogFocusItem = Item;
+	DialogFocusSourceItem = SourceItem;
+	CommonDynamicFunction("Inventory" + Item.Asset.Group.Name + Item.Asset.Name + "Load()");
+}
+
+function CharacterRefresh(C, Push, RefreshDialog = true) {
+	CharacterLoadEffect(C);
+	CharacterLoadPose(C);
+	CharacterLoadCanvas(C);
+	C.RunScripts = (!C.AccountName.startsWith('Online-') || !(Player.OnlineSettings && Player.OnlineSettings.DisableAnimations)) && (!Player.GhostList || Player.GhostList.indexOf(C.MemberNumber) == -1);
+	C.HasScriptedAssets = !!C.Appearance.find(CA => CA.Asset.DynamicScriptDraw);
+	if ((C.ID == 0) && (C.OnlineID != null) && ((Push == null) || (Push == true))) {
+		ChatRoomRefreshChatSettings();
+		ServerPlayerAppearanceSync();
+	}
+	var Current = CharacterGetCurrent();
+	if (Current && C.ID == Current.ID && RefreshDialog) {
+		CharacterRefreshDialog(C);
+	}
+}
+
 function CharacterNickname(C) {
     let Regex = /[/\p{L}\p{N}\p{Z}'-]/gu;
     let Nick = C.Nickname;
