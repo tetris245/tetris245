@@ -44,6 +44,7 @@ Changes for future version 1.4.2
 * Added 'new' option in help command to get info about changes in current QAM version
 * Updated the bg1 command
 * Added consoleWhisper function, which is used by several commands with targetname
+* Fixed bug with pose2 exercise command by rewriting 2 BC functions
 * Fixed some details in help screens
 
 
