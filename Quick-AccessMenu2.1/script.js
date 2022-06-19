@@ -36,6 +36,8 @@ async function NEWmenu() {
                     "<b>visual</b> = commands related to animations and background.\n" +
                     "<b>zones</b> = commands related to game zones.\n" +
 		    " \n" +
+		    "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
+		    " \n" +
 		    "Several commands require to specify a target. It can be a real name or a member number."	
                 );
             } else if (content.includes("bondage")) {
@@ -152,6 +154,14 @@ async function NEWmenu() {
                     "<b>/relog</b> = relogs.\n" +
                     "<b>/unrestrict</b> =  removes all restrictions from game. Can use maid drink tray/other stuff. Using will give more info. Submissives should use /unrestrict soft."
                 );
+	    } else if (content.includes("new")) {
+                ChatRoomSendLocal(
+                    "<b>Quick-AccessMenu2</b>: Main changes in v.1.4.2:\n" +
+                    "- Improved the pet command with more random appearance and extension to any player.\n" +
+                    "- Improved all commands with targetname by adding support for the Member Number of the target.\n" +
+	            "- Added option in help command to get info about changes in current QAM version.\n" +
+                    "- Updated the bg1 command."
+                );   	    
             } else if (content.includes("talking")) {
                 ChatRoomSendLocal(
                     "<b>Quick-AccessMenu2</b>: Talking commands:\n" +
@@ -5485,7 +5495,11 @@ var ChatRoomSendChat = NEWmenu;
 //greeting message.
 ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
-        ChatRoomSendLocal("Quick-AccessMenu2.1: Ready, type /help. For any inquiries, join https://discord.gg/YukepB6RVp");
+	ChatRoomSendLocal(
+                    "Quick-AccessMenu2 - version 1.4.2: Ready, type <b>/help<b> for general menu.\n" +
+                    "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
+                    "For any inquiries, join https://discord.gg/YukepB6RVp"
+                );   	    	  	    	    
         ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)
     }
 }
