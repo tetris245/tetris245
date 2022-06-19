@@ -3331,7 +3331,8 @@ async function NEWmenu() {
                     "sleep, spreadarms1, spreadarms2, spreadeagle1\n" +
                     "spreadeagle2, spreadlegs, stand, suspension,\n" +
                     "tapedhands. Only on yourself: jump, roof.\n" +
-                    "Use <b>/pose2 reset</b> (target) to back to neutral pose."
+                    "Use <b>/pose2 reset</b> (target) to back to neutral pose.\n" + 
+		    "If BCE is enabled, use <b>/pose baseupper</b> only on yourself when /pose2 reset fails."
                 );
             } else {
                 var stringPose1 = content;
@@ -3991,9 +3992,8 @@ async function NEWmenu() {
                     else if (content.includes("reset")) {
                         CharacterSetActivePose(target[0], null);
                         delete InventoryGet(target[0], 'Emoticon').Property.OverrideHeight;
-                        CurrentScreen === 'ChatRoom' ?
-                            ChatRoomCharacterUpdate(target[0]) :
-                            CharacterRefresh(target[0]);
+                        ChatRoomCharacterUpdate(target[0]) :
+                        CharacterRefresh(target[0]);
                     }
                 }
             }
