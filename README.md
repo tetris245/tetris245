@@ -39,7 +39,7 @@ All else I might not have included.
 
 Changes for future version 1.4.3
 
-* Added clickable link under picture or embedded YouTube video
+* Added clickable link under picture or embedded YouTube video (not working atm)
 
 
 
