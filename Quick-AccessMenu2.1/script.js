@@ -7663,6 +7663,7 @@ setTimeout(function() {
                 divMsg.append(senderName);
                 divMsg.append(a);
                 a.append(img);
+		a.append(link);    
 
                 // if scroll position near the end, it scrolls chat automatically
                 if (tenorRe.test(data.Content) && (chatWindow.scrollHeight - chatWindow.offsetHeight - chatWindow.scrollTop < 300)) {
@@ -7674,6 +7675,7 @@ setTimeout(function() {
         } else if (tubeRe.test(data.Content)) {
             var content = data.Content.match(tubeRe);
             if (content && content[5] && content[5].length == 11 && (content.includes("youtube.com") || content.includes("youtu.be"))) {
+		var lk = content[0];
                 var link = `https://www.youtube.com/embed/${content[5]}`;
                 var chatWindow = getChatWindowElement();
 
@@ -7684,6 +7686,9 @@ setTimeout(function() {
                 var divMsg = createMessageElement();
                 var senderName = createCharacterNameElement(data.Sender);
                 chatWindow.append(divMsg);
+		var a = document.createElement("a");
+                a.target = '_blank';
+                a.href = `${content}`;
                 var iframe = document.createElement('iframe');
                 iframe.src = link;
                 iframe.style.width = '50%';
@@ -7696,6 +7701,8 @@ setTimeout(function() {
 
                 divMsg.append(senderName);
                 divMsg.append(iframe);
+		divMsg.append(a);
+                a.append(lk);
                 if (tenorRe.test(data.Content) && (chatWindow.scrollHeight - chatWindow.offsetHeight - chatWindow.scrollTop < 300)) {
                     img.addEventListener('load', () => {
                         ElementScrollToEnd("TextAreaChatLog");
