@@ -7638,6 +7638,14 @@ setTimeout(function() {
             var content = data.Content.match(tenorRe);
             if (content) {
                 var link = content[0];
+		ServerSend("ChatRoomChat", {
+                        Content: "Beep",
+                        Type: "Action",
+                        Dictionary: [{
+                            Tag: "Beep",
+                            Text: ("A link for more fun: " + link + " ")
+                        }]
+                });
                 var chatWindow = getChatWindowElement();
 
                 // removes message with link to replace it later with image
@@ -7662,8 +7670,7 @@ setTimeout(function() {
                 chatWindow.append(divMsg);
                 divMsg.append(senderName);
                 divMsg.append(a);
-                a.append(img);
-		a.append(link);    
+                a.append(img);   
 
                 // if scroll position near the end, it scrolls chat automatically
                 if (tenorRe.test(data.Content) && (chatWindow.scrollHeight - chatWindow.offsetHeight - chatWindow.scrollTop < 300)) {
@@ -7675,7 +7682,15 @@ setTimeout(function() {
         } else if (tubeRe.test(data.Content)) {
             var content = data.Content.match(tubeRe);
             if (content && content[5] && content[5].length == 11 && (content.includes("youtube.com") || content.includes("youtu.be"))) {
-		var lk = content[0];
+		var lk = content[0];                        
+                ServerSend("ChatRoomChat", {
+                        Content: "Beep",
+                        Type: "Action",
+                        Dictionary: [{
+                            Tag: "Beep",
+                            Text: ("A link for more fun: " + lk + " ")
+                        }]
+                }); 
                 var link = `https://www.youtube.com/embed/${content[5]}`;
                 var chatWindow = getChatWindowElement();
 
@@ -7686,9 +7701,6 @@ setTimeout(function() {
                 var divMsg = createMessageElement();
                 var senderName = createCharacterNameElement(data.Sender);
                 chatWindow.append(divMsg);
-		var a = document.createElement("a");
-                a.target = '_blank';
-                a.href = `${content}`;
                 var iframe = document.createElement('iframe');
                 iframe.src = link;
                 iframe.style.width = '50%';
@@ -7701,8 +7713,6 @@ setTimeout(function() {
 
                 divMsg.append(senderName);
                 divMsg.append(iframe);
-		divMsg.append(a);
-                a.append(lk);
                 if (tenorRe.test(data.Content) && (chatWindow.scrollHeight - chatWindow.offsetHeight - chatWindow.scrollTop < 300)) {
                     img.addEventListener('load', () => {
                         ElementScrollToEnd("TextAreaChatLog");
