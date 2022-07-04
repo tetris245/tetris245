@@ -13,7 +13,7 @@ You can find Tampermonkey here: https://www.tampermonkey.net/ (it's available fo
 Inside Tampermonkey: Add new script / Utilities / Insert link to QAM loader in last option / Click on "Install"
 
 Alternative methode for Google Chrome, Microsoft Edge, similar browsers:
-1. Download the Quick-AccessMenu2.1-version1.4.1.zip file on the Releases page
+1. Download the Quick-AccessMenu2.1-version1.4.2.zip file on the Releases page
 2. Depending on browser, the .zip might have to be extracted. few browsers accept a .zip, a few requires a folder.
 3. Go to browser extensions. Enable developer mode.
 4. Load as Unpacked. Done. If the file can't be seen, see step 2.
