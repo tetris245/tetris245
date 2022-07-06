@@ -7410,8 +7410,11 @@ function ChatRoomSyncItem(data) {
             if (item) {
                 CharacterAppearanceSetItem(
                     ChatRoomCharacter[C], data.Item.Group, item.Asset, item.Color, item.Difficulty, null, false);
+		        if (item.Craft != null) 
+			    for (let Char of ChatRoomCharacter)
+			        if (Char.MemberNumber === data.Source)
+				    InventoryCraft(Char, ChatRoomCharacter[C], data.Item.Group, item.Craft, false);
                 InventoryGet(ChatRoomCharacter[C], data.Item.Group).Property = item.Property;
-                /** @type {AppearanceDiffMap} */
                 const diffMap = {};
                 for (const appearanceItem of ChatRoomCharacter[C].Appearance) {
                     const groupName = appearanceItem.Asset.Group.Name;
