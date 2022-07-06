@@ -39,6 +39,7 @@ All else I might not have included.
 
 Changes for future version 1.4.3
 
+* New command: permission to change your item permission
 * Added message with non-clickable link under picture or embedded YouTube video 
 
 
