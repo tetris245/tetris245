@@ -51,14 +51,15 @@ async function NEWmenu() {
                 );
             } else if (content.includes("character")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Character commands - * = more info when using ** = changes can be seen in your profile\n" +
+                    "<b>Quick-AccessMenu2</b>: Character commands - * = more info when using\n" +
                     "<b>/becomeownlover</b> = becomes your own lover.\n" +
                     "<b>/becomeownowner</b> = becomes your own owner.\n" +
-                    "<b>/difficulty</b> (number) = changes game difficulty. 0 roleplay - 1 regular - 2 hardcore - 3 extreme **\n" +
+                    "<b>/difficulty</b> (number) = changes game difficulty. 0 roleplay - 1 regular - 2 hardcore - 3 extreme\n" +
                     "<b>/giveeverything</b> = gives every item.\n" +
                     "<b>/maxstatistics</b> = gives max statistics.\n" +
                     "<b>/money</b> (value) = gives or takes money.\n" +
                     "<b>/name</b> (newnamehere) = chooses a temporary new nickname.\n" +
+		    "<b>/permission</b> (number) = changes your item permission *\n" +
                     "<b>/reputation</b> (reputation) (level) = changes a reputation. *\n" +
                     "<b>/resetinventory</b> = erases your inventory. Will warn first.\n" +
                     "<b>/roleplay</b> (rolehere) = starts a role. *\n" +
@@ -3284,7 +3285,28 @@ async function NEWmenu() {
                 CommonSetScreen("Online", "ChatRoom");
                 document.getElementById("InputChat").style.display = "inline";
                 document.getElementById("TextAreaChatLog").style.display = "inline";
-            }       
+            }   
+	} else if (content.indexOf("/permission") == 0) {
+            if (content.endsWith("/permission")) {
+                ChatRoomSendLocal(
+                    "<b>Quick-AccessMenu2</b>: The permission command must be followed by a number.\n" +
+                    "The effect will be visible in your profile.\n" +
+                    "0 Everyone, no exceptions\n" +
+                    "1 Everyone, except blacklist\n" +
+                    "2 Owner, Lover, whitelist & Dominants\n" +
+                    "3 Owner, Lover and whitelist only\n" +
+                    "4 Owner and Lover only\n" +
+                    "5 Owner only"
+                );
+            } else {
+                 var perm = content.substring(11).trim() * 1;
+                 if ((perm > -1) && (perm < 6)) {
+                     Player.ItemPermission = perm;
+                     ServerAccountUpdate.QueueData({
+                         ItemPermission: Player.ItemPermission
+                     });
+                 }
+            }	
         } else if (content.indexOf("/pet") == 0) {
             var targetname = content.substring(4).trim();
             if (targetname == undefined) {
