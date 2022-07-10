@@ -3030,6 +3030,29 @@ async function NEWmenu() {
                         }
                     }
                 }
+		if ((InventoryGet(target[0], "ItemTorso2") != null) && (InventoryGet(target[0], "ItemTorso2").Asset.AllowLock == true)) {
+                    if (((InventoryGet(target[0], "ItemTorso2").Property != null) && (InventoryGet(target[0], "ItemTorso2").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemTorso2").Property == null)) {
+                        InventoryLock(target[0], "ItemTorso", Lock, mn);
+                        if (removeitem == "r") {
+                            InventoryGet(target[0], "ItemTorso2").Property.RemoveItem = true;
+                        }
+                        if (minutes != null) {
+                            InventoryGet(target[0], "ItemTorso2").Property.RemoveTimer = InventoryGet(target[0], "ItemTorso2").Property.RemoveTimer + (time * 60 * 1000);
+                        }
+                        if (hidetimer == "h") {
+                            InventoryGet(target[0], "ItemTorso2").Property.ShowTimer = false;
+                        }
+                        if (enableinput == "i") {
+                            InventoryGet(target[0], "ItemTorso2").Property.EnableRandomInput = true;
+                        }
+                        if ((code != null) && (code > -1) && (code < 10000)) {
+                            InventoryGet(target[0], "ItemTorso2").Property.CombinationNumber = code;
+                        }
+                        if ((pw != null) && (pw.length <= 8) && (pw.match(PS))) {
+                            InventoryGet(target[0], "ItemTorso2").Property.Password = pw;
+                        }
+                    }
+                }
                 if ((InventoryGet(target[0], "ItemVulva") != null) && (InventoryGet(target[0], "ItemVulva").Asset.AllowLock == true)) {
                     if (((InventoryGet(target[0], "ItemVulva").Property != null) && (InventoryGet(target[0], "ItemVulva").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemVulva").Property == null)) {
                         InventoryLock(target[0], "ItemVulva", Lock, mn);
