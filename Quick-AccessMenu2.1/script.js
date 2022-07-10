@@ -3032,7 +3032,7 @@ async function NEWmenu() {
                 }
 		if ((InventoryGet(target[0], "ItemTorso2") != null) && (InventoryGet(target[0], "ItemTorso2").Asset.AllowLock == true)) {
                     if (((InventoryGet(target[0], "ItemTorso2").Property != null) && (InventoryGet(target[0], "ItemTorso2").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemTorso2").Property == null)) {
-                        InventoryLock(target[0], "ItemTorso", Lock, mn);
+                        InventoryLock(target[0], "ItemTorso2", Lock, mn);
                         if (removeitem == "r") {
                             InventoryGet(target[0], "ItemTorso2").Property.RemoveItem = true;
                         }
@@ -4506,7 +4506,8 @@ async function NEWmenu() {
             InventorySetDifficulty(Player, "ItemNipplesPiercings", solidity);
             InventorySetDifficulty(Player, "ItemNose", solidity);
             InventorySetDifficulty(Player, "ItemPelvis", solidity);
-            InventorySetDifficulty(Player, "ItemTorso", solidity)
+            InventorySetDifficulty(Player, "ItemTorso", solidity);
+	    InventorySetDifficulty(Player, "ItemTorso2", solidity);
             InventorySetDifficulty(Player, "ItemVulva", solidity);
             InventorySetDifficulty(Player, "ItemVulvaPiercings", solidity);
             ServerPlayerInventorySync();
