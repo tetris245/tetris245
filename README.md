@@ -42,6 +42,7 @@ Changes for future version 1.4.3
 * New command: permission to change your item permission
 * Added message with non-clickable link under picture or embedded YouTube video 
 * Updated the lock and solidity commands with the ItemTorso2 slot
+* Replaced Name by Nickname in many QAM (and Diaper) messages
 * Fixed a bug with crafted items by adding missing lines in a rewritten function
 
 
