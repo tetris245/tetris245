@@ -1190,7 +1190,6 @@ async function NEWmenu() {
             });
             ChatCreateBackgroundList = BackgroundsGenerateList(BackgroundsTagList);
             ChatRoomSendLocal("Quick-AccessMenu2: You can use more backgrounds now.");
-	
         } else if (content.indexOf("/bg2") == 0) {
             var bg = content.substring(4).trim();
             if (bg == 0) {
@@ -1360,7 +1359,7 @@ async function NEWmenu() {
             } else if (bg == 50) {
                 ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/Terrace';
                 updateBackground();   
-               } else if (bg == 51) {
+            } else if (bg == 51) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Forest/Orig/VulturePLain';
                 updateBackground();
             } else if (bg == 52) {
