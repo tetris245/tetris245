@@ -3260,6 +3260,14 @@ async function NEWmenu() {
                 Player.Nickname = NewName;
                 var tmpname = NewName;
             }
+	} else if (content.indexOf("/npcpunish") == 0) {
+            if (Player.RestrictionSettings.BypassNPCPunishments == true) {
+                Player.RestrictionSettings.BypassNPCPunishments = false;
+                ChatRoomSendLocal("Quick-AccessMenu2: NPC punishments enabled.");
+            } else {
+                Player.RestrictionSettings.BypassNPCPunishments = true;
+                ChatRoomSendLocal("Quick-AccessMenu2: NPC punishments disabled.");
+            }	
         } else if (content.indexOf("/outfit") == 0) {
             if (content.includes("load1")) {
                 ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
@@ -5565,10 +5573,12 @@ var ChatRoomSendChat = NEWmenu;
 //greeting message.
 ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
+	Player.RestrictionSettings.BypassNPCPunishments = true;
 	ChatRoomSendLocal(
                     "Quick-AccessMenu2 - version 1.4.2: Ready, type <b>/help</b> for general menu.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
-                    "For any inquiries, join https://discord.gg/YukepB6RVp"
+                    "For any inquiries, join https://discord.gg/YukepB6RVp\n" +
+		    "Note: NPC punishments are disabled."
                 );   	    	  	    	    
         ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)
     }
