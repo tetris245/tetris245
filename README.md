@@ -39,7 +39,7 @@ All else I might not have included.
 
 Changes for future version 1.4.3
 
-* New command: npcpunish to enable/disable npc punishments, no matter your game difficulty. Note that after login, the npc punishments are automatically disabled when you enter an existing room, and the QAM greeting message will confirm that.
+* New command: npcpunish to enable/disable npc punishments, no matter your game difficulty. Note that after login, the npc punishments are automatically in the first existing room you enter, and the QAM greeting message will confirm that.
 * New command: permission to change your item permission
 * Added message with non-clickable link under picture or embedded YouTube video 
 * Updated the bg2 command
