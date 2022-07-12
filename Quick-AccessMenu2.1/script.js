@@ -58,13 +58,14 @@ async function NEWmenu() {
                     "<b>/giveeverything</b> = gives every item.\n" +
                     "<b>/maxstatistics</b> = gives max statistics.\n" +
                     "<b>/money</b> (value) = gives or takes money.\n" +
-                    "<b>/name</b> (newnamehere) = chooses a temporary new nickname.\n" +
+                    "<b>/name</b> (newnamehere) = temporary new nickname.\n" +
+		    "<b>/npcpunish</b> = enables/disables npc punishments.\n" +
 		    "<b>/permission</b> (number) = changes your item permission *\n" +
                     "<b>/reputation</b> (reputation) (level) = changes a reputation. *\n" +
                     "<b>/resetinventory</b> = erases your inventory. Will warn first.\n" +
                     "<b>/roleplay</b> (rolehere) = starts a role. *\n" +
                     "<b>/rolequit</b> (role or clubarea here) = ceases to play a role. *\n" +
-                    "<b>/savename</b> = gives definitive status to a temporary nickname.\n" +
+                    "<b>/savename</b> = definitive status to temporary nickname.\n" +
                     "<b>/skill</b> (skill) (level) = changes a skill. *\n" +
                     "<b>/title</b> (newtitlehere) = chooses a new title. *"
                 );
