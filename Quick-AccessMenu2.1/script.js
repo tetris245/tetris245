@@ -195,7 +195,7 @@ async function NEWmenu() {
                     "<b>Quick-AccessMenu2</b>: Visual commands:\n" +
                     "<b>/anim2</b> (animhere) = changes your facial expression. Using will give more info.\n" +
                     "<b>/bg1</b> = adds hidden backgrounds to the admin selection screen. Tip for BCX users: activate BCX before login.\n" +
-                    "<b>/bg2</b> (number) = uses a hidden platform background. Number must be between 1 and 45. Use /bg2 0 to get the list.\n" +
+                    "<b>/bg2</b> (number) = uses a hidden platform background. Number must be between 1 and 55. Use /bg2 or /bg2 0 to get the list.\n" +
                     "<b>/colorchanger</b> (animhere) = gets an animation with color change. Using will give more info.\n" +
                     "<b>/pose2</b> (posehere) (target) = changes the pose of any player. Using will give more info.\n" +
                     "<b>/speak</b> = animates mouth when talking in chat. Can also: /mouth or /speech."
@@ -1205,10 +1205,10 @@ async function NEWmenu() {
 		    "20 to 22 College - 23 to 25 Countess Hall\n" + 
 		    "26, 27 Dungeon 1 - 28, 29 Dungeon Cell\n" +
 		    "30 to 32 Dungeon Storage\n" +
-		    "33 to 35 Forest Cabin - 36 Green Plain\n" +
-                    "37 to 47 Hall (1 to 4) - 48 Maid Bed\n" +
-                    "49 Mountain Path - 50,51 Terrace\n" +
-                    "52 Vulture Plain - 53,54 Wine Cell"
+		    "33 to 36 Forest Cabin - 37 Green Plain\n" +
+                    "38 to 48 Hall (1 to 4) - 49 Maid Bed\n" +
+                    "50 Mountain Path - 51, 52 Terrace\n" +
+                    "53 Vulture Plain - 54, 55 Wine Cell"
                 );
             } else if (bg == 1) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Balcony';
@@ -1314,62 +1314,65 @@ async function NEWmenu() {
                 updateBackground(); 	    
 	    } else if (bg == 35) {
                 ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/ForestCabin';
-                updateBackground();   	    
-            } else if (bg == 36) {
+                updateBackground();  
+	    } else if (bg == 36) {
+                ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Forest/Orig/WoodCabin';
+                updateBackground();  	    
+            } else if (bg == 37) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Forest/Orig/GreenPlain';
                 updateBackground();
-            } else if (bg == 37) {
+            } else if (bg == 38) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall1C';
                 updateBackground();
-            } else if (bg == 38) {
+            } else if (bg == 39) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall1W';
                 updateBackground();
-            } else if (bg == 39) {
+            } else if (bg == 40) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall2C';
                 updateBackground();
-            } else if (bg == 40) {
+            } else if (bg == 41) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall3C';
                 updateBackground();
-            } else if (bg == 41) {
+            } else if (bg == 42) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall3Cv2';
                 updateBackground();
-            } else if (bg == 42) {
+            } else if (bg == 43) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall3E';
                 updateBackground();
-            } else if (bg == 43) {
+            } else if (bg == 44) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall3W';
                 updateBackground();
-            } else if (bg == 44) {
+            } else if (bg == 45) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall4C';
                 updateBackground();
-            } else if (bg == 45) {
+            } else if (bg == 46) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall4E';
                 updateBackground();
-            } else if (bg == 46) {
+            } else if (bg == 47) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall4W1';
                 updateBackground();
-            } else if (bg == 47) {
+            } else if (bg == 48) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Hall4W2';
                 updateBackground();
-            } else if (bg == 48) {
+            } else if (bg == 49) {
                 ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/MaidBed';
                 updateBackground();
-            } else if (bg == 49) {
+            } else if (bg == 50) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Forest/Orig/MountainPath';
                 updateBackground();
-            } else if (bg == 50) {
+            } else if (bg == 51) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Terrace';
                 updateBackground();
-            } else if (bg == 51) {
+            } else if (bg == 52) {
                 ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/Terrace';
                 updateBackground();   
-            } else if (bg == 52) {
+            } else if (bg == 53) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Forest/Orig/VulturePlain';
                 updateBackground();
-            } else if (bg == 53) {
+            } else if (bg == 54) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/WineCellar';
                 updateBackground();
-            } else if (bg == 54) {
+            } else if (bg == 55) {
                 ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/WineCellar';
                 updateBackground();
             }
