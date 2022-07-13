@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.4.2
+// @version 1.4.3
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -158,11 +158,12 @@ async function NEWmenu() {
                 );
 	    } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Main changes in v.1.4.2:\n" +
-                    "- Improved the pet command with more random appearance and extension to any player.\n" +
-                    "- Improved all commands with targetname by adding support for the Member Number of the target.\n" +
-	            "- Added option in help command to get info about changes in current QAM version.\n" +
-                    "- Updated the bg1 command."
+                    "<b>Quick-AccessMenu2</b>: Main changes in v.1.4.3:\n" +
+		    "- New feature: AutoDisableNPCPunishments.\n" +
+		    "- New command: /npcpunish to enable/disable NPC punishments, no matter your game difficulty.\n" +
+		    "- New command: /permission to change your item permission.\n" +
+		    "- Added message with non-clickable link under picture or embedded YouTube video.\n" +
+                    "- Updated the bg2, lock and solidity commands."
                 );   	    
             } else if (content.includes("talking")) {
                 ChatRoomSendLocal(
@@ -5582,7 +5583,7 @@ ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
 	ChatRoomSendLocal(
-                    "Quick-AccessMenu2 - version 1.4.2: Ready, type <b>/help</b> for general menu.\n" +
+                    "Quick-AccessMenu2 - version 1.4.3: Ready, type <b>/help</b> for general menu.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
                     "For any inquiries, join https://discord.gg/YukepB6RVp\n" +
 		    "Note: NPC punishments are disabled."
