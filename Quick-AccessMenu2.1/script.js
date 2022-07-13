@@ -1364,7 +1364,7 @@ async function NEWmenu() {
                 ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/Terrace';
                 updateBackground();   
             } else if (bg == 52) {
-                ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Forest/Orig/VulturePLain';
+                ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Forest/Orig/VulturePlain';
                 updateBackground();
             } else if (bg == 53) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/WineCellar';
