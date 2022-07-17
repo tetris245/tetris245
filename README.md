@@ -2,7 +2,7 @@
 
 Quick-AccessMenu2.1 by Nemesea - Addon for Ben987's BondageClub game 
 
-Most recent release is version 1.4.2. - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
+Most recent release is version 1.4.3. - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
 Installation 
 
@@ -13,7 +13,7 @@ You can find Tampermonkey here: https://www.tampermonkey.net/ (it's available fo
 Inside Tampermonkey: Add new script / Utilities / Insert link to QAM loader in last option / Click on "Install"
 
 Alternative methode for Google Chrome, Microsoft Edge, similar browsers:
-1. Download the Quick-AccessMenu2.1-version1.4.2.zip file on the Releases page
+1. Download the Quick-AccessMenu2.1-version1.4.3.zip file on the Releases page
 2. Depending on browser, the .zip might have to be extracted. few browsers accept a .zip, a few requires a folder.
 3. Go to browser extensions. Enable developer mode.
 4. Load as Unpacked. Done. If the file can't be seen, see step 2.
@@ -37,16 +37,9 @@ All else I might not have included.
 
 ===========================================================================
 
-Changes for future version 1.4.3
+Changes for future version 
 
-* New feature: after login, the NPC punishments are automatically disabled in the first existing room you enter, and the QAM greeting message will confirm that.
-* New command: npcpunish to enable/disable NPC punishments, no matter your game difficulty.
-* New command: permission to change your item permission
-* Added message with non-clickable link under picture or embedded YouTube video 
-* Updated the bg2 command
-* Updated the lock and solidity commands with the ItemTorso2 slot
-* Replaced Name by Nickname in many QAM (and Diaper) messages
-* Fixed a bug with crafted items by adding missing lines in a rewritten function
+(...)
 
 
 
