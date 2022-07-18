@@ -39,7 +39,7 @@ All else I might not have included.
 
 Changes for future version 
 
-(...)
+* Fixed a bug in the unrestrict reset command
 
 
 
