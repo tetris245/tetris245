@@ -5221,16 +5221,26 @@ async function NEWmenu() {
                 Player.CanKneel = function() {
                     return CharacterCanKneel(this)
                 }
-                Player.GetBlindLevel = function(eyesOnly = false) {
-                    let blindLevel = 0;
-                    const eyes1 = InventoryGet(this, "Eyes");
-                    const eyes2 = InventoryGet(this, "Eyes2");
-                    if (eyes1.Property && eyes1.Property.Expression && eyes2.Property && eyes2.Property.Expression) {
-                        if ((eyes1.Property.Expression === "Closed") && (eyes2.Property.Expression === "Closed")) {
-                            blindLevel += DialogFacialExpressionsSelectedBlindnessLevel;
-                        }
-                    }
-                }
+                Player.GetBlindLevel = function (eyesOnly = false) {
+		    let blindLevel = 0;
+		    const eyes1 = InventoryGet(this, "Eyes");
+	            const eyes2 = InventoryGet(this, "Eyes2");
+		    if (eyes1 && eyes1.Property && eyes1.Property.Expression && eyes2 && eyes2.Property && eyes2.Property.Expression) {
+		        if ((eyes1.Property.Expression === "Closed") && (eyes2.Property.Expression === "Closed")) {
+			    blindLevel += DialogFacialExpressionsSelectedBlindnessLevel;
+			}
+		    }  
+		    if (!eyesOnly) {
+			if (this.Effect.includes("BlindHeavy")) blindLevel += 3;
+			else if (this.Effect.includes("BlindNormal")) blindLevel += 2;
+			else if (this.Effect.includes("BlindLight")) blindLevel += 1;
+			if (InventoryCraftCount(this, "Thick") > 0) blindLevel++;
+			if (InventoryCraftCount(this, "Thin") > 0) blindLevel--;
+		    }
+		    blindLevel = Math.min(3, blindLevel);
+		    if (this.IsPlayer() && this.GameplaySettings && this.GameplaySettings.SensDepChatLog == "SensDepLight") blindLevel = Math.min(2, blindLevel);
+		    return blindLevel;
+		}
                 Player.CanChange = function(Pose) {
                     return CharacterCanChangeToPose(this, Pose)
                 }
