@@ -174,8 +174,7 @@ async function NEWmenu() {
                     "<b>/gaglight</b> (stuffhere) = speaks once in light gag talk. Can also: /gl.\n" +
                     "<b>/gagtalk</b> = toggle to decode/not decode gagged people talking.\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
-                    "<b>/talkbaby</b> = toggle on gag talk. Remember to only use one at a time.\n" +
-                    "<b>/talkgag light/heavy</b> = toggle on gag talk. Remember to only use one at a time.\n" +
+		    "<b>/talk</b> (talkmode) = changes your talk mode. Using will give more info.\n" +
                     "<b>/whisper</b> (target) = sets whisper target."
                 );
             } else if (content.includes("unl")) {
@@ -4590,31 +4589,53 @@ async function NEWmenu() {
                     Text: "" + Player.Nickname + " rolls a superdice of " + sides + " sides. The result is " + Result + "."
                 }]
             });
-        } else if (content.indexOf("/talkbaby") == 0) {
-            ElementValue("InputChat", "");
-            if (this.BabyTalkOn == false || this.BabyTalkOn == undefined) {
-                BabyTalkOn = true;
-                OLDmenu();
-            } else {
-                BabyTalkOn = false;
-                OLDmenu();
-            }
-        } else if (content.indexOf("/talkgag") == 0) {
-            if (content.includes("light")) {
-                ElementValue("InputChat", "");
-                if (this.TalkGagLightOn == false || this.TalkGagLightOn == undefined) {
-                    TalkGagLightOn = true;
-                } else {
-                    TalkGagLightOn = false;
-                }
-            } else if (content.includes("heavy")) {
-                ElementValue("InputChat", "");
-                if (this.TalkGagHeavyOn == false || this.TalkGagHeavyOn == undefined) {
-                    TalkGagHeavyOn = true;
-                } else {
-                    TalkGagHeavyOn = false;
-                }
-            }
+        } else if (content.indexOf("/talk") == 0) {
+             if (content.endsWith("/talk")) {
+                ChatRoomSendLocal(
+                    "<b>Quick-AccessMenu2</b>: The talk command must be followed by a number between -1 and 8.\n" +
+                    " \n" +
+                    "Available talk modes:\n" +
+                    "-1 baby talk\n" +
+                    "0 normal talk\n" +
+                    "1 very light gag talk\n" +
+                    "2 light gag talk\n" +
+                    "3 easy gag talk\n" +
+                    "4 normal gag talk\n" +
+                    "5 medium gag talk\n" +
+                    "6 heavy gag talk\n" +
+                    "7 very heavy gag talk\n" +
+                    "8 total gag talk"
+                );
+             } else {
+                 var gaglevel = content.substring(5).trim();
+                 ElementValue("InputChat", "");
+                     if (gaglevel == -1) {            
+                         if (this.BabyTalkOn == false || this.BabyTalkOn == undefined) {  
+                             ChatRoomSendLocal("Quick-AccessMenu2: You are now in baby talk mode.");
+                             GagTalkOn = false;                  
+                             BabyTalkOn = true;
+                             OLDmenu();
+                         }
+                     } 
+                     if (gaglevel == 0) { 
+                         ChatRoomSendLocal("Quick-AccessMenu2: Back to normal talk mode.");
+                         BabyTalkOn = false;
+                         GagTalkOn = false;
+                         OLDmenu();
+                     } 
+                     if ((gaglevel > 0) && (gaglevel < 9)) {  
+                         if (this.GagTalkOn == false || this.GagTalkOn == undefined)  { 
+                             BabyTalkOn = false;  
+                             gl = gaglevel;                  
+                             GagTalkOn = true;                  
+                         } else {
+                             GagTalkOn = false;   
+                             gl = gaglevel;                  
+                             GagTalkOn = true;
+                         } 
+                     ChatRoomSendLocal("Quick-AccessMenu2: You are now in gag talk mode.");
+                     }
+              }
         } else if (content.indexOf("/theme") == 0) {
             var theme = content.substring(6).trim();
             if ((theme > -1) && (theme < 4)) {
@@ -5561,15 +5582,8 @@ async function NEWmenu() {
                     "Type": "Chat"
                 })
                 ElementValue("InputChat", "");
-            } else if (this.TalkGagLightOn == true) {
-                content = SpeechGarbleByGagLevel(1, content);
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Chat"
-                });
-                ElementValue("InputChat", "");
-            } else if (this.TalkGagHeavyOn == true) {
-                content = SpeechGarbleByGagLevel(6, content);
+            } else if (this.GagTalkOn == true) {
+                content = SpeechGarbleByGagLevel(gl, content);
                 ServerSend("ChatRoomChat", {
                     "Content": content,
                     "Type": "Chat"
