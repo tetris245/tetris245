@@ -2036,18 +2036,6 @@ async function NEWmenu() {
             ChatRoomSendLocal("Quick-AccessMenu2: Every item in the game now added.");
             AssetFemale3DCG.forEach(group => group.Asset.forEach(item => InventoryAdd(Player, item.Name, group.Group)));
             ServerPlayerInventorySync();
-        } else if (content.indexOf("/gl") == 0) {
-            content = SpeechGarbleByGagLevel(1, content.substring(3).trim());
-            ServerSend("ChatRoomChat", {
-                "Content": content,
-                "Type": "Chat"
-            });
-        } else if (content.indexOf("/gv") == 0) {
-            content = SpeechGarbleByGagLevel(6, content.substring(3).trim());
-            ServerSend("ChatRoomChat", {
-                "Content": content,
-                "Type": "Chat"
-            });
         } else if (content.indexOf("/hiddenmessages") == 0) {
             if (this.HiddenMessagesOn == undefined || this.HiddenMessagesOn == false) {
                 HiddenMessagesOn = true;
