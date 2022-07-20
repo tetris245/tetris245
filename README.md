@@ -39,6 +39,7 @@ All else I might not have included.
 
 Changes for future version 
 
+* New command: talk, which merges talkbaby and talkgag and gives more options of gag talk sent to the server (can't be ungarbled by a cheat) 
 * Fixed a bug in the unrestrict reset command
 
 
