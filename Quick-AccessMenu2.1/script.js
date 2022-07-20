@@ -169,10 +169,9 @@ async function NEWmenu() {
                 ChatRoomSendLocal(
                     "<b>Quick-AccessMenu2</b>: Talking commands:\n" +
                     "<b>/action</b> (stuffhere) = inserts an action. Can also: /a.\n" +
-                    "<b>/babytalk</b> (stuffhere) = speaks as a baby. Can also: /b.\n" +
-                    "<b>/gagheavy</b> (stuffhere) = speaks once in heavy gag talk. Can also: /gv.\n" +
-                    "<b>/gaglight</b> (stuffhere) = speaks once in light gag talk. Can also: /gl.\n" +
-                    "<b>/gagtalk</b> = toggle to decode/not decode gagged people talking.\n" +
+                    "<b>/babytalk</b> (stuffhere) = speaks once as a baby. Can also: /b.\n" +
+                    "<b>/gagcheat</b> = toggle to decode/not decode gagged people talking.\n" +
+		    "<b>/gagtalk</b> (talkmode) (stuffhere) = speaks once in specified gag talk. Using will give more info.\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
 		    "<b>/talk</b> (talkmode) = changes your talk mode. Using will give more info.\n" +
                     "<b>/whisper</b> (target) = sets whisper target."
@@ -1903,19 +1902,7 @@ async function NEWmenu() {
                 document.getElementById("InputChat").style.display = "inline";
                 document.getElementById("TextAreaChatLog").style.display = "inline";
             }, 15000);
-        } else if (content.indexOf("/gagheavy") == 0) {
-            content = SpeechGarbleByGagLevel(6, content.substring(9).trim());
-            ServerSend("ChatRoomChat", {
-                "Content": content,
-                "Type": "Chat"
-            });
-        } else if (content.indexOf("/gaglight") == 0) {
-            content = SpeechGarbleByGagLevel(1, content.substring(9).trim());
-            ServerSend("ChatRoomChat", {
-                "Content": content,
-                "Type": "Chat"
-            });
-        } else if (content.indexOf("/gagtalk") == 0) {
+        } else if (content.indexOf("/gagcheat") == 0) {
             if (this.GagTalkOff == undefined | this.GagTalkOff == false) {
                 SpeechGagLevelLookup = {};
                 GagTalkOff = true;
@@ -1936,6 +1923,34 @@ async function NEWmenu() {
                 };
                 GagTalkOff = false;
                 ChatRoomSendLocal("Quick-AccessMenu2: Gag-talk toggled on.");
+            }
+	} else if (content.indexOf("/gagtalk") == 0) {          
+            if (content.endsWith("/gagtalk")) {
+                ChatRoomSendLocal(
+                    "<b>Quick-AccessMenu2</b>: The gagtalk command must be followed by a number between 1 and 8, then your message.\n" +
+                    " \n" +
+                    "Available talk modes:\n" +                 
+                    "1 very light gag talk\n" +
+                    "2 light gag talk\n" +
+                    "3 easy gag talk\n" +
+                    "4 normal gag talk\n" +
+                    "5 medium gag talk\n" +
+                    "6 heavy gag talk\n" +
+                    "7 very heavy gag talk\n" +
+                    "8 total gag talk"
+                );
+            } else {
+                var stringGag1 = content;
+                var stringGag2 = stringGag1.split(/[ ,]+/);
+                var gaglevel = stringGag2[1];
+                if ((gaglevel > 0) && (gaglevel < 9)) {  
+                    gl = gaglevel; 
+                    content = SpeechGarbleByGagLevel(gl, content.substring(11).trim());
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Chat"
+                    });
+                }
             }
         } else if (content.indexOf("/game") == 0) {
             if (content.endsWith("/game")) {
