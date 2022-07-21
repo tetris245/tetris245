@@ -170,7 +170,7 @@ async function NEWmenu() {
                     "<b>Quick-AccessMenu2</b>: Talking commands:\n" +
                     "<b>/action</b> (stuffhere) = inserts an action. Can also: /a.\n" +
                     "<b>/babytalk</b> (stuffhere) = speaks once as a baby. Can also: /b.\n" +
-                    "<b>/gagcheat</b> = toggle to decode/not decode gagged people talking.\n" +
+                    "<b>/gagcode</b> = toggle to decode/not decode gagged people talking.\n" +
 		    "<b>/gagtalk</b> (talkmode) (stuffhere) = speaks once in specified gag talk. Using will give more info.\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
 		    "<b>/talk</b> (talkmode) = changes your talk mode. Using will give more info.\n" +
@@ -1902,7 +1902,7 @@ async function NEWmenu() {
                 document.getElementById("InputChat").style.display = "inline";
                 document.getElementById("TextAreaChatLog").style.display = "inline";
             }, 15000);
-        } else if (content.indexOf("/gagcheat") == 0) {
+        } else if (content.indexOf("/gagcode") == 0) {
             if (this.GagTalkOff == undefined | this.GagTalkOff == false) {
                 SpeechGagLevelLookup = {};
                 GagTalkOff = true;
