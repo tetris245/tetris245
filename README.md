@@ -43,6 +43,7 @@ Changes for future version
 * Renamed the old gagtalk command as gagcode
 * Merged the gaglight and gagheavy commands into the new version of gagtalk command, used in a similar way to the talk command, but only for gag talk sent to the server 
 * Fixed a bug in the unrestrict reset command
+* Fixed a detail in the outfit command
 
 
 
