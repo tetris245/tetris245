@@ -3294,7 +3294,7 @@ async function NEWmenu() {
                     CharacterRefresh(CurrentCharacter);
                     ChatRoomCharacterUpdate(CurrentCharacter);
                     DialogLeave();
-                }, 8000);
+                }, 5000);
             } else if (content.includes("load3")) {
                 ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
                 setTimeout(function() {
