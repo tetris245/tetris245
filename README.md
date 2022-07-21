@@ -40,7 +40,7 @@ All else I might not have included.
 Changes for future version 
 
 * New command: talk, which merges talkbaby and talkgag commands, and gives more options of gag talk sent to the server 
-* Renamed the old gagtalk command as gagcode and improved by using lillyBC gagspeak function (https://github.com/lillyBC/bcTampermonkeys):
+* Renamed the old gagtalk command as gagcode and improved it by using lillyBC gagspeak function (https://github.com/lillyBC/bcTampermonkeys):
   - works now also against deafness
   - in decoder mode, displays now both versions of the message
 * Merged the gaglight and gagheavy commands into the new version of gagtalk command, used in a similar way to the talk command, but only for gag talk sent to the server 
