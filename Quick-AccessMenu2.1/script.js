@@ -170,7 +170,7 @@ async function NEWmenu() {
                     "<b>Quick-AccessMenu2</b>: Talking commands:\n" +
                     "<b>/action</b> (stuffhere) = inserts an action. Can also: /a.\n" +
                     "<b>/babytalk</b> (stuffhere) = speaks once as a baby. Can also: /b.\n" +
-                    "<b>/gagcode</b> = toggle to decode/not decode gagged people talking.\n" +
+                    "<b>/gagcode</b> = toggle to decode/not decode gagged people talking. Also works against deafness.\n" +
 		    "<b>/gagtalk</b> (talkmode) (stuffhere) = speaks once in specified gag talk. Using will give more info.\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
 		    "<b>/talk</b> (talkmode) = changes your talk mode. Using will give more info.\n" +
@@ -1904,25 +1904,14 @@ async function NEWmenu() {
             }, 15000);
         } else if (content.indexOf("/gagcode") == 0) {
             if (this.GagTalkOff == undefined | this.GagTalkOff == false) {
-                SpeechGagLevelLookup = {};
                 GagTalkOff = true;
-                ChatRoomSendLocal("Quick-AccessMenu2: Gag-talk toggled off.");
+                gagSpeak();
+                window.SpeechGarble = NewSpeechGarble;
+                ChatRoomSendLocal("Quick-AccessMenu2: Gag Talk is decoded.");
             } else {
-                SpeechGagLevelLookup = {
-                    GagTotal4: 20,
-                    GagTotal3: 16,
-                    GagTotal2: 12,
-                    GagTotal: 8,
-                    GagVeryHeavy: 7,
-                    GagHeavy: 6,
-                    GagMedium: 5,
-                    GagNormal: 4,
-                    GagEasy: 3,
-                    GagLight: 2,
-                    GagVeryLight: 1,
-                };
                 GagTalkOff = false;
-                ChatRoomSendLocal("Quick-AccessMenu2: Gag-talk toggled on.");
+                window.SpeechGarble = OldSpeechGarble;
+                ChatRoomSendLocal("Quick-AccessMenu2: Gag Talk is not decoded.");
             }
 	} else if (content.indexOf("/gagtalk") == 0) {          
             if (content.endsWith("/gagtalk")) {
@@ -5690,6 +5679,28 @@ function consoleWhisper() {
         Target: ChatRoomTargetMemberNumber
     })
 };
+
+function gagSpeak() {
+     OldSpeechGarble = SpeechGarble;
+     SpeechGarble = function(C,CD,NoDeaf){
+         origin = CD;
+         out  = OldSpeechGarble(C,CD,NoDeaf)
+         var GagEffect = 0;
+         GagEffect += SpeechGetGagLevel(C, "ItemEars");
+         GagEffect += SpeechGetGagLevel(C, "ItemMouth");
+         GagEffect += SpeechGetGagLevel(C, "ItemMouth2");
+         GagEffect += SpeechGetGagLevel(C, "ItemMouth3");
+         GagEffect += SpeechGetGagLevel(C, "ItemHead");
+         GagEffect += SpeechGetGagLevel(C, "ItemHood");
+         GagEffect += SpeechGetGagLevel(C, "ItemNeck");
+         GagEffect += SpeechGetGagLevel(C, "ItemDevices");
+         if((GagEffect>0 || Player.GetDeafLevel()>0) && origin.charAt(0)!='('){
+              out = out+' ('+ origin + ')';
+         } 
+         return out;
+    }
+    NewSpeechGarble = SpeechGarble;
+}
 
 function updateBackground() {
     var UpdatedRoom = {
