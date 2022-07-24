@@ -172,6 +172,7 @@ async function NEWmenu() {
                     "<b>/babytalk</b> (stuffhere) = speaks once as a baby. Can also: /b.\n" +
                     "<b>/gagcode</b> = toggle to decode/not decode gagged people talking. Also works against deafness.\n" +
 		    "<b>/gagtalk</b> (talkmode) (stuffhere) = speaks once in specified gag talk. Using will give more info.\n" +
+		    "<b>/hear</b> (hearmode) = forces a specific hearing mode. Using will give more info.\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
 		    "<b>/talk</b> (talkmode) = changes your talk mode. Using will give more info.\n" +
                     "<b>/whisper</b> (target) = sets whisper target."
@@ -2025,6 +2026,51 @@ async function NEWmenu() {
             ChatRoomSendLocal("Quick-AccessMenu2: Every item in the game now added.");
             AssetFemale3DCG.forEach(group => group.Asset.forEach(item => InventoryAdd(Player, item.Name, group.Group)));
             ServerPlayerInventorySync();
+	} else if (content.indexOf("/hear") == 0) {
+             if (content.endsWith("/hear")) {
+                ChatRoomSendLocal(
+                    "<b>Quick-AccessMenu2</b>: The hear command must be followed by a number between 0 and 4.\n" +
+                    " \n" +
+                    "Available hearing modes:\n" +
+                    "0 normal hearing\n" +
+                    "1 light deafness\n" +
+                    "2 normal deafness\n" +
+                    "3 heavy deafness\n" +
+                    "4 total deafness"
+                 );
+             } else {
+                 var dl = content.substring(5).trim();
+                     if (dl == 0) { 
+                         GetDeafLevel0();
+                         Player.GetDeafLevel = GetDeafLevel0;
+                         Player.GetDeafLevel();
+		         ChatRoomSendLocal("Quick-AccessMenu2: Back to normal hearing mode.");
+                     } 
+                     if (dl == 1) { 
+		         GetDeafLevel1();
+                         Player.GetDeafLevel = GetDeafLevel1;
+                         Player.GetDeafLevel();
+                         ChatRoomSendLocal("Quick-AccessMenu2: You are now in light deafeness mode.");
+                     } 
+                    if (dl == 2) { 
+		        GetDeafLevel2(); 
+                        Player.GetDeafLevel = GetDeafLevel2;
+                        Player.GetDeafLevel();
+                        ChatRoomSendLocal("Quick-AccessMenu2: You are now in normal deafeness mode.");
+                     } 
+                   if (dl == 3) { 
+			GetDeafLevel3(); 
+                        Player.GetDeafLevel = GetDeafLevel3;
+                        Player.GetDeafLevel();
+                        ChatRoomSendLocal("Quick-AccessMenu2: You are now in heavy deafeness mode.");
+                     } 
+                  if (dl == 4) { 
+		       GetDeafLevel4();
+                       Player.GetDeafLevel = GetDeafLevel4;
+                       Player.GetDeafLevel();
+                       ChatRoomSendLocal("Quick-AccessMenu2: You are now in total deafeness mode.");
+                     } 
+              }	
         } else if (content.indexOf("/hiddenmessages") == 0) {
             if (this.HiddenMessagesOn == undefined || this.HiddenMessagesOn == false) {
                 HiddenMessagesOn = true;
@@ -5700,6 +5746,31 @@ function gagSpeak() {
          return out;
     }
     NewSpeechGarble = SpeechGarble;
+}
+
+function GetDeafLevel0 () {
+    let deafLevel = 0;
+    return deafLevel;
+}
+
+function GetDeafLevel1 () {
+    let deafLevel = 1;
+    return deafLevel;
+}
+
+function GetDeafLevel2 () {
+    let deafLevel = 2;
+    return deafLevel;
+}
+
+function GetDeafLevel3 () {
+    let deafLevel = 3;
+    return deafLevel;
+}
+
+function GetDeafLevel4 () {
+    let deafLevel = 4;
+    return deafLevel;
 }
 
 function updateBackground() {
