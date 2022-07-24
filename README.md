@@ -39,6 +39,7 @@ All else I might not have included.
 
 Changes for future version 
 
+* New command: hear (hearingmode) to force a specific hearing mode. The mode is specified by a number between 0 and 5.
 * New command: talk, which merges talkbaby and talkgag commands, and gives more options of gag talk sent to the server 
 * Renamed the old gagtalk command as gagcode and improved it by using lillyBC gagspeak function (https://github.com/lillyBC/bcTampermonkeys):
   - works now also against deafness
