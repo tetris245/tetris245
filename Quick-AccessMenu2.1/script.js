@@ -198,6 +198,7 @@ async function NEWmenu() {
                     "<b>/bg2</b> (number) = uses a hidden platform background. Number must be between 1 and 55. Use /bg2 or /bg2 0 to get the list.\n" +
                     "<b>/colorchanger</b> (animhere) = gets an animation with color change. Using will give more info.\n" +
                     "<b>/pose2</b> (posehere) (target) = changes the pose of any player. Using will give more info.\n" +
+		    "<b>/see</b> (visionmode) = forces a specific vision mode. Using will give more info.\n" +
                     "<b>/speak</b> = animates mouth when talking in chat. Can also: /mouth or /speech."
                 );
             } else if (content.includes("zones")) {
@@ -4511,6 +4512,44 @@ async function NEWmenu() {
                     document.getElementById("TextAreaChatLog").style.display = "inline";
                 }, 15000);
             }
+	} else if (content.indexOf("/see") == 0) {
+            if (content.endsWith("/see")) {
+               ChatRoomSendLocal(
+                   "<b>Quick-AccessMenu2</b>: The see command must be followed by a number between 0 and 3.\n" +
+                   " \n" +
+                   "Available vision modes:\n" +
+                   "0 normal vision\n" +
+                   "1 light blindness\n" +
+                   "2 normal blindness\n" +
+                   "3 heavy blindness"
+                 );
+            } else {
+                var bl = content.substring(4).trim();
+                    if (bl == 0) { 
+                        GetBlindLevel0();
+                        Player.GetBlindLevel = GetBlindLevel0;
+                        Player.GetBlindLevel();
+		        ChatRoomSendLocal("Quick-AccessMenu2: Back to normal vision mode.");
+                    } 
+                    if (bl == 1) { 
+		        GetBlindLevel1();
+                        Player.GetBlindLevel = GetBlindLevel1;
+                        Player.GetBlindLevel();
+                        ChatRoomSendLocal("Quick-AccessMenu2: You are now in light blindness mode.");
+                    } 
+                    if (bl == 2) { 
+		        GetBlindLevel2(); 
+                        Player.GetBlindLevel = GetBlindLevel2;
+                        Player.GetBlindLevel();
+                        ChatRoomSendLocal("Quick-AccessMenu2: You are now in normal blindness mode.");
+                    } 
+                    if (bl == 3) { 
+			GetBlindLevel3(); 
+                        Player.GetBlindLevel = GetBlindLevel3;
+                        Player.GetBlindLevel();
+                        ChatRoomSendLocal("Quick-AccessMenu2: You are now in heavy blindness mode.");
+                    } 
+              }		
         } else if (content.indexOf("/skill") == 0) {
             if (content.endsWith("/skill")) {
                 ChatRoomSendLocal(
@@ -5746,6 +5785,26 @@ function gagSpeak() {
          return out;
     }
     NewSpeechGarble = SpeechGarble;
+}
+
+function GetBlindLevel0 () {
+    let blindLevel = 0;
+    return blindLevel;
+}
+
+function GetBlindLevel1 () {
+    let blindLevel = 1;
+    return blindLevel;
+}
+
+function GetBlindLevel2 () {
+    let blindLevel = 2;
+    return blindLevel;
+}
+
+function GetBlindLevel3 () {
+    let blindLevel = 3;
+    return blindLevel;
 }
 
 function GetDeafLevel0 () {
