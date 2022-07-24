@@ -2050,25 +2050,25 @@ async function NEWmenu() {
 		         GetDeafLevel1();
                          Player.GetDeafLevel = GetDeafLevel1;
                          Player.GetDeafLevel();
-                         ChatRoomSendLocal("Quick-AccessMenu2: You are now in light deafeness mode.");
+                         ChatRoomSendLocal("Quick-AccessMenu2: You are now in light deafness mode.");
                      } 
                     if (dl == 2) { 
 		        GetDeafLevel2(); 
                         Player.GetDeafLevel = GetDeafLevel2;
                         Player.GetDeafLevel();
-                        ChatRoomSendLocal("Quick-AccessMenu2: You are now in normal deafeness mode.");
+                        ChatRoomSendLocal("Quick-AccessMenu2: You are now in normal deafness mode.");
                      } 
                    if (dl == 3) { 
 			GetDeafLevel3(); 
                         Player.GetDeafLevel = GetDeafLevel3;
                         Player.GetDeafLevel();
-                        ChatRoomSendLocal("Quick-AccessMenu2: You are now in heavy deafeness mode.");
+                        ChatRoomSendLocal("Quick-AccessMenu2: You are now in heavy deafness mode.");
                      } 
                   if (dl == 4) { 
 		       GetDeafLevel4();
                        Player.GetDeafLevel = GetDeafLevel4;
                        Player.GetDeafLevel();
-                       ChatRoomSendLocal("Quick-AccessMenu2: You are now in total deafeness mode.");
+                       ChatRoomSendLocal("Quick-AccessMenu2: You are now in total deafness mode.");
                      } 
               }	
         } else if (content.indexOf("/hiddenmessages") == 0) {
