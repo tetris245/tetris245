@@ -3318,10 +3318,10 @@ async function NEWmenu() {
             if (content.includes("load1")) {
                 ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
                 setTimeout(function() {
-                     CurrentCharacter.Appearance = this.savedoutfit1.slice(0);
-                     CharacterRefresh(CurrentCharacter);
-                     ChatRoomCharacterUpdate(CurrentCharacter);
-                     DialogLeave();
+                    CurrentCharacter.Appearance = this.savedoutfit1.slice(0);
+                    CharacterRefresh(CurrentCharacter);
+                    ChatRoomCharacterUpdate(CurrentCharacter);
+                    DialogLeave();
                 }, 5000);
             } else if (content.includes("load2")) {
                 ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
