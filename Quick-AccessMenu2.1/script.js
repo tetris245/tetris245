@@ -3314,93 +3314,103 @@ async function NEWmenu() {
                 Player.RestrictionSettings.BypassNPCPunishments = true;
                 ChatRoomSendLocal("Quick-AccessMenu2: NPC punishments disabled.");
             }	
-        } else if (content.indexOf("/outfit") == 0) {
-    if (content.includes("load1")) {
-        ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
-        setTimeout(function() {
-            CurrentCharacter.Appearance = this.savedoutfit1.slice(0);
-            CharacterRefresh(CurrentCharacter);
-            ChatRoomCharacterUpdate(CurrentCharacter);
-            DialogLeave();
-        }, 5000);
-    } else if (content.includes("load2")) {
-        ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
-        setTimeout(function() {
-            CurrentCharacter.Appearance = savedoutfit2.slice(0);
-            CharacterRefresh(CurrentCharacter);
-            ChatRoomCharacterUpdate(CurrentCharacter);
-            DialogLeave();
-        }, 5000);
-    } else if (content.includes("load3")) {
-        ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
-        setTimeout(function() {
-            CurrentCharacter.Appearance = savedoutfit3.slice(0);
-            CharacterRefresh(CurrentCharacter);
-            ChatRoomCharacterUpdate(CurrentCharacter);
-            DialogLeave();
-        }, 5000);
-    } else if (content.includes("reset") || content.includes("revert") || content.includes("restore")) {
-        Player.Appearance = ChatSearchSafewordAppearance.slice(0);
-        // Player.ActivePose = ChatSearchSafewordPose; should not be needed
-        CharacterRefresh(Player);
-        ChatRoomCharacterUpdate(Player);
-    } else if (content.includes("save1")) {
-        ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.");
-        setTimeout(function() {
-            this.savedoutfit1 = CurrentCharacter.Appearance.slice(0);
-            DialogLeave();
-        }, 5000);
-    } else if (content.includes("save2")) {
-        ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.");
-        setTimeout(function() {
-            this.savedoutfit2 = CurrentCharacter.Appearance.slice(0);
-            DialogLeave();
-        }, 5000);
-    } else if (content.includes("save3")) {
-        ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.");
-        setTimeout(function() {
-            this.savedoutfit3 = CurrentCharacter.Appearance.slice(0);
-            DialogLeave();
-        }, 5000);
-    } else if (content.includes("awsave")) {
-        ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.");
-        setTimeout(function() {
-            var appall = new Array();
-            CurrentCharacter.Appearance.forEach(item=>{
-                var app = new Array();
-                app.push(item.Asset.Name);
-                app.push(item.Asset.Group.Name);
-                app.push(item.Color);
-                app.push(item.Difficulty);
-                app.push(item.Craft);
-                app.push(false);
-                //Do not remove this line.It is for the compability with bcg.
-                appall.push(app);
-            }
-            );
-            ChatRoomSendLocal("Quick-AccessMenu2: Appearance saved.\n" + btoa(encodeURI(JSON.stringify(appall))));
-            DialogLeave();
-        }, 5000);
-    } else if (content.includes("awload")) {
-        appinp = prompt('Please input the awcode (Capable with BCG).', '');
-        if (appinp) {
-            ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
-            setTimeout(function() {
-                CharacterNaked(CurrentCharacter);
-                CharacterReleaseTotal(CurrentCharacter);
-                var appobj = JSON.parse(decodeURI(atob(appinp)));
-                appobj.forEach(itemstr=>{
-                    InventoryWear(CurrentCharacter, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+       } else if (content.indexOf("/outfit") == 0) {
+            if (content.includes("load1")) {
+                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
+                setTimeout(function() {
+                     CurrentCharacter.Appearance = this.savedoutfit1.slice(0);
+                     CharacterRefresh(CurrentCharacter);
+                     ChatRoomCharacterUpdate(CurrentCharacter);
+                     DialogLeave();
+                }, 5000);
+            } else if (content.includes("load2")) {
+                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
+                setTimeout(function() {
+                    CurrentCharacter.Appearance = savedoutfit2.slice(0);
+                    CharacterRefresh(CurrentCharacter);
+                    ChatRoomCharacterUpdate(CurrentCharacter);
+                    DialogLeave();
+                }, 5000);
+            } else if (content.includes("load3")) {
+                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
+                setTimeout(function() {
+                    CurrentCharacter.Appearance = savedoutfit3.slice(0);
+                    CharacterRefresh(CurrentCharacter);
+                    ChatRoomCharacterUpdate(CurrentCharacter);
+                    DialogLeave();
+                }, 5000);
+            } else if (content.includes("reset") || content.includes("revert") || content.includes("restore")) {
+                Player.Appearance = ChatSearchSafewordAppearance.slice(0);
+                // Player.ActivePose = ChatSearchSafewordPose; should not be needed
+                CharacterRefresh(Player);
+                ChatRoomCharacterUpdate(Player);
+            } else if (content.includes("save1")) {
+                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.");
+                setTimeout(function() {
+                    this.savedoutfit1 = CurrentCharacter.Appearance.slice(0);
+                    DialogLeave();
+                }, 5000);
+            } else if (content.includes("save2")) {
+                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.");
+                setTimeout(function() {
+                    this.savedoutfit2 = CurrentCharacter.Appearance.slice(0);
+                    DialogLeave();
+                }, 5000);
+            } else if (content.includes("save3")) {
+                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.");
+                setTimeout(function() {
+                    this.savedoutfit3 = CurrentCharacter.Appearance.slice(0);
+                    DialogLeave();
+                }, 5000);
+            } else if (content.includes("awsave")) {
+                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.");
+                setTimeout(function() {
+                    var appall = new Array();
+                    CurrentCharacter.Appearance.forEach(item=>{
+                        var app = new Array();
+                        app.push(item.Asset.Name);
+                        app.push(item.Asset.Group.Name);
+                        app.push(item.Color);
+                        app.push(item.Difficulty);
+                        app.push(item.Craft);
+                        app.push(false);
+                        //Do not remove this line.It is for the compability with bcg.
+                        appall.push(app);
+                        }
+                    );
+                    ChatRoomSendLocal("Quick-AccessMenu2: Appearance saved.\n" + btoa(encodeURI(JSON.stringify(appall))));
+                    DialogLeave();
+                }, 5000);
+            } else if (content.includes("awload")) {
+                appinp = prompt('Please input the awcode (Compatible with BCG).', '');
+                if (appinp) {
+                    ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
+                    setTimeout(function() {
+                        CharacterNaked(CurrentCharacter);
+                        CharacterReleaseTotal(CurrentCharacter);
+                        var appobj = JSON.parse(decodeURI(atob(appinp)));
+                        appobj.forEach(itemstr=>{
+                            InventoryWear(CurrentCharacter, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                            }
+                        );
+                        ChatRoomCharacterUpdate(CurrentCharacter);
+                        DialogLeave();
+                    }, 5000);
                 }
-                );
-                ChatRoomCharacterUpdate(CurrentCharacter);
-                DialogLeave();
-            }, 5000);
-        }
-    } else if (content.endsWith("/outfit")) {
-        ChatRoomSendLocal("<b>Quick-AccessMenu2</b>: Options for outfit command:\n" + "To restore your outfit to what it was before entering room, type: <b>/outfit reset</b> or <b>/outfit restore</b> or <b>/outfit revert</b>\n" + "Three outfits can be saved by using <b>/outfit save1</b> or <b>/outfit save2</b> or <b>/outfit save3</b>\n" + "To load saved outfits, type: <b>/outfit load1</b> or <b>/outfit load2</b> or <b>/outfit load3</b>\n" + "You will have 5 seconds to click on target. Retry if the saving/loading was unsuccessful\n" + "Saves last only 1 login session.\n" + "To save outfits between sessions, use /outfit awsave\n" + "You will have the outfit saved as a code. You can save the code elsewhere.\n" + "Then you can use /outfit awload to load it later.");
-    }
-} else if (content.indexOf("/patreoncheats") == 0) {
+            } else if (content.endsWith("/outfit")) {
+                ChatRoomSendLocal(
+	            "<b>Quick-AccessMenu2</b>: Options for outfit command:\n" + 
+	            "To restore your outfit to what it was before entering room, type: <b>/outfit reset</b> or <b>/outfit restore</b> or <b>/outfit revert</b>\n" + 
+	            "Three outfits can be saved by using <b>/outfit save1</b> or <b>/outfit save2</b> or <b>/outfit save3</b>\n" + 
+	            "To load saved outfits, type: <b>/outfit load1</b> or <b>/outfit load2</b> or <b>/outfit load3</b>\n" + 
+	            "You will have 5 seconds to click on target. Retry if the saving/loading was unsuccessful\n" + 
+	            "These saves last only 1 login session.\n" + 
+	            "To save outfits between sessions, use <b>/outfit awsave</b>\n" +    
+	            "You will have the outfit saved as a code. You can copy and paste it elsewhere.\n" + 
+	            "Then you can use <b>/outfit awload</b> to load it later."
+		);
+            }
+       } else if (content.indexOf("/patreoncheats") == 0) {  
             CheatValidate = function() {
                 return true;
             };
