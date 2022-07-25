@@ -198,7 +198,7 @@ async function NEWmenu() {
                     "<b>/bg2</b> (number) = uses a hidden platform background. Number must be between 1 and 55. Use /bg2 or /bg2 0 to get the list.\n" +
                     "<b>/colorchanger</b> (animhere) = gets an animation with color change. Using will give more info.\n" +
                     "<b>/pose2</b> (posehere) (target) = changes the pose of any player. Using will give more info.\n" +
-		    "<b>/see</b> (visionmode) = forces a specific vision mode. Using will give more info.\n" +
+		    "<b>/see</b> (visionmode) (blurlevel) = forces a specific vision mode. Using will give more info.\n" +
                     "<b>/speak</b> = animates mouth when talking in chat. Can also: /mouth or /speech."
                 );
             } else if (content.includes("zones")) {
@@ -4514,17 +4514,27 @@ async function NEWmenu() {
             }
 	} else if (content.indexOf("/see") == 0) {
             if (content.endsWith("/see")) {
-               ChatRoomSendLocal(
-                   "<b>Quick-AccessMenu2</b>: The see command must be followed by a number between 0 and 3.\n" +
-                   " \n" +
-                   "Available vision modes:\n" +
-                   "0 normal vision\n" +
-                   "1 light blindness\n" +
-                   "2 normal blindness\n" +
-                   "3 heavy blindness"
+                ChatRoomSendLocal(
+                    "<b>Quick-AccessMenu2</b>: The see command must be followed by a vision mode number and optionally a blur level number.\n" +
+                    " \n" +
+                    "Available vision modes:\n" +
+                    "0 normal vision\n" +
+                    "1 light blindness\n" +
+                    "2 normal blindness\n" +
+                    "3 heavy blindness\n" +
+                    " \n" +
+                    "Available blur levels:\n" +
+                    "0 no blur effect\n" +
+                    "1 light blur effect\n" +
+                    "2 normal blur effect\n" +
+                    "3 heavy blur effect\n" +
+                    "4 total blur effect"
                  );
-            } else {
-                var bl = content.substring(4).trim();
+             } else {
+                var stringVision1 = content;
+                var stringVision2 = stringVision1.split(/[ ,]+/);
+                var bl = stringVision2[1];
+                var br = stringVision2[2];  
                     if (bl == 0) { 
                         GetBlindLevel0();
                         Player.GetBlindLevel = GetBlindLevel0;
@@ -4549,6 +4559,36 @@ async function NEWmenu() {
                         Player.GetBlindLevel();
                         ChatRoomSendLocal("Quick-AccessMenu2: You are now in heavy blindness mode.");
                     } 
+		    if (br == 0) { 
+                         GetBlurLevel0();
+                         Player.GetBlurLevel = GetBlurLevel0;
+                         Player.GetBlurLevel();
+		         ChatRoomSendLocal("Quick-AccessMenu2: Back to vision without blur effect.");
+                    } 
+                    if (br == 1) { 
+                         GetBlurLevel1();
+                         Player.GetBlurLevel = GetBlurLevel1;
+                         Player.GetBlurLevel();
+		         ChatRoomSendLocal("Quick-AccessMenu2: A light blur effect is applied on your vision.");
+                    } 
+                    if (br == 2) { 
+                         GetBlurLevel2();
+                         Player.GetBlurLevel = GetBlurLevel2;
+                         Player.GetBlurLevel();
+		         ChatRoomSendLocal("Quick-AccessMenu2: A normal blur effect is applied on your vision.");
+                    } 
+                    if (br == 3) { 
+                         GetBlurLevel3();
+                         Player.GetBlurLevel = GetBlurLevel3;
+                         Player.GetBlurLevel();
+		         ChatRoomSendLocal("Quick-AccessMenu2: A heavy blur effect is applied on your vision.");
+                    } 
+                    if (br == 4) { 
+                         GetBlurLevel4();
+                         Player.GetBlurLevel = GetBlurLevel4;
+                         Player.GetBlurLevel();
+		         ChatRoomSendLocal("Quick-AccessMenu2: A total blur effect is applied on your vision.");
+                    }      
               }		
         } else if (content.indexOf("/skill") == 0) {
             if (content.endsWith("/skill")) {
@@ -5805,6 +5845,31 @@ function GetBlindLevel2 () {
 function GetBlindLevel3 () {
     let blindLevel = 3;
     return blindLevel;
+}
+
+function GetBlurLevel0 () {
+    let blurLevel = 0;
+    return blurLevel;
+}
+
+function GetBlurLevel1 () {
+    let blurLevel = 3;
+    return blurLevel;
+}
+
+function GetBlurLevel2 () {
+    let blurLevel = 8;
+    return blurLevel;
+}
+
+function GetBlurLevel3 () {
+    let blurLevel = 20;
+    return blurLevel;
+}
+
+function GetBlurLevel4 () {
+    let blurLevel = 50;
+    return blurLevel;
 }
 
 function GetDeafLevel0 () {
