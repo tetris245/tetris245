@@ -3407,7 +3407,7 @@ async function NEWmenu() {
 	            "These saves last only 1 login session.\n" + 
 	            "To save outfits between sessions, use <b>/outfit awsave</b>\n" +    
 	            "You will have the outfit saved as a code. You can copy and paste it elsewhere.\n" + 
-	            "Then you can use <b>/outfit awload</b> to load it later." 
+	            "Then you can use <b>/outfit awload</b> to load it later."
 		);
             }
        } else if (content.indexOf("/patreoncheats") == 0) {  
