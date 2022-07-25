@@ -3335,7 +3335,7 @@ async function NEWmenu() {
             DialogLeave();
         }, 5000);
     } else if (content.includes("awload")) {
-        var appinp = prompt('Please input the awcode (Capable with BCG).', '');
+        appinp = prompt('Please input the awcode (Capable with BCG).', '');
         if (appinp) {
             ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
             setTimeout(function() {
