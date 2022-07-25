@@ -4529,8 +4529,8 @@ async function NEWmenu() {
                     "2 normal blur effect\n" +
                     "3 heavy blur effect\n" +
                     "4 total blur effect"
-                 );
-             } else {
+                );
+            } else {
                 var stringVision1 = content;
                 var stringVision2 = stringVision1.split(/[ ,]+/);
                 var bl = stringVision2[1];
