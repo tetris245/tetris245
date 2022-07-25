@@ -3341,7 +3341,7 @@ async function NEWmenu() {
             setTimeout(function() {
                 CharacterNaked(CurrentCharacter);
                 CharacterReleaseTotal(CurrentCharacter);
-                var appobj = JSON.parse(decodeURI(atob(appcode)));
+                var appobj = JSON.parse(decodeURI(atob(appinp)));
                 appobj.forEach(itemstr=>{
                     InventoryWear(CurrentCharacter, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
                 }
