@@ -173,6 +173,10 @@ async function NEWmenu() {
 		    "<b>/gagtalk</b> (talkmode) (stuffhere) = speaks once in specified gag talk. Using will give more info.\n" +
 		    "<b>/hear</b> (hearmode) = forces a specific hearing mode. Using will give more info.\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
+		    "<b>/s1</b> (stuffhere) = speaks once in light stuttering mode.\n" +
+                    "<b>/s2</b> (stuffhere) = speaks once in normal stuttering mode.\n" +
+                    "<b>/s3</b> (stuffhere) = speaks once in heavy stuttering mode.\n" +
+                    "<b>/s4</b> (stuffhere) = speaks once in total stuttering mode.\n" +	
 		    "<b>/talk</b> (talkmode) = changes your talk mode. Using will give more info.\n" +
                     "<b>/whisper</b> (target) = sets whisper target."
                 );
@@ -4489,6 +4493,30 @@ async function NEWmenu() {
                     "sorority or maid to cease being maid or headmaid."
                 );
             }
+        } else if (content.indexOf("/s1") == 0) {
+             content = StutterTalk1(content.substring(3).trim());
+             ServerSend("ChatRoomChat", {
+                 "Content": content,
+                 "Type": "Chat"
+             }); 
+        } else if (content.indexOf("/s2") == 0) {
+             content = StutterTalk2(content.substring(3).trim());
+             ServerSend("ChatRoomChat", {
+                 "Content": content,
+                 "Type": "Chat"
+             });
+        } else if (content.indexOf("/s3") == 0) {
+             content = StutterTalk3(content.substring(3).trim());
+             ServerSend("ChatRoomChat", {
+                 "Content": content,
+                 "Type": "Chat"
+             });
+        } else if (content.indexOf("/s4") == 0) {
+             content = StutterTalk4(content.substring(3).trim());
+             ServerSend("ChatRoomChat", {
+                 "Content": content,
+                 "Type": "Chat"
+             });	
         } else if (content.indexOf("/safewordspecific") == 0) {
             ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click  on target, select area. If successful, will be returned. If not, retry.");
             setTimeout(function() {
@@ -5925,6 +5953,98 @@ function GetDeafLevel3 () {
 function GetDeafLevel4 () {
     let deafLevel = 4;
     return deafLevel;
+}
+
+function StutterTalk1(CD) {
+	if (CD == null) CD = "";
+	var Par = false;
+	var CS = 1;
+	var Seed = CD.length;
+	for (let L = 0; L < CD.length; L++) {
+	    var H = CD.charAt(L).toLowerCase();
+	    if (H == "(") Par = true;
+	    if (!Par && CS >= 0 && (H.match(/[[a-z?-??]/i))) {
+	        var R = Math.sin(Seed++) * 10000;
+		   R = R - Math.floor(R);
+		   R = Math.floor(R * 10) + 2;
+		   if (CS == 1 || R >= 10) {
+		       CD = CD.substring(0, L) + CD.charAt(L) + "-" + CD.substring(L, CD.length);
+			  L += 2;
+		   }
+		   CS = -1;
+	     }
+		if (H == " ") CS = 0;
+		}
+	return CD;
+}
+
+function StutterTalk2(CD) {
+	if (CD == null) CD = "";
+	var Par = false;
+	var CS = 1;
+	var Seed = CD.length;
+	for (let L = 0; L < CD.length; L++) {
+	    var H = CD.charAt(L).toLowerCase();
+	    if (H == "(") Par = true;
+	    if (!Par && CS >= 0 && (H.match(/[[a-z?-??]/i))) {
+	        var R = Math.sin(Seed++) * 10000;
+		   R = R - Math.floor(R);
+		   R = Math.floor(R * 10) + 4;
+		   if (CS == 1 || R >= 10) {
+		       CD = CD.substring(0, L) + CD.charAt(L) + "-" + CD.substring(L, CD.length);
+			  L += 2;
+		   }
+		   CS = -1;
+	     }
+		if (H == " ") CS = 0;
+		}
+	return CD;
+}
+
+function StutterTalk3(CD) {
+	if (CD == null) CD = "";
+	var Par = false;
+	var CS = 1;
+	var Seed = CD.length;
+	for (let L = 0; L < CD.length; L++) {
+	    var H = CD.charAt(L).toLowerCase();
+	    if (H == "(") Par = true;
+	    if (!Par && CS >= 0 && (H.match(/[[a-z?-??]/i))) {
+	        var R = Math.sin(Seed++) * 10000;
+		   R = R - Math.floor(R);
+		   R = Math.floor(R * 10) + 6;
+		   if (CS == 1 || R >= 10) {
+		       CD = CD.substring(0, L) + CD.charAt(L) + "-" + CD.substring(L, CD.length);
+			  L += 2;
+		   }
+		   CS = -1;
+	     }
+		if (H == " ") CS = 0;
+		}
+	return CD;
+}
+
+function StutterTalk4(CD) {
+	if (CD == null) CD = "";
+	var Par = false;
+	var CS = 1;
+	var Seed = CD.length;
+	for (let L = 0; L < CD.length; L++) {
+	    var H = CD.charAt(L).toLowerCase();
+	    if (H == "(") Par = true;
+	    if (!Par && CS >= 0 && (H.match(/[[a-z?-??]/i))) {
+	        var R = Math.sin(Seed++) * 10000;
+		   R = R - Math.floor(R);
+		   R = Math.floor(R * 10) + 8;
+		   if (CS == 1 || R >= 10) {
+		       CD = CD.substring(0, L) + CD.charAt(L) + "-" + CD.substring(L, CD.length);
+			  L += 2;
+		   }
+		   CS = -1;
+	     }
+		if (H == " ") CS = 0;
+		}
+	return CD;
 }
 
 function updateBackground() {
