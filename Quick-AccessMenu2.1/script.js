@@ -108,7 +108,6 @@ async function NEWmenu() {
             } else if (content.includes("fun")) {
                 ChatRoomSendLocal(
                     "<b>Quick-AccessMenu2</b>: Fun commands:\n" +
-                    "<b>/arousal</b> (level) = sets arousal level. Level must be between 0 and 100.\n" +
                     "<b>/cum</b> = causes an orgasm.\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
                     "<b>/superdice</b> (sides)  = rolls a superdice. Sides can be between 2 and 999999999."
