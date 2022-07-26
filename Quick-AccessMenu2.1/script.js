@@ -730,13 +730,6 @@ async function NEWmenu() {
                     "smirk, spanked, wink, worried."
                 );
             }
-        } else if (content.indexOf("/arousal") == 0) {
-            Player.ArousalSettings.Progress = content.substring(8);
-            ServerPlayerSync();
-            if (content.includes("100")) {
-                ActivityOrgasmRuined = false;
-                ActivityOrgasmStart(Player);
-            }
         } else if (content.indexOf("/asylum") == 0) {
             var minutes = content.substring(7).trim();
             ChatRoomSetLastChatRoom("");
