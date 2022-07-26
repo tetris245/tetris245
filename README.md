@@ -40,6 +40,7 @@ All else I might not have included.
 Changes for future version 
 
 * New command: hear (hearmode) to force a specific hearing mode. The mode is specified by a number between 0 and 4.
+* New commands: s1, s2, s3, s4 followed by stuff to speak once in light, normal, heavy or total stuttering mode.
 * New command: see (visionmode) (blur level) to force a specific vision mode and optionally a blur level. Vision mode is specified by a number between 0 and 3, blur level by a number between 0 and 4.
 * New command: talk (talkmode), which merges talkbaby and talkgag commands, and gives more options of gag talk sent to the server 
 * Renamed the old gagtalk command as gagcode and improved it by using lillyBC gagspeak function (https://github.com/lillyBC/bcTampermonkeys):
