@@ -47,8 +47,8 @@ Changes for future version
   - in decoder mode, displays now both versions of the message
 * Merged the gaglight and gagheavy commands into the new version of gagtalk command, used in a similar way to the talk command, but only for gag talk sent to the server 
 * Improved the outfit command with the awsave option, which provides a code that you can copy/paste in a file, then use later with the awload option (thanks to huzpsb) - Note: this code is compatible with the BCG tool, used by Chinese BC users
+* Removed the arousal command (does not work as intended and can lead to a crash)
 * Fixed a bug in the unrestrict reset command
-
 
 
 
