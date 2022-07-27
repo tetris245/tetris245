@@ -165,19 +165,20 @@ async function NEWmenu() {
                     "- Updated the bg2, lock and solidity commands."
                 );   	    
             } else if (content.includes("talking")) {
-                ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Talking commands:\n" +
+		ChatRoomSendLocal(
+                    "<b>Quick-AccessMenu2</b>: Talking commands - * = more info when using\n" +
                     "<b>/action</b> (stuffhere) = inserts an action. Can also: /a.\n" +
                     "<b>/babytalk</b> (stuffhere) = speaks once as a baby. Can also: /b.\n" +
                     "<b>/gagcode</b> = toggle to decode/not decode gagged people talking. Also works against deafness.\n" +
-		    "<b>/gagtalk</b> (talkmode) (stuffhere) = speaks once in specified gag talk. Using will give more info.\n" +
-		    "<b>/hear</b> (hearmode) = forces a specific hearing mode. Using will give more info.\n" +
-                    "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
-		    "<b>/s1</b> (stuffhere) = speaks once in light stuttering mode.\n" +
+		    "<b>/gagtalk</b> (talkmode) (stuffhere) = speaks once in specified gag talk. *\n" +
+		    "<b>/hear</b> (hearmode) = forces a specific hearing mode. *\n" +
+                    "<b>/moaner</b> = moans when horny and stimulated. *\n" +
+                    "<b>/s1</b> (stuffhere) = speaks once in light stuttering mode.\n" +
                     "<b>/s2</b> (stuffhere) = speaks once in normal stuttering mode.\n" +
                     "<b>/s3</b> (stuffhere) = speaks once in heavy stuttering mode.\n" +
-                    "<b>/s4</b> (stuffhere) = speaks once in total stuttering mode.\n" +	
-		    "<b>/talk</b> (talkmode) = changes your talk mode. Using will give more info.\n" +
+                    "<b>/s4</b> (stuffhere) = speaks once in total stuttering mode.\n" +
+                   "<b>/stutter</b> (stuttermode) = forces a specific stuttering mode. *\n" +
+		    "<b>/talk</b> (talkmode) = changes your talk mode. *\n" +
                     "<b>/whisper</b> (target) = sets whisper target."
                 );
             } else if (content.includes("unl")) {
@@ -4750,6 +4751,54 @@ async function NEWmenu() {
             ChatRoomSetLastChatRoom("");
             OnlineGameName = "";
             ChatRoomClearAllElements();
+	} else if (content.indexOf("/stutter") == 0) {
+             if (content.endsWith("/stutter")) {
+                ChatRoomSendLocal(
+                    "<b>Quick-AccessMenu2</b>: The stutter command must be followed by a number between 0 and 4.\n" +
+                    " \n" +
+                    "Available stuttering modes:\n" +
+                    "0 no stuttering\n" +
+                    "1 light stuttering\n" +
+                    "2 normal stuttering\n" +
+                    "3 heavy stuttering\n" +
+                    "4 total stuttering"
+                );
+             } else {
+                 var stlevel = content.substring(8).trim();
+                 ElementValue("InputChat", ""); 
+                     if (stlevel == 0) { 
+                         ChatRoomSendLocal("Quick-AccessMenu2: No more stuttering.");
+                         Stutter1On = false;
+                         Stutter2On = false;
+                         Stutter3On = false;
+                         Stutter4On = false;
+                         OLDmenu();
+                     } if (stlevel == 1) { 
+                         ChatRoomSendLocal("Quick-AccessMenu2: You are now in light stuttering mode.");
+                         Stutter1On = true;
+                         Stutter2On = false;
+                         Stutter3On = false;
+                         Stutter4On = false;
+                     } if (stlevel == 2) { 
+                         ChatRoomSendLocal("Quick-AccessMenu2: You are now in normal stuttering mode.");
+                         Stutter1On = false;
+                         Stutter2On = true;
+                         Stutter3On = false;
+                         Stutter4On = false;
+                      } if (stlevel == 3) { 
+                         ChatRoomSendLocal("Quick-AccessMenu2: You are now in heavy stuttering mode.");
+                         Stutter1On = false;
+                         Stutter2On = false;
+                         Stutter3On = true;
+                         Stutter4On = false;
+                      } if (stlevel == 4) { 
+                         ChatRoomSendLocal("Quick-AccessMenu2: You are now in total stuttering mode.");
+                         Stutter1On = false;
+                         Stutter2On = false;
+                         Stutter3On = false;
+                         Stutter4On = true;
+                     }
+              }	
         } else if (content.indexOf("/superdice") == 0) {
             var sides = content.substring(10).trim();
             if ((sides < 2) || (sides > 1000000000)) sides = 6;
@@ -5757,13 +5806,41 @@ async function NEWmenu() {
                     "Type": "Chat"
                 })
                 ElementValue("InputChat", "");
-            } else if (this.GagTalkOn == true) {
+            } if (this.GagTalkOn == true) {
                 content = SpeechGarbleByGagLevel(gl, content);
                 ServerSend("ChatRoomChat", {
                     "Content": content,
                     "Type": "Chat"
                 });
                 ElementValue("InputChat", "");
+            } if (this.Stutter1On == true) {
+                content = StutterTalk1(content);
+                ServerSend("ChatRoomChat", {
+                    "Content": content,
+                    "Type": "Chat"
+                });
+                ElementValue("InputChat", "");
+            } if (this.Stutter2On == true) {
+                content = StutterTalk2(content);
+                ServerSend("ChatRoomChat", {
+                    "Content": content,
+                    "Type": "Chat"
+                });
+                ElementValue("InputChat", "");
+            } if (this.Stutter3On == true) {
+                content = StutterTalk3(content);
+                ServerSend("ChatRoomChat", {
+                    "Content": content,
+                    "Type": "Chat"
+                });
+                ElementValue("InputChat", "");
+            } if (this.Stutter4On == true) {
+                content = StutterTalk4(content);
+                ServerSend("ChatRoomChat", {
+                    "Content": content,
+                    "Type": "Chat"
+                });
+                ElementValue("InputChat", "");    
             } else {
                 OLDmenu()
             }
