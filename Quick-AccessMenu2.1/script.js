@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.4.3
+// @version 1.5.0.
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -158,12 +158,12 @@ async function NEWmenu() {
                 );
 	    } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Main changes in v.1.4.3:\n" +
-		    "- New feature: AutoDisableNPCPunishments.\n" +
-		    "- New command: /npcpunish to enable/disable NPC punishments, no matter your game difficulty.\n" +
-		    "- New command: /permission to change your item permission.\n" +
-		    "- Added message with non-clickable link under picture or embedded YouTube video.\n" +
-                    "- Updated the bg2, lock and solidity commands."
+                    "<b>Quick-AccessMenu2</b>: Main changes in v.1.5.0:\n" +
+		    "- New commands: hear, s1, s2, s3, s4, sleep, stutter, talk.\n" +
+		    "- Renamed the old gagtalk command as gagcode and improved it by using lillyBC gagspeak function.\n" +
+		    "- Merged the gaglight and gagheavy commands into the new version of gagtalk command.\n" +
+		    "- Improved the outfit command with the awsave and awload options (thanks to huzpsb).\n" +
+                    "- Explore the help to get more info!"
                 );   	    
             } else if (content.includes("talking")) {
 		ChatRoomSendLocal(
@@ -5898,7 +5898,7 @@ ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
 	ChatRoomSendLocal(
-                    "Quick-AccessMenu2 - version 1.4.3: Ready, type <b>/help</b> for general menu.\n" +
+                    "Quick-AccessMenu2 - version 1.5.0: Ready, type <b>/help</b> for general menu.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
                     "For any inquiries, join https://discord.gg/YukepB6RVp\n" +
 		    "Note: NPC punishments are disabled."
