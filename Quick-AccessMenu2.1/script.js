@@ -110,6 +110,7 @@ async function NEWmenu() {
                     "<b>Quick-AccessMenu2</b>: Fun commands:\n" +
                     "<b>/cum</b> = causes an orgasm.\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
+		    "<b>/sleep</b> (target) = uses the sleeping pill on yourself or another player.\n" +
                     "<b>/superdice</b> (sides)  = rolls a superdice. Sides can be between 2 and 999999999."
                 );
             } else if (content.includes("lock")) {
@@ -4681,6 +4682,44 @@ async function NEWmenu() {
                     SkillChange("Willpower", level);
                 }
             }
+	} else if (content.indexOf("/sleep") == 0) {
+            var targetname = content.substring(6).trim();
+            if (targetname == undefined) {
+                targetname = Player.Name
+            };
+            var targetfinder = new RegExp('^' + targetname + '', 'i');
+            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	    if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
+            if (target[0] != null) {             
+		InventoryWear(target[0],"RegularSleepingPill",'ItemMouth');
+                ChatRoomCharacterUpdate(target[0]);
+                CharacterSetFacialExpression(target[0], "Eyes", "Closed");
+                CharacterSetFacialExpression(target[0], "Eyes2", "Closed");
+                CharacterSetFacialExpression(target[0], "Emoticon", "Sleep");
+                ChatRoomCharacterUpdate(target[0]);
+                if (target[0].Name == Player.Name) {
+                    ServerSend("ChatRoomChat", {
+                        Content: "Beep",
+                        Type: "Action",
+                        Dictionary: [{
+                            Tag: "Beep",
+                            Text: "" + Player.Nickname + " swallows a sleeping pill and drinks a glass of water. She falls asleep very quickly."
+                         }]
+                    });
+                } else {
+                    ServerSend("ChatRoomChat", {
+                        Content: "Beep",
+                        Type: "Action",
+                        Dictionary: [{
+                            Tag: "Beep",
+                            Text: "" + Player.Nickname + "feeds "+ target[0].Nickname + " a sleeping pill and gives her a glass of water. "+ target[0].Nickname +" falls asleep very quickly."
+                        }]
+                    });
+                }
+            }	
         } else if (content.indexOf("/solidity") == 0) {
             var solidity = content.substring(9).trim();
             if (InventoryGet(Player, "ItemDevices") != null) {
