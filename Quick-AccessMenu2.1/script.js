@@ -159,7 +159,7 @@ async function NEWmenu() {
 	    } else if (content.includes("new")) {
                 ChatRoomSendLocal(
                     "<b>Quick-AccessMenu2</b>: Main changes in v.1.5.0:\n" +
-		    "- New commands: hear, s1, s2, s3, s4, sleep, stutter, talk.\n" +
+		    "- New commands: hear, s1, s2, s3, s4, see, sleep, stutter, talk.\n" +
 		    "- Renamed the old gagtalk command as gagcode and improved it by using lillyBC gagspeak function.\n" +
 		    "- Merged the gaglight and gagheavy commands into the new version of gagtalk command.\n" +
 		    "- Improved the outfit command with the awsave and awload options (thanks to huzpsb).\n" +
