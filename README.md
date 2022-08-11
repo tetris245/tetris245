@@ -39,7 +39,7 @@ All else I might not have included.
 
 Changes for future version 
 
-* New feature: after login, you are automatically in Activity mode in the first existing room you enter, and the QAM greeting message will confirm that.
+* New feature: after login, you are automatically in Restraints mode in the first existing room you enter, and the QAM greeting message will confirm that.
 * New commands: z1 (switch to Activity mode) and z2 (switch to Restraints mode)
 
 
