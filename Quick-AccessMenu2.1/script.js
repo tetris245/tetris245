@@ -8045,8 +8045,8 @@ function CharacterNickname(C) {
     let Nick = C.Nickname;
     if (Nick == null) Nick = "";
     Nick = Nick.trim().substring(0, 20);
-    if ((Nick != "") && Regex.test(Nick)) return Nick;
-    else return C.Name;
+    if ((Nick == "") || !Regex.test(Nick)) Nick = C.Name;
+    return AsylumGGTSCharacterName(C, Nick);
 }
 
 function TitleExit() {
@@ -8070,6 +8070,7 @@ function TitleExit() {
         ServerAccountUpdate.QueueData({
             Nickname: Nick
         });
+	TitleSet(TitleSelectedTitle);
         ElementRemove("InputNickname");
         CommonSetScreen("Character", "InformationSheet");
     }
