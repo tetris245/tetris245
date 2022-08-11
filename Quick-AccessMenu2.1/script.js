@@ -79,7 +79,9 @@ async function NEWmenu() {
                     "<b>/hiddenmessages</b> = toggles on show hidden messages made by game.\n" +
                     "<b>/profile</b> (target) = gives direct access to the profile description of any player in the chat room.\n" +
                     "<b>/search</b> (areaname) = opens room search, area is: club or asylum.\n" +
-                    "<b>/theme</b> (number) = changes chat color theme after automatic relog. Number must be between 0 and 3."
+                    "<b>/theme</b> (number) = changes chat color theme after automatic relog. Number must be between 0 and 3.\n" +
+	            "<b>/z1</b> = switches to Activity mode.\n" +
+                    "<b>/z2</b> = switches to Restraints mode."
                 );
             } else if (content.includes("clothing")) {
                 ChatRoomSendLocal(
@@ -5745,6 +5747,12 @@ async function NEWmenu() {
             if (target[0] != null) {
                 ChatRoomTargetMemberNumber = target[0].MemberNumber;
             }
+	} else if (content.indexOf("/z1") == 0) {
+                DialogActivityMode = true;
+                ChatRoomSendLocal("Quick-AccessMenu2: You are now in Activity mode.");
+        } else if (content.indexOf("/z2") == 0) {
+                DialogActivityMode = false;
+                ChatRoomSendLocal("Quick-AccessMenu2: You are now in Restraints mode.");	
         } else if (content.indexOf('@') == 0) {
             ElementValue("InputChat", content.replace('@', "?"));
             OLDmenu();
@@ -5897,11 +5905,12 @@ var ChatRoomSendChat = NEWmenu;
 ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
+	DialogActivityMode = true;
 	ChatRoomSendLocal(
                     "Quick-AccessMenu2 - version 1.5.0: Ready, type <b>/help</b> for general menu.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
                     "For any inquiries, join https://discord.gg/YukepB6RVp\n" +
-		    "Note: NPC punishments are disabled."
+		    "Note: NPC punishments are disabled. You are currently in Activity mode."
                 );   	    	  	    	    
         ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)
     }
