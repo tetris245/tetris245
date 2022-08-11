@@ -5905,12 +5905,12 @@ var ChatRoomSendChat = NEWmenu;
 ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
-	DialogActivityMode = true;
+	DialogActivityMode = false;
 	ChatRoomSendLocal(
                     "Quick-AccessMenu2 - version 1.5.0: Ready, type <b>/help</b> for general menu.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
                     "For any inquiries, join https://discord.gg/YukepB6RVp\n" +
-		    "Note: NPC punishments are disabled. You are currently in Activity mode."
+		    "Note: NPC punishments are disabled. You are currently in Restraints mode."
                 );   	    	  	    	    
         ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)
     }
