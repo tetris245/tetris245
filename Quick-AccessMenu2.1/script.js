@@ -8057,7 +8057,20 @@ function TitleExit() {
     var tmpname = Player.Nickname;
     if (Nick == null) Nick = "";
     Nick = Nick.trim().substring(0, 20);
-    if (Regex.test(Nick)) {
+    if (Nick.length == 0) {
+        ServerSend("ChatRoomChat", {
+            Content: "Beep",
+            Type: "Action",
+            Dictionary: [{
+                Tag: "Beep",
+                Text: "" + tmpname + " is now known as " + Player.Name + "."
+            }]
+        });
+        Player.Nickname = Player.Name;
+        ServerAccountUpdate.QueueData({
+            Nickname: Nick
+        });
+    } else if ((Nick.length <= 20) && (Nick.match(Regex))) {
         if (Nick != tmpname) {
             ServerSend("ChatRoomChat", {
                 Content: "Beep",
@@ -8067,15 +8080,15 @@ function TitleExit() {
                     Text: "" + tmpname + " is now known as " + Nick + "."
                 }]
             });
-        }
-        Player.Nickname = Nick;
-        ServerAccountUpdate.QueueData({
+         }
+         Player.Nickname = Nick;
+         ServerAccountUpdate.QueueData({
             Nickname: Nick
-        });
-	TitleSet(TitleSelectedTitle);
-        ElementRemove("InputNickname");
-        CommonSetScreen("Character", "InformationSheet");
+         });
     }
+    TitleSet(TitleSelectedTitle);
+    ElementRemove("InputNickname");
+    CommonSetScreen("Character", "InformationSheet");
 }
 
 function PandoraPrisonRun() {
