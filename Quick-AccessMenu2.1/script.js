@@ -58,7 +58,7 @@ async function NEWmenu() {
                     "<b>/giveeverything</b> = gives every item.\n" +
                     "<b>/maxstatistics</b> = gives max statistics.\n" +
                     "<b>/money</b> (value) = gives or takes money.\n" +
-                    "<b>/name</b> (newnamehere) = temporary new nickname.\n" +
+                    "<b>/name</b> (newnamehere) = temporary new nickname. Without newname, real name is used.\n" +
 		    "<b>/npcpunish</b> = enables/disables NPC punishments.\n" +
 		    "<b>/permission</b> (number) = changes your item permission *\n" +
                     "<b>/reputation</b> (reputation) (level) = changes a reputation. *\n" +
