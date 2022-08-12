@@ -39,6 +39,7 @@ All else I might not have included.
 
 Changes for future version 
 
+* Added QAM bookmark
 * Improved name command to temporarily use the real name as nickname by not specifying a newname (it can become definitive by using later the savename command)
 * Updated rewritten functions related to nickname
 
