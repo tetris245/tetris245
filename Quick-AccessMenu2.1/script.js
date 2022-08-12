@@ -3290,7 +3290,18 @@ async function NEWmenu() {
             var NewName = content.substring(5).trim();
             var LS = /[/\p{L}\p{N}\p{Z}'-]/gu;
             var tmpname = Player.Nickname;
-            if ((NewName.length <= 20) && (NewName.match(LS))) {
+            if (NewName.length == 0) {
+                ServerSend("ChatRoomChat", {
+                        Content: "Beep",
+                        Type: "Action",
+                        Dictionary: [{
+                            Tag: "Beep",
+                            Text: "" + tmpname + " is now known as " + Player.Name + "."
+                        }]
+                    });
+                Player.Nickname = Player.Name;
+                var tmpname = Player.Name;
+            } else if ((NewName.length <= 20) && (NewName.match(LS))) {
                 if (NewName != tmpname) {
                     ServerSend("ChatRoomChat", {
                         Content: "Beep",
