@@ -3292,13 +3292,13 @@ async function NEWmenu() {
             var tmpname = Player.Nickname;
             if (NewName.length == 0) {
                 ServerSend("ChatRoomChat", {
-                        Content: "Beep",
-                        Type: "Action",
-                        Dictionary: [{
-                            Tag: "Beep",
-                            Text: "" + tmpname + " is now known as " + Player.Name + "."
-                        }]
-                    });
+                    Content: "Beep",
+                    Type: "Action",
+                    Dictionary: [{
+                        Tag: "Beep",
+                        Text: "" + tmpname + " is now known as " + Player.Name + "."
+                    }]
+                });
                 Player.Nickname = Player.Name;
                 var tmpname = Player.Name;
             } else if ((NewName.length <= 20) && (NewName.match(LS))) {
