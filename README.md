@@ -39,6 +39,7 @@ All else I might not have included.
 
 Changes for future version 
 
+* Improved name command to temporarily use the real name as nickname (it can become definitive by using later the savename command)
 * Updated rewritten functions related to nickname
 
 
