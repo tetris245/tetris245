@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.5.0.
+// @version 1.5.1.
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -158,12 +158,10 @@ async function NEWmenu() {
                 );
 	    } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Main changes in v.1.5.0:\n" +
-		    "- New commands: hear, s1, s2, s3, s4, see, sleep, stutter, talk.\n" +
-		    "- Renamed the old gagtalk command as gagcode and improved it by using lillyBC gagspeak function.\n" +
-		    "- Merged the gaglight and gagheavy commands into the new version of gagtalk command.\n" +
-		    "- Improved the outfit command with the awsave and awload options (thanks to huzpsb).\n" +
-                    "- Explore the help to get more info!"
+                    "<b>Quick-AccessMenu2</b>: Main changes in v.1.5.1:\n" +
+		    "- Added QAM bookmark.\n" +
+		    "- Improved name command to temporarily use the real name as nickname by not specifying a new name.\n" +
+                    "- Updated the bg2 command."
                 );   	    
             } else if (content.includes("talking")) {
 		ChatRoomSendLocal(
@@ -1200,7 +1198,7 @@ async function NEWmenu() {
                     "10 Bedroom Dungeon - 11 Bedroom Edward\n" +
                     "12, 13 Bedroom Isabella - 14 Bedroom Melody\n" +
                     "15 to 17 Bedroom Olivia - 18 to 23 Birch\n" +
-                    "24 Black  - 25 to 27 Camp Ground\n" +
+                    "24 Black - 25 to 27 Camp Ground\n" +
 		    "28 to 30 Castle - 31, 32 Clearing\n" +
 		    "33 to 35 College - 36 to 38 Countess Hall\n" + 
 		    "39, 40 Dungeon 1 - 41, 42 Dungeon Cell\n" +
@@ -6006,10 +6004,11 @@ ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
 	ChatRoomSendLocal(
-                    "Quick-AccessMenu2 - version 1.5.0: Ready, type <b>/help</b> for general menu.\n" +
+                    "Quick-AccessMenu2 - version 1.5.1: Ready, type <b>/help</b> for general menu.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
-                    "For any inquiries, join https://discord.gg/YukepB6RVp\n" +
-		    "Note: NPC punishments are disabled."
+		    "Use <b>/clubhelp</b> to get the standard BC menu (+ BCE menu when enabled).\n" +
+		    "Note: NPC punishments are disabled.\n" +
+                    "For any inquiries, join <a href='https://discord.gg/YukepB6RVp' target='_blank'>https://discord.gg/YukepB6RVp</a>"
                 );   	    	  	    	    
         ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)
     }
