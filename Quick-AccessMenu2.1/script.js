@@ -6005,9 +6005,10 @@ ChatCommandGreeting = function(data) {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
 	ChatRoomSendLocal(
                     "Quick-AccessMenu2 - version 1.5.1: Ready, type <b>/help</b> for general menu.\n" +
+		    "Note: NPC punishments are disabled.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
 		    "Use <b>/clubhelp</b> to get the standard BC menu (+ BCE menu when enabled).\n" +
-		    "Note: NPC punishments are disabled.\n" +
+		    "Visit also our <a href='https://github.com/tetris245/tetris245/wiki' target='_blank'>Wiki</a>\n" +
                     "For any inquiries, join <a href='https://discord.gg/YukepB6RVp' target='_blank'>https://discord.gg/YukepB6RVp</a>"
                 );   	    	  	    	    
         ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)
