@@ -41,7 +41,7 @@ All else I might not have included.
 
 Changes for future version 
 
-* Rewrote function to add message "QAM Ready!" in login screen
+* Rewrote function to add message in login screen about QAM version in ready status
 
 
 
