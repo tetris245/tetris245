@@ -7976,6 +7976,28 @@ InventoryItemNeckAccessoriesElectronicTagLoad = function() {
     }
 }
 
+//Message in login screen
+function LoginRun() {
+	if (LoginCredits != null) LoginDrawCredits();
+	const CanLogin = ServerIsConnected && !LoginSubmitted;
+        DrawButton(750,120,500,60,"QAM Ready!", "Pink", "Black", "");
+	DrawText(TextGet("Welcome"), 1000, 50, "White", "Black");
+	DrawText(LoginMessage, 1000, 100, "White", "Black");
+	DrawText(TextGet("AccountName"), 1000, 200, "White", "Black");
+	ElementPosition("InputName", 1000, 260, 500);
+	DrawText(TextGet("Password"), 1000, 350, "White", "Black");
+	ElementPosition("InputPassword", 1000, 410, 500);
+	DrawButton(775, 500, 200, 60, TextGet("Login"), CanLogin ? "White" : "Grey", "");
+	DrawButton(1025, 500, 200, 60, TextGet("Language"), "White", "");
+	DrawText(TextGet("CreateNewCharacter"), 1000, 670, "White", "Black");
+	DrawButton(825, 740, 350, 60, TextGet("NewCharacter"), CanLogin ? "White" : "Grey", "");
+	DrawButton(825, 870, 350, 60, TextGet(CheatAllow ? "Cheats" : "PasswordReset"), CheatAllow || CanLogin ? "White" : "Grey", "");
+	DrawCharacter(LoginCharacter, 1400, 100, 0.9);
+	if (LoginThankYouNext < CommonTime()) LoginDoNextThankYou();
+	DrawImage("Screens/" + CurrentModule + "/" + CurrentScreen + "/Bubble.png", 1400, 16);
+	DrawText(TextGet("ThankYou") + " " + LoginThankYou, 1625, 53, "Black", "Gray");
+}
+
 //Auto enable patreon cheats. Also allows functionality for submissive mistress. If patched, blank functions.
 CheatValidate = function() {
     return true;
