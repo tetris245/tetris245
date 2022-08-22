@@ -41,6 +41,7 @@ All else I might not have included.
 
 Changes for future version 
 
+* Blocked access to Bondage Brawl
 * Rewrote function to add message in login screen about QAM version in ready status
 
 
