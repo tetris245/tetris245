@@ -158,10 +158,10 @@ async function NEWmenu() {
                 );
 	    } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Main changes in v.1.5.1:\n" +
-		    "- Added QAM bookmark.\n" +
-		    "- Improved name command to temporarily use the real name as nickname by not specifying a new name.\n" +
-                    "- Updated the bg2 command."
+                    "<b>Quick-AccessMenu2</b>: Changes in v.1.5.2:\n" +
+		    "- Blocked access to Bondage Brawl.\n" +
+		    "- Removed /bg2 command because it shows Bondage Brawl pictures.\n" +
+                    "- Rewrote function to add message in login screen about QAM version in ready status."
                 );   	    
             } else if (content.includes("talking")) {
 		ChatRoomSendLocal(
@@ -5721,7 +5721,7 @@ ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
 	ChatRoomSendLocal(
-                    "Quick-AccessMenu2 - version 1.5.1: Ready, type <b>/help</b> for general menu.\n" +
+                    "Quick-AccessMenu2 - version 1.5.2: Ready, type <b>/help</b> for general menu.\n" +
 		    "Note: NPC punishments are disabled.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
 		    "Use <b>/clubhelp</b> to get the standard BC menu (+ BCE menu when enabled).\n" +
