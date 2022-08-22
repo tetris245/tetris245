@@ -42,6 +42,7 @@ All else I might not have included.
 Changes for future version 
 
 * Blocked access to Bondage Brawl
+* Removed /bg2 command because it shows Bondage Brawl pictures
 * Rewrote function to add message in login screen about QAM version in ready status
 
 
