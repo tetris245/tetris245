@@ -5817,31 +5817,111 @@ async function NEWmenu() {
                 ElementValue("InputChat", "");
             } if (this.Stutter1On == true) {
                 content = StutterTalk1(content);
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Chat"
-                });
-                ElementValue("InputChat", "");
+		if (ChatRoomTargetMemberNumber == null) {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Chat"
+                    }); 
+                } else {
+                    ServerSend("ChatRoomChat", { 
+                        "Content": content, 
+                        "Type": "Whisper", 
+                        "Target": ChatRoomTargetMemberNumber
+                    });
+                    for (let C = 0; C < ChatRoomCharacter.length; C++)
+                        if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+		            TargetName = ChatRoomCharacter[C].Name;
+		            break;
+	                }
+	            ChatRoomMessage({ 
+                        Content: "Whisper to "+TargetName+": "+ content, 
+                        Type: "LocalMessage", 
+                        Sender: Player.MemberNumber 
+                    });
+		    document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";	
+		    document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+                }                     
+                ElementValue("InputChat", "");		    		    
             } if (this.Stutter2On == true) {
-                content = StutterTalk2(content);
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Chat"
-                });
+                content = StutterTalk1(content);
+		if (ChatRoomTargetMemberNumber == null) {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Chat"
+                    }); 
+                } else {
+                    ServerSend("ChatRoomChat", { 
+                        "Content": content, 
+                        "Type": "Whisper", 
+                        "Target": ChatRoomTargetMemberNumber
+                    });
+                    for (let C = 0; C < ChatRoomCharacter.length; C++)
+                        if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+		            TargetName = ChatRoomCharacter[C].Name;
+		            break;
+	                }
+	            ChatRoomMessage({ 
+                        Content: "Whisper to "+TargetName+": "+ content, 
+                        Type: "LocalMessage", 
+                        Sender: Player.MemberNumber 
+                    });
+		    document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";	
+		    document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+                }                     
                 ElementValue("InputChat", "");
             } if (this.Stutter3On == true) {
-                content = StutterTalk3(content);
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Chat"
-                });
+		content = StutterTalk3(content);
+		if (ChatRoomTargetMemberNumber == null) {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Chat"
+                    }); 
+                } else {
+                    ServerSend("ChatRoomChat", { 
+                        "Content": content, 
+                        "Type": "Whisper", 
+                        "Target": ChatRoomTargetMemberNumber
+                    });
+                    for (let C = 0; C < ChatRoomCharacter.length; C++)
+                        if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+		            TargetName = ChatRoomCharacter[C].Name;
+		            break;
+	                }
+	            ChatRoomMessage({ 
+                        Content: "Whisper to "+TargetName+": "+ content, 
+                        Type: "LocalMessage", 
+                        Sender: Player.MemberNumber 
+                    });
+		    document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";	
+		    document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+                }                         
                 ElementValue("InputChat", "");
             } if (this.Stutter4On == true) {
                 content = StutterTalk4(content);
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Chat"
-                });
+		if (ChatRoomTargetMemberNumber == null) {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Chat"
+                    }); 
+                } else {
+                    ServerSend("ChatRoomChat", { 
+                        "Content": content, 
+                        "Type": "Whisper", 
+                        "Target": ChatRoomTargetMemberNumber
+                    });
+                    for (let C = 0; C < ChatRoomCharacter.length; C++)
+                        if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+		            TargetName = ChatRoomCharacter[C].Name;
+		            break;
+	                }
+	            ChatRoomMessage({ 
+                        Content: "Whisper to "+TargetName+": "+ content, 
+                        Type: "LocalMessage", 
+                        Sender: Player.MemberNumber 
+                    });
+		    document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";	
+		    document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+                }                      
                 ElementValue("InputChat", "");    
             } else {
                 OLDmenu()
