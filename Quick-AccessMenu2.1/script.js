@@ -780,18 +780,58 @@ async function NEWmenu() {
                 content = SpeechBabyTalk({
                     Effect: ["RegressedTalk"]
                 }, content);
-                ServerSend("ChatRoomChat", {
-                    "Content": content.substring(9).trim(),
-                    "Type": "Chat"
-                });
+                if (ChatRoomTargetMemberNumber == null) {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content.substring(9).trim(),
+                        "Type": "Chat"
+                    });
+                } else {
+                    ServerSend("ChatRoomChat", { 
+                            "Content": content.substring(9).trim(),
+                            "Type": "Whisper", 
+                            "Target": ChatRoomTargetMemberNumber
+                        });
+                        for (let C = 0; C < ChatRoomCharacter.length; C++)
+			    if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+		                TargetName = ChatRoomCharacter[C].Name;
+				break;
+			    }
+			ChatRoomMessage({ 
+                            Content: "Whisper to "+TargetName+": " + content.substring(9).trim(), 
+                            Type: "LocalMessage", 
+                            Sender: Player.MemberNumber 
+                        });
+			document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
+			document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+                }
             } else {
                 content = SpeechBabyTalk({
                     Effect: ["RegressedTalk"]
                 }, content);
-                ServerSend("ChatRoomChat", {
-                    "Content": content.substring(2).trim(),
-                    "Type": "Chat"
-                });
+                if (ChatRoomTargetMemberNumber == null) {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content.substring(2).trim(),
+                        "Type": "Chat"
+                    });
+                } else {
+                    ServerSend("ChatRoomChat", { 
+                            "Content": content.substring(2).trim(),
+                            "Type": "Whisper", 
+                            "Target": ChatRoomTargetMemberNumber
+                        });
+                        for (let C = 0; C < ChatRoomCharacter.length; C++)
+			    if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+		                TargetName = ChatRoomCharacter[C].Name;
+				break;
+			    }
+			ChatRoomMessage({ 
+                            Content: "Whisper to "+TargetName+": " + content.substring(2).trim(),
+                            Type: "LocalMessage", 
+                            Sender: Player.MemberNumber 
+                        });
+			document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
+			document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+                }
             }
         } else if (content.indexOf("/becomeownlover") == 0) {
             if (content.includes("yes")) {
