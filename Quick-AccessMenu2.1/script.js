@@ -5843,7 +5843,7 @@ async function NEWmenu() {
                 }                     
                 ElementValue("InputChat", "");		    		    
             } if (this.Stutter2On == true) {
-                content = StutterTalk1(content);
+                content = StutterTalk2(content);
 		if (ChatRoomTargetMemberNumber == null) {
                     ServerSend("ChatRoomChat", {
                         "Content": content,
