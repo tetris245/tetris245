@@ -43,7 +43,7 @@ All else I might not have included.
 
 Changes for future version 
 
-* Extended babytalk and gagtalk commands to whispers
+* Extended babytal, gagtalk, s1, s2, s3, s4 commands to whispers
 
 
 
