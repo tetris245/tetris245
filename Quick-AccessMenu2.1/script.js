@@ -4378,30 +4378,110 @@ async function NEWmenu() {
                     "sorority or maid to cease being maid or headmaid."
                 );
             }
-        } else if (content.indexOf("/s1") == 0) {
+        } else if (content.indexOf("/s1") == 0) {  
              content = StutterTalk1(content.substring(3).trim());
-             ServerSend("ChatRoomChat", {
-                 "Content": content,
-                 "Type": "Chat"
-             }); 
+             if (ChatRoomTargetMemberNumber == null) {
+                 ServerSend("ChatRoomChat", {
+                     "Content": content,
+                     "Type": "Chat"
+                 }); 
+             } else {
+                 ServerSend("ChatRoomChat", { 
+                     "Content": content, 
+                     "Type": "Whisper", 
+                     "Target": ChatRoomTargetMemberNumber
+                 });
+                 for (let C = 0; C < ChatRoomCharacter.length; C++)
+                     if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+		              TargetName = ChatRoomCharacter[C].Name;
+		              break;
+	             }
+	         ChatRoomMessage({ 
+                     Content: "Whisper to "+TargetName+": "+ content, 
+                     Type: "LocalMessage", 
+                     Sender: Player.MemberNumber 
+                 });
+		 document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";	
+		 document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+             }                     
         } else if (content.indexOf("/s2") == 0) {
              content = StutterTalk2(content.substring(3).trim());
-             ServerSend("ChatRoomChat", {
-                 "Content": content,
-                 "Type": "Chat"
-             });
+             if (ChatRoomTargetMemberNumber == null) {
+                 ServerSend("ChatRoomChat", {
+                     "Content": content,
+                     "Type": "Chat"
+                 }); 
+             } else {
+                 ServerSend("ChatRoomChat", { 
+                     "Content": content, 
+                     "Type": "Whisper", 
+                     "Target": ChatRoomTargetMemberNumber
+                 });
+                 for (let C = 0; C < ChatRoomCharacter.length; C++)
+                     if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+		              TargetName = ChatRoomCharacter[C].Name;
+		              break;
+	             }
+	         ChatRoomMessage({ 
+                     Content: "Whisper to "+TargetName+": "+ content, 
+                     Type: "LocalMessage", 
+                     Sender: Player.MemberNumber 
+                 });
+		 document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
+		 document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+             }                     
         } else if (content.indexOf("/s3") == 0) {
              content = StutterTalk3(content.substring(3).trim());
-             ServerSend("ChatRoomChat", {
-                 "Content": content,
-                 "Type": "Chat"
-             });
+             if (ChatRoomTargetMemberNumber == null) {
+                 ServerSend("ChatRoomChat", {
+                     "Content": content,
+                     "Type": "Chat"
+                 }); 
+             } else {
+                 ServerSend("ChatRoomChat", { 
+                     "Content": content, 
+                     "Type": "Whisper", 
+                     "Target": ChatRoomTargetMemberNumber
+                 });
+                 for (let C = 0; C < ChatRoomCharacter.length; C++)
+                     if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+		              TargetName = ChatRoomCharacter[C].Name;
+		              break;
+	             }
+	         ChatRoomMessage({ 
+                     Content: "Whisper to "+TargetName+": "+ content, 
+                     Type: "LocalMessage", 
+                     Sender: Player.MemberNumber 
+                 });
+		 document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
+		 document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+             }                     
         } else if (content.indexOf("/s4") == 0) {
              content = StutterTalk4(content.substring(3).trim());
-             ServerSend("ChatRoomChat", {
-                 "Content": content,
-                 "Type": "Chat"
-             });	
+             if (ChatRoomTargetMemberNumber == null) {
+                 ServerSend("ChatRoomChat", {
+                     "Content": content,
+                     "Type": "Chat"
+                 }); 
+             } else {
+                 ServerSend("ChatRoomChat", { 
+                     "Content": content, 
+                     "Type": "Whisper", 
+                     "Target": ChatRoomTargetMemberNumber
+                 });
+                 for (let C = 0; C < ChatRoomCharacter.length; C++)
+                     if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+		              TargetName = ChatRoomCharacter[C].Name;
+		              break;
+	             }
+	         ChatRoomMessage({ 
+                     Content: "Whisper to "+TargetName+": "+ content, 
+                     Type: "LocalMessage", 
+                     Sender: Player.MemberNumber 
+                 });
+		 document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
+		 document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+             }                     
         } else if (content.indexOf("/safewordspecific") == 0) {
             ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click  on target, select area. If successful, will be returned. If not, retry.");
             setTimeout(function() {
