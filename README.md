@@ -43,7 +43,7 @@ All else I might not have included.
 
 Changes for future version 
 
-(...)
+* Extended gagtalk command to whispers
 
 
 
