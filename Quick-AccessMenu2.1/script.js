@@ -72,6 +72,7 @@ async function NEWmenu() {
             } else if (content.includes("chat")) {
                 ChatRoomSendLocal(
                     "<b>Quick-AccessMenu2</b>: Chat commands:\n" +
+		    "<b>/action</b> (stuffhere) = inserts an action. Can also: /a.\n" +
                     "<b>/autokick</b> = toggles on auto kick for 0 day old accounts.\n" +
                     "<b>/erase</b> = erases chat.\n" +
                     "<b>/font</b> (newfont) (size) = changes font in BC. Using will give more info.\n" +
@@ -166,7 +167,6 @@ async function NEWmenu() {
             } else if (content.includes("talking")) {
 		ChatRoomSendLocal(
                     "<b>Quick-AccessMenu2</b>: Talking commands - * = more info when using\n" +
-                    "<b>/action</b> (stuffhere) = inserts an action. Can also: /a.\n" +
                     "<b>/babytalk</b> (stuffhere) = speaks once as a baby. Can also: /b.\n" +
                     "<b>/gagcode</b> = toggle to decode/not decode gagged people talking. Also works against deafness.\n" +
 		    "<b>/gagtalk</b> (talkmode) (stuffhere) = speaks once in specified gag talk. *\n" +
