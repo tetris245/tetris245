@@ -5803,17 +5803,57 @@ async function NEWmenu() {
                 content = SpeechBabyTalk({
                     Effect: ["RegressedTalk"]
                 }, content);
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Chat"
-                })
+		if (ChatRoomTargetMemberNumber == null) {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Chat"
+                    }); 
+                } else {
+                    ServerSend("ChatRoomChat", { 
+                        "Content": content, 
+                        "Type": "Whisper", 
+                        "Target": ChatRoomTargetMemberNumber
+                    });
+                    for (let C = 0; C < ChatRoomCharacter.length; C++)
+                        if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+		            TargetName = ChatRoomCharacter[C].Name;
+		            break;
+	                }
+	            ChatRoomMessage({ 
+                        Content: "Whisper to "+TargetName+": "+ content, 
+                        Type: "LocalMessage", 
+                        Sender: Player.MemberNumber 
+                    });
+		    document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";	
+		    document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+                }                         
                 ElementValue("InputChat", "");
             } if (this.GagTalkOn == true) {
                 content = SpeechGarbleByGagLevel(gl, content);
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Chat"
-                });
+		if (ChatRoomTargetMemberNumber == null) {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Chat"
+                    }); 
+                } else {
+                    ServerSend("ChatRoomChat", { 
+                        "Content": content, 
+                        "Type": "Whisper", 
+                        "Target": ChatRoomTargetMemberNumber
+                    });
+                    for (let C = 0; C < ChatRoomCharacter.length; C++)
+                        if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+		            TargetName = ChatRoomCharacter[C].Name;
+		            break;
+	                }
+	            ChatRoomMessage({ 
+                        Content: "Whisper to "+TargetName+": "+ content, 
+                        Type: "LocalMessage", 
+                        Sender: Player.MemberNumber 
+                    });
+		    document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";	
+		    document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+                }                      		
                 ElementValue("InputChat", "");
             } if (this.Stutter1On == true) {
                 content = StutterTalk1(content);
