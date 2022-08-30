@@ -44,7 +44,7 @@ All else I might not have included.
 Changes for future version 
 
 * Extended babytalk, gagtalk, s1, s2, s3, s4, stutter commands to whispers
-
+* Moved action command to /help chat
 
 
 
