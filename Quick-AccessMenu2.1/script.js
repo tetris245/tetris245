@@ -4824,7 +4824,7 @@ async function NEWmenu() {
         } else if (content.indexOf("/talk") == 0) {
              if (content.endsWith("/talk")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The talk command must be followed by a number between -1 and 8.\n" +
+                    "<b>Quick-AccessMenu2</b>: The talk command must be followed by a number between -1 and 9.\n" +
                     " \n" +
                     "Available talk modes:\n" +
                     "-1 baby talk\n" +
@@ -4836,7 +4836,8 @@ async function NEWmenu() {
                     "5 medium gag talk\n" +
                     "6 heavy gag talk\n" +
                     "7 very heavy gag talk\n" +
-                    "8 total gag talk"
+                    "8 total gag talk\n" +
+	            "9 real baby/gag talk"
                 );
              } else {
                  var gaglevel = content.substring(5).trim();
@@ -4867,7 +4868,51 @@ async function NEWmenu() {
                          } 
                      ChatRoomSendLocal("Quick-AccessMenu2: You are now in gag talk mode.");
                      }
-              }
+		     if (gaglevel == 9) { 
+                         if ((InventoryGet(Player, "ItemMouth") != null) && (InventoryGet(Player, "ItemMouth").Asset.Name == "RegressedMilk")) {
+                             bl = 1;
+                         }
+                         if ((InventoryGet(Player, "ItemMouth2") != null) && (InventoryGet(Player, "ItemMouth2").Asset.Name == "RegressedMilk")) {
+                             bl = 1;
+                         }
+                         if ((InventoryGet(Player, "ItemMouth3") != null) && (InventoryGet(Player, "ItemMouth3").Asset.Name == "RegressedMilk")) {
+                             bl = 1;
+                         }
+                         if (bl == 1) { 
+                             if (this.BabyTalkOn == false || this.BabyTalkOn == undefined) {  
+                                 ChatRoomSendLocal("Quick-AccessMenu2: You are now in real baby talk mode.");
+                                 GagTalkOn = false;                  
+                                 BabyTalkOn = true;
+                                 OLDmenu();
+                             }
+                         } else {
+                             bl = 0;
+                             if (this.GagTalkOn == false || this.GagTalkOn == undefined)  { 
+                                 BabyTalkOn = false;  
+                                 gl = SpeechGetTotalGagLevel(Player);
+                                 if (gl == 0) {
+                                     GagTalkOn = false;   
+                                     ChatRoomSendLocal("Quick-AccessMenu2: Back to normal talk mode.");
+                                     OLDmenu();
+                                 } else {
+                                     GagTalkOn = true; 
+                                     ChatRoomSendLocal("Quick-AccessMenu2: You are now in real gag talk mode.");
+                                 }
+                             } else {
+                                 GagTalkOn = false;   
+                                 gl = SpeechGetTotalGagLevel(Player);
+                                 if (gl == 0) {
+                                     GagTalkOn = false;   
+                                     ChatRoomSendLocal("Quick-AccessMenu2: Back to normal talk mode.");
+                                     OLDmenu();
+                                 } else {
+                                     GagTalkOn = true; 
+                                     ChatRoomSendLocal("Quick-AccessMenu2: You are now in real gag talk mode.");
+                                 }                            
+                             }                         
+                         }
+                     }     
+             }
         } else if (content.indexOf("/theme") == 0) {
             var theme = content.substring(6).trim();
             if ((theme > -1) && (theme < 4)) {
