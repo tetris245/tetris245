@@ -1778,7 +1778,8 @@ async function NEWmenu() {
                     "5 medium gag talk\n" +
                     "6 heavy gag talk\n" +
                     "7 very heavy gag talk\n" +
-                    "8 total gag talk"
+                    "8 total gag talk\n" +
+		    "9 real gag talk"
                 );
             } else {
                 var stringGag1 = content;
@@ -1786,6 +1787,11 @@ async function NEWmenu() {
                 var gaglevel = stringGag2[1];
                 if ((gaglevel > 0) && (gaglevel < 9)) {  
                     gl = gaglevel; 
+		}
+                if (gaglevel == 9) {  
+                    gl = SpeechGetTotalGagLevel(Player);
+                }
+                if ((gaglevel > 0) && (gaglevel < 10)) {  	
                     content = SpeechGarbleByGagLevel(gl, content.substring(11).trim());
 		    if (ChatRoomTargetMemberNumber == null) {
                         ServerSend("ChatRoomChat", {
