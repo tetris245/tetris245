@@ -44,7 +44,7 @@ All else I might not have included.
 Changes for future version 
 
 * Added 'real gag talk' option to gagtalk command (the real gaglevel is based on worn items)
-* Add Wooden Rack as special case in solidity command (release with value 1)
+* Added Wooden Rack as special case in solidity command (release with value 1)
 * Added 'real baby/gag talk' option to talk command (the real gaglevel is based on worn items)
 * Extended babytalk, gagtalk, s1, s2, s3, s4, stutter and talk commands to whispers
 * Moved action command to /help chat
