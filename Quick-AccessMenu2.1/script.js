@@ -4690,51 +4690,56 @@ async function NEWmenu() {
                 }
             }	
         } else if (content.indexOf("/solidity") == 0) {
-            var solidity = content.substring(9).trim();
-            if (InventoryGet(Player, "ItemDevices") != null) {
-                if (InventoryGet(Player, "ItemDevices").Asset.Name == "FuturisticCrate") {
-                    if (solidity < 2) {
-                        InventoryRemove(Player, "ItemDevices");
-                        ServerSend("ChatRoomChat", {
-                            Content: "Beep",
-                            Type: "Action",
-                            Dictionary: [{
-                                Tag: "Beep",
-                                Text: "Magical lasers make disappear the futuristic crate in which " + Player.Nickname + " was prisoner."
-                            }]
-                        });
+	    if (content.endsWith("/solidity")) {
+                ChatRoomSendLocal(
+                    "<b>Quick-AccessMenu2</b>: The solidity command must be followed by a number between 1 and 99."                 );
+            } else {	
+                var solidity = content.substring(9).trim();
+                    if (InventoryGet(Player, "ItemDevices") != null) {
+                        if ((InventoryGet(Player, "ItemDevices").Asset.Name == "FuturisticCrate") || (InventoryGet(Player, "ItemDevices").Asset.Name == "WoodenRack"))  {
+                            if (solidity == 1) {
+                                InventoryRemove(Player, "ItemDevices");
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "Magical lasers make disappear the device in which " + Player.Nickname + " was prisoner."
+                                    }]
+                                });
+                            }
+                        }
                     }
-                }
-            }
-            InventorySetDifficulty(Player, "ItemAddon", solidity);
-            InventorySetDifficulty(Player, "ItemArms", solidity);
-            InventorySetDifficulty(Player, "ItemBoots", solidity);
-            InventorySetDifficulty(Player, "ItemBreast", solidity);
-            InventorySetDifficulty(Player, "ItemButt", solidity);
-            InventorySetDifficulty(Player, "ItemDevices", solidity);
-            InventorySetDifficulty(Player, "ItemEars", solidity);
-            InventorySetDifficulty(Player, "ItemFeet", solidity);
-            InventorySetDifficulty(Player, "ItemHands", solidity);
-            InventorySetDifficulty(Player, "ItemHead", solidity);
-            InventorySetDifficulty(Player, "ItemHood", solidity);
-            InventorySetDifficulty(Player, "ItemLegs", solidity);
-            InventorySetDifficulty(Player, "ItemMisc", solidity);
-            InventorySetDifficulty(Player, "ItemMouth", solidity);
-            InventorySetDifficulty(Player, "ItemMouth2", solidity);
-            InventorySetDifficulty(Player, "ItemMouth3", solidity);
-            InventorySetDifficulty(Player, "ItemNeck", solidity);
-            InventorySetDifficulty(Player, "ItemNeckAccessories", solidity);
-            InventorySetDifficulty(Player, "ItemNeckRestraints", solidity);
-            InventorySetDifficulty(Player, "ItemNipples", solidity);
-            InventorySetDifficulty(Player, "ItemNipplesPiercings", solidity);
-            InventorySetDifficulty(Player, "ItemNose", solidity);
-            InventorySetDifficulty(Player, "ItemPelvis", solidity);
-            InventorySetDifficulty(Player, "ItemTorso", solidity);
-	    InventorySetDifficulty(Player, "ItemTorso2", solidity);
-            InventorySetDifficulty(Player, "ItemVulva", solidity);
-            InventorySetDifficulty(Player, "ItemVulvaPiercings", solidity);
-            ServerPlayerInventorySync();
-            ChatRoomSendLocal("Quick-AccessMenu2: The solidity of most current bindings has been changed.");
+                InventorySetDifficulty(Player, "ItemAddon", solidity);
+                InventorySetDifficulty(Player, "ItemArms", solidity);
+                InventorySetDifficulty(Player, "ItemBoots", solidity);
+                InventorySetDifficulty(Player, "ItemBreast", solidity);
+                InventorySetDifficulty(Player, "ItemButt", solidity);
+                InventorySetDifficulty(Player, "ItemDevices", solidity);
+                InventorySetDifficulty(Player, "ItemEars", solidity);
+                InventorySetDifficulty(Player, "ItemFeet", solidity);
+                InventorySetDifficulty(Player, "ItemHands", solidity);
+                InventorySetDifficulty(Player, "ItemHead", solidity);
+                InventorySetDifficulty(Player, "ItemHood", solidity);
+                InventorySetDifficulty(Player, "ItemLegs", solidity);
+                InventorySetDifficulty(Player, "ItemMisc", solidity);
+                InventorySetDifficulty(Player, "ItemMouth", solidity);
+                InventorySetDifficulty(Player, "ItemMouth2", solidity);
+                InventorySetDifficulty(Player, "ItemMouth3", solidity);
+                InventorySetDifficulty(Player, "ItemNeck", solidity);
+                InventorySetDifficulty(Player, "ItemNeckAccessories", solidity);
+                InventorySetDifficulty(Player, "ItemNeckRestraints", solidity);
+                InventorySetDifficulty(Player, "ItemNipples", solidity);
+                InventorySetDifficulty(Player, "ItemNipplesPiercings", solidity);
+                InventorySetDifficulty(Player, "ItemNose", solidity);
+                InventorySetDifficulty(Player, "ItemPelvis", solidity);
+                InventorySetDifficulty(Player, "ItemTorso", solidity);
+	        InventorySetDifficulty(Player, "ItemTorso2", solidity);
+                InventorySetDifficulty(Player, "ItemVulva", solidity);
+                InventorySetDifficulty(Player, "ItemVulvaPiercings", solidity);
+                ServerPlayerInventorySync();
+                ChatRoomSendLocal("Quick-AccessMenu2: The solidity of most current bindings has been changed.");
+	    }    
         } else if ((content.indexOf("/speak") == 0) || (content.indexOf("/mouth") == 0) || (content.indexOf("/speech") == 0)) {
             (typeof OLDtalking !== 'undefined') && (ChatRoomSendChat = OLDtalking); // reset
             NEWtalking = function() {
