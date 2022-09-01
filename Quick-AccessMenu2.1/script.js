@@ -4901,8 +4901,7 @@ async function NEWmenu() {
                              } else {
                                  GagTalkOn = false;   
                                  gl = SpeechGetTotalGagLevel(Player);
-                                 if (gl == 0) {
-                                     GagTalkOn = false;   
+                                 if (gl == 0) {   
                                      ChatRoomSendLocal("Quick-AccessMenu2: Back to normal talk mode.");
                                      OLDmenu();
                                  } else {
