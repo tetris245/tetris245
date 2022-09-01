@@ -102,7 +102,7 @@ async function NEWmenu() {
                     "<b>/release</b> (target) = removes all bindings.\n" +
                     "<b>/resetdifficulty</b> = resets difficulty, thereby quitting it. Will warn first.\n" +
                     "<b>/safewordspecific</b> = removes specific item. More info when used.\n" +
-                    "<b>/solidity</b> (value) = changes the solidity of most current bindings. Use low values to escape! Value 1 allows to escape the futuristic crate.\n" +
+                    "<b>/solidity</b> (value) = changes the solidity of most current bindings. Use low values to escape! Value 1 allows to escape special devices.\n" +
                     "<b>/totalrelease</b> (target) = removes all bindings, collar, harness, chastity, toys.\n" +
                     "<b>/unlock</b> (target) (locktype) = removes all locks or only a specified type of lock. More info with /help unl."
                 );
