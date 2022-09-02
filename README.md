@@ -43,7 +43,7 @@ All else I might not have included.
 
 Changes for future version 
 
-* New command: poof (action) to leave the club very fast. Action is optional (default = poofs away)
+* New command: poof (action) to leave the club very fast. Action is optional (default = poofs away).
 * Added 'real gag talk' option to gagtalk command (the real gaglevel is based on worn items)
 * Added Wooden Rack as special case in solidity command (release with value 1)
 * Added 'real baby/gag talk' option to talk command (the real gaglevel is based on worn items)
