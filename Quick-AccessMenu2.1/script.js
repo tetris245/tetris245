@@ -78,6 +78,7 @@ async function NEWmenu() {
                     "<b>/font</b> (newfont) (size) = changes font in BC. Using will give more info.\n" +
                     "<b>/frlist</b> = gives access to friendlist with clickable links to other rooms during 15 seconds.\n" +
                     "<b>/hiddenmessages</b> = toggles on show hidden messages made by game.\n" +
+		    "<b>/poof</b> (action) leaves the club very fast. Action is optional (default = poofs away).\n" +
                     "<b>/profile</b> (target) = gives direct access to the profile description of any player in the chat room.\n" +
                     "<b>/search</b> (areaname) = opens room search, area is: club or asylum.\n" +
                     "<b>/theme</b> (number) = changes chat color theme after automatic relog. Number must be between 0 and 3." 
@@ -4053,6 +4054,21 @@ async function NEWmenu() {
 		ChatRoomSetTarget(null);
                 }
             }
+	} else if (content.indexOf("/poof") == 0) {
+            if (content.endsWith("/poof")) {
+                var message = " poofs away."
+            } else {
+                var message = ' '.repeat(1) + content.substring(5).trim();
+            }
+            ServerSend("ChatRoomChat", {
+                Content: "Beep",
+                Type: "Action",
+                Dictionary: [{
+                    Tag: "Beep",
+                    Text: "" + Player.Nickname + message
+                }]
+            });
+            RelogExit();	
         } else if (content.indexOf("/prison") == 0) {
             var minutes = content.substring(7).trim();
             ServerSend("ChatRoomChat", {
