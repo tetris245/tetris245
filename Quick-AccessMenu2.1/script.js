@@ -1293,6 +1293,7 @@ async function NEWmenu() {
                 };
                 CharacterAppearanceFullRandom(target[0], true);
                 ChatRoomCharacterUpdate(target[0]);
+	        ChatRoomSetTarget(null);
             }
         } else if (content.indexOf("/clubhelp") == 0) {
             CommandPrintHelpFor(Commands);
@@ -1521,6 +1522,7 @@ async function NEWmenu() {
                         })
                     };
                     refreshDiaper("panties");
+		    ChatRoomSetTarget(null);
                 }
             } else if (content.includes("change2")) {
                 var stringChange1 = content;
@@ -1544,6 +1546,7 @@ async function NEWmenu() {
                         })
                     };
                     refreshDiaper("chastity");
+		    ChatRoomSetTarget(null);
                 }
             } else if (content.includes("change3")) {
                 var stringChange1 = content;
@@ -1567,6 +1570,7 @@ async function NEWmenu() {
                         })
                     };
                     refreshDiaper("both");
+		    ChatRoomSetTarget(null);
                 }
             } else if (content.includes("setdesperation")) {
                 var stringSet1 = content;
@@ -3046,6 +3050,7 @@ async function NEWmenu() {
                     }
                 }
                 ChatRoomCharacterUpdate(target[0]);
+		ChatRoomSetTarget(null);
             }
         } else if (content.indexOf("/login") == 0) {
             var stringLogin1 = content;
@@ -3163,6 +3168,7 @@ async function NEWmenu() {
                 };
                 CharacterNaked(target[0]);
                 ChatRoomCharacterUpdate(target[0]);
+		ChatRoomSetTarget(null);
             }
         } else if (content.indexOf("/name") == 0) {
             var NewName = content.substring(5).trim();
@@ -3367,6 +3373,7 @@ async function NEWmenu() {
 	    CharacterSetActivePose(target[0], "Kneel", true);
             CharacterRefresh(target[0]);
             ChatRoomCharacterUpdate(target[0]);
+	    ChatRoomSetTarget(null);   
           };
         } else if (content.indexOf("/pose2") == 0) {
             if (content.endsWith("/pose2")) {
@@ -4043,6 +4050,7 @@ async function NEWmenu() {
                         ChatRoomCharacterUpdate(target[0]);
                         CharacterRefresh(target[0]);
                     }
+		ChatRoomSetTarget(null);
                 }
             }
         } else if (content.indexOf("/prison") == 0) {
@@ -4110,6 +4118,7 @@ async function NEWmenu() {
                 CharacterAppearanceFullRandom(target[0], true);
                 CharacterFullRandomRestrain(target[0], "ALL");
                 ChatRoomCharacterUpdate(target[0]);
+		ChatRoomSetTarget(null);
             }
         } else if (content.indexOf("/release") == 0) {
             var targetname = content.substring(8).trim();
@@ -4137,6 +4146,7 @@ async function NEWmenu() {
                 };
                 CharacterRelease(target[0]);
                 ChatRoomCharacterUpdate(target[0]);
+		ChatRoomSetTarget(null);
             }
         } else if (content.indexOf("/relog") == 0) {
             ServerSocket.close();
@@ -4245,6 +4255,7 @@ async function NEWmenu() {
                 };
                 CharacterFullRandomRestrain(target[0], "ALL");
                 ChatRoomCharacterUpdate(target[0]);
+		ChatRoomSetTarget(null);
             }
         } else if (content.indexOf("/roleplay") == 0) {
             if (content.includes("clubmistress")) {
@@ -4688,6 +4699,7 @@ async function NEWmenu() {
                         }]
                     });
                 }
+		ChatRoomSetTarget(null);  
             }	
         } else if (content.indexOf("/solidity") == 0) {
 	    if (content.endsWith("/solidity")) {
@@ -5295,6 +5307,7 @@ async function NEWmenu() {
                 };
                 CharacterReleaseTotal(target[0]);
                 ChatRoomCharacterUpdate(target[0]);
+		ChatRoomSetTarget(null);
             }
         } else if (content.indexOf("/underwear") == 0) {
             var targetname = content.substring(10).trim();
@@ -5322,6 +5335,7 @@ async function NEWmenu() {
                 };
                 CharacterRandomUnderwear(target[0]);
                 ChatRoomCharacterUpdate(target[0]);
+		ChatRoomSetTarget(null);
             }
         } else if (content.indexOf("/unlock") == 0) {
             var stringUnlock1 = content;
@@ -5401,6 +5415,7 @@ async function NEWmenu() {
                     CharacterReleaseFromLock(target[0], "TimerPasswordPadlock");
                 }
                 ChatRoomCharacterUpdate(target[0]);
+		ChatRoomSetTarget(null);  
             }
         } else if (content.indexOf("/unrestrict") == 0) {
             if (content.includes("soft")) {
