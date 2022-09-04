@@ -49,7 +49,9 @@ Changes for future version
 * Added 'real baby/gag talk' option to talk command (the real gaglevel is based on worn items)
 * Extended babytalk, gagtalk, s1, s2, s3, s4, stutter and talk commands to whispers
 * Moved action command to /help chat
-* Fixed two bugs in most commands with target
+* Fixed two bugs in most commands with target:
+  - No more target without name in messages (it happened for target without nicknames)
+  - No more whisper mode at the end of command execution
 
 
 
