@@ -2,7 +2,7 @@
 
 Quick-AccessMenu2.1 by Nemesea - Addon for Ben987's BondageClub game 
 
-Most recent release is version 1.5.2 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
+Most recent release is version 1.6.0 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
 ## Installation 
 
@@ -17,7 +17,7 @@ To update: Go in Installed Scripts / Click on date corresponding to QAM (TM will
 **Bookmark methode** - link to the QAM bookmark: https://tetris245.github.io/QAMbookmark.js
 
 **Alternative methode for Google Chrome, Microsoft Edge, similar browsers**
-1. Download the Quick-AccessMenu2.1-version1.5.2.zip file on the Releases page
+1. Download the Quick-AccessMenu2.1-version1.6.0.zip file on the Releases page
 2. Depending on browser, the .zip might have to be extracted. few browsers accept a .zip, a few requires a folder.
 3. Go to browser extensions. Enable developer mode.
 4. Load as Unpacked. Done. If the file can't be seen, see step 2.
@@ -43,16 +43,7 @@ All else I might not have included.
 
 Changes for future version 
 
-* New command: invisible to become completely invisible (anal hook needs to be allowed)
-* New command: poof (action) to leave the club very fast. Action is optional (default = poofs away).
-* Added 'real gag talk' option to gagtalk command (the real gaglevel is based on worn items)
-* Added Wooden Rack as special case in solidity command (release with value 1)
-* Added 'real baby/gag talk' option to talk command (the real gaglevel is based on worn items)
-* Extended babytalk, gagtalk, s1, s2, s3, s4, stutter and talk commands to whispers
-* Moved action command to /help chat
-* Fixed two bugs in most commands with target:
-  - No more target without name in messages (it happened for target without nicknames)
-  - No more whisper mode at the end of command execution
+(..)
 
 
 
