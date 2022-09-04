@@ -161,10 +161,12 @@ async function NEWmenu() {
                 );
 	    } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Changes in v.1.5.2:\n" +
-		    "- Blocked access to Bondage Brawl.\n" +
-		    "- Removed /bg2 command because it shows Bondage Brawl pictures.\n" +
-                    "- Rewrote function to add message in login screen about QAM version in ready status."
+                    "<b>Quick-AccessMenu2</b>: Main changes in v.1.6.0:\n" +
+		    "- New commands: invisible, poof (optional action).\n" +
+		    "- Added 'real gag talk' option to gagtalk command.\n" +
+	            "- Added 'real baby/gag talk' option to talk command.\n" +
+		    "- Extended babytalk, gagtalk, s1, s2, s3, s4, stutter and talk commands to whispers.\n" +			
+                    "- Added Wooden Rack as special case in solidity command."
                 );   	    
             } else if (content.includes("talking")) {
 		ChatRoomSendLocal(
