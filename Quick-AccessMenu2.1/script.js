@@ -111,6 +111,7 @@ async function NEWmenu() {
                 ChatRoomSendLocal(
                     "<b>Quick-AccessMenu2</b>: Fun commands:\n" +
                     "<b>/cum</b> = causes an orgasm.\n" +
+		    "<b>/invisible</b> = becomes invisible (anal hook must be allowed).\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
 		    "<b>/sleep</b> (target) = uses the sleeping pill on yourself or another player.\n" +
                     "<b>/superdice</b> (sides)  = rolls a superdice. Sides can be between 2 and 999999999."
@@ -1981,6 +1982,17 @@ async function NEWmenu() {
                 (typeof oldChatRoomMessage !== 'undefined') && (ChatRoomMessage = oldChatRoomMessage); //reset
                 newChatRoomMessage = function(data) {}
             }
+	} else if (content.indexOf("/invisible") == 0) {
+               ServerSend("ChatRoomChat", {
+                    Content: "Beep",
+                    Type: "Action",
+                    Dictionary: [{
+                        Tag: "Beep",
+                        Text: "Magical lasers make " + Player.Nickname + " completely invisible."
+                    }]
+               });   
+            InventoryWear(Player, "AnalHook", "ItemButt");
+            window.InventoryGet(window.Player, "ItemButt").Property = {Type: "Hair", Hide: ["Activity","Emoticon","Blush","BodyLower","BodyUpper","Eyebrows","Eyes","Eyes2","Face","Fluids","HairBack","HairFront","Hands","Head","Mouth","Nipples","Pussy","Cloth","ClothAccessory","Necklace","Suit","ClothLower","SuitLower","Bra","Corset","Panties","Socks","RightAnklet","LeftAnklet","Garters","Shoes","Hat","HairAccessory3","HairAccessory1","HairAccessory2","Gloves","Bracelet","Glasses","Mask","TailStraps","Wings","ItemMisc","ItemEars","ItemHead","ItemNose","ItemHood","ItemAddon","ItemMouth","ItemMouth2","ItemMouth3","ItemArms","ItemNeckAccessories","ItemNeck","ItemNeckRestraints","ItemNipples","ItemNipplesPiercings","ItemBreast","ItemTorso","ItemTorso2","ItemHands","ItemPelvis","ItemVulva","ItemVulvaPiercings","ItemDevices","ItemLegs","ItemFeet","ItemBoots"]}	
         } else if (content.indexOf("/keydeposit") == 0) {
             var hours = content.substring(11).trim();
             ServerSend("ChatRoomChat", {
