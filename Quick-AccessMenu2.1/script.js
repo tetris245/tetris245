@@ -1280,12 +1280,17 @@ async function NEWmenu() {
                 target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
             };
             if (target[0] != null) {
+		if (target[0].Nickname == '') { 
+                    tgpname = target[0].Name;
+                } else {
+                    tgpname = target[0].Nickname;
+                } 
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "Magical lasers put random clothes on " + target[0].Nickname + " body."
+                        Text: "Magical lasers put random clothes on " + tgpname + " body."
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
@@ -2416,12 +2421,17 @@ async function NEWmenu() {
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
             };
             if (target[0] != null) {
+		if (target[0].Nickname == '') { 
+                    tgpname = target[0].Name;
+                } else {
+                    tgpname = target[0].Nickname;
+                } 
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "Magical lasers make appear locks on " + target[0].Nickname + " body."
+                        Text: "Magical lasers make appear locks on " + tgpname + " body."
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
@@ -3155,12 +3165,17 @@ async function NEWmenu() {
                 target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);              
             };
             if (target[0] != null) {
+		if (target[0].Nickname == '') { 
+                    tgpname = target[0].Name;
+                } else {
+                    tgpname = target[0].Nickname;
+                } 
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "Magical lasers make disappear the clothes on " + target[0].Nickname + " body."
+                        Text: "Magical lasers make disappear the clothes on " + tgpname + " body."
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
@@ -3348,33 +3363,38 @@ async function NEWmenu() {
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
             if (target[0] == null) {
-                    var targetnumber = parseInt(targetname);
-                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+                var targetnumber = parseInt(targetname);
+                target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
             };
             if (target[0] != null) {
-            ServerSend("ChatRoomChat", {
-                Content: "Beep",
-                Type: "Action",
-                Dictionary: [{
-                    Tag: "Beep",
-                    Text: "" + target[0].Nickname + " becomes a cute pet girl."
-                }]
-            });
-            if ((target[0].Name == Player.Name) == false) {
-                ChatRoomTargetMemberNumber = target[0].MemberNumber;
-                consoleWhisper();
-            };
-            CharacterNaked(target[0]);
-	    InventoryWearRandom(target[0], "ItemArms", 8, null, false, true, ["ArmbinderJacket", "BitchSuit", "BitchSuitExposed", "Bolero", "BoxTieArmbinder", "Chains", "FullLatexSuit", "HempRope", "InflatableStraightLeotard", "LatexBoxtieLeotard", "LatexButterflyLeotard", "LatexSleevelessLeotard", "LeatherStraitJacket", "StraitLeotard", "StrictLeatherPetCrawler"], true);
-	    InventoryWearRandom(target[0], "HairAccessory1", 8, null, false, true, ["Antennae", "BunnyEars1", "BunnyEars2", "CowHorns", "Ears1", "Ears2", "ElfEars", "FoxEars1", "FoxEars2", "FoxEars3", "KittenEars1", "KittenEars2", "MouseEars1", "MouseEars2", "PonyEars1", "PuppyEars1", "PuppyEars2", "RaccoonEars1", "WolfEars1", "WolfEars2"], true);
-	    InventoryWearRandom(target[0], "TailStraps", 8, null, false, true, ["CowtailStrap", "FoxTailsStrap", "FoxTailStrap1", "FoxTailStrap2", "HorseTailStrap", "HorseTailStrap1", "KittenTailStrap1", "KittenTailStrap2", "MouseTailStrap1", "MouseTailStrap2", "PuppyTailStrap", "PuppyTailStrap1", "RaccoonStrap", "WolfTailStrap1", "WolfTailStrap2", "WolfTailStrap3"], true);
-	    if (InventoryGet(target[0], "ItemMouth") == null) InventoryWearRandom(target[0], "ItemMouth", 8);
-	    if (InventoryGet(target[0], "ItemNeck") == null) InventoryWearRandom(target[0], "ItemNeck", 8);
-	    if (InventoryGet(target[0], "ItemNeckRestraints") == null) InventoryWear(target[0], "ChainLeash", "ItemNeckRestraints", null, 8);
-	    CharacterSetActivePose(target[0], "Kneel", true);
-            CharacterRefresh(target[0]);
-            ChatRoomCharacterUpdate(target[0]);
-	    ChatRoomSetTarget(null);   
+	        if (target[0].Nickname == '') { 
+                    tgpname = target[0].Name;
+                } else {
+                    tgpname = target[0].Nickname;
+                } 
+                ServerSend("ChatRoomChat", {
+                    Content: "Beep",
+                    Type: "Action",
+                    Dictionary: [{
+                        Tag: "Beep",
+                        Text: "" + tgpname + " becomes a cute pet girl."
+                    }]
+                });
+                if ((target[0].Name == Player.Name) == false) {
+                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
+                    consoleWhisper();
+                };
+                CharacterNaked(target[0]);
+	        InventoryWearRandom(target[0], "ItemArms", 8, null, false, true, ["ArmbinderJacket", "BitchSuit", "BitchSuitExposed", "Bolero", "BoxTieArmbinder", "Chains", "FullLatexSuit", "HempRope", "InflatableStraightLeotard", "LatexBoxtieLeotard", "LatexButterflyLeotard", "LatexSleevelessLeotard", "LeatherStraitJacket", "StraitLeotard", "StrictLeatherPetCrawler"], true);
+	        InventoryWearRandom(target[0], "HairAccessory1", 8, null, false, true, ["Antennae", "BunnyEars1", "BunnyEars2", "CowHorns", "Ears1", "Ears2", "ElfEars", "FoxEars1", "FoxEars2", "FoxEars3", "KittenEars1", "KittenEars2", "MouseEars1", "MouseEars2", "PonyEars1", "PuppyEars1", "PuppyEars2", "RaccoonEars1", "WolfEars1", "WolfEars2"], true);
+	        InventoryWearRandom(target[0], "TailStraps", 8, null, false, true, ["CowtailStrap", "FoxTailsStrap", "FoxTailStrap1", "FoxTailStrap2", "HorseTailStrap", "HorseTailStrap1", "KittenTailStrap1", "KittenTailStrap2", "MouseTailStrap1", "MouseTailStrap2", "PuppyTailStrap", "PuppyTailStrap1", "RaccoonStrap", "WolfTailStrap1", "WolfTailStrap2", "WolfTailStrap3"], true);
+	        if (InventoryGet(target[0], "ItemMouth") == null) InventoryWearRandom(target[0], "ItemMouth", 8);
+	        if (InventoryGet(target[0], "ItemNeck") == null) InventoryWearRandom(target[0], "ItemNeck", 8);
+	        if (InventoryGet(target[0], "ItemNeckRestraints") == null) InventoryWear(target[0], "ChainLeash", "ItemNeckRestraints", null, 8);
+	        CharacterSetActivePose(target[0], "Kneel", true);
+                CharacterRefresh(target[0]);
+                ChatRoomCharacterUpdate(target[0]);
+	        ChatRoomSetTarget(null);   
           };
         } else if (content.indexOf("/pose2") == 0) {
             if (content.endsWith("/pose2")) {
@@ -3404,6 +3424,11 @@ async function NEWmenu() {
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
                 };
                 if (target[0] != null) {
+	            if (target[0].Nickname == '') { 
+                        tgpname = target[0].Name;
+                    } else {
+                        tgpname = target[0].Nickname;
+                    } 
                     //poses for any player
                     if (content.includes("armsfree")) {
                         CharacterSetActivePose(target[0], "BaseUpper");
@@ -3423,7 +3448,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " lets " + target[0].Nickname + " relax her arms."
+                                    Text: "" + Player.Nickname + " lets " + tgpname + " relax her arms."
                                 }]
                             });
                         }
@@ -3445,7 +3470,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + target[0].Nickname + " to stay on her belly."
+                                    Text: "" + Player.Nickname + " forces " + tgpname + " to stay on her belly."
                                 }]
                             });
                         }
@@ -3467,7 +3492,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + target[0].Nickname + " to put the arms behind her back."
+                                    Text: "" + Player.Nickname + " forces " + tgpname + " to put the arms behind her back."
                                 }]
                             });
                         }
@@ -3489,7 +3514,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + target[0].Nickname + " to put the arms out like she's handcuffed."
+                                    Text: "" + Player.Nickname + " forces " + tgpname + " to put the arms out like she's handcuffed."
                                 }]
                             });
                         }
@@ -3511,7 +3536,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + target[0].Nickname + " to put the arms behind her back, elbows almost touching."
+                                    Text: "" + Player.Nickname + " forces " + tgpname + " to put the arms behind her back, elbows almost touching."
                                 }]
                             });
                         }
@@ -3533,7 +3558,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " helps " + target[0].Nickname + " to kneel down."
+                                    Text: "" + Player.Nickname + " helps " + tgpname + " to kneel down."
                                 }]
                             });
                         }
@@ -3555,7 +3580,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " helps " + target[0].Nickname + " to kneel down, forcing her legs open."
+                                    Text: "" + Player.Nickname + " helps " + tgpname + " to kneel down, forcing her legs open."
                                 }]
                             });
                         }
@@ -3577,7 +3602,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " helps " + target[0].Nickname + " to stand up with her legs closed."
+                                    Text: "" + Player.Nickname + " helps " + tgpname + " to stand up with her legs closed."
                                 }]
                             });
                         }
@@ -3599,7 +3624,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " helps " + target[0].Nickname + " to stand up normally on her feet."
+                                    Text: "" + Player.Nickname + " helps " + tgpname + " to stand up normally on her feet."
                                 }]
                             });
                         }
@@ -3621,7 +3646,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + target[0].Nickname + " on all fours."
+                                    Text: "" + Player.Nickname + " forces " + tgpname + " on all fours."
                                 }]
                             });
                         }
@@ -3643,7 +3668,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " helps " + target[0].Nickname + " to raise her hands."
+                                    Text: "" + Player.Nickname + " helps " + tgpname + " to raise her hands."
                                 }]
                             });
                         }
@@ -3665,7 +3690,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + target[0].Nickname + " to raise the hands above her head."
+                                    Text: "" + Player.Nickname + " forces " + tgpname + " to raise the hands above her head."
                                 }]
                             });
                         }
@@ -3688,7 +3713,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + target[0].Nickname + " to raise their hands and spread her legs."
+                                    Text: "" + Player.Nickname + " forces " + tgpname + " to raise their hands and spread her legs."
                                 }]
                             });
                         }
@@ -3711,7 +3736,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + target[0].Nickname + " to raise the hands above their head and spread her legs."
+                                    Text: "" + Player.Nickname + " forces " + tgpname + " to raise the hands above their head and spread her legs."
                                 }]
                             });
                         }
@@ -3733,7 +3758,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + target[0].Nickname + " to spread her legs."
+                                    Text: "" + Player.Nickname + " forces " + tgpname + " to spread her legs."
                                 }]
                             });
                         }
@@ -3755,7 +3780,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " helps " + target[0].Nickname + " to stand up."
+                                    Text: "" + Player.Nickname + " helps " + tgpname + " to stand up."
                                 }]
                             });
                         }
@@ -3777,7 +3802,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + target[0].Nickname + " in an acrobatic pose in suspension."
+                                    Text: "" + Player.Nickname + " forces " + tgpname + " in an acrobatic pose in suspension."
                                 }]
                             });
                         }
@@ -3799,7 +3824,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + target[0].Nickname + " to put the arms out like her hands are taped."
+                                    Text: "" + Player.Nickname + " forces " + tgpname + " to put the arms out like her hands are taped."
                                 }]
                             });
                         }
@@ -3933,7 +3958,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " helps " + target[0].Nickname + " to make her workout."
+                                    Text: "" + Player.Nickname + " helps " + tgpname + " to make her workout."
                                 }]
                             });
                         }
@@ -4117,12 +4142,17 @@ async function NEWmenu() {
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
             };
             if (target[0] != null) {
+		if (target[0].Nickname == '') { 
+                    tgpname = target[0].Name;
+                } else {
+                    tgpname = target[0].Nickname;
+                } 
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "Magical lasers apply random clothes and bindings on " + target[0].Nickname + " body."
+                        Text: "Magical lasers apply random clothes and bindings on " + tgpname + " body."
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
@@ -4148,12 +4178,17 @@ async function NEWmenu() {
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
             };
             if (target[0] != null) {
+		if (target[0].Nickname == '') { 
+                    tgpname = target[0].Name;
+                } else {
+                    tgpname = target[0].Nickname;
+                } 
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "Magical lasers make disappear the bindings on " + target[0].Nickname + " body."
+                        Text: "Magical lasers make disappear the bindings on " + tgpname + " body."
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
@@ -4257,12 +4292,17 @@ async function NEWmenu() {
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
             };
             if (target[0] != null) {
+		if (target[0].Nickname == '') { 
+                    tgpname = target[0].Name;
+                } else {
+                    tgpname = target[0].Nickname;
+                } 
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "Magical lasers apply random restraints on " + target[0].Nickname + " body."
+                        Text: "Magical lasers apply random restraints on " + tgpname + " body."
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
@@ -4689,7 +4729,12 @@ async function NEWmenu() {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
             };
-            if (target[0] != null) {             
+            if (target[0] != null) { 
+		if (target[0].Nickname == '') { 
+                    tgpname = target[0].Name;
+                } else {
+                    tgpname = target[0].Nickname;
+                } 
 		InventoryWear(target[0],"RegularSleepingPill",'ItemMouth');
                 ChatRoomCharacterUpdate(target[0]);
                 CharacterSetFacialExpression(target[0], "Eyes", "Closed");
@@ -4711,7 +4756,7 @@ async function NEWmenu() {
                         Type: "Action",
                         Dictionary: [{
                             Tag: "Beep",
-                            Text: "" + Player.Nickname + "feeds "+ target[0].Nickname + " a sleeping pill and gives her a glass of water. "+ target[0].Nickname +" falls asleep very quickly."
+                            Text: "" + Player.Nickname + "feeds "+ tgpname + " a sleeping pill and gives her a glass of water. "+ tgpname +" falls asleep very quickly."
                         }]
                     });
                 }
@@ -5309,12 +5354,17 @@ async function NEWmenu() {
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
             };
             if (target[0] != null) {
+		if (target[0].Nickname == '') { 
+                    tgpname = target[0].Name;
+                } else {
+                    tgpname = target[0].Nickname;
+                } 
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "Magical lasers make disappear all bindings and toys on " + target[0].Nickname + " body."
+                        Text: "Magical lasers make disappear all bindings and toys on " + tgpname + " body."
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
@@ -5337,12 +5387,17 @@ async function NEWmenu() {
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
             };
             if (target[0] != null) {
+		if (target[0].Nickname == '') { 
+                    tgpname = target[0].Name;
+                } else {
+                    tgpname = target[0].Nickname;
+                } 
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "Magical lasers put " + target[0].Nickname + " in random underwear."
+                        Text: "Magical lasers put " + tgpname + " in random underwear."
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
@@ -5368,12 +5423,17 @@ async function NEWmenu() {
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
             };
             if (target[0] != null) {
+		if (target[0].Nickname == '') { 
+                    tgpname = target[0].Name;
+                } else {
+                    tgpname = target[0].Nickname;
+                } 
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "Magical lasers make disappear locks on " + target[0].Nickname + " body."
+                        Text: "Magical lasers make disappear locks on " + tgpname + " body."
                     }]
                 });
                 if ((target[0].Name == Player.Name) == false) {
