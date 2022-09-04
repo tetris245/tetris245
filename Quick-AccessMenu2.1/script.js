@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.5.2.
+// @version 1.6.0
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -6141,7 +6141,7 @@ ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
 	ChatRoomSendLocal(
-                    "Quick-AccessMenu2 - version 1.5.2: Ready, type <b>/help</b> for general menu.\n" +
+                    "Quick-AccessMenu2 - version 1.6.0: Ready, type <b>/help</b> for general menu.\n" +
 		    "Note: NPC punishments are disabled.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
 		    "Use <b>/clubhelp</b> to get the standard BC menu (+ BCE menu when enabled).\n" +
@@ -8120,7 +8120,7 @@ InventoryItemNeckAccessoriesElectronicTagLoad = function() {
 function LoginRun() {
 	if (LoginCredits != null) LoginDrawCredits();
 	const CanLogin = ServerIsConnected && !LoginSubmitted;
-        DrawButton(750,120,500,60,"QAM 1.5.2 Ready!", "Pink", "Black", "");
+        DrawButton(750,120,500,60,"QAM 1.6.0 Ready!", "Pink", "Black", "");
 	DrawText(TextGet("Welcome"), 1000, 50, "White", "Black");
 	DrawText(LoginMessage, 1000, 100, "White", "Black");
 	DrawText(TextGet("AccountName"), 1000, 200, "White", "Black");
