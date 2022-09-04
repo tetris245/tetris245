@@ -43,6 +43,7 @@ All else I might not have included.
 
 Changes for future version 
 
+* New command: invisible to become completely invisible (anal hook needs to be allowed)
 * New command: poof (action) to leave the club very fast. Action is optional (default = poofs away).
 * Added 'real gag talk' option to gagtalk command (the real gaglevel is based on worn items)
 * Added Wooden Rack as special case in solidity command (release with value 1)
