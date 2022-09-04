@@ -49,7 +49,7 @@ Changes for future version
 * Added 'real baby/gag talk' option to talk command (the real gaglevel is based on worn items)
 * Extended babytalk, gagtalk, s1, s2, s3, s4, stutter and talk commands to whispers
 * Moved action command to /help chat
-* Fixed a bug in most commands with target
+* Fixed two bugs in most commands with target
 
 
 
