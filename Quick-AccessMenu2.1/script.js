@@ -8340,12 +8340,12 @@ function MainHallRun() {
 	var QAMtext = "Welcome to Quick-AccessMenu2!      " +
 	              "Besides the commands usable only in chat rooms, this addon comes with several nice automatic features.            " +
                        "Visit the QAM Wiki for more info!";
-        MainCanvas.fillStyle = "#b1548e";
-	MainCanvas.fillRect(20, 590, 640, 250);
+        MainCanvas.fillStyle = "#50E992";
+	MainCanvas.fillRect(20, 588, 640, 246);
 	MainCanvas.strokeStyle = "Black";
-	MainCanvas.strokeRect(20, 590, 640, 250);
+	MainCanvas.strokeRect(20, 588, 640, 246);
         MainCanvas.textAlign = "left";
-	DrawTextWrap(QAMtext, 30 - 630 / 2, 600, 630, 240, "black");
+	DrawTextWrap(QAMtext, 30 - 630 / 2, 593, 630, 236, "black");
 	MainCanvas.textAlign = "center";
 	DrawButton(1645, 25, 90, 90, "", "White", "Icons/Character.png", TextGet("Profile"));
 	if (Player.CanChangeOwnClothes()) DrawButton(1765, 25, 90, 90, "", "White", "Icons/Dress.png", TextGet("Appearance"));
