@@ -8337,7 +8337,7 @@ function MainHallRun() {
 	DrawTextWrap(TextGet("Tip" + MainHallTip), 100, 800, 500, 200, "White");
 	MainCanvas.font = CommonGetFont(36);
         DrawButton(1365,845,500,90,"Access to Bondage Brawl is blocked", "Pink", "Black", "");
-	var QAMtext = "Welcome to Quick-AccessMenu!      " +
+	var QAMtext = "Welcome to Quick-AccessMenu2!      " +
 	              "Besides the commands usable only in chat rooms, this addon comes with several nice automatic features.            " +
                        "Visit the QAM Wiki for more info!";
         MainCanvas.fillStyle = "#b1548e";
