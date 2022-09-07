@@ -44,6 +44,7 @@ All else I might not have included.
 Changes for future version 
 
 * Added QAM welcome message in main hall
+* Added green background for most local messages
 
 
 
