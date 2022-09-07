@@ -54,7 +54,7 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Character commands - * = more info when using\n" +
                     "<b>/becomeownlover</b> = becomes your own lover.\n" +
                     "<b>/becomeownowner</b> = becomes your own owner.\n" +
-                    "<b>/difficulty</b> (number) = changes game difficulty. 0 roleplay - 1 regular - 2 hardcore - 3 extreme\n" +
+                    "<b>/difficulty</b> (number) = changes game difficulty. *\n" +
                     "<b>/giveeverything</b> = gives every item.\n" +
                     "<b>/maxstatistics</b> = gives max statistics.\n" +
                     "<b>/money</b> (value) = gives or takes money.\n" +
@@ -1730,7 +1730,15 @@ async function NEWmenu() {
             }
         } else if (content.indexOf("/difficulty") == 0) {
             if (content.endsWith("/difficulty")) {
-                PreferenceDifficultyLevel = Player.Difficulty.Level;
+		 ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The difficulty command must be followed by a number between 0 and 3.\n" +
+                    " \n" +
+                    "Available difficulty modes:\n" +
+                    "0 roleplay\n" +
+                    "1 regular\n" +
+                    "2 hardcore\n" +
+                    "3 extreme</p>"
+                 );      
             } else {
                 PreferenceDifficultyLevel = content.substring(11).trim() * 1;
             }
