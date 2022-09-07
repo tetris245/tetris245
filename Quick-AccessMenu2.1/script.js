@@ -24,7 +24,7 @@ async function NEWmenu() {
         if (content.indexOf("/help") == 0) {
             if (content.endsWith("/help")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: QAM help is organized into categories. Use <b>/help</b> (category). List of categories:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: QAM help is organized into categories. Use <b>/help</b> (category). List of categories:\n" +
                     "<b>bondage</b> = commands related to bondage.\n" +
                     "<b>character</b> = commands related to your character.\n" +
                     "<b>chat</b> = commands with extra features in chat room.\n" +
@@ -38,20 +38,20 @@ async function NEWmenu() {
 		    " \n" +
 		    "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
 		    " \n" +
-		    "Several commands require to specify a target. It can be a real name or a member number."	
+		    "Several commands require to specify a target. It can be a real name or a member number.</p>"	
                 );
             } else if (content.includes("bondage")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Bondage commands:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Bondage commands:\n" +
                     "<b>/lock</b> = adds locks on all lockable items. Use /help lock for more info.\n" +
                     "<b>/pet</b> (target) = becomes a fully restrained pet girl.\n" +
                     "<b>/randomize</b> (target) = naked + underwear + clothes + restrain commands.\n" +
                     "<b>/restrain</b> (target) = adds random restraints.\n" +
-                    "<b>/solidity</b> (value) = changes the solidity of most current bindings. Value must be between 1 and 99. Use high values to make escape impossible!"
+                    "<b>/solidity</b> (value) = changes the solidity of most current bindings. Value must be between 1 and 99. Use high values to make escape impossible!</p>"
                 );
             } else if (content.includes("character")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Character commands - * = more info when using\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Character commands - * = more info when using\n" +
                     "<b>/becomeownlover</b> = becomes your own lover.\n" +
                     "<b>/becomeownowner</b> = becomes your own owner.\n" +
                     "<b>/difficulty</b> (number) = changes game difficulty. 0 roleplay - 1 regular - 2 hardcore - 3 extreme\n" +
@@ -67,11 +67,11 @@ async function NEWmenu() {
                     "<b>/rolequit</b> (role or clubarea here) = ceases to play a role. *\n" +
                     "<b>/savename</b> = definitive status to temporary nickname.\n" +
                     "<b>/skill</b> (skill) (level) = changes a skill. *\n" +
-                    "<b>/title</b> (newtitlehere) = chooses a new title. *"
+                    "<b>/title</b> (newtitlehere) = chooses a new title. *</p>"
                 );
             } else if (content.includes("chat")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Chat commands:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Chat commands:\n" +
 		    "<b>/action</b> (stuffhere) = inserts an action. Can also: /a.\n" +
                     "<b>/autokick</b> = toggles on auto kick for 0 day old accounts.\n" +
                     "<b>/erase</b> = erases chat.\n" +
@@ -81,21 +81,21 @@ async function NEWmenu() {
 		    "<b>/poof</b> (action) = leaves the club very fast. Action is optional (default = poofs away).\n" +
                     "<b>/profile</b> (target) = gives direct access to the profile description of any player in the chat room.\n" +
                     "<b>/search</b> (areaname) = opens room search, area is: club or asylum.\n" +
-                    "<b>/theme</b> (number) = changes chat color theme after automatic relog. Number must be between 0 and 3." 
+                    "<b>/theme</b> (number) = changes chat color theme after automatic relog. Number must be between 0 and 3.</p>" 
                 );
             } else if (content.includes("clothing")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Clothing commands:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Clothing commands:\n" +
                     "<b>/clothes</b> (target) = changes clothes.\n" +
                     "<b>/diaper</b> (actionhere) (targetname or setvalue) = plays with diapers (ABDL game). Using will give more info.\n" +
                     "<b>/naked</b> (target) = removes clothes.\n" +
                     "<b>/outfit</b> = restores/saves/loads outfit. Using will give more info.\n" +
                     "<b>/underwear</b> (target) = changes underwear.\n" +
-                    "<b>/wardrobe</b> (target) = opens target wardrobe."
+                    "<b>/wardrobe</b> (target) = opens target wardrobe.</p>"
                 );
             } else if (content.includes("escape")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Escape commands:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Escape commands:\n" +
                     "<b>/boost</b> = boosts skills, similar to maid quarters drink.\n" +
                     "<b>/collarremove</b> = removes slave/owner collar. Can also be: /removecollar.\n" +
                     "<b>/frlist</b> = gives access to friendlist with clickable links to other rooms during 15 seconds.\n" +
@@ -105,20 +105,20 @@ async function NEWmenu() {
                     "<b>/safewordspecific</b> = removes specific item. More info when used.\n" +
                     "<b>/solidity</b> (value) = changes the solidity of most current bindings. Use low values to escape! Value 1 allows to escape special devices.\n" +
                     "<b>/totalrelease</b> (target) = removes all bindings, collar, harness, chastity, toys.\n" +
-                    "<b>/unlock</b> (target) (locktype) = removes all locks or only a specified type of lock. More info with /help unl."
+                    "<b>/unlock</b> (target) (locktype) = removes all locks or only a specified type of lock. More info with /help unl.</p>"
                 );
             } else if (content.includes("fun")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Fun commands:\n" +
+                    "<<p style='background-color:#50E992'>b>Quick-AccessMenu2</b>: Fun commands:\n" +
                     "<b>/cum</b> = causes an orgasm.\n" +
 		    "<b>/invisible</b> = becomes invisible (anal hook must be allowed).\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
 		    "<b>/sleep</b> (target) = uses the sleeping pill on yourself or another player.\n" +
-                    "<b>/superdice</b> (sides)  = rolls a superdice. Sides can be between 2 and 999999999."
+                    "<b>/superdice</b> (sides)  = rolls a superdice. Sides can be between 2 and 999999999.</p>"
                 );
             } else if (content.includes("lock")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The lock command has several syntaxes:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The lock command has several syntaxes:\n" +
                     "/lock (target) (locktype) for locks 1 to 8\n" +
                     "/lock (target) (locktype) (r) for lock 9\n" +
                     "/lock (target) (locktype) (code) for lock 10\n" +
@@ -132,11 +132,11 @@ async function NEWmenu() {
                     "9 Five Minutes - 10 Combination - 11 Safeword\n" +
                     "12 Password - 13 Mistress Timer - 14 Lover Timer\n" +
                     "15 Owner Timer - 16 Timer Password\n" +
-                    "Use <b>/help lpar</b> for info about other parameters"
+                    "Use <b>/help lpar</b> for info about other parameters</p>"
                 );
             } else if (content.includes("lpar")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Special parameters of lock command:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Special parameters of lock command:\n" +
                     "code must be between 0 and 9999.\n" +
                     "password is limited to 8 characters.\n" +
                     "maximum time = 240 minutes for locks 13 and 16,\n" +
@@ -148,29 +148,29 @@ async function NEWmenu() {
                     "r for item removal when correct password entered\n" +
                     "or lock timer runs out.\n" +
                     " \n" +
-                    "Tip: replace h and/or i by another character when you need to skip them."
+                    "Tip: replace h and/or i by another character when you need to skip them.</p>"
                 );
             } else if (content.includes("misc")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Misc commands:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Misc commands:\n" +
                     "<b>/clubhelp</b> = displays the standard commands of the game (and optionaly the BCE commands)\n" +
                     "<b>/help</b> (category) = displays the QAM commands. Available categories: bondage, character, clothing, escape, fun, misc, pleasure, talking, visual, zones.\n" +
                     "<b>/login</b> (accountname) (password) = logs in a new account.\n" +
                     "<b>/relog</b> = relogs.\n" +
-                    "<b>/unrestrict</b> =  removes all restrictions from game. Can use maid drink tray/other stuff. Using will give more info. Submissives should use /unrestrict soft."
+                    "<b>/unrestrict</b> =  removes all restrictions from game. Can use maid drink tray/other stuff. Using will give more info. Submissives should use /unrestrict soft.</p>"
                 );
 	    } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Main changes in v.1.6.0:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Main changes in v.1.6.0:\n" +
 		    "- New commands: invisible, poof (optional action).\n" +
 		    "- Added 'real gag talk' option to gagtalk command.\n" +
 	            "- Added 'real baby/gag talk' option to talk command.\n" +
 		    "- Extended babytalk, gagtalk, s1, s2, s3, s4, stutter and talk commands to whispers.\n" +			
-                    "- Added Wooden Rack as special case in solidity command."
+                    "- Added Wooden Rack as special case in solidity command.</p>"
                 );   	    
             } else if (content.includes("talking")) {
 		ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Talking commands - * = more info when using\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Talking commands - * = more info when using\n" +
                     "<b>/babytalk</b> (stuffhere) = speaks once as a baby. Can also: /b.\n" +
                     "<b>/gagcode</b> = toggle to decode/not decode gagged people talking. Also works against deafness.\n" +
 		    "<b>/gagtalk</b> (talkmode) (stuffhere) = speaks once in specified gag talk. *\n" +
@@ -182,11 +182,11 @@ async function NEWmenu() {
                     "<b>/s4</b> (stuffhere) = speaks once in total stuttering mode.\n" +
                    "<b>/stutter</b> (stuttermode) = forces a specific stuttering mode. *\n" +
 		    "<b>/talk</b> (talkmode) = changes your talk mode. *\n" +
-                    "<b>/whisper</b> (target) = sets whisper target."
+                    "<b>/whisper</b> (target) = sets whisper target.</p>"
                 );
             } else if (content.includes("unl")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The unlock command:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The unlock command:\n" +
                     "<b>/unlock</b> (target) (locktype).\n" +
                     "All locks of any type will be removed if you don't specify the lock type.\n" +
                     " \n" +
@@ -195,21 +195,21 @@ async function NEWmenu() {
                     "5 Pandora - 6 Mistress - 7 Lover - 8 Owner\n" +
                     "9 Five Minutes - 10 Combination - 11 Safeword\n" +
                     "12 Password - 13 Mistress Timer - 14 Lover Timer\n" +
-                    "15 Owner Timer - 16 Timer Password"
+                    "15 Owner Timer - 16 Timer Password</p>"
                 );
             } else if (content.includes("visual")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Visual commands:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Visual commands:\n" +
                     "<b>/anim2</b> (animhere) = changes your facial expression. Using will give more info.\n" +
                     "<b>/bg1</b> = adds hidden backgrounds to the admin selection screen. Tip for BCX users: activate BCX before login.\n" +
                     "<b>/colorchanger</b> (animhere) = gets an animation with color change. Using will give more info.\n" +
                     "<b>/pose2</b> (posehere) (target) = changes the pose of any player. Using will give more info.\n" +
 		    "<b>/see</b> (visionmode) (blurlevel) = forces a specific vision mode. Using will give more info.\n" +
-                    "<b>/speak</b> = animates mouth when talking in chat. Can also: /mouth or /speech."
+                    "<b>/speak</b> = animates mouth when talking in chat. Can also: /mouth or /speech.</p>"
                 );
             } else if (content.includes("zones")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Zones commands:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Zones commands:\n" +
                     "<b>/asylum</b> (minutes) = enters asylum, bypasses requirements. Specify minutes if you are a patient.\n" +
                     "<b>/chess</b> (difficulty) = starts chess, must specify difficulty first (1 easy - 2 normal - 3 hard).\n" +
                     "<b>/college</b> = enters college, bypasses requirements.\n" +
@@ -220,7 +220,7 @@ async function NEWmenu() {
                     "<b>/patreoncheats</b> = changes settings of patreon cheats. All except college uniform, is auto toggled by default.\n" +
                     "<b>/prison</b> (minutes) = stays in Pandora prison. More than 60 minutes is possible.\n" +
                     "<b>/store</b> = leaves chatroom, goes to store. Shows hidden items.\n" +
-                    "<b>/timercell</b> (minutes) = stays in the isolation cell. More than 60 minutes is possible. Tip: use bondage commands before!"
+                    "<b>/timercell</b> (minutes) = stays in the isolation cell. More than 60 minutes is possible. Tip: use bondage commands before!</p>"
                 );
             }
         } else if ((content.indexOf("/action ") == 0) || (content.indexOf("/a ") == 0)) {
@@ -724,7 +724,7 @@ async function NEWmenu() {
                 });
             } else if (content.endsWith("/anim2")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The anim2 command must include an anim.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The anim2 command must include an anim.\n" +
                     " \n" +
                     "Available anims:\n" +
                     "angry1, angry2, blink, blush1, blush2, blush3, blush4,\n" +
@@ -733,7 +733,7 @@ async function NEWmenu() {
                     "gaginflate, giggle, glare, grin, happy, iced, kiss1, kiss2,\n" +
                     "kiss3, laugh, lick, lipbite, narroweyes, neutral, openeyes,\n" +
                     "openmouth, pout, raisebrows, resetbrows, sad, smile,\n" +
-                    "smirk, spanked, wink, worried."
+                    "smirk, spanked, wink, worried.</p>"
                 );
             }
         } else if (content.indexOf("/asylum") == 0) {
@@ -851,11 +851,13 @@ async function NEWmenu() {
                     MemberNumber: Player.MemberNumber,
                     Action: "CanBeginWedding" && "Accept"
                 });
-                ChatRoomSendLocal("Quick-AccessMenu2: Accomplished. Break-up is done via Club Management.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: Accomplished. Break-up is done via Club Management.</p>"
+		);
             } else {
                 ChatRoomSendLocal(
-                    "<b>Warning</b>: Uncomfirmed glitch might occur when removing self as lover, during which a random/real lover will be taken\n" +
-                    "Use with risk in mind. Confirm by typing: <b>/becomeownlover yes</b>"
+                    "<p style='background-color:#50E992'><b>Warning</b>: Uncomfirmed glitch might occur when removing self as lover, during which a random/real lover will be taken\n" +
+                    "Use with risk in mind. Confirm by typing: <b>/becomeownlover yes</b></p>"
                 );
             }
         }
@@ -873,7 +875,9 @@ async function NEWmenu() {
                 MemberNumber: Player.MemberNumber,
                 Action: "CanEndTrial" && "Accept"
             });
-            ChatRoomSendLocal("Quick-AccessMenu2: Accomplished. Break-up is done via Club Management.");
+            ChatRoomSendLocal(
+                "<p style='background-color:#50E992'>Quick-AccessMenu2: Accomplished. Break-up is done via Club Management.</p>"
+	    );
         }
         //can't end free from owner, due to club's extreme mode preventing yet not allowing owner to break. Stupid...
         else if (content.indexOf("/bg1") == 0) {
@@ -1230,11 +1234,15 @@ async function NEWmenu() {
                 Tag: [BackgroundsTagIndoor]
             });
             ChatCreateBackgroundList = BackgroundsGenerateList(BackgroundsTagList);
-            ChatRoomSendLocal("Quick-AccessMenu2: You can use more backgrounds now.");
+            ChatRoomSendLocal(
+	        "<p style='background-color:#50E992'>Quick-AccessMenu2: You can use more backgrounds now.</p>"
+	    );
         } else if (content.indexOf("/boost") == 0) {
             LogAdd("ModifierLevel", "SkillModifier", 105);
             LogAdd("ModifierDuration", "SkillModifier", CurrentTime + 3600000);
-            ChatRoomSendLocal("Quick-AccessMenu2: You feel your senses heightened(bondage/evasion). Can see change in information panel.");
+            ChatRoomSendLocal(
+	        "<p style='background-color:#50E992'>Quick-AccessMenu2: You feel your senses heightened(bondage/evasion). Can see change in information panel.</p>"
+	    );
         } else if (content.indexOf("/chess") == 0) {
             CollegeChessGameEndALT = function() {
                 document.removeEventListener("chessOnMove", CollegeChessGameProgress);
@@ -1340,7 +1348,9 @@ async function NEWmenu() {
         } else if (content.indexOf("/colorchanger") == 0) {
 
             if (content.includes("custom") || content.includes("set") || content.includes("select")) {
-                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.</p>"
+		);
                 setTimeout(function() {
                     if (CurrentCharacter.FocusGroup.Name) {
                         var RandomColor = null;
@@ -1427,7 +1437,9 @@ async function NEWmenu() {
                     }
                 }, 5000);
             } else if (content.includes("eyes")) {
-                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.</p>"
+		);
                 setTimeout(function() {
                     if (CurrentCharacter) {
                         var ColorTargetNameEyes = CurrentCharacter;
@@ -1454,7 +1466,9 @@ async function NEWmenu() {
                     }
                 }, 5000);
             } else if (content.includes("hair")) {
-                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.</p>"
+		);
                 setTimeout(function() {
                     if (CurrentCharacter) {
                         var ColorTargetNameHair = CurrentCharacter;
@@ -1497,12 +1511,12 @@ async function NEWmenu() {
                 this.ColorTargetNameCustom = undefined;
             } else if (content.endsWith("/colorchanger")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The colorchanger command:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The colorchanger command:\n" +
                     "To preselect, two choices exist, type: <b>/colorchanger hair</b> or <b>/colorchanger eyes</b>\n" +
                     "To manually select area, type: <b>/colorchanger set</b> or <b>/colorchanger select</b> or <b>/colorchanger custom</b>\n" +
                     "Manual selection can only target 10 areas at a time,\n" +
                     "then requires to be reset to reuse, type: <b>/colorchanger stop</b> or <b>/colorchanger reset</b>\n" +
-                    "Only 1 target can be active at a time"
+                    "Only 1 target can be active at a time</p>"
                 );
             }
         } else if (content.indexOf("/cum") == 0) {
@@ -1586,13 +1600,17 @@ async function NEWmenu() {
                 var stringSet2 = stringSet1.split(/[ ,]+/);
                 var setchange = stringSet2[2];
                 diaperDefaultValues.desperationLevel = setchange;
-                ChatRoomSendLocal("Quick-AccessMenu2: Your desperation level has been changed.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: Your desperation level has been changed.</p>"
+		);
             } else if (content.includes("setmesschance")) {
                 var stringSet1 = content;
                 var stringSet2 = stringSet1.split(/[ ,]+/);
                 var setchange = stringSet2[2];
                 diaperDefaultValues.messChance = setchange;
-                ChatRoomSendLocal("Quick-AccessMenu2: Your chance to mess diapers has been changed.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: Your chance to mess diapers has been changed.</p>"
+		);
             } else if (content.includes("setmess1")) {
                 if (InventoryGet(Player, "Panties") != null) {
                     if (InventoryGet(Player, "Panties").Asset.Name == "BulkyDiaper" || InventoryGet(Player, "Panties").Asset.Name === "PoofyDiaper") {
@@ -1601,7 +1619,9 @@ async function NEWmenu() {
                         var setchange = stringSet2[2];
                         if (setchange < diaperDefaultValues.wetLevelInner) {
                             diaperDefaultValues.messLevelInner = setchange;
-                            ChatRoomSendLocal("Quick-AccessMenu2: Your mess level for normal diapers has been changed.");
+                            ChatRoomSendLocal(
+			        "<p style='background-color:#50E992'>Quick-AccessMenu2: Your mess level for normal diapers has been changed.</p>"
+			    );
                         }
                     }
                 }
@@ -1613,7 +1633,9 @@ async function NEWmenu() {
                         var setchange = stringSet2[2];
                         if (setchange < diaperDefaultValues.wetLevelOuter) {
                             diaperDefaultValues.messLevelOuter = setchange;
-                            ChatRoomSendLocal("Quick-AccessMenu2: Your mess level for chastity diapers has been changed.");
+                            ChatRoomSendLocal(
+			        "<p style='background-color:#50E992'>Quick-AccessMenu2: Your mess level for chastity diapers has been changed.</p>"
+			    );
                         }
                     }
                 }
@@ -1622,19 +1644,25 @@ async function NEWmenu() {
                 var stringSet2 = stringSet1.split(/[ ,]+/);
                 var setchange = stringSet2[2];
                 diaperDefaultValues.regressionLevel = setchange;
-                ChatRoomSendLocal("Quick-AccessMenu2: Your regression level has been changed.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: Your regression level has been changed.</p>"
+		);
             } else if (content.includes("settimer")) {
                 var stringSet1 = content;
                 var stringSet2 = stringSet1.split(/[ ,]+/);
                 var setchange = stringSet2[2];
                 diaperDefaultValues.baseTimer = setchange;
-                ChatRoomSendLocal("Quick-AccessMenu2: Your wet/mess timer has been changed.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: Your wet/mess timer has been changed.</p>"
+		);
             } else if (content.includes("setwetchance")) {
                 var stringSet1 = content;
                 var stringSet2 = stringSet1.split(/[ ,]+/);
                 var setchange = stringSet2[2];
                 diaperDefaultValues.wetChance = setchange;
-                ChatRoomSendLocal("Quick-AccessMenu2: Your chance to wet diapers has been changed.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: Your chance to wet diapers has been changed.</p>"
+		);
             } else if (content.includes("setwet1")) {
                 if (InventoryGet(Player, "Panties") != null) {
                     if (InventoryGet(Player, "Panties").Asset.Name == "BulkyDiaper" || InventoryGet(Player, "Panties").Asset.Name === "PoofyDiaper") {
@@ -1643,7 +1671,9 @@ async function NEWmenu() {
                         var setchange = stringSet2[2];
                         if (setchange > diaperDefaultValues.messLevelInner) {
                             diaperDefaultValues.wetLevelInner = setchange;
-                            ChatRoomSendLocal("Quick-AccessMenu2: Your wet level for normal diapers has been changed.");
+                            ChatRoomSendLocal(
+			        "<p style='background-color:#50E992'>Quick-AccessMenu2: Your wet level for normal diapers has been changed.</p>"
+			    );
                         }
                     }
                 }
@@ -1655,7 +1685,9 @@ async function NEWmenu() {
                         var setchange = stringSet2[2];
                         if (setchange > diaperDefaultValues.messLevelOuter) {
                             diaperDefaultValues.wetLevelOuter = setchange;
-                            ChatRoomSendLocal("Quick-AccessMenu2: Your wet level for chastity diapers has been changed.");
+                            ChatRoomSendLocal(
+			        "<p style='background-color:#50E992'>Quick-AccessMenu2: Your wet level for chastity diapers has been changed.</p>"
+			    );
                         }
                     }
                 }
@@ -1667,7 +1699,7 @@ async function NEWmenu() {
                 diaperTick();
             } else if (content.endsWith("/diaper")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The diaper command must include an action.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The diaper command must include an action.\n" +
                     "You need to wear one or two layers of diapers (only bulky and poofy versions)\n" +
                     "<b>/diaper start</b> to enable the script\n" +
                     "<b>/diaper stop</b> to disable the script\n" +
@@ -1679,11 +1711,11 @@ async function NEWmenu() {
                     "<b>/diaper change3</b> (target) for both diapers\n" +
                     " \n" +
                     "Customisation (before using /diaper start):\n" +
-                    "Use <b>/diaper custom</b> for detailed info"
+                    "Use <b>/diaper custom</b> for detailed info</p>"
                 );
             } else if (content.includes("custom")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Diaper customisation (before using /diaper start):\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Diaper customisation (before using /diaper start):\n" +
                     "<b>/diaper setdesperation</b> (value between 0 and 3) for desperation level, normally controlled by having a milk bottle used on you\n" +
                     "<b>/diaper setregression</b> (value between 0 and 3) for regression level, normally controlled by wearing Nursery Milk for an extended period of time\n" +
                     "<b>/diaper settimer</b> (minutes) to change the wet/mess timer\n" +
@@ -1693,7 +1725,7 @@ async function NEWmenu() {
                     "<b>/diaper setwet2</b> (value)* for wet level of chastity diapers\n" +
                     "<b>/diaper setmess1</b> (value)* for mess level of normal diapers\n" +
                     "<b>/diaper setmess2</b> (value)* for mess level of chastity diapers\n" +
-                    "* = value between 0 and 2"
+                    "* = value between 0 and 2</p>
                 );
             }
         } else if (content.indexOf("/difficulty") == 0) {
@@ -1717,13 +1749,13 @@ async function NEWmenu() {
         } else if (content.indexOf("/font") == 0) {
             if (content.endsWith("/font")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The font command must be followed by a font number and optionally a size number.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The font command must be followed by a font number and optionally a size number.\n" +
                     "The effect will be visible in the chat after an automatic relog.\n" +
                     "Supported fonts: 0 Arial - 1 Times New Roman\n" +
                     "2 Papyrus - 3 Comic Sans - 4 Impact\n" +
                     "5 Helvetica Neue - 6 Verdana - 7 Century Gothic\n" +
                     "8 Georgia - 9 Courrier New - 10 Copperplate\n" +
-                    "Sizes: 0 Small - 1 Medium - 2 Large"
+                    "Sizes: 0 Small - 1 Medium - 2 Large</p>"
                 );
             } else {
                 var stringFont1 = content;
@@ -1772,16 +1804,20 @@ async function NEWmenu() {
                 GagTalkOff = true;
                 gagSpeak();
                 window.SpeechGarble = NewSpeechGarble;
-                ChatRoomSendLocal("Quick-AccessMenu2: Gag Talk is decoded.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: Gag Talk is decoded.</p>"
+		);
             } else {
                 GagTalkOff = false;
                 window.SpeechGarble = OldSpeechGarble;
-                ChatRoomSendLocal("Quick-AccessMenu2: Gag Talk is not decoded.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: Gag Talk is not decoded.</p>"
+		);
             }
 	} else if (content.indexOf("/gagtalk") == 0) {          
             if (content.endsWith("/gagtalk")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The gagtalk command must be followed by a number between 1 and 8, then your message.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The gagtalk command must be followed by a number between 1 and 8, then your message.\n" +
                     " \n" +
                     "Available talk modes:\n" +                 
                     "1 very light gag talk\n" +
@@ -1792,7 +1828,7 @@ async function NEWmenu() {
                     "6 heavy gag talk\n" +
                     "7 very heavy gag talk\n" +
                     "8 total gag talk\n" +
-		    "9 real gag talk"
+		    "9 real gag talk</p>"
                 );
             } else {
                 var stringGag1 = content;
@@ -1835,12 +1871,12 @@ async function NEWmenu() {
         } else if (content.indexOf("/game") == 0) {
             if (content.endsWith("/game")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The game command must include a minigame.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The game command must include a minigame.\n" +
                     "Available minigames:\n" +
                     "carrot, cleaning, dojo, drinks, hurdle, kidnap, puppy,\n" +
                     "rhythm, training, whippony.\n" +
                     "Training is the trainer version of the hurdle game.\n" +
-                    "You need to click on the maid in the Maid Quarters for the cleaning, drinks and rhythm games."
+                    "You need to click on the maid in the Maid Quarters for the cleaning, drinks and rhythm games.</p>"
                 );
             } else {
                 ServerSend("ChatRoomLeave", "");
@@ -1913,20 +1949,22 @@ async function NEWmenu() {
             AsylumGGTSLock(minutes, TextGet("GGTSIntro"));
             AsylumGGTSStartLevel(level);
         } else if (content.indexOf("/giveeverything") == 0) {
-            ChatRoomSendLocal("Quick-AccessMenu2: Every item in the game now added.");
+            ChatRoomSendLocal(
+	        "<p style='background-color:#50E992'>Quick-AccessMenu2: Every item in the game now added.</p>"
+	    );
             AssetFemale3DCG.forEach(group => group.Asset.forEach(item => InventoryAdd(Player, item.Name, group.Group)));
             ServerPlayerInventorySync();
 	} else if (content.indexOf("/hear") == 0) {
              if (content.endsWith("/hear")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The hear command must be followed by a number between 0 and 4.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The hear command must be followed by a number between 0 and 4.\n" +
                     " \n" +
                     "Available hearing modes:\n" +
                     "0 normal hearing\n" +
                     "1 light deafness\n" +
                     "2 normal deafness\n" +
                     "3 heavy deafness\n" +
-                    "4 total deafness"
+                    "4 total deafness</p>"
                  );
              } else {
                  var dl = content.substring(5).trim();
@@ -1934,37 +1972,49 @@ async function NEWmenu() {
                          GetDeafLevel0();
                          Player.GetDeafLevel = GetDeafLevel0;
                          Player.GetDeafLevel();
-		         ChatRoomSendLocal("Quick-AccessMenu2: Back to normal hearing mode.");
+		         ChatRoomSendLocal(
+			     "<p style='background-color:#50E992'>Quick-AccessMenu2: Back to normal hearing mode.</p>"
+			 );
                      } 
                      if (dl == 1) { 
 		         GetDeafLevel1();
                          Player.GetDeafLevel = GetDeafLevel1;
                          Player.GetDeafLevel();
-                         ChatRoomSendLocal("Quick-AccessMenu2: You are now in light deafness mode.");
+                         ChatRoomSendLocal(
+			     "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in light deafness mode.</p>"
+			 );
                      } 
                     if (dl == 2) { 
 		        GetDeafLevel2(); 
                         Player.GetDeafLevel = GetDeafLevel2;
                         Player.GetDeafLevel();
-                        ChatRoomSendLocal("Quick-AccessMenu2: You are now in normal deafness mode.");
+                        ChatRoomSendLocal(
+			    "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in normal deafness mode.</p>"
+			);
                      } 
                    if (dl == 3) { 
 			GetDeafLevel3(); 
                         Player.GetDeafLevel = GetDeafLevel3;
                         Player.GetDeafLevel();
-                        ChatRoomSendLocal("Quick-AccessMenu2: You are now in heavy deafness mode.");
+                        ChatRoomSendLocal(
+			    "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in heavy deafness mode.</p>"
+			);
                      } 
                   if (dl == 4) { 
 		       GetDeafLevel4();
                        Player.GetDeafLevel = GetDeafLevel4;
                        Player.GetDeafLevel();
-                       ChatRoomSendLocal("Quick-AccessMenu2: You are now in total deafness mode.");
+                       ChatRoomSendLocal(
+	                   "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in total deafness mode.</p>"
+		       );
                      } 
               }	
         } else if (content.indexOf("/hiddenmessages") == 0) {
             if (this.HiddenMessagesOn == undefined || this.HiddenMessagesOn == false) {
                 HiddenMessagesOn = true;
-                ChatRoomSendLocal("Quick-AccessMenu2: Hidden messages revealed.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: Hidden messages revealed.</p>"
+		);
                 (typeof oldChatRoomMessage !== 'undefined') && (ChatRoomMessage = oldChatRoomMessage); //reset
                 newChatRoomMessage = function(data) {
                     if (data.Type == "Hidden") {
@@ -1980,7 +2030,9 @@ async function NEWmenu() {
                 window.ChatRoomMessage = newChatRoomMessage;
             } else {
                 HiddenMessagesOn = false;
-                ChatRoomSendLocal("Quick-AccessMenu2: Hidden messages hidden.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: Hidden messages hidden.</p>"
+		);
                 (typeof oldChatRoomMessage !== 'undefined') && (ChatRoomMessage = oldChatRoomMessage); //reset
                 newChatRoomMessage = function(data) {}
             }
@@ -2018,15 +2070,21 @@ async function NEWmenu() {
                     DeviousOn = true;
                     ArcadeDeviousChallenge = true;
                     LogAdd("DeviousChallenge", "Arcade", 1, true);
-                    ChatRoomSendLocal("Quick-AccessMenu2: DeviousChallenge enabled");
+                    ChatRoomSendLocal(
+		        "<p style='background-color:#50E992'>Quick-AccessMenu2: DeviousChallenge enabled</p>"
+		    );
                 } else {
                     DeviousOn = false;
                     ArcadeDeviousChallenge = false;
                     LogDelete("DeviousChallenge", "Arcade", true);
-                    ChatRoomSendLocal("Quick-AccessMenu2: DeviousChallenge disabled");
+                    ChatRoomSendLocal(
+		        "<p style='background-color:#50E992'>Quick-AccessMenu2: DeviousChallenge disabled</p>"
+		    );
                 }
             } else if (content.includes("cheat")) {
-                ChatRoomSendLocal("Quick-AccessMenu2: If cheats aren't loaded first time, quit and restart.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: If cheats aren't loaded first time, quit and restart.</p>"
+		);
                 ArcadeRun();
                 ArcadeKinkyDungeonStart(ReputationChange("Gaming"));
                 document.getElementById("InputChat").style.display = "none";
@@ -3110,11 +3168,13 @@ async function NEWmenu() {
             CheatAllow = true;
             LogAdd("BondageCollege", "Import");
             LogAdd("KidnapSophie", "Sarah");
-            ChatRoomSendLocal("Quick-AccessMenu2: A few things have to be set manually. See the /roleplay and /rolequit commands.");
+            ChatRoomSendLocal(
+	        "<p style='background-color:#50E992'>Quick-AccessMenu2: A few things have to be set manually. See the /roleplay and /rolequit commands.</p>"
+	    );
         } else if (content.indexOf("/moaner") == 0) {
             if (content.endsWith("/moaner")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: Several actions are possible with the moaner command:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Several actions are possible with the moaner command:\n" +
                     "<b>/moaner on</b> = starts the moaner\n" +
                     "<b>/moaner off</b> = stops the moaner\n" +
                     "<b>/moaner profile</b> (profilename) =  selects a moaner profile. Without profilename, access to moaner profile help\n" +
@@ -3125,7 +3185,7 @@ async function NEWmenu() {
                     "<b>/moaner orgasm</b> (on/off): moans when you cum\n" +
                     "<b>/moaner spank</b> (on/off): moans when you are spanked\n" +
                     "<b>/moaner talk</b> (on/off): moans when talking if vibed\n" +
-                    "<b>/moaner vibe</b> (on/off): moans when vibes settings changed"
+                    "<b>/moaner vibe</b> (on/off): moans when vibes settings changed</p>"
                 );
             } else {
                 var stringMoan1 = content;
@@ -3232,14 +3292,19 @@ async function NEWmenu() {
 	} else if (content.indexOf("/npcpunish") == 0) {
             if (Player.RestrictionSettings.BypassNPCPunishments == true) {
                 Player.RestrictionSettings.BypassNPCPunishments = false;
-                ChatRoomSendLocal("Quick-AccessMenu2: NPC punishments enabled.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: NPC punishments enabled.</p>"
+		);
             } else {
                 Player.RestrictionSettings.BypassNPCPunishments = true;
-                ChatRoomSendLocal("Quick-AccessMenu2: NPC punishments disabled.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: NPC punishments disabled.</p>");
             }	
        } else if (content.indexOf("/outfit") == 0) {
             if (content.includes("load1")) {
-                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.</p>"
+		);
                 setTimeout(function() {
                     CurrentCharacter.Appearance = this.savedoutfit1.slice(0);
                     CharacterRefresh(CurrentCharacter);
@@ -3247,7 +3312,9 @@ async function NEWmenu() {
                     DialogLeave();
                 }, 5000);
             } else if (content.includes("load2")) {
-                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.</p>"
+		);
                 setTimeout(function() {
                     CurrentCharacter.Appearance = savedoutfit2.slice(0);
                     CharacterRefresh(CurrentCharacter);
@@ -3255,7 +3322,9 @@ async function NEWmenu() {
                     DialogLeave();
                 }, 5000);
             } else if (content.includes("load3")) {
-                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.</p>"
+		);
                 setTimeout(function() {
                     CurrentCharacter.Appearance = savedoutfit3.slice(0);
                     CharacterRefresh(CurrentCharacter);
@@ -3268,25 +3337,33 @@ async function NEWmenu() {
                 CharacterRefresh(Player);
                 ChatRoomCharacterUpdate(Player);
             } else if (content.includes("save1")) {
-                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.</p>"
+		);
                 setTimeout(function() {
                     this.savedoutfit1 = CurrentCharacter.Appearance.slice(0);
                     DialogLeave();
                 }, 5000);
             } else if (content.includes("save2")) {
-                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.</p>"
+		);
                 setTimeout(function() {
                     this.savedoutfit2 = CurrentCharacter.Appearance.slice(0);
                     DialogLeave();
                 }, 5000);
             } else if (content.includes("save3")) {
-                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.</p>"
+		);
                 setTimeout(function() {
                     this.savedoutfit3 = CurrentCharacter.Appearance.slice(0);
                     DialogLeave();
                 }, 5000);
             } else if (content.includes("awsave")) {
-                ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.</p>"
+		);
                 setTimeout(function() {
                     var appall = new Array();
                     CurrentCharacter.Appearance.forEach(item=>{
@@ -3307,7 +3384,9 @@ async function NEWmenu() {
             } else if (content.includes("awload")) {
                 appinp = prompt('Please input the awcode (Compatible with BCG).', '');
                 if (appinp) {
-                    ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.");
+                    ChatRoomSendLocal(
+		        "<p style='background-color:#50E992'>Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.</p>"
+		    );
                     setTimeout(function() {
                         CharacterNaked(CurrentCharacter);
                         CharacterReleaseTotal(CurrentCharacter);
@@ -3322,7 +3401,7 @@ async function NEWmenu() {
                 }
             } else if (content.endsWith("/outfit")) {
                 ChatRoomSendLocal(
-	            "<b>Quick-AccessMenu2</b>: Options for outfit command:\n" + 
+	            "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Options for outfit command:\n" + 
 	            "To restore your outfit to what it was before entering room, type: <b>/outfit reset</b> or <b>/outfit restore</b> or <b>/outfit revert</b>\n" + 
 	            "Three outfits can be saved by using <b>/outfit save1</b> or <b>/outfit save2</b> or <b>/outfit save3</b>\n" + 
 	            "To load saved outfits, type: <b>/outfit load1</b> or <b>/outfit load2</b> or <b>/outfit load3</b>\n" + 
@@ -3330,7 +3409,7 @@ async function NEWmenu() {
 	            "These saves last only 1 login session.\n" + 
 	            "To save outfits between sessions, use <b>/outfit awsave</b>\n" +    
 	            "You will have the outfit saved as a code. You can copy and paste it elsewhere.\n" + 
-	            "Then you can use <b>/outfit awload</b> to load it later."
+	            "Then you can use <b>/outfit awload</b> to load it later.</p>"
 		);
             }
        } else if (content.indexOf("/patreoncheats") == 0) {  
@@ -3351,14 +3430,14 @@ async function NEWmenu() {
 	} else if (content.indexOf("/permission") == 0) {
             if (content.endsWith("/permission")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The permission command must be followed by a number.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The permission command must be followed by a number.\n" +
                     "The effect will be visible in your profile.\n" +
                     "0 Everyone, no exceptions\n" +
                     "1 Everyone, except blacklist\n" +
                     "2 Owner, Lover, whitelist & Dominants\n" +
                     "3 Owner, Lover and whitelist only\n" +
                     "4 Owner and Lover only\n" +
-                    "5 Owner only"
+                    "5 Owner only</p>"
                 );
             } else {
                  var perm = content.substring(11).trim() * 1;
@@ -3413,7 +3492,7 @@ async function NEWmenu() {
         } else if (content.indexOf("/pose2") == 0) {
             if (content.endsWith("/pose2")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The pose2 command must be followed by a pose and optionally a target.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The pose2 command must be followed by a pose and optionally a target.\n" +
                     " \n" +
                     "Available poses:\n" +
                     "armsfree, belly, boxtied, cuffed, elbowtied, exercise,\n" +
@@ -3422,7 +3501,7 @@ async function NEWmenu() {
                     "spreadeagle2, spreadlegs, stand, suspension,\n" +
                     "tapedhands. Only on yourself: jump, roof.\n" +
                     "Use <b>/pose2 reset</b> (target) to back to neutral pose.\n" + 
-		    "If BCE is enabled, use <b>/pose baseupper</b> only on yourself when /pose2 reset fails."
+		    "If BCE is enabled, use <b>/pose baseupper</b> only on yourself when /pose2 reset fails.</p>"
                 );
             } else {
                 var stringPose1 = content;
@@ -4219,14 +4298,14 @@ async function NEWmenu() {
         } else if (content.indexOf("/reputation") == 0) {
             if (content.endsWith("/reputation")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The reputation command must be followed by a reputation and a level.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The reputation command must be followed by a reputation and a level.\n" +
                     "You will be able to check the change in your profile.\n" +
                     " \n" +
                     "Available reputations:\n" +
                     "abdl, amplector, corporis, dominant, gambling,\n" +
                     "gaming, kidnap, larp, maid, maiestas, nurse,\n" +
                     "patient, submissive, vincula.\n" +
-                    "Level must be between 0 and 100."
+                    "Level must be between 0 and 100.</p>"
                 );
             } else {
                 var stringReputation1 = content;
@@ -4282,17 +4361,25 @@ async function NEWmenu() {
         } else if (content.indexOf("/resetdifficulty") == 0) {
             if (content.includes("yes")) {
                 Player.Difficulty = [];
-                ChatRoomSendLocal("Quick-AccessMenu2: Difficulty reset, select a new one in settings.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: Difficulty reset, select a new one in settings.</p>"
+		);
             } else {
-                ChatRoomSendLocal("<b>Warning</b>: Resetting difficulty will incur a 7-day waiting period to rechange. Confirm by typing: <b>/resetdifficulty yes</b>");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'><b>Warning</b>: Resetting difficulty will incur a 7-day waiting period to rechange. Confirm by typing: <b>/resetdifficulty yes</b></p>"
+		);
             }
         } else if (content.indexOf("/resetinventory") == 0) {
             if (content.includes("yes")) {
                 Player.Inventory = [];
                 ServerPlayerInventorySync();
-                ChatRoomSendLocal("Quick-AccessMenu2: Accomplished. Visit store to buy new clothes and items..");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: Accomplished. Visit store to buy new clothes and items..</p>"
+		);
             } else {
-                ChatRoomSendLocal("<b>Warning</b>: You will lose many clothes and items, you will need to buy them again. Confirm by typing: <b>/resetinventory yes</b>");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'><b>Warning</b>: You will lose many clothes and items, you will need to buy them again. Confirm by typing: <b>/resetinventory yes</b></p>"
+		);
             }
         } else if (content.indexOf("/restrain") == 0) {
             var targetname = content.substring(9).trim();
@@ -4406,7 +4493,7 @@ async function NEWmenu() {
                 DialogSetReputation("HouseMaiestas", 50);
             } else if (content.endsWith("/roleplay")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The roleplay command must include a role.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The roleplay command must include a role.\n" +
                     "You will be able to check the changes in your profile.\n" +
                     " \n" +
                     "Available roles:\n" +
@@ -4414,7 +4501,7 @@ async function NEWmenu() {
                     "headmaid, kidnapper, maid, magician, magus,\n" +
                     "masterkidnapper, mistress, nurse, oracle, patient,\n" +
                     "permanentpatient, sage, sorcerer, warlock, witch, wizard.\n" +
-                    "Be careful with clubslave, you will be forced to complete contract. Similar warning for escapedpatient."
+                    "Be careful with clubslave, you will be forced to complete contract. Similar warning for escapedpatient.</p>"
                 );
             }
         } else if (content.indexOf("/rolequit") == 0) {
@@ -4452,7 +4539,7 @@ async function NEWmenu() {
                 LogDelete("LeadSorority", "Maid");
             } else if (content.endsWith("/rolequit")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The rolequit command must include a role or clubarea.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The rolequit command must include a role or clubarea.\n" +
                     "You will be able to check the changes in your profile.\n" +
                     " \n" +
                     "Available roles or areas:\n" +
@@ -4462,7 +4549,7 @@ async function NEWmenu() {
                     "kidnapper to cease being kidnapper or master kidnapper.\n" +
                     "magician to cease one of the 8 magic roles.\n" +
                     "management or mistress to cease being mistress or club mistress.\n" +
-                    "sorority or maid to cease being maid or headmaid."
+                    "sorority or maid to cease being maid or headmaid.</p>"
                 );
             }
         } else if (content.indexOf("/s1") == 0) {  
@@ -4570,7 +4657,9 @@ async function NEWmenu() {
 		 document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
              }                     
         } else if (content.indexOf("/safewordspecific") == 0) {
-            ChatRoomSendLocal("Quick-AccessMenu2: You have 5 seconds to click  on target, select area. If successful, will be returned. If not, retry.");
+            ChatRoomSendLocal(
+	        "<p style='background-color:#50E992'>Quick-AccessMenu2: You have 5 seconds to click  on target, select area. If successful, will be returned. If not, retry.</p>"
+	    );
             setTimeout(function() {
                 if (CurrentCharacter !== Player) {
                     ServerSend("ChatRoomChat", {
@@ -4589,7 +4678,9 @@ async function NEWmenu() {
             ServerAccountUpdate.QueueData({
                 Nickname: NewName
             });
-            ChatRoomSendLocal("Quick-AccessMenu2: Your temporary nickname has now a definitive status.");
+            ChatRoomSendLocal(
+	        "<p style='background-color:#50E992'>Quick-AccessMenu2: Your temporary nickname has now a definitive status.</p>"
+	    );
         } else if (content.indexOf("/search") == 0) {
             if (content.includes("Asylum") || content.includes("asylum")) {
                 setTimeout(function() {
@@ -4625,7 +4716,7 @@ async function NEWmenu() {
 	} else if (content.indexOf("/see") == 0) {
             if (content.endsWith("/see")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The see command must be followed by a vision mode number and optionally a blur level number.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The see command must be followed by a vision mode number and optionally a blur level number.\n" +
                     " \n" +
                     "Available vision modes:\n" +
                     "0 normal vision\n" +
@@ -4638,7 +4729,7 @@ async function NEWmenu() {
                     "1 light blur effect\n" +
                     "2 normal blur effect\n" +
                     "3 heavy blur effect\n" +
-                    "4 total blur effect"
+                    "4 total blur effect</p>"
                 );
             } else {
                 var stringVision1 = content;
@@ -4649,67 +4740,85 @@ async function NEWmenu() {
                         GetBlindLevel0();
                         Player.GetBlindLevel = GetBlindLevel0;
                         Player.GetBlindLevel();
-		        ChatRoomSendLocal("Quick-AccessMenu2: Back to normal vision mode.");
+		        ChatRoomSendLocal(
+			    "<p style='background-color:#50E992'>Quick-AccessMenu2: Back to normal vision mode.</p>"
+			);
                     } 
                     if (bl == 1) { 
 		        GetBlindLevel1();
                         Player.GetBlindLevel = GetBlindLevel1;
                         Player.GetBlindLevel();
-                        ChatRoomSendLocal("Quick-AccessMenu2: You are now in light blindness mode.");
+                        ChatRoomSendLocal(
+			    "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in light blindness mode.</p>"
+			);
                     } 
                     if (bl == 2) { 
 		        GetBlindLevel2(); 
                         Player.GetBlindLevel = GetBlindLevel2;
                         Player.GetBlindLevel();
-                        ChatRoomSendLocal("Quick-AccessMenu2: You are now in normal blindness mode.");
+                        ChatRoomSendLocal(
+			    "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in normal blindness mode.</p>"
+			);
                     } 
                     if (bl == 3) { 
 			GetBlindLevel3(); 
                         Player.GetBlindLevel = GetBlindLevel3;
                         Player.GetBlindLevel();
-                        ChatRoomSendLocal("Quick-AccessMenu2: You are now in heavy blindness mode.");
+                        ChatRoomSendLocal(
+			    "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in heavy blindness mode.</p>"
+			);
                     } 
 		    if (br == 0) { 
                          GetBlurLevel0();
                          Player.GetBlurLevel = GetBlurLevel0;
                          Player.GetBlurLevel();
-		         ChatRoomSendLocal("Quick-AccessMenu2: Back to vision without blur effect.");
+		         ChatRoomSendLocal(
+			     "<p style='background-color:#50E992'>Quick-AccessMenu2: Back to vision without blur effect.</p>"
+			 );
                     } 
                     if (br == 1) { 
                          GetBlurLevel1();
                          Player.GetBlurLevel = GetBlurLevel1;
                          Player.GetBlurLevel();
-		         ChatRoomSendLocal("Quick-AccessMenu2: A light blur effect is applied on your vision.");
+		         ChatRoomSendLocal(
+			     "<p style='background-color:#50E992'>Quick-AccessMenu2: A light blur effect is applied on your vision.</p>"
+			 );
                     } 
                     if (br == 2) { 
                          GetBlurLevel2();
                          Player.GetBlurLevel = GetBlurLevel2;
                          Player.GetBlurLevel();
-		         ChatRoomSendLocal("Quick-AccessMenu2: A normal blur effect is applied on your vision.");
+		         ChatRoomSendLocal(
+			     "<p style='background-color:#50E992'>Quick-AccessMenu2: A normal blur effect is applied on your vision.</p>"
+			 );
                     } 
                     if (br == 3) { 
                          GetBlurLevel3();
                          Player.GetBlurLevel = GetBlurLevel3;
                          Player.GetBlurLevel();
-		         ChatRoomSendLocal("Quick-AccessMenu2: A heavy blur effect is applied on your vision.");
+		         ChatRoomSendLocal(
+			     "<p style='background-color:#50E992'>Quick-AccessMenu2: A heavy blur effect is applied on your vision.</p>"
+			 );
                     } 
                     if (br == 4) { 
                          GetBlurLevel4();
                          Player.GetBlurLevel = GetBlurLevel4;
                          Player.GetBlurLevel();
-		         ChatRoomSendLocal("Quick-AccessMenu2: A total blur effect is applied on your vision.");
+		         ChatRoomSendLocal(
+			     "<p style='background-color:#50E992'>Quick-AccessMenu2: A total blur effect is applied on your vision.</p>"
+			 );
                     }      
               }		
         } else if (content.indexOf("/skill") == 0) {
             if (content.endsWith("/skill")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The skill command must be followed by a skill and a level.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The skill command must be followed by a skill and a level.\n" +
                     "You will be able to check the change in your profile.\n" +
                     " \n" +
                     "Available skills:\n" +
                     "bondage, dressage, evasion, infiltration,\n" +
                     "lockpicking, selfbondage, willpower.\n" +
-                    "Level must be between 0 and 10."
+                    "Level must be between 0 and 10.</p>"
                 );
             } else {
                 var stringSkill1 = content;
@@ -4779,7 +4888,8 @@ async function NEWmenu() {
         } else if (content.indexOf("/solidity") == 0) {
 	    if (content.endsWith("/solidity")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The solidity command must be followed by a number between 1 and 99."                 );
+                    "<b><p style='background-color:#50E992'>Quick-AccessMenu2</b>: The solidity command must be followed by a number between 1 and 99.</p>"
+		);
             } else {	
                 var solidity = content.substring(9).trim();
                     if (InventoryGet(Player, "ItemDevices") != null) {
@@ -4825,7 +4935,9 @@ async function NEWmenu() {
                 InventorySetDifficulty(Player, "ItemVulva", solidity);
                 InventorySetDifficulty(Player, "ItemVulvaPiercings", solidity);
                 ServerPlayerInventorySync();
-                ChatRoomSendLocal("Quick-AccessMenu2: The solidity of most current bindings has been changed.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: The solidity of most current bindings has been changed.</p>"
+		);
 	    }    
         } else if ((content.indexOf("/speak") == 0) || (content.indexOf("/mouth") == 0) || (content.indexOf("/speech") == 0)) {
             (typeof OLDtalking !== 'undefined') && (ChatRoomSendChat = OLDtalking); // reset
@@ -4854,45 +4966,55 @@ async function NEWmenu() {
 	} else if (content.indexOf("/stutter") == 0) {
              if (content.endsWith("/stutter")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The stutter command must be followed by a number between 0 and 4.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The stutter command must be followed by a number between 0 and 4.\n" +
                     " \n" +
                     "Available stuttering modes:\n" +
                     "0 no stuttering\n" +
                     "1 light stuttering\n" +
                     "2 normal stuttering\n" +
                     "3 heavy stuttering\n" +
-                    "4 total stuttering"
+                    "4 total stuttering</p>"
                 );
              } else {
                  var stlevel = content.substring(8).trim();
                  ElementValue("InputChat", ""); 
                      if (stlevel == 0) { 
-                         ChatRoomSendLocal("Quick-AccessMenu2: No more stuttering.");
+                         ChatRoomSendLocal(
+		             "<p style='background-color:#50E992'>Quick-AccessMenu2: No more stuttering.</p>"
+			 );
                          Stutter1On = false;
                          Stutter2On = false;
                          Stutter3On = false;
                          Stutter4On = false;
                          OLDmenu();
                      } if (stlevel == 1) { 
-                         ChatRoomSendLocal("Quick-AccessMenu2: You are now in light stuttering mode.");
+                         ChatRoomSendLocal(
+			     "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in light stuttering mode.</p>"
+			 );
                          Stutter1On = true;
                          Stutter2On = false;
                          Stutter3On = false;
                          Stutter4On = false;
                      } if (stlevel == 2) { 
-                         ChatRoomSendLocal("Quick-AccessMenu2: You are now in normal stuttering mode.");
+                         ChatRoomSendLocal(
+			     "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in normal stuttering mode.</p>"
+			 );
                          Stutter1On = false;
                          Stutter2On = true;
                          Stutter3On = false;
                          Stutter4On = false;
                       } if (stlevel == 3) { 
-                         ChatRoomSendLocal("Quick-AccessMenu2: You are now in heavy stuttering mode.");
+                         ChatRoomSendLocal(
+			     "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in heavy stuttering mode.</p>"
+			 );
                          Stutter1On = false;
                          Stutter2On = false;
                          Stutter3On = true;
                          Stutter4On = false;
                       } if (stlevel == 4) { 
-                         ChatRoomSendLocal("Quick-AccessMenu2: You are now in total stuttering mode.");
+                         ChatRoomSendLocal(
+			     "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in total stuttering mode.</p>"
+			 );
                          Stutter1On = false;
                          Stutter2On = false;
                          Stutter3On = false;
@@ -4916,7 +5038,7 @@ async function NEWmenu() {
         } else if (content.indexOf("/talk") == 0) {
              if (content.endsWith("/talk")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The talk command must be followed by a number between -1 and 9.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The talk command must be followed by a number between -1 and 9.\n" +
                     " \n" +
                     "Available talk modes:\n" +
                     "-1 baby talk\n" +
@@ -4929,7 +5051,7 @@ async function NEWmenu() {
                     "6 heavy gag talk\n" +
                     "7 very heavy gag talk\n" +
                     "8 total gag talk\n" +
-	            "9 real baby/gag talk"
+	            "9 real baby/gag talk</p>"
                 );
              } else {
                  var gaglevel = content.substring(5).trim();
@@ -4972,7 +5094,9 @@ async function NEWmenu() {
                          }
                          if (bl == 1) { 
                              if (this.BabyTalkOn == false || this.BabyTalkOn == undefined) {  
-                                 ChatRoomSendLocal("Quick-AccessMenu2: You are now in real baby talk mode.");
+                                 ChatRoomSendLocal(
+				     "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in real baby talk mode.</p>"
+				 );
                                  GagTalkOn = false;                  
                                  BabyTalkOn = true;
                                  OLDmenu();
@@ -4984,21 +5108,29 @@ async function NEWmenu() {
                                  gl = SpeechGetTotalGagLevel(Player);
                                  if (gl == 0) {
                                      GagTalkOn = false;   
-                                     ChatRoomSendLocal("Quick-AccessMenu2: Back to normal talk mode.");
+                                     ChatRoomSendLocal(
+				         "<p style='background-color:#50E992'>Quick-AccessMenu2: Back to normal talk mode.</p>"
+				     );
                                      OLDmenu();
                                  } else {
                                      GagTalkOn = true; 
-                                     ChatRoomSendLocal("Quick-AccessMenu2: You are now in real gag talk mode.");
+                                     ChatRoomSendLocal(
+				         "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in real gag talk mode.</p>"
+				     );
                                  }
                              } else {
                                  GagTalkOn = false;   
                                  gl = SpeechGetTotalGagLevel(Player);
                                  if (gl == 0) {   
-                                     ChatRoomSendLocal("Quick-AccessMenu2: Back to normal talk mode.");
+                                     ChatRoomSendLocal(
+				         "<p style='background-color:#50E992'>Quick-AccessMenu2: Back to normal talk mode.</p>"
+				     );
                                      OLDmenu();
                                  } else {
                                      GagTalkOn = true; 
-                                     ChatRoomSendLocal("Quick-AccessMenu2: You are now in real gag talk mode.");
+                                     ChatRoomSendLocal(
+				         "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in real gag talk mode.</p>"
+				     );
                                  }                            
                              }                         
                          }
@@ -5032,7 +5164,7 @@ async function NEWmenu() {
         } else if (content.indexOf("/title") == 0) {
             if (content.endsWith("/title")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The title command must be followed by a title.\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The title command must be followed by a title.\n" +
                     "It will also change required parameters to get the title.\n" +
                     "You will be able to check the changes in your profile.\n" +
                     " \n" +
@@ -5048,7 +5180,7 @@ async function NEWmenu() {
                     "nawashi, nurse, operative, oracle, patient,\n" +
                     "patron, permanentpatient, puppy, sage, shiningunicorn,\n" +
                     "sorcerer, succubus, superspy, switch, warmbloodhorse,\n" +
-                    "warlock, wildmustang, witch, wizard."
+                    "warlock, wildmustang, witch, wizard.</p>"
                 );
             } else {
                 var title = content.substring(6).trim();
@@ -5521,13 +5653,13 @@ async function NEWmenu() {
                 });
                 Player.Inventory.forEach(item => item.Asset.Enable = true);
                 ChatRoomSendLocal(
-                    "Quick-AccessMenu2: Unrestricted softly. Can do most things you couldn't do before.\n" +
-                    "Store also includes hidden items. This can only be reset via a full relog."
+                    "<p style='background-color:#50E992'>Quick-AccessMenu2: Unrestricted softly. Can do most things you couldn't do before.\n" +
+                    "Store also includes hidden items. This can only be reset via a full relog.</p>"
                 );
             } else if (content.includes("total")) {
                 ChatRoomSendLocal(
-                    "Quick-AccessMenu2: Unrestricted totally. Can do most things you couldn't do before.\n" +
-                    "Store also includes hidden items. This can only be reset via a full relog."
+                    "<p style='background-color:#50E992'>Quick-AccessMenu2: Unrestricted totally. Can do most things you couldn't do before.\n" +
+                    "Store also includes hidden items. This can only be reset via a full relog.</p>"
                 );
                 Player.CanInteract = function() {
                     return true;
@@ -5581,13 +5713,15 @@ async function NEWmenu() {
             }
             if (content.endsWith("/unrestrict")) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: The unrestrict command:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The unrestrict command:\n" +
                     "For total, type <b>/unrestrict total</b>\n" +
                     "For submissives, type <b>/unrestrict soft</b>\n" +
-                    "To reset, type <b>/unrestrict reset</b>"
+                    "To reset, type <b>/unrestrict reset</b></p>"
                 );
             } else if (content.includes("reset")) {
-                ChatRoomSendLocal("Quick-AccessMenu2: Unrestrict reset.");
+                ChatRoomSendLocal(
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: Unrestrict reset.</p>"
+		);
                 Player.CanInteract = function() {
                     return (this.Effect.indexOf("Block") < 0)
                 }
@@ -6141,12 +6275,12 @@ ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
 	ChatRoomSendLocal(
-                    "Quick-AccessMenu2 - version 1.6.0: Ready, type <b>/help</b> for general menu.\n" +
+                    "<p style='background-color:#50E992'>Quick-AccessMenu2 - version 1.6.0: Ready, type <b>/help</b> for general menu.\n" +
 		    "Note: NPC punishments are disabled.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
 		    "Use <b>/clubhelp</b> to get the standard BC menu (+ BCE menu when enabled).\n" +
 		    "Visit also our <a href='https://github.com/tetris245/tetris245/wiki' target='_blank'>Wiki</a>\n" +
-                    "For any inquiries, join <a href='https://discord.gg/YukepB6RVp' target='_blank'>https://discord.gg/YukepB6RVp</a>"
+                    "For any inquiries, join <a href='https://discord.gg/YukepB6RVp' target='_blank'>https://discord.gg/YukepB6RVp</a></p>"
                 );   	    	  	    	    
         ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)
     }
@@ -6174,7 +6308,9 @@ function LoginDoLogin() { //rewrite login to variabilize credentials for later u
 
 function ServerDisconnect(data, close = false) { //rewrite disconnect to prevent relog screen
     if (!ServerIsConnected) return;
-    ChatRoomSendLocal("Disconnected! Reconnecting...");
+    ChatRoomSendLocal(
+        "<p style='background-color:#50E992'>Disconnected! Reconnecting..."</p>
+    );
     const ShouldRelog = Player.Name != "";
     AutoRelog();
     let msg = data;
