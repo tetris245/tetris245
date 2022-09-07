@@ -5059,14 +5059,18 @@ async function NEWmenu() {
                  ElementValue("InputChat", "");
                      if (gaglevel == -1) {            
                          if (this.BabyTalkOn == false || this.BabyTalkOn == undefined) {  
-                             ChatRoomSendLocal("Quick-AccessMenu2: You are now in baby talk mode.");
+                             ChatRoomSendLocal(
+			         "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in baby talk mode.</p>"
+			     );
                              GagTalkOn = false;                  
                              BabyTalkOn = true;
                              OLDmenu();
                          }
                      } 
                      if (gaglevel == 0) { 
-                         ChatRoomSendLocal("Quick-AccessMenu2: Back to normal talk mode.");
+                         ChatRoomSendLocal(
+			     "<p style='background-color:#50E992'>Quick-AccessMenu2: Back to normal talk mode.</p>"
+			 );
                          BabyTalkOn = false;
                          GagTalkOn = false;
                          OLDmenu();
@@ -5081,7 +5085,9 @@ async function NEWmenu() {
                              gl = gaglevel;                  
                              GagTalkOn = true;
                          } 
-                     ChatRoomSendLocal("Quick-AccessMenu2: You are now in gag talk mode.");
+                         ChatRoomSendLocal(
+		              "<p style='background-color:#50E992'>Quick-AccessMenu2: You are now in gag talk mode.</p>"
+		         );
                      }
 		     if (gaglevel == 9) { 
                          if ((InventoryGet(Player, "ItemMouth") != null) && (InventoryGet(Player, "ItemMouth").Asset.Name == "RegressedMilk")) {
