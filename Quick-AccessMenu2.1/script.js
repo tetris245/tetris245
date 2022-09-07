@@ -30,6 +30,7 @@ async function NEWmenu() {
                     "<b>chat</b> = commands with extra features in chat room.\n" +
                     "<b>clothing</b> = commands related to the clothes.\n" +
                     "<b>escape</b> = commands related to escape.\n" +
+		    "<b>features</b> = automatic features without command.\n" +
                     "<b>fun</b> = commands related to fun, pain and pleasure.\n" +
                     "<b>misc</b> = special commands.\n" +
                     "<b>talking</b> = commands related to talking.\n" +
@@ -107,6 +108,17 @@ async function NEWmenu() {
                     "<b>/totalrelease</b> (target) = removes all bindings, collar, harness, chastity, toys.\n" +
                     "<b>/unlock</b> (target) (locktype) = removes all locks or only a specified type of lock. More info with /help unl.</p>"
                 );
+	    } else if (content.includes("features")) {
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Automatic features without command:\n" +
+                    "<b>Auto-Disable NPC Punishments</b> - can be changed with the /npcpunish command\n" +
+                    "<b>Auto-Disable Validation</b> only for yourself\n" +
+                    "<b>Auto-Join</b> to enter a room as soon as possible\n" +
+                    "<b>Auto More Characters For Nickname</b> \n" +
+                    "<b>Auto Patreon Cheats</b> - can be changed with the /patreoncheats command\n" +
+                    "<b>Auto Pictures + YouTube Videos In Chat</b>\n" + 
+                    "<b>Auto-Relog</b> - Works only if you select Return to chatrooms on relog in the Immersion settings - Not compatible with BCE Auto-Relog</p>"
+                );    
             } else if (content.includes("fun")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Fun commands:\n" +
