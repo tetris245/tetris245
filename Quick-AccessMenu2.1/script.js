@@ -3298,7 +3298,8 @@ async function NEWmenu() {
             } else {
                 Player.RestrictionSettings.BypassNPCPunishments = true;
                 ChatRoomSendLocal(
-		    "<p style='background-color:#50E992'>Quick-AccessMenu2: NPC punishments disabled.</p>");
+		    "<p style='background-color:#50E992'>Quick-AccessMenu2: NPC punishments disabled.</p>"
+		);
             }	
        } else if (content.indexOf("/outfit") == 0) {
             if (content.includes("load1")) {
@@ -4888,7 +4889,7 @@ async function NEWmenu() {
         } else if (content.indexOf("/solidity") == 0) {
 	    if (content.endsWith("/solidity")) {
                 ChatRoomSendLocal(
-                    "<b><p style='background-color:#50E992'>Quick-AccessMenu2</b>: The solidity command must be followed by a number between 1 and 99.</p>"
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: The solidity command must be followed by a number between 1 and 99.</p>"
 		);
             } else {	
                 var solidity = content.substring(9).trim();
