@@ -109,7 +109,7 @@ async function NEWmenu() {
                 );
             } else if (content.includes("fun")) {
                 ChatRoomSendLocal(
-                    "<<p style='background-color:#50E992'>b>Quick-AccessMenu2</b>: Fun commands:\n" +
+                    "<p style='background-color:#50E992'><b>Quick-AccessMenu2</b>: Fun commands:\n" +
                     "<b>/cum</b> = causes an orgasm.\n" +
 		    "<b>/invisible</b> = becomes invisible (anal hook must be allowed).\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
@@ -1725,7 +1725,7 @@ async function NEWmenu() {
                     "<b>/diaper setwet2</b> (value)* for wet level of chastity diapers\n" +
                     "<b>/diaper setmess1</b> (value)* for mess level of normal diapers\n" +
                     "<b>/diaper setmess2</b> (value)* for mess level of chastity diapers\n" +
-                    "* = value between 0 and 2</p>
+                    "* = value between 0 and 2</p>"
                 );
             }
         } else if (content.indexOf("/difficulty") == 0) {
@@ -6309,7 +6309,7 @@ function LoginDoLogin() { //rewrite login to variabilize credentials for later u
 function ServerDisconnect(data, close = false) { //rewrite disconnect to prevent relog screen
     if (!ServerIsConnected) return;
     ChatRoomSendLocal(
-        "<p style='background-color:#50E992'>Disconnected! Reconnecting..."</p>
+        "<p style='background-color:#50E992'>Disconnected! Reconnecting...</p>"
     );
     const ShouldRelog = Player.Name != "";
     AutoRelog();
