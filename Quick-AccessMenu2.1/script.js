@@ -8643,6 +8643,244 @@ function MainHallClick() {
 	}
 }
 
+function AppearanceRun() {
+	var C = CharacterAppearanceSelection;
+	if (CharacterAppearanceHeaderTextTime < CommonTime() && CharacterAppearanceMode == "Cloth")
+		CharacterAppearanceHeaderText = "";
+	if (CharacterAppearanceHeaderText == "") {
+		if (C.ID == 0) CharacterAppearanceHeaderText = TextGet("SelectYourAppearance");
+		else CharacterAppearanceHeaderText = TextGet("SelectSomeoneAppearance").replace("TargetCharacterName", C.Name);
+	}
+	DrawCharacter(C, -600, -100 + 4 * C.HeightModifier, 4, false);
+	DrawCharacter(C, 750, 0, 1);
+	DrawText(CharacterAppearanceHeaderText, 400, 40, "White", "Black");
+	if (DialogFocusItem != null) {
+		CommonDynamicFunction("Inventory" + DialogFocusItem.Asset.Group.Name + DialogFocusItem.Asset.Name + "Draw()");
+		DrawButton(1885, 25, 90, 90, "", "White", "Icons/Exit.png");
+		return;
+	}
+	if (CharacterAppearanceMenuMode !== CharacterAppearanceMode) {
+		CharacterAppearanceMenuMode = CharacterAppearanceMode;
+		AppearanceMenuBuild(C);
+	}
+	AppearanceMenuDraw();
+	if (CharacterAppearanceMode == "") {
+		for (let A = CharacterAppearanceOffset; A < AssetGroup.length && A < CharacterAppearanceOffset + CharacterAppearanceNumPerPage; A++)
+			if ((AssetGroup[A].Family == C.AssetFamily) && (AssetGroup[A].Category == "Appearance") && AssetGroup[A].AllowCustomize) {
+				const Item = InventoryGet(C, AssetGroup[A].Name);
+				const ButtonColor = WardrobeGroupAccessible(C, AssetGroup[A]) ? "White" : "#888";
+				if (AssetGroup[A].AllowNone && (AssetGroup[A].Category == "Appearance") && (Item != null) && WardrobeGroupAccessible(C, AssetGroup[A]))
+					DrawButton(1210, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", ButtonColor, "Icons/Small/Naked.png", TextGet("StripItem"));
+				DrawBackNextButton(1300, 145 + (A - CharacterAppearanceOffset) * 95, 400, 65, AssetGroup[A].Description + ": " + CharacterAppearanceGetCurrentValue(C, AssetGroup[A].Name, "Description"), ButtonColor, "",
+					() => WardrobeGroupAccessible(C, AssetGroup[A]) ? CharacterAppearanceNextItem(C, AssetGroup[A].Name, false, true) : "",
+					() => WardrobeGroupAccessible(C, AssetGroup[A]) ? CharacterAppearanceNextItem(C, AssetGroup[A].Name, true, true) : "",
+					!WardrobeGroupAccessible(C, AssetGroup[A]),
+					AssetGroup[A].AllowNone || AppearancePreviewUseCharacter(AssetGroup[A]) ? 65 : null);
+				var Color = CharacterAppearanceGetCurrentValue(C, AssetGroup[A].Name, "Color");
+				const ColorButtonText = ItemColorGetColorButtonText(Color);
+				const ColorButtonColor = ColorButtonText.startsWith("#") ? ColorButtonText : "#fff";
+				const CanCycleColors = !!Item && WardrobeGroupAccessible(C, AssetGroup[A]) && (Item.Asset.ColorableLayerCount > 0 || Item.Asset.Group.ColorSchema.length > 1) && !InventoryBlockedOrLimited(C, Item);
+				const CanPickColor = CanCycleColors && AssetGroup[A].AllowColorize;
+				const ColorIsSimple = ItemColorIsSimple(Item);
+
+				DrawButton(1725, 145 + (A - CharacterAppearanceOffset) * 95, 160, 65, ColorButtonText, CanCycleColors ? ColorButtonColor : "#aaa", null, null, !CanCycleColors);
+				DrawButton(1910, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", CanPickColor ? "#fff" : "#aaa", CanPickColor ? ColorIsSimple ? "Icons/Color.png" : "Icons/MultiColor.png" : "Icons/ColorBlocked.png", null, !CanPickColor);
+			}
+	}
+	if (CharacterAppearanceMode == "Wardrobe") {
+		DrawText(CharacterAppearanceWardrobeText, 1645, 220, "White", "Gray");
+		ElementPosition("InputWardrobeName", 1645, 315, 690);
+           DrawButton(1300, 240, 330, 50, "QAM Export", "#50E992", "");
+           DrawButton(1645, 240, 330, 50, "QAM Import", "#50E992", "");
+		for (let W = CharacterAppearanceWardrobeOffset; W < Player.Wardrobe.length && W < CharacterAppearanceWardrobeOffset + 6; W++) {
+			DrawButton(1300, 430 + (W - CharacterAppearanceWardrobeOffset) * 95, 500, 65, "", "White", "");
+			DrawTextFit((W + 1).toString() + (W < 9 ? ":  " : ": ") + Player.WardrobeCharacterNames[W], 1550, 463 + (W - CharacterAppearanceWardrobeOffset) * 95, 496, "Black");
+			DrawButton(1820, 430 + (W - CharacterAppearanceWardrobeOffset) * 95, 160, 65, "Save", "White", "");
+		}
+	}
+	if (CharacterAppearanceMode == "Color") {
+		// Leave the color picker if the item is gone.
+		if (!InventoryGet(CharacterAppearanceSelection, CharacterAppearanceColorPickerGroupName)) ItemColorCancelAndExit();
+		// Draw the color picker
+		ItemColorDraw(CharacterAppearanceSelection, CharacterAppearanceColorPickerGroupName, 1200, 25, 775, 950, true);
+	}
+	if (CharacterAppearanceMode == "Cloth") {
+		// Prepares a 3x3 square of clothes to present all the possible options
+		let X = 1250;
+		let Y = 125;
+		for (let I = DialogInventoryOffset; (I < DialogInventory.length) && (I < DialogInventoryOffset + 9); I++) {
+			const Item = DialogInventory[I];
+			const Hover = MouseIn(X, Y, 225, 275) && !CommonIsMobile;
+			const Background = AppearanceGetPreviewImageColor(C, Item, Hover);
+			if (Item.Hidden) {
+				DrawPreviewBox(X, Y, "Icons/HiddenItem.png", Item.Asset.Description, { Background });
+			} else if (AppearancePreviewUseCharacter(C.FocusGroup)) {
+				const Z = C.FocusGroup.PreviewZone;
+				const PreviewCanvas = DrawCharacterSegment(AppearancePreviews[I], Z[0], Z[1], Z[2], Z[3]);
+				DrawCanvasPreview(X, Y, PreviewCanvas, Item.Asset.Description, { Background, Vibrating: Item.Vibrating, Icons: Item.Icons });
+			} else {
+				DrawAssetPreview(X, Y, Item.Asset, { Background, Vibrating: Item.Vibrating, Icons: Item.Icons });
+			}
+			setButton(X, Y);
+			X = X + 250;
+			if (X > 1800) {
+				X = 1250;
+				Y = Y + 300;
+			}
+		}
+	}
+}
+
+function AppearanceClick() {
+	var C = CharacterAppearanceSelection;
+	ClearButtons();
+	if (DialogFocusItem != null) {
+		CommonDynamicFunction("Inventory" + DialogFocusItem.Asset.Group.Name + DialogFocusItem.Asset.Name + "Click()");
+	}
+	else if (CharacterAppearanceMode == "Color") {
+		ItemColorClick(CharacterAppearanceSelection, CharacterAppearanceColorPickerGroupName, 1200, 25, 775, 950, true);
+	}
+	else if (MouseYIn(25, 90)) AppearanceMenuClick(C);
+	else if (CharacterAppearanceMode == "") {
+		if ((MouseX >= 1210) && (MouseX < 1275) && (MouseY >= 145) && (MouseY < 975))
+			for (let A = CharacterAppearanceOffset; A < AssetGroup.length && A < CharacterAppearanceOffset + CharacterAppearanceNumPerPage; A++)
+				if ((AssetGroup[A].Family == C.AssetFamily) && (AssetGroup[A].Category == "Appearance") && WardrobeGroupAccessible(C, AssetGroup[A]) && AssetGroup[A].AllowNone && (InventoryGet(C, AssetGroup[A].Name) != null))
+					if ((MouseY >= 145 + (A - CharacterAppearanceOffset) * 95) && (MouseY <= 210 + (A - CharacterAppearanceOffset) * 95)) {
+						InventoryRemove(C, AssetGroup[A].Name, false);
+						CharacterRefresh(C, false);
+					}
+		if ((MouseX >= 1300) && (MouseX < 1700) && (MouseY >= 145) && (MouseY < 975)) {
+			C.FocusGroup = null;
+			for (let A = CharacterAppearanceOffset; A < AssetGroup.length && A < CharacterAppearanceOffset + CharacterAppearanceNumPerPage; A++)
+				if ((AssetGroup[A].Family == C.AssetFamily) && (AssetGroup[A].Category == "Appearance") && WardrobeGroupAccessible(C, AssetGroup[A]))
+					if (MouseYIn(145 + (A - CharacterAppearanceOffset) * 95, 65))
+						if (!AssetGroup[A].AllowNone && !AppearancePreviewUseCharacter(AssetGroup[A])) {
+							CharacterAppearanceNextItem(C, AssetGroup[A].Name, MouseX > 1500);
+						}
+						else {
+							if (MouseXIn(1300, 65)) CharacterAppearanceNextItem(C, AssetGroup[A].Name, false);
+							else if (MouseXIn(1635, 65)) CharacterAppearanceNextItem(C, AssetGroup[A].Name, true);
+							else {										C.FocusGroup = AssetGroup[A];
+							DialogInventoryBuild(C, null, true);
+							CharacterAppearanceCloth = InventoryGet(C, C.FocusGroup.Name);
+							CharacterAppearanceMode = "Cloth";
+								return;
+							}
+						}
+		}
+		if ((MouseX >= 1725) && (MouseX < 1885) && (MouseY >= 145) && (MouseY < 975))
+			for (let A = CharacterAppearanceOffset; A < AssetGroup.length && A < CharacterAppearanceOffset + CharacterAppearanceNumPerPage; A++) {
+				const Item = InventoryGet(C, AssetGroup[A].Name);
+				if ((AssetGroup[A].Family == C.AssetFamily) &&
+					(AssetGroup[A].Category == "Appearance") &&
+					WardrobeGroupAccessible(C, AssetGroup[A]) &&
+					Item &&
+					(Item.Asset.ColorableLayerCount > 0 || Item.Asset.Group.ColorSchema.length > 1) &&
+					!InventoryBlockedOrLimited(C, Item))
+					if ((MouseY >= 145 + (A - CharacterAppearanceOffset) * 95) && (MouseY <= 210 + (A - CharacterAppearanceOffset) * 95))
+					CharacterAppearanceNextColor(C, AssetGroup[A].Name);
+			}
+		if (MouseIn(1910, 145, 65, 830))
+			for (let A = CharacterAppearanceOffset; A < AssetGroup.length && A < CharacterAppearanceOffset + CharacterAppearanceNumPerPage; A++) {
+				const Item = InventoryGet(C, AssetGroup[A].Name);
+				if ((AssetGroup[A].Family == C.AssetFamily) &&
+					(AssetGroup[A].Category == "Appearance") &&
+					WardrobeGroupAccessible(C, AssetGroup[A]) &&
+					AssetGroup[A].AllowColorize &&
+					Item &&
+					Item.Asset.ColorableLayerCount > 0 &&
+					!InventoryBlockedOrLimited(C, Item))
+					if ((MouseY >= 145 + (A - CharacterAppearanceOffset) * 95) && (MouseY <= 210 + (A - CharacterAppearanceOffset) * 95)) {
+						AppearanceItemColor(C, Item, AssetGroup[A].Name, "");
+					}
+			}
+		return;
+	}
+	else if (CharacterAppearanceMode == "Wardrobe") {
+            if ((MouseX >= 1300) && (MouseX < 1630) && (MouseY >= 240) && (MouseY < 290)) {
+                var appall = new Array();
+                C.Appearance.forEach(item=>{
+                    var app = new Array();
+                    app.push(item.Asset.Name);
+                    app.push(item.Asset.Group.Name);
+                    app.push(item.Color);
+                    app.push(item.Difficulty);
+                    app.push(item.Craft);
+                    app.push(false);
+                    appall.push(app);
+                        }
+                );
+                ChatRoomSendLocal("Quick-AccessMenu2: Appearance saved.\n" + btoa(encodeURI(JSON.stringify(appall))));
+                DialogLeave();         
+            }
+            if ((MouseX >= 1645) && (MouseX < 1975) && (MouseY >= 240) && (MouseY < 290)) {
+                appinp = prompt('Please input the awcode (Compatible with BCG).', '');
+                CharacterNaked(C);                  
+                CharacterReleaseTotal(C);
+                var appobj = JSON.parse(decodeURI(atob(appinp)));
+                appobj.forEach(itemstr=>{
+                    InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                    }
+                 );                
+                ChatRoomCharacterUpdate(C);
+	    }
+	    if ((MouseX >= 1300) && (MouseX < 1800) && (MouseY >= 430) && (MouseY < 970))
+	        for (let W = CharacterAppearanceWardrobeOffset; W < Player.Wardrobe.length && W < CharacterAppearanceWardrobeOffset + 6; W++)
+	            if ((MouseY >= 430 + (W - CharacterAppearanceWardrobeOffset) * 95) && (MouseY <= 495 + (W - CharacterAppearanceWardrobeOffset) * 95)) {
+		        WardrobeFastLoad(C, W, false);
+		        ElementValue("InputWardrobeName", Player.WardrobeCharacterNames[W]);
+		    }
+	    if ((MouseX >= 1820) && (MouseX < 1975) && (MouseY >= 430) && (MouseY < 970))
+		for (let W = CharacterAppearanceWardrobeOffset; W < Player.Wardrobe.length && W < CharacterAppearanceWardrobeOffset + 6; W++)
+		    if ((MouseY >= 430 + (W - CharacterAppearanceWardrobeOffset) * 95) && (MouseY <= 495 + (W - CharacterAppearanceWardrobeOffset) * 95)) {
+		        WardrobeFastSave(C, W);
+			var LS = /^[a-zA-Z0-9 ]+$/;
+			var Name = ElementValue("InputWardrobeName").trim();
+			if (Name.match(LS) || Name.length == 0) {
+			    WardrobeSetCharacterName(W, Name);
+			    CharacterAppearanceWardrobeText = TextGet("WardrobeNameInfo");
+			} else {
+			    CharacterAppearanceWardrobeText = TextGet("WardrobeNameError");
+			}
+		   }
+		return;
+	}
+	else if (CharacterAppearanceMode == "Cloth") {
+		var X = 1250;
+		var Y = 125;
+		for (let I = DialogInventoryOffset; (I < DialogInventory.length) && (I < DialogInventoryOffset + 9); I++) {
+			if ((MouseX >= X) && (MouseX < X + 225) && (MouseY >= Y) && (MouseY < Y + 275)) {
+				var Item = DialogInventory[I];
+				const CurrentItem = InventoryGet(C, C.FocusGroup.Name);
+				const worn = (CurrentItem && (CurrentItem.Asset.Name == Item.Asset.Name));
+				if (DialogItemPermissionMode) {
+				DialogInventoryTogglePermission(Item, worn);
+				} else {
+					if (InventoryBlockedOrLimited(C, Item)) return;
+					if (InventoryAllow(C, Item.Asset)) {
+						if (worn && CurrentItem.Asset.Extended) {
+						DialogExtendItem(CurrentItem);
+						} else {
+						CharacterAppearanceSetItem(C, C.FocusGroup.Name, DialogInventory[I].Asset);
+							DialogInventoryBuild(C, DialogInventoryOffset);
+							AppearanceMenuBuild(C);
+						}
+					} else {
+					CharacterAppearanceHeaderTextTime = DialogTextDefaultTimer;
+						CharacterAppearanceHeaderText = DialogText;
+					}
+				}
+				return;
+			}
+			X = X + 250;
+			if (X > 1800) {
+				X = 1250;
+				Y = Y + 300;
+			}
+		}
+	}
+}
+
 function DialogExtendItem(Item, SourceItem) {
 	const C = CharacterGetCurrent();
 	StruggleProgress = -1;
