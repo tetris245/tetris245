@@ -44,6 +44,7 @@ async function NEWmenu() {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Bondage commands:\n" +
                     "<b>/lock</b> = adds locks on all lockable items. Use /help lock for more info.\n" +
+		    "<b>/outfit</b> = restores/saves/loads outfit (including restraints). Using will give more info.\n" +
                     "<b>/pet</b> (target) = becomes a fully restrained pet girl.\n" +
                     "<b>/randomize</b> (target) = naked + underwear + clothes + restrain commands.\n" +
                     "<b>/restrain</b> (target) = adds random restraints.\n" +
@@ -89,7 +90,7 @@ async function NEWmenu() {
                     "<b>/clothes</b> (target) = changes clothes.\n" +
                     "<b>/diaper</b> (actionhere) (targetname or setvalue) = plays with diapers (ABDL game). Using will give more info.\n" +
                     "<b>/naked</b> (target) = removes clothes.\n" +
-                    "<b>/outfit</b> = restores/saves/loads outfit. Using will give more info.\n" +
+                    "<b>/outfit</b> = restores/saves/loads outfit (including restraints). Using will give more info.\n" +
                     "<b>/underwear</b> (target) = changes underwear.\n" +
                     "<b>/wardrobe</b> (target) = opens target wardrobe.</p>"
                 );
@@ -3429,7 +3430,8 @@ async function NEWmenu() {
 	            "These saves last only 1 login session.\n" + 
 	            "To save outfits between sessions, use <b>/outfit awsave</b>\n" +    
 	            "You will have the outfit saved as a code. You can copy and paste it elsewhere.\n" + 
-	            "Then you can use <b>/outfit awload</b> to load it later.</p>"
+	            "Then you can use <b>/outfit awload</b> to load it later.\n" +
+		    "<b>All these options include the restraints</b>, so it's also a good bondage tool.</p>"
 		);
             }
        } else if (content.indexOf("/patreoncheats") == 0) {  
