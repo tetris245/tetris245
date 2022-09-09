@@ -8798,20 +8798,22 @@ function AppearanceClick() {
 	}
 	else if (CharacterAppearanceMode == "Wardrobe") {
             if ((MouseX >= 1300) && (MouseX < 1630) && (MouseY >= 240) && (MouseY < 290)) {
-                var appall = new Array();
-                C.Appearance.forEach(item=>{
-                    var app = new Array();
-                    app.push(item.Asset.Name);
-                    app.push(item.Asset.Group.Name);
-                    app.push(item.Color);
-                    app.push(item.Difficulty);
-                    app.push(item.Craft);
-                    app.push(false);
-                    appall.push(app);
-                        }
-                );
-                ChatRoomSendLocal("Quick-AccessMenu2: Appearance saved.\n" + btoa(encodeURI(JSON.stringify(appall))));
-                DialogLeave();         
+		if (ServerPlayerIsInChatRoom()) {
+                    var appall = new Array();
+                    C.Appearance.forEach(item=>{
+                        var app = new Array();
+                        app.push(item.Asset.Name);
+                        app.push(item.Asset.Group.Name);
+                        app.push(item.Color);
+                        app.push(item.Difficulty);
+                        app.push(item.Craft);
+                        app.push(false);
+                        appall.push(app);
+                            }
+                    );
+                    ChatRoomSendLocal("Quick-AccessMenu2: Appearance saved.\n" + btoa(encodeURI(JSON.stringify(appall))));
+                    DialogLeave();
+		}	
             }
             if ((MouseX >= 1645) && (MouseX < 1975) && (MouseY >= 240) && (MouseY < 290)) {
                 appinp = prompt('Please input the awcode (Compatible with BCG).', '');
