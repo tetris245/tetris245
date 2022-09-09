@@ -8927,28 +8927,32 @@ function TitleExit() {
     if (Nick == null) Nick = "";
     Nick = Nick.trim().substring(0, 20);
     if (Nick.length == 0) {
-        ServerSend("ChatRoomChat", {
-            Content: "Beep",
-            Type: "Action",
-            Dictionary: [{
-                Tag: "Beep",
-                Text: "" + tmpname + " is now known as " + Player.Name + "."
-            }]
-        });
-        Player.Nickname = Player.Name;
-        ServerAccountUpdate.QueueData({
-            Nickname: Nick
-        });
-    } else if ((Nick.length <= 20) && (Nick.match(Regex))) {
-        if (Nick != tmpname) {
+	if (ServerPlayerIsInChatRoom()) {
             ServerSend("ChatRoomChat", {
                 Content: "Beep",
                 Type: "Action",
                 Dictionary: [{
                     Tag: "Beep",
-                    Text: "" + tmpname + " is now known as " + Nick + "."
+                    Text: "" + tmpname + " is now known as " + Player.Name + "."
                 }]
             });
+	}	
+        Player.Nickname = Player.Name;
+        ServerAccountUpdate.QueueData({
+            Nickname: Nick
+        });
+    } else if ((Nick.length <= 20) && (Nick.match(Regex))) {
+	if (ServerPlayerIsInChatRoom()) {    
+            if (Nick != tmpname) {
+                ServerSend("ChatRoomChat", {
+                    Content: "Beep",
+                    Type: "Action",
+                    Dictionary: [{
+                        Tag: "Beep",
+                        Text: "" + tmpname + " is now known as " + Nick + "."
+                    }]
+                });
+	    }	    
          }
          Player.Nickname = Nick;
          ServerAccountUpdate.QueueData({
