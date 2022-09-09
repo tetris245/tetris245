@@ -3399,7 +3399,10 @@ async function NEWmenu() {
                         appall.push(app);
                         }
                     );
-                    ChatRoomSendLocal("Quick-AccessMenu2: Appearance saved.\n" + btoa(encodeURI(JSON.stringify(appall))));
+                    ChatRoomSendLocal(
+                         "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: Appearance saved.</p>\n" +
+                         btoa(encodeURI(JSON.stringify(appall)))
+                    );
                     DialogLeave();
                 }, 5000);
             } else if (content.includes("awload")) {
@@ -8811,7 +8814,10 @@ function AppearanceClick() {
                         appall.push(app);
                             }
                     );
-                    ChatRoomSendLocal("Quick-AccessMenu2: Appearance saved.\n" + btoa(encodeURI(JSON.stringify(appall))));
+                    ChatRoomSendLocal(
+                         "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: Appearance saved.</p>\n" +
+                         btoa(encodeURI(JSON.stringify(appall)))
+                    );
                     DialogLeave();
 		}	
             }
