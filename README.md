@@ -44,7 +44,7 @@ All else I might not have included.
 Changes for future version 
 
 * New feature: Auto All Items Are Craftable (however, only items such as maid tray can be fully used - you can craft locks, keys and 'spanking toys' but you need to pretend you have them and rp)
-* New feature: QAM Export/Import buttons in wardrobe (note: the Export button can be used only when you come from a chat room - after clicking on this button, you must go to the chat room and will find the code you can copy in a file)  
+* New feature: QAM Export/Import buttons in wardrobe (Note: the Export button can be used only when you come from a chat room - after clicking on this button, you must go back to the chat room and will find the code you can copy in a file)  
 * Added /help features with info about automatic features
 * Added QAM welcome message in main hall
 * Added green background for most local messages
