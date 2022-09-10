@@ -43,7 +43,7 @@ All else I might not have included.
 
 Changes for future version 
 
-* New feature: Auto All Items Are Craftable (however, only items such as serving tray can be fully used - you can craft locks, keys and 'spanking toys' but you need to pretend you have them and rp - also, don't forget that some items require the QAM unrestrict mode to be used)
+* New feature: Auto All Items Are Craftable (however, only a few extra items such as serving tray can be fully used - you can craft locks, keys and 'spanking toys' but you need to pretend you have them and rp - also, don't forget that some items require the QAM unrestrict mode to be used)
 * New feature: QAM Export/Import buttons in wardrobe (Note: the Export button can be used only when you come from a chat room - after clicking on this button, you must go back to the chat room and will find the code you can copy in a file)  
 * Added /help features with info about automatic features
 * Added QAM welcome message in main hall
