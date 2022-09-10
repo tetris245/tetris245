@@ -8889,6 +8889,27 @@ function AppearanceClick() {
 	}
 }
 
+function CraftingItemListBuild() {
+	let Search = ElementValue("InputSearch");
+	if (Search == null) Search = "";
+	Search = Search.toUpperCase().trim();
+	CraftingItemList = [];
+	for (let A of Asset) {
+		if (!InventoryAvailable(Player, A.Name, A.Group.Name)) continue;
+		if (!A.Group.Name.startsWith("Item")) continue;
+		let Match = true;
+		const desc = A.DynamicDescription(Player).toUpperCase().trim();
+		if (desc.indexOf(Search) < 0) Match = false;
+		if (Match)
+			for (let E of CraftingItemList)
+				if (E.CraftGroup === A.Name || E.Name === A.CraftGroup)
+					Match = false;
+		if (Match) CraftingItemList.push(A);
+	}
+	CraftingItemList.sort((a,b) => (a.Description > b.Description) ? 1 : (b.Description > a.Description) ? -1 : 0);
+	if (CraftingOffset >= CraftingItemList.length) CraftingOffset = 0;
+}
+
 function DialogExtendItem(Item, SourceItem) {
 	const C = CharacterGetCurrent();
 	StruggleProgress = -1;
