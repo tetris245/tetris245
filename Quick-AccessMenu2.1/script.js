@@ -16,8 +16,12 @@
 (typeof OLDmenu !== "undefined") && (ChatRoomSendChat = OLDmenu); //reset
 async function NEWmenu() {
     var content = ElementValue("InputChat").trim();
-    //var tmpname = Player.Nickname;
-
+    if (Player.Nickname == '') { 
+        var tmpname = Player.Name;
+    } else {
+        var tmpname = Player.Nickname;
+    }
+	
     //chatcommand
     if (CurrentScreen == "ChatRoom") {
 
@@ -267,7 +271,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " is angry."
+                        Text: "" + tmpname + " is angry."
                     }]
                 });
             } else if (content.includes("angry2")) {
@@ -280,7 +284,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " is very angry."
+                        Text: "" + tmpname + " is very angry."
                     }]
                 });
             } else if (content.includes("blink")) {
@@ -291,7 +295,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " blinks her eyes."
+                        Text: "" + tmpname + " blinks her eyes."
                     }]
                 });
             } else if (content.includes("blush1")) {
@@ -301,7 +305,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " slightly blushes."
+                        Text: "" + tmpname + " slightly blushes."
                     }]
                 });
             } else if (content.includes("blush2")) {
@@ -311,7 +315,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " blushes."
+                        Text: "" + tmpname + " blushes."
                     }]
                 });
             } else if (content.includes("blush3")) {
@@ -321,7 +325,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " blushes a lot."
+                        Text: "" + tmpname + " blushes a lot."
                     }]
                 });
             } else if (content.includes("blush4")) {
@@ -331,7 +335,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " very strongly blushes."
+                        Text: "" + tmpname + " very strongly blushes."
                     }]
                 });
             } else if (content.includes("blush5")) {
@@ -341,7 +345,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " extremely blushes."
+                        Text: "" + tmpname + " extremely blushes."
                     }]
                 });
             } else if (content.includes("chuckle")) {
@@ -351,7 +355,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " chuckles."
+                        Text: "" + tmpname + " chuckles."
                     }]
                 });
             } else if (content.includes("closeeyes")) {
@@ -362,7 +366,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " closes her eyes."
+                        Text: "" + tmpname + " closes her eyes."
                     }]
                 });
             } else if (content.includes("closemouth")) {
@@ -371,7 +375,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " closes her mouth."
+                        Text: "" + tmpname + " closes her mouth."
                     }]
                 });
             } else if (content.includes("confused")) {
@@ -381,7 +385,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " is confused."
+                        Text: "" + tmpname + " is confused."
                     }]
                 });
             } else if (content.includes("cuddle")) {
@@ -394,7 +398,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " cuddles with her friend."
+                        Text: "" + tmpname + " cuddles with her friend."
                     }]
                 });
             } else if (content.includes("cry")) {
@@ -404,7 +408,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " cries."
+                        Text: "" + tmpname + " cries."
                     }]
                 });
             } else if (content.includes("disoriented")) {
@@ -417,7 +421,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " feels disoriented."
+                        Text: "" + tmpname + " feels disoriented."
                     }]
                 });
             } else if (content.includes("distressed")) {
@@ -430,7 +434,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " is distressd."
+                        Text: "" + tmpname + " is distressd."
                     }]
                 });
             } else if (content.includes("droolreset")) {
@@ -439,7 +443,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " stops to drool."
+                        Text: "" + tmpname + " stops to drool."
                     }]
                 });
             } else if (content.includes("droolsides")) {
@@ -449,7 +453,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " is drooling."
+                        Text: "" + tmpname + " is drooling."
                     }]
                 });
             } else if (content.includes("frown")) {
@@ -459,7 +463,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " disagrees."
+                        Text: "" + tmpname + " disagrees."
                     }]
                 });
             } else if (content.includes("gaginflate")) {
@@ -471,7 +475,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " is excited by the inflation of her gag."
+                        Text: "" + tmpname + " is excited by the inflation of her gag."
                     }]
                 });
             } else if (content.includes("giggle")) {
@@ -481,7 +485,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " giggles."
+                        Text: "" + tmpname + " giggles."
                     }]
                 });
             } else if (content.includes("glare")) {
@@ -493,7 +497,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " looks at everybody with angry eyes."
+                        Text: "" + tmpname + " looks at everybody with angry eyes."
                     }]
                 });
             } else if (content.includes("grin")) {
@@ -505,7 +509,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " grins."
+                        Text: "" + tmpname + " grins."
                     }]
                 });
             } else if (content.includes("happy")) {
@@ -515,7 +519,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " is happy."
+                        Text: "" + tmpname + " is happy."
                     }]
                 });
             } else if (content.includes("iced")) {
@@ -527,7 +531,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " feels the effect of something very cold on her skin."
+                        Text: "" + tmpname + " feels the effect of something very cold on her skin."
                     }]
                 });
             } else if (content.includes("kiss1")) {
@@ -537,7 +541,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " gives simple kisses to her friend."
+                        Text: "" + tmpname + " gives simple kisses to her friend."
                     }]
                 });
             } else if (content.includes("kiss2")) {
@@ -550,7 +554,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " kisses her friend on the lips."
+                        Text: "" + tmpname + " kisses her friend on the lips."
                     }]
                 });
             } else if (content.includes("kiss3")) {
@@ -563,7 +567,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " gives a long kiss to her friend."
+                        Text: "" + tmpname + " gives a long kiss to her friend."
                     }]
                 });
             } else if (content.includes("laugh")) {
@@ -573,7 +577,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " laughs."
+                        Text: "" + tmpname + " laughs."
                     }]
                 });
             } else if (content.includes("lick")) {
@@ -584,7 +588,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " licks sensitive body zones of her friend."
+                        Text: "" + tmpname + " licks sensitive body zones of her friend."
                     }]
                 });
             } else if (content.includes("lipbite")) {
@@ -594,7 +598,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " bites her lips."
+                        Text: "" + tmpname + " bites her lips."
                     }]
                 });
             } else if (content.includes("narroweyes")) {
@@ -605,7 +609,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " narrows her eyes."
+                        Text: "" + tmpname + " narrows her eyes."
                     }]
                 });
             } else if (content.includes("neutral")) {
@@ -614,7 +618,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " goes back to a neutral facial expression."
+                        Text: "" + tmpname + " goes back to a neutral facial expression."
                     }]
                 });
             } else if (content.includes("openeyes")) {
@@ -623,7 +627,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " opens her eyes."
+                        Text: "" + tmpname + " opens her eyes."
                     }]
                 });
             } else if (content.includes("openmouth")) {
@@ -633,7 +637,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " opens her mouth."
+                        Text: "" + tmpname + " opens her mouth."
                     }]
                 });
             } else if (content.includes("pout")) {
@@ -646,7 +650,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " pouts."
+                        Text: "" + tmpname + " pouts."
                     }]
                 });
             } else if (content.includes("raisebrows")) {
@@ -656,7 +660,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " raises her brows."
+                        Text: "" + tmpname + " raises her brows."
                     }]
                 });
             } else if (content.includes("resetbrows")) {
@@ -666,7 +670,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " feels reassured."
+                        Text: "" + tmpname + " feels reassured."
                     }]
                 });
             } else if (content.includes("sad")) {
@@ -679,7 +683,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " is sad."
+                        Text: "" + tmpname + " is sad."
                     }]
                 });
             } else if (content.includes("smile")) {
@@ -689,7 +693,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " smiles."
+                        Text: "" + tmpname + " smiles."
                     }]
                 });
             } else if (content.includes("smirk")) {
@@ -699,7 +703,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " smirks."
+                        Text: "" + tmpname + " smirks."
                     }]
                 });
             } else if (content.includes("spanked")) {
@@ -711,7 +715,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " feels the effect of the spanking on her skin."
+                        Text: "" + tmpname + " feels the effect of the spanking on her skin."
                     }]
                 });
             } else if (content.includes("wink")) {
@@ -721,7 +725,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " winks."
+                        Text: "" + tmpname + " winks."
                     }]
                 });
             } else if (content.includes("worried")) {
@@ -733,7 +737,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + Player.Nickname + " is worried."
+                        Text: "" + tmpname + " is worried."
                     }]
                 });
             } else if (content.endsWith("/anim2")) {
@@ -1553,7 +1557,7 @@ async function NEWmenu() {
                 if (target[0] != null) {
                     if ((target[0].Name == Player.Name) == false) {
                         ServerSend("ChatRoomChat", {
-                            Content: "Quick-Access Menu2: " + Player.Nickname + " will change your normal diapers and allows you to use the /diaper change1 command.",
+                            Content: "Quick-Access Menu2: " + tmpname + " will change your normal diapers and allows you to use the /diaper change1 command.",
                             Type: "Whisper",
                             Target: target[0].MemberNumber
                         })
@@ -1577,7 +1581,7 @@ async function NEWmenu() {
                 if (target[0] != null) {
                     if ((target[0].Name == Player.Name) == false) {
                         ServerSend("ChatRoomChat", {
-                            Content: "Quick-Access Menu2: " + Player.Nickname + " will change your chastity diapers and allows you to use the /diaper change2 command.",
+                            Content: "Quick-Access Menu2: " + tmpname + " will change your chastity diapers and allows you to use the /diaper change2 command.",
                             Type: "Whisper",
                             Target: target[0].MemberNumber
                         })
@@ -1601,7 +1605,7 @@ async function NEWmenu() {
                 if (target[0] != null) {
                     if ((target[0].Name == Player.Name) == false) {
                         ServerSend("ChatRoomChat", {
-                            Content: "Quick-Access Menu2: " + Player.Nickname + " will change all your diapers and allows you to use the /diaper change3 command.",
+                            Content: "Quick-Access Menu2: " + tmpname + " will change all your diapers and allows you to use the /diaper change3 command.",
                             Type: "Whisper",
                             Target: target[0].MemberNumber
                         })
@@ -1961,7 +1965,7 @@ async function NEWmenu() {
                 Type: "Action",
                 Dictionary: [{
                     Tag: "Beep",
-                    Text: "" + Player.Nickname + " gets grabbed by two maids and locked in the asylum for " + minutes + " minutes of training with the Good Girl Training System Level " + level + "."
+                    Text: "" + tmpname + " gets grabbed by two maids and locked in the asylum for " + minutes + " minutes of training with the Good Girl Training System Level " + level + "."
                 }]
             });
             DialogLentLockpicks = false;
@@ -2064,7 +2068,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "Magical lasers make " + Player.Nickname + " completely invisible."
+                        Text: "Magical lasers make " + tmpname + " completely invisible."
                     }]
                });   
             InventoryWear(Player, "AnalHook", "ItemButt");
@@ -2076,7 +2080,7 @@ async function NEWmenu() {
                 Type: "Action",
                 Dictionary: [{
                     Tag: "Beep",
-                    Text: "" + Player.Nickname + " keys are now safe in the vault for " + hours + " hours."
+                    Text: "" + tmpname + " keys are now safe in the vault for " + hours + " hours."
                 }]
             });
             CellDepositKeys(hours);
@@ -3285,16 +3289,22 @@ async function NEWmenu() {
         } else if (content.indexOf("/name") == 0) {
             var NewName = content.substring(5).trim();
             var LS = /[/\p{L}\p{N}\p{Z}'-]/gu;
-            var tmpname = Player.Nickname;
+	    if (Player.Nickname == '') { 
+                var tmpname = Player.Name;
+            } else {
+                var tmpname = Player.Nickname;
+            }
             if (NewName.length == 0) {
-                ServerSend("ChatRoomChat", {
-                    Content: "Beep",
-                    Type: "Action",
-                    Dictionary: [{
-                        Tag: "Beep",
-                        Text: "" + tmpname + " is now known as " + Player.Name + "."
-                    }]
-                });
+		if (Player.Name != tmpname) {  
+                    ServerSend("ChatRoomChat", {
+                        Content: "Beep",
+                        Type: "Action",
+                        Dictionary: [{
+                            Tag: "Beep",
+                            Text: "" + tmpname + " is now known as " + Player.Name + "."
+                        }]
+                    });
+		}	
                 Player.Nickname = Player.Name;
                 var tmpname = Player.Name;
             } else if ((NewName.length <= 20) && (NewName.match(LS))) {
@@ -3559,7 +3569,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " relaxes her arms."
+                                    Text: "" + tmpname + " relaxes her arms."
                                 }]
                             });
                         } else {
@@ -3568,7 +3578,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " lets " + tgpname + " relax her arms."
+                                    Text: "" + tmpname + " lets " + tgpname + " relax her arms."
                                 }]
                             });
                         }
@@ -3581,7 +3591,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " relaxes on her belly."
+                                    Text: "" + tmpname + " relaxes on her belly."
                                 }]
                             });
                         } else {
@@ -3590,7 +3600,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + tgpname + " to stay on her belly."
+                                    Text: "" + tmpname + " forces " + tgpname + " to stay on her belly."
                                 }]
                             });
                         }
@@ -3603,7 +3613,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " puts the arms behind her back."
+                                    Text: "" + tmpname + " puts the arms behind her back."
                                 }]
                             });
                         } else {
@@ -3612,7 +3622,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + tgpname + " to put the arms behind her back."
+                                    Text: "" + tmpname + " forces " + tgpname + " to put the arms behind her back."
                                 }]
                             });
                         }
@@ -3625,7 +3635,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " puts her arms out like she's handcuffed."
+                                    Text: "" + tmpname + " puts her arms out like she's handcuffed."
                                 }]
                             });
                         } else {
@@ -3634,7 +3644,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + tgpname + " to put the arms out like she's handcuffed."
+                                    Text: "" + tmpname + " forces " + tgpname + " to put the arms out like she's handcuffed."
                                 }]
                             });
                         }
@@ -3647,7 +3657,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " puts the arms behind her back, elbows almost touching."
+                                    Text: "" + tmpname + " puts the arms behind her back, elbows almost touching."
                                 }]
                             });
                         } else {
@@ -3656,7 +3666,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + tgpname + " to put the arms behind her back, elbows almost touching."
+                                    Text: "" + tmpname + " forces " + tgpname + " to put the arms behind her back, elbows almost touching."
                                 }]
                             });
                         }
@@ -3669,7 +3679,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " kneels down."
+                                    Text: "" + tmpname + " kneels down."
                                 }]
                             });
                         } else {
@@ -3678,7 +3688,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " helps " + tgpname + " to kneel down."
+                                    Text: "" + tmpname + " helps " + tgpname + " to kneel down."
                                 }]
                             });
                         }
@@ -3691,7 +3701,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " kneels down and opens her legs."
+                                    Text: "" + tmpname + " kneels down and opens her legs."
                                 }]
                             });
                         } else {
@@ -3700,7 +3710,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " helps " + tgpname + " to kneel down, forcing her legs open."
+                                    Text: "" + tmpname + " helps " + tgpname + " to kneel down, forcing her legs open."
                                 }]
                             });
                         }
@@ -3713,7 +3723,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " stands up and closes her legs."
+                                    Text: "" + tmpname + " stands up and closes her legs."
                                 }]
                             });
                         } else {
@@ -3722,7 +3732,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " helps " + tgpname + " to stand up with her legs closed."
+                                    Text: "" + tmpname + " helps " + tgpname + " to stand up with her legs closed."
                                 }]
                             });
                         }
@@ -3735,7 +3745,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " stands up normally on her feet."
+                                    Text: "" + tmpname + " stands up normally on her feet."
                                 }]
                             });
                         } else {
@@ -3744,7 +3754,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " helps " + tgpname + " to stand up normally on her feet."
+                                    Text: "" + tmpname + " helps " + tgpname + " to stand up normally on her feet."
                                 }]
                             });
                         }
@@ -3757,7 +3767,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " relaxes on all fours."
+                                    Text: "" + tmpname + " relaxes on all fours."
                                 }]
                             });
                         } else {
@@ -3766,7 +3776,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + tgpname + " on all fours."
+                                    Text: "" + tmpname + " forces " + tgpname + " on all fours."
                                 }]
                             });
                         }
@@ -3779,7 +3789,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " raises her hands."
+                                    Text: "" + tmpname + " raises her hands."
                                 }]
                             });
                         } else {
@@ -3788,7 +3798,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " helps " + tgpname + " to raise her hands."
+                                    Text: "" + tmpname + " helps " + tgpname + " to raise her hands."
                                 }]
                             });
                         }
@@ -3801,7 +3811,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " raises the hands above her head."
+                                    Text: "" + tmpname + " raises the hands above her head."
                                 }]
                             });
                         } else {
@@ -3810,7 +3820,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + tgpname + " to raise the hands above her head."
+                                    Text: "" + tmpname + " forces " + tgpname + " to raise the hands above her head."
                                 }]
                             });
                         }
@@ -3824,7 +3834,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " raises her hands and spreads her legs."
+                                    Text: "" + tmpname + " raises her hands and spreads her legs."
                                 }]
                             });
                         } else {
@@ -3833,7 +3843,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + tgpname + " to raise their hands and spread her legs."
+                                    Text: "" + tmpname + " forces " + tgpname + " to raise their hands and spread her legs."
                                 }]
                             });
                         }
@@ -3847,7 +3857,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " raises the hands above her head and spreads her legs."
+                                    Text: "" + tmpname + " raises the hands above her head and spreads her legs."
                                 }]
                             });
                         } else {
@@ -3856,7 +3866,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + tgpname + " to raise the hands above their head and spread her legs."
+                                    Text: "" + tmpname + " forces " + tgpname + " to raise the hands above their head and spread her legs."
                                 }]
                             });
                         }
@@ -3869,7 +3879,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " spreads her legs."
+                                    Text: "" + tmpname + " spreads her legs."
                                 }]
                             });
                         } else {
@@ -3878,7 +3888,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + tgpname + " to spread her legs."
+                                    Text: "" + tmpname + " forces " + tgpname + " to spread her legs."
                                 }]
                             });
                         }
@@ -3891,7 +3901,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " stands up."
+                                    Text: "" + tmpname + " stands up."
                                 }]
                             });
                         } else {
@@ -3900,7 +3910,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " helps " + tgpname + " to stand up."
+                                    Text: "" + tmpname + " helps " + tgpname + " to stand up."
                                 }]
                             });
                         }
@@ -3913,7 +3923,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " is now in an acrobatic pose in suspension."
+                                    Text: "" + tmpname + " is now in an acrobatic pose in suspension."
                                 }]
                             });
                         } else {
@@ -3922,7 +3932,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + tgpname + " in an acrobatic pose in suspension."
+                                    Text: "" + tmpname + " forces " + tgpname + " in an acrobatic pose in suspension."
                                 }]
                             });
                         }
@@ -3935,7 +3945,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " puts her arms out like her hands are taped."
+                                    Text: "" + tmpname + " puts her arms out like her hands are taped."
                                 }]
                             });
                         } else {
@@ -3944,7 +3954,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " forces " + tgpname + " to put the arms out like her hands are taped."
+                                    Text: "" + tmpname + " forces " + tgpname + " to put the arms out like her hands are taped."
                                 }]
                             });
                         }
@@ -3956,7 +3966,7 @@ async function NEWmenu() {
                             Type: "Action",
                             Dictionary: [{
                                 Tag: "Beep",
-                                Text: "" + Player.Nickname + " jumps with joy."
+                                Text: "" + tmpname + " jumps with joy."
                             }]
                         });
                         CharacterSetActivePose(Player, null);
@@ -3998,7 +4008,7 @@ async function NEWmenu() {
                             Type: "Action",
                             Dictionary: [{
                                 Tag: "Beep",
-                                Text: "" + Player.Nickname + " jumps to the ceiling."
+                                Text: "" + tmpname + " jumps to the ceiling."
                             }]
                         });
                         CharacterSetFacialExpression(Player, "Emoticon", "Annoyed", 1);
@@ -4057,19 +4067,17 @@ async function NEWmenu() {
                         } else if (InventoryGet(target[0], "ItemPelvis").Asset.Name == "HempRope") {
                             Region = "ItemPelvis";
                         } else {
-                            ChatRoomMessage({
-                                Content: "Quick-AccessMenu2.1: You're too heavily tied to excercise.",
-                                Type: "LocalMessage",
-                                Sender: Player.MemberNumber
-                            })
-                        };
+			    ChatRoomSendLocal(
+		                "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: You're too heavily tied to excercise.</p>"
+		            );
+                        }
                         if (target[0].Name == Player.Name) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " makes her workout."
+                                    Text: "" + tmpname + " makes her workout."
                                 }]
                             });
                         } else {
@@ -4078,7 +4086,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + Player.Nickname + " helps " + tgpname + " to make her workout."
+                                    Text: "" + tmpname + " helps " + tgpname + " to make her workout."
                                 }]
                             });
                         }
@@ -4210,7 +4218,7 @@ async function NEWmenu() {
                 Type: "Action",
                 Dictionary: [{
                     Tag: "Beep",
-                    Text: "" + Player.Nickname + message
+                    Text: "" + tmpname + message
                 }]
             });
             RelogExit();	
@@ -4221,7 +4229,7 @@ async function NEWmenu() {
                 Type: "Action",
                 Dictionary: [{
                     Tag: "Beep",
-                    Text: "" + Player.Nickname + " gets grabbed by two maids and sent to Pandora prison for " + minutes + " minutes."
+                    Text: "" + tmpname + " gets grabbed by two maids and sent to Pandora prison for " + minutes + " minutes."
                 }]
             });
             DialogLentLockpicks = false;
@@ -4897,7 +4905,7 @@ async function NEWmenu() {
                         Type: "Action",
                         Dictionary: [{
                             Tag: "Beep",
-                            Text: "" + Player.Nickname + " swallows a sleeping pill and drinks a glass of water. She falls asleep very quickly."
+                            Text: "" + tmpname + " swallows a sleeping pill and drinks a glass of water. She falls asleep very quickly."
                          }]
                     });
                 } else {
@@ -4906,7 +4914,7 @@ async function NEWmenu() {
                         Type: "Action",
                         Dictionary: [{
                             Tag: "Beep",
-                            Text: "" + Player.Nickname + "feeds "+ tgpname + " a sleeping pill and gives her a glass of water. "+ tgpname +" falls asleep very quickly."
+                            Text: "" + tmpname + "feeds "+ tgpname + " a sleeping pill and gives her a glass of water. "+ tgpname +" falls asleep very quickly."
                         }]
                     });
                 }
@@ -5059,7 +5067,7 @@ async function NEWmenu() {
                 Type: "Action",
                 Dictionary: [{
                     Tag: "Beep",
-                    Text: "" + Player.Nickname + " rolls a superdice of " + sides + " sides. The result is " + Result + "."
+                    Text: "" + tmpname + " rolls a superdice of " + sides + " sides. The result is " + Result + "."
                 }]
             });
         } else if (content.indexOf("/talk") == 0) {
@@ -5186,7 +5194,7 @@ async function NEWmenu() {
                 Type: "Action",
                 Dictionary: [{
                     Tag: "Beep",
-                    Text: "" + Player.Nickname + " gets grabbed by two maids and locked in a timer cell for " + minutes + " minutes."
+                    Text: "" + tmpname + " gets grabbed by two maids and locked in a timer cell for " + minutes + " minutes."
                 }]
             });
             DialogLentLockpicks = false;
@@ -6387,7 +6395,7 @@ function AutoRelog() {
 //Other functions
 function consoleWhisper() {
     ServerSend("ChatRoomChat", {
-        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
+        Content: "Quick-Access Menu2: " + tmpname + " has used console to alter appearance. If this is undesired, blacklist player.",
         Type: "Whisper",
         Target: ChatRoomTargetMemberNumber
     })
@@ -8952,19 +8960,25 @@ function CharacterNickname(C) {
 function TitleExit() {
     let Regex = /[/\p{L}\p{N}\p{Z}'-]/gu;
     let Nick = ElementValue("InputNickname");
-    var tmpname = Player.Nickname;
+    if (Player.Nickname == '') { 
+        var tmpname = Player.Name;
+    } else {
+        var tmpname = Player.Nickname;
+    }
     if (Nick == null) Nick = "";
     Nick = Nick.trim().substring(0, 20);
     if (Nick.length == 0) {
-	if (ServerPlayerIsInChatRoom()) {
-            ServerSend("ChatRoomChat", {
-                Content: "Beep",
-                Type: "Action",
-                Dictionary: [{
-                    Tag: "Beep",
-                    Text: "" + tmpname + " is now known as " + Player.Name + "."
-                }]
-            });
+	if (Player.Name != tmpname) {  
+	    if (ServerPlayerIsInChatRoom()) {
+                ServerSend("ChatRoomChat", {
+                    Content: "Beep",
+                    Type: "Action",
+                    Dictionary: [{
+                        Tag: "Beep",
+                        Text: "" + tmpname + " is now known as " + Player.Name + "."
+                    }]
+                });
+	    }	
 	}	
         Player.Nickname = Player.Name;
         ServerAccountUpdate.QueueData({
