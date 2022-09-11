@@ -50,6 +50,7 @@ Changes for future version
 * Added green background for most local messages
 * Improved the nickname function (no message when you don't come from a chat room)
 * Improved the message with EXPORT code to better separate the message and the code
+* Improved the code for messages with Player without nickname
 
 
 
