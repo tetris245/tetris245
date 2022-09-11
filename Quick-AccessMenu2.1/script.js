@@ -6395,7 +6395,7 @@ function AutoRelog() {
 //Other functions
 function consoleWhisper() {
     ServerSend("ChatRoomChat", {
-        Content: "Quick-Access Menu2: " + tmpname + " has used console to alter appearance. If this is undesired, blacklist player.",
+        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
         Type: "Whisper",
         Target: ChatRoomTargetMemberNumber
     })
