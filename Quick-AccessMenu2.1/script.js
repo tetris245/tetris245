@@ -36,9 +36,10 @@ async function NEWmenu() {
                     "<b>escape</b> = commands related to escape.\n" +
 		    "<b>features</b> = automatic features without command.\n" +
                     "<b>fun</b> = commands related to fun, pain and pleasure.\n" +
+		    "<b>kd</b> = info about kd command (for Kinky Dungeon).\n" +
                     "<b>misc</b> = special commands.\n" +
                     "<b>talking</b> = commands related to talking.\n" +
-                    "<b>visual</b> = commands related to animations and background.\n" +
+                    "<b>visual</b> = commands related to animations and background.    \n" +
                     "<b>zones</b> = commands related to game zones.\n" +
 		    "Several commands require to specify a target. It can be a real name or a member number.\n" +
 		    "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
@@ -134,6 +135,15 @@ async function NEWmenu() {
 		    "<b>/sleep</b> (target) = uses the sleeping pill on yourself or another player.\n" +
                     "<b>/superdice</b> (sides)  = rolls a superdice. Sides can be between 2 and 999999999.</p>"
                 );
+	    } else if (content.includes("kd")) {
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The kd command:\n" +
+                    "Without option: Launches normal Kinky Dungeon.\n" +
+		    " \n" +
+                    "With options:\n" +
+		    "<b>/kd cheat</b> = starts with cheats.\n" +
+                    "<b>/kd devious</b> = toggles devious challenge.</p>"
+                );    
             } else if (content.includes("lock")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The lock command has several syntaxes:\n" +
