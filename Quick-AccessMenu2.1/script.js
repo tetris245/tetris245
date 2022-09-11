@@ -39,7 +39,7 @@ async function NEWmenu() {
 		    "<b>kd</b> = info about kd command (for Kinky Dungeon).\n" +
                     "<b>misc</b> = special commands.\n" +
                     "<b>talking</b> = commands related to talking.\n" +
-                    "<b>visual</b> = commands related to animations and background.    \n" +
+                    "<b>visual</b> = commands related to animations and background.\n" +
                     "<b>zones</b> = commands related to game zones.\n" +
 		    "Several commands require to specify a target. It can be a real name or a member number.\n" +
 		    "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
@@ -244,7 +244,6 @@ async function NEWmenu() {
                     "<b>/game</b> (minigamehere) = launches a minigame. Using will give more info.\n" +
                     "<b>/ggts</b> (minutes) (level) = enters ggts training in asylum for the specified time. Level must be between 1 and 6.\n" +
                     "<b>/keydeposit</b> (hours) = keeps your keys safe in the vault.\n" +
-                    "<b>/kinkydungeon</b> = launches Kinky Dungeon. Options: devious to toggle deviouschallenge, cheat to start with cheats.\n" +
                     "<b>/patreoncheats</b> = changes settings of patreon cheats. All except college uniform, is auto toggled by default.\n" +
                     "<b>/prison</b> (minutes) = stays in Pandora prison. More than 60 minutes is possible.\n" +
                     "<b>/store</b> = leaves chatroom, goes to store. Shows hidden items.\n" +
