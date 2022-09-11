@@ -2072,19 +2072,8 @@ async function NEWmenu() {
                     }]
                });   
             InventoryWear(Player, "AnalHook", "ItemButt");
-            window.InventoryGet(window.Player, "ItemButt").Property = {Type: "Hair", Hide: ["Activity","Emoticon","Blush","BodyLower","BodyUpper","Eyebrows","Eyes","Eyes2","Face","Fluids","HairBack","HairFront","Hands","Head","Mouth","Nipples","Pussy","Cloth","ClothAccessory","Necklace","Suit","ClothLower","SuitLower","Bra","Corset","Panties","Socks","RightAnklet","LeftAnklet","Garters","Shoes","Hat","HairAccessory3","HairAccessory1","HairAccessory2","Gloves","Bracelet","Glasses","Mask","TailStraps","Wings","ItemMisc","ItemEars","ItemHead","ItemNose","ItemHood","ItemAddon","ItemMouth","ItemMouth2","ItemMouth3","ItemArms","ItemNeckAccessories","ItemNeck","ItemNeckRestraints","ItemNipples","ItemNipplesPiercings","ItemBreast","ItemTorso","ItemTorso2","ItemHands","ItemPelvis","ItemVulva","ItemVulvaPiercings","ItemDevices","ItemLegs","ItemFeet","ItemBoots"]}	
-        } else if (content.indexOf("/keydeposit") == 0) {
-            var hours = content.substring(11).trim();
-            ServerSend("ChatRoomChat", {
-                Content: "Beep",
-                Type: "Action",
-                Dictionary: [{
-                    Tag: "Beep",
-                    Text: "" + tmpname + " keys are now safe in the vault for " + hours + " hours."
-                }]
-            });
-            CellDepositKeys(hours);
-        } else if (content.indexOf("/kinkydungeon") == 0) {
+            window.InventoryGet(window.Player, "ItemButt").Property = {Type: "Hair", Hide: ["Activity","Emoticon","Blush","BodyLower","BodyUpper","Eyebrows","Eyes","Eyes2","Face","Fluids","HairBack","HairFront","Hands","Head","Mouth","Nipples","Pussy","Cloth","ClothAccessory","Necklace","Suit","ClothLower","SuitLower","Bra","Corset","Panties","Socks","RightAnklet","LeftAnklet","Garters","Shoes","Hat","HairAccessory3","HairAccessory1","HairAccessory2","Gloves","Bracelet","Glasses","Mask","TailStraps","Wings","ItemMisc","ItemEars","ItemHead","ItemNose","ItemHood","ItemAddon","ItemMouth","ItemMouth2","ItemMouth3","ItemArms","ItemNeckAccessories","ItemNeck","ItemNeckRestraints","ItemNipples","ItemNipplesPiercings","ItemBreast","ItemTorso","ItemTorso2","ItemHands","ItemPelvis","ItemVulva","ItemVulvaPiercings","ItemDevices","ItemLegs","ItemFeet","ItemBoots"]}
+        } else if (content.indexOf("/kd") == 0) {
             ArcadeKinkyDungeonEnd = function() {
                 CommonSetScreen("Online", "ChatRoom");
                 document.getElementById("InputChat").style.display = "inline";
@@ -2421,7 +2410,7 @@ async function NEWmenu() {
                         },
                     ];
                 }, 5000);
-            } else if (content.endsWith("/kinkydungeon")) {
+            } else if (content.endsWith("/kd")) {
                 ArcadeRun();
                 ArcadeKinkyDungeonStart(ReputationChange("Gaming"));
                 document.getElementById("InputChat").style.display = "none";
@@ -2438,6 +2427,19 @@ async function NEWmenu() {
                     var KinkyDungeonSpells = [];
                 }, 5000);
             }
+	} else if (content.indexOf("/keydeposit") == 0) {
+            var hours = content.substring(11).trim();
+	    if (hours != '') {
+                ServerSend("ChatRoomChat", {
+                    Content: "Beep",
+                    Type: "Action",
+                    Dictionary: [{
+                        Tag: "Beep",
+                        Text: "" + tmpname + " keys are now safe in the vault for " + hours + " hours."
+                   }]
+                });
+                CellDepositKeys(hours);
+	    }    
         } else if (content.indexOf("/leave") == 0) {
             ChatRoomSetLastChatRoom("");
             ServerSend("ChatRoomLeave", "");
