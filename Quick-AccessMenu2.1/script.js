@@ -140,9 +140,11 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The kd command:\n" +
                     "Without option: Launches normal Kinky Dungeon.\n" +
 		    " \n" +
-                    "With options:\n" +
-		    "<b>/kd cheat</b> = starts with cheats.\n" +
-                    "<b>/kd devious</b> = toggles devious challenge.</p>"
+                    "Options:\n" +
+                    "<b>/kd devious</b> = toggles Devious Challenge.\n" +
+		    "Cheat options - Starts the game with a specific cheat.\n" +
+		    "If cheats aren't loaded first time, quit and restart.\n" +
+		    "Same procedure during game is possible to add new cheats.</p>"
                 );    
             } else if (content.includes("lock")) {
                 ChatRoomSendLocal(
@@ -2105,337 +2107,46 @@ async function NEWmenu() {
 		        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: DeviousChallenge disabled</p>"
 		    );
                 }
-            } else if (content.includes("cheat")) {
-                ChatRoomSendLocal(
-		    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: If cheats aren't loaded first time, quit and restart.</p>"
-		);
+            } else {
                 ArcadeRun();
                 ArcadeKinkyDungeonStart(ReputationChange("Gaming"));
                 document.getElementById("InputChat").style.display = "none";
                 document.getElementById("TextAreaChatLog").style.display = "none";
-                setTimeout(function() {
-                    KinkyDungeonRedKeys += 999;
-                    KinkyDungeonGreenKeys += 999;
-                    KinkyDungeonBlueKeys += 999;
-                    KinkyDungeonLockpicks += 999;
-                    KinkyDungeonAddGold(999999);
-                    KinkyDungeonEnchantedBlades += 999;
-                    KinkyDungeonNormalBlades += 999;
-                    var KinkyDungeonMysticSeals = 999;
-                    var KinkyDungeonSpells = [{
-                            name: "Firebolt",
-                            exhaustion: 1,
-                            components: ["Arms"],
-                            level: 1,
-                            type: "bolt",
-                            projectile: true,
-                            onhit: "",
-                            power: 3,
-                            delay: 0,
-                            range: 50,
-                            damage: "fire",
-                            speed: 1,
-                            playerEffect: {
-                                name: "Damage"
-                            }
-                        },
-                        {
-                            name: "Snare",
-                            exhaustion: 1,
-                            components: ["Legs"],
-                            level: 1,
-                            type: "inert",
-                            projectile: false,
-                            onhit: "lingering",
-                            lifetime: -1,
-                            time: 10,
-                            delay: 3,
-                            range: 1,
-                            damage: "stun",
-                            playerEffect: {
-                                name: "MagicRope",
-                                time: 3
-                            }
-                        },
-                        {
-                            name: "Fireball",
-                            exhaustion: 6,
-                            components: ["Arms"],
-                            level: 4,
-                            type: "bolt",
-                            projectile: true,
-                            onhit: "aoe",
-                            power: 4,
-                            delay: 0,
-                            range: 50,
-                            aoe: 1.5,
-                            size: 3,
-                            lifetime: 1,
-                            damage: "fire",
-                            speed: 1,
-                            playerEffect: {
-                                name: "Damage"
-                            }
-                        }, // Throws a fireball in a direction that moves 1 square each turn
-                        {
-                            name: "Icebolt",
-                            exhaustion: 4,
-                            components: ["Arms"],
-                            level: 2,
-                            type: "bolt",
-                            projectile: true,
-                            onhit: "",
-                            time: 4,
-                            power: 2,
-                            delay: 0,
-                            range: 50,
-                            damage: "ice",
-                            speed: 2,
-                            playerEffect: {
-                                name: "Damage"
-                            }
-                        },
-                        {
-                            name: "Electrify",
-                            exhaustion: 2,
-                            components: ["Arms"],
-                            level: 2,
-                            type: "inert",
-                            projectile: false,
-                            onhit: "aoe",
-                            power: 5,
-                            time: 1,
-                            delay: 1,
-                            range: 4,
-                            size: 1,
-                            aoe: 0.75,
-                            lifetime: 1,
-                            damage: "electric",
-                            playerEffect: {
-                                name: "Shock",
-                                time: 1
-                            }
-                        },
-                        {
-                            name: "Shield",
-                            exhaustion: 3,
-                            components: ["Legs"],
-                            level: 1,
-                            type: "inert",
-                            projectile: false,
-                            block: 5,
-                            onhit: "",
-                            power: 0,
-                            delay: 1,
-                            range: 1.5,
-                            size: 1,
-                            damage: ""
-                        },
-                        {
-                            name: "GreaterShield",
-                            exhaustion: 4,
-                            components: ["Legs"],
-                            level: 2,
-                            type: "inert",
-                            projectile: false,
-                            block: 10,
-                            onhit: "",
-                            power: 0,
-                            delay: 5,
-                            range: 2,
-                            size: 1,
-                            damage: ""
-                        },
-                        {
-                            name: "Slime",
-                            exhaustion: 5,
-                            components: ["Legs"],
-                            level: 3,
-                            type: "inert",
-                            projectile: false,
-                            onhit: "lingering",
-                            time: 2,
-                            delay: 1,
-                            range: 4,
-                            size: 3,
-                            aoe: 2,
-                            lifetime: 3,
-                            lifetimeHitBonus: 12,
-                            damage: "stun",
-                            playerEffect: {
-                                name: "SlimeTrap",
-                                time: 3
-                            }
-                        },
-                        {
-                            name: "ChainBolt",
-                            exhaustion: 1,
-                            components: ["Arms"],
-                            level: 1,
-                            type: "bolt",
-                            projectile: true,
-                            onhit: "",
-                            time: 1,
-                            power: 2,
-                            delay: 0,
-                            range: 50,
-                            damage: "chain",
-                            speed: 2,
-                            playerEffect: {
-                                name: "SingleChain",
-                                time: 1
-                            }
-                        },
-                        {
-                            name: "SlimeBall",
-                            exhaustion: 4,
-                            components: ["Arms"],
-                            level: 2,
-                            type: "bolt",
-                            projectile: true,
-                            onhit: "",
-                            time: 2,
-                            power: 2.5,
-                            delay: 0,
-                            range: 50,
-                            damage: "glue",
-                            speed: 1,
-                            trailLifetime: 10,
-                            trailDamage: "stun",
-                            trail: "lingering",
-                            trailChance: 1.0,
-                            playerEffect: {
-                                name: "SlimeTrap",
-                                time: 3
-                            }
-                        },
-                        {
-                            name: "Leap",
-                            exhaustion: 5,
-                            components: ["Legs"],
-                            level: 2,
-                            type: "inert",
-                            projectile: false,
-                            onhit: "teleport",
-                            delay: 1,
-                            lifetime: 1,
-                            range: 5,
-                            damage: ""
-                        },
-                        {
-                            name: "Blink",
-                            exhaustion: 3,
-                            components: ["Verbal"],
-                            level: 2,
-                            type: "inert",
-                            projectile: false,
-                            onhit: "teleport",
-                            delay: 3,
-                            range: 3,
-                            damage: ""
-                        },
-                        {
-                            name: "Flash",
-                            exhaustion: 3,
-                            components: ["Verbal"],
-                            level: 2,
-                            type: "inert",
-                            projectile: false,
-                            onhit: "aoe",
-                            time: 3,
-                            delay: 1,
-                            range: 2.5,
-                            size: 3,
-                            aoe: 1.5,
-                            lifetime: 1,
-                            damage: "stun",
-                            playerEffect: {
-                                name: "Blind",
-                                time: 3
-                            }
-                        },
-                        {
-                            name: "GreaterFlash",
-                            exhaustion: 5,
-                            components: ["Verbal"],
-                            level: 3,
-                            type: "inert",
-                            projectile: false,
-                            onhit: "aoe",
-                            time: 4,
-                            delay: 1,
-                            range: 2.5,
-                            size: 5,
-                            aoe: 2.5,
-                            lifetime: 1,
-                            damage: "stun",
-                            playerEffect: {
-                                name: "Blind",
-                                time: 3
-                            }
-                        },
-                        {
-                            name: "FocusedFlash",
-                            exhaustion: 6,
-                            components: ["Verbal"],
-                            level: 4,
-                            type: "inert",
-                            projectile: false,
-                            onhit: "aoe",
-                            time: 12,
-                            delay: 2,
-                            range: 2.5,
-                            size: 3,
-                            aoe: 1.5,
-                            lifetime: 1,
-                            damage: "stun",
-                            playerEffect: {
-                                name: "Blind",
-                                time: 12
-                            }
-                        },
-                        {
-                            name: "Shroud",
-                            exhaustion: 4,
-                            components: ["Verbal"],
-                            level: 3,
-                            type: "inert",
-                            projectile: false,
-                            buffs: [{
-                                type: "Evasion",
-                                power: 0.75,
-                                player: true,
-                                enemies: true,
-                                tags: ["darkness"],
-                                range: 1.5
-                            }],
-                            onhit: "",
-                            aoe: 1.5,
-                            power: 0,
-                            delay: 8,
-                            range: 4,
-                            size: 3,
-                            damage: ""
-                        },
-                    ];
-                }, 5000);
-            } else if (content.endsWith("/kd")) {
-                ArcadeRun();
-                ArcadeKinkyDungeonStart(ReputationChange("Gaming"));
-                document.getElementById("InputChat").style.display = "none";
-                document.getElementById("TextAreaChatLog").style.display = "none";
-                setTimeout(function() {
-                    KinkyDungeonRedKeys += 0;
-                    KinkyDungeonGreenKeys += 0;
-                    KinkyDungeonBlueKeys += 0;
-                    KinkyDungeonLockpicks += 0;
-                    KinkyDungeonAddGold(0);
-                    KinkyDungeonEnchantedBlades += 0;
-                    KinkyDungeonNormalBlades += 0;
-                    var KinkyDungeonMysticSeals = 0;
-                    var KinkyDungeonSpells = [];
-                }, 5000);
-            }
+                if (content.endsWith("/kd")) {
+                    setTimeout(function() {
+                        KinkyDungeonRedKeys += 0;
+                        //KinkyDungeonGreenKeys += 0;
+                        KinkyDungeonBlueKeys += 0;
+                        KinkyDungeonLockpicks += 0;
+                        KinkyDungeonAddGold(0);
+                        KinkyDungeonEnchantedBlades += 0;
+                        KinkyDungeonNormalBlades += 0;
+                        var KinkyDungeonMysticSeals = 0;
+                        var KinkyDungeonSpells = [];
+                    }, 5000);
+                } else if (content.includes("frigid")) {                     
+                    var stringSet1 = content;
+                    var stringSet2 = stringSet1.split(/[ ,]+/);
+                    var frigid = stringSet2[2];
+                    setTimeout(function() {            
+                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, +frigid);
+                    }, 5000);
+                } else if (content.includes("mana")) {
+                    var stringSet1 = content;
+                    var stringSet2 = stringSet1.split(/[ ,]+/);
+                    var mana = stringSet2[2];
+                    setTimeout(function() {            
+                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, +mana);
+                    }, 5000);
+                } else if (content.includes("stamina")) {
+                    var stringSet1 = content;
+                    var stringSet2 = stringSet1.split(/[ ,]+/);
+                    var stamina = stringSet2[2];
+                    setTimeout(function() {            
+                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, +stamina);
+                    }, 5000);   
+                } 
+            } 	    
 	} else if (content.indexOf("/keydeposit") == 0) {
             var hours = content.substring(11).trim();
 	    if (hours != '') {
