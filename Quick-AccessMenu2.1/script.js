@@ -2113,37 +2113,25 @@ async function NEWmenu() {
                 document.getElementById("InputChat").style.display = "none";
                 document.getElementById("TextAreaChatLog").style.display = "none";
                 if (content.endsWith("/kd")) {
-                    setTimeout(function() {
-                        KinkyDungeonRedKeys += 0;
-                        //KinkyDungeonGreenKeys += 0;
+                    setTimeout(function() 
+			KinkyDungeonAddGold(0);
                         KinkyDungeonBlueKeys += 0;
                         KinkyDungeonLockpicks += 0;
-                        KinkyDungeonAddGold(0);
+                        KinkyDungeonRedKeys += 0;
                         KinkyDungeonEnchantedBlades += 0;
                         KinkyDungeonNormalBlades += 0;
                         var KinkyDungeonMysticSeals = 0;
                         var KinkyDungeonSpells = [];
                     }, 5000);
-                } else if (content.includes("frigid")) {                     
-                    var stringSet1 = content;
-                    var stringSet2 = stringSet1.split(/[ ,]+/);
-                    var frigid = stringSet2[2];
-                    setTimeout(function() {            
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, +frigid);
-                    }, 5000);
-                } else if (content.includes("mana")) {
-                    var stringSet1 = content;
-                    var stringSet2 = stringSet1.split(/[ ,]+/);
-                    var mana = stringSet2[2];
-                    setTimeout(function() {            
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, +mana);
-                    }, 5000);
-                } else if (content.includes("stamina")) {
-                    var stringSet1 = content;
-                    var stringSet2 = stringSet1.split(/[ ,]+/);
-                    var stamina = stringSet2[2];
-                    setTimeout(function() {            
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, +stamina);
+                } else if (content.includes("maxstats")) {                     
+                    setTimeout(function() {  
+                        KinkyDungeonAddGold(999);
+                        KinkyDungeonBlueKeys = 999;
+                        KinkyDungeonLockpicks = 999;
+                        KinkyDungeonRedKeys = 999;
+                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, +999);
+                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, +999);
+                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, +999);
                     }, 5000);   
                 } 
             } 	    
