@@ -2113,16 +2113,6 @@ async function NEWmenu() {
                 document.getElementById("InputChat").style.display = "none";
                 document.getElementById("TextAreaChatLog").style.display = "none";
                 if (content.endsWith("/kd")) {
-                    setTimeout(function() 
-		         KinkyDungeonAddGold(0);
-                         KinkyDungeonBlueKeys += 0;
-			 KinkyDungeonEnchantedBlades += 0;     
-                         KinkyDungeonLockpicks += 0;
-                         KinkyDungeonNormalBlades += 0;
-                         KinkyDungeonMysticSeals = 0;
-			 KinkyDungeonRedKeys += 0;      
-                         var KinkyDungeonSpells = [];
-                    }, 5000);
                 } else if (content.includes("maxstats")) {                     
                     setTimeout(function() {  
                          KinkyDungeonAddGold(999999);
@@ -2181,7 +2171,6 @@ async function NEWmenu() {
                          KinkyDungeonInventoryAddWeapon("Rope");
                          KinkyDungeonInventoryAddWeapon("Slimethrower");
                          KinkyDungeonInventoryAddWeapon("Spear");
-                         KinkyDungeonInventoryAddWeapon("StaffBind");
                          KinkyDungeonInventoryAddWeapon("StaffBind");
                          KinkyDungeonInventoryAddWeapon("StaffDoll");
                          KinkyDungeonInventoryAddWeapon("StaffFlame");
