@@ -2114,48 +2114,84 @@ async function NEWmenu() {
                 document.getElementById("TextAreaChatLog").style.display = "none";
                 if (content.endsWith("/kd")) {
                     setTimeout(function() 
-			KinkyDungeonAddGold(0);
-                        KinkyDungeonBlueKeys += 0;
-			KinkyDungeonEnchantedBlades += 0;     
-                        KinkyDungeonLockpicks += 0;
-                        KinkyDungeonNormalBlades += 0;
-                        KinkyDungeonMysticSeals = 0;
-			KinkyDungeonRedKeys += 0;      
-                        var KinkyDungeonSpells = [];
+		         KinkyDungeonAddGold(0);
+                         KinkyDungeonBlueKeys += 0;
+			 KinkyDungeonEnchantedBlades += 0;     
+                         KinkyDungeonLockpicks += 0;
+                         KinkyDungeonNormalBlades += 0;
+                         KinkyDungeonMysticSeals = 0;
+			 KinkyDungeonRedKeys += 0;      
+                         var KinkyDungeonSpells = [];
                     }, 5000);
                 } else if (content.includes("maxstats")) {                     
                     setTimeout(function() {  
-                        KinkyDungeonAddGold(999);
-                        KinkyDungeonBlueKeys = 999;
-                        KinkyDungeonEnchantedBlades = 999;
-                        KinkyDungeonLockpicks = 999;
-                        KinkyDungeonNormalBlades = 999;
-                        KinkyDungeonMysticSeals = 999;
-                        KinkyDungeonRedKeys = 999;
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, +99);
-			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionInvisibility, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, +99);
+                         KinkyDungeonAddGold(999999);
+                         KinkyDungeonBlueKeys = 999;
+                         KinkyDungeonEnchantedBlades = 999;
+                         KinkyDungeonLockpicks = 999;
+                         KinkyDungeonNormalBlades = 999;
+                         KinkyDungeonMysticSeals = 999;
+                         KinkyDungeonRedKeys = 999;
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, +99);
+			 KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionInvisibility, +99);
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, +99);
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, +99);
                     }, 5000);   
 		 } else if (content.includes("moreitems")) {  
 		     setTimeout(function() {  
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, +99);  
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSourceSpent, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Bola, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Bomb, +99);         
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.EarthRune, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Ectoplasm, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ElfCrystal, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.EnchantedGrinder, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.IceRune, +99); 
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollArms, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollLegs, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollPurity, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollVerbal, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.SmokeBomb, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.WaterRune, +99);
- 	            }, 5000); 		
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, +99);  
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSourceSpent, +99);
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Bola, +99);
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Bomb, +99);         
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.EarthRune, +99);
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Ectoplasm, +99);
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ElfCrystal, +99);
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.EnchantedGrinder, +99);
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.IceRune, +99); 
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, +99);
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollArms, +99);
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollLegs, +99);
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollPurity, +99);
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollVerbal, +99);
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.SmokeBomb, +99);
+                         KinkyDungeonChangeConsumable(KinkyDungeonConsumables.WaterRune, +99);
+ 	            }, 5000); 	
+		 } else if (content.includes("weapons")) {                     
+                     setTimeout(function() {  
+                         KinkyDungeonInventoryAddWeapon("Axe");
+                         KinkyDungeonInventoryAddWeapon("BoltCutters");
+                         KinkyDungeonInventoryAddWeapon("BondageBuster");
+                         KinkyDungeonInventoryAddWeapon("Dragonslaver");
+                         KinkyDungeonInventoryAddWeapon("EnchKnife");                   
+                         KinkyDungeonInventoryAddWeapon("EscortDrone");
+                         KinkyDungeonInventoryAddWeapon("Feather");
+                         KinkyDungeonInventoryAddWeapon("Flail");
+                         KinkyDungeonInventoryAddWeapon("Flamberge");
+                         KinkyDungeonInventoryAddWeapon("Hammer");
+                         KinkyDungeonInventoryAddWeapon("IceBreaker");
+                         KinkyDungeonInventoryAddWeapon("IceCube");
+                         KinkyDungeonInventoryAddWeapon("Knife");
+                         KinkyDungeonInventoryAddWeapon("MagicAxe");
+                         KinkyDungeonInventoryAddWeapon("MagicFlail");
+                         KinkyDungeonInventoryAddWeapon("MagicHammer");
+                         KinkyDungeonInventoryAddWeapon("MagicSpear");
+                         KinkyDungeonInventoryAddWeapon("MagicSword");
+                         KinkyDungeonInventoryAddWeapon("MoraiScissors");
+                         KinkyDungeonInventoryAddWeapon("Pickaxe");
+                         KinkyDungeonInventoryAddWeapon("Rope");
+                         KinkyDungeonInventoryAddWeapon("Slimethrower");
+                         KinkyDungeonInventoryAddWeapon("Spear");
+                         KinkyDungeonInventoryAddWeapon("StaffBind");
+                         KinkyDungeonInventoryAddWeapon("StaffBind");
+                         KinkyDungeonInventoryAddWeapon("StaffDoll");
+                         KinkyDungeonInventoryAddWeapon("StaffFlame");
+                         KinkyDungeonInventoryAddWeapon("StaffFrostbite");
+                         KinkyDungeonInventoryAddWeapon("StaffPermafrost");
+                         KinkyDungeonInventoryAddWeapon("StaffStorm");
+                         KinkyDungeonInventoryAddWeapon("Sword");
+                         KinkyDungeonInventoryAddWeapon("TheEncaser");
+                         KinkyDungeonInventoryAddWeapon("VibeWand");
+                    }, 5000);   
                 } 
             } 	    
 	} else if (content.indexOf("/keydeposit") == 0) {
