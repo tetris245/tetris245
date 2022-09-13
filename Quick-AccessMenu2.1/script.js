@@ -2132,10 +2132,10 @@ async function NEWmenu() {
                         KinkyDungeonNormalBlades = 999;
                         KinkyDungeonMysticSeals = 999;
                         KinkyDungeonRedKeys = 999;
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, +999);
+                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, +99);
 			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionInvisibility, +99);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, +999);
-                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, +999);
+                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, +99);
+                        KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, +99);
                     }, 5000);   
 		 } else if (content.includes("moreitems")) {  
 		     setTimeout(function() {  
