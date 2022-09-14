@@ -2098,14 +2098,14 @@ async function NEWmenu() {
                     ArcadeDeviousChallenge = true;
                     LogAdd("DeviousChallenge", "Arcade", 1, true);
                     ChatRoomSendLocal(
-		        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: DeviousChallenge enabled</p>"
+		        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: Devious Challenge enabled</p>"
 		    );
                 } else {
                     DeviousOn = false;
                     ArcadeDeviousChallenge = false;
                     LogDelete("DeviousChallenge", "Arcade", true);
                     ChatRoomSendLocal(
-		        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: DeviousChallenge disabled</p>"
+		        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: Devious Challenge disabled</p>"
 		    );
                 }
             } else {
