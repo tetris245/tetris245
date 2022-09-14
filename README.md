@@ -54,6 +54,7 @@ Changes for future version
      - /kd moreitems to get all extra items
      - /kd spells to get special spells for extra slots and improved stats
      - /kd weapons to get all weapons
+  - 4 - Check the cheat effect on the game before repeating step 3 for another cheat
 * Added QAM welcome message in main hall
 * Added green background for most local messages
 * Improved the nickname function (no message when you don't come from a chat room)
