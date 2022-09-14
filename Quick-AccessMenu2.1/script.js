@@ -130,7 +130,7 @@ async function NEWmenu() {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Fun commands:\n" +
                     "<b>/cum</b> = causes an orgasm.\n" +
-		    "<b>/invisible</b> = becomes invisible (anal hook must be allowed).\n" +
+		    "<b>/invisible1</b> = becomes invisible (anal hook must be allowed).\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
 		    "<b>/sleep</b> (target) = uses the sleeping pill on yourself or another player.\n" +
                     "<b>/superdice</b> (sides)  = rolls a superdice. Sides can be between 2 and 999999999.</p>"
@@ -2074,7 +2074,7 @@ async function NEWmenu() {
                 (typeof oldChatRoomMessage !== 'undefined') && (ChatRoomMessage = oldChatRoomMessage); //reset
                 newChatRoomMessage = function(data) {}
             }
-	} else if (content.indexOf("/invisible") == 0) {
+	} else if (content.indexOf("/invisible1") == 0) {
                ServerSend("ChatRoomChat", {
                     Content: "Beep",
                     Type: "Action",
