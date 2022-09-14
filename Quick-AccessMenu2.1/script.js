@@ -137,14 +137,14 @@ async function NEWmenu() {
                 );
 	    } else if (content.includes("kd")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The kd command:\n" +
-                    "Without option: Launches normal Kinky Dungeon.\n" +
-		    " \n" +
-                    "Options:\n" +
-                    "<b>/kd devious</b> = toggles Devious Challenge.\n" +
-		    "Cheat options - Starts the game with a specific cheat.\n" +
-		    "If cheats aren't loaded first time, quit and restart.\n" +
-		    "Same procedure during game is possible to add new cheats.</p>"
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: How to use the kd command:\n" +
+                    "1 - Optionally, use <b>/kd devious</b> to toggle the Devious Challenge mode\n" +
+                    "2 - Use <b>/kd</b> without any option to launch the game without cheat\n" +
+		    "3 -  After launching of the game, you can click on the Exit button to go back to the chatroom and use a command with cheat:\n" +
+                    "<b>/kd maxstats</b> to get high stats and many potions\n" +
+                    "<b>/kd moreitems</b> to get all extra items\n" +
+                    "<b>/kd spells</b> to get special spells for extra slots and improved stats\n" +
+                    "<b>/kd weapons</b> to get all weapons</p>"
                 );    
             } else if (content.includes("lock")) {
                 ChatRoomSendLocal(
