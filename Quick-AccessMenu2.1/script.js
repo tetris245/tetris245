@@ -6150,6 +6150,17 @@ async function NEWmenu() {
                     }
                 }
             }
+	} else if (content.indexOf("/visible") == 0) {
+             if (InventoryGet(Player, "ItemButt") != null) {
+                  if (InventoryGet(Player, "ItemButt").Asset.Name == "AnalHook")  {
+                      InventoryRemove(Player,"ItemButt");               
+                }
+            }  
+            if (InventoryGet(Player, "Mask") != null) {
+                  if (InventoryGet(Player, "Mask").Asset.Name == "Glitter")  {
+                      InventoryRemove(Player,"Mask");                                   
+                }
+            }  	
         } else if (content.indexOf("/wardrobe") == 0) {
             var targetname = content.substring(10).trim();
             var targetfinder = new RegExp('^' + targetname + '', 'i');
