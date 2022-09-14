@@ -131,6 +131,7 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Fun commands:\n" +
                     "<b>/cum</b> = causes an orgasm.\n" +
 		    "<b>/invisible1</b> = becomes invisible (anal hook must be allowed).\n" +
+		    "<b>/invisible2</b> = becomes invisible (glitter mask must be usable).\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
 		    "<b>/sleep</b> (target) = uses the sleeping pill on yourself or another player.\n" +
                     "<b>/superdice</b> (sides)  = rolls a superdice. Sides can be between 2 and 999999999.</p>"
@@ -2075,16 +2076,15 @@ async function NEWmenu() {
                 newChatRoomMessage = function(data) {}
             }
 	} else if (content.indexOf("/invisible1") == 0) {
-               ServerSend("ChatRoomChat", {
-                    Content: "Beep",
-                    Type: "Action",
-                    Dictionary: [{
-                        Tag: "Beep",
-                        Text: "Magical lasers make " + tmpname + " completely invisible."
-                    }]
-               });   
+            ServerSend("ChatRoomChat", {
+                Content: "Beep",
+                Type: "Action",
+                Dictionary: [{
+                    Tag: "Beep",
+                    Text: "Magical lasers make " + tmpname + " completely invisible."
+               }]
+            });   
             InventoryWear(Player, "AnalHook", "ItemButt");
-	    InventoryWear(Player, "AnalHook", "ItemButt");
             window.InventoryGet(window.Player, "ItemButt").Property = {
                 Type: "Hair",
                 Hide: [
@@ -2156,7 +2156,89 @@ async function NEWmenu() {
                     "TailStraps",
                     "Wings"    
                 ]
-            }
+            }		
+        } else if (content.indexOf("/invisible2") == 0) {
+            ServerSend("ChatRoomChat", {
+                Content: "Beep",
+                Type: "Action",
+                Dictionary: [{
+                    Tag: "Beep",
+                    Text: "Magical lasers make " + tmpname + " completely invisible."
+                }]
+            });   
+            InventoryWear(Player, "Glitter", "Mask", "#664433");
+            window.InventoryGet(window.Player, "Mask").Property = {
+                Type: "MidFrecklesSmall",
+                Hide: [
+                    "Activity",
+                    "Blush",
+                    "BodyLower",
+                    "BodyUpper",
+                    "Bra",
+                    "Bracelet",
+                    "Cloth",
+                    "ClothAccessory",
+                    "ClothLower",
+                    "Corset",  
+                    "Emoticon",
+                    "Eyebrows",
+                    "Eyes",
+                    "Eyes2",
+                    "Face",
+                    "Fluids",
+                    "Garters",
+                    "Glasses",
+                    "Gloves",
+                    "HairAccessory1",
+                    "HairAccessory2",
+                    "HairAccessory3",
+                    "HairBack",
+                    "HairFront",
+                    "Hands",
+                    "Hat",
+                    "Head",
+                    "ItemAddon",
+                    "ItemArms",
+                    "ItemBoots",
+                    "ItemBreast",
+                    "ItemButt",
+                    "ItemDevices",
+                    "ItemEars",
+                    "ItemFeet",
+                    "ItemHands",
+                    "ItemHead",
+                    "ItemHood",   
+                    "ItemLegs",
+                    "ItemMisc",
+                    "ItemMouth",
+                    "ItemMouth2",
+                    "ItemMouth3",
+                    "ItemNeck",
+                    "ItemNeckAccessories",
+                    "ItemNeckRestraints",
+                    "ItemNose",
+                    "ItemNipples",
+                    "ItemNipplesPiercings",
+                    "ItemPelvis",
+                    "ItemTorso",
+                    "ItemTorso2",
+                    "ItemVulva",                        
+                    "ItemVulvaPiercings",                        
+                    "LeftAnklet", 
+                    "Mouth",
+                    "Necklace",
+                    "Nipples",
+                    "Panties",
+                    "Pussy",
+                    "RightAnklet",
+                    "Shoes",
+                    "Socks",
+                    "Suit",
+                    "SuitLower",
+                    "TailStraps",
+                    "Wings"    
+                ]
+            }	
         } else if (content.indexOf("/kd") == 0) {
             ArcadeKinkyDungeonEnd = function() {
                 CommonSetScreen("Online", "ChatRoom");
