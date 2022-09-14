@@ -144,7 +144,7 @@ async function NEWmenu() {
                     "<b>/kd maxstats</b> to get high stats and many potions\n" +
                     "<b>/kd moreitems</b> to get all extra items\n" +
                     "<b>/kd spells</b> to get special spells for extra slots and improved stats\n" +
-                    "<b>/kd weapons</b> to get all weapons\n"
+                    "<b>/kd weapons</b> to get all weapons\n" +
                     "4 - Check the cheat effect on the game before repeating step 3 for another cheat</p>"
                 );    
             } else if (content.includes("lock")) {
