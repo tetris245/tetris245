@@ -6152,7 +6152,15 @@ async function NEWmenu() {
                 }
             }
 	} else if (content.indexOf("/visible") == 0) {
-             if (InventoryGet(Player, "ItemButt") != null) {
+	    ServerSend("ChatRoomChat", {
+                Content: "Beep",
+                Type: "Action",
+                Dictionary: [{
+                    Tag: "Beep",
+                    Text: "" + tmpname + " suddenly is visible for everybody."
+                }]
+            });   
+            if (InventoryGet(Player, "ItemButt") != null) {
                   if (InventoryGet(Player, "ItemButt").Asset.Name == "AnalHook")  {
                       InventoryRemove(Player,"ItemButt");               
                 }
