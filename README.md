@@ -46,15 +46,7 @@ Changes for future version
 * New feature: Auto All Items Are Craftable (however, only a few extra items such as serving tray can be fully used - you can craft locks, keys and 'spanking toys' but you need to pretend you have them and rp - also, don't forget that some items require the QAM unrestrict mode to be used)
 * New feature: Auto Extra Buttons In Wardrobe: QAM Export and QAM Import for outfit + restraints (Note: the Export button can be used only when you come from a chat room - after clicking on this button, you must go back to the chat room and will find the code you can copy in a file and/or the clipboard)  
 * Added /help features with info about automatic features
-* Renamed kinkydungeon command as kd, updated and restructured this command that must be used as follows now:
-  - 1 - Optionally, use /kd devious to toggle the Devious Challenge mode
-  - 2 - Use /kd without any option to launch the game without cheat
-  - 3 - After launching of the game, you can click on the Exit button to go back to the chatroom and use a command with cheat:
-     - /kd maxstats to get high stats and many potions
-     - /kd moreitems to get all extra items
-     - /kd spells to get special spells for extra slots and improved stats
-     - /kd weapons to get all weapons
-  - 4 - Check the cheat effect on the game before repeating step 3 for another cheat
+* Renamed kinkydungeon command as kd, updated and restructured this command with modular cheats (use /help kd to know how to use it)
 * Added QAM welcome message in main hall
 * Added green background for most local messages
 * Improved the nickname function (no message when you don't come from a chat room)
