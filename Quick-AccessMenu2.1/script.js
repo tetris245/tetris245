@@ -2156,7 +2156,8 @@ async function NEWmenu() {
                     "TailStraps",
                     "Wings"    
                 ]
-            }		
+            }	
+            ServerPlayerAppearanceSync();
         } else if (content.indexOf("/invisible2") == 0) {
             ServerSend("ChatRoomChat", {
                 Content: "Beep",
@@ -2239,6 +2240,7 @@ async function NEWmenu() {
                     "Wings"    
                 ]
             }	
+	    ServerPlayerAppearanceSync();
         } else if (content.indexOf("/kd") == 0) {
             ArcadeKinkyDungeonEnd = function() {
                 CommonSetScreen("Online", "ChatRoom");
