@@ -49,7 +49,7 @@ Changes for future version
 * New feature: Auto Extra Buttons In Wardrobe: QAM Export and QAM Import for outfit + restraints (Note: the Export button can be used only when you come from a chat room - after clicking on this button, you must go back to the chat room and will find the code you can copy in a file and/or the clipboard)  
 * New command: invisible2 to become invisible (glitter mask must be usable) - thanks to Lilly for her help
 * New command: visible to go back to visible state after using of an invisible command
-* Renamed kinkydungeon command as kd, updated and restructured this command with modular cheats (cheat option has been replaced by 4 options: maxstats, moreitems, spells, weapons - use /help kd to know how to use the kd command)
+* Renamed kinkydungeon command as kd, updated and restructured it with modular cheats (cheat option has been replaced by 5 options: maxstats, moreitems, outfits, spells, weapons - use /help kd to know how to use the kd command)
 * Added /help features with info about automatic features
 * Renamed invisible command as invisible1 and improved it
 * Added QAM welcome message in main hall
