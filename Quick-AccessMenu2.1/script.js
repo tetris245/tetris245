@@ -135,7 +135,7 @@ async function NEWmenu() {
                     "<b>/moaner</b> = moans when horny and stimulated. Using will give more info.\n" +
 		    "<b>/sleep</b> (target) = uses the sleeping pill on yourself or another player.\n" +
                     "<b>/superdice</b> (sides) = rolls a superdice. Sides can be between 2 and 999999999.\n" +
-		    "<b>/visible = back to visible state after using of an invisible command.</p>"
+		    "<b>/visible</b> = back to visible state after using of an invisible command.</p>"
                 );
 	    } else if (content.includes("kd")) {
                 ChatRoomSendLocal(
