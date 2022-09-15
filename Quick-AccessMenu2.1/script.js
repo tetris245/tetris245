@@ -145,6 +145,7 @@ async function NEWmenu() {
 		    "3 -  After launching of the game, you can click on the Exit button to go back to the chatroom and use a command with cheat:\n" +
                     "<b>/kd maxstats</b> to get high stats and many potions\n" +
                     "<b>/kd moreitems</b> to get all extra items\n" +
+		    "<b>/kd outfits</b> to get all outfits\n" +
                     "<b>/kd spells</b> to get special spells for extra slots and improved stats\n" +
                     "<b>/kd weapons</b> to get all weapons\n" +
                     "4 - Check the cheat effect on the game before repeating step 3 for another cheat</p>"
@@ -2304,7 +2305,17 @@ async function NEWmenu() {
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollVerbal, +99);
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.SmokeBomb, +99);
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.WaterRune, +99);
- 	            }, 5000); 	
+ 	            }, 5000); 		 
+                 } else if (content.includes("outfits")) {                     
+                     setTimeout(function() {                           
+                         KinkyDungeonInventoryAddOutfit("BlueSuitPrison");
+                         KinkyDungeonInventoryAddOutfit("Dragon");
+                         KinkyDungeonInventoryAddOutfit("Elven");
+                         KinkyDungeonInventoryAddOutfit("JailUniform");
+                         KinkyDungeonInventoryAddOutfit("Maid");
+                         KinkyDungeonInventoryAddOutfit("Obsidian");
+                         KinkyDungeonInventoryAddOutfit("Wolfgirl");
+                     }, 5000);   
 		 } else if (content.includes("spells")) {  
                      setTimeout(function() {  
                          KinkyDungeonSpells = [	
