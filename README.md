@@ -32,8 +32,10 @@ Special thanks to Firefly for giving permission to integrate the BC-Diaper-Wette
 
 Special thanks to Myrhanda and Kimei for giving permission to integrate the Moaner script.
 
+Thanks to lillyBC for providing ideas and inspiration with her bcTampermonkeys scripts.
+
 Thanks for special assistance:
-Shyness, Ada, huzpsb.
+Shyness, Ada, huzpsb, Lilly.
 
 Thanks for general assistance:
 Brianna, Better, Miyako, Zeltron, Selina, Estsanatlehi.
