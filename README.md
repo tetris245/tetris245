@@ -51,7 +51,7 @@ Changes for future version
 * New command: visible to go back to visible state after using of an invisible command
 * Renamed kinkydungeon command as kd, updated and restructured it with modular cheats (cheat option has been replaced by 5 options: maxstats, moreitems, outfits, spells, weapons - use /help kd to know how to use the kd command)
 * Added /help features with info about automatic features
-* Renamed invisible command as invisible1 and improved it
+* Renamed invisible command as invisible1 and improved it (effect will be seen by other players in all cases)
 * Added QAM welcome message in main hall
 * Added green background for most local messages
 * Improved the nickname function (no message when you don't come from a chat room)
