@@ -53,9 +53,8 @@ Changes for future version
 * Added /help features with info about automatic features
 * Renamed invisible command as invisible1 and improved it (effect will be seen by other players in all cases)
 * Added QAM welcome message in main hall
-* Added green background for most local messages
+* Added green background for most local messages and separate these messages from other messages in the chat
 * Improved the nickname function (no message when you don't come from a chat room)
-* Improved the message with EXPORT code to better separate the message and the code
 * Improved the code for messages with Player without nickname
 * Fixed a bug in keydeposit command
 
