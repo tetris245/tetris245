@@ -38,7 +38,7 @@ Thanks for special assistance:
 Shyness, Ada, huzpsb, Lilly.
 
 Thanks for general assistance:
-Brianna, Better, Miyako, Zeltron, Selina, Estsanatlehi.
+Brianna, Better, Miyako, Zeltron, Selina, Estsanatlehi, okatakab.
 All else I might not have included.
 
 ===========================================================================
