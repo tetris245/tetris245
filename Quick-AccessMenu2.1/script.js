@@ -200,7 +200,7 @@ async function NEWmenu() {
 		    "- New features: all items can be crafted, Import and Export buttons in wardrobe.\n" +
 		    "- New commands: invisible2, visible.\n" +
 		    "- Renamed commands: invisible -> invisible1, kinkydungeon -> kd, profile -> bio.\n" +
-	            "- Updated the kd command with modular cheat options. Use <br>/help kd<br> for more info.\n" +		
+	            "- Updated the kd command with modular cheat options. Use <b>/help kd<b> for more info.\n" +		
                     "- QAM welcome message + green background for most local messages.</p>"
                 );   	    
             } else if (content.includes("talking")) {
