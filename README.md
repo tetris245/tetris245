@@ -54,7 +54,7 @@ Changes for future version
 * Renamed invisible command as invisible1 and improved it (effect will be seen by other players in all cases)
 * Renamed profile command as bio to avoid conflict with similar BCE command
 * Added QAM welcome message in main hall
-* Added green background for most local messages and separate these messages from other messages in the chat
+* Added green background for most local messages and separated these messages from other messages in the chat
 * Improved the nickname function (no message when you don't come from a chat room)
 * Improved the code for messages with Player without nickname
 * Fixed a bug in keydeposit command
