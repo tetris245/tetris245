@@ -50,11 +50,11 @@ Changes for future version
 * New command: invisible2 to become invisible (glitter mask must be usable) - thanks to Lilly for her help
 * New command: visible to go back to visible state after using of an invisible command
 * Renamed kinkydungeon command as kd, updated and restructured it with modular cheats (cheat option has been replaced by 6 options: maxstats, moreitems, outfits, restraints, spells, weapons - use /help kd to know how to use the kd command)
-* Added /help features with info about automatic features
 * Renamed invisible command as invisible1 and improved it (effect will be seen by other players in all cases)
 * Renamed profile command as bio to avoid conflict with similar BCE command
 * Added QAM welcome message in main hall
 * Added green background for most local messages and separated these messages from other messages in the chat
+* Added /help features with info about automatic features
 * Improved the nickname function (no message when you don't come from a chat room)
 * Improved the code for messages with Player without nickname
 * Fixed a bug in keydeposit command
