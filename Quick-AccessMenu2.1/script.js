@@ -254,7 +254,7 @@ async function NEWmenu() {
                     "<b>/patreoncheats</b> = changes settings of patreon cheats. All except college uniform, is auto toggled by default.\n" +
                     "<b>/prison</b> (minutes) = stays in Pandora prison. More than 60 minutes is possible.\n" +
                     "<b>/store</b> = leaves chatroom, goes to store. Shows hidden items.\n" +
-                    "<b>/timercell</b> (minutes) = stays in the isolation cell. More than 60 minutes is possible. Tip: use bondage commands before!</p>"
+                    "<b>/timercell</b> (minutes) = stays in the isolation cell. More than 60 minutes is possible.</p>"
                 );
             }
         } else if ((content.indexOf("/action ") == 0) || (content.indexOf("/a ") == 0)) {
@@ -1776,8 +1776,7 @@ async function NEWmenu() {
                     "<b>/diaper setwet1</b> (value)* for wet level of normal diapers\n" +
                     "<b>/diaper setwet2</b> (value)* for wet level of chastity diapers\n" +
                     "<b>/diaper setmess1</b> (value)* for mess level of normal diapers\n" +
-                    "<b>/diaper setmess2</b> (value)* for mess level of chastity diapers\n" +
-                    "* = value between 0 and 2</p>"
+                    "<b>/diaper setmess2</b> (value)* for mess level of chastity diapers - * = value between 0 and 2</p>"
                 );
             }
         } else if (content.indexOf("/difficulty") == 0) {
