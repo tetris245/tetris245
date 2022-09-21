@@ -196,12 +196,12 @@ async function NEWmenu() {
                 );
 	    } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.6.0:\n" +
-		    "- New commands: invisible, poof (optional action).\n" +
-		    "- Added 'real gag talk' option to gagtalk command.\n" +
-	            "- Added 'real baby/gag talk' option to talk command.\n" +
-		    "- Extended babytalk, gagtalk, s1, s2, s3, s4, stutter and talk commands to whispers.\n" +			
-                    "- Added Wooden Rack as special case in solidity command.</p>"
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.7.0:\n" +
+		    "- New features: all items can be crafted, Import and Export buttons in wardrobe.\n" +
+		    "- New commands: invisible2, visible.\n" +
+		    "- Renamed commands: invisible -> invisible1, kinkydungeon -> kd, profile -> bio.\n" +
+	            "- Updated the kd command with modular cheat options. Use <br>/help kd<br> for more info.\n" +		
+                    "- QAM welcome message + green background for most local messages.</p>"
                 );   	    
             } else if (content.includes("talking")) {
 		ChatRoomSendLocal(
