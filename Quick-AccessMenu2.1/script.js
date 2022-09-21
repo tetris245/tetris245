@@ -1272,7 +1272,7 @@ async function NEWmenu() {
 	        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: You can use more backgrounds now.</p>"
 	    );
 	} else if (content.indexOf("/bio") == 0) {
-            var targetname = content.substring(8).trim();
+            var targetname = content.substring(4).trim();
             if (targetname == undefined) {
                 targetname = Player.Name
             };
