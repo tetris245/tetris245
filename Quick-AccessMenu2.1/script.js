@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.6.0
+// @version 1.7.0
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -6489,7 +6489,7 @@ ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
 	ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.6.0: Ready, type <b>/help</b> for general menu.\n" +
+                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.7.0: Ready, type <b>/help</b> for general menu.\n" +
 		    "Note: NPC punishments are disabled.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
 		    "Use <b>/clubhelp</b> to get the standard BC menu (+ BCE menu when enabled).\n" +
