@@ -80,12 +80,12 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Chat commands:\n" +
 		    "<b>/action</b> (stuffhere) = inserts an action. Can also: /a.\n" +
                     "<b>/autokick</b> = toggles on auto kick for 0 day old accounts.\n" +
+		    "<b>/bio</b> (target) = gives direct access to the profile description of any player in the chat room.\n" +
                     "<b>/erase</b> = erases chat.\n" +
                     "<b>/font</b> (newfont) (size) = changes font in BC. Using will give more info.\n" +
                     "<b>/frlist</b> = gives access to friendlist with clickable links to other rooms during 15 seconds.\n" +
                     "<b>/hiddenmessages</b> = toggles on show hidden messages made by game.\n" +
 		    "<b>/poof</b> (action) = leaves the club very fast. Action is optional (default = poofs away).\n" +
-                    "<b>/profile</b> (target) = gives direct access to the profile description of any player in the chat room.\n" +
                     "<b>/search</b> (areaname) = opens room search, area is: club or asylum.\n" +
                     "<b>/theme</b> (number) = changes chat color theme after automatic relog. Number must be between 0 and 3.</p>" 
                 );
@@ -1271,6 +1271,24 @@ async function NEWmenu() {
             ChatRoomSendLocal(
 	        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: You can use more backgrounds now.</p>"
 	    );
+	} else if (content.indexOf("/bio") == 0) {
+            var targetname = content.substring(8).trim();
+            if (targetname == undefined) {
+                targetname = Player.Name
+            };
+            var targetfinder = new RegExp('^' + targetname + '', 'i');
+            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	    if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
+            if (target[0] != null) {
+                InformationSheetLoadCharacter(target[0]);
+                OnlineProfileRun();
+                document.getElementById("InputChat").style.display = "none";
+                document.getElementById("TextAreaChatLog").style.display = "none";
+                CommonSetScreen("Character", "OnlineProfile");
+            }	
         } else if (content.indexOf("/boost") == 0) {
             LogAdd("ModifierLevel", "SkillModifier", 105);
             LogAdd("ModifierDuration", "SkillModifier", CurrentTime + 3600000);
@@ -4395,24 +4413,6 @@ async function NEWmenu() {
             PandoraRestrainPlayer();
             PandoraPunishmentSentence(minutes);
             PandoraPunishmentStart();
-        } else if (content.indexOf("/profile") == 0) {
-            var targetname = content.substring(8).trim();
-            if (targetname == undefined) {
-                targetname = Player.Name
-            };
-            var targetfinder = new RegExp('^' + targetname + '', 'i');
-            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	    if (target[0] == null) {
-                    var targetnumber = parseInt(targetname);
-                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
-            if (target[0] != null) {
-                InformationSheetLoadCharacter(target[0]);
-                OnlineProfileRun();
-                document.getElementById("InputChat").style.display = "none";
-                document.getElementById("TextAreaChatLog").style.display = "none";
-                CommonSetScreen("Character", "OnlineProfile");
-            }
         } else if (content.indexOf("/randomize") == 0) {
             var targetname = content.substring(10).trim();
             if (targetname == undefined) {
