@@ -8470,7 +8470,7 @@ InventoryItemNeckAccessoriesElectronicTagLoad = function() {
 function LoginRun() {
 	if (LoginCredits != null) LoginDrawCredits();
 	const CanLogin = ServerIsConnected && !LoginSubmitted;
-        DrawButton(750,120,500,60,"QAM 1.6.0 Ready!", "Pink", "Black", "");
+        DrawButton(750,120,500,60,"QAM 1.7.0 Ready!", "Pink", "Black", "");
 	DrawText(TextGet("Welcome"), 1000, 50, "White", "Black");
 	DrawText(LoginMessage, 1000, 100, "White", "Black");
 	DrawText(TextGet("AccountName"), 1000, 200, "White", "Black");
