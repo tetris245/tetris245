@@ -3565,60 +3565,18 @@ async function NEWmenu() {
                     this.savedoutfit3 = CurrentCharacter.Appearance.slice(0);
                     DialogLeave();
                 }, 5000);
-            } else if (content.includes("awsave")) {
-                ChatRoomSendLocal(
-		    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be saved. If not, retry.</p>"
-		);
-                setTimeout(function() {
-                    var appall = new Array();
-                    CurrentCharacter.Appearance.forEach(item=>{
-                        var app = new Array();
-                        app.push(item.Asset.Name);
-                        app.push(item.Asset.Group.Name);
-                        app.push(item.Color);
-                        app.push(item.Difficulty);
-                        app.push(item.Craft);
-                        app.push(false);
-                        //Do not remove this line.It is for the compability with bcg.
-                        appall.push(app);
-                        }
-                    );
-                    ChatRoomSendLocal(
-                         "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: Appearance saved.</p>\n" +
-                         btoa(encodeURI(JSON.stringify(appall)))
-                    );
-                    DialogLeave();
-                }, 5000);
-            } else if (content.includes("awload")) {
-                appinp = prompt('Please input the awcode (Compatible with BCG).', '');
-                if (appinp) {
-                    ChatRoomSendLocal(
-		        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: You have 5 seconds to click on target. If successful, the outfit will be loaded. If not, retry.</p>"
-		    );
-                    setTimeout(function() {
-                        CharacterNaked(CurrentCharacter);
-                        CharacterReleaseTotal(CurrentCharacter);
-                        var appobj = JSON.parse(decodeURI(atob(appinp)));
-                        appobj.forEach(itemstr=>{
-                            InventoryWear(CurrentCharacter, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
-                            }
-                        );
-                        ChatRoomCharacterUpdate(CurrentCharacter);
-                        DialogLeave();
-                    }, 5000);
-                }
             } else if (content.endsWith("/outfit")) {
                 ChatRoomSendLocal(
 	            "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Options for outfit command:\n" + 
+		    "<b>All these options include the restraints</b>, so it's also a good bondage tool.\n" +
 	            "To restore your outfit to what it was before entering room, type: <b>/outfit reset</b> or <b>/outfit restore</b> or <b>/outfit revert</b>\n" + 
 	            "Three outfits can be saved by using <b>/outfit save1</b> or <b>/outfit save2</b> or <b>/outfit save3</b>\n" + 
 	            "To load saved outfits, type: <b>/outfit load1</b> or <b>/outfit load2</b> or <b>/outfit load3</b>\n" + 
 	            "You will have 5 seconds to click on target. Retry if the saving/loading was unsuccessful\n" + 
 	            "These saves last only 1 login session.\n" + 
-	            "To save outfits between sessions, use <b>/outfit awsave</b>\n" +    
+	            "To save outfits between sessions, use the Export button in wardrobe\n" +    
 	            "You will have the outfit saved as a code. You can copy and paste it elsewhere.\n" + 
-	            "Then you can use <b>/outfit awload</b> to load it later.\n" +
-		    "<b>All these options include the restraints</b>, so it's also a good bondage tool.</p>"
+	            "Then you can use the Import buttons to load it later.</p>" 
 		);
             }
        } else if (content.indexOf("/patreoncheats") == 0) {  
