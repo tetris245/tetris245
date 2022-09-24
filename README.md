@@ -49,6 +49,7 @@ Changes for future version
   - Import1 = only clothing + restraints
   - Import2 = clothing + restraints + cosplay items correponding to HairAccessory1, TailStraps and Wings (note: cosplay items can also be used in several other slots, but are there viewed as normal clothing)
   - Import3 = full import including body changes (Eyes, Hair, Mouth, etc.)
+* Removed the awsave and awload options of the outfit command, as these features can be more easily accessed with the extra buttons in the wardrobe
 
 
 
