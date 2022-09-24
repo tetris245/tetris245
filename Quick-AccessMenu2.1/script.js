@@ -8975,7 +8975,7 @@ function AppearanceClick() {
                     );
                     if (itemstr[1].match(noclothes)) { 
                     } 
-                    else if ((itemstr[1] != "HairAccessory1") && (itemstr[1] !=  "TailStraps") && (itemstr[1] !=  "Wings")) {               
+                    else if ((itemstr[1] != "HairAccessory1") && (itemstr[1] !=  "HairAccessory2") && (itemstr[1] !=  "TailStraps") && (itemstr[1] !=  "Wings")) {               
                         InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
                         } 
                     }
