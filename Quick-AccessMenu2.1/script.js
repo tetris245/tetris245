@@ -8876,8 +8876,10 @@ function AppearanceRun() {
 	if (CharacterAppearanceMode == "Wardrobe") {
 		DrawText(CharacterAppearanceWardrobeText, 1645, 220, "White", "Gray");
 		ElementPosition("InputWardrobeName", 1645, 315, 690);
-           DrawButton(1300, 240, 330, 50, "QAM Export", "#50E992", "");
-           DrawButton(1645, 240, 330, 50, "QAM Import", "#50E992", "");
+                DrawButton(1300, 240, 157, 60, "Export", "#50E992", "");
+                DrawButton(1472, 240, 157, 60, "Import1", "#50E992", "");       
+                DrawButton(1644, 240, 157, 60, "Import2", "#50E992", "");
+                DrawButton(1816, 240, 157, 60, "Import3", "#50E992", "");
 		for (let W = CharacterAppearanceWardrobeOffset; W < Player.Wardrobe.length && W < CharacterAppearanceWardrobeOffset + 6; W++) {
 			DrawButton(1300, 430 + (W - CharacterAppearanceWardrobeOffset) * 95, 500, 65, "", "White", "");
 			DrawTextFit((W + 1).toString() + (W < 9 ? ":  " : ": ") + Player.WardrobeCharacterNames[W], 1550, 463 + (W - CharacterAppearanceWardrobeOffset) * 95, 496, "Black");
@@ -9004,7 +9006,42 @@ function AppearanceClick() {
                     DialogLeave();
 		}	
             }
-            if ((MouseX >= 1645) && (MouseX < 1975) && (MouseY >= 240) && (MouseY < 290)) {
+	    if ((MouseX >= 1472) && (MouseX < 1629) && (MouseY >= 240) && (MouseY < 290)) {
+                appinp = prompt('Please input the awcode (Compatible with BCG).', '');
+                CharacterNaked(C);                  
+                CharacterReleaseTotal(C);
+                var appobj = JSON.parse(decodeURI(atob(appinp)));
+                appobj.forEach(itemstr=>{
+                    var noclothes = C.Appearance.filter(
+		        (a) =>a.Asset.Group.IsDefault && !a.Asset.Group.Clothing			
+                    );
+                    if (itemstr[1].match(noclothes)) { 
+                    } 
+                    else if ((itemstr[1] != "HairAccessory1") && (itemstr[1] !=  "TailStraps") && (itemstr[1] !=  "Wings")) {               
+                        InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                        } 
+                    }
+                );                              
+                ChatRoomCharacterUpdate(C);
+	  }
+          if ((MouseX >= 1644) && (MouseX < 1791) && (MouseY >= 240) && (MouseY < 290)) {
+                appinp = prompt('Please input the awcode (Compatible with BCG).', '');
+                CharacterNaked(C);                  
+                CharacterReleaseTotal(C);
+                var appobj = JSON.parse(decodeURI(atob(appinp)));
+                appobj.forEach(itemstr=>{
+                    var noclothes = C.Appearance.filter(
+		        (a) =>a.Asset.Group.IsDefault && !a.Asset.Group.Clothing			
+                    );
+                    if (itemstr[1].match(noclothes)) { 
+                    } else {
+                        InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                        }
+                    }
+                );                
+                ChatRoomCharacterUpdate(C);
+	    }
+            if ((MouseX >= 1816) && (MouseX < 1973) && (MouseY >= 240) && (MouseY < 290)) {
                 appinp = prompt('Please input the awcode (Compatible with BCG).', '');
                 CharacterNaked(C);                  
                 CharacterReleaseTotal(C);
@@ -9012,7 +9049,7 @@ function AppearanceClick() {
                 appobj.forEach(itemstr=>{
                     InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
                     }
-                 );                
+                );                
                 ChatRoomCharacterUpdate(C);
 	    }
 	    if ((MouseX >= 1300) && (MouseX < 1800) && (MouseY >= 430) && (MouseY < 970))
