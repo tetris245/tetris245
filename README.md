@@ -45,7 +45,10 @@ All else I might not have included.
 
 Changes for future version 
 
-(...)
+* Replaced the unique Import button in the wardrobe by 3 buttons:
+  - Import1 = only clothing + restraints
+  - Import2 = clothing + restraints + cosplay items correponding to HairAccessory1, TailStraps and Wings (note: cosplay items can also be used in several other slots, but are viewed as normal clothing)
+  - Import3 = full import including body changes (Eyes, Hair, Mouth, etc.)
 
 
 
