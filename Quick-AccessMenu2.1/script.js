@@ -5026,7 +5026,7 @@ async function NEWmenu() {
                         Type: "Action",
                         Dictionary: [{
                             Tag: "Beep",
-                            Text: "" + tmpname + "feeds "+ tgpname + " a sleeping pill and gives her a glass of water. "+ tgpname +" falls asleep very quickly."
+                            Text: "" + tmpname + " feeds "+ tgpname + " a sleeping pill and gives her a glass of water. "+ tgpname +" falls asleep very quickly."
                         }]
                     });
                 }
