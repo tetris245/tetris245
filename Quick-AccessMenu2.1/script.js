@@ -8954,6 +8954,7 @@ function AppearanceClick() {
                         app.push(item.Difficulty);
                         app.push(item.Craft);
                         app.push(false);
+			//Do not remove this line.It is for the compability with bcg.
                         appall.push(app);
                             }
                     );
@@ -8966,46 +8967,73 @@ function AppearanceClick() {
             }
 	    if ((MouseX >= 1472) && (MouseX < 1629) && (MouseY >= 240) && (MouseY < 290)) {
                 appinp = prompt('Please input the awcode (Compatible with BCG).', '');
-                CharacterNaked(C);                  
-                CharacterReleaseTotal(C);
                 var appobj = JSON.parse(decodeURI(atob(appinp)));
                 appobj.forEach(itemstr=>{
-                    var noclothes = C.Appearance.filter(
-		        (a) =>a.Asset.Group.IsDefault && !a.Asset.Group.Clothing			
-                    );
-                    if (itemstr[1].match(noclothes)) { 
-                    } 
-                    else if ((itemstr[1] != "HairAccessory1") && (itemstr[1] !=  "HairAccessory2") && (itemstr[1] !=  "TailStraps") && (itemstr[1] !=  "Wings")) {               
-                        InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
-                        } 
-                    }
-                );                              
-                ChatRoomCharacterUpdate(C);
-	  }
-          if ((MouseX >= 1644) && (MouseX < 1791) && (MouseY >= 240) && (MouseY < 290)) {
-                appinp = prompt('Please input the awcode (Compatible with BCG).', '');
-                CharacterNaked(C);                  
-                CharacterReleaseTotal(C);
-                var appobj = JSON.parse(decodeURI(atob(appinp)));
-                appobj.forEach(itemstr=>{
-                    var noclothes = C.Appearance.filter(
-		        (a) =>a.Asset.Group.IsDefault && !a.Asset.Group.Clothing			
-                    );
-                    if (itemstr[1].match(noclothes)) { 
-                    } else {
-                        InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                    if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
+                        if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) {
+                            InventoryRemove(C,itemstr[1]);  
+                            InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
                         }
-                    }
-                );                
+                    } else if ((itemstr[1] != "BodyLower") 
+			       && (itemstr[1] != "BodyUpper") 
+			       && (itemstr[1] != "Eyes") 
+			       && (itemstr[1] != "Eyes2") 
+			       && (itemstr[1] != "HairBack") 
+			       && (itemstr[1] != "HairFront") 
+			       && (itemstr[1] != "Height") 
+			       && (itemstr[1] != "Mouth") 
+			       && (itemstr[1] != "Nipples") 
+			       && (itemstr[1] != "Pussy") 
+			       && (itemstr[1] != "HairAccessory1") 
+			       && (itemstr[1] != "HairAccessory2") 
+			       && (itemstr[1] != "TailStraps") 
+			       && (itemstr[1] != "Wings")) {                                                                      
+                        InventoryRemove(C,itemstr[1]);  
+                        InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);      
+                        } 
+                    } 
+                );   
+                ChatRoomCharacterUpdate(C);
+	    }
+            if ((MouseX >= 1644) && (MouseX < 1791) && (MouseY >= 240) && (MouseY < 290)) {
+                appinp = prompt('Please input the awcode (Compatible with BCG).', '');
+                var appobj = JSON.parse(decodeURI(atob(appinp)));
+                appobj.forEach(itemstr=>{
+                    if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
+                        if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) {
+                            InventoryRemove(C,itemstr[1]);  
+                            InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                        }
+                    } else if ((itemstr[1] != "BodyLower") 
+			       && (itemstr[1] != "BodyUpper") 
+			       && (itemstr[1] != "Eyes") 
+			       && (itemstr[1] != "Eyes2") 
+			       && (itemstr[1] != "HairBack") 
+			       && (itemstr[1] != "HairFront") 
+			       && (itemstr[1] != "Height") 
+			       && (itemstr[1] != "Mouth") 
+			       && (itemstr[1] != "Nipples") 
+			       && (itemstr[1] != "Pussy")) {                                                                      
+                        InventoryRemove(C,itemstr[1]);  
+                        InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);      
+                        } 
+                    } 
+                );   
                 ChatRoomCharacterUpdate(C);
 	    }
             if ((MouseX >= 1816) && (MouseX < 1973) && (MouseY >= 240) && (MouseY < 290)) {
                 appinp = prompt('Please input the awcode (Compatible with BCG).', '');
-                CharacterNaked(C);                  
-                CharacterReleaseTotal(C);
                 var appobj = JSON.parse(decodeURI(atob(appinp)));
                 appobj.forEach(itemstr=>{
-                    InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                    if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
+                        if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) {
+                            InventoryRemove(C,itemstr[1]);  
+                            InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                        }
+                    } else {
+                        InventoryRemove(C,itemstr[1]);  
+                        InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                        }
                     }
                 );                
                 ChatRoomCharacterUpdate(C);
