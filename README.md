@@ -49,7 +49,7 @@ Changes for future version
   - Import1 = only clothing + restraints
   - Import2 = clothing + restraints + cosplay items correponding to HairAccessory1, HairAccessory2, TailStraps and Wings
   - Import3 = full import including body changes (Eyes, Hair, Mouth, etc.)
-* Improved the import options by not allowing the import to a locked slot (it implies you need to remove the lock if you want a more complete import)
+* Improved the import options by not allowing the import to a locked slot (it implies you need first to remove the locks if you want a more complete import)
 * Removed the awsave and awload options of the outfit command, as these features can be more easily accessed with the extra buttons in the wardrobe
 
 
