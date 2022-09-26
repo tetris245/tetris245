@@ -119,7 +119,8 @@ async function NEWmenu() {
 		    "<b>Auto All Items Are Craftable</b> but limited using of the extra crafted items\n" +
                     "<b>Auto-Disable NPC Punishments</b> - can be changed with the /npcpunish command\n" +
                     "<b>Auto-Disable Validation</b> only for yourself\n" +
-		    "<b>Auto Extra Buttons In Wardrobe</b>: Export (usable only if you come from a chat room) - Import for outfit + restraints\n" +
+		    "<b>Auto Extra Buttons In Wardrobe</b>: Export (usable only if you come from a chat room) - Import1 = outfit + restraints\n" +
+		    "<b>Import2 = outfit + cosplay items + restraints - Import3 = full import including body changes\n" +
                     "<b>Auto-Join</b> to enter a room as soon as possible\n" +
                     "<b>Auto More Characters For Nickname</b> \n" +
                     "<b>Auto Patreon Cheats</b> - can be changed with the /patreoncheats command\n" +
