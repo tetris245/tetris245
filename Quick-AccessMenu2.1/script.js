@@ -3575,9 +3575,9 @@ async function NEWmenu() {
 	            "To load saved outfits, type: <b>/outfit load1</b> or <b>/outfit load2</b> or <b>/outfit load3</b>\n" + 
 	            "You will have 5 seconds to click on target. Retry if the saving/loading was unsuccessful\n" + 
 	            "These saves last only 1 login session.\n" + 
-	            "To save outfits between sessions, use the Export button in wardrobe\n" +    
+	            "To save outfits between sessions, use the <b>Export button</b> in wardrobe\n" +    
 	            "You will have the outfit saved as a code. You can copy and paste it elsewhere.\n" + 
-	            "Then you can use the Import buttons to load it later.</p>" 
+	            "Then you can use the <b>Import buttons</b> to load it later.</p>" 
 		);
             }
        } else if (content.indexOf("/patreoncheats") == 0) {  
