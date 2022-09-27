@@ -8970,22 +8970,22 @@ function AppearanceClick() {
                 appinp = prompt('Please input the awcode (Compatible with BCG).', '');
 		for (let A = C.Appearance.length - 1; A >= 0; A--)
 		if ((C.Appearance[A].Asset.Group.Category == "Appearance") && C.Appearance[A].Asset.Group.AllowNone) {
-                    if ((C.Appearance[A].Asset.Group.ParentGroupName != "BodyLower") 
-                        && (C.Appearance[A].Asset.Group.ParentGroupName != "BodyUpper") 
-                        && (C.Appearance[A].Asset.Group.ParentGroupName != "Eyes") 
-                        && (C.Appearance[A].Asset.Group.ParentGroupName != "Eyes2") 
-                        && (C.Appearance[A].Asset.Group.ParentGroupName != "HairBack") 
-                        && (C.Appearance[A].Asset.Group.ParentGroupName != "HairFront") 
-                        && (C.Appearance[A].Asset.Group.ParentGroupName != "Head") 
-                        && (C.Appearance[A].Asset.Group.ParentGroupName != "Height") 
-                        && (C.Appearance[A].Asset.Group.ParentGroupName != "Mouth") 
-                        && (C.Appearance[A].Asset.Group.ParentGroupName != "Nipples")
-                        && (C.Appearance[A].Asset.Group.ParentGroupName != "Pussy") 
-                        && (C.Appearance[A].Asset.Group.ParentGroupName != "HairAccessory1") 
-                        && (C.Appearance[A].Asset.Group.ParentGroupName != "HairAccessory2") 
-                        && (C.Appearance[A].Asset.Group.ParentGroupName != "TailStraps") 
-			&& (C.Appearance[A].Asset.Group.ParentGroupName != "Wings"))  {
-			    InventoryRemove(C,C.Appearance[A].Asset.Group.ParentGroupName);
+                    if ((C.Appearance[A].Asset.Group.Name != "BodyLower") 
+                        && (C.Appearance[A].Asset.Group.Name != "BodyUpper") 
+                        && (C.Appearance[A].Asset.Group.Name != "Eyes") 
+                        && (C.Appearance[A].Asset.Group.Name != "Eyes2") 
+                        && (C.Appearance[A].Asset.Group.Name != "HairBack") 
+                        && (C.Appearance[A].Asset.Group.Name != "HairFront") 
+                        && (C.Appearance[A].Asset.Group.Name != "Head") 
+                        && (C.Appearance[A].Asset.Group.Name != "Height") 
+                        && (C.Appearance[A].Asset.Group.Name != "Mouth") 
+                        && (C.Appearance[A].Asset.Group.Name != "Nipples")
+                        && (C.Appearance[A].Asset.Group.Name != "Pussy") 
+                        && (C.Appearance[A].Asset.Group.Name != "HairAccessory1") 
+                        && (C.Appearance[A].Asset.Group.Name != "HairAccessory2") 
+                        && (C.Appearance[A].Asset.Group.Name != "TailStraps") 
+			&& (C.Appearance[A].Asset.Group.Name != "Wings"))  {
+	                InventoryRemove(C,C.Appearance[A].Asset.Group.Name);
 	            }
 	        }    
                 var appobj = JSON.parse(decodeURI(atob(appinp)));
