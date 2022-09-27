@@ -8998,7 +8998,8 @@ function AppearanceClick() {
                 appobj.forEach(itemstr=>{
                     if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
                         if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) { 
-                            InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                            InventoryRemove(C,itemstr[1]);
+			    InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
                         }
                     } else if ((itemstr[1] != "Blush") 
 			       && (itemstr[1] != "BodyLower") 
@@ -9019,7 +9020,8 @@ function AppearanceClick() {
 			       && (itemstr[1] != "HairAccessory1") 
 			       && (itemstr[1] != "HairAccessory2") 
 			       && (itemstr[1] != "TailStraps") 
-			       && (itemstr[1] != "Wings")) {                                                                       
+			       && (itemstr[1] != "Wings")) {   
+			InventoryRemove(C,itemstr[1]);
                         InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);      
                         } 
                     } 
@@ -9034,7 +9036,8 @@ function AppearanceClick() {
                 appobj.forEach(itemstr=>{
                     if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
                         if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) {
-                            InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                            InventoryRemove(C,itemstr[1]);
+			    InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
                         }
                     } else if ((itemstr[1] != "Blush") 
 			       && (itemstr[1] != "BodyLower") 
@@ -9051,7 +9054,8 @@ function AppearanceClick() {
 			       && (itemstr[1] != "Height") 
 			       && (itemstr[1] != "Mouth") 
 			       && (itemstr[1] != "Nipples") 
-			       && (itemstr[1] != "Pussy")) {                                                                        
+			       && (itemstr[1] != "Pussy")) {   
+			InventoryRemove(C,itemstr[1]);
                         InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);      
                         } 
                     } 
@@ -9066,9 +9070,11 @@ function AppearanceClick() {
                 appobj.forEach(itemstr=>{
                     if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
                         if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) { 
-                            InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                            InventoryRemove(C,itemstr[1]);
+			    InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
                         }
                     } else {
+			InventoryRemove(C,itemstr[1]);
                         InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
                         }
                     }
