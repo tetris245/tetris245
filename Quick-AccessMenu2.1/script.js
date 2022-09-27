@@ -8993,11 +8993,11 @@ function AppearanceClick() {
 	                InventoryRemove(C,C.Appearance[A].Asset.Group.Name);
 	            }
 	        }    
+		CharacterReleaseNoLock(C);
                 var appobj = JSON.parse(decodeURI(atob(appinp)));
                 appobj.forEach(itemstr=>{
                     if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
-                        if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) {
-                            InventoryRemove(C,itemstr[1]);  
+                        if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) { 
                             InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
                         }
                     } else if ((itemstr[1] != "Blush") 
@@ -9019,8 +9019,7 @@ function AppearanceClick() {
 			       && (itemstr[1] != "HairAccessory1") 
 			       && (itemstr[1] != "HairAccessory2") 
 			       && (itemstr[1] != "TailStraps") 
-			       && (itemstr[1] != "Wings")) {                                                                      
-                        InventoryRemove(C,itemstr[1]);  
+			       && (itemstr[1] != "Wings")) {                                                                       
                         InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);      
                         } 
                     } 
@@ -9030,11 +9029,11 @@ function AppearanceClick() {
             if ((MouseX >= 1644) && (MouseX < 1791) && (MouseY >= 240) && (MouseY < 290)) {
                 appinp = prompt('Please input the awcode (Compatible with BCG).', '');
 		CharacterNaked(C); 
+		CharacterReleaseNoLock(C);
                 var appobj = JSON.parse(decodeURI(atob(appinp)));
                 appobj.forEach(itemstr=>{
                     if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
                         if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) {
-                            InventoryRemove(C,itemstr[1]);  
                             InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
                         }
                     } else if ((itemstr[1] != "Blush") 
@@ -9052,8 +9051,7 @@ function AppearanceClick() {
 			       && (itemstr[1] != "Height") 
 			       && (itemstr[1] != "Mouth") 
 			       && (itemstr[1] != "Nipples") 
-			       && (itemstr[1] != "Pussy")) {                                                                      
-                        InventoryRemove(C,itemstr[1]);  
+			       && (itemstr[1] != "Pussy")) {                                                                        
                         InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);      
                         } 
                     } 
@@ -9063,15 +9061,14 @@ function AppearanceClick() {
             if ((MouseX >= 1816) && (MouseX < 1973) && (MouseY >= 240) && (MouseY < 290)) {
                 appinp = prompt('Please input the awcode (Compatible with BCG).', '');
 		CharacterNaked(C); 
+		CharacterReleaseNoLock(C);
                 var appobj = JSON.parse(decodeURI(atob(appinp)));
                 appobj.forEach(itemstr=>{
                     if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
-                        if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) {
-                            InventoryRemove(C,itemstr[1]);  
+                        if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) { 
                             InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
                         }
                     } else {
-                        InventoryRemove(C,itemstr[1]);  
                         InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
                         }
                     }
