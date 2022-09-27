@@ -125,7 +125,7 @@ async function NEWmenu() {
                     "<b>Auto More Characters For Nickname</b> \n" +
                     "<b>Auto Patreon Cheats</b> - can be changed with the /patreoncheats command\n" +
                     "<b>Auto Pictures + YouTube Videos In Chat</b>\n" + 
-                    "<b>Auto-Relog</b> - Works only if you select Return to chatrooms on relog in the Immersion settings - Not compatible with BCE Auto-Relog</p>"
+                    "<b>Auto-Relog</b> - Works only if you select Return to chatrooms on relog in the Immersion settings - Not compatible with FBC Auto-Relog</p>"
                 );    
             } else if (content.includes("fun")) {
                 ChatRoomSendLocal(
@@ -189,7 +189,7 @@ async function NEWmenu() {
             } else if (content.includes("misc")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Misc commands:\n" +
-                    "<b>/clubhelp</b> = displays the standard commands of the game (and optionaly the BCE commands)\n" +
+                    "<b>/clubhelp</b> = displays the standard commands of the game (and optionaly the FBC commands)\n" +
                     "<b>/help</b> (category) = displays the QAM commands. Available categories: bondage, character, clothing, escape, fun, misc, pleasure, talking, visual, zones.\n" +
                     "<b>/login</b> (accountname) (password) = logs in a new account.\n" +
                     "<b>/relog</b> = relogs.\n" +
@@ -3669,7 +3669,7 @@ async function NEWmenu() {
                     "spreadeagle2, spreadlegs, stand, suspension,\n" +
                     "tapedhands. Only on yourself: jump, roof.\n" +
                     "Use <b>/pose2 reset</b> (target) to back to neutral pose.\n" + 
-		    "If BCE is enabled, use <b>/pose baseupper</b> only on yourself when /pose2 reset fails.</p>"
+		    "If FBC is enabled, use <b>/pose baseupper</b> only on yourself when /pose2 reset fails.</p>"
                 );
             } else {
                 var stringPose1 = content;
