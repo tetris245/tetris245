@@ -8971,7 +8971,7 @@ function AppearanceClick() {
 		for (let A = C.Appearance.length - 1; A >= 0; A--)
 		if ((C.Appearance[A].Asset.Group.Category == "Appearance") && C.Appearance[A].Asset.Group.AllowNone) {
                     if ((C.Appearance[A].Asset.Group.Name != "Blush") 
-			&&((C.Appearance[A].Asset.Group.Name != "BodyLower") 
+			&& (C.Appearance[A].Asset.Group.Name != "BodyLower") 
                         && (C.Appearance[A].Asset.Group.Name != "BodyUpper") 
 			&& (C.Appearance[A].Asset.Group.Name != "Emoticon") 
 			&& (C.Appearance[A].Asset.Group.Name != "Eyebrows") 
