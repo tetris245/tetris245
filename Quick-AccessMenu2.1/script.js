@@ -8968,6 +8968,26 @@ function AppearanceClick() {
             }
 	    if ((MouseX >= 1472) && (MouseX < 1629) && (MouseY >= 240) && (MouseY < 290)) {
                 appinp = prompt('Please input the awcode (Compatible with BCG).', '');
+		for (let A = C.Appearance.length - 1; A >= 0; A--)
+		if ((C.Appearance[A].Asset.Group.Category == "Appearance") && C.Appearance[A].Asset.Group.AllowNone) {
+                    if ((C.Appearance[A].Asset.Group.ParentGroupName != "BodyLower") 
+                        && (C.Appearance[A].Asset.Group.ParentGroupName != "BodyUpper") 
+                        && (C.Appearance[A].Asset.Group.ParentGroupName != "Eyes") 
+                        && (C.Appearance[A].Asset.Group.ParentGroupName != "Eyes2") 
+                        && (C.Appearance[A].Asset.Group.ParentGroupName != "HairBack") 
+                        && (C.Appearance[A].Asset.Group.ParentGroupName != "HairFront") 
+                        && (C.Appearance[A].Asset.Group.ParentGroupName != "Head") 
+                        && (C.Appearance[A].Asset.Group.ParentGroupName != "Height") 
+                        && (C.Appearance[A].Asset.Group.ParentGroupName != "Mouth") 
+                        && (C.Appearance[A].Asset.Group.ParentGroupName != "Nipples")
+                        && (C.Appearance[A].Asset.Group.ParentGroupName != "Pussy") 
+                        && (C.Appearance[A].Asset.Group.ParentGroupName != "HairAccessory1") 
+                        && (C.Appearance[A].Asset.Group.ParentGroupName != "HairAccessory2") 
+                        && (C.Appearance[A].Asset.Group.ParentGroupName != "TailStraps") 
+			&& (C.Appearance[A].Asset.Group.ParentGroupName != "Wings"))  {
+			    InventoryRemove(C,C.Appearance[A].Asset.Group.ParentGroupName);
+	            }
+	        }    
                 var appobj = JSON.parse(decodeURI(atob(appinp)));
                 appobj.forEach(itemstr=>{
                     if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
@@ -8999,6 +9019,7 @@ function AppearanceClick() {
 	    }
             if ((MouseX >= 1644) && (MouseX < 1791) && (MouseY >= 240) && (MouseY < 290)) {
                 appinp = prompt('Please input the awcode (Compatible with BCG).', '');
+		CharacterNaked(C); 
                 var appobj = JSON.parse(decodeURI(atob(appinp)));
                 appobj.forEach(itemstr=>{
                     if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
@@ -9026,6 +9047,7 @@ function AppearanceClick() {
 	    }
             if ((MouseX >= 1816) && (MouseX < 1973) && (MouseY >= 240) && (MouseY < 290)) {
                 appinp = prompt('Please input the awcode (Compatible with BCG).', '');
+		CharacterNaked(C); 
                 var appobj = JSON.parse(decodeURI(atob(appinp)));
                 appobj.forEach(itemstr=>{
                     if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
