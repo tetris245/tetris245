@@ -6451,7 +6451,7 @@ ChatCommandGreeting = function(data) {
                     "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.7.0: Ready, type <b>/help</b> for general menu.\n" +
 		    "Note: NPC punishments are disabled.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
-		    "Use <b>/clubhelp</b> to get the standard BC menu (+ BCE menu when enabled).\n" +
+		    "Use <b>/clubhelp</b> to get the standard BC menu (+ FBC menu when enabled).\n" +
 		    "Visit also our <a href='https://github.com/tetris245/tetris245/wiki' target='_blank'>Wiki</a>\n" +
                     "For any inquiries, join <a href='https://discord.gg/YukepB6RVp' target='_blank'>https://discord.gg/YukepB6RVp</a></p>"
                 );   	    	  	    	    
@@ -8970,12 +8970,17 @@ function AppearanceClick() {
                 appinp = prompt('Please input the awcode (Compatible with BCG).', '');
 		for (let A = C.Appearance.length - 1; A >= 0; A--)
 		if ((C.Appearance[A].Asset.Group.Category == "Appearance") && C.Appearance[A].Asset.Group.AllowNone) {
-                    if ((C.Appearance[A].Asset.Group.Name != "BodyLower") 
+                    if ((C.Appearance[A].Asset.Group.Name != "Blush") 
+			&&((C.Appearance[A].Asset.Group.Name != "BodyLower") 
                         && (C.Appearance[A].Asset.Group.Name != "BodyUpper") 
+			&& (C.Appearance[A].Asset.Group.Name != "Emoticon") 
+			&& (C.Appearance[A].Asset.Group.Name != "Eyebrows") 
                         && (C.Appearance[A].Asset.Group.Name != "Eyes") 
                         && (C.Appearance[A].Asset.Group.Name != "Eyes2") 
+			&& (C.Appearance[A].Asset.Group.Name != "Fluids") 
                         && (C.Appearance[A].Asset.Group.Name != "HairBack") 
                         && (C.Appearance[A].Asset.Group.Name != "HairFront") 
+			&& (C.Appearance[A].Asset.Group.Name != "Hands") 
                         && (C.Appearance[A].Asset.Group.Name != "Head") 
                         && (C.Appearance[A].Asset.Group.Name != "Height") 
                         && (C.Appearance[A].Asset.Group.Name != "Mouth") 
@@ -8995,12 +9000,17 @@ function AppearanceClick() {
                             InventoryRemove(C,itemstr[1]);  
                             InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
                         }
-                    } else if ((itemstr[1] != "BodyLower") 
-			       && (itemstr[1] != "BodyUpper") 
+                    } else if ((itemstr[1] != "Blush") 
+			       && (itemstr[1] != "BodyLower") 
+			       && (itemstr[1] != "BodyUpper")
+			       && (itemstr[1] != "Emoticon") 
+			       && (itemstr[1] != "Eyebrows") 
 			       && (itemstr[1] != "Eyes") 
 			       && (itemstr[1] != "Eyes2") 
+			       && (itemstr[1] != "Fluids") 
 			       && (itemstr[1] != "HairBack") 
 			       && (itemstr[1] != "HairFront") 
+			       && (itemstr[1] != "Hands") 
 			       && (itemstr[1] != "Head") 
 			       && (itemstr[1] != "Height") 
 			       && (itemstr[1] != "Mouth") 
@@ -9027,12 +9037,17 @@ function AppearanceClick() {
                             InventoryRemove(C,itemstr[1]);  
                             InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
                         }
-                    } else if ((itemstr[1] != "BodyLower") 
-			       && (itemstr[1] != "BodyUpper") 
+                    } else if ((itemstr[1] != "Blush") 
+			       && (itemstr[1] != "BodyLower") 
+			       && (itemstr[1] != "BodyUpper")
+			       && (itemstr[1] != "Emoticon") 
+			       && (itemstr[1] != "Eyebrows") 
 			       && (itemstr[1] != "Eyes") 
 			       && (itemstr[1] != "Eyes2") 
+			       && (itemstr[1] != "Fluids") 
 			       && (itemstr[1] != "HairBack") 
-			       && (itemstr[1] != "HairFront")
+			       && (itemstr[1] != "HairFront") 
+			       && (itemstr[1] != "Hands")
 			       && (itemstr[1] != "Head") 
 			       && (itemstr[1] != "Height") 
 			       && (itemstr[1] != "Mouth") 
