@@ -4888,6 +4888,15 @@ async function NEWmenu() {
                         GetBlindLevel0();
                         Player.GetBlindLevel = GetBlindLevel0;
                         Player.GetBlindLevel();
+			if (InventoryGet(Player, "ItemHead") != null) {
+                            if (InventoryGet(Player, "ItemHead").Asset.Name == "InteractiveVRHeadset")  {
+                                var Array = InventoryGet(Player, "ItemHead").Color;
+                                InventoryRemove(Player,"ItemHead"); 
+                                InventoryWear(Player,"InteractiveVRHeadset","ItemHead");
+                                InventoryGet(Player, "ItemHead").Color = Array;
+                                ChatRoomCharacterUpdate(Player);
+                            }
+                        }   		    
 		        ChatRoomSendLocal(
 			    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: Back to normal vision mode.</p>"
 			);
