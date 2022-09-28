@@ -52,6 +52,7 @@ Changes for future version
 * Improved the import options by 
   - not allowing the import to a locked slot (it implies you need first to remove the locks if you want a more complete import)
   - removing collar, harness, chastity, toys only if they are replaced by the import operation
+* Improved the /see command: you can cancel VR headset effects with /see 0
 * Removed the awsave and awload options of the outfit command, as these features can be more easily accessed with the extra buttons in the wardrobe
 
 
