@@ -45,7 +45,6 @@ All else I might not have included.
 
 Changes for future version 
 
-* New command: /vrsee to change the settings of a worn VR Headset
 * Replaced the unique Import button in the wardrobe by 3 buttons:
   - Import1 = only clothing + restraints
   - Import2 = clothing + restraints + cosplay items correponding to HairAccessory1, HairAccessory2, TailStraps and Wings
@@ -53,6 +52,7 @@ Changes for future version
 * Improved the import options by 
   - not allowing the import to a locked slot (it implies you need first to remove the locks if you want a more complete import)
   - removing collar, harness, chastity, toys only if they are replaced by the import operation
+* New command: /vrsee to change the settings of a worn VR Headset, even when you are bound
 * Improved the /see command: you can cancel all VR headset and Techno Helmet effects with /see 0
 * Removed the awsave and awload options of the outfit command, as these features can be more easily accessed with the extra buttons in the wardrobe
 
