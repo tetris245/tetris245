@@ -45,6 +45,7 @@ All else I might not have included.
 
 Changes for future version 
 
+* New command: /vrsee to change the settings of a worn VR Headset
 * Replaced the unique Import button in the wardrobe by 3 buttons:
   - Import1 = only clothing + restraints
   - Import2 = clothing + restraints + cosplay items correponding to HairAccessory1, HairAccessory2, TailStraps and Wings
