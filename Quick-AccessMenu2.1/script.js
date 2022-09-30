@@ -242,6 +242,7 @@ async function NEWmenu() {
                     "<b>/pose2</b> (posehere) (target) = changes the pose of any player. Using will give more info.\n" +
 		    "<b>/see</b> (visionmode) (blurlevel) = forces a specific vision mode. Using will give more info.\n" +
                     "<b>/speak</b> = animates mouth when talking in chat. Can also: /mouth or /speech.\n" +
+                    "<b>/trsee</b> (visor) (deafening module) (chin strap) = changes the settings of a worn Techno Helmet. Using will give more info.\n" +
                     "<b>/vrsee</b> (background) (mode) (game) = changes the settings of a worn VR Headset. Using will give more info.</p>"
                 );
             } else if (content.includes("zones")) {
@@ -5676,6 +5677,46 @@ async function NEWmenu() {
                 ChatRoomCharacterUpdate(target[0]);
 		ChatRoomSetTarget(null);
             }
+	} else if (content.indexOf("/trsee") == 0) {
+            if (content.endsWith("/trsee")) {
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The trsee command must be followed by 3 numbers for visor, deafening module and chin strap.\n" +
+                    " \n" +
+                    "Available visors:\n" +
+                    "0 No visor - 1 transparent\n" +
+                    "2 light tinted - 3 heavy tinted\n" +
+                    "4 opaque - 5 hypnotic\n" +
+                    " \n" +
+                    "Available deafening modules:\n" +
+                    "0 no module\n" +
+                    "1 light\n" +
+                    "2 heavy\n" +
+                    "3 noise-cancelling\n" +
+                    " \n" +
+                    "Available options for chin strap:\n" +
+                    "0 No chin strap\n" +
+                    "1 chin strap</p>"
+                );
+            } else {
+                if (InventoryGet(Player, "ItemHood") != null) {
+                     if (InventoryGet(Player, "ItemHood").Asset.Name == "TechnoHelmet1")  {
+                         var stringTRvision1 = content;
+                         var stringTRvision2 = stringTRvision1.split(/[ ,]+/);
+                         var vtr = stringTRvision2[1];
+                         var dtr = stringTRvision2[2];  
+                         var ctr = stringTRvision2[3]; 
+                         if ((vtr > -1) && (vtr < 6) && (dtr > -1) && (dtr < 4) && (ctr > -1) && (ctr < 2)) {
+                             const TechnoHelmet1 = InventoryGet(Player, "ItemHood");
+                             const TechnoHelmet1Config = ModularItemDataLookup.ItemHoodTechnoHelmet1;
+                             TechnoHelmet1.Property = ModularItemMergeModuleValues(TechnoHelmet1Config, [vtr, dtr, ctr]);
+                             ChatRoomCharacterUpdate(Player);
+                             ChatRoomSendLocal(
+			    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: The settings of your Techno Helmet have been modified.</p>"
+                  );                   
+                          }
+                     }
+                }   	
+            } 	
         } else if (content.indexOf("/underwear") == 0) {
             var targetname = content.substring(10).trim();
             if (targetname == undefined) {
