@@ -241,7 +241,8 @@ async function NEWmenu() {
                     "<b>/colorchanger</b> (animhere) = gets an animation with color change. Using will give more info.\n" +
                     "<b>/pose2</b> (posehere) (target) = changes the pose of any player. Using will give more info.\n" +
 		    "<b>/see</b> (visionmode) (blurlevel) = forces a specific vision mode. Using will give more info.\n" +
-                    "<b>/speak</b> = animates mouth when talking in chat. Can also: /mouth or /speech.</p>"
+                    "<b>/speak</b> = animates mouth when talking in chat. Can also: /mouth or /speech.\n" +
+                    "<b>/vrsee</b> (background) (mode) (game) = changes the settings of a worn VR Headset. Using will give more info.</p>"
                 );
             } else if (content.includes("zones")) {
                 ChatRoomSendLocal(
@@ -6167,7 +6168,47 @@ async function NEWmenu() {
                   if (InventoryGet(Player, "Mask").Asset.Name == "Glitter")  {
                       InventoryRemove(Player,"Mask");                                   
                 }
-            }  	
+            }  
+        } else if (content.indexOf("/vrsee") == 0) {
+            if (content.endsWith("/vrsee")) {
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The vrsee command must be followed by 3 numbers for background, mode and game.\n" +
+                    " \n" +
+                    "Available backgrounds:\n" +
+                    "0 No background - 1 Virtual World\n" +
+                    "2 Dungeon - 3 High-Tech\n" +
+                    "4 Ancient Ruins - 5 Trance\n" +
+                    " \n" +
+                    "Available modes:\n" +
+                    "0 Passthrough\n" +
+                    "1 VR off\n" +
+                    "2 VR on\n" +
+                    "3 VR on + Hide restraints\n" +
+                    " \n" +
+                    "Available games:\n" +
+                    "0 No game\n" +
+                    "1 Kinky Dungeon</p>"
+                );
+            } else {
+                if (InventoryGet(Player, "ItemHead") != null) {
+                     if (InventoryGet(Player, "ItemHead").Asset.Name == "InteractiveVRHeadset")  {
+                         var stringVRvision1 = content;
+                         var stringVRvision2 = stringVRvision1.split(/[ ,]+/);
+                         var bvr = stringVRvision2[1];
+                         var fvr = stringVRvision2[2];  
+                         var gvr = stringVRvision2[3]; 
+                         if ((bvr > -1) && (bvr < 6) && (fvr > -1) && (fvr < 4) && (gvr > -1) && (gvr < 2)) {
+                             const InteractiveVRHeadset = InventoryGet(Player, "ItemHead");
+                             const InteractiveVRHeadsetConfig = ModularItemDataLookup.ItemHeadInteractiveVRHeadset;
+                             InteractiveVRHeadset.Property = ModularItemMergeModuleValues(InteractiveVRHeadsetConfig, [bvr, fvr, gvr]);
+                             ChatRoomCharacterUpdate(Player);
+                             ChatRoomSendLocal(
+			        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: The settings of your VR Headset have been modified.</p>"
+                             );                   
+                         }
+                     }
+                }   	
+            } 	
         } else if (content.indexOf("/wardrobe") == 0) {
             var targetname = content.substring(10).trim();
             var targetfinder = new RegExp('^' + targetname + '', 'i');
