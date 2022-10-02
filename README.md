@@ -54,6 +54,7 @@ Changes for future version
   - removing collar, harness, chastity, toys only if they are replaced by the import operation
 * New command: /trsee to change the settings of a worn Techno Helmet, even when you are bound
 * New command: /vrsee to change the settings of a worn VR Headset, even when you are bound
+* Restored access to Bondage Brawl and /bg2 command as the most problematic issues have been resolved
 * Removed the awsave and awload options of the outfit command, as these features can be more easily accessed with the extra buttons in the wardrobe
 
 
