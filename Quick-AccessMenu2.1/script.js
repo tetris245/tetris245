@@ -235,16 +235,16 @@ async function NEWmenu() {
                 );
             } else if (content.includes("visual")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Visual commands:\n" +
-                    "<b>/anim2</b> (animhere) = changes your facial expression. Using will give more info.\n" +
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Visual commands - * = more info when using\n" +
+                    "<b>/anim2</b> (animhere) = changes your facial expression. *\n" +
                     "<b>/bg1</b> = adds hidden backgrounds to the admin selection screen. Tip for BCX users: activate BCX before login.\n" +
-		    "<b>/bg2</b> (number) = uses a hidden platform background. Number must be between 1 and 86. Use /bg2 or /bg2 0 to get the list.\n" +
-                    "<b>/colorchanger</b> (animhere) = gets an animation with color change. Using will give more info.\n" +
-                    "<b>/pose2</b> (posehere) (target) = changes the pose of any player. Using will give more info.\n" +
-		    "<b>/see</b> (visionmode) (blurlevel) = forces a specific vision mode. Using will give more info.\n" +
+		    "<b>/bg2</b> (number) = uses a hidden platform background. Number between 1 and 86. /bg2 or /bg2 0 to get the list.\n" +
+                    "<b>/colorchanger</b> (animhere) = gets an animation with color change. *\n" +
+                    "<b>/pose2</b> (posehere) (target) = changes the pose of any player. *\n" +
+		    "<b>/see</b> (visionmode) (blurlevel) = forces a vision mode. *\n" +
                     "<b>/speak</b> = animates mouth when talking in chat. Can also: /mouth or /speech.\n" +
-                    "<b>/trsee</b> (visor) (deafening module) (chin strap) = changes the settings of a worn Techno Helmet. Using will give more info.\n" +
-                    "<b>/vrsee</b> (background) (mode) (game) = changes the settings of a worn VR Headset. Using will give more info.</p>"
+                    "<b>/trsee</b> (visor) (deafening module) (chin strap) = changes the settings of a worn Techno Helmet. * \n" +
+                    "<b>/vrsee</b> (background) (mode) (game) = changes the settings of a worn VR Headset. *</p>"
                 );
             } else if (content.includes("zones")) {
                 ChatRoomSendLocal(
@@ -9012,6 +9012,7 @@ function MainHallRun() {
 		DrawButton(1645, 505, 90, 90, "", "White", "Icons/Question.png", TextGet("LookForTrouble"));
 		DrawButton(1765, 505, 90, 90, "", "White", "Icons/Gavel.png", TextGet("SlaveMarket"));
 		DrawButton(1885, 505, 90, 90, "", "White", "Icons/Cell.png", TextGet("Cell"));
+		if (!ManagementIsClubSlave()) DrawButton(1525, 625, 90, 90, "", "White", "Icons/Platform.png", TextGet("Platform"));
 		if (!ManagementIsClubSlave()) DrawButton(1645, 625, 90, 90, "", "White", "Icons/Battle.png", TextGet("LARPBattle"));
 		if (!ManagementIsClubSlave()) DrawButton(1765, 625, 90, 90, "", "White", "Icons/College.png", TextGet("College"));
 		if (MainHallAsylumOpen) DrawButton(1885, 625, 90, 90, "", "White", "Icons/Asylum.png", TextGet("Asylum"));
@@ -9088,7 +9089,7 @@ function MainHallClick() {
 		if ((MouseX >= 1645) && (MouseX < 1735) && (MouseY >= 505) && (MouseY < 595)) MainHallWalk("Trouble");
 		if ((MouseX >= 1765) && (MouseX < 1855) && (MouseY >= 505) && (MouseY < 595)) MainHallWalk("SlaveMarket");
 		if ((MouseX >= 1885) && (MouseX < 1975) && (MouseY >= 505) && (MouseY < 595)) MainHallWalk("Cell");
-		if ((MouseX >= 1525) && (MouseX < 1615) && (MouseY >= 625) && (MouseY < 715) && !ManagementIsClubSlave() MainHallWalk("PlatformIntro");
+		if ((MouseX >= 1525) && (MouseX < 1615) && (MouseY >= 625) && (MouseY < 715) && !ManagementIsClubSlave()) MainHallWalk("PlatformIntro");
 		if ((MouseX >= 1645) && (MouseX < 1735) && (MouseY >= 625) && (MouseY < 715) && !ManagementIsClubSlave()) MainHallWalk("LARP");
 		if ((MouseX >= 1765) && (MouseX < 1855) && (MouseY >= 625) && (MouseY < 715) && !ManagementIsClubSlave()) MainHallWalk("CollegeEntrance");
 		if ((MouseX >= 1885) && (MouseX < 1975) && (MouseY >= 625) && (MouseY < 715) && MainHallAsylumOpen) MainHallWalk("AsylumEntrance");
