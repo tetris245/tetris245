@@ -6823,9 +6823,6 @@ function updateBackground() {
 //Mouth animator
 var expressionAnimation;
 var expressionAnimationIndex = 0;
-var PlatformTemplate = [];
-var PlatformRoomList = [];
-var PlatformDialogCharacterTemplate = [];
 
 function RunExpressionAnimationStep() {
     CharacterSetFacialExpression(Player, "Mouth", expressionAnimation[expressionAnimationIndex++]);
@@ -8583,28 +8580,6 @@ function AsylumEntranceIsWearingNurseClothes() {
     return true
 }
 
-function PlatformIntroLoad() {}
-
-function PlatformIntroRun()  {}
-
-function PlatformIntroClick() {}
-
-function PlatformCreateCharacter() {}
-
-function PlatformLoadRoom() {}
-
-function PlatformPartySave() {}
-
-function PlatformPartyLoad() {}
-
-function PlatformRun() {}
-
-function PlatformProfileRun() {}
-
-function PlatformSaveGame() {}
-
-function PlatformLoadGame() {}
-
 function ServerAppearanceLoadFromBundle(C, AssetFamily, Bundle, SourceMemberNumber, AppearanceFull = false) {
     const appearanceDiffs = ServerBuildAppearanceDiff(AssetFamily, C.Appearance, Bundle);
     ServerAddRequiredAppearance(AssetFamily, appearanceDiffs);
@@ -8727,7 +8702,6 @@ function MainHallRun() {
 	MainCanvas.font = "italic " + CommonGetFont(30);
 	DrawTextWrap(TextGet("Tip" + MainHallTip), 100, 800, 500, 200, "White");
 	MainCanvas.font = CommonGetFont(36);
-        DrawButton(1365,845,500,90,"Access to Bondage Brawl is blocked", "Pink", "Black", "");
 	var QAMtext = "Welcome to Quick-AccessMenu2!      " +
 	              "Besides the commands usable only in chat rooms, this addon comes with several automatic features. " +        
                       "Visit QAM Wiki and use /help for more info!";
@@ -8831,6 +8805,7 @@ function MainHallClick() {
 		if ((MouseX >= 1645) && (MouseX < 1735) && (MouseY >= 505) && (MouseY < 595)) MainHallWalk("Trouble");
 		if ((MouseX >= 1765) && (MouseX < 1855) && (MouseY >= 505) && (MouseY < 595)) MainHallWalk("SlaveMarket");
 		if ((MouseX >= 1885) && (MouseX < 1975) && (MouseY >= 505) && (MouseY < 595)) MainHallWalk("Cell");
+		if ((MouseX >= 1525) && (MouseX < 1615) && (MouseY >= 625) && (MouseY < 715) && !ManagementIsClubSlave() MainHallWalk("PlatformIntro");
 		if ((MouseX >= 1645) && (MouseX < 1735) && (MouseY >= 625) && (MouseY < 715) && !ManagementIsClubSlave()) MainHallWalk("LARP");
 		if ((MouseX >= 1765) && (MouseX < 1855) && (MouseY >= 625) && (MouseY < 715) && !ManagementIsClubSlave()) MainHallWalk("CollegeEntrance");
 		if ((MouseX >= 1885) && (MouseX < 1975) && (MouseY >= 625) && (MouseY < 715) && MainHallAsylumOpen) MainHallWalk("AsylumEntrance");
