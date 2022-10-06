@@ -8950,7 +8950,8 @@ function ChatRoomSyncItem(data) {
 //To remove after R85
 function MainHallAllow(ID) {
 	if (Player.IsOwned() == false) return true;
-	return !LogContain("BlockScreen", "OwnerRule", ID);
+     return true;
+	//return !LogContain("BlockScreen", "OwnerRule", ID);
 }
 
 function MainHallRun() {
