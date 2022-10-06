@@ -9074,6 +9074,14 @@ function MainHallRun() {
 	}
 }
 
+//To remove after R85
+function AppearanceGroupAllowed(C, GroupName) {
+	if (CurrentScreen != "Appearance") return true;
+	if (!C.IsPlayer()) return true;
+	if (Player.IsOwned() == false) return true;
+     return true;
+}
+
 function AppearanceRun() {
 	var C = CharacterAppearanceSelection;
 	if (CharacterAppearanceHeaderTextTime < CommonTime() && CharacterAppearanceMode == "Cloth")
