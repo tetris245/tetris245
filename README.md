@@ -56,6 +56,7 @@ Changes for future version
 * New command: /vrsee to change the settings of a worn VR Headset, even when you are bound
 * Restored access to Bondage Brawl and /bg2 command as the most problematic issues have been resolved
 * Removed the awsave and awload options of the outfit command, as these features can be more easily accessed with the extra buttons in the wardrobe
+* Updated rewritten functions
 
 
 
