@@ -8818,6 +8818,7 @@ CheatActivated.push("AutoShowTraits");
 CheatActivated.push("BlockRandomKidnap");
 CheatActivated.push("CantLoseMistress");
 CheatActivated.push("ChangeNPCTrait");
+CheatActivated.push("DoubleBrawlExperience");
 CheatActivated.push("DoubleGGTSTime");
 CheatActivated.push("DoubleItemSpeed");
 CheatActivated.push("DoubleMoney");
