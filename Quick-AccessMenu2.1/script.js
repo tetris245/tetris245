@@ -8948,13 +8948,6 @@ function ChatRoomSyncItem(data) {
         }
 }
 
-//To remove after R85
-function MainHallAllow(ID) {
-	if (Player.IsOwned() == false) return true;
-        return true;
-	//return !LogContain("BlockScreen", "OwnerRule", ID);
-}
-
 function MainHallRun() {
 	KidnapLeagueResetOnlineBountyProgress();
 	if (!MainHallBeingPunished) {
@@ -9073,14 +9066,6 @@ function MainHallRun() {
 			DrawProgressBar(1525, 955, 450, 35, (1 - ((MainHallNextEventTimer - CommonTime()) / (MainHallNextEventTimer - MainHallStartEventTimer))) * 100);
 		}
 	}
-}
-
-//To remove after R85
-function AppearanceGroupAllowed(C, GroupName) {
-	if (CurrentScreen != "Appearance") return true;
-	if (!C.IsPlayer()) return true;
-	if (Player.IsOwned() == false) return true;
-     return true;
 }
 
 function AppearanceRun() {
