@@ -201,7 +201,7 @@ async function NEWmenu() {
 		    "- 3 import buttons in wardrobe (1 = only clothes + restraints, 2 includes cosplay items, 3 is full import).\n" +	
 		    "- Improved the import in case of locked slots and non-replaced worn toys.\n" +
 		    "- New commands: trsee, vrsee.\n" +
-		    "- Restored access to Bondage Brawl and bg2 command.\n" 		
+		    "- Restored access to Bondage Brawl and bg2 command.\n" +		
                     "- Removed the awsave and awload options of the outfit command.</p>"
                 );   	    
             } else if (content.includes("talking")) {
