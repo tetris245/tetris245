@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.7.0
+// @version 1.8.0
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -197,12 +197,12 @@ async function NEWmenu() {
                 );
 	    } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.7.0:\n" +
-		    "- New features: all items can be crafted, Import and Export buttons in wardrobe.\n" +
-		    "- New commands: invisible2, visible.\n" +
-		    "- Renamed commands: invisible -> invisible1, kinkydungeon -> kd, profile -> bio.\n" +
-	            "- Updated the kd command with modular cheat options. Use <b>/help kd</b> for more info.\n" +		
-                    "- QAM welcome message + green background for most local messages.</p>"
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.8.0:\n" + 
+		    "- 3 import buttons in wardrobe (1 = only clothes + restraints, 2 includes cosplay items, 3 is full import).\n" +	
+		    "- Improved the import in case of locked slots and non-replaced worn toys.\n" +
+		    "- New commands: trsee, vrsee.\n" +
+		    "- Restored access to Bondage Brawl and bg2 command.\n" 		
+                    "- Removed the awsave and awload options of the outfit command.</p>"
                 );   	    
             } else if (content.includes("talking")) {
 		ChatRoomSendLocal(
@@ -6836,7 +6836,7 @@ ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
 	ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.7.0: Ready, type <b>/help</b> for general menu.\n" +
+                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.8.0: Ready, type <b>/help</b> for general menu.\n" +
 		    "Note: NPC punishments are disabled.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
 		    "Use <b>/clubhelp</b> to get the standard BC menu (+ FBC menu when enabled).\n" +
@@ -8814,7 +8814,7 @@ InventoryItemNeckAccessoriesElectronicTagLoad = function() {
 function LoginRun() {
 	if (LoginCredits != null) LoginDrawCredits();
 	const CanLogin = ServerIsConnected && !LoginSubmitted;
-        DrawButton(750,120,500,60,"QAM 1.7.0 Ready!", "Pink", "Black", "");
+        DrawButton(750,120,500,60,"QAM 1.8.0 Ready!", "Pink", "Black", "");
 	DrawText(TextGet("Welcome"), 1000, 50, "White", "Black");
 	DrawText(LoginMessage, 1000, 100, "White", "Black");
 	DrawText(TextGet("AccountName"), 1000, 200, "White", "Black");
