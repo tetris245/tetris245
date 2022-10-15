@@ -49,9 +49,9 @@ Changes for future version
   - Import1 = only clothing + restraints
   - Import2 = clothing + restraints + cosplay items correponding to HairAccessory1, HairAccessory2, TailStraps and Wings
   - Import3 = full import including body changes (Eyes, Hair, Mouth, etc.)
-* Improved the import options by 
-  - not allowing the import to a locked slot (it implies you need first to remove the locks if you want a more complete import)
-  - removing collar, harness, chastity, toys only if they are replaced by the import operation
+* Improved the import by 
+  - not allowing it to a locked slot (it implies you need first to remove the locks if you want a more complete import)
+  - removing collar, harness, chastity, toys only if they are replaced by the import
 * New command: /trsee to change the settings of a worn Techno Helmet, even when you are bound
 * New command: /vrsee to change the settings of a worn VR Headset, even when you are bound
 * Restored access to Bondage Brawl and /bg2 command as the most problematic issues have been resolved
