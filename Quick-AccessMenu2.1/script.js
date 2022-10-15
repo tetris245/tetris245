@@ -2594,6 +2594,7 @@ async function NEWmenu() {
 			 KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionInvisibility, +99);
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, +99);
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, +99);
+			 KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, +99);
                     }, 5000);   
 		 } else if (content.includes("moreitems")) {  
 		     setTimeout(function() {  
@@ -2606,6 +2607,7 @@ async function NEWmenu() {
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ElfCrystal, +99);
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.EnchantedGrinder, +99);
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.IceRune, +99); 
+			 KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ManaOrb, +99);
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, +99);
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollArms, +99);
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollLegs, +99);
@@ -2615,7 +2617,8 @@ async function NEWmenu() {
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.WaterRune, +99);
  	            }, 5000); 		 
                  } else if (content.includes("outfits")) {                     
-                     setTimeout(function() {                           
+                     setTimeout(function() {    
+			 KinkyDungeonInventoryAddOutfit("BlueSuit");
                          KinkyDungeonInventoryAddOutfit("BlueSuitPrison");
                          KinkyDungeonInventoryAddOutfit("Dragon");
                          KinkyDungeonInventoryAddOutfit("Elven");
@@ -2852,15 +2855,19 @@ async function NEWmenu() {
                      }, 5000);             
 		 } else if (content.includes("weapons")) {                     
                      setTimeout(function() {  
+			 KinkyDungeonInventoryAddWeapon("Arbiter");
+			 KinkyDungeonInventoryAddWeapon("ArcaneCrystal");
                          KinkyDungeonInventoryAddWeapon("Axe");
                          KinkyDungeonInventoryAddWeapon("BoltCutters");
                          KinkyDungeonInventoryAddWeapon("BondageBuster");
                          KinkyDungeonInventoryAddWeapon("Dragonslaver");
+			 KinkyDungeonInventoryAddWeapon("Dreamcatcher");
                          KinkyDungeonInventoryAddWeapon("EnchKnife");                   
                          KinkyDungeonInventoryAddWeapon("EscortDrone");
                          KinkyDungeonInventoryAddWeapon("Feather");
                          KinkyDungeonInventoryAddWeapon("Flail");
                          KinkyDungeonInventoryAddWeapon("Flamberge");
+			 KinkyDungeonInventoryAddWeapon("FourSeasons");
                          KinkyDungeonInventoryAddWeapon("Hammer");
                          KinkyDungeonInventoryAddWeapon("IceBreaker");
                          KinkyDungeonInventoryAddWeapon("IceCube");
@@ -2870,6 +2877,7 @@ async function NEWmenu() {
                          KinkyDungeonInventoryAddWeapon("MagicHammer");
                          KinkyDungeonInventoryAddWeapon("MagicSpear");
                          KinkyDungeonInventoryAddWeapon("MagicSword");
+			 KinkyDungeonInventoryAddWeapon("MessengerOfLove");
                          KinkyDungeonInventoryAddWeapon("MoraiScissors");
                          KinkyDungeonInventoryAddWeapon("Pickaxe");
                          KinkyDungeonInventoryAddWeapon("Rope");
@@ -2883,6 +2891,7 @@ async function NEWmenu() {
                          KinkyDungeonInventoryAddWeapon("StaffStorm");
                          KinkyDungeonInventoryAddWeapon("Sword");
                          KinkyDungeonInventoryAddWeapon("TheEncaser");
+			 KinkyDungeonInventoryAddWeapon("Torch");
                          KinkyDungeonInventoryAddWeapon("VibeWand");
                     }, 5000);   
                 } 
