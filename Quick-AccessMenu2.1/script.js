@@ -3965,6 +3965,21 @@ async function NEWmenu() {
                 ChatRoomCharacterUpdate(target[0]);
 	        ChatRoomSetTarget(null);   
           };
+	} else if (content.indexOf("/poof") == 0) {
+            if (content.endsWith("/poof")) {
+                var message = " poofs away."
+            } else {
+                var message = ' '.repeat(1) + content.substring(5).trim();
+            }
+            ServerSend("ChatRoomChat", {
+                Content: "Beep",
+                Type: "Action",
+                Dictionary: [{
+                    Tag: "Beep",
+                    Text: "" + tmpname + message
+                }]
+            });
+            RelogExit();	
         } else if (content.indexOf("/pose2") == 0) {
             if (content.endsWith("/pose2")) {
                 ChatRoomSendLocal(
@@ -4646,21 +4661,6 @@ async function NEWmenu() {
 		ChatRoomSetTarget(null);
                 }
             }
-	} else if (content.indexOf("/poof") == 0) {
-            if (content.endsWith("/poof")) {
-                var message = " poofs away."
-            } else {
-                var message = ' '.repeat(1) + content.substring(5).trim();
-            }
-            ServerSend("ChatRoomChat", {
-                Content: "Beep",
-                Type: "Action",
-                Dictionary: [{
-                    Tag: "Beep",
-                    Text: "" + tmpname + message
-                }]
-            });
-            RelogExit();	
         } else if (content.indexOf("/prison") == 0) {
             var minutes = content.substring(7).trim();
             ServerSend("ChatRoomChat", {
