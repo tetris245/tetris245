@@ -45,7 +45,9 @@ All else I might not have included.
 
 Changes for future version 
 
-(...)
+* Improved the pose2 command:
+  - No effect/message when no real change of standard pose
+
 
 
 
