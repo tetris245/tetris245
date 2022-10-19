@@ -9276,7 +9276,7 @@ function AppearanceClick() {
 		return;
 	}
 	else if (CharacterAppearanceMode == "Wardrobe") {
-            if ((MouseX >= 1300) && (MouseX < 1630) && (MouseY >= 240) && (MouseY < 290)) {
+            if ((MouseX >= 1300) && (MouseX < 1447) && (MouseY >= 240) && (MouseY < 290)) {
 		if (ServerPlayerIsInChatRoom()) {
                     var appall = new Array();
                     C.Appearance.forEach(item=>{
@@ -9359,6 +9359,7 @@ function AppearanceClick() {
                     } 
                 );   
                 ChatRoomCharacterUpdate(C);
+		DialogLeave();
 	    }
             if ((MouseX >= 1644) && (MouseX < 1791) && (MouseY >= 240) && (MouseY < 290)) {
                 appinp = prompt('Please input the awcode (Compatible with BCG).', '');
@@ -9393,6 +9394,7 @@ function AppearanceClick() {
                     } 
                 );   
                 ChatRoomCharacterUpdate(C);
+		DialogLeave();
 	    }
             if ((MouseX >= 1816) && (MouseX < 1973) && (MouseY >= 240) && (MouseY < 290)) {
                 appinp = prompt('Please input the awcode (Compatible with BCG).', '');
@@ -9412,6 +9414,7 @@ function AppearanceClick() {
                     }
                 );                
                 ChatRoomCharacterUpdate(C);
+		DialogLeave();
 	    }
 	    if ((MouseX >= 1300) && (MouseX < 1800) && (MouseY >= 430) && (MouseY < 970))
 	        for (let W = CharacterAppearanceWardrobeOffset; W < Player.Wardrobe.length && W < CharacterAppearanceWardrobeOffset + 6; W++)
