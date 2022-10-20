@@ -9175,10 +9175,10 @@ function AppearanceRun() {
 	if (CharacterAppearanceMode == "Wardrobe") {
 		DrawText(CharacterAppearanceWardrobeText, 1645, 220, "White", "Gray");
 		ElementPosition("InputWardrobeName", 1645, 315, 690);
-                DrawButton(1300, 240, 157, 60, "Export", "#50E992", "");
-                DrawButton(1472, 240, 157, 60, "Import1", "#50E992", "");       
-                DrawButton(1644, 240, 157, 60, "Import2", "#50E992", "");
-                DrawButton(1816, 240, 157, 60, "Import3", "#50E992", "");
+                DrawButton(1300, 240, 157, 60, "Export", "#50E992", "", "Full QAM Export");
+                DrawButton(1472, 240, 157, 60, "Import1", "#50E992", "", "Clothing + Restraints");       
+                DrawButton(1644, 240, 157, 60, "Import2", "#50E992", "", "Clothing + Restraints + Cosplay");
+                DrawButton(1816, 240, 157, 60, "Import3", "#50E992", "", "Full QAM Import");
 		for (let W = CharacterAppearanceWardrobeOffset; W < Player.Wardrobe.length && W < CharacterAppearanceWardrobeOffset + 6; W++) {
 			DrawButton(1300, 430 + (W - CharacterAppearanceWardrobeOffset) * 95, 500, 65, "", "White", "");
 			DrawTextFit((W + 1).toString() + (W < 9 ? ":  " : ": ") + Player.WardrobeCharacterNames[W], 1550, 463 + (W - CharacterAppearanceWardrobeOffset) * 95, 496, "Black");
