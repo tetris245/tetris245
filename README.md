@@ -47,6 +47,7 @@ Changes for future version
 
 * Improved the pose2 command:
   - No effect/message when no real change of standard pose
+* Added hovering text for export/import buttons in wardrobe
 * Fixed a bug in the wardrobe export/import functions
 
 
