@@ -4302,56 +4302,6 @@ async function NEWmenu() {
                                 });
                             }
 			}	
-                    } else if (content.includes("spreadeagle1")) {
-			if (target[0].ActivePose != ['Yoked','Spread']) { 
-                            CharacterSetActivePose(target[0], "Yoked");
-                            CharacterSetActivePose(target[0], "Spread");
-                            ChatRoomCharacterUpdate(target[0]);
-                            if (target[0].Name == Player.Name) {
-                                ServerSend("ChatRoomChat", {
-                                    Content: "Beep",
-                                    Type: "Action",
-                                    Dictionary: [{
-                                        Tag: "Beep",
-                                        Text: "" + tmpname + " raises her hands and spreads her legs."
-                                    }]
-                                });
-                            } else {
-                                ServerSend("ChatRoomChat", {
-                                    Content: "Beep",
-                                    Type: "Action",
-                                    Dictionary: [{
-                                         Tag: "Beep",
-                                         Text: "" + tmpname + " forces " + tgpname + " to raise their hands and spread her legs."
-                                    }]
-                                });
-                            }
-			}	
-                    } else if (content.includes("spreadeagle2")) {
-			if (target[0].ActivePose != ['OverTheHead','Spread']) {
-                            CharacterSetActivePose(target[0], "OverTheHead");
-                            CharacterSetActivePose(target[0], "Spread");
-                            ChatRoomCharacterUpdate(target[0]);
-                            if (target[0].Name == Player.Name) {
-                                ServerSend("ChatRoomChat", {
-                                    Content: "Beep",
-                                    Type: "Action",
-                                    Dictionary: [{
-                                        Tag: "Beep",
-                                        Text: "" + tmpname + " raises the hands above her head and spreads her legs."
-                                    }]
-                                });
-                            } else {
-                                ServerSend("ChatRoomChat", {
-                                    Content: "Beep",
-                                    Type: "Action",
-                                    Dictionary: [{
-                                        Tag: "Beep",
-                                        Text: "" + tmpname + " forces " + tgpname + " to raise the hands above their head and spread her legs."
-                                    }]
-                                });
-                            }
-	                }	
                     } else if (content.includes("spreadlegs")) {
 		        if (target[0].ActivePose != 'Spread') {
                             CharacterSetActivePose(target[0], "Spread");
