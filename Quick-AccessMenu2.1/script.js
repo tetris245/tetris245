@@ -1279,7 +1279,7 @@ async function NEWmenu() {
             var bg = content.substring(4).trim();
             if (bg == 0) {
                 ChatRoomSendLocal(
-                    "<b>Quick-AccessMenu2</b>: List of hidden platform backgrounds:\n" +
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: List of hidden platform backgrounds:\n" +
                     "1, 2 Balcony - 3 Ballroom\n" +
                     "4 to 6 Barn - 7 to 9 Bathroom Olivia\n" +
                     "10 Bedroom Dungeon - 11 Bedroom Edward\n" +
@@ -1296,7 +1296,7 @@ async function NEWmenu() {
                     "71 Mountain Path - 72, 73 Oak\n" +
                     "74 to 78 Plain - 79 Pond\n" +
                     "80, 81 Savannah - 82, 83 Terrace\n" +
-                    "84 Vulture Plain - 85, 86 Wine Cell"
+                    "84 Vulture Plain - 85, 86 Wine Cell</p>"
                 );
             } else if (bg == 1) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Castle/Balcony';
