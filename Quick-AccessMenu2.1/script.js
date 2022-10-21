@@ -3988,9 +3988,9 @@ async function NEWmenu() {
                     "Available poses:\n" +
                     "armsfree, belly, boxtied, cuffed, elbowtied, exercise,\n" +
                     "kneel1, kneel2, legsclosed, legsopen, pet,\n" +
-                    "sleep, spreadarms1, spreadarms2, spreadeagle1\n" +
-                    "spreadeagle2, spreadlegs, stand, suspension,\n" +
-                    "tapedhands. Only on yourself: jump, roof.\n" +
+                    "sleep, spreadarms1, spreadarms2, spreadlegs,\n" +
+                    "spreadlegs, stand, suspension, tapedhands.\n" +
+                    "Only on yourself: jump, roof.\n" +
                     "Use <b>/pose2 reset</b> (target) to back to neutral pose.\n" + 
 		    "If FBC is enabled, use <b>/pose baseupper</b> only on yourself when /pose2 reset fails.</p>"
                 );
