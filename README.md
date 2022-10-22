@@ -12,7 +12,7 @@ You can find Tampermonkey here: https://www.tampermonkey.net/ (it's available fo
 
 Inside Tampermonkey: Add new script / Utilities / Insert link to QAM loader in last option / Click on "Install"
 
-To update: Go in Installed Scripts / Click on date corresponding to QAM (TM will search for new version and install it)
+To update: Go to Installed Scripts / Click on date corresponding to QAM (TM will search for new version and install it)
 
 **Bookmark methode** - link to the QAM bookmark: https://tetris245.github.io/QAMbookmark.js
 
