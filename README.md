@@ -45,6 +45,7 @@ All else I might not have included.
 
 Changes for future version 
 
+* Made the pose menu available everywhere in BC (no more limited to chat rooms and Photographic room)
 * Improved the pose2 command:
   - No effect/message when no real change of standard pose
   - No more double pose command (removed the spreadeagle poses)
