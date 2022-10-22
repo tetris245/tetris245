@@ -46,8 +46,9 @@ All else I might not have included.
 Changes for future version 
 
 * Improved the pose2 command:
-  - No effect/message when no real change of standard pose
+  - No effect/message when no real change of standard posen
   - No more double pose command (removed the spreadeagle poses)
+* Renamed the release command as untie to avoid conflict with new BC command
 * Added hovering text for export/import buttons in wardrobe
 * Fixed a bug in the wardrobe export/import functions
 
