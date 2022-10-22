@@ -8841,6 +8841,34 @@ CheatActivated.push("SkipTrialPeriod");
 CheatExport();
 
 //Additionaly rule changers for game.
+var DialogSelfMenuOptions = [
+	{
+		Name: "Expression",
+		IsAvailable: () => true,
+		Draw: DialogDrawExpressionMenu,
+		Click: DialogClickExpressionMenu,
+	},
+	{
+		Name: "Pose",
+		IsAvailable: () => true,
+		Load: DialogLoadPoseMenu,
+		Draw: DialogDrawPoseMenu,
+		Click: DialogClickPoseMenu,
+	},
+	{
+		Name: "SavedExpressions",
+		IsAvailable: () => true,
+		Draw: DialogDrawSavedExpressionsMenu,
+		Click: DialogClickSavedExpressionsMenu,
+	},
+	{
+		Name: "OwnerRules",
+		IsAvailable: () => DialogSelfMenuSelected && DialogSelfMenuSelected.Name == "OwnerRules",
+		Draw: DialogDrawOwnerRulesMenu,
+		Click: () => { },
+	},
+];
+
 Asset.forEach(e => {
     if (e.Value < 0) e.Value = 1;
 });
