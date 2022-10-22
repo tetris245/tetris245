@@ -106,12 +106,12 @@ async function NEWmenu() {
                     "<b>/collarremove</b> = removes slave/owner collar. Can also be: /removecollar.\n" +
                     "<b>/frlist</b> = gives access to friendlist with clickable links to other rooms during 15 seconds.\n" +
                     "<b>/leave</b> = leaves room, even if prevented.\n" +
-                    "<b>/release</b> (target) = removes all bindings.\n" +
                     "<b>/resetdifficulty</b> = resets difficulty, thereby quitting it. Will warn first.\n" +
                     "<b>/safewordspecific</b> = removes specific item. More info when used.\n" +
                     "<b>/solidity</b> (value) = changes the solidity of most current bindings. Use low values to escape! Value 1 allows to escape special devices.\n" +
                     "<b>/totalrelease</b> (target) = removes all bindings, collar, harness, chastity, toys.\n" +
-                    "<b>/unlock</b> (target) (locktype) = removes all locks or only a specified type of lock. More info with /help unl.</p>"
+                    "<b>/unlock</b> (target) (locktype) = removes all locks or only a specified type of lock. More info with /help unl.\n" +
+		    "<b>/untie</b> (target) = removes all bindings.</p>" +
                 );
 	    } else if (content.includes("features")) {
                 ChatRoomSendLocal(
@@ -4701,39 +4701,6 @@ async function NEWmenu() {
                 ChatRoomCharacterUpdate(target[0]);
 		ChatRoomSetTarget(null);
             }
-        } else if (content.indexOf("/release") == 0) {
-            var targetname = content.substring(8).trim();
-            if (targetname == undefined) {
-                targetname = Player.Name
-            };
-            var targetfinder = new RegExp('^' + targetname + '', 'i');
-            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	    if (target[0] == null) {
-                    var targetnumber = parseInt(targetname);
-                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
-            if (target[0] != null) {
-		if (target[0].Nickname == '') { 
-                    tgpname = target[0].Name;
-                } else {
-                    tgpname = target[0].Nickname;
-                } 
-                ServerSend("ChatRoomChat", {
-                    Content: "Beep",
-                    Type: "Action",
-                    Dictionary: [{
-                        Tag: "Beep",
-                        Text: "Magical lasers make disappear the bindings on " + tgpname + " body."
-                    }]
-                });
-                if ((target[0].Name == Player.Name) == false) {
-                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
-                    consoleWhisper();
-                };
-                CharacterRelease(target[0]);
-                ChatRoomCharacterUpdate(target[0]);
-		ChatRoomSetTarget(null);
-            }
         } else if (content.indexOf("/relog") == 0) {
             ServerSocket.close();
             ServerSocket.open();
@@ -6126,6 +6093,39 @@ async function NEWmenu() {
                 }
                 ChatRoomCharacterUpdate(target[0]);
 		ChatRoomSetTarget(null);  
+            }
+	} else if (content.indexOf("/untie") == 0) {
+            var targetname = content.substring(6).trim();
+            if (targetname == undefined) {
+                targetname = Player.Name
+            };
+            var targetfinder = new RegExp('^' + targetname + '', 'i');
+            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	    if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            };
+            if (target[0] != null) {
+		if (target[0].Nickname == '') { 
+                    tgpname = target[0].Name;
+                } else {
+                    tgpname = target[0].Nickname;
+                } 
+                ServerSend("ChatRoomChat", {
+                    Content: "Beep",
+                    Type: "Action",
+                    Dictionary: [{
+                        Tag: "Beep",
+                        Text: "Magical lasers make disappear the bindings on " + tgpname + " body."
+                    }]
+                });
+                if ((target[0].Name == Player.Name) == false) {
+                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
+                    consoleWhisper();
+                };
+                CharacterRelease(target[0]);
+                ChatRoomCharacterUpdate(target[0]);
+		ChatRoomSetTarget(null);
             }
         } else if (content.indexOf("/unrestrict") == 0) {
             if (content.includes("soft")) {
