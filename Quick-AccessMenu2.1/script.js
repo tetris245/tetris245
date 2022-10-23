@@ -8843,17 +8843,17 @@ CheatExport();
 //Additionaly rule changers for game.
 var DialogSelfMenuOptions = [
 	{
-		Name: "Expression",
-		IsAvailable: () => true,
-		Draw: DialogDrawExpressionMenu,
-		Click: DialogClickExpressionMenu,
-	},
-	{
 		Name: "Pose",
 		IsAvailable: () => true,
 		Load: DialogLoadPoseMenu,
 		Draw: DialogDrawPoseMenu,
 		Click: DialogClickPoseMenu,
+	},
+	{
+		Name: "Expression",
+		IsAvailable: () => true,
+		Draw: DialogDrawExpressionMenu,
+		Click: DialogClickExpressionMenu,
 	},
 	{
 		Name: "SavedExpressions",
@@ -8868,6 +8868,170 @@ var DialogSelfMenuOptions = [
 		Click: () => { },
 	},
 ];
+
+function DialogDraw() {
+    if (ControllerActive == true) {
+        ClearButtons();
+    }
+    if (CurrentCharacter.ID != 0) DrawCharacter(Player, 0, 0, 1);
+    DrawCharacter(CurrentCharacter, 500, 0, 1);
+    CharacterCheckHooks(C, true);
+    if (CurrentCharacter != null && CurrentCharacter.ID == 0) {
+        if (DialogSelfMenuOptions.filter(SMO => SMO.IsAvailable()).length > 1 && !CommonPhotoMode) DrawButton(420, 50, 90, 90, "", "White", "Icons/Next.png", DialogFindPlayer("NextPage"));
+	if (!DialogSelfMenuSelected) {
+            DialogLoadPoseMenu();
+	    DialogDrawPoseMenu();
+	} else {
+	    DialogSelfMenuSelected.Draw();
+        }
+    }
+    if (((Player.FocusGroup != null) || ((CurrentCharacter != null && CurrentCharacter.FocusGroup != null) && CurrentCharacter != null && CurrentCharacter.AllowItem)) && (DialogIntro() != "")) {
+        var C = CharacterGetCurrent();
+	if (DialogFocusItem != null) {
+	    CommonDynamicFunction("Inventory" + DialogFocusItem.Asset.Group.Name + DialogFocusItem.Asset.Name + "Draw()");
+	    DrawButton(1885, 25, 90, 90, "", "White", "Icons/Exit.png");
+	} else {
+	    if (DialogActivityMode) DialogDrawActivityMenu(C);
+	    else DialogDrawItemMenu(C);
+	}
+	if (CurrentCharacter != null && CurrentCharacter.HeightModifier != null && CurrentCharacter.FocusGroup != null) {
+	    let drawButton = "";
+	    if (CharacterAppearanceForceUpCharacter == CurrentCharacter.MemberNumber) {
+	        drawButton = "Icons/Remove.png";
+	    } else if (CurrentCharacter.HeightModifier < -90) {
+	        drawButton = CurrentCharacter.IsInverted() ? "Icons/Down.png" : "Icons/Up.png";
+	    } else if (CurrentCharacter.HeightModifier > 30) {
+	        drawButton = CurrentCharacter.IsInverted() ? "Icons/Up.png" : "Icons/Down.png";
+	    }
+	    if (drawButton) DrawButton(510, 50, 90, 90, "", "White", drawButton, DialogFindPlayer("ShowAllZones"));
+	}
+    } else {
+	if (CurrentCharacter != null) {
+	    if ((DialogIntro() != "") && (DialogIntro() != "NOEXIT")) {
+	        DrawTextWrap(SpeechGarble(CurrentCharacter, CurrentCharacter.CurrentDialog), 1025, -5, 840, 165, "white", null, 3);
+		DrawButton(1885, 25, 90, 90, "", "White", "Icons/Exit.png");
+	    } else DrawTextWrap(SpeechGarble(CurrentCharacter, CurrentCharacter.CurrentDialog), 1025, -5, 950, 165, "white", null, 3);
+	    let pos = 0;
+	    for (let D = 0; D < CurrentCharacter.Dialog.length; D++) {
+	        if ((CurrentCharacter.Dialog[D].Stage == CurrentCharacter.Stage) && (CurrentCharacter.Dialog[D].Option != null) && DialogPrerequisite(D)) {
+	            DrawTextWrap(SpeechGarble(Player, CurrentCharacter.Dialog[D].Option), 1025, 160 + 105 * pos, 950, 90, "black", ((MouseX >= 1025) && (MouseX <= 1975) && (MouseY >= 160 + pos * 105) && (MouseY <= 250 + pos * 105) && !CommonIsMobile) ? "cyan" : "white", 2);
+		    pos++;
+		}
+	     }
+	 NPCInteraction();
+        }
+    }
+}
+
+function DialogClick() {
+    let C = CharacterGetCurrent();
+	if ((CurrentCharacter.HeightModifier < -90 || CurrentCharacter.HeightModifier > 30) && (CurrentCharacter.FocusGroup != null) && MouseIn(510, 50, 90, 90)) {
+	    CharacterAppearanceForceUpCharacter = CharacterAppearanceForceUpCharacter == CurrentCharacter.MemberNumber ? -1 : CurrentCharacter.MemberNumber;
+	    return;
+	}
+	if (DialogColor != null && C.FocusGroup && InventoryGet(C, C.FocusGroup.Name) && MouseIn(1300, 25, 675, 950)) {
+	    return ItemColorClick(C, C.FocusGroup.Name, 1200, 25, 775, 950, true);
+	}
+	if ((CurrentCharacter.AllowItem || (MouseX < 500)) && MouseIn(0, 0, 1000, 1000) && ((CurrentCharacter.ID != 0) || (MouseX > 500)) && (DialogIntro() != "") && DialogAllowItemScreenException()) {
+	    DialogLeaveItemMenu(false);
+	    DialogLeaveFocusItem();
+		if (DialogItemPermissionMode && C.ID !== (MouseX < 500 ? Player.ID : CurrentCharacter.ID)) {
+		    DialogItemPermissionMode = false;
+		}
+	    C = (MouseX < 500) ? Player : CurrentCharacter;
+	    let X = MouseX < 500 ? 0 : 500;
+	    for (let A = 0; A < AssetGroup.length; A++)
+	        if ((AssetGroup[A].Category == "Item") && (AssetGroup[A].Zone != null))
+		for (let Z = 0; Z < AssetGroup[A].Zone.length; Z++)
+		if (DialogClickedInZone(C, AssetGroup[A].Zone[Z], 1, X, 0, C.HeightRatio)) {
+		    C.FocusGroup = AssetGroup[A];
+		    DialogItemToLock = null;
+		    DialogFocusItem = null;
+		    DialogInventoryBuild(C);
+		    DialogText = DialogTextDefault;
+		    break;
+	        }
+        }    
+	if (CharacterAppearanceForceUpCharacter == CurrentCharacter.MemberNumber && ((MouseX < 500) || (MouseX > 1000) || (CurrentCharacter.FocusGroup == null))) {
+	    CharacterAppearanceForceUpCharacter = -1;
+	    CharacterRefresh(CurrentCharacter, false, false);
+	}
+	if (DialogActivityMode && (StruggleProgress < 0 && !StruggleLockPickOrder) && (DialogColor == null) && ((Player.FocusGroup != null) || ((CurrentCharacter.FocusGroup != null) && CurrentCharacter.AllowItem)))
+	if ((MouseX >= 1000) && (MouseX <= 1975) && (MouseY >= 125) && (MouseY <= 1000)) {
+	    let X = 1000;
+	    let Y = 125;
+	    for (let A = DialogInventoryOffset; (A < DialogActivity.length) && (A < DialogInventoryOffset + 12); A++) {
+	        if ((MouseX >= X) && (MouseX < X + 225) && (MouseY >= Y) && (MouseY < Y + 275)) {
+		    IntroductionJobProgress("SubActivity", DialogActivity[A].MaxProgress.toString(), true);
+		    ActivityRun(C, DialogActivity[A]);
+		    return;
+	        }
+		X = X + 250;
+		if (X > 1800) {
+		    X = 1000;
+		    Y = Y + 300;
+		}
+	    }
+	    return;
+	}
+	if (((Player.FocusGroup != null) || ((CurrentCharacter.FocusGroup != null) && CurrentCharacter.AllowItem)) && (DialogIntro() != "")) {
+	    if (DialogFocusItem != null) {
+	        CommonDynamicFunction("Inventory" + DialogFocusItem.Asset.Group.Name + DialogFocusItem.Asset.Name + "Click()");
+	    } else {
+	        if ((MouseX >= 1000) && (MouseX < 2000) && (MouseY >= 400) && (MouseY < 1000) && (StruggleProgress >= 0)) StruggleClick(false);
+		if ((MouseX >= 1000) && (MouseX < 2000) && (MouseY >= 200) && (MouseY < 1000) && (StruggleLockPickOrder)) { 
+		    StruggleLockPickClick(CurrentCharacter); 
+		    return; 
+		}
+		if ((MouseX >= 1000) && (MouseX < 2000) && (MouseY >= 15) && (MouseY <= 105)) DialogMenuButtonClick();
+		if ((MouseX >= 1000) && (MouseX <= 1975) && (MouseY >= 125) && (MouseY <= 1000) && !DialogCraftingMenu && ((DialogItemPermissionMode && (Player.FocusGroup != null)) || (Player.CanInteract() && !InventoryGroupIsBlocked(C, null, true))) && (StruggleProgress < 0 && !StruggleLockPickOrder) && (DialogColor == null)) {
+		    let X = 1000;
+		    let Y = 125;
+		    for (let I = DialogInventoryOffset; (I < DialogInventory.length) && (I < DialogInventoryOffset + 12); I++) {
+		        if ((MouseX >= X) && (MouseX < X + 225) && (MouseY >= Y) && (MouseY < Y + 275))
+			    if (DialogInventory[I].Asset.Enable || (DialogInventory[I].Asset.Extended && DialogInventory[I].Asset.OwnerOnly && CurrentCharacter.IsOwnedByPlayer())) {
+			        DialogItemClick(DialogInventory[I]);
+				break;
+			    }
+			X = X + 250;
+			if (X > 1800) {
+			    X = 1000;
+			    Y = Y + 300;
+			}
+		    }
+		}
+	    }
+	} else {
+	    if ((DialogIntro() != "") && (DialogIntro() != "NOEXIT") && (MouseX >= 1885) && (MouseX <= 1975) && (MouseY >= 25) && (MouseY <= 110))
+	    DialogLeave();
+	    if ((MouseX >= 1025) && (MouseX <= 1975) && (MouseY >= 100) && (MouseY <= 990) && (CurrentCharacter != null)) {
+	        var pos = 0;
+		for (let D = 0; D < CurrentCharacter.Dialog.length; D++) {
+		    if ((CurrentCharacter.Dialog[D].Stage == CurrentCharacter.Stage) && (CurrentCharacter.Dialog[D].Option != null) && DialogPrerequisite(D)) {
+		        if ((MouseX >= 1025) && (MouseX <= 1975) && (MouseY >= 160 + pos * 105) && (MouseY <= 250 + pos * 105)) {
+			    if (!Player.CanTalk()) CurrentCharacter.CurrentDialog = DialogFind(CurrentCharacter, "PlayerGagged");
+			    else CurrentCharacter.CurrentDialog = CurrentCharacter.Dialog[D].Result;
+			    if ((Player.CanTalk() && CurrentCharacter.CanTalk()) || SpeechFullEmote(CurrentCharacter.Dialog[D].Option)) {
+			        CurrentCharacter.CurrentDialog = CurrentCharacter.Dialog[D].Result;
+				if (CurrentCharacter.Dialog[D].NextStage != null) CurrentCharacter.Stage = CurrentCharacter.Dialog[D].NextStage;
+				if (CurrentCharacter.Dialog[D].Function != null) CommonDynamicFunctionParams(CurrentCharacter.Dialog[D].Function);
+			    } else if ((CurrentCharacter.Dialog[D].Function != null) && (CurrentCharacter.Dialog[D].Function.trim() == "DialogLeave()"))
+			    DialogLeave();
+			    break;
+			}
+			pos++;
+		    }
+		}
+	    }
+	}
+	if ((CurrentCharacter != null) && (CurrentCharacter.ID == 0) && (MouseX >= 0) && (MouseX <= 500)) {
+	    if (MouseIn(420, 50, 90, 90) && DialogSelfMenuOptions.filter(SMO => SMO.IsAvailable()).length > 1) DialogFindNextSubMenu();
+	    if (!DialogSelfMenuSelected)
+	        DialogClickPoseMenu();
+	    else
+		DialogSelfMenuSelected.Click();
+	}
+}
 
 Asset.forEach(e => {
     if (e.Value < 0) e.Value = 1;
