@@ -9023,7 +9023,7 @@ function DialogClick() {
 		}
 	    }
 	}
-	if ((CurrentCharacter != null) && (CurrentCharacter.ID == 0) && (MouseX >= 0) && (MouseX <= 500)) {
+	if ((CurrentCharacter != null) && (MouseX >= 0) && (MouseX <= 500)) {
 	    if (MouseIn(420, 50, 90, 90) && DialogSelfMenuOptions.filter(SMO => SMO.IsAvailable()).length > 1) DialogFindNextSubMenu();
 	    if (!DialogSelfMenuSelected)
 	        DialogClickPoseMenu();
