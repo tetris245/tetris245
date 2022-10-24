@@ -9032,6 +9032,31 @@ function DialogClick() {
 	}
 }
 
+function DialogDrawPoseMenu() {
+	DrawText(DialogFindPlayer("PoseMenu"), 250, 100, "White", "Black");
+	for (let I = 0; I < DialogActivePoses.length; I++) {
+		var OffsetX = 140 + 140 * I;
+		var PoseGroup = DialogActivePoses[I];
+		for (let P = 0; P < PoseGroup.length; P++) {
+			var OffsetY = 180 + 100 * P;
+			var IsActive = false;
+			if (typeof CurrentCharacter.ActivePose == "string" && CurrentCharacter.ActivePose == PoseGroup[P].Name)
+				IsActive = true;
+			else if (Array.isArray(CurrentCharacter.ActivePose)) {
+				if (CurrentCharacter.ActivePose.includes(PoseGroup[P].Name))
+					IsActive = true;
+				else if (PoseGroup[P].Name == "BaseUpper" && !CurrentCharacter.ActivePose.map(Pose => PoseFemale3DCG.find(PP => PP.Name == Pose)).filter(Pose => Pose).find(Pose => Pose.Category == "BodyUpper" || Pose.Category == "BodyFull"))
+					IsActive = true;
+				else if (PoseGroup[P].Name == "BaseLower" && !CurrentCharacter.ActivePose.map(Pose => PoseFemale3DCG.find(PP => PP.Name == Pose)).filter(Pose => Pose).find(Pose => Pose.Category == "BodyLower" || Pose.Category == "BodyFull"))
+					IsActive = true;
+			}
+			else if ((PoseGroup[P].Name == "BaseUpper" || PoseGroup[P].Name == "BaseLower") && CurrentCharacter.ActivePose == null)
+				IsActive = true;
+			DrawButton(OffsetX, OffsetY, 90, 90, "", !CurrentCharacter.CanChangeToPose(PoseGroup[P].Name) ? "#888" : IsActive ? "Pink" : "White", "Icons/Poses/" + PoseGroup[P].Name + ".png");
+		}
+	}
+}
+
 function DialogClickPoseMenu() {
 	for (let I = 0; I < DialogActivePoses.length; I++) {
 		var OffsetX = 140 + 140 * I;
