@@ -48,7 +48,7 @@ Changes for future version
 * Improved the pose menu:
   - Auto Access to Pose menu on Any Player
   - Auto General Availability of Pose menu (no more limited to chat rooms and Photographic room)
-  - Auto Priority to Pose Menu when you click on yourself or any other player
+  - Auto Priority to Pose Menu when you click on yourself
   - Added messages when pose menu used in a chat room
 * Improved and updated the pose2 command:
   - No effect/message when no real change of standard pose
