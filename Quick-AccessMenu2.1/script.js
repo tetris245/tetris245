@@ -8605,7 +8605,7 @@ var DialogSelfMenuOptions = [
 	},
 	{
 		Name: "Expression",
-		IsAvailable: () => true,
+		IsAvailable: () => (CurrentCharacter.ID == 0),
 		Draw: DialogDrawExpressionMenu,
 		Click: DialogClickExpressionMenu,
 	},
@@ -9089,68 +9089,6 @@ function DialogClickPoseMenu() {
 		}
 	    }	
 	}	    
-}
-
-function DialogClickExpressionMenu() {
-	if (MouseIn(20, 50, 90, 90)) {
-		DialogFacialExpressions.forEach(FE => {
-			let Color = null;
-			if (FE.Appearance.Asset.Group.AllowColorize && FE.Group !== "Eyes" && FE.Group !== "Mouth") Color = "Default";
-			CharacterSetFacialExpression(CurrentCharacter, FE.Group, null, null, Color);
-			FE.CurrentExpression = null;
-		});
-		if (DialogExpressionColor != null) ItemColorSaveAndExit();
-	} else if (MouseIn(120, 50, 90, 90)) {
-		const CurrentExpression = DialogFacialExpressions.find(FE => FE.Group == "Eyes").CurrentExpression;
-		const EyesExpression = WardrobeGetExpression(CurrentCharacter);
-		const LeftEyeClosed = EyesExpression.Eyes2 === "Closed";
-		const RightEyeClosed = EyesExpression.Eyes === "Closed";
-		if (!LeftEyeClosed && !RightEyeClosed) CharacterSetFacialExpression(CurrentCharacter, "Eyes2", "Closed", null);
-		else if (LeftEyeClosed && !RightEyeClosed) CharacterSetFacialExpression(CurrentCharacter, "Eyes", "Closed", null);
-		else if (LeftEyeClosed && RightEyeClosed) CharacterSetFacialExpression(CurrentCharacter, "Eyes2", CurrentExpression !== "Closed" ? CurrentExpression : null, null);
-		else CharacterSetFacialExpression(CurrentCharacter, "Eyes", CurrentExpression !== "Closed" ? CurrentExpression : null, null);
-	} else if (MouseIn(220, 50, 90, 90)) {
-		DialogFacialExpressionsSelectedBlindnessLevel += 1;
-		if (DialogFacialExpressionsSelectedBlindnessLevel > 3)
-			DialogFacialExpressionsSelectedBlindnessLevel = 1;
-	} else if (MouseIn(320, 50, 90, 90)) {
-		if (typeof DialogFacialExpressionsSelected === 'number' && DialogFacialExpressionsSelected >= 0 && DialogFacialExpressionsSelected < DialogFacialExpressions.length && DialogFacialExpressions[DialogFacialExpressionsSelected].Appearance.Asset.Group.AllowColorize && DialogFacialExpressions[DialogFacialExpressionsSelected].Group !== "Eyes") {
-			const GroupName = DialogFacialExpressions[DialogFacialExpressionsSelected].Appearance.Asset.Group.Name;
-			const Item = InventoryGet(CurrentCharacter, GroupName);
-			const originalColor = Item.Color;
-			CurrentCharacter.FocusGroup = AssetGroupGet(CurrentCharacter.AssetFamily, GroupName);
-			DialogColor = "";
-			DialogExpressionColor = "";
-			ItemColorLoad(CurrentCharacter, Item, 1200, 25, 775, 950, true);
-			ItemColorOnExit((save) => {
-				DialogColor = null;
-				DialogExpressionColor = null;
-				CurrentCharacter.FocusGroup = null;
-				if (save && !CommonColorsEqual(originalColor, Item.Color)) {
-					ServerPlayerAppearanceSync();
-					ChatRoomCharacterItemUpdate(CurrentCharacter, GroupName);
-				}
-			});
-		}
-	} else {
-		for (let I = 0; I < DialogFacialExpressions.length; I++) {
-			if (MouseIn(20, 185 + 100 * I, 90, 90)) {
-				DialogFacialExpressionsSelected = I;
-				if (DialogExpressionColor != null) ItemColorSaveAndExit();
-			}
-		}
-		if (DialogFacialExpressionsSelected >= 0 && DialogFacialExpressionsSelected < DialogFacialExpressions.length) {
-			const FE = DialogFacialExpressions[DialogFacialExpressionsSelected];
-			for (let j = 0; j < FE.ExpressionList.length; j++) {
-				const EOffsetX = 155 + 100 * (j % 3);
-				const EOffsetY = 185 + 100 * Math.floor(j / 3);
-				if (MouseIn(EOffsetX, EOffsetY, 90, 90)) {
-					CharacterSetFacialExpression(CurrentCharacter, FE.Group, FE.ExpressionList[j]);
-					FE.CurrentExpression = FE.ExpressionList[j];
-				}
-			}
-		}
-	}
 }
 
 //Misc changes in game.
