@@ -48,6 +48,7 @@ Changes for future version
 * New feature: Auto Access to Pose and Facial Expressions menus on Any Player
 * New feature: Auto General Availability of Pose menu (no more limited to chat rooms and Photographic room)
 * New feature: Auto Priority to Pose Menu when you click on yourself or any other player
+* Improved the pose menu by adding messages and extending it to any player on which you click
 * Improved the pose2 command:
   - No effect/message when no real change of standard pose
   - No more double pose command (removed the spreadeagle poses)
