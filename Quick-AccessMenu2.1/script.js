@@ -9113,7 +9113,8 @@ function DialogClickPoseMenu() {
                             }); 
                         }  
                     }						   	    			    		    			  					
-		    ServerSend("ChatRoomCharacterPoseUpdate", { Pose: CurrentCharacter.ActivePose });
+		    ChatRoomCharacterUpdate(CurrentCharacter);
+                    CharacterRefresh(CurrentCharacter);
 		    }
 		}
 	    }	
