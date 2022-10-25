@@ -45,13 +45,15 @@ All else I might not have included.
 
 Changes for future version 
 
-* New feature: Auto Access to Pose and Facial Expressions menus on Any Player
-* New feature: Auto General Availability of Pose menu (no more limited to chat rooms and Photographic room)
-* New feature: Auto Priority to Pose Menu when you click on yourself or any other player
-* Improved the pose menu by adding messages and extending it to any player on which you click
-* Improved the pose2 command:
+* Improved the pose menu:
+  - Auto Access to Pose and Facial Expressions menus on Any Player
+  - Auto General Availability of Pose menu (no more limited to chat rooms and Photographic room)
+  - Auto Priority to Pose Menu when you click on yourself or any other player
+  - Added messages when pose menu used in a chat room
+* Improved and updated the pose2 command:
   - No effect/message when no real change of standard pose
   - No more double pose command (removed the spreadeagle poses)
+  - Removed most of the poses that are available in the pose menu
 * Renamed the release command as untie to avoid conflict with new BC command
 * Added hovering text for export/import buttons in wardrobe
 * Fixed a bug in the wardrobe export/import functions
