@@ -3985,7 +3985,7 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The pose2 command must be followed by a pose and optionally a target.\n" +
                     " \n" +
                     "Available poses:\n" +
-                    "armsfree, belly, exercise, legsopen,\n" +
+                    "armsfree, belly, exercise, kneel, legsopen,\n" +
                     "spreadlegs, stand, suspension, tapedhands.\n" +
                     "Only on yourself: jump, roof.\n" +
                     "Use <b>/pose2 reset</b> (target) to back to neutral pose.\n" + 
@@ -4060,7 +4060,31 @@ async function NEWmenu() {
                                     }]
                                 });
                             }
-			}	
+			}
+		     } else if (content.includes("kneel")) {
+			if (target[0].ActivePose != 'Kneel') {
+                            CharacterSetActivePose(target[0], "Kneel");
+                            ChatRoomCharacterUpdate(target[0]);
+                            if (target[0].Name == Player.Name) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " kneels down."
+                                   }]
+                                });
+                            } else {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " helps " + tgpname + " to kneel down."
+                                    }]
+                                });
+                            }
+			}	   
                     } else if (content.includes("legsopen")) {
 			if (target[0].ActivePose != 'LegsOpen') {
                             CharacterSetActivePose(target[0], "LegsOpen");
