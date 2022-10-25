@@ -3991,7 +3991,7 @@ async function NEWmenu() {
                     "Only on yourself: jump, roof.\n" +
                     "Use <b>/pose2 reset</b> (target) to back to neutral pose.\n" + 
 		    "If FBC is enabled, use <b>/pose baseupper</b> only on yourself when /pose2 reset fails.\n" +
-	            " " +
+	            " \n" +
 		    "Use the pose menu for other poses.</p>"
                 );
             } else {
