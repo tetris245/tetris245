@@ -123,8 +123,7 @@ async function NEWmenu() {
 		    "Import2 = outfit + cosplay items + restraints - Import3 = full import including body changes\n" +
                     "<b>Auto-Join</b> to enter a room as soon as possible\n" +
                     "<b>Auto More Characters For Nickname</b> \n" +
-                    "<b>Auto Patreon Cheats</b> - can be changed with the /patreoncheats command\n" +
-                    "<b>Auto Pictures + YouTube Videos In Chat</b>\n" + 
+                    "<b>Auto Patreon Cheats</b> - can be changed with the /patreoncheats command\n" + 
                     "<b>Auto-Relog</b> - Works only if you select Return to chatrooms on relog in the Immersion settings - Not compatible with FBC Auto-Relog</p>"
                 );    
             } else if (content.includes("fun")) {
@@ -6337,59 +6336,6 @@ async function NEWmenu() {
             ElementValue("InputChat", content.replace('@', "?"));
             OLDmenu();
             return;
-        } else if (tenorRe.test(ElementValue("InputChat"))) {
-            if (ChatRoomTargetMemberNumber == null) {
-                sendHiddenMessageAll(content);
-            } else {
-                sendHiddenMessageTarget('CheckMediaSupport', ChatRoomTargetMemberNumber);
-                sendHiddenMessageTarget('whisper ' + content, ChatRoomTargetMemberNumber);
-                var msg = createMessageElement();
-                getChatWindowElement().append(msg);
-                var senderName = document.createElement("div");
-                senderName.innerText = `Whisper to ${findCharacterInRoom(ChatRoomTargetMemberNumber).Name}:`;
-                senderName.classList.add("ChatMessage", "ChatMessageWhisper");
-                senderName.style.paddingLeft = "0";
-                var a = document.createElement("a");
-                a.target = '_blank';
-                a.href = `${content}`;
-                var img = createImgElement(content);
-                img.style.maxWidth = '40%';
-                img.style.maxHeight = '40%';
-                msg.append(senderName);
-                a.append(img);
-                msg.append(a);
-                img.addEventListener('load', () => {
-                    ElementScrollToEnd("TextAreaChatLog");
-                })
-            }
-            ElementRemove("InputChat");
-            return;
-        } else if (tubeRe.test(ElementValue("InputChat"))) {
-            if (ChatRoomTargetMemberNumber == null) {
-                sendHiddenMessageAll(content);
-            } else {
-                sendHiddenMessageTarget('CheckMediaSupport', ChatRoomTargetMemberNumber);
-                sendHiddenMessageTarget('whisper ' + content, ChatRoomTargetMemberNumber);
-                var videoCode = content.match(tubeRe)[5];
-                var msg = createMessageElement();
-                getChatWindowElement().append(msg);
-                var link = `https://www.youtube.com/embed/${videoCode}`;
-                var senderName = document.createElement("div");
-                senderName.innerText = `Whisper to ${findCharacterInRoom(ChatRoomTargetMemberNumber).Name}:`;
-                senderName.classList.add("ChatMessage", "ChatMessageWhisper");
-                senderName.style.paddingLeft = "0";
-                var iframe = document.createElement('iframe');
-                iframe.src = link;
-                iframe.style.width = '50%';
-                iframe.style.height = '8em';
-                msg.append(senderName);
-                msg.append(iframe);
-                iframe.addEventListener('load', () => {
-                    ElementScrollToEnd("TextAreaChatLog");
-                })
-            }
-            ElementRemove("InputChat");
-            return;
         }
 
         //	DO NOT add new commands past this point.
@@ -10035,92 +9981,6 @@ setTimeout(function() {
     ServerSocket.on("ChatRoomMessage", function(data) {
         if (data.Content.startsWith("?")) {
             return;
-        }
-        if (tenorRe.test(data.Content)) {
-            var content = data.Content.match(tenorRe);
-            if (content) {
-                var link = content[0];
-		ServerSend("ChatRoomChat", {
-                        Content: "Beep",
-                        Type: "Action",
-                        Dictionary: [{
-                            Tag: "Beep",
-                            Text: ("A link for more fun: " + link + " ")
-                        }]
-                });
-                var chatWindow = getChatWindowElement();
-
-                // removes message with link to replace it later with image
-                if (tenorRe.test(data.Content) && (data.Type == "Chat" || data.Type == "Whisper")) {
-                    chatWindow.lastChild.remove();
-                }
-
-                var divMsg = createMessageElement();
-                var senderName = createCharacterNameElement(data.Sender);
-                var img = createImgElement(link);
-                var a = document.createElement("a");
-                a.target = '_blank';
-                a.href = `${content}`;
-                img.style.maxWidth = '40%';
-                img.style.maxHeight = '40%';
-
-                // add (whisper) to name for whispers to make it more clear that it is a whisper message
-                if (data.Content.startsWith('whisper')) {
-                    senderName.innerHTML = `<span class="ChatMessage ChatMessageWhisper" style="text-shadow: none; padding-left: 0px;">(Whisper)</span> ` + senderName.innerText;
-                }
-
-                chatWindow.append(divMsg);
-                divMsg.append(senderName);
-                divMsg.append(a);
-                a.append(img);   
-
-                // if scroll position near the end, it scrolls chat automatically
-                if (tenorRe.test(data.Content) && (chatWindow.scrollHeight - chatWindow.offsetHeight - chatWindow.scrollTop < 300)) {
-                    img.addEventListener('load', () => {
-                        ElementScrollToEnd("TextAreaChatLog");
-                    })
-                }
-            }
-        } else if (tubeRe.test(data.Content)) {
-            var content = data.Content.match(tubeRe);
-            if (content && content[5] && content[5].length == 11 && (content.includes("youtube.com") || content.includes("youtu.be"))) {
-		var lk = content[0];                        
-                ServerSend("ChatRoomChat", {
-                        Content: "Beep",
-                        Type: "Action",
-                        Dictionary: [{
-                            Tag: "Beep",
-                            Text: ("A link for more fun: " + lk + " ")
-                        }]
-                }); 
-                var link = `https://www.youtube.com/embed/${content[5]}`;
-                var chatWindow = getChatWindowElement();
-
-                // removes message with link to replace it later with image
-                if (tubeRe.test(data.Content) && (data.Type == "Chat" || data.Type == "Whisper")) {
-                    chatWindow.lastChild.remove();
-                }
-                var divMsg = createMessageElement();
-                var senderName = createCharacterNameElement(data.Sender);
-                chatWindow.append(divMsg);
-                var iframe = document.createElement('iframe');
-                iframe.src = link;
-                iframe.style.width = '50%';
-                iframe.style.height = '8em';
-
-                // add (whisper) to name to make it more clear that it is a whisper message
-                if (data.Content.startsWith('whisper')) {
-                    senderName.innerHTML = `<span class="ChatMessage ChatMessageWhisper" style="text-shadow: none; padding-left: 0px;">(Whisper)</span> ` + senderName.innerText;
-                }
-
-                divMsg.append(senderName);
-                divMsg.append(iframe);
-                if (tenorRe.test(data.Content) && (chatWindow.scrollHeight - chatWindow.offsetHeight - chatWindow.scrollTop < 300)) {
-                    img.addEventListener('load', () => {
-                        ElementScrollToEnd("TextAreaChatLog");
-                    })
-                }
-            }
         }
     });
 }, 5000);
