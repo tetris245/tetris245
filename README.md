@@ -46,7 +46,7 @@ All else I might not have included.
 Changes for future version 
 
 * Improved the pose menu:
-  - Auto Access to Pose and Facial Expressions menus on Any Player
+  - Auto Access to Pose menu on Any Player
   - Auto General Availability of Pose menu (no more limited to chat rooms and Photographic room)
   - Auto Priority to Pose Menu when you click on yourself or any other player
   - Added messages when pose menu used in a chat room
