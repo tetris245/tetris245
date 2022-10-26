@@ -4014,7 +4014,7 @@ async function NEWmenu() {
                     } 
                     //poses for any player
                     if (content.includes("armsfree")) {
-			if (target[0].ActivePose != 'BaseUpper') { 
+			if ((target[0].ActivePose != 'BaseUpper') && (CharacterCanChangeToPose(target[0], 'BaseUpper'))) {  
                             CharacterSetActivePose(target[0], "BaseUpper");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4038,7 +4038,7 @@ async function NEWmenu() {
                             }
 			 }	
                     } else if (content.includes("belly")) {
-			if (target[0].ActivePose != 'Hogtied') { 
+			if ((target[0].ActivePose != 'Hogtied') && (CharacterCanChangeToPose(target[0], 'Hogtied'))) {  
                             CharacterSetActivePose(target[0], "Hogtied");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4062,7 +4062,7 @@ async function NEWmenu() {
                             }
 			}	
                     } else if (content.includes("boxtied")) {
-			if (target[0].ActivePose != 'BackBoxTie') { 
+			if ((target[0].ActivePose != 'BackBoxTie') && (CharacterCanChangeToPose(target[0], 'BackBoxTie'))) { 
                             CharacterSetActivePose(target[0], "BackBoxTie");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4086,7 +4086,7 @@ async function NEWmenu() {
                             }
 			}	
                     } else if (content.includes("cuffed")) {
-			if (target[0].ActivePose != 'BackCuffs') {  
+			if ((target[0].ActivePose != 'BackCuffs') && (CharacterCanChangeToPose(target[0], 'BackCuffs')))  {  
                             CharacterSetActivePose(target[0], "BackCuffs");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4110,7 +4110,7 @@ async function NEWmenu() {
                             }
 			}	
                     } else if (content.includes("elbowtied")) {
-			if (target[0].ActivePose != 'BackElbowTouch') {  
+			if ((target[0].ActivePose != 'BackElbowTouch') && (CharacterCanChangeToPose(target[0], 'BackElbowTouch'))) {  
                             CharacterSetActivePose(target[0], "BackElbowTouch");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4134,7 +4134,7 @@ async function NEWmenu() {
                             }
 			}	
                     } else if (content.includes("kneel1")) {
-			if (target[0].ActivePose != 'Kneel') {
+		        if ((target[0].ActivePose != 'Kneel') && ((CharacterCanChangeToPose(target[0], 'Kneel')) || (ChatRoomCanAttemptKneel(target[0]) == true)))  {
                             CharacterSetActivePose(target[0], "Kneel");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4158,7 +4158,7 @@ async function NEWmenu() {
                             }
 			}	
                     } else if (content.includes("kneel2")) {
-			if (target[0].ActivePose != 'KneelingSpread') {
+			if ((target[0].ActivePose != 'KneelingSpread') && (CharacterCanChangeToPose(target[0], 'KneelingSpread'))) {
                             CharacterSetActivePose(target[0], "KneelingSpread");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4182,7 +4182,7 @@ async function NEWmenu() {
                             }
 			}	
                     } else if (content.includes("legsclosed")) {
-			if (target[0].ActivePose != 'LegsClosed') {
+			if ((target[0].ActivePose != 'LegsClosed') && (CharacterCanChangeToPose(target[0], 'LegsClosed'))) {
                             CharacterSetActivePose(target[0], "LegsClosed");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4206,7 +4206,7 @@ async function NEWmenu() {
                             }
 			}	
                     } else if (content.includes("legsopen")) {
-			if (target[0].ActivePose != 'LegsOpen') {
+			if ((target[0].ActivePose != 'LegsOpen') && (CharacterCanChangeToPose(target[0], 'LegsOpen'))) {
                             CharacterSetActivePose(target[0], "LegsOpen");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4230,7 +4230,7 @@ async function NEWmenu() {
                             }
 			}	
                     } else if (content.includes("pet")) {
-			if (target[0].ActivePose != 'AllFours') {
+			if ((target[0].ActivePose != 'AllFours') && (CharacterCanChangeToPose(target[0], 'AllFours'))) {
                             CharacterSetActivePose(target[0], "AllFours");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4254,7 +4254,7 @@ async function NEWmenu() {
                             }
 			}	
                     } else if (content.includes("spreadarms1")) {
-			if (target[0].ActivePose != 'Yoked') {  
+			if ((target[0].ActivePose != 'Yoked') && (CharacterCanChangeToPose(target[0], 'Yoked'))) {  
                             CharacterSetActivePose(target[0], "Yoked");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4278,7 +4278,7 @@ async function NEWmenu() {
                             }
 			}
                     } else if (content.includes("spreadarms2")) {
-			if (target[0].ActivePose != 'OverTheHead') { 
+			if ((target[0].ActivePose != 'OverTheHead') && (CharacterCanChangeToPose(target[0], 'OverTheHead'))) { 
                             CharacterSetActivePose(target[0], "OverTheHead");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4302,7 +4302,7 @@ async function NEWmenu() {
                             }
 			}	
 		    } else if (content.includes("spreadeagle1")) {
-			if ((target[0].ActivePose == null) || (target[0].ActivePose.includes('Yoked') == false) || (target[0].ActivePose.includes('Spread') == false)) { 
+			if (((target[0].ActivePose == null) || (target[0].ActivePose.includes('Yoked') == false) || (target[0].ActivePose.includes('Spread') == false)) && (CharacterCanChangeToPose(target[0], 'Yoked')) && (CharacterCanChangeToPose(target[0], 'Spread'))) {  
                             CharacterSetActivePose(target[0], "Yoked");
                             CharacterSetActivePose(target[0], "Spread");
                             ChatRoomCharacterUpdate(target[0]);
@@ -4327,7 +4327,7 @@ async function NEWmenu() {
                             }
 			}	
                     } else if (content.includes("spreadeagle2")) {
-			if ((target[0].ActivePose == null) || (target[0].ActivePose.includes('OverTheHead') == false) || (target[0].ActivePose.includes('Spread') == false))  { 
+			if (((target[0].ActivePose == null) || (target[0].ActivePose.includes('OverTheHead') == false) || (target[0].ActivePose.includes('Spread') == false)) && (CharacterCanChangeToPose(target[0], 'OverTheHead')) && (CharacterCanChangeToPose(target[0], 'Spread')))  {  
                             CharacterSetActivePose(target[0], "OverTheHead");
                             CharacterSetActivePose(target[0], "Spread");
                             ChatRoomCharacterUpdate(target[0]);
@@ -4352,7 +4352,7 @@ async function NEWmenu() {
                             }
 	                }	    
                     } else if (content.includes("spreadlegs")) {
-		        if (target[0].ActivePose != 'Spread') {
+		        if ((target[0].ActivePose != 'Spread') && (CharacterCanChangeToPose(target[0], 'Spread')))  {
                             CharacterSetActivePose(target[0], "Spread");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4376,7 +4376,7 @@ async function NEWmenu() {
                             }
 			} 	
                     } else if (content.includes("stand")) {
-		        if (target[0].ActivePose != null) {
+		        if ((target[0].ActivePose != null) && ((CharacterCanChangeToPose(target[0], null)) || (ChatRoomCanAttemptStand(target[0]) == true)))  {
                             CharacterSetActivePose(target[0], null);
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4400,7 +4400,7 @@ async function NEWmenu() {
                             }
 		        }		    
                     } else if (content.includes("suspension")) {
-			if (target[0].ActivePose != 'Suspension') {  
+			if ((target[0].ActivePose != 'Suspension') && (CharacterCanChangeToPose(target[0], 'Suspension'))) {   
                             CharacterSetActivePose(target[0], "Suspension");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4424,7 +4424,7 @@ async function NEWmenu() {
                             }
 			}	
                     } else if (content.includes("tapedhands")) {
-			if (target[0].ActivePose != 'TapedHands') {  
+			if ((target[0].ActivePose != 'TapedHands') && (CharacterCanChangeToPose(target[0], 'TapedHands')))  {    
                             CharacterSetActivePose(target[0], "TapedHands");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
