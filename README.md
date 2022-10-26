@@ -50,7 +50,7 @@ Changes for future version
   - Auto General Availability of Pose Menu (no more limited to chat rooms and Photographic room)
   - Auto Priority to Pose Menu when you click on yourself
   - Added messages when pose menu used in a chat room
-* Improved the pose2 command: No effect/message when no real change of a existing pose
+* Improved the pose2 command: No effect/message when no real change of existing pose
 * Renamed the release command as untie to avoid conflict with new BC command
 * Added hovering text for export/import buttons in wardrobe
 * Removed embedding of pictures and YouTube videos (note: many players use the FBC add-on, which provides clickable links, and the embedding of videos can slow the server down)
