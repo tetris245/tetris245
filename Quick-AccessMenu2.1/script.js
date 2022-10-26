@@ -9031,8 +9031,8 @@ function DialogClickPoseMenu() {
                     } else {
                         var tgpname = CurrentCharacter.Nickname;
                     }
-                    if (CurrentCharacter.ID == 0) {
-                        if (Player.ActivePose == 'AllFours') {
+                    if ((CurrentCharacter.ID == 0) && (Player.ActivePose != null)) {
+                        if (Player.ActivePose.includes('AllFours') == true) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
@@ -9042,7 +9042,7 @@ function DialogClickPoseMenu() {
                                 }]
                             });
                        }
-                       if (Player.ActivePose == 'BackBoxTie') {
+                       if (Player.ActivePose.includes('BackBoxTie') == true) {
                            ServerSend("ChatRoomChat", {
                                Content: "Beep",
                                Type: "Action",
@@ -9052,7 +9052,7 @@ function DialogClickPoseMenu() {
                                 }]
                            });
                        }
-                       if (Player.ActivePose == 'BackCuffs') {
+                       if (Player.ActivePose.includes('BackCuffs') == true) {
                            ServerSend("ChatRoomChat", {
                                Content: "Beep",
                                Type: "Action",
@@ -9062,7 +9062,7 @@ function DialogClickPoseMenu() {
                                 }]
                            });
                        }
-                       if (Player.ActivePose == 'BackElbowTouch') {
+                       if (Player.ActivePose.includes('BackElbowTouch') == true) {
                            ServerSend("ChatRoomChat", {
                                Content: "Beep",
                                Type: "Action",
@@ -9072,27 +9072,7 @@ function DialogClickPoseMenu() {
                                 }]
                             });
                         }
-                        if (Player.ActivePose == 'BaseLower') {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " stands up normally on her feet."
-                                }]
-                            });
-                        }
-                        if (Player.ActivePose == 'BaseUpper') {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " relaxes her arms."
-                                }]
-                            });
-                        }
-                        if (Player.ActivePose == 'Kneel') {
+                        if (Player.ActivePose.includes('Kneel') == true) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
@@ -9102,7 +9082,7 @@ function DialogClickPoseMenu() {
                                 }]
                             }); 
                         }  
-                        if (Player.ActivePose == 'KneelingSpread') {
+                        if (Player.ActivePose.includes('KneelingSpread') == true) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
@@ -9112,7 +9092,7 @@ function DialogClickPoseMenu() {
                                 }]
                             }); 
                         }  
-                        if (Player.ActivePose == 'LegsClosed') {
+                        if (Player.ActivePose.includes('LegsClosed') == true) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
@@ -9122,17 +9102,7 @@ function DialogClickPoseMenu() {
                                 }]
                             }); 
                         }  
-                        if (Player.ActivePose == null) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " goes back to a neutral pose."
-                                }]
-                            }); 
-                        }  
-                        if (Player.ActivePose == 'OverTheHead') {
+                        if (Player.ActivePose.includes('OverTheHead') == true) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
@@ -9142,7 +9112,7 @@ function DialogClickPoseMenu() {
                                 }]
                             }); 
                         }  
-                        if (Player.ActivePose == 'Yoked') {
+                        if (Player.ActivePose.includes('Yoked') == true) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
@@ -9153,8 +9123,8 @@ function DialogClickPoseMenu() {
                             }); 
                         }  
                     }
-                    if (CurrentCharacter.ID != 0) {
-                        if (CurrentCharacter.ActivePose == 'AllFours') {
+                    if ((CurrentCharacter.ID != 0) && (CurrentCharacter.ActivePose != null)) {
+                        if (CurrentCharacter.ActivePose.includes('AllFours') == true) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
@@ -9164,7 +9134,7 @@ function DialogClickPoseMenu() {
                                 }]
                             });
                         }
-                        if (CurrentCharacter.ActivePose == 'BackBoxTie') {
+                        if (CurrentCharacter.ActivePose.includes('BackBoxTie') == true) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
@@ -9174,7 +9144,7 @@ function DialogClickPoseMenu() {
                                 }]
                             });
                         }
-                        if (CurrentCharacter.ActivePose == 'BackCuffs') {
+                        if (CurrentCharacter.ActivePose.includes('BackCuffs') == true) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
@@ -9184,7 +9154,7 @@ function DialogClickPoseMenu() {
 				}]
                             });
                         }
-                        if (CurrentCharacter.ActivePose == 'BackElbowTouch') {
+                        if (CurrentCharacter.ActivePose.includes('BackElbowTouch') == true) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
@@ -9194,27 +9164,7 @@ function DialogClickPoseMenu() {
 				}]
                             });
                         }
-                        if (CurrentCharacter.ActivePose == 'BaseLower') {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " helps " + tgpname + " to stand up normally on her feet."
-                                }]
-                            });    
-                        }
-                        if (CurrentCharacter.ActivePose == 'BaseUpper') {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " lets " + tgpname + " relax her arms."
-                                }]
-                            });
-                        }
-                        if (CurrentCharacter.ActivePose == 'Kneel') {
+                        if (CurrentCharacter.ActivePose.includes('Kneel') == true) {
                              ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
@@ -9224,7 +9174,7 @@ function DialogClickPoseMenu() {
                                 }]
                             }); 
                         }  
-                        if (CurrentCharacter.ActivePose == 'KneelingSpread') {
+                        if (CurrentCharacter.ActivePose.includes('KneelingSpread') == true) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
@@ -9234,7 +9184,7 @@ function DialogClickPoseMenu() {
                                 }]
                             }); 
                         }  
-                        if (CurrentCharacter.ActivePose == 'LegsClosed') {
+                        if (CurrentCharacter.ActivePose.includes('LegsClosed') == true) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
@@ -9244,17 +9194,7 @@ function DialogClickPoseMenu() {
                                 }]
                             }); 
                         }  
-                        if (CurrentCharacter.ActivePose == null) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " helps " + tgpname + " to go back to a neutral pose."
-                                }]
-                            }); 
-                        }  
-                        if (CurrentCharacter.ActivePose == 'OverTheHead') {
+                        if (CurrentCharacter.ActivePose.includes('OverTheHead') == true) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
@@ -9264,7 +9204,7 @@ function DialogClickPoseMenu() {
                                 }]
                             }); 
                         }  
-                        if (CurrentCharacter.ActivePose == 'Yoked') {
+                        if (CurrentCharacter.ActivePose.includes('Yoked') == true) {
                             ServerSend("ChatRoomChat", {
                                 Content: "Beep",
                                 Type: "Action",
