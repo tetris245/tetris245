@@ -53,7 +53,6 @@ Changes for future version
 * Improved and updated the pose2 command:
   - No effect/message when no real change of standard pose
   - No more double pose command (removed the spreadeagle poses)
-  - Removed most of the poses that are available in the pose menu
 * Renamed the release command as untie to avoid conflict with new BC command
 * Added hovering text for export/import buttons in wardrobe
 * Removed embedding of pictures and YouTube videos (note: many players use the FBC add-on, which provides clickable links, and the embedding of videos can slow the server down)
