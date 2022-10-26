@@ -8787,7 +8787,7 @@ function DialogClick() {
 }
 
 function DialogDrawPoseMenu() {
-	DrawText(DialogFindPlayer("PoseMenu"), 250, 100, "White", "Black");
+	DrawText(DialogFindPlayer("PoseMenu"), 70, 50, "White", "Black");
 	for (let I = 0; I < DialogActivePoses.length; I++) {
 		var OffsetX = 140 + 140 * I;
 		var PoseGroup = DialogActivePoses[I];
