@@ -53,7 +53,7 @@ Changes for future version
 * Improved the pose2 command by adding conditions related to the ability of changing pose
 * Renamed the release command as untie to avoid conflict with new BC command
 * Added hovering text for export/import buttons in wardrobe
-* Removed embedding of pictures and YouTube videos (Note: many players use the FBC add-on, which provides clickable links, and the embedding of videos can slow the server down)
+* Removed embedding of pictures and YouTube videos (Note: Many players use the FBC add-on, which provides clickable links)
 * Fixed a bug in the wardrobe export/import functions
 
 
