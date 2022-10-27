@@ -54,6 +54,7 @@ Changes for future version
 * Renamed the release command as untie to avoid conflict with new BC command
 * Added hovering text for export/import buttons in wardrobe
 * Removed embedding of pictures and YouTube videos (Note: Many players use the FBC add-on, which provides clickable links)
+* Changed the Discord link
 * Fixed a bug in the wardrobe export/import functions
 
 
