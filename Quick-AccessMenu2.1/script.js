@@ -6826,7 +6826,7 @@ ChatCommandGreeting = function(data) {
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
 		    "Use <b>/clubhelp</b> to get the standard BC menu (+ FBC menu when enabled).\n" +
 		    "Visit also our <a href='https://github.com/tetris245/tetris245/wiki' target='_blank'>Wiki</a>\n" +
-                    "For any inquiries, join <a href='https://discord.gg/YukepB6RVp' target='_blank'>https://discord.gg/YukepB6RVp</a></p>"
+                    "For any inquiries, join <a href='https://discord.gg/JUvYfSpCmN' target='_blank'>https://discord.gg/JUvYfSpCmN</a></p>"
                 );   	    	  	    	    
         ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)
     }
