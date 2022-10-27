@@ -149,6 +149,8 @@ async function NEWmenu() {
 		    "<b>/kd restraints</b> to get all restraints\n" +
                     "<b>/kd spells</b> to get special spells for extra slots and improved stats\n" +
                     "<b>/kd weapons</b> to get all weapons\n" +
+		    " \n" +
+		    "<b>/kd remove</b> to remove one layer of restraints\n" +
                     "4 - Check the cheat effect on the game before repeating step 3 for another cheat</p>"
                 );    
             } else if (content.includes("lock")) {
@@ -2626,6 +2628,36 @@ async function NEWmenu() {
                          KinkyDungeonInventoryAddOutfit("Obsidian");
                          KinkyDungeonInventoryAddOutfit("Wolfgirl");
                      }, 5000);  
+		 } else if (content.includes("remove")) {                     
+                     setTimeout(function() { 
+                   KinkyDungeonRemoveRestraint("ItemAddon");      
+                   KinkyDungeonRemoveRestraint("ItemArms");
+                   KinkyDungeonRemoveRestraint("ItemBoots");
+                   KinkyDungeonRemoveRestraint("ItemBreast");
+                   KinkyDungeonRemoveRestraint("ItemButt");
+                   KinkyDungeonRemoveRestraint("ItemDevices");
+                   KinkyDungeonRemoveRestraint("ItemEars");                     
+                   KinkyDungeonRemoveRestraint("ItemFeet");
+                   KinkyDungeonRemoveRestraint("ItemHands");
+                   KinkyDungeonRemoveRestraint("ItemHead");
+                   KinkyDungeonRemoveRestraint("ItemHood");
+                   KinkyDungeonRemoveRestraint("ItemLegs");
+                   KinkyDungeonRemoveRestraint("ItemMisc");
+                   KinkyDungeonRemoveRestraint("ItemMouth");
+                   KinkyDungeonRemoveRestraint("ItemMouth2");
+                   KinkyDungeonRemoveRestraint("ItemMouth3");
+                   KinkyDungeonRemoveRestraint("ItemNeck");
+                   KinkyDungeonRemoveRestraint("ItemNeckAccessories");
+                   KinkyDungeonRemoveRestraint("ItemNeckRestraints");
+                   KinkyDungeonRemoveRestraint("ItemNipples");
+                   KinkyDungeonRemoveRestraint("ItemNipplesPiercings");
+                   KinkyDungeonRemoveRestraint("ItemNose");
+                   KinkyDungeonRemoveRestraint("ItemPelvis");
+                   KinkyDungeonRemoveRestraint("ItemTorso");
+                   KinkyDungeonRemoveRestraint("ItemTorso2");
+                   KinkyDungeonRemoveRestraint("ItemVulva");
+                   KinkyDungeonRemoveRestraint("ItemVulvaPiercings");
+                     }, 5000); 	 
 	         } else if (content.includes("restraints")) {                     
                      setTimeout(function() {  
                          for (var i = 0; i < KinkyDungeonRestraints.length; i++){
