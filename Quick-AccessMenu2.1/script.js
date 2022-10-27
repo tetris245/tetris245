@@ -4134,7 +4134,8 @@ async function NEWmenu() {
                             }
 			}	
                     } else if (content.includes("kneel1")) {
-		        if ((target[0].ActivePose != 'Kneel') && ((CharacterCanChangeToPose(target[0], 'Kneel')) || (ChatRoomCanAttemptKneel(target[0]) == true)))  {
+		        if ((target[0].ActivePose != 'Kneel') 
+			    && ((CharacterCanChangeToPose(target[0], 'Kneel')) || (ChatRoomCanAttemptKneel(target[0]) == true)))  {
                             CharacterSetActivePose(target[0], "Kneel");
                             ChatRoomCharacterUpdate(target[0]);
                             if (target[0].Name == Player.Name) {
@@ -4302,7 +4303,8 @@ async function NEWmenu() {
                             }
 			}	
 		    } else if (content.includes("spreadeagle1")) {
-			if (((target[0].ActivePose == null) || (target[0].ActivePose.includes('Yoked') == false) || (target[0].ActivePose.includes('Spread') == false)) && (CharacterCanChangeToPose(target[0], 'Yoked')) && (CharacterCanChangeToPose(target[0], 'Spread'))) {  
+			if (((target[0].ActivePose == null) || (target[0].ActivePose.includes('Yoked') == false) || (target[0].ActivePose.includes('Spread') == false)) 
+			    && (CharacterCanChangeToPose(target[0], 'Yoked')) && (CharacterCanChangeToPose(target[0], 'Spread'))) {  
                             CharacterSetActivePose(target[0], "Yoked");
                             CharacterSetActivePose(target[0], "Spread");
                             ChatRoomCharacterUpdate(target[0]);
@@ -4327,7 +4329,8 @@ async function NEWmenu() {
                             }
 			}	
                     } else if (content.includes("spreadeagle2")) {
-			if (((target[0].ActivePose == null) || (target[0].ActivePose.includes('OverTheHead') == false) || (target[0].ActivePose.includes('Spread') == false)) && (CharacterCanChangeToPose(target[0], 'OverTheHead')) && (CharacterCanChangeToPose(target[0], 'Spread')))  {  
+			if (((target[0].ActivePose == null) || (target[0].ActivePose.includes('OverTheHead') == false) || (target[0].ActivePose.includes('Spread') == false)) 
+			    && (CharacterCanChangeToPose(target[0], 'OverTheHead')) && (CharacterCanChangeToPose(target[0], 'Spread')))  {  
                             CharacterSetActivePose(target[0], "OverTheHead");
                             CharacterSetActivePose(target[0], "Spread");
                             ChatRoomCharacterUpdate(target[0]);
