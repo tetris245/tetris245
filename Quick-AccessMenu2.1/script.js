@@ -9069,248 +9069,252 @@ function DialogClick() {
 }
 
 function DialogDrawPoseMenu() {
+    if ((CurrentCharacter.ID == 0) || (CurrentCharacter.AllowItem == true)) {
 	DrawText(DialogFindPlayer("PoseMenu"), 70, 50, "White", "Black");
 	for (let I = 0; I < DialogActivePoses.length; I++) {
-		var OffsetX = 140 + 140 * I;
-		var PoseGroup = DialogActivePoses[I];
-		for (let P = 0; P < PoseGroup.length; P++) {
-			var OffsetY = 180 + 100 * P;
-			var IsActive = false;
-			if (typeof CurrentCharacter.ActivePose == "string" && CurrentCharacter.ActivePose == PoseGroup[P].Name)
-				IsActive = true;
-			else if (Array.isArray(CurrentCharacter.ActivePose)) {
-				if (CurrentCharacter.ActivePose.includes(PoseGroup[P].Name))
-					IsActive = true;
-				else if (PoseGroup[P].Name == "BaseUpper" && !CurrentCharacter.ActivePose.map(Pose => PoseFemale3DCG.find(PP => PP.Name == Pose)).filter(Pose => Pose).find(Pose => Pose.Category == "BodyUpper" || Pose.Category == "BodyFull"))
-					IsActive = true;
-				else if (PoseGroup[P].Name == "BaseLower" && !CurrentCharacter.ActivePose.map(Pose => PoseFemale3DCG.find(PP => PP.Name == Pose)).filter(Pose => Pose).find(Pose => Pose.Category == "BodyLower" || Pose.Category == "BodyFull"))
-					IsActive = true;
-			}
-			else if ((PoseGroup[P].Name == "BaseUpper" || PoseGroup[P].Name == "BaseLower") && CurrentCharacter.ActivePose == null)
-				IsActive = true;
-			DrawButton(OffsetX, OffsetY, 90, 90, "", !CurrentCharacter.CanChangeToPose(PoseGroup[P].Name) ? "#888" : IsActive ? "Pink" : "White", "Icons/Poses/" + PoseGroup[P].Name + ".png");
+	    var OffsetX = 140 + 140 * I;
+	    var PoseGroup = DialogActivePoses[I];
+	    for (let P = 0; P < PoseGroup.length; P++) {
+		var OffsetY = 180 + 100 * P;
+		var IsActive = false;
+		if (typeof CurrentCharacter.ActivePose == "string" && CurrentCharacter.ActivePose == PoseGroup[P].Name)
+		    IsActive = true;
+		else if (Array.isArray(CurrentCharacter.ActivePose)) {
+		    if (CurrentCharacter.ActivePose.includes(PoseGroup[P].Name))
+			IsActive = true;
+		    else if (PoseGroup[P].Name == "BaseUpper" && !CurrentCharacter.ActivePose.map(Pose => PoseFemale3DCG.find(PP => PP.Name == Pose)).filter(Pose => Pose).find(Pose => Pose.Category == "BodyUpper" || Pose.Category == "BodyFull"))
+			IsActive = true;
+		    else if (PoseGroup[P].Name == "BaseLower" && !CurrentCharacter.ActivePose.map(Pose => PoseFemale3DCG.find(PP => PP.Name == Pose)).filter(Pose => Pose).find(Pose => Pose.Category == "BodyLower" || Pose.Category == "BodyFull"))
+			IsActive = true;
 		}
+		else if ((PoseGroup[P].Name == "BaseUpper" || PoseGroup[P].Name == "BaseLower") && CurrentCharacter.ActivePose == null)
+		    IsActive = true;
+	    DrawButton(OffsetX, OffsetY, 90, 90, "", !CurrentCharacter.CanChangeToPose(PoseGroup[P].Name) ? "#888" : IsActive ? "Pink" : "White", "Icons/Poses/" + PoseGroup[P].Name + ".png");
+	    }
 	}
+    }    
 }
 
 function DialogClickPoseMenu() {
-    for (let I = 0; I < DialogActivePoses.length; I++) {
-        var OffsetX = 140 + 140 * I;
-	var PoseGroup = DialogActivePoses[I];
-	for (let P = 0; P < PoseGroup.length; P++) {
-	    var OffsetY = 180 + 100 * P;
-	    var IsActive = false;
-	    if (typeof CurrentCharacter.ActivePose == "string" && CurrentCharacter.ActivePose == PoseGroup[P].Name)
-	        IsActive = true;
-	    if (Array.isArray(CurrentCharacter.ActivePose) && CurrentCharacter.ActivePose.includes(PoseGroup[P].Name))
-	        IsActive = true;
-	    if (MouseIn(OffsetX, OffsetY, 90, 90) && !IsActive && CurrentCharacter.CanChangeToPose(PoseGroup[P].Name)) {
-	        if (ChatRoomOwnerPresenceRule("BlockChangePose", CurrentCharacter)) {
-		    DialogLeave();
-		    return;
-		}
-		CharacterSetActivePose(CurrentCharacter, PoseGroup[P].Name);
-		if (CurrentScreen == "ChatRoom") {
-	            if (Player.Nickname == '') { 
-                        var tmpname = Player.Name;
-                    } else {
-                        var tmpname = Player.Nickname;
-                    }
-                    if (CurrentCharacter.Nickname == '') { 
-                        var tgpname = CurrentCharacter.Name;
-                    } else {
-                        var tgpname = CurrentCharacter.Nickname;
-                    }
-                    if ((CurrentCharacter.ID == 0) && (Player.ActivePose != null)) {
-                        if (Player.ActivePose.includes('AllFours') == true) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " relaxes on all fours."
-                                }]
-                            });
-                       }
-                       if (Player.ActivePose.includes('BackBoxTie') == true) {
-                           ServerSend("ChatRoomChat", {
-                               Content: "Beep",
-                               Type: "Action",
-                               Dictionary: [{
-                                   Tag: "Beep",
-                                   Text: "" + tmpname + " puts the arms behind her back."
-                                }]
-                           });
-                       }
-                       if (Player.ActivePose.includes('BackCuffs') == true) {
-                           ServerSend("ChatRoomChat", {
-                               Content: "Beep",
-                               Type: "Action",
-                               Dictionary: [{
-                                   Tag: "Beep",
-                                   Text: "" + tmpname + " puts her arms out like she's handcuffed."
-                                }]
-                           });
-                       }
-                       if (Player.ActivePose.includes('BackElbowTouch') == true) {
-                           ServerSend("ChatRoomChat", {
-                               Content: "Beep",
-                               Type: "Action",
-                               Dictionary: [{
-                                   Tag: "Beep",
-                                   Text: "" + tmpname + " puts the arms behind her back, elbows almost touching."
-                                }]
-                            });
+    if ((CurrentCharacter.ID == 0) || (CurrentCharacter.AllowItem == true)) {
+        for (let I = 0; I < DialogActivePoses.length; I++) {
+            var OffsetX = 140 + 140 * I;
+	    var PoseGroup = DialogActivePoses[I];
+	    for (let P = 0; P < PoseGroup.length; P++) {
+	        var OffsetY = 180 + 100 * P;
+	        var IsActive = false;
+	        if (typeof CurrentCharacter.ActivePose == "string" && CurrentCharacter.ActivePose == PoseGroup[P].Name)
+	            IsActive = true;
+	        if (Array.isArray(CurrentCharacter.ActivePose) && CurrentCharacter.ActivePose.includes(PoseGroup[P].Name))
+	            IsActive = true;
+	        if (MouseIn(OffsetX, OffsetY, 90, 90) && !IsActive && CurrentCharacter.CanChangeToPose(PoseGroup[P].Name)) {
+	            if (ChatRoomOwnerPresenceRule("BlockChangePose", CurrentCharacter)) {
+		        DialogLeave();
+		        return;
+		    }
+		    CharacterSetActivePose(CurrentCharacter, PoseGroup[P].Name);
+		    if (CurrentScreen == "ChatRoom") {
+	                if (Player.Nickname == '') { 
+                             var tmpname = Player.Name;
+                        } else {
+                             var tmpname = Player.Nickname;
                         }
-                        if (Player.ActivePose.includes('Kneel') == true) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + "  kneels down."
-                                }]
-                            }); 
-                        }  
-                        if (Player.ActivePose.includes('KneelingSpread') == true) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " kneels down and opens her legs."
-                                }]
-                            }); 
-                        }  
-                        if (Player.ActivePose.includes('LegsClosed') == true) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " stands up and closes her legs."
-                                }]
-                            }); 
-                        }  
-                        if (Player.ActivePose.includes('OverTheHead') == true) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " raises the hands above her head."
-                                }]
-                            }); 
-                        }  
-                        if (Player.ActivePose.includes('Yoked') == true) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " raises her hands."
-                                }]
-                            }); 
-                        }  
-                    }
-                    if ((CurrentCharacter.ID != 0) && (CurrentCharacter.ActivePose != null)) {
-                        if (CurrentCharacter.ActivePose.includes('AllFours') == true) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " forces " + tgpname + " on all fours."
-                                }]
-                            });
+                        if (CurrentCharacter.Nickname == '') { 
+                            var tgpname = CurrentCharacter.Name;
+                        } else {
+                            var tgpname = CurrentCharacter.Nickname;
                         }
-                        if (CurrentCharacter.ActivePose.includes('BackBoxTie') == true) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " forces " + tgpname + " to put the arms behind her back."
-                                }]
-                            });
+                        if ((CurrentCharacter.ID == 0) && (Player.ActivePose != null)) {
+                            if (Player.ActivePose.includes('AllFours') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " relaxes on all fours."
+                                    }]
+                                });
+                            }
+                            if (Player.ActivePose.includes('BackBoxTie') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " puts the arms behind her back."
+                                    }]
+                                });
+                            }
+                            if (Player.ActivePose.includes('BackCuffs') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " puts her arms out like she's handcuffed."
+                                    }]
+                                });
+                            }
+                            if (Player.ActivePose.includes('BackElbowTouch') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " puts the arms behind her back, elbows almost touching."
+                                    }]
+                                });
+                            }
+                            if (Player.ActivePose.includes('Kneel') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + "  kneels down."
+                                    }]
+                                }); 
+                            }  
+                            if (Player.ActivePose.includes('KneelingSpread') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " kneels down and opens her legs."
+                                    }]
+                                }); 
+                            }  
+                            if (Player.ActivePose.includes('LegsClosed') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " stands up and closes her legs."
+                                    }]
+                                }); 
+                            }  
+                            if (Player.ActivePose.includes('OverTheHead') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " raises the hands above her head."
+                                    }]
+                                }); 
+                            }  
+                            if (Player.ActivePose.includes('Yoked') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " raises her hands."
+                                    }]
+                                }); 
+                            }  
                         }
-                        if (CurrentCharacter.ActivePose.includes('BackCuffs') == true) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text:  "" + tmpname + " forces " + tgpname + " to put the arms out like she's handcuffed."
-				}]
-                            });
-                        }
-                        if (CurrentCharacter.ActivePose.includes('BackElbowTouch') == true) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " forces " + tgpname + " to put the arms behind her back, elbows almost touching."
-				}]
-                            });
-                        }
-                        if (CurrentCharacter.ActivePose.includes('Kneel') == true) {
-                             ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text:"" + tmpname + " helps " + tgpname + " to kneel down." 
-                                }]
-                            }); 
-                        }  
-                        if (CurrentCharacter.ActivePose.includes('KneelingSpread') == true) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " helps " + tgpname + " to kneel down, forcing her legs open."
-                                }]
-                            }); 
-                        }  
-                        if (CurrentCharacter.ActivePose.includes('LegsClosed') == true) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " helps " + tgpname + " to stand up with her legs closed."
-                                }]
-                            }); 
-                        }  
-                        if (CurrentCharacter.ActivePose.includes('OverTheHead') == true) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " forces " + tgpname + " to raise the hands above her head."
-                                }]
-                            }); 
-                        }  
-                        if (CurrentCharacter.ActivePose.includes('Yoked') == true) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Beep",
-                                Type: "Action",
-                                Dictionary: [{
-                                    Tag: "Beep",
-                                    Text: "" + tmpname + " helps " + tgpname + " to raise her hands."
-                                }]
-                            }); 
-                        }  
-                    }						   	    			    		    			  					
-		    ChatRoomCharacterUpdate(CurrentCharacter);
-                    CharacterRefresh(CurrentCharacter);
+                        if ((CurrentCharacter.ID != 0) && (CurrentCharacter.ActivePose != null)) {
+                            if (CurrentCharacter.ActivePose.includes('AllFours') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " forces " + tgpname + " on all fours."
+                                    }]
+                                });
+                            }
+                            if (CurrentCharacter.ActivePose.includes('BackBoxTie') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " forces " + tgpname + " to put the arms behind her back."
+                                    }]
+                                });
+                            }
+                            if (CurrentCharacter.ActivePose.includes('BackCuffs') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text:  "" + tmpname + " forces " + tgpname + " to put the arms out like she's handcuffed."
+				    }]
+                                });
+                            }
+                            if (CurrentCharacter.ActivePose.includes('BackElbowTouch') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " forces " + tgpname + " to put the arms behind her back, elbows almost touching."
+				    }]
+                                });
+                            }
+                            if (CurrentCharacter.ActivePose.includes('Kneel') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text:"" + tmpname + " helps " + tgpname + " to kneel down." 
+                                    }]
+                                }); 
+                            }  
+                            if (CurrentCharacter.ActivePose.includes('KneelingSpread') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " helps " + tgpname + " to kneel down, forcing her legs open."
+                                    }]
+                                }); 
+                            }  
+                            if (CurrentCharacter.ActivePose.includes('LegsClosed') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " helps " + tgpname + " to stand up with her legs closed."
+                                    }]
+                                }); 
+                            }  
+                            if (CurrentCharacter.ActivePose.includes('OverTheHead') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " forces " + tgpname + " to raise the hands above her head."
+                                    }]
+                                }); 
+                            }  
+                            if (CurrentCharacter.ActivePose.includes('Yoked') == true) {
+                                ServerSend("ChatRoomChat", {
+                                    Content: "Beep",
+                                    Type: "Action",
+                                    Dictionary: [{
+                                        Tag: "Beep",
+                                        Text: "" + tmpname + " helps " + tgpname + " to raise her hands."
+                                    }]
+                                }); 
+                            }  
+                        }						   	    			    		    			  					
+		        ChatRoomCharacterUpdate(CurrentCharacter);
+                        CharacterRefresh(CurrentCharacter);	    
 		    }
 		}
 	    }	
-	}	    
+	}
+    }	    
 }
 
 //Misc changes in game.
