@@ -54,7 +54,7 @@ Changes for future version
   - debug to enable the Debug Mode (must be used before running the KD game)
   - remove to remove one layer of restraints
 * Improved the pose2 command by adding conditions related to the ability of changing pose
-* Renamed the release command as untie to avoid conflict with new BC command
+* Renamed the release command as untie to avoid conflict with new BC command (in next beta)
 * Added hovering text for export/import buttons in wardrobe
 * Removed embedding of pictures and YouTube videos (Note: Many players use the FBC add-on, which provides clickable links)
 * Changed the Discord link
