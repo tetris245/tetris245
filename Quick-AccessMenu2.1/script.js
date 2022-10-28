@@ -140,7 +140,7 @@ async function NEWmenu() {
 	    } else if (content.includes("kd")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: How to use the kd command:\n" +
-                    "1 - Optionally, use <b>/kd devious</b> to toggle the Devious Challenge mode\n" +
+                    "1 - Optionally, use <b>/kd devious</b> to toggle the Devious Challenge and/or <b>/kd debug</b> to enable the Debug Mode\n" +
                     "2 - Use <b>/kd</b> without any option to launch the game without cheat\n" +
 		    "3 -  After launching of the game, you can click on the Exit button to go back to the chatroom and use a command with cheat:\n" +
                     "<b>/kd maxstats</b> to get high stats and many potions\n" +
@@ -2559,7 +2559,12 @@ async function NEWmenu() {
                 document.getElementById("TextAreaChatLog").style.display = "inline";
             }; //rewrite end to return to chatroom and restore chat
             ArcadeDeviousChallengeAllowed = function() {} //null to always allow
-            if (content.includes("devious")) {
+	    if (content.includes("debug")) {       
+                    KDDebugMode = true;
+                    ChatRoomSendLocal(
+		        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: KD Debug mode enabled</p>"
+		    );
+            } else if (content.includes("devious")) {
                 if (this.DeviousOn == undefined || this.DeviousOn == false) {
                     DeviousOn = true;
                     ArcadeDeviousChallenge = true;
