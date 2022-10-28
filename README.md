@@ -50,7 +50,9 @@ Changes for future version
   - Auto General Availability of Pose Menu (no more limited to chat rooms and Photographic room)
   - Auto Priority to Pose Menu when you click on yourself
   - Added messages when pose menu used in a chat room
-* Added the remove option to the kd command (removes one layer of restraints)
+* Added new options to the kd command:
+  - debug to enable the Debug Mode (must be used before running the KD game)
+  - remove to remove one layer of restraints
 * Improved the pose2 command by adding conditions related to the ability of changing pose
 * Renamed the release command as untie to avoid conflict with new BC command
 * Added hovering text for export/import buttons in wardrobe
