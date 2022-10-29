@@ -2,7 +2,7 @@
 
 Quick-AccessMenu2.1 by Nemesea - Add-on for Ben987's BondageClub game 
 
-Most recent release is version 1.8.0 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
+Most recent release is version 1.9.0 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
 ## Installation 
 
@@ -17,7 +17,7 @@ To update: Go to Installed Scripts / Click on date corresponding to QAM (TM will
 **Bookmark methode** - link to the QAM bookmark: https://tetris245.github.io/QAMbookmark.js
 
 **Alternative methode for Google Chrome, Microsoft Edge, similar browsers**
-1. Download the Quick-AccessMenu2.1-version1.8.0.zip file on the Releases page
+1. Download the Quick-AccessMenu2.1-version1.9.0.zip file on the Releases page
 2. Depending on browser, the .zip might have to be extracted. few browsers accept a .zip, a few requires a folder.
 3. Go to browser extensions. Enable developer mode.
 4. Load as Unpacked. Done. If the file can't be seen, see step 2.
@@ -45,20 +45,7 @@ All else I might not have included.
 
 Changes for future version 
 
-* Improved the pose menu:
-  - Auto Access to Pose Menu on Any Player, if you have access to her items
-  - Auto General Availability of Pose Menu (no more limited to chat rooms and Photographic room)
-  - Auto Priority to Pose Menu when you click on yourself
-  - Added messages when pose menu used in a chat room
-* Added new options to the kd command:
-  - debug to enable the Debug Mode (must be used before running the KD game)
-  - remove to remove one layer of restraints
-* Improved the pose2 command by adding conditions related to the ability of changing pose
-* Renamed the release command as untie to avoid conflict with new BC command (in next beta)
-* Added hovering text for export/import buttons in wardrobe
-* Removed embedding of pictures and YouTube videos (Note: Many players use the FBC add-on, which provides clickable links)
-* Changed the Discord link
-* Fixed a bug in the wardrobe export/import functions
+(...)
 
 
 
