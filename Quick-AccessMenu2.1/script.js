@@ -9353,6 +9353,13 @@ function DialogClickPoseMenu() {
     }	    
 }
 
+function PhotographicShotThePlayerPhoto() {
+     CharacterSetCurrent(Player);
+     CommonTakePhoto(500, 0, 500, 1000);
+}
+
+
+
 //Misc changes in game.
 Asset.forEach(e => {
     if (e.Value < 0) e.Value = 1;
