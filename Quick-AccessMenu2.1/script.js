@@ -192,7 +192,7 @@ async function NEWmenu() {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Misc commands:\n" +
                     "<b>/clubhelp</b> = displays the standard commands of the game (and optionaly the FBC commands)\n" +
-                    "<b>/help</b> (category) = displays the QM commands. Available categories: bondage, character, clothing, escape, fun, misc, pleasure, talking, visual, zones.\n" +
+                    "<b>/help</b> (category) = displays the QAM commands. Available categories: bondage, character, clothing, escape, features, fun, misc, pleasure, talking, visual, zones.\n" +
                     "<b>/login</b> (accountname) (password) = logs in a new account.\n" +
                     "<b>/relog</b> = relogs.\n" +
                     "<b>/unrestrict</b> =  removes all restrictions from game. Can use maid drink tray/other stuff. Using will give more info. Submissives should use /unrestrict soft.</p>"
