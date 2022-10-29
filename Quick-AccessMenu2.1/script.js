@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.8.0
+// @version 1.9.0
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -119,6 +119,7 @@ async function NEWmenu() {
 		    "<b>Auto All Items Are Craftable</b> but limited using of the extra crafted items\n" +
                     "<b>Auto-Disable NPC Punishments</b> - can be changed with the /npcpunish command\n" +
                     "<b>Auto-Disable Validation</b> only for yourself\n" +
+		    "<b>Auto Extended Availability of Pose Menu with priority on Facial Expressions\n" +
 		    "<b>Auto Extra Buttons In Wardrobe</b>: Export (usable only if you come from a chat room) - Import1 = outfit + restraints\n" +
 		    "Import2 = outfit + cosplay items + restraints - Import3 = full import including body changes\n" +
                     "<b>Auto-Join</b> to enter a room as soon as possible\n" +
@@ -191,19 +192,19 @@ async function NEWmenu() {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Misc commands:\n" +
                     "<b>/clubhelp</b> = displays the standard commands of the game (and optionaly the FBC commands)\n" +
-                    "<b>/help</b> (category) = displays the QAM commands. Available categories: bondage, character, clothing, escape, fun, misc, pleasure, talking, visual, zones.\n" +
+                    "<b>/help</b> (category) = displays the QM commands. Available categories: bondage, character, clothing, escape, fun, misc, pleasure, talking, visual, zones.\n" +
                     "<b>/login</b> (accountname) (password) = logs in a new account.\n" +
                     "<b>/relog</b> = relogs.\n" +
                     "<b>/unrestrict</b> =  removes all restrictions from game. Can use maid drink tray/other stuff. Using will give more info. Submissives should use /unrestrict soft.</p>"
                 );
 	    } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.8.0:\n" + 
-		    "- 3 import buttons in wardrobe (1 = only clothes + restraints, 2 includes cosplay items, 3 is full import).\n" +	
-		    "- Improved the import in case of locked slots and non-replaced worn toys.\n" +
-		    "- New commands: trsee, vrsee.\n" +
-		    "- Restored access to Bondage Brawl and bg2 command.\n" +		
-                    "- Removed the awsave and awload options of the outfit command.</p>"
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.9.0:\n" + 
+		    "- Extended availability of Pose Menu (everywhere in BC, also when clicking on another player).\n" +	
+		    "- New options for kd command: debug, remove.\n" +
+		    "- Improved pose2 command.\n" +
+		    "- New name for release command: untie.\n" +		
+                    "- Removed embedding of pictures and YouTube videos.</p>"
                 );   	    
             } else if (content.includes("talking")) {
 		ChatRoomSendLocal(
@@ -6893,7 +6894,7 @@ ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
 	ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.8.0: Ready, type <b>/help</b> for general menu.\n" +
+                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.9.0: Ready, type <b>/help</b> for general menu.\n" +
 		    "Note: NPC punishments are disabled.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
 		    "Use <b>/clubhelp</b> to get the standard BC menu (+ FBC menu when enabled).\n" +
@@ -8871,7 +8872,7 @@ InventoryItemNeckAccessoriesElectronicTagLoad = function() {
 function LoginRun() {
 	if (LoginCredits != null) LoginDrawCredits();
 	const CanLogin = ServerIsConnected && !LoginSubmitted;
-        DrawButton(750,120,500,60,"QAM 1.8.0 Ready!", "Pink", "Black", "");
+        DrawButton(750,120,500,60,"QAM 1.9.0 Ready!", "Pink", "Black", "");
 	DrawText(TextGet("Welcome"), 1000, 50, "White", "Black");
 	DrawText(LoginMessage, 1000, 100, "White", "Black");
 	DrawText(TextGet("AccountName"), 1000, 200, "White", "Black");
