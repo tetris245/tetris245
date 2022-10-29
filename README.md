@@ -45,7 +45,7 @@ All else I might not have included.
 
 Changes for future version 
 
-(...)
+* Fixed photoshot issue in Photographic room after pose menu change
 
 
 
