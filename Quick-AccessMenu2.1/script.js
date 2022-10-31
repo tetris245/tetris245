@@ -8809,66 +8809,32 @@ function diaperTick() {
     ChatRoomCharacterUpdate(Player);
 }
 
-//text limits remover by rewriting functions
-//transport jacket can not be rewritten.
-//pet bowl can not be rewritten.
-//wooden box can not be rewritten.
-//canvas hood can not be rewritetn.
-InventoryItemMiscWoodenSignLoad = function() {
-    DynamicDrawLoadFont(InventoryItemMiscWoodenSignFont);
-    var C = CharacterGetCurrent();
-    var MustRefresh = false;
-    if (DialogFocusItem.Property == null) DialogFocusItem.Property = {};
-    if (DialogFocusItem.Property.Text == null && DialogFocusItem.Property.Text2 == null) {
-        DialogFocusItem.Property.Text = "";
-        DialogFocusItem.Property.Text2 = "";
-        MustRefresh = true;
-    }
-    if (MustRefresh) {
-        CharacterRefresh(C);
-        ChatRoomCharacterItemUpdate(C, DialogFocusItem.Asset.Group.Name);
-    }
-    const input1 = ElementCreateInput("WoodenSignText1", "text", DialogFocusItem.Property.Text, "50");
-    const input2 = ElementCreateInput("WoodenSignText2", "text", DialogFocusItem.Property.Text2, "50");
-    if (input1) input1.pattern = DynamicDrawTextInputPattern;
-    if (input2) input2.pattern = DynamicDrawTextInputPattern;
-}
-//
-InventoryItemNeckAccessoriesCustomCollarTagLoad = function() {
-    var C = CharacterGetCurrent();
-    var MustRefresh = false;
-    if (DialogFocusItem.Property == null) DialogFocusItem.Property = {};
-    if (DialogFocusItem.Property.Text == null) {
-        DialogFocusItem.Property.Text = "Tag";
-        MustRefresh = true;
-    }
-    if (MustRefresh) {
-        CharacterRefresh(C);
-        ChatRoomCharacterItemUpdate(C, DialogFocusItem.Asset.Group.Name);
-    }
-    if (!InventoryItemHasEffect(DialogFocusItem, "Lock", true)) {
-        ElementCreateInput("TagText", "text", DialogFocusItem.Property.Text, "30");
-    }
-}
-//
-InventoryItemNeckAccessoriesElectronicTagLoad = function() {
-    var C = CharacterGetCurrent();
-    var MustRefresh = false;
-    if (DialogFocusItem.Property == null) DialogFocusItem.Property = {};
-    if (DialogFocusItem.Property.Text == null) {
-        DialogFocusItem.Property.Text = "Tag";
-        MustRefresh = true;
-    }
-    if (MustRefresh) {
-        CharacterRefresh(C);
-        ChatRoomCharacterItemUpdate(C, DialogFocusItem.Asset.Group.Name);
-    }
-    if (!InventoryItemHasEffect(DialogFocusItem, "Lock", true)) {
-        ElementCreateInput("TagText", "text", DialogFocusItem.Property.Text, "30");
-    }
+/////////////////////
+//Rewritten functions
+
+//Crafting
+function CraftingItemListBuild() {
+	let Search = ElementValue("InputSearch");
+	if (Search == null) Search = "";
+	Search = Search.toUpperCase().trim();
+	CraftingItemList = [];
+	for (let A of Asset) {
+		if (!InventoryAvailable(Player, A.Name, A.Group.Name)) continue;
+		if (!A.Group.Name.startsWith("Item")) continue;
+		let Match = true;
+		const desc = A.DynamicDescription(Player).toUpperCase().trim();
+		if (desc.indexOf(Search) < 0) Match = false;
+		if (Match)
+			for (let E of CraftingItemList)
+				if (E.CraftGroup === A.Name || E.Name === A.CraftGroup)
+					Match = false;
+		if (Match) CraftingItemList.push(A);
+	}
+	CraftingItemList.sort((a,b) => (a.Description > b.Description) ? 1 : (b.Description > a.Description) ? -1 : 0);
+	if (CraftingOffset >= CraftingItemList.length) CraftingOffset = 0;
 }
 
-//Message in login screen
+//Login screen (Ready message)
 function LoginRun() {
 	if (LoginCredits != null) LoginDrawCredits();
 	const CanLogin = ServerIsConnected && !LoginSubmitted;
@@ -8890,7 +8856,248 @@ function LoginRun() {
 	DrawText(TextGet("ThankYou") + " " + LoginThankYou, 1625, 53, "Black", "Gray");
 }
 
-//Auto enable patreon cheats. Also allows functionality for submissive mistress. If patched, blank functions.
+//Main Hall (Welcome message)
+function MainHallRun() {
+	KidnapLeagueResetOnlineBountyProgress();
+	if (!MainHallBeingPunished) {
+		if (Player.ImmersionSettings && Player.LastChatRoom && (Player.LastChatRoom != "") && (AsylumGGTSGetLevel(Player) <= 5) && ((MainHallMaid === null) || (MainHallMaid.Stage === "0"))) {
+			if (MainHallFirstFrame) {
+				if (Player.ImmersionSettings.ReturnToChatRoom) {
+					ChatRoomStart("", "", "MainHall", "Introduction", BackgroundsTagList);
+					return;
+				} else ChatRoomSetLastChatRoom("");
+			} else MainHallFirstFrame = true;
+		} else {
+			if (CurrentCharacter == null && CommonVersionUpdated && MainHallMaid.Dialog != null && MainHallMaid.Dialog.length > 0) {
+				CommonVersionUpdated = false;
+				CharacterSetCurrent(MainHallMaid);
+				MainHallMaid.Stage = "200";
+				MainHallMaid.CurrentDialog = DialogFind(MainHallMaid, "ClubUpdated");
+				return;
+			}
+			if ((CurrentCharacter == null) && ManagementIsClubSlave() && LogQuery("BlockChange", "Rule") && !Player.IsNaked() && (MainHallMaid.Dialog != null) && (MainHallMaid.Dialog.length > 0)) {
+				MainHallMaid.Stage = "50";
+				MainHallMaid.CurrentDialog = DialogFind(MainHallMaid, "ClubSlaveMustBeNaked");
+				CharacterRelease(MainHallMaid);
+				CharacterSetCurrent(MainHallMaid);
+				MainHallStartEventTimer = null;
+				MainHallNextEventTimer = null;
+				return;
+			}
+			if ((CurrentCharacter == null) && LogQuery("ClubMistress", "Management") && (ReputationGet("Dominant") < 50) && (CheatFactor("CantLoseMistress", 0) == 1) && Player.CanTalk() && (MainHallMaid.Dialog != null) && (MainHallMaid.Dialog.length > 0)) {
+				CommonSetScreen("Room", "Management");
+				CharacterSetCurrent(MainHallMaid);
+				CurrentScreen = "MainHall";
+				MainHallMaid.Stage = "60";
+				MainHallMaid.CurrentDialog = DialogFind(MainHallMaid, "MistressExpulsionIntro");
+				return;
+			}
+		}
+	}
+	DrawCharacter(Player, 750, 0, 1);
+	MainCanvas.font = "italic " + CommonGetFont(30);
+	DrawTextWrap(TextGet("Tip" + MainHallTip), 100, 800, 500, 200, "White");
+	MainCanvas.font = CommonGetFont(36);
+	var QAMtext = "Welcome to Quick-AccessMenu2!      " +
+	              "Besides the commands usable only in chat rooms, this add-on comes with several automatic features. " +        
+                      "Visit QAM Wiki and use /help for more info!";
+        MainCanvas.fillStyle = "#50E992";
+	MainCanvas.fillRect(20, 588, 640, 246);
+	MainCanvas.strokeStyle = "Black";
+	MainCanvas.strokeRect(20, 588, 640, 246);
+        MainCanvas.textAlign = "left";
+	DrawTextWrap(QAMtext, 30 - 630 / 2, 593, 630, 236, "black");
+	MainCanvas.textAlign = "center";
+	DrawButton(1645, 25, 90, 90, "", "White", "Icons/Character.png", TextGet("Profile"));
+	if (Player.CanChangeOwnClothes()) DrawButton(1765, 25, 90, 90, "", "White", "Icons/Dress.png", TextGet("Appearance"));
+	DrawButton(1885, 25, 90, 90, "", "White", "Icons/Exit.png", TextGet("Exit"));
+	DrawButton(1645, 145, 90, 90, "", "White", "Icons/Chat.png", TextGet("ChatRooms"));
+	if (Player.CanWalk() && (!Player.IsRestrained() || !Player.GameplaySettings.OfflineLockedRestrained)) {
+		if (MainHallAllow("A")) DrawButton(1765, 145, 90, 90, "", "White", "Icons/Shop.png", TextGet("Shop"));
+		if (!LogQuery("LockOutOfPrivateRoom", "Rule") && MainHallAllow("B")) DrawButton(1885, 145, 90, 90, "", "White", "Icons/Private.png", TextGet("PrivateRoom"));
+		if (MainHallAllow("C")) DrawButton(1645, 265, 90, 90, "", "White", "Icons/Introduction.png", TextGet("IntroductionClass"));
+		if (MainHallAllow("D")) DrawButton(1765, 265, 90, 90, "", "White", "Icons/Maid.png", TextGet("MaidQuarters"));
+		DrawButton(1885, 265, 90, 90, "", "White", "Icons/Management.png", TextGet("ClubManagement"));
+		if (MainHallAllow("E")) DrawButton(1645, 385, 90, 90, "", "White", "Icons/Kidnap.png", TextGet("KidnapLeague"));
+		if (MainHallAllow("F")) DrawButton(1765, 385, 90, 90, "", "White", "Icons/Dojo.png", TextGet("ShibariDojo"));
+		if (SarahRoomAvailable && MainHallAllow("G")) DrawButton(1885, 385, 90, 90, "", "White", "Icons/Explore.png", TextGet(SarahRoomLabel()));
+		if (MainHallAllow("S")) DrawButton(1525, 505, 90, 90, "", "White", "Icons/Crafting.png", TextGet("Crafting"));
+		if (MainHallAllow("H")) DrawButton(1645, 505, 90, 90, "", "White", "Icons/Question.png", TextGet("LookForTrouble"));
+		if (MainHallAllow("I")) DrawButton(1765, 505, 90, 90, "", "White", "Icons/Gavel.png", TextGet("SlaveMarket"));
+		if (MainHallAllow("J")) DrawButton(1885, 505, 90, 90, "", "White", "Icons/Cell.png", TextGet("Cell"));
+		if (!ManagementIsClubSlave() && MainHallAllow("R")) DrawButton(1525, 625, 90, 90, "", "White", "Icons/Platform.png", TextGet("Platform"));
+		if (!ManagementIsClubSlave() && MainHallAllow("K")) DrawButton(1645, 625, 90, 90, "", "White", "Icons/Battle.png", TextGet("LARPBattle"));
+		if (!ManagementIsClubSlave() && MainHallAllow("L")) DrawButton(1765, 625, 90, 90, "", "White", "Icons/College.png", TextGet("College"));
+		if (MainHallAsylumOpen && MainHallAllow("M")) DrawButton(1885, 625, 90, 90, "", "White", "Icons/Asylum.png", TextGet("Asylum"));
+		if (Player.CanChangeOwnClothes() && MainHallAllow("Q")) DrawButton(1525, 745, 90, 90, "", "White", "Icons/MagicSchool.png", TextGet("MagicSchool"));
+		if (Player.CanChangeOwnClothes() && Player.CanTalk() && MainHallAllow("N")) DrawButton(1645, 745, 90, 90, "", "White", "Icons/Poker.png", TextGet("Poker"));
+		if (Player.CanChangeOwnClothes() && MainHallAllow("O")) DrawButton(1765, 745, 90, 90, "", "White", "Icons/Infiltration.png", TextGet("Infiltration"));
+		if (Player.CanChangeOwnClothes() && MainHallAllow("P")) DrawButton(1885, 745, 90, 90, "", "White", "Icons/MovieStudio.png", TextGet("MovieStudio"));
+		if (MainHallAllow("2")) DrawButton(265, 25, 90, 90, "", "White", "Icons/Camera.png", TextGet("Photographic"));
+		if (MainHallAllow("1")) DrawButton(145, 25, 90, 90, "", "White", "Icons/Cage.png", TextGet("Prison"));
+		if (MainHallAllow("0")) DrawButton(25, 25, 90, 90, "", "White", "Icons/Random.png", TextGet("Gambling"));
+		if (MainHallAllow("5")) DrawButton(265, 145, 90, 90, "", "White", "Icons/Diaper.png", TextGet("Nursery"));
+		if (MainHallAllow("4")) DrawButton(145, 145, 90, 90, "", "White", "Icons/Magic.png", TextGet("Magic"));
+		if (MainHallAllow("3")) DrawButton(25, 145, 90, 90, "", "White", "Icons/Horse.png", TextGet("Stable"));
+		if (MainHallAllow("7")) DrawButton(145, 265, 90, 90, "", "White", "Icons/Arcade.png", TextGet("Arcade"));
+		if (MainHallAllow("6")) DrawButton(25, 265, 90, 90, "", "White", "Icons/Refreshsments.png", TextGet("Cafe"));
+	} else {
+		if (Player.CanWalk() && MaidQuartersOnlineDrinkStarted) {
+			DrawButton(1765, 265, 90, 90, "", "White", "Icons/Maid.png", TextGet("MaidQuarters"));
+			DrawButton(25, 265, 90, 90, "", "White", "Icons/Refreshsments.png", TextGet("Cafe"));
+		}
+		if (Player.CanWalk() && (InventoryIsWorn(Player, "BountySuitcase", "ItemMisc") || InventoryIsWorn(Player, "BountySuitcaseEmpty", "ItemMisc")))
+			DrawButton(1645, 385, 90, 90, "", "White", "Icons/Kidnap.png", TextGet("KidnapLeague"));
+	}
+	if (MainHallMaid !== null && (MainHallNextEventTimer != null) && (CommonTime() >= MainHallNextEventTimer)) {
+		MainHallMaid.Stage = "0";
+		CharacterRelease(MainHallMaid);
+		CharacterSetCurrent(MainHallMaid);
+		MainHallStartEventTimer = null;
+		MainHallNextEventTimer = null;
+		MainHallMaidWasCalledManually = false;
+	}
+	if ((MainHallStartEventTimer == null) && (MainHallNextEventTimer == null)) {
+		if ( (!Player.GameplaySettings || !Player.GameplaySettings.DisableAutoMaid) && ((!Player.CanInteract() || !Player.CanWalk() || !Player.CanTalk() || Player.IsShackled()))) {
+			MainHallStartEventTimer = CommonTime();
+			MainHallNextEventTimer = CommonTime() + 40000 + Math.floor(Math.random() * 40000);
+		} else {
+			DrawText(TextGet("OnlinePlayers") + " " + CurrentOnlinePlayers.toString(), 1650, 960, "White", "Black");
+			DrawButton(1885, 900, 90, 90, "", "White", "Icons/ServiceBell.png", TextGet("RequestMaid"));
+		}
+		MainHallMaidWasCalledManually = false;
+	} else {
+		if (!MainHallMaidWasCalledManually && !((!Player.CanInteract() || !Player.CanWalk() || !Player.CanTalk() || Player.IsShackled()))) {
+			MainHallStartEventTimer = null;
+			MainHallNextEventTimer = null;
+		} else {
+			DrawText(TextGet("RescueIsComing"), 1750, 925, "White", "Black");
+			DrawProgressBar(1525, 955, 450, 35, (1 - ((MainHallNextEventTimer - CommonTime()) / (MainHallNextEventTimer - MainHallStartEventTimer))) * 100);
+		}
+	}
+}
+
+//Misc changes in game.
+Asset.forEach(e => {
+    if (e.Value < 0) e.Value = 1;
+});
+
+function ManagementCannotBeReleasedExtreme() {}
+
+function ManagementCannotBreakUpLoverNPC(L) {
+    return false
+}
+
+function ManagementCanBeClubMistress() {
+    return true
+}
+
+function ManagementCannotBeClubMistress() {}
+
+function ManagementCannotBeClubMistressLaugh() {}
+
+function ManagementCannotBeClubMistressTime() {}
+
+function ManagementCanBeClubSlave() {
+    return true
+}
+
+function ManagementCannotBeClubSlaveOwnerLock() {}
+
+function ManagementCannotBeClubSlaveLoverLock() {}
+
+function AsylumEntranceIsWearingNurseClothes() {
+    return true
+}
+
+//Nickname
+function CharacterNickname(C) {
+    let Regex = /[/\p{L}\p{N}\p{Z}'-]/gu;
+    let Nick = C.Nickname;
+    if (Nick == null) Nick = "";
+    Nick = Nick.trim().substring(0, 20);
+    if ((Nick == "") || !Regex.test(Nick)) Nick = C.Name;
+    return AsylumGGTSCharacterName(C, Nick);
+}
+
+function TitleExit() {
+    let Regex = /[/\p{L}\p{N}\p{Z}'-]/gu;
+    let Nick = ElementValue("InputNickname");
+    if (Player.Nickname == '') { 
+        var tmpname = Player.Name;
+    } else {
+        var tmpname = Player.Nickname;
+    }
+    if (Nick == null) Nick = "";
+    Nick = Nick.trim().substring(0, 20);
+    if (Nick.length == 0) {
+	if (Player.Name != tmpname) {  
+	    if (ServerPlayerIsInChatRoom()) {
+                ServerSend("ChatRoomChat", {
+                    Content: "Beep",
+                    Type: "Action",
+                    Dictionary: [{
+                        Tag: "Beep",
+                        Text: "" + tmpname + " is now known as " + Player.Name + "."
+                    }]
+                });
+	    }	
+	}	
+        Player.Nickname = Player.Name;
+        ServerAccountUpdate.QueueData({
+            Nickname: Nick
+        });
+    } else if ((Nick.length <= 20) && (Nick.match(Regex))) {
+	if (ServerPlayerIsInChatRoom()) {    
+            if (Nick != tmpname) {
+                ServerSend("ChatRoomChat", {
+                    Content: "Beep",
+                    Type: "Action",
+                    Dictionary: [{
+                        Tag: "Beep",
+                        Text: "" + tmpname + " is now known as " + Nick + "."
+                    }]
+                });
+	    }	    
+         }
+         Player.Nickname = Nick;
+         ServerAccountUpdate.QueueData({
+            Nickname: Nick
+         });
+    }
+    TitleSet(TitleSelectedTitle);
+    ElementRemove("InputNickname");
+    CommonSetScreen("Character", "InformationSheet");
+}
+
+//Pandora Prison
+function PandoraPrisonRun() {
+    if ((Player.Infiltration.Punishment.Timer < CurrentTime) && (CurrentCharacter == null) && !PandoraPrisonEscaped)
+        PandoraPrisonCharacter = PandoraPrisonMaid;
+    if (PandoraWillpowerTimer < CommonTime()) {
+        if (PandoraWillpower < PandoraMaxWillpower) PandoraWillpower++;
+        PandoraWillpowerTimer = PandoraWillpowerTimer + ((InfiltrationPerksActive("Recovery")) ? 20000 : 30000);
+    }
+    if ((Player.Infiltration.Punishment.Timer >= CurrentTime) && (PandoraPrisonCharacterTimer < CommonTime()) && (CurrentCharacter == null) && !PandoraPrisonEscaped) {
+        PandoraPrisonBribeEnabled = true;
+        PandoraPrisonCharacter = (PandoraPrisonCharacter == null) ? PandoraPrisonGuard : null;
+        PandoraPrisonCharacterTimer = CommonTime() + 30000 + Math.floor(Math.random() * 30000);
+    }
+    if (PandoraPrisonCharacter != null) {
+        DrawCharacter(Player, 500, 0, 1);
+        DrawCharacter(PandoraPrisonCharacter, 1000, 0, 1);
+    } else DrawCharacter(Player, 750, 0, 1);
+    if (Player.CanKneel()) DrawButton(1885, 25, 90, 90, "", "White", "Icons/Kneel.png", TextGet("Kneel"));
+    DrawButton(1885, 145, 90, 90, "", "White", "Icons/Character.png", TextGet("Profile"));
+    if (Player.Infiltration.Punishment.Timer > CurrentTime) {
+        DrawText(TextGet("Sentence") + " " + Player.Infiltration.Punishment.Minutes.toString() + " " + TextGet("Minutes"), 1800, 870, "White", "Black");
+        DrawText(TextGet("EndsIn") + " " + TimerToString(Player.Infiltration.Punishment.Timer - CurrentTime), 1800, 920, "White", "Black");
+    }
+    DrawProgressBar(1610, 954, 380, 36, Math.round(PandoraWillpower / PandoraMaxWillpower * 100));
+    DrawText(PandoraWillpower.toString(), 1800, 973, "black", "white");
+}
+
+//Patreon cheats (auto-enabled). Also allows functionality for submissive mistress. If patched, blank functions.
 CheatValidate = function() {
     return true;
 };
@@ -8912,7 +9119,36 @@ CheatActivated.push("NoLoveDecay");
 CheatActivated.push("SkipTrialPeriod");
 CheatExport();
 
-//Improved Pose Menu
+//Pose Command
+function DialogExtendItem(Item, SourceItem) {
+	const C = CharacterGetCurrent();
+	StruggleProgress = -1;
+	StruggleLockPickOrder = null;
+	DialogLockMenu = false;
+	DialogCraftingMenu = false;
+	DialogColor = null;
+	DialogFocusItem = Item;
+	DialogFocusSourceItem = SourceItem;
+	CommonDynamicFunction("Inventory" + Item.Asset.Group.Name + Item.Asset.Name + "Load()");
+}
+
+function CharacterRefresh(C, Push, RefreshDialog = true) {
+	CharacterLoadEffect(C);
+	CharacterLoadPose(C);
+	CharacterLoadCanvas(C);
+	C.RunScripts = (!C.AccountName.startsWith('Online-') || !(Player.OnlineSettings && Player.OnlineSettings.DisableAnimations)) && (!Player.GhostList || Player.GhostList.indexOf(C.MemberNumber) == -1);
+	C.HasScriptedAssets = !!C.Appearance.find(CA => CA.Asset.DynamicScriptDraw);
+	if ((C.ID == 0) && (C.OnlineID != null) && ((Push == null) || (Push == true))) {
+		ChatRoomRefreshChatSettings();
+		ServerPlayerAppearanceSync();
+	}
+	var Current = CharacterGetCurrent();
+	if (Current && C.ID == Current.ID && RefreshDialog) {
+		CharacterRefreshDialog(C);
+	}
+}
+
+//Pose Menu
 var DialogSelfMenuOptions = [
 	{
 		Name: "Pose",
@@ -9358,42 +9594,112 @@ function PhotographicShotThePlayerPhoto() {
      CommonTakePhoto(500, 0, 500, 1000);
 }
 
-
-
-//Misc changes in game.
-Asset.forEach(e => {
-    if (e.Value < 0) e.Value = 1;
-});
-
-function ManagementCannotBeReleasedExtreme() {}
-
-function ManagementCannotBreakUpLoverNPC(L) {
-    return false
+//Stable
+function StablePonyEnd() {
+    CommonSetScreen("Room", "Stable");
+    CharacterSetCurrent(StableTrainer);
+    StableTrainer.Stage = "StableTrainingRunOut";
+    CharacterRelease(Player);
+    CharacterNaked(Player);
+    for (let E = Player.Appearance.length - 1; E >= 0; E--)
+        if ((Player.Appearance[E].Asset.Group.Name == "ItemTorso") || (Player.Appearance[E].Asset.Group.Name == "Hat") || (Player.Appearance[E].Asset.Group.Name == "ItemButt")) {
+            Player.Appearance.splice(E, 1);
+        }
+    CharacterDress(Player, StablePlayerAppearance);
+    CharacterRefresh(Player);
 }
 
-function ManagementCanBeClubMistress() {
-    return true
+function StableTrainerEnd() {
+    CommonSetScreen("Room", "Stable");
+    CharacterSetCurrent(StableTrainer);
+    StableTrainer.Stage = "StableExamTPass";
+    CharacterNaked(Player);
+    CharacterDress(Player, StablePlayerAppearance);
+    CharacterRefresh(Player);
 }
 
-function ManagementCannotBeClubMistress() {}
-
-function ManagementCannotBeClubMistressLaugh() {}
-
-function ManagementCannotBeClubMistressTime() {}
-
-function ManagementCanBeClubSlave() {
-    return true
+//text limits remover by rewriting functions
+//transport jacket can not be rewritten.
+//pet bowl can not be rewritten.
+//wooden box can not be rewritten.
+//canvas hood can not be rewritetn.
+InventoryItemMiscWoodenSignLoad = function() {
+    DynamicDrawLoadFont(InventoryItemMiscWoodenSignFont);
+    var C = CharacterGetCurrent();
+    var MustRefresh = false;
+    if (DialogFocusItem.Property == null) DialogFocusItem.Property = {};
+    if (DialogFocusItem.Property.Text == null && DialogFocusItem.Property.Text2 == null) {
+        DialogFocusItem.Property.Text = "";
+        DialogFocusItem.Property.Text2 = "";
+        MustRefresh = true;
+    }
+    if (MustRefresh) {
+        CharacterRefresh(C);
+        ChatRoomCharacterItemUpdate(C, DialogFocusItem.Asset.Group.Name);
+    }
+    const input1 = ElementCreateInput("WoodenSignText1", "text", DialogFocusItem.Property.Text, "50");
+    const input2 = ElementCreateInput("WoodenSignText2", "text", DialogFocusItem.Property.Text2, "50");
+    if (input1) input1.pattern = DynamicDrawTextInputPattern;
+    if (input2) input2.pattern = DynamicDrawTextInputPattern;
+}
+//
+InventoryItemNeckAccessoriesCustomCollarTagLoad = function() {
+    var C = CharacterGetCurrent();
+    var MustRefresh = false;
+    if (DialogFocusItem.Property == null) DialogFocusItem.Property = {};
+    if (DialogFocusItem.Property.Text == null) {
+        DialogFocusItem.Property.Text = "Tag";
+        MustRefresh = true;
+    }
+    if (MustRefresh) {
+        CharacterRefresh(C);
+        ChatRoomCharacterItemUpdate(C, DialogFocusItem.Asset.Group.Name);
+    }
+    if (!InventoryItemHasEffect(DialogFocusItem, "Lock", true)) {
+        ElementCreateInput("TagText", "text", DialogFocusItem.Property.Text, "30");
+    }
+}
+//
+InventoryItemNeckAccessoriesElectronicTagLoad = function() {
+    var C = CharacterGetCurrent();
+    var MustRefresh = false;
+    if (DialogFocusItem.Property == null) DialogFocusItem.Property = {};
+    if (DialogFocusItem.Property.Text == null) {
+        DialogFocusItem.Property.Text = "Tag";
+        MustRefresh = true;
+    }
+    if (MustRefresh) {
+        CharacterRefresh(C);
+        ChatRoomCharacterItemUpdate(C, DialogFocusItem.Asset.Group.Name);
+    }
+    if (!InventoryItemHasEffect(DialogFocusItem, "Lock", true)) {
+        ElementCreateInput("TagText", "text", DialogFocusItem.Property.Text, "30");
+    }
 }
 
-function ManagementCannotBeClubSlaveOwnerLock() {}
-
-function ManagementCannotBeClubSlaveLoverLock() {}
-
-function AsylumEntranceIsWearingNurseClothes() {
-    return true
+//Timercell
+function CellLoad() {
+    CellKeyDepositStaff = CharacterLoadNPC("NPC_Cell_KeyDepositStaff");
+    CellKeyDepositStaff.AllowItem = false;
+    CharacterSetActivePose(Player, null);
+    CellOpenTimer = LogValue("Locked", "Cell");
+    if (CellOpenTimer == null) CellOpenTimer = 0;
 }
 
-//Neutralisation of validation
+function CellClick() {
+    if (MouseIn(1885, 25, 90, 90) && Player.CanKneel() && (CellOpenTimer > CurrentTime)) CharacterSetActivePose(Player, (Player.ActivePose == null) ? "Kneel" : null, true);
+    if (MouseIn(750, 0, 500, 1000)) CharacterSetCurrent(Player);
+    if (MouseIn(1885, 145, 90, 90)) InformationSheetLoadCharacter(Player);
+    if (CellOpenTimer < CurrentTime) {
+        if (MouseIn(1885, 25, 90, 90)) CommonSetScreen("Room", "MainHall");
+        if (MouseIn(1885, 265, 90, 90)) CellLock(CellMinutes);
+        if (MouseIn(1885, 385, 90, 90)) CellMinutes = CellMinutes + 5;
+        if (MouseIn(1885, 505, 90, 90) && (CellMinutes > 5)) CellMinutes = CellMinutes - 5;
+        if (MouseIn(1885, 625, 90, 90)) CharacterSetCurrent(CellKeyDepositStaff);
+    }
+}
+
+//Validation (neutralisation)
 function ServerAppearanceLoadFromBundle(C, AssetFamily, Bundle, SourceMemberNumber, AppearanceFull = false) {
     if (!Array.isArray(Bundle)) {
 		Bundle = [];
@@ -9478,128 +9784,7 @@ function ChatRoomSyncItem(data) {
         }
 }
 
-//Welcome message in main hall
-function MainHallRun() {
-	KidnapLeagueResetOnlineBountyProgress();
-	if (!MainHallBeingPunished) {
-		if (Player.ImmersionSettings && Player.LastChatRoom && (Player.LastChatRoom != "") && (AsylumGGTSGetLevel(Player) <= 5) && ((MainHallMaid === null) || (MainHallMaid.Stage === "0"))) {
-			if (MainHallFirstFrame) {
-				if (Player.ImmersionSettings.ReturnToChatRoom) {
-					ChatRoomStart("", "", "MainHall", "Introduction", BackgroundsTagList);
-					return;
-				} else ChatRoomSetLastChatRoom("");
-			} else MainHallFirstFrame = true;
-		} else {
-			if (CurrentCharacter == null && CommonVersionUpdated && MainHallMaid.Dialog != null && MainHallMaid.Dialog.length > 0) {
-				CommonVersionUpdated = false;
-				CharacterSetCurrent(MainHallMaid);
-				MainHallMaid.Stage = "200";
-				MainHallMaid.CurrentDialog = DialogFind(MainHallMaid, "ClubUpdated");
-				return;
-			}
-			if ((CurrentCharacter == null) && ManagementIsClubSlave() && LogQuery("BlockChange", "Rule") && !Player.IsNaked() && (MainHallMaid.Dialog != null) && (MainHallMaid.Dialog.length > 0)) {
-				MainHallMaid.Stage = "50";
-				MainHallMaid.CurrentDialog = DialogFind(MainHallMaid, "ClubSlaveMustBeNaked");
-				CharacterRelease(MainHallMaid);
-				CharacterSetCurrent(MainHallMaid);
-				MainHallStartEventTimer = null;
-				MainHallNextEventTimer = null;
-				return;
-			}
-			if ((CurrentCharacter == null) && LogQuery("ClubMistress", "Management") && (ReputationGet("Dominant") < 50) && (CheatFactor("CantLoseMistress", 0) == 1) && Player.CanTalk() && (MainHallMaid.Dialog != null) && (MainHallMaid.Dialog.length > 0)) {
-				CommonSetScreen("Room", "Management");
-				CharacterSetCurrent(MainHallMaid);
-				CurrentScreen = "MainHall";
-				MainHallMaid.Stage = "60";
-				MainHallMaid.CurrentDialog = DialogFind(MainHallMaid, "MistressExpulsionIntro");
-				return;
-			}
-		}
-	}
-	DrawCharacter(Player, 750, 0, 1);
-	MainCanvas.font = "italic " + CommonGetFont(30);
-	DrawTextWrap(TextGet("Tip" + MainHallTip), 100, 800, 500, 200, "White");
-	MainCanvas.font = CommonGetFont(36);
-	var QAMtext = "Welcome to Quick-AccessMenu2!      " +
-	              "Besides the commands usable only in chat rooms, this add-on comes with several automatic features. " +        
-                      "Visit QAM Wiki and use /help for more info!";
-        MainCanvas.fillStyle = "#50E992";
-	MainCanvas.fillRect(20, 588, 640, 246);
-	MainCanvas.strokeStyle = "Black";
-	MainCanvas.strokeRect(20, 588, 640, 246);
-        MainCanvas.textAlign = "left";
-	DrawTextWrap(QAMtext, 30 - 630 / 2, 593, 630, 236, "black");
-	MainCanvas.textAlign = "center";
-	DrawButton(1645, 25, 90, 90, "", "White", "Icons/Character.png", TextGet("Profile"));
-	if (Player.CanChangeOwnClothes()) DrawButton(1765, 25, 90, 90, "", "White", "Icons/Dress.png", TextGet("Appearance"));
-	DrawButton(1885, 25, 90, 90, "", "White", "Icons/Exit.png", TextGet("Exit"));
-	DrawButton(1645, 145, 90, 90, "", "White", "Icons/Chat.png", TextGet("ChatRooms"));
-	if (Player.CanWalk() && (!Player.IsRestrained() || !Player.GameplaySettings.OfflineLockedRestrained)) {
-		if (MainHallAllow("A")) DrawButton(1765, 145, 90, 90, "", "White", "Icons/Shop.png", TextGet("Shop"));
-		if (!LogQuery("LockOutOfPrivateRoom", "Rule") && MainHallAllow("B")) DrawButton(1885, 145, 90, 90, "", "White", "Icons/Private.png", TextGet("PrivateRoom"));
-		if (MainHallAllow("C")) DrawButton(1645, 265, 90, 90, "", "White", "Icons/Introduction.png", TextGet("IntroductionClass"));
-		if (MainHallAllow("D")) DrawButton(1765, 265, 90, 90, "", "White", "Icons/Maid.png", TextGet("MaidQuarters"));
-		DrawButton(1885, 265, 90, 90, "", "White", "Icons/Management.png", TextGet("ClubManagement"));
-		if (MainHallAllow("E")) DrawButton(1645, 385, 90, 90, "", "White", "Icons/Kidnap.png", TextGet("KidnapLeague"));
-		if (MainHallAllow("F")) DrawButton(1765, 385, 90, 90, "", "White", "Icons/Dojo.png", TextGet("ShibariDojo"));
-		if (SarahRoomAvailable && MainHallAllow("G")) DrawButton(1885, 385, 90, 90, "", "White", "Icons/Explore.png", TextGet(SarahRoomLabel()));
-		if (MainHallAllow("S")) DrawButton(1525, 505, 90, 90, "", "White", "Icons/Crafting.png", TextGet("Crafting"));
-		if (MainHallAllow("H")) DrawButton(1645, 505, 90, 90, "", "White", "Icons/Question.png", TextGet("LookForTrouble"));
-		if (MainHallAllow("I")) DrawButton(1765, 505, 90, 90, "", "White", "Icons/Gavel.png", TextGet("SlaveMarket"));
-		if (MainHallAllow("J")) DrawButton(1885, 505, 90, 90, "", "White", "Icons/Cell.png", TextGet("Cell"));
-		if (!ManagementIsClubSlave() && MainHallAllow("R")) DrawButton(1525, 625, 90, 90, "", "White", "Icons/Platform.png", TextGet("Platform"));
-		if (!ManagementIsClubSlave() && MainHallAllow("K")) DrawButton(1645, 625, 90, 90, "", "White", "Icons/Battle.png", TextGet("LARPBattle"));
-		if (!ManagementIsClubSlave() && MainHallAllow("L")) DrawButton(1765, 625, 90, 90, "", "White", "Icons/College.png", TextGet("College"));
-		if (MainHallAsylumOpen && MainHallAllow("M")) DrawButton(1885, 625, 90, 90, "", "White", "Icons/Asylum.png", TextGet("Asylum"));
-		if (Player.CanChangeOwnClothes() && MainHallAllow("Q")) DrawButton(1525, 745, 90, 90, "", "White", "Icons/MagicSchool.png", TextGet("MagicSchool"));
-		if (Player.CanChangeOwnClothes() && Player.CanTalk() && MainHallAllow("N")) DrawButton(1645, 745, 90, 90, "", "White", "Icons/Poker.png", TextGet("Poker"));
-		if (Player.CanChangeOwnClothes() && MainHallAllow("O")) DrawButton(1765, 745, 90, 90, "", "White", "Icons/Infiltration.png", TextGet("Infiltration"));
-		if (Player.CanChangeOwnClothes() && MainHallAllow("P")) DrawButton(1885, 745, 90, 90, "", "White", "Icons/MovieStudio.png", TextGet("MovieStudio"));
-		if (MainHallAllow("2")) DrawButton(265, 25, 90, 90, "", "White", "Icons/Camera.png", TextGet("Photographic"));
-		if (MainHallAllow("1")) DrawButton(145, 25, 90, 90, "", "White", "Icons/Cage.png", TextGet("Prison"));
-		if (MainHallAllow("0")) DrawButton(25, 25, 90, 90, "", "White", "Icons/Random.png", TextGet("Gambling"));
-		if (MainHallAllow("5")) DrawButton(265, 145, 90, 90, "", "White", "Icons/Diaper.png", TextGet("Nursery"));
-		if (MainHallAllow("4")) DrawButton(145, 145, 90, 90, "", "White", "Icons/Magic.png", TextGet("Magic"));
-		if (MainHallAllow("3")) DrawButton(25, 145, 90, 90, "", "White", "Icons/Horse.png", TextGet("Stable"));
-		if (MainHallAllow("7")) DrawButton(145, 265, 90, 90, "", "White", "Icons/Arcade.png", TextGet("Arcade"));
-		if (MainHallAllow("6")) DrawButton(25, 265, 90, 90, "", "White", "Icons/Refreshsments.png", TextGet("Cafe"));
-	} else {
-		if (Player.CanWalk() && MaidQuartersOnlineDrinkStarted) {
-			DrawButton(1765, 265, 90, 90, "", "White", "Icons/Maid.png", TextGet("MaidQuarters"));
-			DrawButton(25, 265, 90, 90, "", "White", "Icons/Refreshsments.png", TextGet("Cafe"));
-		}
-		if (Player.CanWalk() && (InventoryIsWorn(Player, "BountySuitcase", "ItemMisc") || InventoryIsWorn(Player, "BountySuitcaseEmpty", "ItemMisc")))
-			DrawButton(1645, 385, 90, 90, "", "White", "Icons/Kidnap.png", TextGet("KidnapLeague"));
-	}
-	if (MainHallMaid !== null && (MainHallNextEventTimer != null) && (CommonTime() >= MainHallNextEventTimer)) {
-		MainHallMaid.Stage = "0";
-		CharacterRelease(MainHallMaid);
-		CharacterSetCurrent(MainHallMaid);
-		MainHallStartEventTimer = null;
-		MainHallNextEventTimer = null;
-		MainHallMaidWasCalledManually = false;
-	}
-	if ((MainHallStartEventTimer == null) && (MainHallNextEventTimer == null)) {
-		if ( (!Player.GameplaySettings || !Player.GameplaySettings.DisableAutoMaid) && ((!Player.CanInteract() || !Player.CanWalk() || !Player.CanTalk() || Player.IsShackled()))) {
-			MainHallStartEventTimer = CommonTime();
-			MainHallNextEventTimer = CommonTime() + 40000 + Math.floor(Math.random() * 40000);
-		} else {
-			DrawText(TextGet("OnlinePlayers") + " " + CurrentOnlinePlayers.toString(), 1650, 960, "White", "Black");
-			DrawButton(1885, 900, 90, 90, "", "White", "Icons/ServiceBell.png", TextGet("RequestMaid"));
-		}
-		MainHallMaidWasCalledManually = false;
-	} else {
-		if (!MainHallMaidWasCalledManually && !((!Player.CanInteract() || !Player.CanWalk() || !Player.CanTalk() || Player.IsShackled()))) {
-			MainHallStartEventTimer = null;
-			MainHallNextEventTimer = null;
-		} else {
-			DrawText(TextGet("RescueIsComing"), 1750, 925, "White", "Black");
-			DrawProgressBar(1525, 955, 450, 35, (1 - ((MainHallNextEventTimer - CommonTime()) / (MainHallNextEventTimer - MainHallStartEventTimer))) * 100);
-		}
-	}
-}
-
-//Wardrobe improvement
+//Wardrobe 
 function AppearanceRun() {
 	var C = CharacterAppearanceSelection;
 	if (CharacterAppearanceHeaderTextTime < CommonTime() && CharacterAppearanceMode == "Cloth")
@@ -9944,185 +10129,6 @@ function AppearanceClick() {
 			}
 		}
 	}
-}
-
-//Misc rewritten functions
-function CraftingItemListBuild() {
-	let Search = ElementValue("InputSearch");
-	if (Search == null) Search = "";
-	Search = Search.toUpperCase().trim();
-	CraftingItemList = [];
-	for (let A of Asset) {
-		if (!InventoryAvailable(Player, A.Name, A.Group.Name)) continue;
-		if (!A.Group.Name.startsWith("Item")) continue;
-		let Match = true;
-		const desc = A.DynamicDescription(Player).toUpperCase().trim();
-		if (desc.indexOf(Search) < 0) Match = false;
-		if (Match)
-			for (let E of CraftingItemList)
-				if (E.CraftGroup === A.Name || E.Name === A.CraftGroup)
-					Match = false;
-		if (Match) CraftingItemList.push(A);
-	}
-	CraftingItemList.sort((a,b) => (a.Description > b.Description) ? 1 : (b.Description > a.Description) ? -1 : 0);
-	if (CraftingOffset >= CraftingItemList.length) CraftingOffset = 0;
-}
-
-function DialogExtendItem(Item, SourceItem) {
-	const C = CharacterGetCurrent();
-	StruggleProgress = -1;
-	StruggleLockPickOrder = null;
-	DialogLockMenu = false;
-	DialogCraftingMenu = false;
-	DialogColor = null;
-	DialogFocusItem = Item;
-	DialogFocusSourceItem = SourceItem;
-	CommonDynamicFunction("Inventory" + Item.Asset.Group.Name + Item.Asset.Name + "Load()");
-}
-
-function CharacterRefresh(C, Push, RefreshDialog = true) {
-	CharacterLoadEffect(C);
-	CharacterLoadPose(C);
-	CharacterLoadCanvas(C);
-	C.RunScripts = (!C.AccountName.startsWith('Online-') || !(Player.OnlineSettings && Player.OnlineSettings.DisableAnimations)) && (!Player.GhostList || Player.GhostList.indexOf(C.MemberNumber) == -1);
-	C.HasScriptedAssets = !!C.Appearance.find(CA => CA.Asset.DynamicScriptDraw);
-	if ((C.ID == 0) && (C.OnlineID != null) && ((Push == null) || (Push == true))) {
-		ChatRoomRefreshChatSettings();
-		ServerPlayerAppearanceSync();
-	}
-	var Current = CharacterGetCurrent();
-	if (Current && C.ID == Current.ID && RefreshDialog) {
-		CharacterRefreshDialog(C);
-	}
-}
-
-function CharacterNickname(C) {
-    let Regex = /[/\p{L}\p{N}\p{Z}'-]/gu;
-    let Nick = C.Nickname;
-    if (Nick == null) Nick = "";
-    Nick = Nick.trim().substring(0, 20);
-    if ((Nick == "") || !Regex.test(Nick)) Nick = C.Name;
-    return AsylumGGTSCharacterName(C, Nick);
-}
-
-function TitleExit() {
-    let Regex = /[/\p{L}\p{N}\p{Z}'-]/gu;
-    let Nick = ElementValue("InputNickname");
-    if (Player.Nickname == '') { 
-        var tmpname = Player.Name;
-    } else {
-        var tmpname = Player.Nickname;
-    }
-    if (Nick == null) Nick = "";
-    Nick = Nick.trim().substring(0, 20);
-    if (Nick.length == 0) {
-	if (Player.Name != tmpname) {  
-	    if (ServerPlayerIsInChatRoom()) {
-                ServerSend("ChatRoomChat", {
-                    Content: "Beep",
-                    Type: "Action",
-                    Dictionary: [{
-                        Tag: "Beep",
-                        Text: "" + tmpname + " is now known as " + Player.Name + "."
-                    }]
-                });
-	    }	
-	}	
-        Player.Nickname = Player.Name;
-        ServerAccountUpdate.QueueData({
-            Nickname: Nick
-        });
-    } else if ((Nick.length <= 20) && (Nick.match(Regex))) {
-	if (ServerPlayerIsInChatRoom()) {    
-            if (Nick != tmpname) {
-                ServerSend("ChatRoomChat", {
-                    Content: "Beep",
-                    Type: "Action",
-                    Dictionary: [{
-                        Tag: "Beep",
-                        Text: "" + tmpname + " is now known as " + Nick + "."
-                    }]
-                });
-	    }	    
-         }
-         Player.Nickname = Nick;
-         ServerAccountUpdate.QueueData({
-            Nickname: Nick
-         });
-    }
-    TitleSet(TitleSelectedTitle);
-    ElementRemove("InputNickname");
-    CommonSetScreen("Character", "InformationSheet");
-}
-
-function PandoraPrisonRun() {
-    if ((Player.Infiltration.Punishment.Timer < CurrentTime) && (CurrentCharacter == null) && !PandoraPrisonEscaped)
-        PandoraPrisonCharacter = PandoraPrisonMaid;
-    if (PandoraWillpowerTimer < CommonTime()) {
-        if (PandoraWillpower < PandoraMaxWillpower) PandoraWillpower++;
-        PandoraWillpowerTimer = PandoraWillpowerTimer + ((InfiltrationPerksActive("Recovery")) ? 20000 : 30000);
-    }
-    if ((Player.Infiltration.Punishment.Timer >= CurrentTime) && (PandoraPrisonCharacterTimer < CommonTime()) && (CurrentCharacter == null) && !PandoraPrisonEscaped) {
-        PandoraPrisonBribeEnabled = true;
-        PandoraPrisonCharacter = (PandoraPrisonCharacter == null) ? PandoraPrisonGuard : null;
-        PandoraPrisonCharacterTimer = CommonTime() + 30000 + Math.floor(Math.random() * 30000);
-    }
-    if (PandoraPrisonCharacter != null) {
-        DrawCharacter(Player, 500, 0, 1);
-        DrawCharacter(PandoraPrisonCharacter, 1000, 0, 1);
-    } else DrawCharacter(Player, 750, 0, 1);
-    if (Player.CanKneel()) DrawButton(1885, 25, 90, 90, "", "White", "Icons/Kneel.png", TextGet("Kneel"));
-    DrawButton(1885, 145, 90, 90, "", "White", "Icons/Character.png", TextGet("Profile"));
-    if (Player.Infiltration.Punishment.Timer > CurrentTime) {
-        DrawText(TextGet("Sentence") + " " + Player.Infiltration.Punishment.Minutes.toString() + " " + TextGet("Minutes"), 1800, 870, "White", "Black");
-        DrawText(TextGet("EndsIn") + " " + TimerToString(Player.Infiltration.Punishment.Timer - CurrentTime), 1800, 920, "White", "Black");
-    }
-    DrawProgressBar(1610, 954, 380, 36, Math.round(PandoraWillpower / PandoraMaxWillpower * 100));
-    DrawText(PandoraWillpower.toString(), 1800, 973, "black", "white");
-}
-
-function CellLoad() {
-    CellKeyDepositStaff = CharacterLoadNPC("NPC_Cell_KeyDepositStaff");
-    CellKeyDepositStaff.AllowItem = false;
-    CharacterSetActivePose(Player, null);
-    CellOpenTimer = LogValue("Locked", "Cell");
-    if (CellOpenTimer == null) CellOpenTimer = 0;
-}
-
-function CellClick() {
-    if (MouseIn(1885, 25, 90, 90) && Player.CanKneel() && (CellOpenTimer > CurrentTime)) CharacterSetActivePose(Player, (Player.ActivePose == null) ? "Kneel" : null, true);
-    if (MouseIn(750, 0, 500, 1000)) CharacterSetCurrent(Player);
-    if (MouseIn(1885, 145, 90, 90)) InformationSheetLoadCharacter(Player);
-    if (CellOpenTimer < CurrentTime) {
-        if (MouseIn(1885, 25, 90, 90)) CommonSetScreen("Room", "MainHall");
-        if (MouseIn(1885, 265, 90, 90)) CellLock(CellMinutes);
-        if (MouseIn(1885, 385, 90, 90)) CellMinutes = CellMinutes + 5;
-        if (MouseIn(1885, 505, 90, 90) && (CellMinutes > 5)) CellMinutes = CellMinutes - 5;
-        if (MouseIn(1885, 625, 90, 90)) CharacterSetCurrent(CellKeyDepositStaff);
-    }
-}
-
-function StablePonyEnd() {
-    CommonSetScreen("Room", "Stable");
-    CharacterSetCurrent(StableTrainer);
-    StableTrainer.Stage = "StableTrainingRunOut";
-    CharacterRelease(Player);
-    CharacterNaked(Player);
-    for (let E = Player.Appearance.length - 1; E >= 0; E--)
-        if ((Player.Appearance[E].Asset.Group.Name == "ItemTorso") || (Player.Appearance[E].Asset.Group.Name == "Hat") || (Player.Appearance[E].Asset.Group.Name == "ItemButt")) {
-            Player.Appearance.splice(E, 1);
-        }
-    CharacterDress(Player, StablePlayerAppearance);
-    CharacterRefresh(Player);
-}
-
-function StableTrainerEnd() {
-    CommonSetScreen("Room", "Stable");
-    CharacterSetCurrent(StableTrainer);
-    StableTrainer.Stage = "StableExamTPass";
-    CharacterNaked(Player);
-    CharacterDress(Player, StablePlayerAppearance);
-    CharacterRefresh(Player);
 }
 
 //embed engine. Depends on hidden unicode characters, so don't touch or risk corruption... depenencies are in chatroom script.
