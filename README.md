@@ -46,7 +46,7 @@ All else I might not have included.
 Changes for future version 
 
 * Fixed photoshot issue in Photographic room after pose menu change
-* Fixed a bug in pose menu with undefined nicknames
+* Fixed a bug in pose menu when the nickname is undefined
 
 
 
