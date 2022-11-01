@@ -9391,7 +9391,7 @@ function DialogClickPoseMenu() {
                         } else {
                              var tmpname = Player.Nickname;
                         }
-                        if (CurrentCharacter.Nickname == '') { 
+                        if ((CurrentCharacter.Nickname == '') ||(CurrentCharacter.Nickname == undefined)) { 
                             var tgpname = CurrentCharacter.Name;
                         } else {
                             var tgpname = CurrentCharacter.Nickname;
