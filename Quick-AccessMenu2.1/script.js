@@ -1562,14 +1562,14 @@ async function NEWmenu() {
 	} else if (content.indexOf("/bio") == 0) {
             var targetname = content.substring(4).trim();
             if (targetname == undefined) {
-                targetname = Player.Name
-            };
+                targetname = Player.Name;
+            }
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 	    if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
+            }
             if (target[0] != null) {
                 InformationSheetLoadCharacter(target[0]);
                 OnlineProfileRun();
@@ -1622,15 +1622,15 @@ async function NEWmenu() {
         } else if (content.indexOf("/clothes") == 0) {
             var targetname = content.substring(8).trim();
             if (targetname == undefined) {
-                targetname = Player.Name
-            };
+                targetname = Player.Name;
+            }
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 	    if (target[0] == null) {
                 var targetnumber = parseInt(targetname);
                 target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
-            if (target[0] != null) {
+            }
+            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
 		if (target[0].Nickname == '') { 
                     tgpname = target[0].Name;
                 } else {
@@ -1644,10 +1644,6 @@ async function NEWmenu() {
                         Text: "Magical lasers put random clothes on " + tgpname + " body."
                     }]
                 });
-                if ((target[0].Name == Player.Name) == false) {
-                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
-                    consoleWhisper();
-                };
                 CharacterAppearanceFullRandom(target[0], true);
                 ChatRoomCharacterUpdate(target[0]);
 	        ChatRoomSetTarget(null);
@@ -1868,14 +1864,14 @@ async function NEWmenu() {
                 var stringChange2 = stringChange1.split(/[ ,]+/);
                 var targetname = stringChange2[2];
                 if (targetname == undefined) {
-                    targetname = Player.Name
-                };
+                    targetname = Player.Name;
+                }
                 var targetfinder = new RegExp('^' + targetname + '', 'i');
                 var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 		if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-                };
+                }
                 if (target[0] != null) {
                     if ((target[0].Name == Player.Name) == false) {
                         ServerSend("ChatRoomChat", {
@@ -1892,14 +1888,14 @@ async function NEWmenu() {
                 var stringChange2 = stringChange1.split(/[ ,]+/);
                 var targetname = stringChange2[2];
                 if (targetname == undefined) {
-                    targetname = Player.Name
-                };
+                    targetname = Player.Name;
+                }
                 var targetfinder = new RegExp('^' + targetname + '', 'i');
                 var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 		if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-                };
+                }
                 if (target[0] != null) {
                     if ((target[0].Name == Player.Name) == false) {
                         ServerSend("ChatRoomChat", {
@@ -1916,14 +1912,14 @@ async function NEWmenu() {
                 var stringChange2 = stringChange1.split(/[ ,]+/);
                 var targetname = stringChange2[2];
                 if (targetname == undefined) {
-                    targetname = Player.Name
-                };
+                    targetname = Player.Name;
+                }
                 var targetfinder = new RegExp('^' + targetname + '', 'i');
                 var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 		if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-                };
+                }
                 if (target[0] != null) {
                     if ((target[0].Name == Player.Name) == false) {
                         ServerSend("ChatRoomChat", {
@@ -3037,8 +3033,8 @@ async function NEWmenu() {
             if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
-            if (target[0] != null) {
+            }
+            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
 		if (target[0].Nickname == '') { 
                     tgpname = target[0].Name;
                 } else {
@@ -3052,10 +3048,6 @@ async function NEWmenu() {
                         Text: "Magical lasers make appear locks on " + tgpname + " body."
                     }]
                 });
-                if ((target[0].Name == Player.Name) == false) {
-                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
-                    consoleWhisper();
-                };
                 mn = Player.MemberNumber;
                 if ((InventoryGet(target[0], "ItemAddon") != null) && (InventoryGet(target[0], "ItemAddon").Asset.AllowLock == true)) {
                     if (((InventoryGet(target[0], "ItemAddon").Property != null) && (InventoryGet(target[0], "ItemAddon").Property.LockedBy == null)) || (InventoryGet(target[0], "ItemAddon").Property == null)) {
@@ -3776,15 +3768,15 @@ async function NEWmenu() {
         } else if (content.indexOf("/naked") == 0) {
             var targetname = content.substring(6).trim();
             if (targetname == undefined) {
-                targetname = Player.Name
-            };
+                targetname = Player.Name;
+            }
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 	    if (target[0] == null) {
                 var targetnumber = parseInt(targetname);
                 target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);              
-            };
-            if (target[0] != null) {
+            }
+            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
 		if (target[0].Nickname == '') { 
                     tgpname = target[0].Name;
                 } else {
@@ -3798,10 +3790,6 @@ async function NEWmenu() {
                         Text: "Magical lasers make disappear the clothes on " + tgpname + " body."
                     }]
                 });
-                if ((target[0].Name == Player.Name) == false) {
-                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
-                    consoleWhisper();
-                };
                 CharacterNaked(target[0]);
                 ChatRoomCharacterUpdate(target[0]);
 		ChatRoomSetTarget(null);
@@ -3966,15 +3954,15 @@ async function NEWmenu() {
         } else if (content.indexOf("/pet") == 0) {
             var targetname = content.substring(4).trim();
             if (targetname == undefined) {
-                targetname = Player.Name
-            };
+                targetname = Player.Name;
+            }
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
             if (target[0] == null) {
                 var targetnumber = parseInt(targetname);
                 target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
-            if (target[0] != null) {
+            }
+            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
 	        if (target[0].Nickname == '') { 
                     tgpname = target[0].Name;
                 } else {
@@ -3988,10 +3976,6 @@ async function NEWmenu() {
                         Text: "" + tgpname + " becomes a cute pet girl."
                     }]
                 });
-                if ((target[0].Name == Player.Name) == false) {
-                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
-                    consoleWhisper();
-                };
                 CharacterNaked(target[0]);
 	        InventoryWearRandom(target[0], "ItemArms", 8, null, false, true, ["ArmbinderJacket", "BitchSuit", "Bolero", "BoxTieArmbinder", "Chains", "FullLatexSuit", "HempRope", "InflatableStraightLeotard", "LatexBoxtieLeotard", "LatexButterflyLeotard", "LatexSleevelessLeotard", "LeatherStraitJacket", "PantyhoseBody", "PantyhoseBodyOpen","SeamlessStraitDress","SeamlessStraitDressOpen","StraitLeotard", "StrictLeatherPetCrawler"], true);
 	        InventoryWearRandom(target[0], "HairAccessory1", 8, null, false, true, ["Antennae", "BunnyEars1", "BunnyEars2", "CowHorns", "Ears1", "Ears2", "ElfEars", "FoxEars1", "FoxEars2", "FoxEars3", "KittenEars1", "KittenEars2", "MouseEars1", "MouseEars2", "PonyEars1", "PuppyEars1", "PuppyEars2", "RaccoonEars1", "WolfEars1", "WolfEars2"], true);
@@ -4038,14 +4022,14 @@ async function NEWmenu() {
                 var stringPose2 = stringPose1.split(/[ ,]+/);
                 var targetname = stringPose2[2];
                 if (targetname == undefined) {
-                    targetname = Player.Name
-                };
+                    targetname = Player.Name;
+                }
                 var targetfinder = new RegExp('^' + targetname + '', 'i');
                 var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 		if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-                };
+                }
                 if (target[0] != null) {
 	            if (target[0].Nickname == '') { 
                         tgpname = target[0].Name;
@@ -4795,15 +4779,15 @@ async function NEWmenu() {
         } else if (content.indexOf("/randomize") == 0) {
             var targetname = content.substring(10).trim();
             if (targetname == undefined) {
-                targetname = Player.Name
-            };
+                targetname = Player.Name;
+            }
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 	    if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
-            if (target[0] != null) {
+            }
+            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
 		if (target[0].Nickname == '') { 
                     tgpname = target[0].Name;
                 } else {
@@ -4817,10 +4801,6 @@ async function NEWmenu() {
                         Text: "Magical lasers apply random clothes and bindings on " + tgpname + " body."
                     }]
                 });
-                if ((target[0].Name == Player.Name) == false) {
-                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
-                    consoleWhisper();
-                };
                 CharacterNaked(target[0]);
                 CharacterRandomUnderwear(target[0]);
                 CharacterAppearanceFullRandom(target[0], true);
@@ -4920,15 +4900,15 @@ async function NEWmenu() {
         } else if (content.indexOf("/restrain") == 0) {
             var targetname = content.substring(9).trim();
             if (targetname == undefined) {
-                targetname = Player.Name
-            };
+                targetname = Player.Name;
+            }
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 	    if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
-            if (target[0] != null) {
+            }
+            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
 		if (target[0].Nickname == '') { 
                     tgpname = target[0].Name;
                 } else {
@@ -4942,10 +4922,6 @@ async function NEWmenu() {
                         Text: "Magical lasers apply random restraints on " + tgpname + " body."
                     }]
                 });
-                if ((target[0].Name == Player.Name) == false) {
-                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
-                    consoleWhisper();
-                };
                 CharacterFullRandomRestrain(target[0], "ALL");
                 ChatRoomCharacterUpdate(target[0]);
 		ChatRoomSetTarget(null);
@@ -5380,15 +5356,15 @@ async function NEWmenu() {
 	} else if (content.indexOf("/sleep") == 0) {
             var targetname = content.substring(6).trim();
             if (targetname == undefined) {
-                targetname = Player.Name
-            };
+                targetname = Player.Name;
+            }
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 	    if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
-            if (target[0] != null) { 
+            }
+            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
 		if (target[0].Nickname == '') { 
                     tgpname = target[0].Name;
                 } else {
@@ -6033,15 +6009,15 @@ async function NEWmenu() {
         } else if (content.indexOf("/totalrelease") == 0) {
             var targetname = content.substring(13).trim();
             if (targetname == undefined) {
-                targetname = Player.Name
-            };
+                targetname = Player.Name;
+            }
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 	    if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
-            if (target[0] != null) {
+            }
+            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
 		if (target[0].Nickname == '') { 
                     tgpname = target[0].Name;
                 } else {
@@ -6055,10 +6031,6 @@ async function NEWmenu() {
                         Text: "Magical lasers make disappear all bindings and toys on " + tgpname + " body."
                     }]
                 });
-                if ((target[0].Name == Player.Name) == false) {
-                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
-                    consoleWhisper();
-                };
                 CharacterReleaseTotal(target[0]);
                 ChatRoomCharacterUpdate(target[0]);
 		ChatRoomSetTarget(null);
@@ -6106,15 +6078,15 @@ async function NEWmenu() {
         } else if (content.indexOf("/underwear") == 0) {
             var targetname = content.substring(10).trim();
             if (targetname == undefined) {
-                targetname = Player.Name
-            };
+                targetname = Player.Name;
+            }
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 	    if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
-            if (target[0] != null) {
+            }
+            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
 		if (target[0].Nickname == '') { 
                     tgpname = target[0].Name;
                 } else {
@@ -6128,10 +6100,6 @@ async function NEWmenu() {
                         Text: "Magical lasers put " + tgpname + " in random underwear."
                     }]
                 });
-                if ((target[0].Name == Player.Name) == false) {
-                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
-                    consoleWhisper();
-                };
                 CharacterRandomUnderwear(target[0]);
                 ChatRoomCharacterUpdate(target[0]);
 		ChatRoomSetTarget(null);
@@ -6142,15 +6110,15 @@ async function NEWmenu() {
             var lk = stringUnlock2[2];
             var targetname = stringUnlock2[1];
             if (targetname == undefined) {
-                targetname = Player.Name
-            };
+                targetname = Player.Name;
+            }
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 	    if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
-            if (target[0] != null) {
+            }
+            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
 		if (target[0].Nickname == '') { 
                     tgpname = target[0].Name;
                 } else {
@@ -6164,10 +6132,6 @@ async function NEWmenu() {
                         Text: "Magical lasers make disappear locks on " + tgpname + " body."
                     }]
                 });
-                if ((target[0].Name == Player.Name) == false) {
-                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
-                    consoleWhisper();
-                };
                 if (lk == null) {
                     CharacterReleaseFromLock(target[0], "CombinationPadlock");
                     CharacterReleaseFromLock(target[0], "ExclusivePadlock");
@@ -6562,15 +6526,15 @@ async function NEWmenu() {
 	} else if (content.indexOf("/untie") == 0) {
             var targetname = content.substring(6).trim();
             if (targetname == undefined) {
-                targetname = Player.Name
-            };
+                targetname = Player.Name;
+            }
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 	    if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
-            if (target[0] != null) {
+            }
+            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
 		if (target[0].Nickname == '') { 
                     tgpname = target[0].Name;
                 } else {
@@ -6584,10 +6548,6 @@ async function NEWmenu() {
                         Text: "Magical lasers make disappear the bindings on " + tgpname + " body."
                     }]
                 });
-                if ((target[0].Name == Player.Name) == false) {
-                    ChatRoomTargetMemberNumber = target[0].MemberNumber;
-                    consoleWhisper();
-                };
                 CharacterRelease(target[0]);
                 ChatRoomCharacterUpdate(target[0]);
 		ChatRoomSetTarget(null);
@@ -6658,7 +6618,7 @@ async function NEWmenu() {
 	    if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
+            }
             if (target[0] != null) {
                 target[0].OnlineSharedSettings.AllowFullWardrobeAccess = true;
                 target[0].OnlineSharedSettings.BlockBodyCosplay = false;
@@ -6672,7 +6632,7 @@ async function NEWmenu() {
 	    if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            };
+            }
             if (target[0] != null) {
                 ChatRoomTargetMemberNumber = target[0].MemberNumber;
             }	
@@ -6973,13 +6933,6 @@ function AutoRelog() {
 }
 
 //Other functions
-function consoleWhisper() {
-    ServerSend("ChatRoomChat", {
-        Content: "Quick-Access Menu2: " + Player.Name + " has used console to alter appearance. If this is undesired, blacklist player.",
-        Type: "Whisper",
-        Target: ChatRoomTargetMemberNumber
-    })
-};
 
 function gagSpeak() {
      OldSpeechGarble = SpeechGarble;
