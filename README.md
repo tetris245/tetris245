@@ -45,6 +45,9 @@ All else I might not have included.
 
 Changes for future version 
 
+* Improved most commands with target by 
+  - adding a condition related to global item permissions
+  - removing the whispering message, often misunderstood by players
 * Updated the invisible commands
 * Fixed photoshot issue in Photographic room after pose menu change
 * Fixed a bug in pose menu when the nickname is undefined
