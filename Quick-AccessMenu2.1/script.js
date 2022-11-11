@@ -6190,8 +6190,18 @@ async function NEWmenu() {
                 InventoryGroupIsBlocked = function(C, GroupName) {
                     return false;
                 }
-                InventoryPrerequisiteMessage = function(C, Prerequisit) {
-                    return "";
+		InventoryPrerequisiteMessage = function(C, Prerequisit) {
+                    if (Prerequisit == 'HasBreasts') {
+                        return !InventoryIsItemInList(C, "BodyUpper", ["XLarge", "Large", "Normal", "Small"]) ? "MustHaveBreasts" : "";
+                    } else if (Prerequisit == 'HasFlatChest') {
+                        return !InventoryIsItemInList(C, "BodyUpper", ["FlatSmall", "FlatMedium"]) ? "MustHaveFlatChest" : "";
+                    } else if (Prerequisit == 'HasPenis') {
+                        return !InventoryIsItemInList(C, "Pussy", ["Penis"]) ? "MustHavePenis" : "";
+                    } else if (Prerequisit == 'HasVagina') {
+                        return !InventoryIsItemInList(C, "Pussy", ["PussyLight1", "PussyLight2", "PussyLight3", "PussyDark1", "PussyDark2", "PussyDark3"]) ? "MustHaveVagina" : "";
+                    } else {
+                        return "";
+                     }
                 }
                 Player.GameplaySettings.BlindDisableExamine = false;
                 Asset.forEach(e => {
@@ -6228,9 +6238,19 @@ async function NEWmenu() {
                 InventoryGroupIsBlocked = function(C, GroupName) {
                     return false;
                 }
-                InventoryPrerequisiteMessage = function(C, Prerequisit) {
-                    return "";
-                }
+		InventoryPrerequisiteMessage = function(C, Prerequisit) {
+                    if (Prerequisit == 'HasBreasts') {
+                        return !InventoryIsItemInList(C, "BodyUpper", ["XLarge", "Large", "Normal", "Small"]) ? "MustHaveBreasts" : "";
+                    } else if (Prerequisit == 'HasFlatChest') {
+                        return !InventoryIsItemInList(C, "BodyUpper", ["FlatSmall", "FlatMedium"]) ? "MustHaveFlatChest" : "";
+                    } else if (Prerequisit == 'HasPenis') {
+                        return !InventoryIsItemInList(C, "Pussy", ["Penis"]) ? "MustHavePenis" : "";
+                    } else if (Prerequisit == 'HasVagina') {
+                        return !InventoryIsItemInList(C, "Pussy", ["PussyLight1", "PussyLight2", "PussyLight3", "PussyDark1", "PussyDark2", "PussyDark3"]) ? "MustHaveVagina" : "";
+                    } else {
+                        return "";
+                    }
+                } 
                 Player.GameplaySettings.BlindDisableExamine = false;
                 Asset.forEach(e => {
                     if (e.Value < 0) e.Value = 1;
