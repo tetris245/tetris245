@@ -47,7 +47,7 @@ Changes for future version
 
 * Improved most commands with target by 
   - adding a condition related to global item permissions
-  - removing the whispering message, often misunderstood by players
+  - removing the whispered message, often misunderstood by players
 * Updated the /kd debug command (Tip: check the internal enhanced KD menu!)
 * Updated the invisible commands, the unrestrict command and several rewritten functions for R86 compatibility
 * Fixed photoshot issue in Photographic room after pose menu change
