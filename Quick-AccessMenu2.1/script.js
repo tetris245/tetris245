@@ -2599,7 +2599,7 @@ async function NEWmenu() {
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, +99);
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, +99);
 			 KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, +99);
-                    }, 5000);   
+                     }, 5000);   
 		 } else if (content.includes("moreitems")) {  
 		     setTimeout(function() {  
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, +99);  
@@ -2619,7 +2619,7 @@ async function NEWmenu() {
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollVerbal, +99);
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.SmokeBomb, +99);
                          KinkyDungeonChangeConsumable(KinkyDungeonConsumables.WaterRune, +99);
- 	            }, 5000); 		 
+ 	             }, 5000); 		 
                  } else if (content.includes("outfits")) {                     
                      setTimeout(function() {    
 			 KinkyDungeonInventoryAddOutfit("BlueSuit");
