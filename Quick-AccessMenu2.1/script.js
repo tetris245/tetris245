@@ -2558,7 +2558,8 @@ async function NEWmenu() {
                 document.getElementById("TextAreaChatLog").style.display = "inline";
             }; //rewrite end to return to chatroom and restore chat
             ArcadeDeviousChallengeAllowed = function() {} //null to always allow
-	    if (content.includes("debug")) {       
+	    if (content.includes("debug")) {
+		    TestMode = true;
                     KDDebugMode = true;
                     ChatRoomSendLocal(
 		        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: KD Debug mode enabled</p>"
