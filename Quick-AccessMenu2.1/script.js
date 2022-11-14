@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.9.0
+// @version 1.9.1
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -199,12 +199,10 @@ async function NEWmenu() {
                 );
 	    } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.9.0:\n" + 
-		    "- Extended availability of Pose Menu (everywhere in BC, also when clicking on another player).\n" +	
-		    "- New options for kd command: debug, remove.\n" +
-		    "- Improved pose2 command.\n" +
-		    "- New name for release command: untie.\n" +		
-                    "- Removed embedding of pictures and YouTube videos.</p>"
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.9.1:\n" + 
+		    "- Improved most commands with target by adding condition related to permissions and removing whispered message.\n" +	
+		    "- Updated the /kd debug command (Tip: check the internal enhanced KD menu!).\n" +		
+                    "- Updated several commands and rewritten functions for R86 compatibility.</p>"
                 );   	    
             } else if (content.includes("talking")) {
 		ChatRoomSendLocal(
@@ -6877,7 +6875,7 @@ ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
 	ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.9.0: Ready, type <b>/help</b> for general menu.\n" +
+                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.9.1: Ready, type <b>/help</b> for general menu.\n" +
 		    "Note: NPC punishments are disabled.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
 		    "Use <b>/clubhelp</b> to get the standard BC menu (+ FBC menu when enabled).\n" +
@@ -8814,7 +8812,7 @@ function CraftingItemListBuild() {
 function LoginRun() {
 	if (LoginCredits != null) LoginDrawCredits();
 	const CanLogin = ServerIsConnected && !LoginSubmitted;
-        DrawButton(750,120,500,60,"QAM 1.9.0 Ready!", "Pink", "Black", "");
+        DrawButton(750,120,500,60,"QAM 1.9.1 Ready!", "Pink", "Black", "");
 	DrawText(TextGet("Welcome"), 1000, 50, "White", "Black");
 	DrawText(LoginMessage, 1000, 100, "White", "Black");
 	DrawText(TextGet("AccountName"), 1000, 200, "White", "Black");
