@@ -6655,10 +6655,6 @@ async function NEWmenu() {
             if (target[0] != null) {
                 ChatRoomTargetMemberNumber = target[0].MemberNumber;
             }	
-        } else if (content.indexOf('@') == 0) {
-            ElementValue("InputChat", content.replace('@', "?"));
-            OLDmenu();
-            return;
         }
 
         //	DO NOT add new commands past this point.
