@@ -2,7 +2,7 @@
 
 Quick-AccessMenu2.1 by Nemesea - Add-on for Ben987's BondageClub game 
 
-Most recent release is version 1.9.0 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
+Most recent release is version 1.9.1 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
 ## Installation 
 
@@ -17,7 +17,7 @@ To update: Go to Installed Scripts / Click on date corresponding to QAM (TM will
 **Bookmark methode** - link to the QAM bookmark: https://tetris245.github.io/QAMbookmark.js
 
 **Alternative methode for Google Chrome, Microsoft Edge, similar browsers**
-1. Download the Quick-AccessMenu2.1-version1.9.0.zip file on the Releases page
+1. Download the Quick-AccessMenu2.1-version1.9.1.zip file on the Releases page
 2. Depending on browser, the .zip might have to be extracted. few browsers accept a .zip, a few requires a folder.
 3. Go to browser extensions. Enable developer mode.
 4. Load as Unpacked. Done. If the file can't be seen, see step 2.
@@ -45,14 +45,7 @@ All else I might not have included.
 
 Changes for future version 
 
-* Improved most commands with target by 
-  - adding a condition related to global item permissions
-  - removing the whispered message, often misunderstood by players
-* Updated the /kd debug command (Tip: check the internal enhanced KD menu!)
-* Updated the invisible commands, the unrestrict command and several rewritten functions for R86 compatibility
-* Fixed photoshot issue in Photographic room after pose menu change
-* Fixed a bug in pose menu when the nickname is undefined
-
+(...)
 
 
 
