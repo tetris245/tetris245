@@ -254,7 +254,6 @@ async function NEWmenu() {
                     "<b>/game</b> (minigamehere) = launches a minigame. Using will give more info.\n" +
                     "<b>/ggts</b> (minutes) (level) = enters ggts training in asylum for the specified time. Level must be between 1 and 6.\n" +
                     "<b>/keydeposit</b> (hours) = keeps your keys safe in the vault.\n" +
-                    "<b>/patreoncheats</b> = changes settings of patreon cheats. All except college uniform, is auto toggled by default.\n" +
                     "<b>/prison</b> (minutes) = stays in Pandora prison. More than 60 minutes is possible.\n" +
                     "<b>/store</b> = leaves chatroom, goes to store. Shows hidden items.\n" +
                     "<b>/timercell</b> (minutes) = stays in the isolation cell. More than 60 minutes is possible.</p>"
