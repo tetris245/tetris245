@@ -24,9 +24,11 @@ async function NEWmenu() {
     if (InventoryGet(Player, "Pronouns").Asset.Name == "HeHim")  {
         var tmpr1 = "He";
         var tmpr2 = "him";
+        var tmpr3 = "his";
     } else {
         var tmpr1 = "She";
         var tmpr2 = "her";
+        var tmpr3 = "her";
     }
 
     //chatcommand
@@ -320,7 +322,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " blinks her eyes."
+                        Text: "" + tmpname + " blinks " + tmpr3 + " eyes."
                     }]
                 });
             } else if (content.includes("blush1")) {
@@ -391,7 +393,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " closes her eyes."
+                        Text: "" + tmpname + " closes " + tmpr3 + " eyes."
                     }]
                 });
             } else if (content.includes("closemouth")) {
@@ -400,7 +402,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " closes her mouth."
+                        Text: "" + tmpname + " closes " + tmpr3 + " mouth."
                     }]
                 });
             } else if (content.includes("confused")) {
@@ -423,7 +425,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " cuddles with her friend."
+                        Text: "" + tmpname + " cuddles with " + tmpr3 + " friend."
                     }]
                 });
             } else if (content.includes("cry")) {
@@ -500,7 +502,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " is excited by the inflation of her gag."
+                        Text: "" + tmpname + " is excited by the inflation of " + tmpr3 + " gag."
                     }]
                 });
             } else if (content.includes("giggle")) {
@@ -556,7 +558,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " feels the effect of something very cold on her skin."
+                        Text: "" + tmpname + " feels the effect of something very cold on " + tmpr3 + " skin."
                     }]
                 });
             } else if (content.includes("kiss1")) {
@@ -566,7 +568,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " gives simple kisses to her friend."
+                        Text: "" + tmpname + " gives simple kisses to " + tmpr3 + " friend."
                     }]
                 });
             } else if (content.includes("kiss2")) {
@@ -579,7 +581,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " kisses her friend on the lips."
+                        Text: "" + tmpname + " kisses " + tmpr3 + " friend on the lips."
                     }]
                 });
             } else if (content.includes("kiss3")) {
@@ -592,7 +594,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " gives a long kiss to her friend."
+                        Text: "" + tmpname + " gives a long kiss to " + tmpr3 + " friend."
                     }]
                 });
             } else if (content.includes("laugh")) {
@@ -613,7 +615,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " licks sensitive body zones of her friend."
+                        Text: "" + tmpname + " licks sensitive body zones of " + tmpr3 + " friend."
                     }]
                 });
             } else if (content.includes("lipbite")) {
@@ -623,7 +625,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " bites her lips."
+                        Text: "" + tmpname + " bites " + tmpr3 + " lips."
                     }]
                 });
             } else if (content.includes("narroweyes")) {
@@ -634,7 +636,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " narrows her eyes."
+                        Text: "" + tmpname + " narrows " + tmpr3 + " eyes."
                     }]
                 });
             } else if (content.includes("neutral")) {
@@ -652,7 +654,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " opens her eyes."
+                        Text: "" + tmpname + " opens " + tmpr3 + " eyes."
                     }]
                 });
             } else if (content.includes("openmouth")) {
@@ -662,7 +664,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " opens her mouth."
+                        Text: "" + tmpname + " opens " + tmpr3 + " mouth."
                     }]
                 });
             } else if (content.includes("pout")) {
@@ -685,7 +687,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " raises her brows."
+                        Text: "" + tmpname + " raises " + tmpr3 + " brows."
                     }]
                 });
             } else if (content.includes("resetbrows")) {
@@ -740,7 +742,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tmpname + " feels the effect of the spanking on her skin."
+                        Text: "" + tmpname + " feels the effect of the spanking on " + tmpr3 + " skin."
                     }]
                 });
             } else if (content.includes("wink")) {
@@ -3962,7 +3964,7 @@ async function NEWmenu() {
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "" + tgpname + " becomes a cute pet girl."
+                        Text: "" + tgpname + " becomes a cute pet."
                     }]
                 });
                 CharacterNaked(target[0]);
