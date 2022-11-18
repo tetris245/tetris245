@@ -4632,7 +4632,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + tmpname + " makes her workout."
+                                    Text: "" + tmpname + " makes " + tmpr3 + " workout."
                                 }]
                             });
                         } else {
@@ -4641,7 +4641,7 @@ async function NEWmenu() {
                                 Type: "Action",
                                 Dictionary: [{
                                     Tag: "Beep",
-                                    Text: "" + tmpname + " helps " + tgpname + " to make her workout."
+                                    Text: "" + tmpname + " helps " + tgpname + " to make " + tgpr3 + " workout."
                                 }]
                             });
                         }
@@ -5374,6 +5374,17 @@ async function NEWmenu() {
                 } else {
                     tgpname = target[0].Nickname;
                 } 
+		if (InventoryGet(target[0], "Pronouns").Asset.Name == "HeHim")  {
+                        tgpr1 = "He";
+                        tgpr2 = "him";
+                        tgpr3 = "his";
+			tgpr4 = "he";
+                } else {
+                        tgpr1 = "She";
+                        tgpr2 = "her";
+                        tgpr3 = "her";
+			tgpr4 = "she";
+                }	
 		InventoryWear(target[0],"RegularSleepingPill",'ItemMouth');
                 ChatRoomCharacterUpdate(target[0]);
                 CharacterSetFacialExpression(target[0], "Eyes", "Closed");
@@ -5386,7 +5397,7 @@ async function NEWmenu() {
                         Type: "Action",
                         Dictionary: [{
                             Tag: "Beep",
-                            Text: "" + tmpname + " swallows a sleeping pill and drinks a glass of water. She falls asleep very quickly."
+                            Text: "" + tmpname + " swallows a sleeping pill and drinks a glass of water. " + tmpr1 + " falls asleep very quickly."
                          }]
                     });
                 } else {
@@ -5395,7 +5406,7 @@ async function NEWmenu() {
                         Type: "Action",
                         Dictionary: [{
                             Tag: "Beep",
-                            Text: "" + tmpname + " feeds "+ tgpname + " a sleeping pill and gives her a glass of water. "+ tgpname +" falls asleep very quickly."
+                            Text: "" + tmpname + " feeds "+ tgpname + " a sleeping pill and gives " + tgpr2 + " a glass of water. "+ tgpname +" falls asleep very quickly."
                         }]
                     });
                 }
@@ -9362,11 +9373,33 @@ function DialogClickPoseMenu() {
                         } else {
                              var tmpname = Player.Nickname;
                         }
+			if (InventoryGet(Player, "Pronouns").Asset.Name == "HeHim")  {
+                            var tmpr1 = "He";
+                            var tmpr2 = "him";
+                            var tmpr3 = "his";
+	                    var tmpr4 = "he";
+                        } else {
+                            var tmpr1 = "She";
+                            var tmpr2 = "her";
+                            var tmpr3 = "her";
+	                    var tmpr4 = "she";
+                        }
                         if ((CurrentCharacter.Nickname == '') || (CurrentCharacter.Nickname == undefined)) { 
                             var tgpname = CurrentCharacter.Name;
                         } else {
                             var tgpname = CurrentCharacter.Nickname;
                         }
+			if (InventoryGet(CurrentCharacter, "Pronouns").Asset.Name == "HeHim")  {
+                            var tgpr1 = "He";
+                            var tgpr2 = "him";
+                            var tgpr3 = "his";
+			    var tgpr4 = "he";
+                        } else {
+                            var tgpr1 = "She";
+                            var tgpr2 = "her";
+                            var tgpr3 = "her";
+			    var tgpr4 = "she";
+                        }	  
                         if ((CurrentCharacter.ID == 0) && (Player.ActivePose != null)) {
                             if (Player.ActivePose.includes('AllFours') == true) {
                                 ServerSend("ChatRoomChat", {
@@ -9384,7 +9417,7 @@ function DialogClickPoseMenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " puts the arms behind her back."
+                                        Text: "" + tmpname + " puts the arms behind " + tmpr3 + " back."
                                     }]
                                 });
                             }
@@ -9394,7 +9427,7 @@ function DialogClickPoseMenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " puts her arms out like she's handcuffed."
+                                        Text: "" + tmpname + " puts " + tmpr3 + " arms out like " + tmpr4 + " is handcuffed."
                                     }]
                                 });
                             }
@@ -9404,7 +9437,7 @@ function DialogClickPoseMenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " puts the arms behind her back, elbows almost touching."
+                                        Text: "" + tmpname + " puts the arms behind " + tmpr3 + " back, elbows almost touching."
                                     }]
                                 });
                             }
@@ -9424,7 +9457,7 @@ function DialogClickPoseMenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " kneels down and opens her legs."
+                                        Text: "" + tmpname + " kneels down and opens " + tmpr3 + " legs."
                                     }]
                                 }); 
                             }  
@@ -9434,7 +9467,7 @@ function DialogClickPoseMenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " stands up and closes her legs."
+                                        Text: "" + tmpname + " stands up and closes " + tmpr3 + " legs."
                                     }]
                                 }); 
                             }  
@@ -9444,7 +9477,7 @@ function DialogClickPoseMenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " raises the hands above her head."
+                                        Text: "" + tmpname + " raises the hands above " + tmpr3 + " head."
                                     }]
                                 }); 
                             }  
@@ -9454,7 +9487,7 @@ function DialogClickPoseMenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " raises her hands."
+                                        Text: "" + tmpname + " raises " + tmpr3 + " hands."
                                     }]
                                 }); 
                             }  
@@ -9476,7 +9509,7 @@ function DialogClickPoseMenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " forces " + tgpname + " to put the arms behind her back."
+                                        Text: "" + tmpname + " forces " + tgpname + " to put the arms behind " + tgpr3 + " back."
                                     }]
                                 });
                             }
@@ -9486,7 +9519,7 @@ function DialogClickPoseMenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text:  "" + tmpname + " forces " + tgpname + " to put the arms out like she's handcuffed."
+                                        Text:  "" + tmpname + " forces " + tgpname + " to put the arms out like " + tgpr4 + " is handcuffed."
 				    }]
                                 });
                             }
@@ -9496,7 +9529,7 @@ function DialogClickPoseMenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " forces " + tgpname + " to put the arms behind her back, elbows almost touching."
+                                        Text: "" + tmpname + " forces " + tgpname + " to put the arms behind " + tgpr3 + " back, elbows almost touching."
 				    }]
                                 });
                             }
@@ -9516,7 +9549,7 @@ function DialogClickPoseMenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " helps " + tgpname + " to kneel down, forcing her legs open."
+                                        Text: "" + tmpname + " helps " + tgpname + " to kneel down, forcing " + tgpr3 + " legs open."
                                     }]
                                 }); 
                             }  
@@ -9526,7 +9559,7 @@ function DialogClickPoseMenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " helps " + tgpname + " to stand up with her legs closed."
+                                        Text: "" + tmpname + " helps " + tgpname + " to stand up with " + tgpr3 + " legs closed."
                                     }]
                                 }); 
                             }  
@@ -9536,7 +9569,7 @@ function DialogClickPoseMenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " forces " + tgpname + " to raise the hands above her head."
+                                        Text: "" + tmpname + " forces " + tgpname + " to raise the hands above " + tgpr3 + " head."
                                     }]
                                 }); 
                             }  
@@ -9546,7 +9579,7 @@ function DialogClickPoseMenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " helps " + tgpname + " to raise her hands."
+                                        Text: "" + tmpname + " helps " + tgpname + " to raise " + tgpr3 + " hands."
                                     }]
                                 }); 
                             }  
