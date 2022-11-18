@@ -124,7 +124,6 @@ async function NEWmenu() {
 		    "Import2 = outfit + cosplay items + restraints - Import3 = full import including body changes\n" +
                     "<b>Auto-Join</b> to enter a room as soon as possible\n" +
                     "<b>Auto More Characters For Nickname</b> \n" +
-                    "<b>Auto Patreon Cheats</b> - can be changed with the /patreoncheats command\n" + 
                     "<b>Auto-Relog</b> - Works only if you select Return to chatrooms on relog in the Immersion settings - Not compatible with FBC Auto-Relog</p>"
                 );    
             } else if (content.includes("fun")) {
@@ -3914,21 +3913,6 @@ async function NEWmenu() {
 	            "Then you can use the <b>Import buttons</b> to load it later.</p>" 
 		);
             }
-       } else if (content.indexOf("/patreoncheats") == 0) {  
-            CheatValidate = function() {
-                return true;
-            };
-            CheatAllow = true;
-            CheatRun();
-            document.getElementById("InputChat").style.display = "none";
-            document.getElementById("TextAreaChatLog").style.display = "none";
-            CommonSetScreen("Character", "Cheat");
-            CheatExit = function() { //rewrite cheattexit to return to chatroom
-                CheatExport();
-                CommonSetScreen("Online", "ChatRoom");
-                document.getElementById("InputChat").style.display = "inline";
-                document.getElementById("TextAreaChatLog").style.display = "inline";
-            }   
 	} else if (content.indexOf("/permission") == 0) {
             if (content.endsWith("/permission")) {
                 ChatRoomSendLocal(
@@ -9066,28 +9050,6 @@ function PandoraPrisonRun() {
     DrawProgressBar(1610, 954, 380, 36, Math.round(PandoraWillpower / PandoraMaxWillpower * 100));
     DrawText(PandoraWillpower.toString(), 1800, 973, "black", "white");
 }
-
-//Patreon cheats (auto-enabled). Also allows functionality for submissive mistress. If patched, blank functions.
-CheatValidate = function() {
-    return true;
-};
-CheatAllow = true;
-CheatActivated.push("AutoShowTraits");
-CheatActivated.push("BlockRandomKidnap");
-CheatActivated.push("CantLoseMistress");
-CheatActivated.push("ChangeNPCTrait");
-CheatActivated.push("DoubleBrawlExperience");
-CheatActivated.push("DoubleGGTSTime");
-CheatActivated.push("DoubleItemSpeed");
-CheatActivated.push("DoubleMoney");
-CheatActivated.push("DoubleReputation");
-CheatActivated.push("DoubleSkill");
-// CheatActivated.push("FreeCollegeOutfit");withheld to prevent auto cheating
-CheatActivated.push("FreeNPCDress");
-CheatActivated.push("MiniGameBonus");
-CheatActivated.push("NoLoveDecay");
-CheatActivated.push("SkipTrialPeriod");
-CheatExport();
 
 //Pose Command
 function DialogExtendItem(Item, SourceItem) {
