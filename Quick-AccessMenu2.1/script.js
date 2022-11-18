@@ -21,7 +21,14 @@ async function NEWmenu() {
     } else {
         var tmpname = Player.Nickname;
     }
-	
+    if (InventoryGet(Player, "Pronouns").Asset.Name == "HeHim")  {
+        var tmpr1 = "He";
+        var tmpr2 = "him";
+    } else {
+        var tmpr1 = "She";
+        var tmpr2 = "her";
+    }
+
     //chatcommand
     if (CurrentScreen == "ChatRoom") {
 
@@ -50,7 +57,7 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Bondage commands:\n" +
                     "<b>/lock</b> = adds locks on all lockable items. Use /help lock for more info.\n" +
 		    "<b>/outfit</b> = restores/saves/loads outfit (including restraints). Using will give more info.\n" +
-                    "<b>/pet</b> (target) = becomes a fully restrained pet girl.\n" +
+                    "<b>/pet</b> (target) = becomes a fully restrained pet.\n" +
                     "<b>/randomize</b> (target) = naked + underwear + clothes + restrain commands.\n" +
                     "<b>/restrain</b> (target) = adds random restraints.\n" +
                     "<b>/solidity</b> (value) = changes the solidity of most current bindings. Value must be between 1 and 99. Use high values to make escape impossible!</p>"
