@@ -25,10 +25,12 @@ async function NEWmenu() {
         var tmpr1 = "He";
         var tmpr2 = "him";
         var tmpr3 = "his";
+	var tmpr4 = "he";
     } else {
         var tmpr1 = "She";
         var tmpr2 = "her";
         var tmpr3 = "her";
+	var tmpr4 = "she";
     }
 
     //chatcommand
@@ -4027,6 +4029,17 @@ async function NEWmenu() {
                     } else {
                         tgpname = target[0].Nickname;
                     } 
+		    if (InventoryGet(target[0], "Pronouns").Asset.Name == "HeHim")  {
+                        tgpr1 = "He";
+                        tgpr2 = "him";
+                        tgpr3 = "his";
+			tgpr4 = "he";
+                    } else {
+                        tgpr1 = "She";
+                        tgpr2 = "her";
+                        tgpr3 = "her";
+			tgpr4 = "she";
+                    }	
                     //poses for any player
                     if (content.includes("armsfree")) {
 			if (((target[0] == Player) || (target[0].AllowItem == true)) 
@@ -4040,7 +4053,7 @@ async function NEWmenu() {
                                      Type: "Action",
                                      Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " relaxes her arms."
+                                        Text: "" + tmpname + " relaxes " + tmpr3 + " arms."
                                     }]
                                 });
                             } else {
@@ -4049,7 +4062,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                          Tag: "Beep",
-                                         Text: "" + tmpname + " lets " + tgpname + " relax her arms."
+                                         Text: "" + tmpname + " lets " + tgpname + " relax " + tgpr3 + " arms."
                                     }]
                                 });
                             }
@@ -4066,7 +4079,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " relaxes on her belly."
+                                        Text: "" + tmpname + " relaxes on " + tmpr3 + " belly."
                                     }]
                                 });
                             } else {
@@ -4075,7 +4088,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " forces " + tgpname + " to stay on her belly."
+                                        Text: "" + tmpname + " forces " + tgpname + " to stay on " + tgpr3 + " belly."
                                     }]
                                 });
                             }
@@ -4092,7 +4105,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " puts the arms behind her back."
+                                        Text: "" + tmpname + " puts the arms behind " + tmpr3 + " back."
                                     }]
                                 });
                             } else {
@@ -4101,7 +4114,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " forces " + tgpname + " to put the arms behind her back."
+                                        Text: "" + tmpname + " forces " + tgpname + " to put the arms behind " + tgpr3 + " back."
                                     }]
                                 });
                             }
@@ -4118,7 +4131,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " puts her arms out like she's handcuffed."
+                                        Text: "" + tmpname + " puts " + tmpr3 + " arms out like " + tmpr4 + " is handcuffed."
                                     }]
                                 });
                             } else {
@@ -4127,7 +4140,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " forces " + tgpname + " to put the arms out like she's handcuffed."
+                                        Text: "" + tmpname + " forces " + tgpname + " to put the arms out like " + tgpr4 + " handcuffed."
                                     }]
                                 });
                             }
@@ -4144,7 +4157,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " puts the arms behind her back, elbows almost touching."
+                                        Text: "" + tmpname + " puts the arms behind " + tmpr3 + " back, elbows almost touching."
                                     }]
                                 });
                             } else {
@@ -4196,7 +4209,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " kneels down and opens her legs."
+                                        Text: "" + tmpname + " kneels down and opens " + tmpr3 + " legs."
                                     }]
                                 });
                             } else {
@@ -4205,7 +4218,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " helps " + tgpname + " to kneel down, forcing her legs open."
+                                        Text: "" + tmpname + " helps " + tgpname + " to kneel down, forcing " + tgpr3 + " legs open."
                                     }]
                                 });
                             }
@@ -4222,7 +4235,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " stands up and closes her legs."
+                                        Text: "" + tmpname + " stands up and closes " + tmpr3 + " legs."
                                     }]
                                 });
                             } else {
@@ -4231,7 +4244,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " helps " + tgpname + " to stand up with her legs closed."
+                                        Text: "" + tmpname + " helps " + tgpname + " to stand up with " + tgpr3 + " legs closed."
                                     }]
                                 });
                             }
@@ -4248,7 +4261,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " stands up normally on her feet."
+                                        Text: "" + tmpname + " stands up normally on " + tmpr3 + " feet."
                                     }]
                                 });
                             } else {
@@ -4257,7 +4270,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " helps " + tgpname + " to stand up normally on her feet."
+                                        Text: "" + tmpname + " helps " + tgpname + " to stand up normally on " + tgpr3 + " feet."
                                     }]
                                 });
                             }
@@ -4300,7 +4313,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " raises her hands."
+                                        Text: "" + tmpname + " raises " + tmpr3 + " hands."
                                     }]
                                 });
                             } else {
@@ -4309,7 +4322,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " helps " + tgpname + " to raise her hands."
+                                        Text: "" + tmpname + " helps " + tgpname + " to raise " + tgpr3 + " hands."
                                     }]
                                 });
                             }
@@ -4326,7 +4339,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " raises the hands above her head."
+                                        Text: "" + tmpname + " raises the hands above " + tmpr3 + " head."
                                     }]
                                 });
                             } else {
@@ -4335,7 +4348,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " forces " + tgpname + " to raise the hands above her head."
+                                        Text: "" + tmpname + " forces " + tgpname + " to raise the hands above " + tgpr3 + " head."
                                     }]
                                 });
                             }
@@ -4354,7 +4367,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " raises her hands and spreads her legs."
+                                        Text: "" + tmpname + " raises " + tmpr3 + " hands and spreads " + tmpr3 + " legs."
                                     }]
                                 });
                             } else {
@@ -4382,7 +4395,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " raises the hands above her head and spreads her legs."
+                                        Text: "" + tmpname + " raises the hands above " + tmpr3 + " head and spreads " + tmpr3 + " legs."
                                     }]
                                 });
                             } else {
@@ -4408,7 +4421,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " spreads her legs."
+                                        Text: "" + tmpname + " spreads " + tmpr3 + " legs."
                                     }]
                                 });
                             } else {
@@ -4417,7 +4430,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " forces " + tgpname + " to spread her legs."
+                                        Text: "" + tmpname + " forces " + tgpname + " to spread " + tgpr3 + " legs."
                                     }]
                                 });
                             }
@@ -4486,7 +4499,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " puts her arms out like her hands are taped."
+                                        Text: "" + tmpname + " puts " + tmpr3 + " arms out like " + tmpr3 + " hands are taped."
                                     }]
                                 });
                             } else {
@@ -4495,7 +4508,7 @@ async function NEWmenu() {
                                     Type: "Action",
                                     Dictionary: [{
                                         Tag: "Beep",
-                                        Text: "" + tmpname + " forces " + tgpname + " to put the arms out like her hands are taped."
+                                        Text: "" + tmpname + " forces " + tgpname + " to put the arms out like " + tgpr3 + " hands are taped."
                                     }]
                                 });
                             }
