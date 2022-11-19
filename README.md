@@ -46,7 +46,9 @@ All else I might not have included.
 Changes for future version 
 
 * Removed the Patreon cheats feature
-* Updated several messages to use correct pronouns
+* Improved the Diaper script for players without nickname
+* Updated several messages to use correct pronouns (also in the Diaper script)
+
 
 
 
