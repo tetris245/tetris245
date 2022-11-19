@@ -8167,26 +8167,6 @@ DiaperUseLevels = [
     ["#4C3017"]
 ];
 
-// Use messages table. Brought out here so it could be modified later in the GUI.
-DiaperUseMessages = {
-    "MessInner": " has messed her inner diaper.",
-    "MessInnerFully": " has fully messed her inner diaper.",
-    "WetInner": " has wet her inner diaper.",
-    "WetInnerFully": " has fully wet her inner diaper.",
-    "MessOuter": " has messed her outer diaper.",
-    "MessOuterFully": " has fully messed her outer diaper.",
-    "WetOuter": " has wet her outer diaper.",
-    "WetOuterFully": " has fully wet her outer diaper.",
-    "MessOnly": " has messed her diaper.",
-    "MessOnlyFully": " has fully messed her diaper.",
-    "WetOnly": " has wet her diaper.",
-    "WetOnlyFully": " has fully wet her diaper.",
-    "ChangeDiaperInner": " has gotten a fresh inner diaper.",
-    "ChangeDiaperOuter": " has gotten a fresh outer diaper.",
-    "ChangeDiaperOnly": " has gotten a fresh diaper.",
-    "ChangeDiaperBoth": " has gotten a fresh pair of diapers."
-};
-
 // Table to store all the defaul values for diaperWetter()
 const diaperDefaultValues = {
     messChance: .3,
@@ -8383,12 +8363,17 @@ function diaperWetter({
     initWetLevelOuter = diaperDefaultValues.wetLevelOuter
 } = {}) {
     // Greating message
+    if (Player.Nickname == '') { 
+        var tmpname = Player.Name;
+    } else {
+        var tmpname = Player.Nickname;
+    }
     ServerSend("ChatRoomChat", {
         Type: "Action",
         Content: "gag",
         Dictionary: [{
             Tag: "gag",
-            Text: "Say hello to the little baby " + Player.Nickname + "!"
+            Text: "Say hello to the little baby " + tmpname + "!"
         }]
     });
 
@@ -8448,7 +8433,6 @@ function changeDiaperTimer(delay) {
     } else if (delay > 60) {
         delay = 60;
     }
-
     diaperTimerBase = delay; // Updates diaperTimerBase
 }
 
@@ -8460,6 +8444,28 @@ function refreshDiaper({
     inWetLevelChastity = diaperDefaultValues.wetLevelOuter,
     inMessLevelChastity = diaperDefaultValues.messLevelOuter,
 } = {}) {
+    if (Player.Nickname == '') { 
+        var tmpname = Player.Name;
+    } else {
+        var tmpname = Player.Nickname;
+    }
+    if (InventoryGet(Player, "Pronouns").Asset.Name == "HeHim")  {
+        var tmpr1 = "He";
+        var tmpr2 = "him";
+        var tmpr3 = "his";
+	var tmpr4 = "he";
+    } else {
+        var tmpr1 = "She";
+        var tmpr2 = "her";
+        var tmpr3 = "her";
+	var tmpr4 = "she";
+    }
+    DiaperChangeMessages = {
+        "ChangeDiaperInner": " has gotten a fresh inner diaper.",
+        "ChangeDiaperOuter": " has gotten a fresh outer diaper.",
+        "ChangeDiaperOnly": " has gotten a fresh diaper.",
+        "ChangeDiaperBoth": " has gotten a fresh pair of diapers."
+    };
     if (cdiaper === "both") {
         MessLevelPanties = inMessLevelPanties;
         WetLevelPanties = inWetLevelPanties;
@@ -8473,7 +8479,7 @@ function refreshDiaper({
                 Content: "gag",
                 Dictionary: [{
                     Tag: "gag",
-                    Text: Player.Nickname + DiaperUseMessages["ChangeDiaperBoth"]
+                    Text: tmpname + DiaperChangeMessages["ChangeDiaperBoth"]
                 }]
             });
         } else if ((checkForDiaper("Panties") && !checkForDiaper("ItemPelvis")) || (checkForDiaper("ItemPelvis") && !checkForDiaper("Panties"))) {
@@ -8482,7 +8488,7 @@ function refreshDiaper({
                 Content: "gag",
                 Dictionary: [{
                     Tag: "gag",
-                    Text: Player.Nickname + DiaperUseMessages["ChangeDiaperOnly"]
+                    Text: tmpname + DiaperChangeMessages["ChangeDiaperOnly"]
                 }]
             });
         }
@@ -8496,7 +8502,7 @@ function refreshDiaper({
                 Content: "gag",
                 Dictionary: [{
                     Tag: "gag",
-                    Text: Player.Nickname + DiaperUseMessages["ChangeDiaperOuter"]
+                    Text: tmpname + DiaperChangeMessages["ChangeDiaperOuter"]
                 }]
             });
         } else if (checkForDiaper("ItemPelvis") && !checkForDiaper("Panties")) {
@@ -8505,7 +8511,7 @@ function refreshDiaper({
                 Content: "gag",
                 Dictionary: [{
                     Tag: "gag",
-                    Text: Player.Nickname + DiaperUseMessages["ChangeDiaperOnly"]
+                    Text: tmpname + DiaperChangeMessages["ChangeDiaperOnly"]
                 }]
             });
         }
@@ -8519,7 +8525,7 @@ function refreshDiaper({
                 Content: "gag",
                 Dictionary: [{
                     Tag: "gag",
-                    Text: Player.Nickname + DiaperUseMessages["ChangeDiaperOuter"]
+                    Text: tmpname + DiaperChangeMessages["ChangeDiaperOuter"]
                 }]
             });
         } else if (checkForDiaper("Panties") && !checkForDiaper("ItemPelvis")) {
@@ -8528,7 +8534,7 @@ function refreshDiaper({
                 Content: "gag",
                 Dictionary: [{
                     Tag: "gag",
-                    Text: Player.Nickname + DiaperUseMessages["ChangeDiaperOnly"]
+                    Text: tmpname + DiaperChangeMessages["ChangeDiaperOnly"]
                 }]
             });
         }
@@ -8626,13 +8632,18 @@ function checkTick() {
         // Go to main logic
         diaperTick();
     } else {
+	if (Player.Nickname == '') { 
+            var tmpname = Player.Name;
+        } else {
+            var tmpname = Player.Nickname;
+        }
         diaperRunning = false;
         ServerSend("ChatRoomChat", {
             Type: "Action",
             Content: "gag",
             Dictionary: [{
                 Tag: "gag",
-                Text: "Awww, " + Player.Nickname + " is all grown up!"
+                Text: "Awww, " + tmpname + " is all grown up!"
             }]
         });
     }
@@ -8641,7 +8652,37 @@ function checkTick() {
 // Body function
 // If the baby uses their diaper, it will make the front of their diaper look like it's been used
 function diaperTick() {
-    // Handle modifiers
+    // Handle modifiers 
+    if (Player.Nickname == '') { 
+        var tmpname = Player.Name;
+    } else {
+        var tmpname = Player.Nickname;
+    }
+    if (InventoryGet(Player, "Pronouns").Asset.Name == "HeHim")  {
+        var tmpr1 = "He";
+        var tmpr2 = "him";
+        var tmpr3 = "his";
+	var tmpr4 = "he";
+    } else {
+        var tmpr1 = "She";
+        var tmpr2 = "her";
+        var tmpr3 = "her";
+	var tmpr4 = "she";
+    }
+    DiaperUseMessages = {
+        "MessInner": " has messed " + tmpr3 + " inner diaper.",
+        "MessInnerFully": " has fully messed " + tmpr3 + " inner diaper.",
+        "WetInner": " has wet " + tmpr3 + " inner diaper.",
+        "WetInnerFully": " has fully wet " + tmpr3 + " inner diaper.",
+        "MessOuter": " has messed " + tmpr3 + " outer diaper.",
+        "MessOuterFully": " has fully messed " + tmpr3 + " outer diaper.",
+        "WetOuter": " has wet " + tmpr3 + " outer diaper.",
+        "WetOuterFully": " has fully wet " + tmpr3 + " outer diaper.",
+        "MessOnly": " has messed " + tmpr3 + " diaper.",
+        "MessOnlyFully": " has fully messed " + tmpr3 + " diaper.",
+        "WetOnly": " has wet " + tmpr3 + " diaper.",
+        "WetOnlyFully": " has fully " + tmpr3 + " her diaper."
+    };
     var diaperTimerModifier = 1; // We will divide by the modifier (positive modifiers decrease the timer)
     diaperTimerModifier = manageRegression(diaperTimerModifier);
     diaperTimerModifier = manageDesperation(diaperTimerModifier);
@@ -8665,7 +8706,7 @@ function diaperTick() {
                 Content: "gag",
                 Dictionary: [{
                     Tag: "gag",
-                    Text: Player.Nickname + DiaperUseMessages["MessOnlyFully"]
+                    Text: tmpname + DiaperUseMessages["MessOnlyFully"]
                 }]
             });
         } else if ((checkForDiaper("Panties") && !checkForDiaper("ItemPelvis")) || (checkForDiaper("ItemPelvis") && !checkForDiaper("Panties"))) {
@@ -8674,7 +8715,7 @@ function diaperTick() {
                 Content: "gag",
                 Dictionary: [{
                     Tag: "gag",
-                    Text: Player.Nickname + DiaperUseMessages["MessOnly"]
+                    Text: tmpname + DiaperUseMessages["MessOnly"]
                 }]
             });
         } else if (MessLevelChastity === 0) {
@@ -8684,7 +8725,7 @@ function diaperTick() {
                     Content: "gag",
                     Dictionary: [{
                         Tag: "gag",
-                        Text: Player.Nickname + DiaperUseMessages["MessInnerFully"]
+                        Text: tmpname + DiaperUseMessages["MessInnerFully"]
                     }]
                 });
             } else if (MessLevelPanties === 1) {
@@ -8693,7 +8734,7 @@ function diaperTick() {
                     Content: "gag",
                     Dictionary: [{
                         Tag: "gag",
-                        Text: Player.Nickname + DiaperUseMessages["MessInner"]
+                        Text: tmpname + DiaperUseMessages["MessInner"]
                     }]
                 });
             }
@@ -8703,7 +8744,7 @@ function diaperTick() {
                 Content: "gag",
                 Dictionary: [{
                     Tag: "gag",
-                    Text: Player.Nickname + DiaperUseMessages["MessOuter"]
+                    Text: tmpname + DiaperUseMessages["MessOuter"]
                 }]
             });
         } else if (MessLevelChastity === 2) {
@@ -8712,7 +8753,7 @@ function diaperTick() {
                 Content: "gag",
                 Dictionary: [{
                     Tag: "gag",
-                    Text: Player.Nickname + DiaperUseMessages["MessOuterFully"]
+                    Text: tmpname + DiaperUseMessages["MessOuterFully"]
                 }]
             });
         }
@@ -8732,7 +8773,7 @@ function diaperTick() {
                 Content: "gag",
                 Dictionary: [{
                     Tag: "gag",
-                    Text: Player.Nickname + DiaperUseMessages["MessOnlyFully"]
+                    Text: tmpname + DiaperUseMessages["MessOnlyFully"]
                 }]
             });
         } else if ((checkForDiaper("Panties") && !checkForDiaper("ItemPelvis")) || (checkForDiaper("ItemPelvis") && !checkForDiaper("Panties"))) {
@@ -8741,7 +8782,7 @@ function diaperTick() {
                 Content: "gag",
                 Dictionary: [{
                     Tag: "gag",
-                    Text: Player.Nickname + DiaperUseMessages["WetOnly"]
+                    Text: tmpname + DiaperUseMessages["WetOnly"]
                 }]
             });
         } else if (WetLevelChastity === 0) {
@@ -8751,7 +8792,7 @@ function diaperTick() {
                     Content: "gag",
                     Dictionary: [{
                         Tag: "gag",
-                        Text: Player.Nickname + DiaperUseMessages["WetInnerFully"]
+                        Text: tmpname + DiaperUseMessages["WetInnerFully"]
                     }]
                 });
             } else if (WetLevelPanties === 1) {
@@ -8760,7 +8801,7 @@ function diaperTick() {
                     Content: "gag",
                     Dictionary: [{
                         Tag: "gag",
-                        Text: Player.Nickname + DiaperUseMessages["WetInner"]
+                        Text: tmpname + DiaperUseMessages["WetInner"]
                     }]
                 });
             }
@@ -8770,7 +8811,7 @@ function diaperTick() {
                 Content: "gag",
                 Dictionary: [{
                     Tag: "gag",
-                    Text: Player.Nickname + DiaperUseMessages["WetOuter"]
+                    Text: tmpname + DiaperUseMessages["WetOuter"]
                 }]
             });
         } else if (WetLevelChastity === 2) {
@@ -8779,7 +8820,7 @@ function diaperTick() {
                 Content: "gag",
                 Dictionary: [{
                     Tag: "gag",
-                    Text: Player.Nickname + DiaperUseMessages["WetOuterFully"]
+                    Text: tmpname + DiaperUseMessages["WetOuterFully"]
                 }]
             });
         }
