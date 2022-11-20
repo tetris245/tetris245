@@ -234,6 +234,7 @@ async function NEWmenu() {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The unlock command:\n" +
                     "<b>/unlock</b> (target) (locktype).\n" +
+		    "The target always needs to be specified.\n" +
                     "All locks of any type will be removed if you don't specify the lock type.\n" +
                     " \n" +
                     "The lock types:\n" +
@@ -6206,16 +6207,13 @@ async function NEWmenu() {
             var stringUnlock2 = stringUnlock1.split(/[ ,]+/);
             var lk = stringUnlock2[2];
             var targetname = stringUnlock2[1];
-            if (targetname == undefined) {
-                targetname = Player.Name;
-            }
             var targetfinder = new RegExp('^' + targetname + '', 'i');
             var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 	    if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
             }
-            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
+            if ((target[0] != null) && (target[0].AllowItem == true))  {
 		if (target[0].Nickname == '') { 
                     tgpname = target[0].Name;
                 } else {
