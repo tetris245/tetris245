@@ -1937,7 +1937,7 @@ async function NEWmenu() {
                     }
                     if ((target[0] != null) && (checkForDiaper("Panties") && (checkForDiaper("ItemPelvis")) {
                         ServerSend("ChatRoomChat", {
-                            Content: "Quick-Access Menu2: " + tmpname + " will change your all your diapers and allows you to use the /diaper change3 command.",
+                            Content: "Quick-Access Menu2: " + tmpname + " will change all your diapers and allows you to use the /diaper change3 command.",
                             Type: "Whisper",
                             Target: target[0].MemberNumber
                         })
