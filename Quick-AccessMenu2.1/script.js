@@ -4801,37 +4801,50 @@ async function NEWmenu() {
             PandoraPunishmentSentence(minutes);
             PandoraPunishmentStart();
         } else if (content.indexOf("/randomize") == 0) {
-            var targetname = content.substring(10).trim();
-            if (targetname == undefined) {
-                targetname = Player.Name;
-            }
-            var targetfinder = new RegExp('^' + targetname + '', 'i');
-            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	    if (target[0] == null) {
-                    var targetnumber = parseInt(targetname);
-                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            }
-            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
-		if (target[0].Nickname == '') { 
-                    tgpname = target[0].Name;
-                } else {
-                    tgpname = target[0].Nickname;
-                } 
+	    if (content.endsWith("/randomize")) {
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "Magical lasers apply random clothes and bindings on " + tgpname + " body."
+                        Text: "Magical lasers apply random clothes and bindings on " + tmpname + " body."
                     }]
                 });
-                CharacterNaked(target[0]);
-                CharacterRandomUnderwear(target[0]);
-                CharacterAppearanceFullRandom(target[0], true);
-                CharacterFullRandomRestrain(target[0], "ALL");
-                ChatRoomCharacterUpdate(target[0]);
-		ChatRoomSetTarget(null);
-            }
+		CharacterNaked(Player);
+                CharacterRandomUnderwear(Player);
+                CharacterAppearanceFullRandom(Player, true);
+                CharacterFullRandomRestrain(Player, "ALL");
+                ChatRoomCharacterUpdate(Player);  
+            } else {
+                var targetname = content.substring(10).trim();
+                var targetfinder = new RegExp('^' + targetname + '', 'i');
+                var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	        if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);              
+                }
+                if ((target[0] != null) && (target[0].AllowItem == true))  {
+		    if (target[0].Nickname == '') { 
+                        tgpname = target[0].Name;
+                    } else {
+                        tgpname = target[0].Nickname; 
+                    } 
+                    ServerSend("ChatRoomChat", {
+                        Content: "Beep",
+                        Type: "Action",
+                        Dictionary: [{
+                            Tag: "Beep",
+                            Text: "Magical lasers apply random clothes and bindings on " + tgpname + " body."
+                        }]
+                    });
+		    CharacterNaked(target[0]);
+                    CharacterRandomUnderwear(target[0]);
+                    CharacterAppearanceFullRandom(target[0], true);
+                    CharacterFullRandomRestrain(target[0], "ALL");
+                    ChatRoomCharacterUpdate(target[0]);
+		    ChatRoomSetTarget(null);
+                }
+            }		
         } else if (content.indexOf("/relog") == 0) {
             ServerSocket.close();
             ServerSocket.open();
