@@ -4922,34 +4922,44 @@ async function NEWmenu() {
 		);
             }
         } else if (content.indexOf("/restrain") == 0) {
-            var targetname = content.substring(9).trim();
-            if (targetname == undefined) {
-                targetname = Player.Name;
-            }
-            var targetfinder = new RegExp('^' + targetname + '', 'i');
-            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	    if (target[0] == null) {
-                    var targetnumber = parseInt(targetname);
-                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            }
-            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
-		if (target[0].Nickname == '') { 
-                    tgpname = target[0].Name;
-                } else {
-                    tgpname = target[0].Nickname;
-                } 
+	    if (content.endsWith("/restrain")) {
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "Magical lasers apply random restraints on " + tgpname + " body."
+                        Text: "Magical lasers apply random restraints on " + tmpname + " body."
                     }]
                 });
-                CharacterFullRandomRestrain(target[0], "ALL");
-                ChatRoomCharacterUpdate(target[0]);
-		ChatRoomSetTarget(null);
-            }
+                CharacterFullRandomRestrain(Player, "ALL");
+                ChatRoomCharacterUpdate(Player);  
+            } else {
+                var targetname = content.substring(9).trim();
+                var targetfinder = new RegExp('^' + targetname + '', 'i');
+                var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	        if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);              
+                }
+                if ((target[0] != null) && (target[0].AllowItem == true))  {
+		    if (target[0].Nickname == '') { 
+                        tgpname = target[0].Name;
+                    } else {
+                        tgpname = target[0].Nickname; 
+                    } 
+                    ServerSend("ChatRoomChat", {
+                        Content: "Beep",
+                        Type: "Action",
+                        Dictionary: [{
+                            Tag: "Beep",
+                            Text: "Magical lasers apply random restraints on " + tgpname + " body."
+                        }]
+                    });
+                    CharacterFullRandomRestrain(target[0], "ALL");
+                    ChatRoomCharacterUpdate(target[0]);
+		    ChatRoomSetTarget(null);
+                }
+            }	
         } else if (content.indexOf("/roleplay") == 0) {
             if (content.includes("clubmistress")) {
                 LogAdd("ClubMistress", "Management");
