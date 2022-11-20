@@ -1627,7 +1627,7 @@ async function NEWmenu() {
                 CollegeChessGameEndALT();
             }
         } else if (content.indexOf("/clothes") == 0) {
-	    	if (content.endsWith("/clothes")) {
+	    if (content.endsWith("/clothes")) {
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
                     Type: "Action",
@@ -6111,34 +6111,44 @@ async function NEWmenu() {
                 }   	
             } 	
         } else if (content.indexOf("/underwear") == 0) {
-            var targetname = content.substring(10).trim();
-            if (targetname == undefined) {
-                targetname = Player.Name;
-            }
-            var targetfinder = new RegExp('^' + targetname + '', 'i');
-            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	    if (target[0] == null) {
-                    var targetnumber = parseInt(targetname);
-                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            }
-            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
-		if (target[0].Nickname == '') { 
-                    tgpname = target[0].Name;
-                } else {
-                    tgpname = target[0].Nickname;
-                } 
+	    if (content.endsWith("/underwear")) {
                 ServerSend("ChatRoomChat", {
                     Content: "Beep",
                     Type: "Action",
                     Dictionary: [{
                         Tag: "Beep",
-                        Text: "Magical lasers put " + tgpname + " in random underwear."
+                        Text: "Magical lasers put " + tmpname + " in random underwear."
                     }]
                 });
-                CharacterRandomUnderwear(target[0]);
-                ChatRoomCharacterUpdate(target[0]);
-		ChatRoomSetTarget(null);
-            }
+                CharacterRandomUnderwear(Player);
+                ChatRoomCharacterUpdate(Player);  
+            } else {
+                var targetname = content.substring(10).trim();
+                var targetfinder = new RegExp('^' + targetname + '', 'i');
+                var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	        if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);              
+                }
+                if ((target[0] != null) && (target[0].AllowItem == true))  {
+		    if (target[0].Nickname == '') { 
+                        tgpname = target[0].Name;
+                    } else {
+                        tgpname = target[0].Nickname; 
+                    } 
+                    ServerSend("ChatRoomChat", {
+                        Content: "Beep",
+                        Type: "Action",
+                        Dictionary: [{
+                            Tag: "Beep",
+                            Text: "Magical lasers put " + tgpname + " in random underwear."
+                        }]
+                    });
+                    CharacterRandomUnderwear(target[0]);
+                    ChatRoomCharacterUpdate(target[0]);
+		    ChatRoomSetTarget(null);
+                }
+            }	
         } else if (content.indexOf("/unlock") == 0) {
             var stringUnlock1 = content;
             var stringUnlock2 = stringUnlock1.split(/[ ,]+/);
