@@ -5401,49 +5401,45 @@ async function NEWmenu() {
                 }
             }
 	} else if (content.indexOf("/sleep") == 0) {
-            var targetname = content.substring(6).trim();
-            if (targetname == undefined) {
-                targetname = Player.Name;
-            }
-            var targetfinder = new RegExp('^' + targetname + '', 'i');
-            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	    if (target[0] == null) {
+	    if (content.endsWith("sleep")) {
+                ServerSend("ChatRoomChat", {
+                    Content: "Beep",
+                    Type: "Action",
+                    Dictionary: [{
+                        Tag: "Beep",
+                        Text: "" + tmpname + " swallows a sleeping pill and drinks a glass of water. " + tmpr1 + " falls asleep very quickly."
+                    }]
+                });
+                InventoryWear(Player,"RegularSleepingPill",'ItemMouth');
+                CharacterSetFacialExpression(Player, "Eyes", "Closed");
+                CharacterSetFacialExpression(Player, "Eyes2", "Closed");
+                CharacterSetFacialExpression(Player, "Emoticon", "Sleep");
+                ChatRoomCharacterUpdate(Player);  
+            } else {
+                var targetname = content.substring(6).trim();
+                var targetfinder = new RegExp('^' + targetname + '', 'i');
+                var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	        if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
-                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            }
-            if ((target[0] != null) && ((target[0] == Player) || (target[0].AllowItem == true)))  {
-		if (target[0].Nickname == '') { 
-                    tgpname = target[0].Name;
-                } else {
-                    tgpname = target[0].Nickname;
-                } 
-		if (InventoryGet(target[0], "Pronouns").Asset.Name == "HeHim")  {
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);              
+                }
+                if ((target[0] != null) && (target[0].AllowItem == true))  {
+		    if (target[0].Nickname == '') { 
+                        tgpname = target[0].Name;
+                    } else {
+                        tgpname = target[0].Nickname; 
+                    } 
+                    if (InventoryGet(target[0], "Pronouns").Asset.Name == "HeHim")  {
                         tgpr1 = "He";
                         tgpr2 = "him";
                         tgpr3 = "his";
 			tgpr4 = "he";
-                } else {
+                    } else {
                         tgpr1 = "She";
                         tgpr2 = "her";
                         tgpr3 = "her";
 			tgpr4 = "she";
-                }	
-		InventoryWear(target[0],"RegularSleepingPill",'ItemMouth');
-                ChatRoomCharacterUpdate(target[0]);
-                CharacterSetFacialExpression(target[0], "Eyes", "Closed");
-                CharacterSetFacialExpression(target[0], "Eyes2", "Closed");
-                CharacterSetFacialExpression(target[0], "Emoticon", "Sleep");
-                ChatRoomCharacterUpdate(target[0]);
-                if (target[0].Name == Player.Name) {
-                    ServerSend("ChatRoomChat", {
-                        Content: "Beep",
-                        Type: "Action",
-                        Dictionary: [{
-                            Tag: "Beep",
-                            Text: "" + tmpname + " swallows a sleeping pill and drinks a glass of water. " + tmpr1 + " falls asleep very quickly."
-                         }]
-                    });
-                } else {
+                    }	
                     ServerSend("ChatRoomChat", {
                         Content: "Beep",
                         Type: "Action",
@@ -5452,9 +5448,14 @@ async function NEWmenu() {
                             Text: "" + tmpname + " feeds "+ tgpname + " a sleeping pill and gives " + tgpr2 + " a glass of water. "+ tgpname +" falls asleep very quickly."
                         }]
                     });
+                    InventoryWear(target[0],"RegularSleepingPill",'ItemMouth');
+                    CharacterSetFacialExpression(target[0], "Eyes", "Closed");
+                    CharacterSetFacialExpression(target[0], "Eyes2", "Closed");
+                    CharacterSetFacialExpression(target[0], "Emoticon", "Sleep");
+                    ChatRoomCharacterUpdate(target[0]);
+		    ChatRoomSetTarget(null);
                 }
-		ChatRoomSetTarget(null);  
-            }	
+            }     
         } else if (content.indexOf("/solidity") == 0) {
 	    if (content.endsWith("/solidity")) {
                 ChatRoomSendLocal(
