@@ -174,7 +174,7 @@ async function NEWmenu() {
                     "/lock (target) (locktype) (minutes) (h) (i) (r) for locks 13 to 15\n" +
                     "/lock (target) (locktype) (password) (minutes) (h) (i) (r) for lock 16\n" +
                     " \n" +
-		    ""The target always needs to be specified.\n" +
+		    "The target always needs to be specified.\n" +
                     "The lock types:\n" +
                     "1 Metal - 2 Exclusive - 3 Intricate - 4 High Security\n" +
                     "5 Pandora - 6 Mistress - 7 Lover - 8 Owner\n" +
