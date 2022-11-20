@@ -1879,77 +1879,71 @@ async function NEWmenu() {
             ActivityOrgasmStart(Player);
         } else if (content.indexOf("/diaper") == 0) {
             if (content.includes("change1")) {
-                var stringChange1 = content;
-                var stringChange2 = stringChange1.split(/[ ,]+/);
-                var targetname = stringChange2[2];
-                if (targetname == undefined) {
-                    targetname = Player.Name;
-                }
-                var targetfinder = new RegExp('^' + targetname + '', 'i');
-                var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-		if (target[0] == null) {
-                    var targetnumber = parseInt(targetname);
-                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-                }
-                if (target[0] != null) {
-                    if ((target[0].Name == Player.Name) == false) {
+	        if (content.endsWith("/change1")) {
+                    refreshDiaper("panties");
+                } else {      
+                    var stringChange1 = content;
+                    var stringChange2 = stringChange1.split(/[ ,]+/);
+                    var targetname = stringChange2[2];
+                    var targetfinder = new RegExp('^' + targetname + '', 'i');
+                    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+		    if (target[0] == null) {
+                        var targetnumber = parseInt(targetname);
+                        target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+                    }
+                    if ((target[0] != null) && (checkForDiaper("Panties")) {
                         ServerSend("ChatRoomChat", {
                             Content: "Quick-Access Menu2: " + tmpname + " will change your normal diapers and allows you to use the /diaper change1 command.",
                             Type: "Whisper",
                             Target: target[0].MemberNumber
                         })
                     };
-                    refreshDiaper("panties");
 		    ChatRoomSetTarget(null);
                 }
             } else if (content.includes("change2")) {
-                var stringChange1 = content;
-                var stringChange2 = stringChange1.split(/[ ,]+/);
-                var targetname = stringChange2[2];
-                if (targetname == undefined) {
-                    targetname = Player.Name;
-                }
-                var targetfinder = new RegExp('^' + targetname + '', 'i');
-                var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-		if (target[0] == null) {
-                    var targetnumber = parseInt(targetname);
-                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-                }
-                if (target[0] != null) {
-                    if ((target[0].Name == Player.Name) == false) {
+                if (content.endsWith("/change2")) {
+                    refreshDiaper("chastity");
+                } else {      
+                    var stringChange1 = content;
+                    var stringChange2 = stringChange1.split(/[ ,]+/);
+                    var targetname = stringChange2[2];
+                    var targetfinder = new RegExp('^' + targetname + '', 'i');
+                    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+		    if (target[0] == null) {
+                        var targetnumber = parseInt(targetname);
+                        target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+                    }
+                    if ((target[0] != null) && (checkForDiaper("ItemPelvis")) {
                         ServerSend("ChatRoomChat", {
                             Content: "Quick-Access Menu2: " + tmpname + " will change your chastity diapers and allows you to use the /diaper change2 command.",
                             Type: "Whisper",
                             Target: target[0].MemberNumber
                         })
                     };
-                    refreshDiaper("chastity");
 		    ChatRoomSetTarget(null);
-                }
+                }    
             } else if (content.includes("change3")) {
-                var stringChange1 = content;
-                var stringChange2 = stringChange1.split(/[ ,]+/);
-                var targetname = stringChange2[2];
-                if (targetname == undefined) {
-                    targetname = Player.Name;
-                }
-                var targetfinder = new RegExp('^' + targetname + '', 'i');
-                var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-		if (target[0] == null) {
-                    var targetnumber = parseInt(targetname);
-                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-                }
-                if (target[0] != null) {
-                    if ((target[0].Name == Player.Name) == false) {
+	        if (content.endsWith("/change3")) {
+                    refreshDiaper("both");
+                } else {      
+                    var stringChange1 = content;
+                    var stringChange2 = stringChange1.split(/[ ,]+/);
+                    var targetname = stringChange2[2];
+                    var targetfinder = new RegExp('^' + targetname + '', 'i');
+                    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+		    if (target[0] == null) {
+                        var targetnumber = parseInt(targetname);
+                        target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+                    }
+                    if ((target[0] != null) && (checkForDiaper("Panties") && (checkForDiaper("ItemPelvis")) {
                         ServerSend("ChatRoomChat", {
-                            Content: "Quick-Access Menu2: " + tmpname + " will change all your diapers and allows you to use the /diaper change3 command.",
+                            Content: "Quick-Access Menu2: " + tmpname + " will change your all your diapers and allows you to use the /diaper change3 command.",
                             Type: "Whisper",
                             Target: target[0].MemberNumber
                         })
                     };
-                    refreshDiaper("both");
 		    ChatRoomSetTarget(null);
-                }
+                }        	    
             } else if (content.includes("setdesperation")) {
                 var stringSet1 = content;
                 var stringSet2 = stringSet1.split(/[ ,]+/);
