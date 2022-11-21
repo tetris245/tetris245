@@ -1926,7 +1926,7 @@ async function NEWmenu() {
                 var stringChange1 = content;
                 var stringChange2 = stringChange1.split(/[ ,]+/);
                 var targetname = stringChange2[2]		
-                if ((targetname === null) && (checkForDiaper("Panties")) && (checkForDiaper("ItemPelvis"))) {                     {
+                if ((targetname === null) && (checkForDiaper("Panties")) && (checkForDiaper("ItemPelvis"))) {
                     refreshDiaper("both");
                 } else {      ;
                     var targetfinder = new RegExp('^' + targetname + '', 'i');
