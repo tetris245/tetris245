@@ -1884,7 +1884,7 @@ async function NEWmenu() {
                 var targetname = stringChange2[2]		
                 if ((targetname === null) && (checkForDiaper("Panties"))) {
                     refreshDiaper("panties");
-                } else {      ;
+                } else {
                     var targetfinder = new RegExp('^' + targetname + '', 'i');
                     var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 		    if (target[0] == null) {
@@ -1892,12 +1892,14 @@ async function NEWmenu() {
                         target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
                     }
                     if (target[0] != null) {
-                        ServerSend("ChatRoomChat", {
-                            Content: "Quick-Access Menu2: " + tmpname + " will change your normal diapers and allows you to use the /diaper change1 command.",
-                            Type: "Whisper",
-                            Target: target[0].MemberNumber
-                        })
-                    };
+			if (InventoryGet(target[0], "Panties").Asset.Name == "BulkyDiaper" || InventoryGet(target[0], "Panties").Asset.Name === "PoofyDiaper") {  
+                            ServerSend("ChatRoomChat", {
+                                Content: "Quick-Access Menu2: " + tmpname + " will change your normal diapers and allows you to use the /diaper change1 command.",
+                                Type: "Whisper",
+                                Target: target[0].MemberNumber
+                            })
+                        };
+		    } 			    
 		    ChatRoomSetTarget(null);
                 }
             } else if (content.includes("change2")) {
@@ -1906,7 +1908,7 @@ async function NEWmenu() {
                 var targetname = stringChange2[2]		
                 if ((targetname === null) && (checkForDiaper("ItemPelvis"))) {
                     refreshDiaper("chastity");
-                } else {      ;
+                } else {
                     var targetfinder = new RegExp('^' + targetname + '', 'i');
                     var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 		    if (target[0] == null) {
@@ -1914,12 +1916,14 @@ async function NEWmenu() {
                         target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
                     }
                     if (target[0] != null) {
-                        ServerSend("ChatRoomChat", {
-                            Content: "Quick-Access Menu2: " + tmpname + " will change your chastity diapers and allows you to use the /diaper change2 command.",
-                            Type: "Whisper",
-                            Target: target[0].MemberNumber
-                        })
-                    };
+			if (InventoryGet(target[0}, "ItemPelvis").Asset.Name == "BulkyDiaper" || InventoryGet(target[0], "ItemPelvis").Asset.Name === "PoofyDiaper") {
+                            ServerSend("ChatRoomChat", {
+                                Content: "Quick-Access Menu2: " + tmpname + " will change your chastity diapers and allows you to use the /diaper change2 command.",
+                                Type: "Whisper",
+                                Target: target[0].MemberNumber
+                            })
+                        };
+		    }    
 		    ChatRoomSetTarget(null);
                 }   
 	    } else if (content.includes("change3")) {
@@ -1928,7 +1932,7 @@ async function NEWmenu() {
                 var targetname = stringChange2[2]		
                 if ((targetname === null) && (checkForDiaper("Panties")) && (checkForDiaper("ItemPelvis"))) {
                     refreshDiaper("both");
-                } else {      ;
+                } else {
                     var targetfinder = new RegExp('^' + targetname + '', 'i');
                     var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
 		    if (target[0] == null) {
@@ -1936,12 +1940,15 @@ async function NEWmenu() {
                         target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
                     }
                     if (target[0] != null) {
-                        ServerSend("ChatRoomChat", {
-                            Content: "Quick-Access Menu2: " + tmpname + " will change all your diapers and allows you to use the /diaper change3 command.",
-                            Type: "Whisper",
-                            Target: target[0].MemberNumber
-                        })
-                    };
+			if ((InventoryGet(target[0], "Panties").Asset.Name == "BulkyDiaper" || InventoryGet(target[0], "Panties").Asset.Name === "PoofyDiaper")    
+			  && (InventoryGet(target[0}, "ItemPelvis").Asset.Name == "BulkyDiaper" || InventoryGet(target[0], "ItemPelvis").Asset.Name === "PoofyDiaper")) {    
+                            ServerSend("ChatRoomChat", {
+                                Content: "Quick-Access Menu2: " + tmpname + " will change all your diapers and allows you to use the /diaper change3 command.",
+                                Type: "Whisper",
+                                Target: target[0].MemberNumber
+                            })
+                        };
+		    }    
 		    ChatRoomSetTarget(null);
                 }         
             } else if (content.includes("setdesperation")) {
