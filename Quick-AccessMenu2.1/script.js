@@ -8398,7 +8398,7 @@ function bcdwCommands(chatCommand, callerID, type) {
                             Content: "gag",
                             Dictionary: [{
                                 Tag: "gag",
-                                Text: Player.Nickname + " doesn't have a diaper there!"
+                                Text: tmpname + " doesn't have a diaper there!"
                             }]
                         });
                     } else {
@@ -8413,7 +8413,7 @@ function bcdwCommands(chatCommand, callerID, type) {
                             Content: "gag",
                             Dictionary: [{
                                 Tag: "gag",
-                                Text: Player.Nickname + " doesn't have a diaper there!"
+                                Text: tmpname + " doesn't have a diaper there!"
                             }]
                         });
                     } else {
@@ -8428,7 +8428,7 @@ function bcdwCommands(chatCommand, callerID, type) {
                             Content: "gag",
                             Dictionary: [{
                                 Tag: "gag",
-                                Text: Player.Nickname + " doesn't have a diaper! Get one on her before she makes a mess!"
+                                Text: tmpname + " doesn't have a diaper! Get one on her before she makes a mess!"
                             }]
                         });
                     } else {
