@@ -4825,7 +4825,7 @@ async function NEWmenu() {
                                 });
                             }
 			} else if (content.includes("reset")) {	
-			    if ((target[0].AllowItem == true) {	
+			    if (target[0].AllowItem == true) {	
                                 CharacterSetActivePose(target[0], null);
                                 ChatRoomCharacterUpdate(target[0]);
                                 CharacterRefresh(target[0]);
