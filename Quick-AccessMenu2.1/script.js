@@ -4687,7 +4687,7 @@ async function NEWmenu() {
                             } 
                         } else if (content.includes("pet")) {
 			    if ((target[0].AllowItem == true) 
-		              && ((target[0].ActivePose != 'AllFours') 
+		              && (target[0].ActivePose != 'AllFours') 
 			      && (CharacterCanChangeToPose(target[0], 'AllFours'))) {
                                 CharacterSetActivePose(target[0], "AllFours");
                                 ChatRoomCharacterUpdate(target[0]);            
@@ -4825,7 +4825,7 @@ async function NEWmenu() {
                                 });
                             }
 			} else if (content.includes("reset")) {	
-			    if ((target[0].AllowItem == true) 	
+			    if ((target[0].AllowItem == true) {	
                                 CharacterSetActivePose(target[0], null);
                                 ChatRoomCharacterUpdate(target[0]);
                                 CharacterRefresh(target[0]);
