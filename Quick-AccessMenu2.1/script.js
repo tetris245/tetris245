@@ -4043,11 +4043,11 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The pose2 command must be followed by a pose and optionally a target.\n" +
                     " \n" +
                     "Available poses:\n" +
-                    "armsfree, belly, boxtied, cuffed, elbowtied, exercise,\n" +
+                    "armsfree, belly, boxtied, cuffed, elbowtied,\n" +
                     "kneel1, kneel2, legsclosed, legsopen, pet,\n" +
                     "sleep, spreadarms1, spreadarms2, spreadeagle1\n" +
                     "spreadeagle2, spreadlegs, stand, suspension,\n" +
-                    "tapedhands. Only on yourself: jump, roof.\n" +
+                    "tapedhands. Only on yourself: exercise, jump, roof.\n" +
                     "Use <b>/pose2 reset</b> (target) to back to neutral pose.\n" + 
 		    "If FBC is enabled, use <b>/pose baseupper</b> only on yourself when /pose2 reset fails.</p>"
                 );
@@ -4056,476 +4056,476 @@ async function NEWmenu() {
                 var stringPose2 = stringPose1.split(/[ ,]+/);
                 var targetname = stringPose2[2];
                 if (targetname == null) {
-	             if ((content.includes("armsfree")) 
-		         && (Player.ActivePose != 'BaseUpper') 
-			 && (CharacterCanChangeToPose(Player, 'BaseUpper'))) {  
-                             CharacterSetActivePose(Player, "BaseUpper");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " relaxes " + tmpr3 + " arms."
-                                 }]
+	            if ((content.includes("armsfree")) 
+		        && (Player.ActivePose != 'BaseUpper') 
+			&& (CharacterCanChangeToPose(Player, 'BaseUpper'))) {  
+                            CharacterSetActivePose(Player, "BaseUpper");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " relaxes " + tmpr3 + " arms."
+                                }]
+                           });	
+		    } else if ((content.includes("belly"))
+	                && (Player.ActivePose != 'Hogtied') 
+			&& (CharacterCanChangeToPose(Player, 'Hogtied'))) {  
+                            CharacterSetActivePose(Player, "Hogtied");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " relaxes on " + tmpr3 + " belly."
+                                }]
+                            });
+	            } else if ((content.includes("boxtied"))
+	                && (Player.ActivePose != 'BackBoxTie') 
+			&& (CharacterCanChangeToPose(Player, 'BackBoxTie'))) {  
+                            CharacterSetActivePose(Player, "BackBoxTie");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " puts the arms behind " + tmpr3 + " back."
+                                }]
+                            });
+		     } else if ((content.includes("cuffed"))
+	                && (Player.ActivePose != 'BackCuffs') 
+			&& (CharacterCanChangeToPose(Player, 'BackCuffs'))) {  
+                            CharacterSetActivePose(Player, "BackCuffs");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " puts " + tmpr3 + " arms out like " + tmpr4 + " is handcuffed."
+                                }]
+                            });
+		     } else if ((content.includes("elbowtied"))
+	                && (Player.ActivePose != 'BackElbowTouch') 
+			&& (CharacterCanChangeToPose(Player, 'BackElbowTouch'))) {  
+                            CharacterSetActivePose(Player, "BackElbowTouch");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " puts the arms behind " + tmpr3 + " back, elbows almost touching."
+                                }]
+                            });
+		     } else if ((content.includes("kneel1"))
+	                && (Player.ActivePose != 'Kneel') 
+			&& ((CharacterCanChangeToPose(Player, 'Kneel')) || (ChatRoomCanAttemptKneel(Player) == true)))  { 
+                            CharacterSetActivePose(Player, "Kneel");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " kneels down."
+                                }]
+                            });
+		     } else if ((content.includes("kneel2"))
+	                && (Player.ActivePose != 'KneelingSpread') 
+			&& (CharacterCanChangeToPose(Player, 'KneelingSpread'))) {  
+                            CharacterSetActivePose(Player, "KneelingSpread");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " kneels down and opens " + tmpr3 + " legs."
+                                }]
+                            });
+		     } else if ((content.includes("legsclosed")) 
+	                && (Player.ActivePose != 'LegsClosed') 
+			&& (CharacterCanChangeToPose(Player, 'LegsClosed'))) {  
+                            CharacterSetActivePose(Player, "LegsClosed");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " stands up and closes " + tmpr3 + " legs."
+                                }]
+                            });	 
+		     } else if ((content.includes("legsopen"))
+	                && (Player.ActivePose != 'LegsOpen') 
+			&& (CharacterCanChangeToPose(Player, 'LegsOpen'))) {  
+                            CharacterSetActivePose(Player, "LegsOpen");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " stands up normally on " + tmpr3 + " feet."
+                                }]
+                            });	 
+		     } else if ((content.includes("pet"))
+	                && (Player.ActivePose != 'AllFours') 
+			&& (CharacterCanChangeToPose(Player, 'AllFours'))) {  
+                            CharacterSetActivePose(Player, "AllFours");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " relaxes on all fours."
+                                }]
+                            });	 
+		     } else if ((content.includes("spreadarms1")) 
+	                && (Player.ActivePose != 'Yoked') 
+			&& (CharacterCanChangeToPose(Player, 'Yoked'))) {  
+                            CharacterSetActivePose(Player, "Yoked");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " raises " + tmpr3 + " hands."
+                                }]
+                            });		 
+		     } else if ((content.includes("spreadarms2")) 
+	                && (Player.ActivePose != 'OverTheHead') 
+			&& (CharacterCanChangeToPose(Player, 'OverTheHead'))) {  
+                            CharacterSetActivePose(Player, "OverTheHead");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " raises the hands above " + tmpr3 + " head."
+                                }]
+                            });		 
+                     } else if ((content.includes("spreadeagle1")) 
+	                && ((Player.ActivePose == null) || (Player.ActivePose.includes('Yoked') == false) || (Player.ActivePose.includes('Spread') == false)) 
+			&& (CharacterCanChangeToPose(target[0], 'Yoked')) 
+			&& (CharacterCanChangeToPose(target[0], 'Spread'))) {  
+                            CharacterSetActivePose(target[0], "Yoked");
+                            CharacterSetActivePose(target[0], "Spread")
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " raises " + tmpr3 + " hands and spreads " + tmpr3 + " legs."
+                                }]
                             });	
-		     } else if ((content.includes("belly"))
-	                 && (Player.ActivePose != 'Hogtied') 
-			 && (CharacterCanChangeToPose(Player, 'Hogtied'))) {  
-                             CharacterSetActivePose(Player, "Hogtied");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " relaxes on " + tmpr3 + " belly."
-                                 }]
-                             });
-	             } else if ((content.includes("boxtied"))
-	                 && (Player.ActivePose != 'BackBoxTie') 
-			 && (CharacterCanChangeToPose(Player, 'BackBoxTie'))) {  
-                             CharacterSetActivePose(Player, "BackBoxTie");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " puts the arms behind " + tmpr3 + " back."
-                                 }]
-                             });
-		      } else if ((content.includes("cuffed"))
-	                 && (Player.ActivePose != 'BackCuffs') 
-			 && (CharacterCanChangeToPose(Player, 'BackCuffs'))) {  
-                             CharacterSetActivePose(Player, "BackCuffs");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " puts " + tmpr3 + " arms out like " + tmpr4 + " is handcuffed."
-                                 }]
-                             });
-			} else if ((content.includes("elbowtied"))
-	                 && (Player.ActivePose != 'BackElbowTouch') 
-			 && (CharacterCanChangeToPose(Player, 'BackElbowTouch'))) {  
-                             CharacterSetActivePose(Player, "BackElbowTouch");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " puts the arms behind " + tmpr3 + " back, elbows almost touching."
-                                 }]
-                             });
-			} else if ((content.includes("kneel1"))
-	                 && (Player.ActivePose != 'Kneel') 
-			 && ((CharacterCanChangeToPose(Player, 'Kneel')) || (ChatRoomCanAttemptKneel(Player) == true)))  { 
-                             CharacterSetActivePose(Player, "Kneel");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " kneels down."
-                                 }]
-                             });
-			} else if ((content.includes("kneel2"))
-	                 && (Player.ActivePose != 'KneelingSpread') 
-			 && (CharacterCanChangeToPose(Player, 'KneelingSpread'))) {  
-                             CharacterSetActivePose(Player, "KneelingSpread");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " kneels down and opens " + tmpr3 + " legs."
-                                 }]
-                             });
-			} else if ((content.includes("legsclosed")) 
-	                 && (Player.ActivePose != 'LegsClosed') 
-			 && (CharacterCanChangeToPose(Player, 'LegsClosed'))) {  
-                             CharacterSetActivePose(Player, "LegsClosed");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " stands up and closes " + tmpr3 + " legs."
-                                 }]
-                             });	 
-			} else if ((content.includes("legsopen"))
-	                 && (Player.ActivePose != 'LegsOpen') 
-			 && (CharacterCanChangeToPose(Player, 'LegsOpen'))) {  
-                             CharacterSetActivePose(Player, "LegsOpen");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " stands up normally on " + tmpr3 + " feet."
-                                 }]
-                             });	 
-			} else if ((content.includes("pet"))
-	                 && (Player.ActivePose != 'AllFours') 
-			 && (CharacterCanChangeToPose(Player, 'AllFours'))) {  
-                             CharacterSetActivePose(Player, "AllFours");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " relaxes on all fours."
-                                 }]
-                             });	 
-			} else if ((content.includes("spreadarms1")) 
-	                 && (Player.ActivePose != 'Yoked') 
-			 && (CharacterCanChangeToPose(Player, 'Yoked'))) {  
-                             CharacterSetActivePose(Player, "Yoked");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " raises " + tmpr3 + " hands."
-                                 }]
-                             });		 
-			} else if ((content.includes("spreadarms2")) 
-	                 && (Player.ActivePose != 'OverTheHead') 
-			 && (CharacterCanChangeToPose(Player, 'OverTheHead'))) {  
-                             CharacterSetActivePose(Player, "OverTheHead");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " raises the hands above " + tmpr3 + " head."
-                                 }]
-                             });		 
-                        } else if ((content.includes("spreadeagle1")) 
-	                 && ((Player.ActivePose == null) || (Player.ActivePose.includes('Yoked') == false) || (Player.ActivePose.includes('Spread') == false)) 
-			 && (CharacterCanChangeToPose(target[0], 'Yoked')) 
-			 && (CharacterCanChangeToPose(target[0], 'Spread'))) {  
-                             CharacterSetActivePose(target[0], "Yoked");
-                             CharacterSetActivePose(target[0], "Spread")
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " raises " + tmpr3 + " hands and spreads " + tmpr3 + " legs."
-                                 }]
-                             });	
-                       } else if ((content.includes("spreadeagle2")) 
-	                 && ((Player.ActivePose == null) || (Player.ActivePose.includes('OverTheHead') == false) || (Player.ActivePose.includes('Spread') == false)) 
-			 && (CharacterCanChangeToPose(target[0], 'OverTheHead')) 
-			 && (CharacterCanChangeToPose(target[0], 'Spread'))) {  
-                             CharacterSetActivePose(target[0], "OverTheHead");
-                             CharacterSetActivePose(target[0], "Spread")
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " raises the hands above " + tmpr3 + " head and spreads " + tmpr3 + " legs."
-                                 }]
-                             });	
-			} else if ((content.includes("spreadlegs")) 
-	                 && (Player.ActivePose != 'Spread') 
-			 && (CharacterCanChangeToPose(Player, 'Spread'))) {  
-                             CharacterSetActivePose(Player, "Spread");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " spreads " + tmpr3 + " legs."
-                                 }]
-                             });		 
-			} else if ((content.includes("stand")) 
-	                 && (Player.ActivePose != null) 
-			 && ((CharacterCanChangeToPose(Player, null)) || (ChatRoomCanAttemptStand(Player) == true)))  { 
-                             CharacterSetActivePose(Player, null);
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " stands up."
-                                 }]
-                             });	 
-			} else if ((content.includes("suspension")) 
-	                 && (Player.ActivePose != 'Suspension') 
-			 && (CharacterCanChangeToPose(Player, 'Suspension'))) {  
-                             CharacterSetActivePose(Player, "Suspension");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " is now in an acrobatic pose in suspension."
-                                 }]
-                             });		 
-			} else if ((content.includes("tapedhands")) 
-	                 && (Player.ActivePose != 'TapedHands') 
-			 && (CharacterCanChangeToPose(Player, 'TapedHands'))) {  
-                             CharacterSetActivePose(Player, "TapedHands");
-                             ChatRoomCharacterUpdate(Player);
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " puts " + tmpr3 + " arms out like " + tmpr3 + " hands are taped."
-                                 }]
-                             });	 
-			 // Special poses
-			 } else if (content.includes("jump")) { 
-			     ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " jumps with joy."
-                                 }]
-                             });
-                             CharacterSetActivePose(Player, null);
-                             setTimeout(function() {
-                                 InventoryGet(Player, "Emoticon").Property.OverrideHeight = {
-                                     Height: 150
-                                 };
-                                 CharacterSetActivePose(Player, "Kneel");
-                                 CurrentScreen === "ChatRoom" ?
+                     } else if ((content.includes("spreadeagle2")) 
+	                && ((Player.ActivePose == null) || (Player.ActivePose.includes('OverTheHead') == false) || (Player.ActivePose.includes('Spread') == false)) 
+			&& (CharacterCanChangeToPose(target[0], 'OverTheHead')) 
+			&& (CharacterCanChangeToPose(target[0], 'Spread'))) {  
+                            CharacterSetActivePose(target[0], "OverTheHead");
+                            CharacterSetActivePose(target[0], "Spread")
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " raises the hands above " + tmpr3 + " head and spreads " + tmpr3 + " legs."
+                                }]
+                            });	
+		     } else if ((content.includes("spreadlegs")) 
+	                && (Player.ActivePose != 'Spread') 
+			&& (CharacterCanChangeToPose(Player, 'Spread'))) {  
+                            CharacterSetActivePose(Player, "Spread");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " spreads " + tmpr3 + " legs."
+                                }]
+                            });		 
+	             } else if ((content.includes("stand")) 
+	                && (Player.ActivePose != null) 
+			&& ((CharacterCanChangeToPose(Player, null)) || (ChatRoomCanAttemptStand(Player) == true)))  { 
+                            CharacterSetActivePose(Player, null);
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " stands up."
+                                }]
+                            });	 
+		     } else if ((content.includes("suspension")) 
+	                && (Player.ActivePose != 'Suspension') 
+			&& (CharacterCanChangeToPose(Player, 'Suspension'))) {  
+                            CharacterSetActivePose(Player, "Suspension");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " is now in an acrobatic pose in suspension."
+                                }]
+                            });		 
+		     } else if ((content.includes("tapedhands")) 
+	                && (Player.ActivePose != 'TapedHands') 
+			&& (CharacterCanChangeToPose(Player, 'TapedHands'))) {  
+                            CharacterSetActivePose(Player, "TapedHands");
+                            ChatRoomCharacterUpdate(Player);
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " puts " + tmpr3 + " arms out like " + tmpr3 + " hands are taped."
+                                }]
+                            });	 
+		     // Special poses
+		     } else if (content.includes("jump")) { 
+			    ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " jumps with joy."
+                                }]
+                            });
+                            CharacterSetActivePose(Player, null);
+                            setTimeout(function() {
+                                InventoryGet(Player, "Emoticon").Property.OverrideHeight = {
+                                    Height: 150
+                                };
+                                CharacterSetActivePose(Player, "Kneel");
+                                CurrentScreen === "ChatRoom" ?
+                                    ChatRoomCharacterUpdate(Player) :
+                                    CharacterRefresh(Player);
+                            }, 1000);
+                            setTimeout(function() {
+                                InventoryGet(Player, "Emoticon").Property.OverrideHeight = undefined;
+                                CharacterSetActivePose(Player, null);
+                                CurrentScreen === "ChatRoom" ?
+                                    ChatRoomCharacterUpdate(Player) :
+                                    CharacterRefresh(Player);
+                            }, 2000);
+                            setTimeout(function() {
+                                InventoryGet(Player, "Emoticon").Property.OverrideHeight = {
+                                    Height: 150
+                                };
+                                CharacterSetActivePose(Player, "Kneel");
+                                CurrentScreen === "ChatRoom" ?
+                                    ChatRoomCharacterUpdate(Player) :
+                                    CharacterRefresh(Player);
+                            }, 3000);
+                            setTimeout(function() {
+                                CharacterSetActivePose(Player, null);
+                                delete InventoryGet(Player, 'Emoticon').Property.OverrideHeight;
+                                CurrentScreen === 'ChatRoom' ?
+                                    ChatRoomCharacterUpdate(Player) :
+                                    CharacterRefresh(Player);
+                            }, 4000);    
+	             } else if (content.includes("roof")) { 
+		            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+                                    Tag: "Beep",
+                                    Text: "" + tmpname + " jumps to the ceiling."
+                                }]
+                            });
+                            CharacterSetFacialExpression(Player, "Emoticon", "Annoyed", 1);
+                            CharacterSetActivePose(Player, null);
+                            ChatRoomCharacterUpdate(Player);
+                            setTimeout(function() {
+                                CharacterSetActivePose(Player, "OverTheHead");
+                                ChatRoomCharacterUpdate(Player);
+                            }, 500);
+                            setTimeout(function() {
+                                InventoryGet(Player, "Emoticon").Property.OverrideHeight = {
+                                    Height: 250
+                                };
+                                CurrentScreen === "ChatRoom" ?
+                                    ChatRoomCharacterUpdate(Player) :
+                                    CharacterRefresh(Player);
+                            }, 1000);
+                            setTimeout(function() {
+                                CharacterSetActivePose(Player, "Kneel");
+                                ChatRoomCharacterUpdate(Player);
+                            }, 2000);
+                            setTimeout(function() {
+                                CharacterSetActivePose(Player, "BaseUpper");
+                                CharacterSetActivePose(Player, null);
+                                CharacterSetActivePose(Player, ["Suspension", "Kneel"]);
+                                InventoryGet(Player, "Emoticon").Property.OverrideHeight = {
+                                    Height: -300
+                                };
+                                CurrentScreen === "ChatRoom" ?
                                      ChatRoomCharacterUpdate(Player) :
                                      CharacterRefresh(Player);
-                             }, 1000);
-                             setTimeout(function() {
-                                 InventoryGet(Player, "Emoticon").Property.OverrideHeight = undefined;
-                                 CharacterSetActivePose(Player, null);
-                                 CurrentScreen === "ChatRoom" ?
-                                     ChatRoomCharacterUpdate(Player) :
-                                     CharacterRefresh(Player);
-                             }, 2000);
-                             setTimeout(function() {
-                                 InventoryGet(Player, "Emoticon").Property.OverrideHeight = {
-                                     Height: 150
-                                 };
-                                 CharacterSetActivePose(Player, "Kneel");
-                                 CurrentScreen === "ChatRoom" ?
-                                     ChatRoomCharacterUpdate(Player) :
-                                     CharacterRefresh(Player);
-                             }, 3000);
-                             setTimeout(function() {
-                                 CharacterSetActivePose(Player, null);
-                                 delete InventoryGet(Player, 'Emoticon').Property.OverrideHeight;
-                                 CurrentScreen === 'ChatRoom' ?
-                                     ChatRoomCharacterUpdate(Player) :
-                                     CharacterRefresh(Player);
-                             }, 4000);    
-	                 } else if (content.includes("roof")) { 
-		             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-                                     Tag: "Beep",
-                                     Text: "" + tmpname + " jumps to the ceiling."
-                                 }]
-                             });
-                             CharacterSetFacialExpression(Player, "Emoticon", "Annoyed", 1);
-                             CharacterSetActivePose(Player, null);
-                             ChatRoomCharacterUpdate(Player);
-                             setTimeout(function() {
-                                 CharacterSetActivePose(Player, "OverTheHead");
-                                 ChatRoomCharacterUpdate(Player);
-                             }, 500);
-                             setTimeout(function() {
-                                 InventoryGet(Player, "Emoticon").Property.OverrideHeight = {
-                                     Height: 250
-                                 };
-                                 CurrentScreen === "ChatRoom" ?
-                                     ChatRoomCharacterUpdate(Player) :
-                                     CharacterRefresh(Player);
-                             }, 1000);
-                             setTimeout(function() {
-                                 CharacterSetActivePose(Player, "Kneel");
-                                 ChatRoomCharacterUpdate(Player);
-                             }, 2000);
-                             setTimeout(function() {
-                                 CharacterSetActivePose(Player, "BaseUpper");
-                                 CharacterSetActivePose(Player, null);
-                                 CharacterSetActivePose(Player, ["Suspension", "Kneel"]);
-                                 InventoryGet(Player, "Emoticon").Property.OverrideHeight = {
-                                     Height: -300
-                                 };
-                                 CurrentScreen === "ChatRoom" ?
-                                      ChatRoomCharacterUpdate(Player) :
-                                      CharacterRefresh(Player);
-                             }, 3000);	 
+                            }, 3000);	 
 			 // Workout
-			 } else if (content.includes("exercise")) {        
-                             var Region = undefined;
-                             if (InventoryGet(Player, "ItemButt") == null) {
-                                 InventoryWear(Player, "AnalHook", "ItemButt", "#272727");
-                                 Region = "ItemButt";
-                             } else if (InventoryGet(Player, "ItemButt").Asset.Name == "AnalHook") {
-                                 Region = "ItemButt";
-                             } else if (InventoryGet(Player, "ItemTorso") == null) {
-                                 InventoryWear(Player, "HempRopeHarness", "ItemTorso", "#272727");
-                                 InventoryGet(Player, "ItemTorso").Property = {
-                                     Type: "Waist"
-                                 };
-                                 Region = "ItemTorso";
-                             } else if (InventoryGet(Player, "ItemTorso").Asset.Name == "HempRopeHarness") {
-                                 InventoryGet(Player, "ItemTorso").Property = {
-                                     Type: "Waist"
-                                 };
-                                 Region = "ItemTorso";
-                             } else if (InventoryGet(Player, "ItemPelvis") == null) {
-                                 InventoryWear(Player, "HempRope", "ItemPelvis", "#272727");
-                                 Region = "ItemPelvis";
-                             } else if (InventoryGet(Player, "ItemPelvis").Asset.Name == "HempRope") {
-                                 Region = "ItemPelvis";
-                             } else {
-			         ChatRoomSendLocal(
-		                     "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: You're too heavily tied to excercise.</p>"
-		                 );
-                             }
-                             ServerSend("ChatRoomChat", {
-                                 Content: "Beep",
-                                 Type: "Action",
-                                 Dictionary: [{
-			             Tag: "Beep", 
-                                     Text: "" + tmpname + " makes " + tmpr3 + " workout."
-                                 }]
-                             });
-                             CharacterSetActivePose(Player, null);
-                             ChatRoomCharacterUpdate(Player);
-                             setTimeout(function() {
-                                 CharacterSetActivePose(Player, "OverTheHead");
-                                 ChatRoomCharacterUpdate(Player);
-                             }, 500);
-                             setTimeout(function() {
-                                 Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
-                                 DialogExtendItem(InventoryGet(Player, Region));
-                                 DialogFocusItem.Property.OverrideHeight = {
-                                     Height: 100
-                                 };
-                                 ChatRoomCharacterUpdate(Player);
-                                 DialogLeaveItemMenu();
-                             }, 1000);
-                             setTimeout(function() {
-                                  CharacterSetActivePose(Player, "Kneel");
-                             }, 2000);
-                             setTimeout(function() {
-                                 CharacterSetActivePose(Player, "Yoked");
-                                 Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
-                                 DialogExtendItem(InventoryGet(Player, Region));
-                                 DialogFocusItem.Property.OverrideHeight = {
-                                     Height: 350
-                                 };
-                                 ChatRoomCharacterUpdate(Player);
-                                 DialogLeaveItemMenu();
-                             }, 3000);
-                             setTimeout(function() {
-                                 CharacterSetActivePose(Player, "OverTheHead");
-                                 Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
-                                 DialogExtendItem(InventoryGet(Player, Region));
-                                 DialogFocusItem.Property.OverrideHeight = {
-                                     Height: 100
-                                 };
-                                 ChatRoomCharacterUpdate(Player);
-                                 DialogLeaveItemMenu();
-                             }, 4000);
-                             setTimeout(function() {
-                                 CharacterSetActivePose(Player, "Yoked");
-                                 Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
-                                 DialogExtendItem(InventoryGet(Player, Region));
-                                 DialogFocusItem.Property.OverrideHeight = {
-                                     Height: 350
-                                 };
-                                 ChatRoomCharacterUpdate(Player);
-                                 DialogLeaveItemMenu();
-                             }, 5000);
-                             setTimeout(function() {
-                                 CharacterSetActivePose(Player, "OverTheHead");
-                                 Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
-                                 DialogExtendItem(InventoryGet(Player, Region));
-                                 DialogFocusItem.Property.OverrideHeight = {
-                                     Height: 100
-                                 };
-                                 ChatRoomCharacterUpdate(Player);
-                                 DialogLeaveItemMenu();
-                             }, 6000);
-                             setTimeout(function() {
-                                 CharacterSetActivePose(Player, "Yoked");
-                                 Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
-                                 DialogExtendItem(InventoryGet(Player, Region));
-                                 DialogFocusItem.Property.OverrideHeight = {
-                                     Height: 350
-                                 };
-                                 ChatRoomCharacterUpdate(Player);
-                                 DialogLeaveItemMenu();
-                             }, 7000);
-                             setTimeout(function() {
-                                 CharacterSetActivePose(Player, "OverTheHead");
-                                 Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
-                                 DialogExtendItem(InventoryGet(Player, Region));
-                                 DialogFocusItem.Property.OverrideHeight = {
-                                     Height: 100
-                                 };
-                                 ChatRoomCharacterUpdate(Player);
-                                 DialogLeaveItemMenu();
-                             }, 8000);
-                             setTimeout(function() {
-                                 CharacterSetActivePose(Player, "Yoked");
-                                 Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
-                                 DialogExtendItem(InventoryGet(Player, Region));
-                                 DialogFocusItem.Property.OverrideHeight = {
-                                     Height: 350
-                                 };
-                                 ChatRoomCharacterUpdate(Player);
-                                 DialogLeaveItemMenu();
-                             }, 9000);
-                             setTimeout(function() {
-                                 CharacterSetActivePose(Player, "OverTheHead");
-                                 Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
-                                 DialogExtendItem(InventoryGet(Player, Region));
-                                 DialogFocusItem.Property.OverrideHeight = {
-                                     Height: 100
-                                 };
-                                 ChatRoomCharacterUpdate(Player);
-                                 DialogLeaveItemMenu();
-                             }, 10000);
-                             setTimeout(function() {
-                                 CharacterSetActivePose(Player, null);
-                                 Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
-                                 DialogExtendItem(InventoryGet(Player, Region));
-                                 DialogFocusItem.Property.OverrideHeight = undefined;
-                                 ChatRoomCharacterUpdate(Player);
-                                 DialogLeaveItemMenu();
-                             }, 10000);  
+		     } else if (content.includes("exercise")) {        
+                            var Region = undefined;
+                            if (InventoryGet(Player, "ItemButt") == null) {
+                                InventoryWear(Player, "AnalHook", "ItemButt", "#272727");
+                                Region = "ItemButt";
+                            } else if (InventoryGet(Player, "ItemButt").Asset.Name == "AnalHook") {
+                                Region = "ItemButt";
+                            } else if (InventoryGet(Player, "ItemTorso") == null) {
+                                InventoryWear(Player, "HempRopeHarness", "ItemTorso", "#272727");
+                                InventoryGet(Player, "ItemTorso").Property = {
+                                    Type: "Waist"
+                                };
+                                Region = "ItemTorso";
+                            } else if (InventoryGet(Player, "ItemTorso").Asset.Name == "HempRopeHarness") {
+                                InventoryGet(Player, "ItemTorso").Property = {
+                                    Type: "Waist"
+                                };
+                                Region = "ItemTorso";
+                            } else if (InventoryGet(Player, "ItemPelvis") == null) {
+                                InventoryWear(Player, "HempRope", "ItemPelvis", "#272727");
+                                Region = "ItemPelvis";
+                            } else if (InventoryGet(Player, "ItemPelvis").Asset.Name == "HempRope") {
+                                Region = "ItemPelvis";
+                            } else {
+			        ChatRoomSendLocal(
+		                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: You're too heavily tied to excercise.</p>"
+		                );
+                            }
+                            ServerSend("ChatRoomChat", {
+                                Content: "Beep",
+                                Type: "Action",
+                                Dictionary: [{
+			            Tag: "Beep", 
+                                    Text: "" + tmpname + " makes " + tmpr3 + " workout."
+                                }]
+                            });
+                            CharacterSetActivePose(Player, null);
+                            ChatRoomCharacterUpdate(Player);
+                            setTimeout(function() {
+                                CharacterSetActivePose(Player, "OverTheHead");
+                                ChatRoomCharacterUpdate(Player);
+                            }, 500);
+                            setTimeout(function() {
+                                Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
+                                DialogExtendItem(InventoryGet(Player, Region));
+                                DialogFocusItem.Property.OverrideHeight = {
+                                    Height: 100
+                                };
+                                ChatRoomCharacterUpdate(Player);
+                                DialogLeaveItemMenu();
+                            }, 1000);
+                            setTimeout(function() {
+                                 CharacterSetActivePose(Player, "Kneel");
+                            }, 2000);
+                            setTimeout(function() {
+                                CharacterSetActivePose(Player, "Yoked");
+                                Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
+                                DialogExtendItem(InventoryGet(Player, Region));
+                                DialogFocusItem.Property.OverrideHeight = {
+                                    Height: 350
+                                };
+                                ChatRoomCharacterUpdate(Player);
+                                DialogLeaveItemMenu();
+                            }, 3000);
+                            setTimeout(function() {
+                                CharacterSetActivePose(Player, "OverTheHead");
+                                Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
+                                DialogExtendItem(InventoryGet(Player, Region));
+                                DialogFocusItem.Property.OverrideHeight = {
+                                    Height: 100
+                                };
+                                ChatRoomCharacterUpdate(Player);
+                                DialogLeaveItemMenu();
+                            }, 4000);
+                            setTimeout(function() {
+                                CharacterSetActivePose(Player, "Yoked");
+                                Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
+                                DialogExtendItem(InventoryGet(Player, Region));
+                                DialogFocusItem.Property.OverrideHeight = {
+                                    Height: 350
+                                };
+                                ChatRoomCharacterUpdate(Player);
+                                DialogLeaveItemMenu();
+                            }, 5000);
+                            setTimeout(function() {
+                                CharacterSetActivePose(Player, "OverTheHead");
+                                Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
+                                DialogExtendItem(InventoryGet(Player, Region));
+                                DialogFocusItem.Property.OverrideHeight = {
+                                    Height: 100
+                                };
+                                ChatRoomCharacterUpdate(Player);
+                                DialogLeaveItemMenu();
+                            }, 6000);
+                            setTimeout(function() {
+                                CharacterSetActivePose(Player, "Yoked");
+                                Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
+                                DialogExtendItem(InventoryGet(Player, Region));
+                                DialogFocusItem.Property.OverrideHeight = {
+                                    Height: 350
+                                };
+                                ChatRoomCharacterUpdate(Player);
+                                DialogLeaveItemMenu();
+                            }, 7000);
+                            setTimeout(function() {
+                                CharacterSetActivePose(Player, "OverTheHead");
+                                Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
+                                DialogExtendItem(InventoryGet(Player, Region));
+                                DialogFocusItem.Property.OverrideHeight = {
+                                    Height: 100
+                                };
+                                ChatRoomCharacterUpdate(Player);
+                                DialogLeaveItemMenu();
+                            }, 8000);
+                            setTimeout(function() {
+                                CharacterSetActivePose(Player, "Yoked");
+                                Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
+                                DialogExtendItem(InventoryGet(Player, Region));
+                                DialogFocusItem.Property.OverrideHeight = {
+                                    Height: 350
+                                };
+                                ChatRoomCharacterUpdate(Player);
+                                DialogLeaveItemMenu();
+                            }, 9000);
+                            setTimeout(function() {
+                                CharacterSetActivePose(Player, "OverTheHead");
+                                Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
+                                DialogExtendItem(InventoryGet(Player, Region));
+                                DialogFocusItem.Property.OverrideHeight = {
+                                    Height: 100
+                                };
+                                ChatRoomCharacterUpdate(Player);
+                                DialogLeaveItemMenu();
+                            }, 10000);
+                            setTimeout(function() {
+                                CharacterSetActivePose(Player, null);
+                                Player.FocusGroup = AssetGroupGet("Female3DCG", Region);
+                                DialogExtendItem(InventoryGet(Player, Region));
+                                DialogFocusItem.Property.OverrideHeight = undefined;
+                                ChatRoomCharacterUpdate(Player);
+                                DialogLeaveItemMenu();
+                            }, 10000);  
 			 // reset	 
-			 } else if (content.includes("reset")) {
-                             CharacterSetActivePose(Player, null);
-                             delete InventoryGet(Player, 'Emoticon').Property.OverrideHeight;
-                             ChatRoomCharacterUpdate(Player);
-                             CharacterRefresh(Player);
-                         }     
+		     } else if (content.includes("reset")) {
+                            CharacterSetActivePose(Player, null);
+                            delete InventoryGet(Player, 'Emoticon').Property.OverrideHeight;
+                            ChatRoomCharacterUpdate(Player);
+                            CharacterRefresh(Player);
+                     }     
 			       
 			       
 			       
