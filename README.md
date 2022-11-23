@@ -46,7 +46,6 @@ All else I might not have included.
 Changes for future version 
 
 * New command: itemcolor to change the color of all current bindings on yourself or any other player
-* Removed the Patreon cheats feature
 * Improved the Diaper script by
   - checking the presence of diapers when using a /diaper change command
   - handling the case of players without nickname
@@ -54,6 +53,7 @@ Changes for future version
 * Rewrote most commands with target to get a correct effect when the target is not specified: the effect will be executed on the Player
   (Note: specifying the target is mandatory in a few commands: lock, unlock and whisper)
 * Limited the exercise option of the pose2 command to the Player
+* Removed the Patreon cheats feature
 * Fixed a bug in bg2 command (missing picture)
 
 
