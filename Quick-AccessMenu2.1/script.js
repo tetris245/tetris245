@@ -59,6 +59,7 @@ async function NEWmenu() {
             } else if (content.includes("bondage")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Bondage commands:\n" +
+		    "<b>/itemcolor</b> (colorcode) (target) = changes color on all current bindings.\n" +
                     "<b>/lock</b> = adds locks on all lockable items. Use /help lock for more info.\n" +
 		    "<b>/outfit</b> = restores/saves/loads outfit (including restraints). Using will give more info.\n" +
                     "<b>/pet</b> (target) = becomes a fully restrained pet.\n" +
@@ -2571,6 +2572,108 @@ async function NEWmenu() {
                 ]
             }	
 	    ServerPlayerAppearanceSync();
+	} else if (content.indexOf("/itemcolor") == 0) {
+            if (content.endsWith("/itemcolor")) {
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The itemcolor command must be followed by a color code in the format #000000 and optionally a target.</p>"                 
+                );
+            } else {
+                var stringItc1 = content;
+                var stringItc2 = stringItc1.split(/[ ,]+/);
+                var color = stringItc2[1];
+                var targetname = stringItc2[2];
+                if (targetname == null) {
+		    if (InventoryGet(Player, "ItemAddon") != null) CharacterAppearanceSetItem(Player, "ItemAddon", InventoryGet(Player, "ItemAddon").Asset, color);	
+		    if (InventoryGet(Player, "ItemArms") != null) CharacterAppearanceSetItem(Player, "ItemArms", InventoryGet(Player, "ItemArms").Asset, color);
+		    if (InventoryGet(Player, "ItemBoots") != null) CharacterAppearanceSetItem(Player, "ItemBoots", InventoryGet(Player, "ItemBoots").Asset, color);
+		    if (InventoryGet(Player, "ItemBreast") != null) CharacterAppearanceSetItem(Player, "ItemBreast", InventoryGet(Player, "ItemBreast").Asset, color);
+	            if (InventoryGet(Player, "ItemButt") != null) CharacterAppearanceSetItem(Player, "ItemButt", InventoryGet(Player, "ItemButt").Asset, color);
+		    if (InventoryGet(Player, "ItemDevices") != null) CharacterAppearanceSetItem(Player, "ItemDevices", InventoryGet(Player, "ItemDevices").Asset, color);      
+		    if (InventoryGet(Player, "ItemEars") != null) CharacterAppearanceSetItem(Player, "ItemEars", InventoryGet(Player, "ItemEars").Asset, color);
+		    if (InventoryGet(Player, "ItemFeet") != null) CharacterAppearanceSetItem(Player, "ItemFeet", InventoryGet(Player, "ItemFeet").Asset, color);
+                    if (InventoryGet(Player, "ItemHands") != null) CharacterAppearanceSetItem(Player, "ItemHands", InventoryGet(Player, "ItemHands").Asset, color);
+		    if (InventoryGet(Player, "ItemHead") != null) CharacterAppearanceSetItem(Player, "ItemHead", InventoryGet(Player, "ItemHead").Asset, color);
+		    if (InventoryGet(Player, "ItemHood") != null) CharacterAppearanceSetItem(Player, "ItemHood", InventoryGet(Player, "ItemHood").Asset, color);
+		    if (InventoryGet(Player, "ItemLegs") != null) CharacterAppearanceSetItem(Player, "ItemLegs", InventoryGet(Player, "ItemLegs").Asset, color);  
+		    if (InventoryGet(Player, "ItemHands") != null) CharacterAppearanceSetItem(Player, "ItemHands", InventoryGet(Player, "ItemHands").Asset, color);
+		    if (InventoryGet(Player, "ItemMisc") != null) CharacterAppearanceSetItem(Player, "ItemMisc", InventoryGet(Player, "ItemMisc").Asset, color);
+		    if (InventoryGet(Player, "ItemMouth") != null) CharacterAppearanceSetItem(Player, "ItemMouth", InventoryGet(Player, "ItemMouth").Asset, color);
+		    if (InventoryGet(Player, "ItemMouth2") != null) CharacterAppearanceSetItem(Player, "ItemMouth2", InventoryGet(Player, "ItemMouth2").Asset, color);
+		    if (InventoryGet(Player, "ItemMouth3") != null) CharacterAppearanceSetItem(Player, "ItemMouth3", InventoryGet(Player, "ItemMouth3").Asset, color);
+		    if (InventoryGet(Player, "ItemNeck") != null) CharacterAppearanceSetItem(Player, "ItemNeck", InventoryGet(Player, "ItemNeck").Asset, color);
+		    if (InventoryGet(Player, "ItemNeckAccessories") != null) CharacterAppearanceSetItem(Player, "ItemNeckAccessories", InventoryGet(Player, "ItemNeckAccessories").Asset, color);
+		    if (InventoryGet(Player, "ItemNeckRestraints") != null) CharacterAppearanceSetItem(Player, "ItemNeckRestraints", InventoryGet(Player, "ItemNeckRestraints").Asset, color);
+		    if (InventoryGet(Player, "ItemNipples") != null) CharacterAppearanceSetItem(Player, "ItemNipples", InventoryGet(Player, "ItemNipples").Asset, color);
+		    if (InventoryGet(Player, "ItemNipplesPiercings") != null) CharacterAppearanceSetItem(Player, "ItemNipplesPiercings", InventoryGet(Player, "ItemNipplesPiercings").Asset, color);
+		    if (InventoryGet(Player, "ItemNose") != null) CharacterAppearanceSetItem(Player, "ItemNose", InventoryGet(Player, "ItemNose").Asset, color);
+		    if (InventoryGet(Player, "ItemPelvis") != null) CharacterAppearanceSetItem(Player, "ItemPelvis", InventoryGet(Player, "ItemPelvis").Asset, color);
+		    if (InventoryGet(Player, "ItemTorso") != null) CharacterAppearanceSetItem(Player, "ItemTorso", InventoryGet(Player, "ItemTorso").Asset, color);
+		    if (InventoryGet(Player, "ItemTorso2") != null) CharacterAppearanceSetItem(Player, "ItemTorso2", InventoryGet(Player, "ItemTorso2").Asset, color);
+		    if (InventoryGet(Player, "ItemVulva") != null) CharacterAppearanceSetItem(Player, "ItemVulva", InventoryGet(Player, "ItemVulva").Asset, color);
+		    if (InventoryGet(Player, "ItemVulvaPiercings") != null) CharacterAppearanceSetItem(Player, "ItemVulvaPiercings", InventoryGet(Player, "ItemVulvaPiercings").Asset, color);
+                    ServerSend("ChatRoomChat", {
+                        Content: "Beep",
+                        Type: "Action",
+                        Dictionary: [{
+                            Tag: "Beep",
+                            Text: "New colors are used on " + tmpname + " bindings."
+                        }]
+                    });
+		    ChatRoomCharacterUpdate(Player); 
+		} else {
+                    var targetfinder = new RegExp('^' + targetname + '', 'i');
+                    var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	            if (target[0] == null) {
+                        var targetnumber = parseInt(targetname);
+                        target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);              
+                    }
+                    if ((target[0] != null) && (target[0].AllowItem == true))  {
+		        if (target[0].Nickname == '') { 
+                            tgpname = target[0].Name;
+                        } else {
+                            tgpname = target[0].Nickname; 
+                        } 
+		        if (InventoryGet(target[0], "ItemAddon") != null) CharacterAppearanceSetItem(target[0], "ItemAddon", InventoryGet(target[0], "ItemAddon").Asset, color);	
+		        if (InventoryGet(target[0], "ItemArms") != null) CharacterAppearanceSetItem(target[0], "ItemArms", InventoryGet(target[0], "ItemArms").Asset, color);
+		        if (InventoryGet(target[0], "ItemBoots") != null) CharacterAppearanceSetItem(target[0], "ItemBoots", InventoryGet(target[0], "ItemBoots").Asset, color);
+		        if (InventoryGet(target[0], "ItemBreast") != null) CharacterAppearanceSetItem(target[0], "ItemBreast", InventoryGet(target[0], "ItemBreast").Asset, color);
+	                if (InventoryGet(target[0], "ItemButt") != null) CharacterAppearanceSetItem(target[0], "ItemButt", InventoryGet(target[0], "ItemButt").Asset, color);
+		        if (InventoryGet(target[0], "ItemDevices") != null) CharacterAppearanceSetItem(target[0], "ItemDevices", InventoryGet(target[0], "ItemDevices").Asset, color);      
+		        if (InventoryGet(target[0], "ItemEars") != null) CharacterAppearanceSetItem(target[0], "ItemEars", InventoryGet(target[0], "ItemEars").Asset, color);
+		        if (InventoryGet(target[0], "ItemFeet") != null) CharacterAppearanceSetItem(target[0], "ItemFeet", InventoryGet(target[0], "ItemFeet").Asset, color);
+                        if (InventoryGet(target[0], "ItemHands") != null) CharacterAppearanceSetItem(target[0], "ItemHands", InventoryGet(target[0], "ItemHands").Asset, color);
+		        if (InventoryGet(target[0], "ItemHead") != null) CharacterAppearanceSetItem(target[0], "ItemHead", InventoryGet(target[0], "ItemHead").Asset, color);
+		        if (InventoryGet(target[0], "ItemHood") != null) CharacterAppearanceSetItem(target[0], "ItemHood", InventoryGet(target[0], "ItemHood").Asset, color);
+		        if (InventoryGet(target[0], "ItemLegs") != null) CharacterAppearanceSetItem(target[0], "ItemLegs", InventoryGet(target[0], "ItemLegs").Asset, color);  
+		        if (InventoryGet(target[0], "ItemHands") != null) CharacterAppearanceSetItem(target[0], "ItemHands", InventoryGet(target[0], "ItemHands").Asset, color);
+		        if (InventoryGet(target[0], "ItemMisc") != null) CharacterAppearanceSetItem(target[0], "ItemMisc", InventoryGet(target[0], "ItemMisc").Asset, color);
+		        if (InventoryGet(target[0], "ItemMouth") != null) CharacterAppearanceSetItem(target[0], "ItemMouth", InventoryGet(target[0], "ItemMouth").Asset, color);
+		        if (InventoryGet(target[0], "ItemMouth2") != null) CharacterAppearanceSetItem(target[0], "ItemMouth2", InventoryGet(target[0], "ItemMouth2").Asset, color);
+		        if (InventoryGet(target[0], "ItemMouth3") != null) CharacterAppearanceSetItem(target[0], "ItemMouth3", InventoryGet(target[0], "ItemMouth3").Asset, color);
+		        if (InventoryGet(target[0], "ItemNeck") != null) CharacterAppearanceSetItem(target[0], "ItemNeck", InventoryGet(target[0], "ItemNeck").Asset, color);
+		        if (InventoryGet(target[0], "ItemNeckAccessories") != null) CharacterAppearanceSetItem(target[0], "ItemNeckAccessories", InventoryGet(target[0], "ItemNeckAccessories").Asset, color);
+		        if (InventoryGet(target[0], "ItemNeckRestraints") != null) CharacterAppearanceSetItem(target[0], "ItemNeckRestraints", InventoryGet(target[0], "ItemNeckRestraints").Asset, color);
+		        if (InventoryGet(target[0], "ItemNipples") != null) CharacterAppearanceSetItem(target[0], "ItemNipples", InventoryGet(target[0], "ItemNipples").Asset, color);
+		        if (InventoryGet(target[0], "ItemNipplesPiercings") != null) CharacterAppearanceSetItem(target[0], "ItemNipplesPiercings", InventoryGet(target[0], "ItemNipplesPiercings").Asset, color);
+		        if (InventoryGet(target[0], "ItemNose") != null) CharacterAppearanceSetItem(target[0], "ItemNose", InventoryGet(target[0], "ItemNose").Asset, color);
+		        if (InventoryGet(target[0], "ItemPelvis") != null) CharacterAppearanceSetItem(target[0], "ItemPelvis", InventoryGet(target[0], "ItemPelvis").Asset, color);
+		        if (InventoryGet(target[0], "ItemTorso") != null) CharacterAppearanceSetItem(target[0], "ItemTorso", InventoryGet(target[0], "ItemTorso").Asset, color);
+		        if (InventoryGet(target[0], "ItemTorso2") != null) CharacterAppearanceSetItem(target[0], "ItemTorso2", InventoryGet(target[0], "ItemTorso2").Asset, color);
+		        if (InventoryGet(target[0], "ItemVulva") != null) CharacterAppearanceSetItem(target[0], "ItemVulva", InventoryGet(target[0], "ItemVulva").Asset, color);
+		        if (InventoryGet(target[0], "ItemVulvaPiercings") != null) CharacterAppearanceSetItem(target[0], "ItemVulvaPiercings", InventoryGet(target[0], "ItemVulvaPiercings").Asset, color);
+			ServerSend("ChatRoomChat", {
+                            Content: "Beep",
+                            Type: "Action",
+                            Dictionary: [{
+                                Tag: "Beep",
+                                Text: "New colors are used on " + tgpname + " bindings."
+                            }]
+                        });
+		        ChatRoomCharacterUpdate(target[0]);
+		        ChatRoomSetTarget(null);
+		    }	
+	        }
+            }	
         } else if (content.indexOf("/kd") == 0) {
             ArcadeKinkyDungeonEnd = function() {
                 CommonSetScreen("Online", "ChatRoom");
