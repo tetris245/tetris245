@@ -54,7 +54,7 @@ Changes for future version
 * Rewrote most commands with target to get a correct effect when the target is not specified: the effect will be executed on the Player
   (Note: specifying the target is mandatory in a few commands: lock, unlock and whisper)
 * Limited the exercise option of the pose2 command to the Player
-
+* Fixed a bug in bg2 command (missing picture)
 
 
 
