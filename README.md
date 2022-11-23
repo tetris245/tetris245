@@ -45,6 +45,7 @@ All else I might not have included.
 
 Changes for future version 
 
+* New command: itemcolor to change the color of all current bindings on yourself or any other player
 * Removed the Patreon cheats feature
 * Improved the Diaper script by
   - checking the presence of diapers when using a /diaper change command
