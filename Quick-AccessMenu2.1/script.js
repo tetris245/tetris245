@@ -1572,23 +1572,28 @@ async function NEWmenu() {
                 updateBackground();
             }		
 	} else if (content.indexOf("/bio") == 0) {
-            var targetname = content.substring(4).trim();
-            if (targetname == undefined) {
-                targetname = Player.Name;
-            }
-            var targetfinder = new RegExp('^' + targetname + '', 'i');
-            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	    if (target[0] == null) {
-                    var targetnumber = parseInt(targetname);
-                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            }
-            if (target[0] != null) {
-                InformationSheetLoadCharacter(target[0]);
+	    if (content.endsWith("/bio")) {
+		InformationSheetLoadCharacter(Player);
                 OnlineProfileRun();
                 document.getElementById("InputChat").style.display = "none";
                 document.getElementById("TextAreaChatLog").style.display = "none";
                 CommonSetScreen("Character", "OnlineProfile");
-            }	
+            } else {    	    
+                var targetname = content.substring(4).trim();     
+                var targetfinder = new RegExp('^' + targetname + '', 'i');
+                var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	        if (target[0] == null) {
+                    var targetnumber = parseInt(targetname);
+                    target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+                }
+                if (target[0] != null) {
+                    InformationSheetLoadCharacter(target[0]);
+                    OnlineProfileRun();
+                    document.getElementById("InputChat").style.display = "none";
+                    document.getElementById("TextAreaChatLog").style.display = "none";
+                    CommonSetScreen("Character", "OnlineProfile");
+                }	
+	    }    
         } else if (content.indexOf("/boost") == 0) {
             LogAdd("ModifierLevel", "SkillModifier", 105);
             LogAdd("ModifierDuration", "SkillModifier", CurrentTime + 3600000);
