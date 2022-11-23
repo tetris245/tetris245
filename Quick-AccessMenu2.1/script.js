@@ -6771,18 +6771,23 @@ async function NEWmenu() {
                 }   	
             } 	
         } else if (content.indexOf("/wardrobe") == 0) {
-            var targetname = content.substring(10).trim();
-            var targetfinder = new RegExp('^' + targetname + '', 'i');
-            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-	    if (target[0] == null) {
+	    if (content.endsWith("/wardrobe")) {
+                ChatRoomClickCharacter(Player);
+                DialogChangeClothes();
+            } else {
+                var targetname = content.substring(10).trim();
+                var targetfinder = new RegExp('^' + targetname + '', 'i');
+                var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+	        if (target[0] == null) {
                     var targetnumber = parseInt(targetname);
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            }
-            if (target[0] != null) {
-                target[0].OnlineSharedSettings.AllowFullWardrobeAccess = true;
-                target[0].OnlineSharedSettings.BlockBodyCosplay = false;
-                ChatRoomClickCharacter(target[0]);
-                DialogChangeClothes();
+                }
+                if (target[0] != null) {
+                    target[0].OnlineSharedSettings.AllowFullWardrobeAccess = true;
+                    target[0].OnlineSharedSettings.BlockBodyCosplay = false;
+                    ChatRoomClickCharacter(target[0]);
+                    DialogChangeClothes();
+		}	
             }
         } else if (content.indexOf("/whisper") == 0) {
             var targetname = content.substring(8).trim();
