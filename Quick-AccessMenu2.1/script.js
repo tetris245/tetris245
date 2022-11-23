@@ -2589,7 +2589,7 @@ async function NEWmenu() {
                 var stringItc2 = stringItc1.split(/[ ,]+/);
                 var color = stringItc2[1];
                 var targetname = stringItc2[2];
-                if (targetname == null) {
+                if ((targetname == null) && (color.startsWith("#")))  {
 		    if (InventoryGet(Player, "ItemAddon") != null) CharacterAppearanceSetItem(Player, "ItemAddon", InventoryGet(Player, "ItemAddon").Asset, color);	
 		    if (InventoryGet(Player, "ItemArms") != null) CharacterAppearanceSetItem(Player, "ItemArms", InventoryGet(Player, "ItemArms").Asset, color);
 		    if (InventoryGet(Player, "ItemBoots") != null) CharacterAppearanceSetItem(Player, "ItemBoots", InventoryGet(Player, "ItemBoots").Asset, color);
@@ -2634,7 +2634,7 @@ async function NEWmenu() {
                         var targetnumber = parseInt(targetname);
                         target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);              
                     }
-                    if ((target[0] != null) && (target[0].AllowItem == true))  {
+                    if ((target[0] != null) && (target[0].AllowItem == true) && (color.startsWith("#")))  {
 		        if (target[0].Nickname == '') { 
                             tgpname = target[0].Name;
                         } else {
