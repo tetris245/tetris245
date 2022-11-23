@@ -52,7 +52,7 @@ async function NEWmenu() {
                     "<b>talking</b> = commands related to talking.\n" +
                     "<b>visual</b> = commands related to animations and background.\n" +
                     "<b>zones</b> = commands related to game zones.\n" +
-		    "Several commands require to specify a target. It can be a real name or a member number.\n" +
+		    "Several commands require or allow to specify a target. It can be a real name or a member number.\n" +
 		    "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
 		    "Visit also our <a href='https://github.com/tetris245/tetris245/wiki' target='_blank'>Wiki</a></p>"	
                 );
