@@ -230,7 +230,7 @@ async function NEWmenu() {
                     "<b>/s2</b> (stuffhere) = speaks once in normal stuttering mode.\n" +
                     "<b>/s3</b> (stuffhere) = speaks once in heavy stuttering mode.\n" +
                     "<b>/s4</b> (stuffhere) = speaks once in total stuttering mode.\n" +
-                   "<b>/stutter</b> (stuttermode) = forces a specific stuttering mode. *\n" +
+                    "<b>/stutter</b> (stuttermode) = forces a specific stuttering mode. *\n" +
 		    "<b>/talk</b> (talkmode) = changes your talk mode. *\n" +
                     "<b>/whisper</b> (target) = sets whisper target.</p>"
                 );
