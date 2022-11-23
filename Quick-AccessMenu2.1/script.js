@@ -59,7 +59,7 @@ async function NEWmenu() {
             } else if (content.includes("bondage")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Bondage commands:\n" +
-		    "<b>/itemcolor</b> (colorcode) (target) = changes color on all current bindings.\n" +
+		    "<b>/itemcolor</b> (colorcode) (target) = changes color on all current bindings. Color code must be in the format #000000\n" +
                     "<b>/lock</b> = adds locks on all lockable items. Use /help lock for more info.\n" +
 		    "<b>/outfit</b> = restores/saves/loads outfit (including restraints). Using will give more info.\n" +
                     "<b>/pet</b> (target) = becomes a fully restrained pet.\n" +
