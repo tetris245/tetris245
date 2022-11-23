@@ -50,6 +50,9 @@ Changes for future version
   - checking the presence of diapers when using a /diaper change command
   - handling the case of players without nickname
 * Updated several messages to use correct pronouns (also in the Diaper script)
+* Rewrote most commands with target to get a correct effect when the target is not specified: the effect will be executed on the player
+  (Note: specifying the target is mandatory in a few commands: lock, unlock and whisper)
+* Limited the exercise option of the pose2 command to the Player
 
 
 
