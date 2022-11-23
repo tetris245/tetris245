@@ -1455,7 +1455,7 @@ async function NEWmenu() {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Forest/CabinPath';
                 updateBackground(); 	    
 	    } else if (bg == 49) {
-                ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/ForestCabin';
+                ChatCreateBackgroundSelect = '../Screens/Room/PlatformDialog/Background/ForestCabinInterior';
                 updateBackground();  
 	    } else if (bg == 50) {
                 ChatCreateBackgroundSelect = '../Screens/Room/Platform/Background/Forest/Orig/WoodCabin';
