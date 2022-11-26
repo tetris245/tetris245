@@ -45,7 +45,8 @@ All else I might not have included.
 
 Changes for future version 
 
-* Added 3 lobby buttons in main hall for faster access to the chat rooms
+* Added 3 lobby buttons in main hall for faster access to the chat rooms (+ back to main hall when leaving search screen)
+
 
 
 
