@@ -9174,6 +9174,24 @@ function MainHallRun() {
         MainCanvas.textAlign = "left";
 	DrawTextWrap(QAMtext, 30 - 630 / 2, 593, 630, 236, "black");
 	MainCanvas.textAlign = "center";
+	DrawText("Chat Rooms", 130, 530, "White", "Black");
+	if ((InventoryGet(Player, "Pronouns").Asset.Name == "SheHer") 
+	    && (InventoryGet(Player, "Pussy").Asset.Name != "Penis") 
+	    && (InventoryGet(Player, "BodyUpper").Asset.Name != "FlatSmall") 
+	    && (InventoryGet(Player, "BodyUpper").Asset.Name != "FlatMedium")) {
+            DrawButton(240, 475, 90, 90, "", "White","Screens/Online/ChatSelect/Female.png", "Only Female");
+        } else {
+            DrawButton(240, 475, 90, 90, "", "Gray","Screens/Online/ChatSelect/Female.png", "Only Female");
+        } 
+        DrawButton(360, 475, 180, 90, "", "White","Screens/Online/ChatSelect/Female.png", "Mixed");
+        DrawButton(450, 475, 90, 90, "", "White","Screens/Online/ChatSelect/Male.png");
+        if ((InventoryGet(Player, "Pronouns").Asset.Name == "HeHim") 
+	    && (InventoryGet(Player, "Pussy").Asset.Name == "Penis") 
+	    && ((InventoryGet(Player, "BodyUpper").Asset.Name == "FlatSmall") || (InventoryGet(Player, "BodyUpper").Asset.Name == "FlatMedium")))  {
+            DrawButton(570, 475, 90, 90, "", "White","Screens/Online/ChatSelect/Male.png", "Only Male");
+        } else {
+            DrawButton(570, 475, 90, 90, "", "Gray","Screens/Online/ChatSelect/Male.png", "Only Male");
+        }
 	DrawButton(1645, 25, 90, 90, "", "White", "Icons/Character.png", TextGet("Profile"));
 	if (Player.CanChangeOwnClothes()) DrawButton(1765, 25, 90, 90, "", "White", "Icons/Dress.png", TextGet("Appearance"));
 	DrawButton(1885, 25, 90, 90, "", "White", "Icons/Exit.png", TextGet("Exit"));
@@ -9239,6 +9257,86 @@ function MainHallRun() {
 		} else {
 			DrawText(TextGet("RescueIsComing"), 1750, 925, "White", "Black");
 			DrawProgressBar(1525, 955, 450, 35, (1 - ((MainHallNextEventTimer - CommonTime()) / (MainHallNextEventTimer - MainHallStartEventTimer))) * 100);
+		}
+	}
+}
+
+function MainHallClick() {
+	if ((MouseX >= 750) && (MouseX < 1250) && (MouseY >= 0) && (MouseY < 1000)) CharacterSetCurrent(Player);
+	if ((MouseX >= 1645) && (MouseX < 1735) && (MouseY >= 25) && (MouseY < 115)) InformationSheetLoadCharacter(Player);
+	if ((MouseX >= 1765) && (MouseX < 1855) && (MouseY >= 25) && (MouseY < 115) && Player.CanChangeOwnClothes()) CharacterAppearanceLoadCharacter(Player);
+	if ((MouseX >= 1885) && (MouseX < 1975) && (MouseY >= 25) && (MouseY < 115)) {
+		if (window.confirm(TextGet("ExitConfirm"))) {
+			ServerAccountUpdate.SyncToServer();
+			// eslint-disable-next-line no-self-assign
+			window.location = window.location;
+		}
+	}
+	if (MouseIn(1645, 145, 90, 90)) MainHallMoveToChatSelect()
+        if ((MouseX >= 240) && (MouseX < 330) && (MouseY >= 475) && (MouseY < 565)) {
+            if ((InventoryGet(Player, "Pronouns").Asset.Name == "SheHer") 
+                && (InventoryGet(Player, "Pussy").Asset.Name != "Penis") 
+		&& (InventoryGet(Player, "BodyUpper").Asset.Name != "FlatSmall") 
+		&& (InventoryGet(Player, "BodyUpper").Asset.Name != "FlatMedium")) {
+                ChatSelectStartSearch(ChatRoomSpaceType.FEMALE_ONLY);
+            }
+	}
+        if ((MouseX >= 360) && (MouseX < 540) && (MouseY >= 475) && (MouseY < 565)) ChatSelectStartSearch(ChatRoomSpaceType.MIXED);
+        if ((MouseX >= 570) && (MouseX < 660) && (MouseY >= 475) && (MouseY < 565)) {
+            if ((InventoryGet(Player, "Pronouns").Asset.Name == "HeHim") 
+		&& (InventoryGet(Player, "Pussy").Asset.Name == "Penis") 
+		&& ((InventoryGet(Player, "BodyUpper").Asset.Name == "FlatSmall") || (InventoryGet(Player, "BodyUpper").Asset.Name == "FlatMedium")))  {
+                ChatSelectStartSearch(ChatRoomSpaceType.MALE_ONLY);
+            }
+	}
+	if (Player.CanWalk() && (!Player.IsRestrained() || !Player.GameplaySettings.OfflineLockedRestrained)) {
+		if ((MouseX >= 1765) && (MouseX < 1855) && (MouseY >= 145) && (MouseY < 235) && MainHallAllow("A")) MainHallWalk("Shop");
+		if ((MouseX >= 1885) && (MouseX < 1975) && (MouseY >= 145) && (MouseY < 235) && !LogQuery("LockOutOfPrivateRoom", "Rule") && MainHallAllow("B")) MainHallWalk("Private");
+		if ((MouseX >= 1645) && (MouseX < 1735) && (MouseY >= 265) && (MouseY < 355) && MainHallAllow("C")) MainHallWalk("Introduction");
+		if ((MouseX >= 1765) && (MouseX < 1855) && (MouseY >= 265) && (MouseY < 355) && MainHallAllow("D")) MainHallWalk("MaidQuarters");
+		if ((MouseX >= 1885) && (MouseX < 1975) && (MouseY >= 265) && (MouseY < 355)) MainHallWalk("Management");
+		if ((MouseX >= 1645) && (MouseX < 1735) && (MouseY >= 385) && (MouseY < 475) && MainHallAllow("E")) MainHallWalk("KidnapLeague");
+		if ((MouseX >= 1765) && (MouseX < 1855) && (MouseY >= 385) && (MouseY < 475) && MainHallAllow("F")) MainHallWalk("Shibari");
+		if ((MouseX >= 1885) && (MouseX < 1975) && (MouseY >= 385) && (MouseY < 475) && SarahRoomAvailable && MainHallAllow("G")) MainHallWalk("Sarah");
+		if ((MouseX >= 1525) && (MouseX < 1615) && (MouseY >= 505) && (MouseY < 595) && MainHallAllow("S")) CraftingShowScreen(false);
+		if ((MouseX >= 1645) && (MouseX < 1735) && (MouseY >= 505) && (MouseY < 595) && MainHallAllow("H")) MainHallWalk("Trouble");
+		if ((MouseX >= 1765) && (MouseX < 1855) && (MouseY >= 505) && (MouseY < 595) && MainHallAllow("I")) MainHallWalk("SlaveMarket");
+		if ((MouseX >= 1885) && (MouseX < 1975) && (MouseY >= 505) && (MouseY < 595) && MainHallAllow("J")) MainHallWalk("Cell");
+		if ((MouseX >= 1525) && (MouseX < 1615) && (MouseY >= 625) && (MouseY < 715) && !ManagementIsClubSlave() && MainHallAllow("R")) MainHallWalk("PlatformIntro");
+		if ((MouseX >= 1645) && (MouseX < 1735) && (MouseY >= 625) && (MouseY < 715) && !ManagementIsClubSlave() && MainHallAllow("K")) MainHallWalk("LARP");
+		if ((MouseX >= 1765) && (MouseX < 1855) && (MouseY >= 625) && (MouseY < 715) && !ManagementIsClubSlave() && MainHallAllow("L")) MainHallWalk("CollegeEntrance");
+		if ((MouseX >= 1885) && (MouseX < 1975) && (MouseY >= 625) && (MouseY < 715) && MainHallAsylumOpen && MainHallAllow("M")) MainHallWalk("AsylumEntrance");
+		if ((MouseX >= 1525) && (MouseX < 1615) && (MouseY >= 745) && (MouseY < 855) && Player.CanChangeOwnClothes() && MainHallAllow("Q")) MainHallWalk("MagicSchoolLaboratory");
+		if ((MouseX >= 1645) && (MouseX < 1735) && (MouseY >= 745) && (MouseY < 855) && Player.CanChangeOwnClothes() && !Player.IsRestrained() && Player.CanTalk() && MainHallAllow("N")) MainHallWalk("Poker");
+		if ((MouseX >= 1765) && (MouseX < 1855) && (MouseY >= 745) && (MouseY < 855) && Player.CanChangeOwnClothes() && MainHallAllow("O")) MainHallWalk("Infiltration");
+		if ((MouseX >= 1885) && (MouseX < 1975) && (MouseY >= 745) && (MouseY < 855) && Player.CanChangeOwnClothes() && MainHallAllow("P")) MainHallWalk("MovieStudio");
+		if ((MouseX >=   25) && (MouseX <  115) && (MouseY >=  25) && (MouseY < 115) && MainHallAllow("0")) MainHallWalk("Gambling");
+		if ((MouseX >=  145) && (MouseX <  235) && (MouseY >=  25) && (MouseY < 115) && MainHallAllow("1")) MainHallWalk("Prison");
+		if ((MouseX >=  265) && (MouseX <  355) && (MouseY >=  25) && (MouseY < 115) && MainHallAllow("2")) MainHallWalk("Photographic");
+		if ((MouseX >=   25) && (MouseX <  115) && (MouseY >= 145) && (MouseY < 235) && MainHallAllow("3")) MainHallWalk("Stable");
+		if ((MouseX >=  145) && (MouseX <  235) && (MouseY >= 145) && (MouseY < 235) && MainHallAllow("4")) MainHallWalk("Magic");
+		if ((MouseX >=  265) && (MouseX <  355) && (MouseY >= 145) && (MouseY < 235) && MainHallAllow("5")) MainHallWalk("Nursery");
+		if ((MouseX >=   25) && (MouseX <  115) && (MouseY >= 265) && (MouseY < 355) && MainHallAllow("6")) MainHallWalk("Cafe");
+		if ((MouseX >=   145) && (MouseX <  235) && (MouseY >= 265) && (MouseY < 355) && MainHallAllow("7")) MainHallWalk("Arcade");
+	} else {
+		if (Player.CanWalk() && MaidQuartersOnlineDrinkStarted) {
+			if ((MouseX >= 1765) && (MouseX < 1855) && (MouseY >= 265) && (MouseY < 355))
+				MainHallWalk("MaidQuarters");
+			if ((MouseX >=   25) && (MouseX <  115) && (MouseY >= 265) && (MouseY < 355))
+				MainHallWalk("Cafe");
+		}
+		if (Player.CanWalk() && (InventoryIsWorn(Player, "BountySuitcase", "ItemMisc") || InventoryIsWorn(Player, "BountySuitcaseEmpty", "ItemMisc")))
+			if ((MouseX >= 1645) && (MouseX < 1735) && (MouseY >= 385) && (MouseY < 475))
+				MainHallWalk("KidnapLeague");
+	}
+	if ((MainHallStartEventTimer == null) && (MainHallNextEventTimer == null)) {
+		if (MouseIn(1885, 900, 90, 90)) {
+			if (MainHallNextEventTimer == null) {
+			AudioPlayInstantSound("Audio/BellSmall.mp3");
+				MainHallStartEventTimer = CommonTime();
+				MainHallNextEventTimer = CommonTime() + 40000 + Math.floor(Math.random() * 40000);
+				MainHallMaidWasCalledManually = true;
+			}
 		}
 	}
 }
