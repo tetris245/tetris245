@@ -9341,6 +9341,21 @@ function MainHallClick() {
 	}
 }
 
+function ChatSearchExit() {
+	ChatSearchMode = "";
+	ChatSearchShowHiddenRoomsActive = false;
+	ChatSearchFilterHelpActive = false;
+	ChatSearchFilterUnhideConfirm = null;
+	ChatSearchPreviousActivePose = Player.ActivePose;
+	ElementRemove("InputSearch");
+        if (ChatRoomSpace == "Asylum") {
+            CommonSetScreen("Room", "AsylumEntrance");
+        } else {
+	    CommonSetScreen("Room", "MainHall");
+        }
+	DrawingGetTextSize.clearCache();
+}
+
 //Misc changes in game.
 Asset.forEach(e => {
     if (e.Value < 0) e.Value = 1;
