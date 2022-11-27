@@ -10413,7 +10413,7 @@ function AppearanceClick() {
                         } 
                     } 
                 );   
-                ChatRoomCharacterUpdate(C);
+                CharacterRefresh(C, false);
 		DialogLeave();
 	    }
             if ((MouseX >= 1644) && (MouseX < 1791) && (MouseY >= 240) && (MouseY < 290)) {
@@ -10448,7 +10448,7 @@ function AppearanceClick() {
                         } 
                     } 
                 );   
-                ChatRoomCharacterUpdate(C);
+                CharacterRefresh(C, false);
 		DialogLeave();
 	    }
             if ((MouseX >= 1816) && (MouseX < 1973) && (MouseY >= 240) && (MouseY < 290)) {
@@ -10468,7 +10468,7 @@ function AppearanceClick() {
                         }
                     }
                 );                
-                ChatRoomCharacterUpdate(C);
+                CharacterRefresh(C, false);
 		DialogLeave();
 	    }
 	    if ((MouseX >= 1300) && (MouseX < 1800) && (MouseY >= 430) && (MouseY < 970))
