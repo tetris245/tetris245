@@ -9122,7 +9122,7 @@ function LoginRun() {
 	DrawText(TextGet("ThankYou") + " " + LoginThankYou, 1625, 53, "Black", "Gray");
 }
 
-//Main Hall (Welcome message)
+//Main Hall 
 function MainHallRun() {
 	KidnapLeagueResetOnlineBountyProgress();
 	if (!MainHallBeingPunished) {
@@ -9183,8 +9183,8 @@ function MainHallRun() {
         } else {
             DrawButton(240, 475, 90, 90, "", "Gray","Screens/Online/ChatSelect/Female.png", "Only Female");
         } 
-        DrawButton(360, 475, 180, 90, "", "White","Screens/Online/ChatSelect/Female.png", "Mixed");
-        DrawButton(450, 475, 90, 90, "", "White","Screens/Online/ChatSelect/Male.png");
+        DrawButton(360, 475, 90, 90, "", "White","Screens/Online/ChatSelect/Female.png", "Mixed");
+        DrawButton(450, 475, 90, 90, "", "White","Screens/Online/ChatSelect/Male.png", "Mixed");
         if ((InventoryGet(Player, "Pronouns").Asset.Name == "HeHim") 
 	    && (InventoryGet(Player, "Pussy").Asset.Name == "Penis") 
 	    && ((InventoryGet(Player, "BodyUpper").Asset.Name == "FlatSmall") || (InventoryGet(Player, "BodyUpper").Asset.Name == "FlatMedium")))  {
