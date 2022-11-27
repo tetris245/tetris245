@@ -45,7 +45,10 @@ All else I might not have included.
 
 Changes for future version 
 
-* Added 3 lobby buttons in main hall for faster access to the chat rooms (+ back to main hall when leaving search screen)
+* Improved the lobby system:
+  - added 3 lobby buttons in main hall for faster access to the chat rooms 
+  - allowed back to main hall when leaving search screen corresponding to a lobby
+* Fixed a bug in wardrobe import functions
 
 
 
