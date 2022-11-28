@@ -6567,7 +6567,7 @@ async function NEWmenu() {
                 Player.CanKneel = function() {
                     return CharacterCanKneel(this)
                 }
-                Player.GetBlindLevel = function (eyesOnly = false) {
+                Player.GetBlindLevel = function(eyesOnly = false) {
 		    let blindLevel = 0;
 		    const eyes1 = InventoryGet(this, "Eyes");
 	            const eyes2 = InventoryGet(this, "Eyes2");
@@ -7226,72 +7226,72 @@ function gagSpeak() {
     NewSpeechGarble = SpeechGarble;
 }
 
-function GetBlindLevel0 () {
+function GetBlindLevel0() {
     let blindLevel = 0;
     return blindLevel;
 }
 
-function GetBlindLevel1 () {
+function GetBlindLevel1() {
     let blindLevel = 1;
     return blindLevel;
 }
 
-function GetBlindLevel2 () {
+function GetBlindLevel2() {
     let blindLevel = 2;
     return blindLevel;
 }
 
-function GetBlindLevel3 () {
+function GetBlindLevel3() {
     let blindLevel = 3;
     return blindLevel;
 }
 
-function GetBlurLevel0 () {
+function GetBlurLevel0() {
     let blurLevel = 0;
     return blurLevel;
 }
 
-function GetBlurLevel1 () {
+function GetBlurLevel1() {
     let blurLevel = 3;
     return blurLevel;
 }
 
-function GetBlurLevel2 () {
+function GetBlurLevel2() {
     let blurLevel = 8;
     return blurLevel;
 }
 
-function GetBlurLevel3 () {
+function GetBlurLevel3() {
     let blurLevel = 20;
     return blurLevel;
 }
 
-function GetBlurLevel4 () {
+function GetBlurLevel4() {
     let blurLevel = 50;
     return blurLevel;
 }
 
-function GetDeafLevel0 () {
+function GetDeafLevel0() {
     let deafLevel = 0;
     return deafLevel;
 }
 
-function GetDeafLevel1 () {
+function GetDeafLevel1() {
     let deafLevel = 1;
     return deafLevel;
 }
 
-function GetDeafLevel2 () {
+function GetDeafLevel2() {
     let deafLevel = 2;
     return deafLevel;
 }
 
-function GetDeafLevel3 () {
+function GetDeafLevel3() {
     let deafLevel = 3;
     return deafLevel;
 }
 
-function GetDeafLevel4 () {
+function GetDeafLevel4() {
     let deafLevel = 4;
     return deafLevel;
 }
