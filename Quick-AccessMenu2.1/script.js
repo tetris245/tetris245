@@ -9148,6 +9148,83 @@ function CraftingItemListBuild() {
 	if (CraftingOffset >= CraftingItemList.length) CraftingOffset = 0;
 }
 
+//Friendlist
+function FriendListRun() {
+	const mode = FriendListMode[FriendListModeIndex];
+	DrawText(TextGet("MemberNumber"), 665, 35, "White", "Gray");
+        if ((InventoryGet(Player, "Pronouns").Asset.Name == "SheHer") 
+	    && (InventoryGet(Player, "Pussy").Asset.Name != "Penis") 
+	    && (InventoryGet(Player, "BodyUpper").Asset.Name != "FlatSmall") 
+	    && (InventoryGet(Player, "BodyUpper").Asset.Name != "FlatMedium")) {
+            DrawButton(850, 5, 90, 90, "", "White","Screens/Online/ChatSelect/Female.png", "Only Female");
+        } else {
+            DrawButton(850, 5, 90, 90, "", "Gray","Screens/Online/ChatSelect/Female.png", "Only Female");
+        } 
+        DrawButton(970, 5, 90, 90, "", "White","Screens/Online/ChatSelect/Female.png", "Mixed");
+        DrawButton(1060, 5, 90, 90, "", "White","Screens/Online/ChatSelect/Male.png", "Mixed");
+        if ((InventoryGet(Player, "Pronouns").Asset.Name == "HeHim") 
+	    && (InventoryGet(Player, "Pussy").Asset.Name == "Penis") 
+	    && ((InventoryGet(Player, "BodyUpper").Asset.Name == "FlatSmall") || (InventoryGet(Player, "BodyUpper").Asset.Name == "FlatMedium")))  {
+            DrawButton(1180, 5, 90, 90, "", "White","Screens/Online/ChatSelect/Male.png", "Only Male");
+        } else {
+            DrawButton(1180, 5, 90, 90, "", "Gray","Screens/Online/ChatSelect/Male.png", "Only Male");
+        }
+	if (mode === "Friends") {
+		DrawText(TextGet("ListOnlineFriends"), 230, 35, "White", "Gray");
+		DrawText(TextGet("ActionFriends"), 1535, 35, "White", "Gray");
+	} else if (mode === "Beeps") {
+		DrawText(TextGet("ListBeeps"), 230, 35, "White", "Gray");
+	} else if (mode === "Delete") {
+		DrawText(TextGet("ListFriends"), 230, 35, "White", "Gray");
+		DrawText(TextGet("ActionDelete"), 1535, 35, "White", "Gray");
+	}
+	ElementPositionFix("FriendList", 36, 5, 75, 1985, 890);
+	if (FriendListBeepTarget !== null) {
+		ElementPositionFix("FriendListBeep", 36, 5, 75, 1985, 890);
+	}
+	DrawButton(1795, 5, 60, 60, "", "White", "Icons/Small/Reset.png", TextGet("Refresh"));
+	DrawButton(1865, 5, 60, 60, "", "White", "Icons/Small/Next.png");
+	DrawButton(1935, 5, 60, 60, "", "White", "Icons/Small/Exit.png");
+}
+
+function FriendListClick() {
+	if (MouseIn(1795, 5, 60, 60)) {
+		ElementContent("FriendList", "");
+		ServerSend("AccountQuery", { Query: "OnlineFriends" });
+	}
+	if (MouseIn(1865, 5, 60, 60)) {
+		ElementContent("FriendList", "");
+		FriendListModeIndex++;
+		if (FriendListModeIndex >= FriendListMode.length) FriendListModeIndex = 0;
+		ServerSend("AccountQuery", { Query: "OnlineFriends" });
+	}
+        if ((MouseX >= 850) && (MouseX < 940) && (MouseY >= 5) && (MouseY < 95)) {
+            if ((InventoryGet(Player, "Pronouns").Asset.Name == "SheHer") 
+                && (InventoryGet(Player, "Pussy").Asset.Name != "Penis") 
+		&& (InventoryGet(Player, "BodyUpper").Asset.Name != "FlatSmall") 
+		&& (InventoryGet(Player, "BodyUpper").Asset.Name != "FlatMedium")) {
+                ChatRoomSpace = "";
+                ElementContent("FriendList", "");
+		ServerSend("AccountQuery", { Query: "OnlineFriends" });
+            }
+	}
+        if ((MouseX >= 970) && (MouseX < 1150) && (MouseY >= 5) && (MouseY < 95)) {
+               ChatRoomSpace = "X";
+               ElementContent("FriendList", "");
+	       ServerSend("AccountQuery", { Query: "OnlineFriends" });
+        }
+        if ((MouseX >= 1180) && (MouseX < 1270) && (MouseY >= 5) && (MouseY < 95)) {
+            if ((InventoryGet(Player, "Pronouns").Asset.Name == "HeHim") 
+		&& (InventoryGet(Player, "Pussy").Asset.Name == "Penis") 
+		&& ((InventoryGet(Player, "BodyUpper").Asset.Name == "FlatSmall") || (InventoryGet(Player, "BodyUpper").Asset.Name == "FlatMedium")))  {
+                ChatRoomSpace = "M";
+                ElementContent("FriendList", "");
+		ServerSend("AccountQuery", { Query: "OnlineFriends" });
+            }
+	}
+	if (MouseIn(1935, 5, 60, 60)) FriendListExit();
+}
+
 //Login screen (Ready message)
 function LoginRun() {
 	if (LoginCredits != null) LoginDrawCredits();
