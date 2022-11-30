@@ -47,7 +47,7 @@ Changes for future version
 
 * Improved the lobby system:
   - added 3 lobby buttons in main hall for faster access to the chat rooms 
-  - added similar buttons in the friendlist, so you can switch between lobbies to get clickable links (Note: you can't have clickable links in the main hall, because you don't have yet selected a lobby)
+  - added similar buttons in the friendlist, so you can switch between lobbies to get clickable links (Note: clickable links are not available when the friendlist is used from the main hall) 
   - allowed back to main hall when leaving search screen corresponding to a lobby
 * Updated the search command by replacing old options by these 4 options: asylum, fclub, mclub, xclub
 * Fixed a bug in wardrobe import functions
