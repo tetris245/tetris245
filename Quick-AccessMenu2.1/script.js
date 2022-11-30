@@ -98,7 +98,7 @@ async function NEWmenu() {
                     "<b>/frlist</b> = gives access to friendlist with clickable links to other rooms during 15 seconds.\n" +
                     "<b>/hiddenmessages</b> = toggles on show hidden messages made by game.\n" +
 		    "<b>/poof</b> (action) = leaves the club very fast. Action is optional (default = poofs away).\n" +
-                    "<b>/search</b> (areaname) = opens room search, area is: club or asylum.\n" +
+                    "<b>/search</b> (areaname) = opens room search for 15 seconds, options: asylum, fclub, mclub, xclub.\n" +
                     "<b>/theme</b> (number) = changes chat color theme after automatic relog. Number must be between 0 and 3.</p>" 
                 );
             } else if (content.includes("clothing")) {
@@ -5404,12 +5404,12 @@ async function NEWmenu() {
 	        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: Your temporary nickname has now a definitive status.</p>"
 	    );
         } else if (content.indexOf("/search") == 0) {
-            if (content.includes("Asylum") || content.includes("asylum")) {
+            if (content.includes("asylum")) {
                 setTimeout(function() {
                     ChatRoomSpace = "Asylum";
                     ChatSearchLeaveRoom = "AsylumEntrance";
                     ChatSearchBackground = "AsylumEntrance";
-                    ChatCreateBackgroundList = BackgroundsTagAsylum
+                    ChatCreateBackgroundList = BackgroundsTagAsylum;
                     CommonSetScreen("Online", "ChatSearch");
                     ChatRoomSetLastChatRoom("");
                     document.getElementById("InputChat").style.display = "none";
@@ -5421,13 +5421,61 @@ async function NEWmenu() {
                     document.getElementById("TextAreaChatLog").style.display = "inline";
                 }, 15000);
             }
-            if (content.includes("club") || content.includes("Club") || content.includes("LARP") || content.includes("larp")) {
+            if (content.includes("fclub")) {
+                if ((InventoryGet(Player, "Pronouns").Asset.Name == "SheHer") 
+	            && (InventoryGet(Player, "Pussy").Asset.Name != "Penis") 
+	            && (InventoryGet(Player, "BodyUpper").Asset.Name != "FlatSmall") 
+	            && (InventoryGet(Player, "BodyUpper").Asset.Name != "FlatMedium")) {
+                    setTimeout(function() {
+                        ChatSelectStartSearch(""); 
+                        ChatRoomSetLastChatRoom("");
+                        document.getElementById("InputChat").style.display = "none";
+                        document.getElementById("TextAreaChatLog").style.display = "none";
+		        ChatSelectStartSearch(""); 
+                        ChatRoomSetLastChatRoom("");
+                    }, 3000);
+                    setTimeout(function() {
+                        CommonSetScreen("Online", "ChatRoom");
+                        document.getElementById("InputChat").style.display = "inline";
+                        document.getElementById("TextAreaChatLog").style.display = "inline";
+                    }, 15000); 
+                } else {
+                    ChatRoomSendLocal(
+                        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: Only females have access to this lobby.</p>"
+		    );
+                }
+            }
+            if (content.includes("mclub")) {
+                if ((InventoryGet(Player, "Pronouns").Asset.Name == "HeHim") 
+	            && (InventoryGet(Player, "Pussy").Asset.Name == "Penis") 
+	            && ((InventoryGet(Player, "BodyUpper").Asset.Name == "FlatSmall") || (InventoryGet(Player, "BodyUpper").Asset.Name == "FlatMedium")))  {
+                    setTimeout(function() {
+                        ChatSelectStartSearch("M");
+                        ChatRoomSetLastChatRoom("");
+                        document.getElementById("InputChat").style.display = "none";
+                        document.getElementById("TextAreaChatLog").style.display = "none"; 
+                        ChatSelectStartSearch("M");
+                        ChatRoomSetLastChatRoom("");
+                    }, 3000);
+                    setTimeout(function() {
+                        CommonSetScreen("Online", "ChatRoom");
+                        document.getElementById("InputChat").style.display = "inline";
+                        document.getElementById("TextAreaChatLog").style.display = "inline";
+                    }, 15000);         
+                } else {
+                    ChatRoomSendLocal(
+                        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: Only males have access to this lobby.</p>"
+	            );
+                }
+            }
+            if (content.includes("xclub")) {
                 setTimeout(function() {
-                    ChatRoomSpace = "";
-                    CommonSetScreen("Online", "ChatSearch");
+                    ChatSelectStartSearch("X"); 
                     ChatRoomSetLastChatRoom("");
                     document.getElementById("InputChat").style.display = "none";
                     document.getElementById("TextAreaChatLog").style.display = "none";
+                    ChatSelectStartSearch("X");
+                    ChatRoomSetLastChatRoom("");
                 }, 3000);
                 setTimeout(function() {
                     CommonSetScreen("Online", "ChatRoom");
