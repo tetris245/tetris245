@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.9.2
+// @version 1.10.0
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -130,7 +130,7 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Automatic features without command:\n" +
 		    "<b>Auto All Items Are Craftable</b> but limited using of the extra crafted items\n" +
                     "<b>Auto-Disable NPC Punishments</b> - can be changed with the /npcpunish command\n" +
-                    "<b>Auto-Disable Validation</b> only for yourself\n" +
+		    "<b>Auto Easy Access To Chat Rooms</b> by extra buttons in Main Hall, Chat Room Search and Friendlist\n" +
 		    "<b>Auto Extended Availability of Pose Menu </b>with priority over Facial Expression\n" +
 		    "<b>Auto Extra Buttons In Wardrobe</b>: Export (usable only if you come from a chat room) - Import1 = outfit + restraints\n" +
 		    "Import2 = outfit + cosplay items + restraints - Import3 = full import including body changes\n" +
@@ -211,12 +211,11 @@ async function NEWmenu() {
                 );
 	    } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.9.2:\n" + 
-		    "- New command: itemcolor to change the color of all current bindings on yourself or any other player.\n" +
-		    "- Updated many messages to use correct pronouns.\n" +
-		    "- Rewrote most commands with target to get a correct effect (on the Player) when the target is not specified.\n" +
-		    "- Limited the exercise option of the pose2 command to the Player.\n" +
-		    "- Removed the Patreon cheats feature.</p>"		
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.10.0:\n" + 
+		    "- Added 3 extra buttons in Main Hall, Chat Room Search and Friendlist, allowing to switch between lobbies.\n" +
+		    "- Allowed back to main hall when leaving search screen corresponding to a lobby.\n" +
+		    "- Updated the search command by replacing old options by these 4 options: asylum, fclub, mclub, xclub.\n" +
+		    "- Removed neutralization of validation (next BC beta come with a better system).</p>"		
                 );   	    
             } else if (content.includes("talking")) {
 		ChatRoomSendLocal(
@@ -7174,7 +7173,7 @@ ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
 	ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.9.2: Ready, type <b>/help</b> for general menu.\n" +
+                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.10.0: Ready, type <b>/help</b> for general menu.\n" +
 		    "Note: NPC punishments are disabled.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
 		    "Use <b>/clubhelp</b> to get the standard BC menu (+ FBC menu when enabled).\n" +
@@ -9364,7 +9363,7 @@ function FriendListClick() {
 function LoginRun() {
 	if (LoginCredits != null) LoginDrawCredits();
 	const CanLogin = ServerIsConnected && !LoginSubmitted;
-        DrawButton(750,120,500,60,"QAM 1.9.2 Ready!", "Pink", "Black", "");
+        DrawButton(750,120,500,60,"QAM 1.10.0 Ready!", "Pink", "Black", "");
 	DrawText(TextGet("Welcome"), 1000, 50, "White", "Black");
 	DrawText(LoginMessage, 1000, 100, "White", "Black");
 	DrawText(TextGet("AccountName"), 1000, 200, "White", "Black");
