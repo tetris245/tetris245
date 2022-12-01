@@ -1,7 +1,7 @@
 {
   "name": "Quick-AccessMenu2.1",
   "description": "Everything you'll ever need.",
-  "version": "1.9.2",
+  "version": "1.10.0",
   "manifest_version": 3,
   "icons": {
     "128": "icon128.png",
