@@ -2,7 +2,7 @@
 
 Quick-AccessMenu2.1 by Nemesea - Add-on for Ben987's BondageClub game 
 
-Most recent release is version 1.9.2 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
+Most recent release is version 1.10.0 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
 ## Installation 
 
@@ -17,7 +17,7 @@ To update: Go to Installed Scripts / Click on date corresponding to QAM (TM will
 **Bookmark methode** - link to the QAM bookmark: https://tetris245.github.io/QAMbookmark.js
 
 **Alternative methode for Google Chrome, Microsoft Edge, similar browsers**
-1. Download the Quick-AccessMenu2.1-version1.9.2.zip file on the Releases page
+1. Download the Quick-AccessMenu2.1-version1.10.0.zip file on the Releases page
 2. Depending on browser, the .zip might have to be extracted. few browsers accept a .zip, a few requires a folder.
 3. Go to browser extensions. Enable developer mode.
 4. Load as Unpacked. Done. If the file can't be seen, see step 2.
@@ -45,14 +45,7 @@ All else I might not have included.
 
 Changes for future version 
 
-* Improved the lobby system:
-  - added 3 lobby buttons in main hall for faster access to the chat rooms 
-  - added similar buttons in Chat Room Search to switch between lobbies
-  - added similar buttons in the friendlist, so you can switch between lobbies to get clickable links (Notes: clickable links are not available when the friendlist is used from the main hall; to get clickable links when you are in a chat room, use the /frlist command)
-  - allowed back to main hall when leaving search screen corresponding to a lobby
-* Updated the search command by replacing old options by these 4 options: asylum, fclub, mclub, xclub
-* Removed neutralization of validation (Note: next BC beta will come with an improved validation system, allowing to disable it)
-* Fixed a bug in wardrobe import functions
+(...)
 
 
 
