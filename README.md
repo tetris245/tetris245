@@ -51,6 +51,7 @@ Changes for future version
   - added similar buttons in the friendlist, so you can switch between lobbies to get clickable links (Notes: clickable links are not available when the friendlist is used from the main hall; to get clickable links when you are in a chat room, use the /frlist command)
   - allowed back to main hall when leaving search screen corresponding to a lobby
 * Updated the search command by replacing old options by these 4 options: asylum, fclub, mclub, xclub
+* Removed neutralization of validation (Note: next BC beta will come with an improved validation system, allowing to disable it)
 * Fixed a bug in wardrobe import functions
 
 
