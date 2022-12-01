@@ -215,7 +215,7 @@ async function NEWmenu() {
 		    "- Added 3 extra buttons in Main Hall, Chat Room Search and Friendlist, allowing to switch between lobbies.\n" +
 		    "- Allowed back to main hall when leaving search screen corresponding to a lobby.\n" +
 		    "- Updated the search command by replacing old options by these 4 options: asylum, fclub, mclub, xclub.\n" +
-		    "- Removed neutralization of validation (next BC beta come with a better system).</p>"		
+		    "- Removed neutralization of validation (next BC beta comes with a better system).</p>"		
                 );   	    
             } else if (content.includes("talking")) {
 		ChatRoomSendLocal(
