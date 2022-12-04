@@ -76,14 +76,12 @@ async function NEWmenu() {
                     "<b>/giveeverything</b> = gives every item.\n" +
                     "<b>/maxstatistics</b> = gives max statistics.\n" +
                     "<b>/money</b> (value) = gives or takes money.\n" +
-                    "<b>/name</b> (newnamehere) = temporary new nickname. Without newname, real name is used.\n" +
 		    "<b>/npcpunish</b> = enables/disables NPC punishments.\n" +
 		    "<b>/permission</b> (number) = changes your item permission *\n" +
                     "<b>/reputation</b> (reputation) (level) = changes a reputation. *\n" +
                     "<b>/resetinventory</b> = erases your inventory. Will warn first.\n" +
                     "<b>/roleplay</b> (rolehere) = starts a role. *\n" +
                     "<b>/rolequit</b> (role or clubarea here) = ceases to play a role. *\n" +
-                    "<b>/savename</b> = definitive status to temporary nickname.\n" +
                     "<b>/skill</b> (skill) (level) = changes a skill. *\n" +
                     "<b>/title</b> (newtitlehere) = chooses a new title. *</p>"
                 );
@@ -3933,42 +3931,6 @@ async function NEWmenu() {
                     ChatRoomCharacterUpdate(target[0]);
 		    ChatRoomSetTarget(null);
                 }
-            }
-        } else if (content.indexOf("/name") == 0) {
-            var NewName = content.substring(5).trim();
-            var LS = /[/\p{L}\p{N}\p{Z}'-]/gu;
-	    if (Player.Nickname == '') { 
-                var tmpname = Player.Name;
-            } else {
-                var tmpname = Player.Nickname;
-            }
-            if (NewName.length == 0) {
-		if (Player.Name != tmpname) {  
-                    ServerSend("ChatRoomChat", {
-                        Content: "Beep",
-                        Type: "Action",
-                        Dictionary: [{
-                            Tag: "Beep",
-                            Text: "" + tmpname + " is now known as " + Player.Name + "."
-                        }]
-                    });
-		}	
-                Player.Nickname = Player.Name;
-                var tmpname = Player.Name;
-            } else if ((NewName.length <= 20) && (NewName.match(LS))) {
-                if (NewName != tmpname) {
-                    ServerSend("ChatRoomChat", {
-                        Content: "Beep",
-                        Type: "Action",
-                        Dictionary: [{
-                            Tag: "Beep",
-                            Text: "" + tmpname + " is now known as " + NewName + "."
-                        }]
-                    });
-                }
-                Player.Nickname = NewName;
-                var tmpname = NewName;
-            }
 	} else if (content.indexOf("/npcpunish") == 0) {
             if (Player.RestrictionSettings.BypassNPCPunishments == true) {
                 Player.RestrictionSettings.BypassNPCPunishments = false;
@@ -5394,14 +5356,6 @@ async function NEWmenu() {
                 ChatRoomCharacterUpdate(CurrentCharacter);
                 DialogLeave();
             }, 5000);
-        } else if (content.indexOf("/savename") == 0) {
-            var NewName = tmpname;
-            ServerAccountUpdate.QueueData({
-                Nickname: NewName
-            });
-            ChatRoomSendLocal(
-	        "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: Your temporary nickname has now a definitive status.</p>"
-	    );
         } else if (content.indexOf("/search") == 0) {
             if (content.includes("asylum")) {
                 setTimeout(function() {
@@ -9646,66 +9600,6 @@ function ManagementCannotBeClubSlaveLoverLock() {}
 
 function AsylumEntranceIsWearingNurseClothes() {
     return true
-}
-
-//Nickname
-function CharacterNickname(C) {
-    let Regex = /[/\p{L}\p{N}\p{Z}'-]/gu;
-    let Nick = C.Nickname;
-    if (Nick == null) Nick = "";
-    Nick = Nick.trim().substring(0, 20);
-    if ((Nick == "") || !Regex.test(Nick)) Nick = C.Name;
-    return AsylumGGTSCharacterName(C, Nick);
-}
-
-function TitleExit() {
-    let Regex = /[/\p{L}\p{N}\p{Z}'-]/gu;
-    let Nick = ElementValue("InputNickname");
-    if (Player.Nickname == '') { 
-        var tmpname = Player.Name;
-    } else {
-        var tmpname = Player.Nickname;
-    }
-    if (Nick == null) Nick = "";
-    Nick = Nick.trim().substring(0, 20);
-    if (Nick.length == 0) {
-	if (Player.Name != tmpname) {  
-	    if (ServerPlayerIsInChatRoom()) {
-                ServerSend("ChatRoomChat", {
-                    Content: "Beep",
-                    Type: "Action",
-                    Dictionary: [{
-                        Tag: "Beep",
-                        Text: "" + tmpname + " is now known as " + Player.Name + "."
-                    }]
-                });
-	    }	
-	}	
-        Player.Nickname = Player.Name;
-        ServerAccountUpdate.QueueData({
-            Nickname: Nick
-        });
-    } else if ((Nick.length <= 20) && (Nick.match(Regex))) {
-	if (ServerPlayerIsInChatRoom()) {    
-            if (Nick != tmpname) {
-                ServerSend("ChatRoomChat", {
-                    Content: "Beep",
-                    Type: "Action",
-                    Dictionary: [{
-                        Tag: "Beep",
-                        Text: "" + tmpname + " is now known as " + Nick + "."
-                    }]
-                });
-	    }	    
-         }
-         Player.Nickname = Nick;
-         ServerAccountUpdate.QueueData({
-            Nickname: Nick
-         });
-    }
-    TitleSet(TitleSelectedTitle);
-    ElementRemove("InputNickname");
-    CommonSetScreen("Character", "InformationSheet");
 }
 
 //Pandora Prison
