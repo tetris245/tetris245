@@ -3931,6 +3931,7 @@ async function NEWmenu() {
                     ChatRoomCharacterUpdate(target[0]);
 		    ChatRoomSetTarget(null);
                 }
+	    }	    
 	} else if (content.indexOf("/npcpunish") == 0) {
             if (Player.RestrictionSettings.BypassNPCPunishments == true) {
                 Player.RestrictionSettings.BypassNPCPunishments = false;
