@@ -4,6 +4,14 @@ Quick-AccessMenu2.1 by Nemesea - Add-on for Ben987's BondageClub game
 
 Most recent release is version 1.10.0 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
+## Important notice
+
+**After more than one year of QAM development, I've decided to stop it. There will be just a final version after R87 release, to mainly remove features which are obviously incompatible with other add-ons, especially BCX and FBC, to name only the most popular.**
+
+**It was for me a nice experience and many users have appreciated all the changes, improvements and additions made during this year. The next step would be to make QAM fully compatible with other add-ons by using a ModSDK, created by the main BCX coder. However, I'm not an advanced coder, and the coding changes required in QAM to use this tool are beyond my skills.**
+
+**I know it was not an easy decision, and that many users will be disappointed. I just hope that someone will better skills will re-load QAM in the future.** 
+ 
 ## Installation 
 
 **Recommended methode with Tampermonkey** - link to the QAM loader: https://tetris245.github.io/QAMloader.js
