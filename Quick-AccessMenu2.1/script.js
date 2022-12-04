@@ -132,9 +132,7 @@ async function NEWmenu() {
 		    "<b>Auto Extended Availability of Pose Menu </b>with priority over Facial Expression\n" +
 		    "<b>Auto Extra Buttons In Wardrobe</b>: Export (usable only if you come from a chat room) - Import1 = outfit + restraints\n" +
 		    "Import2 = outfit + cosplay items + restraints - Import3 = full import including body changes\n" +
-                    "<b>Auto-Join</b> to enter a room as soon as possible\n" +
-                    "<b>Auto More Characters For Nickname</b> \n" +
-                    "<b>Auto-Relog</b> - Works only if you select Return to chatrooms on relog in the Immersion settings - Not compatible with FBC Auto-Relog</p>"
+                    "<b>Auto-Join</b> to enter a room as soon as possible</p>"
                 );    
             } else if (content.includes("fun")) {
                 ChatRoomSendLocal(
@@ -7142,69 +7140,7 @@ setTimeout(function() {
     ServerSocket.on('ChatRoomMessage', ChatCommandGreeting);
 }, 5000);
 
-//AutoRelog/AntiDisconnect
-function LoginDoLogin() { //rewrite login to variabilize credentials for later use
-    if (!LoginSubmitted && ServerIsConnected) {
-        this.LoginName = ElementValue("InputName");
-        this.LoginPassword = ElementValue("InputPassword");
-        var letters = /^[a-zA-Z0-9]+$/;
-        if (LoginName.match(letters) && LoginPassword.match(letters) && (LoginName.length > 0) && (LoginName.length <= 20) && (LoginPassword.length > 0) && (LoginPassword.length <= 20)) {
-            LoginSetSubmitted();
-            ServerSend("AccountLogin", {
-                AccountName: LoginName,
-                Password: LoginPassword
-            });
-        } else LoginStatusReset("InvalidNamePassword");
-    }
-    LoginUpdateMessage();
-}
-
-function ServerDisconnect(data, close = false) { //rewrite disconnect to prevent relog screen
-    if (!ServerIsConnected) return;
-    ChatRoomSendLocal(
-        "<p style='background-color:#5fbd7a'>Disconnected! Reconnecting...</p>"
-    );
-    const ShouldRelog = Player.Name != "";
-    AutoRelog();
-    let msg = data;
-    if (data) {
-        console.warn(data);
-        msg = data;
-    }
-    ServerSetConnected(false, msg);
-    if (close) {
-        ServerSocket.disconnect();
-    }
-}
-
-function AutoRelog() {
-    if (ServerPlayerIsInChatRoom()) {
-        RelogChatLog = document.getElementById("TextAreaChatLog").cloneNode(true);
-        RelogChatLog.id = "RelogChatLog";
-        RelogChatLog.name = "RelogChatLog";
-        RelogInputText = ElementValue("InputChat").trim();
-        ElementRemove("InputChat");
-        ElementRemove("TextAreaChatLog");
-        CurrentScreen = "ChatSearch";
-        CurrentModule = "Online";
-        CurrentCharacter = null;
-    } else {
-        RelogChatLog = null;
-        RelogInputText = "";
-    }
-    RelogData = {
-        Screen: CurrentScreen,
-        Module: CurrentModule,
-        Character: CurrentCharacter
-    };
-    CurrentCharacter = null;
-    ServerSend("AccountLogin", {
-        AccountName: LoginName,
-        Password: LoginPassword
-    });
-}
-
-//Other functions
+//Functions
 
 function gagSpeak() {
      OldSpeechGarble = SpeechGarble;
