@@ -51,9 +51,9 @@ All else I might not have included.
 
 ===========================================================================
 
-Changes for future version 
+Changes for final version 
 
-(...)
+- Removed commands and functions related to nickname (Tip: use FBC and/or BCX)
 
 
 
