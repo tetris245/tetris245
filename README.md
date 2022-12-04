@@ -10,7 +10,7 @@ Most recent release is version 1.10.0 - Visit also our wiki: https://github.com/
 
 **It was for me a nice experience and many users have appreciated all the changes, improvements and additions made during this year. The next step would be to make QAM fully compatible with other add-ons by using a ModSDK, created by the main BCX coder. However, I'm not an advanced coder, and the coding changes required in QAM to use this tool are beyond my skills.**
 
-**I know it was not an easy decision, and that many users will be disappointed. I just hope that someone will better skills will re-load QAM in the future.** 
+**I know it was not an easy decision, and that many users will be disappointed. I just hope that someone with better skills will re-load QAM in the future.** 
  
 ## Installation 
 
