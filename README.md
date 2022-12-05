@@ -55,6 +55,7 @@ Changes for final version
 
 - Removed commands and functions related to nickname (Tip: use FBC and/or BCX)
 - Removed AutoRelog/AntiDisconnect functions (Tip: use FBC AutoRelog)
+- Fixed a bug in unrestrict reset command
 
 
 
