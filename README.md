@@ -54,6 +54,7 @@ All else I might not have included.
 Changes for final version 
 
 - Removed lobby buttons in Chat Room Search (Tip: use FBC)
+- Removed gagcode command and gagspeak function (Tip: use FBC feature)
 - Removed commands and functions related to nickname (Tip: use FBC and/or BCX)
 - Removed AutoRelog/AntiDisconnect functions (Tip: use FBC AutoRelog)
 - Fixed a bug in unrestrict reset command
