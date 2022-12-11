@@ -217,7 +217,6 @@ async function NEWmenu() {
 		ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Talking commands - * = more info when using\n" +
                     "<b>/babytalk</b> (stuffhere) = speaks once as a baby. Can also: /b.\n" +
-                    "<b>/gagcode</b> = toggle to decode/not decode gagged people talking. Also works against deafness.\n" +
 		    "<b>/gagtalk</b> (talkmode) (stuffhere) = speaks once in specified gag talk. *\n" +
 		    "<b>/hear</b> (hearmode) = forces a specific hearing mode. *\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. *\n" +
@@ -2165,21 +2164,6 @@ async function NEWmenu() {
                 document.getElementById("InputChat").style.display = "inline";
                 document.getElementById("TextAreaChatLog").style.display = "inline";
             }, 15000);
-        } else if (content.indexOf("/gagcode") == 0) {
-            if (this.GagTalkOff == undefined | this.GagTalkOff == false) {
-                GagTalkOff = true;
-                gagSpeak();
-                window.SpeechGarble = NewSpeechGarble;
-                ChatRoomSendLocal(
-		    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: Gag Talk is decoded.</p>"
-		);
-            } else {
-                GagTalkOff = false;
-                window.SpeechGarble = OldSpeechGarble;
-                ChatRoomSendLocal(
-		    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: Gag Talk is not decoded.</p>"
-		);
-            }
 	} else if (content.indexOf("/gagtalk") == 0) {          
             if (content.endsWith("/gagtalk")) {
                 ChatRoomSendLocal(
@@ -7142,28 +7126,6 @@ setTimeout(function() {
 }, 5000);
 
 //Functions
-
-function gagSpeak() {
-     OldSpeechGarble = SpeechGarble;
-     SpeechGarble = function(C,CD,NoDeaf){
-         origin = CD;
-         out  = OldSpeechGarble(C,CD,NoDeaf)
-         var GagEffect = 0;
-         GagEffect += SpeechGetGagLevel(C, "ItemEars");
-         GagEffect += SpeechGetGagLevel(C, "ItemMouth");
-         GagEffect += SpeechGetGagLevel(C, "ItemMouth2");
-         GagEffect += SpeechGetGagLevel(C, "ItemMouth3");
-         GagEffect += SpeechGetGagLevel(C, "ItemHead");
-         GagEffect += SpeechGetGagLevel(C, "ItemHood");
-         GagEffect += SpeechGetGagLevel(C, "ItemNeck");
-         GagEffect += SpeechGetGagLevel(C, "ItemDevices");
-         if((GagEffect>0 || Player.GetDeafLevel()>0) && origin.charAt(0)!='('){
-              out = out+' ('+ origin + ')';
-         } 
-         return out;
-    }
-    NewSpeechGarble = SpeechGarble;
-}
 
 function GetBlindLevel0() {
     let blindLevel = 0;
