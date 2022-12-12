@@ -9421,35 +9421,6 @@ function PandoraPrisonRun() {
     DrawText(PandoraWillpower.toString(), 1800, 973, "black", "white");
 }
 
-//Pose Command
-function DialogExtendItem(Item, SourceItem) {
-	const C = CharacterGetCurrent();
-	StruggleProgress = -1;
-	StruggleLockPickOrder = null;
-	DialogLockMenu = false;
-	DialogCraftingMenu = false;
-	DialogColor = null;
-	DialogFocusItem = Item;
-	DialogFocusSourceItem = SourceItem;
-	CommonDynamicFunction("Inventory" + Item.Asset.Group.Name + Item.Asset.Name + "Load()");
-}
-
-function CharacterRefresh(C, Push, RefreshDialog = true) {
-	CharacterLoadEffect(C);
-	CharacterLoadPose(C);
-	CharacterLoadCanvas(C);
-	C.RunScripts = (!C.AccountName.startsWith('Online-') || !(Player.OnlineSettings && Player.OnlineSettings.DisableAnimations)) && (!Player.GhostList || Player.GhostList.indexOf(C.MemberNumber) == -1);
-	C.HasScriptedAssets = !!C.Appearance.find(CA => CA.Asset.DynamicScriptDraw);
-	if ((C.ID == 0) && (C.OnlineID != null) && ((Push == null) || (Push == true))) {
-		ChatRoomRefreshChatSettings();
-		ServerPlayerAppearanceSync();
-	}
-	var Current = CharacterGetCurrent();
-	if (Current && C.ID == Current.ID && RefreshDialog) {
-		CharacterRefreshDialog(C);
-	}
-}
-
 //Pose Menu
 var DialogSelfMenuOptions = [
 	{
@@ -9716,11 +9687,16 @@ function DialogClickPoseMenu() {
                             var tmpr2 = "him";
                             var tmpr3 = "his";
 	                    var tmpr4 = "he";
-                        } else {
+                        } else if (InventoryGet(Player, "Pronouns").Asset.Name == "SheHer")  {
                             var tmpr1 = "She";
                             var tmpr2 = "her";
                             var tmpr3 = "her";
 	                    var tmpr4 = "she";
+                        } else {
+                            var tmpr1 = "They";
+	                    var tmpr2 = "them";
+	                    var tmpr3 = "their";
+	                    var tmpr4 = "they";
                         }
                         if ((CurrentCharacter.Nickname == '') || (CurrentCharacter.Nickname == undefined)) { 
                             var tgpname = CurrentCharacter.Name;
@@ -9732,12 +9708,17 @@ function DialogClickPoseMenu() {
                             var tgpr2 = "him";
                             var tgpr3 = "his";
 			    var tgpr4 = "he";
+                        } else if (InventoryGet(CurrentCharacter, "Pronouns").Asset.Name == "SheHer")  {
+			    tgpr1 = "She";
+                            tgpr2 = "her";
+                            tgpr3 = "her";
+			    tgpr4 = "she";
                         } else {
-                            var tgpr1 = "She";
-                            var tgpr2 = "her";
-                            var tgpr3 = "her";
-			    var tgpr4 = "she";
-                        }	  
+                            tgpr1 = "They";
+	                    tgpr2 = "them";
+	                    tgpr3 = "their";
+	                    tgpr4 = "they";
+                        }	
                         if ((CurrentCharacter.ID == 0) && (Player.ActivePose != null)) {
                             if (Player.ActivePose.includes('AllFours') == true) {
                                 ServerSend("ChatRoomChat", {
