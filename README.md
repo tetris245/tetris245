@@ -53,6 +53,7 @@ All else I might not have included.
 
 Changes for final version 
 
+- Added partial support for "TheyThem" pronouns (access only to Mixed lobby, as BC intentions are unknown)
 - Removed lobby buttons in Chat Room Search (Tip: use FBC)
 - Removed gagcode command and gagspeak function (Tip: use FBC feature)
 - Removed commands and functions related to nickname (Tip: use FBC and/or BCX)
