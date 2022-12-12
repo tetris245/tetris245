@@ -9709,15 +9709,15 @@ function DialogClickPoseMenu() {
                             var tgpr3 = "his";
 			    var tgpr4 = "he";
                         } else if (InventoryGet(CurrentCharacter, "Pronouns").Asset.Name == "SheHer")  {
-			    tgpr1 = "She";
-                            tgpr2 = "her";
-                            tgpr3 = "her";
-			    tgpr4 = "she";
+			    var tgpr1 = "She";
+                            var tgpr2 = "her";
+                            var tgpr3 = "her";
+			    var tgpr4 = "she";
                         } else {
-                            tgpr1 = "They";
-	                    tgpr2 = "them";
-	                    tgpr3 = "their";
-	                    tgpr4 = "they";
+                            var tgpr1 = "They";
+	                    var tgpr2 = "them";
+	                    var tgpr3 = "their";
+	                    var tgpr4 = "they";
                         }	
                         if ((CurrentCharacter.ID == 0) && (Player.ActivePose != null)) {
                             if (Player.ActivePose.includes('AllFours') == true) {
