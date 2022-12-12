@@ -26,13 +26,18 @@ async function NEWmenu() {
         var tmpr2 = "him";
         var tmpr3 = "his";
 	var tmpr4 = "he";
-    } else {
+    } else if (InventoryGet(Player, "Pronouns").Asset.Name == "SheHer")  {
         var tmpr1 = "She";
         var tmpr2 = "her";
         var tmpr3 = "her";
 	var tmpr4 = "she";
+    } else {
+        var tmpr1 = "They";
+	var tmpr2 = "them";
+	var tmpr3 = "their";
+	var tmpr4 = "they";
     }
-
+        
     //chatcommand
     if (CurrentScreen == "ChatRoom") {
 
@@ -4600,11 +4605,16 @@ async function NEWmenu() {
                             tgpr2 = "him";
                             tgpr3 = "his";
 			    tgpr4 = "he";
-                        } else {
-                            tgpr1 = "She";
+			} else if (InventoryGet(target[0], "Pronouns").Asset.Name == "SheHer")  {
+			    tgpr1 = "She";
                             tgpr2 = "her";
                             tgpr3 = "her";
 			    tgpr4 = "she";
+                        } else {
+                            tgpr1 = "They";
+	                    tgpr2 = "them";
+	                    tgpr3 = "their";
+	                    tgpr4 = "they";
                         }	
                         if (content.includes("armsfree")) {
 			    if ((target[0].AllowItem == true) 
@@ -5583,11 +5593,16 @@ async function NEWmenu() {
                         tgpr2 = "him";
                         tgpr3 = "his";
 			tgpr4 = "he";
-                    } else {
-                        tgpr1 = "She";
+                    } else if (InventoryGet(target[0], "Pronouns").Asset.Name == "SheHer")  {
+			tgpr1 = "She";
                         tgpr2 = "her";
                         tgpr3 = "her";
 			tgpr4 = "she";
+                    } else {
+                        tgpr1 = "They";
+	                tgpr2 = "them";
+	                tgpr3 = "their";
+	                tgpr4 = "they";
                     }	
                     ServerSend("ChatRoomChat", {
                         Content: "Beep",
@@ -8596,11 +8611,16 @@ function refreshDiaper({
         var tmpr2 = "him";
         var tmpr3 = "his";
 	var tmpr4 = "he";
-    } else {
+    } else if (InventoryGet(Player, "Pronouns").Asset.Name == "SheHer")  {
         var tmpr1 = "She";
         var tmpr2 = "her";
         var tmpr3 = "her";
 	var tmpr4 = "she";
+    } else {
+        var tmpr1 = "They";
+	var tmpr2 = "them";
+	var tmpr3 = "their";
+	var tmpr4 = "they";
     }
     DiaperChangeMessages = {
         "ChangeDiaperInner": " has gotten a fresh inner diaper.",
@@ -8805,11 +8825,16 @@ function diaperTick() {
         var tmpr2 = "him";
         var tmpr3 = "his";
 	var tmpr4 = "he";
-    } else {
+    } else if (InventoryGet(Player, "Pronouns").Asset.Name == "SheHer")  {
         var tmpr1 = "She";
         var tmpr2 = "her";
         var tmpr3 = "her";
 	var tmpr4 = "she";
+    } else {
+        var tmpr1 = "They";
+	var tmpr2 = "them";
+	var tmpr3 = "their";
+	var tmpr4 = "they";
     }
     DiaperUseMessages = {
         "MessInner": " has messed " + tmpr3 + " inner diaper.",
