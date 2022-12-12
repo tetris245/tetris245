@@ -2414,6 +2414,7 @@ async function NEWmenu() {
                     "Eyes",
                     "Eyes2",
                     "Face",
+		    "FacialHair",
                     "Fluids",
                     "Garters",
                     "Glasses",
@@ -2500,6 +2501,7 @@ async function NEWmenu() {
                     "Eyes",
                     "Eyes2",
                     "Face",
+		    "FacialHair",
                     "Fluids",
                     "Garters",
                     "Glasses",
@@ -10197,6 +10199,7 @@ function AppearanceClick() {
 			&& (C.Appearance[A].Asset.Group.Name != "Eyebrows") 
                         && (C.Appearance[A].Asset.Group.Name != "Eyes") 
                         && (C.Appearance[A].Asset.Group.Name != "Eyes2") 
+			&& (C.Appearance[A].Asset.Group.Name != "FacialHair") 
 			&& (C.Appearance[A].Asset.Group.Name != "Fluids") 
                         && (C.Appearance[A].Asset.Group.Name != "HairBack") 
                         && (C.Appearance[A].Asset.Group.Name != "HairFront") 
@@ -10228,6 +10231,7 @@ function AppearanceClick() {
 			       && (itemstr[1] != "Eyebrows") 
 			       && (itemstr[1] != "Eyes") 
 			       && (itemstr[1] != "Eyes2") 
+			       && (itemstr[1] != "FacialHair") 
 			       && (itemstr[1] != "Fluids") 
 			       && (itemstr[1] != "HairBack") 
 			       && (itemstr[1] != "HairFront") 
@@ -10267,6 +10271,7 @@ function AppearanceClick() {
 			       && (itemstr[1] != "Eyebrows") 
 			       && (itemstr[1] != "Eyes") 
 			       && (itemstr[1] != "Eyes2") 
+			       && (itemstr[1] != "FacialHair") 
 			       && (itemstr[1] != "Fluids") 
 			       && (itemstr[1] != "HairBack") 
 			       && (itemstr[1] != "HairFront") 
