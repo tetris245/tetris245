@@ -10214,6 +10214,7 @@ function AppearanceClick() {
                         && (C.Appearance[A].Asset.Group.Name != "Height") 
                         && (C.Appearance[A].Asset.Group.Name != "Mouth") 
                         && (C.Appearance[A].Asset.Group.Name != "Nipples")
+			&& (C.Appearance[A].Asset.Group.Name != "Pronouns") 
                         && (C.Appearance[A].Asset.Group.Name != "Pussy") 
                         && (C.Appearance[A].Asset.Group.Name != "HairAccessory1") 
                         && (C.Appearance[A].Asset.Group.Name != "HairAccessory2") 
@@ -10246,6 +10247,7 @@ function AppearanceClick() {
 			       && (itemstr[1] != "Height") 
 			       && (itemstr[1] != "Mouth") 
 			       && (itemstr[1] != "Nipples") 
+			       && (itemstr[1] != "Pronouns") 
 			       && (itemstr[1] != "Pussy") 
 			       && (itemstr[1] != "HairAccessory1") 
 			       && (itemstr[1] != "HairAccessory2") 
@@ -10286,6 +10288,7 @@ function AppearanceClick() {
 			       && (itemstr[1] != "Height") 
 			       && (itemstr[1] != "Mouth") 
 			       && (itemstr[1] != "Nipples") 
+			       && (itemstr[1] != "Pronouns") 
 			       && (itemstr[1] != "Pussy")) {   
 			InventoryRemove(C,itemstr[1]);
                         InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);      
