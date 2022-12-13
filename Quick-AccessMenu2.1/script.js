@@ -1656,7 +1656,7 @@ async function NEWmenu() {
                     target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);              
                 }
                 if ((target[0] != null) && (target[0].AllowItem == true))  {
-		     if ((target[0].Nickname == '') || (target[0].Nickname == undefined)) { 
+		    if ((target[0].Nickname == '') || (target[0].Nickname == undefined)) { 
                         tgpname = target[0].Name;
                     } else {
                         tgpname = target[0].Nickname; 
