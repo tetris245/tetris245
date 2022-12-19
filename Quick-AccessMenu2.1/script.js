@@ -9006,6 +9006,141 @@ function diaperTick() {
 /////////////////////
 //Rewritten functions
 
+//Chat Room Search
+function ChatSearchRun() {
+        KidnapLeagueResetOnlineBountyProgress();
+	if (ChatSearchFilterHelpActive) return ChatSearchFilterHelpDraw();
+	if (ChatSearchFilterUnhideConfirm) return ChatSearchFilterUnhideConfirmDraw();
+	if (ChatSearchMode == "") {
+		ChatSearchNormalDraw();
+		if ((ChatSearchMessage == "" || ChatSearchMessage == "FilterExcludeTerms")) ChatSearchMessage = "EnterName";
+	}
+	else if (ChatSearchMode == "Filter") {
+		ChatSearchPermissionDraw();
+		ChatSearchMessage = "FilterExcludeTerms";
+	}
+	if ((ChatSearchShowHiddenRoomsActive ? ChatSearchHiddenResult : ChatSearchResult).length > ChatSearchRoomsPerPage) DrawButton(1485, 885, 90, 90, "", "White", "Icons/Next.png", TextGet("Next"));
+	if (ChatSearchShowHiddenRoomsActive) {
+		DrawButton(1885, 885, 90, 90, "", "White", "Icons/DialogNormalMode.png", TextGet("NormalFilterMode"));
+		return;
+	}
+        DrawButton(1585, 885, 90, 90, "", "White", ChatSearchMode != "Filter" ? "Icons/Private.png" : "Icons/DialogNormalMode.png", TextGet(ChatSearchMode != "Filter" ?  "FilterMode" : "NormalMode"));
+	if (ChatSearchMode == "") {
+           DrawTextFit(TextGet(ChatSearchMessage), 255, 900, 490, "White", "Gray");
+	   ElementPosition("InputSearch",  400, 943, 390);
+           DrawButton(600, 885, 90, 90, "", "White", "Icons/Accept.png", TextGet("SearchRoom"));
+	   DrawButton(1685, 885, 90, 90, "", "White", "Icons/Plus.png", TextGet("CreateRoom"));
+	   DrawButton(1785, 885, 90, 90, "", "White", "Icons/FriendList.png", TextGet("FriendList"));
+	   DrawButton(1885, 885, 90, 90, "", "White", "Icons/Exit.png", TextGet("Exit"));
+           if ((InventoryGet(Player, "Pronouns").Asset.Name == "SheHer") 
+	       && (InventoryGet(Player, "Pussy").Asset.Name != "Penis") 
+	       && (InventoryGet(Player, "BodyUpper").Asset.Name != "FlatSmall") 
+	       && (InventoryGet(Player, "BodyUpper").Asset.Name != "FlatMedium")) {
+               DrawButton(890, 885, 90, 90, "", "White","Screens/Online/ChatSelect/Female.png", "Only Female");
+           } else {
+               DrawButton(890, 885, 90, 90, "", "Gray","Screens/Online/ChatSelect/Female.png", "Only Female");
+           } 
+           DrawButton(1010, 885, 90, 90, "", "White","Screens/Online/ChatSelect/Female.png", "Mixed");
+           DrawButton(1100, 885, 90, 90, "", "White","Screens/Online/ChatSelect/Male.png", "Mixed");
+           if ((InventoryGet(Player, "Pronouns").Asset.Name == "HeHim") 
+	       && (InventoryGet(Player, "Pussy").Asset.Name == "Penis") 
+	       && ((InventoryGet(Player, "BodyUpper").Asset.Name == "FlatSmall") || (InventoryGet(Player, "BodyUpper").Asset.Name == "FlatMedium")))  {
+               DrawButton(1220, 885, 90, 90, "", "White","Screens/Online/ChatSelect/Male.png", "Only Male");
+           } else {
+               DrawButton(1220, 885, 90, 90, "", "Gray","Screens/Online/ChatSelect/Male.png", "Only Male");
+           }
+	} else {
+           DrawTextFit(TextGet(ChatSearchMessage), 255, 935, 490, "White", "Gray");
+	   ElementPosition("InputSearch",  700, 926, 390);
+           DrawButton(895, 898, 280, 64, TextGet("Language" + ChatSearchLanguageTemp), "White");
+		if (ChatSearchChangedLanguageOrFilterTerms()) {
+			DrawButton(1185, 885, 90, 90, "", "White", "Icons/Accept.png");
+			DrawButton(1285, 885, 90, 90, "", "White", "Icons/Cancel.png");
+		}
+		DrawButton(1385, 885, 90, 90, "", "White", "Icons/Question.png", TextGet("Help"));
+		DrawButton(1685, 885, 90, 90, "", !ChatSearchGhostPlayerOnClickActive ? "Lime" : "White", "Icons/Trash.png", TextGet("TempHideOnClick"));
+		DrawButton(1785, 885, 90, 90, "", ChatSearchGhostPlayerOnClickActive ? "Lime" : "White", "Icons/GhostList.png", TextGet("GhostPlayerOnClick"));
+		DrawButton(1885, 885, 90, 90, "", "White", "Icons/InspectLock.png", TextGet("ShowHiddenRooms"));
+	}
+}
+
+function ChatSearchClick() {
+	if (ChatSearchFilterHelpActive) {
+		if (MouseIn(1385, 885, 90, 90)) ChatSearchToggleHelpMode();
+		return;
+	}
+	if (ChatSearchFilterUnhideConfirm) {
+		if (MouseIn(620, 898, 280, 64)) {
+			ChatSearchFilterUnhideConfirm = null;
+		}
+		if (MouseIn(1100, 898, 280, 64)) {		ChatSearchClickUnhideRoom(ChatSearchFilterUnhideConfirm.Index, true);
+			ChatSearchFilterUnhideConfirm = null;
+		}
+		return;
+	}
+	if ((MouseX >= 25) && (MouseX < 1975) && (MouseY >= 25) && (MouseY < 875)) {
+		if (ChatSearchMode == "Filter") ChatSearchClickPermission();
+		if (ChatSearchMode == "") ChatSearchJoin();
+	}
+	if (MouseIn(1485, 885, 90, 90)) {
+		ChatSearchResultOffset += ChatSearchRoomsPerPage;
+		if (ChatSearchResultOffset >= (ChatSearchShowHiddenRoomsActive ? ChatSearchHiddenResult : ChatSearchResult).length) ChatSearchResultOffset = 0;
+	}
+	if (ChatSearchShowHiddenRoomsActive) {
+		if (MouseIn(1885, 885, 90, 90)) ChatSearchToggleHiddenMode();
+		return;
+	}
+	if (MouseIn(1585, 885, 90, 90)) {
+		ChatSearchToggleSearchMode();
+		ChatSearchQuery();
+	}
+	if (ChatSearchMode == "") {
+	    if (MouseIn(600, 885, 90, 90)) ChatSearchQuery();       
+            if (MouseIn(890, 885, 90, 90)) {
+                if ((InventoryGet(Player, "Pronouns").Asset.Name == "SheHer") 
+                    && (InventoryGet(Player, "Pussy").Asset.Name != "Penis") 
+		    && (InventoryGet(Player, "BodyUpper").Asset.Name != "FlatSmall") 
+		    && (InventoryGet(Player, "BodyUpper").Asset.Name != "FlatMedium")) {
+                    ChatSelectStartSearch("");
+                }
+	    }
+            if (MouseIn(1010, 885, 180, 90)) ChatSelectStartSearch("X");  
+            if (MouseIn(1220, 885, 90, 90)) {
+                if ((InventoryGet(Player, "Pronouns").Asset.Name == "HeHim") 
+		    && (InventoryGet(Player, "Pussy").Asset.Name == "Penis") 
+		    && ((InventoryGet(Player, "BodyUpper").Asset.Name == "FlatSmall") || (InventoryGet(Player, "BodyUpper").Asset.Name == "FlatMedium")))  {
+                   ChatSelectStartSearch("M"); 
+                }
+	    }
+	    if (MouseIn(1685, 885, 90, 90)) {
+			ChatBlockItemCategory = [];
+			CommonSetScreen("Online", "ChatCreate");
+	    }
+	    if (MouseIn(1785, 885, 90, 90)) {
+			ElementRemove("InputSearch");
+			FriendListReturn = { Screen: CurrentScreen , Module: CurrentModule };
+			CommonSetScreen("Character", "FriendList");
+	    }
+	    if (MouseIn(1885, 885, 90, 90)) ChatSearchExit();
+	} else {
+		if (MouseIn(895, 898, 280, 64)) {
+			let Pos = ChatCreateLanguageList.indexOf(ChatSearchLanguageTemp) + 1;
+			if (Pos >= ChatCreateLanguageList.length)
+				ChatSearchLanguageTemp = "";
+			else
+				ChatSearchLanguageTemp = ChatCreateLanguageList[Pos];
+		}
+		if (ChatSearchChangedLanguageOrFilterTerms()) {
+			if (MouseIn(1185, 885, 90, 90)) ChatSearchSaveLanguageAndFilterTerms();
+			if (MouseIn(1285, 885, 90, 90)) ChatSearchLoadLanguageAndFilterTerms();
+		}
+		if (MouseIn(1385, 885, 90, 90)) ChatSearchToggleHelpMode();
+		if (MouseIn(1685, 885, 90, 90)) ChatSearchGhostPlayerOnClickActive = false;
+		if (MouseIn(1785, 885, 90, 90)) ChatSearchGhostPlayerOnClickActive = true;
+		if (MouseIn(1885, 885, 90, 90)) ChatSearchToggleHiddenMode();
+	}
+}
+
 //Crafting
 function CraftingItemListBuild() {
 	let Search = ElementValue("InputSearch");
