@@ -2,7 +2,7 @@
 
 Quick-AccessMenu2.1 by Nemesea - Add-on for Ben987's BondageClub game 
 
-Most recent release is version 1.10.0 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
+Most recent release is version 1.11.0 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
 ## Important notice
 
@@ -25,7 +25,7 @@ To update: Go to Installed Scripts / Click on date corresponding to QAM (TM will
 **Bookmark methode** - link to the QAM bookmark: https://tetris245.github.io/QAMbookmark.js
 
 **Alternative methode for Google Chrome, Microsoft Edge, similar browsers**
-1. Download the Quick-AccessMenu2.1-version1.10.0.zip file on the Releases page
+1. Download the Quick-AccessMenu2.1-version1.11.0.zip file on the Releases page
 2. Depending on browser, the .zip might have to be extracted. few browsers accept a .zip, a few requires a folder.
 3. Go to browser extensions. Enable developer mode.
 4. Load as Unpacked. Done. If the file can't be seen, see step 2.
@@ -49,15 +49,7 @@ Thanks for general assistance:
 Brianna, Better, Miyako, Zeltron, Selina, Estsanatlehi, okatakab.
 All else I might not have included.
 
-===========================================================================
 
-Changes for final version 
-
-- Added partial support for "TheyThem" pronouns (access only to Mixed lobby, as BC intentions are unknown)
-- Removed gagcode command and gagspeak function (Tip: use FBC feature)
-- Removed commands and functions related to nickname (Tip: use FBC and/or BCX)
-- Removed AutoRelog/AntiDisconnect functions (Tip: use FBC AutoRelog)
-- Fixed a bug in unrestrict reset command
 
 
 
