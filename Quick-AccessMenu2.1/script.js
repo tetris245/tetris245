@@ -221,7 +221,7 @@ async function NEWmenu() {
 	    } else if (content.includes("new")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.11.0:\n" + 
-		    "- Added partial support for "TheyThem" pronouns.\n" +.\n" +
+		    "- Added partial support for "TheyThem" pronouns.\n" +
 		    "- Removed features incompatible with BCX and/or FBC: AutoRelog/AntiDisconnect, Gagspeak, rewritten Nickname functions.\n" +
 		    "- Removed the gagcode, name and savename commands.</p>"
                 );   	    
