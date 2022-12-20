@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.10.0
+// @version 1.11.0
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -201,6 +201,14 @@ async function NEWmenu() {
                     " \n" +
                     "Tip: replace h and/or i by another character when you need to skip them.</p>"
                 );
+	    } else if (content.includes("message")) {
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Message for QAM users:\n" + 
+		    "Version 1.11.0 was initially planned as final QAM version. However, a version 1.11.1 will be released when the lobby system will be improved in BC.\n" +.\n" +
+		    "I thank all QAM users for their support and hope they will continue to enjoy this add-on for a long time (act wisely when you use some cheats!).\n" +
+		    "I stop here QAM development, as I have reached my skills limits. Let's hope that someone with better skills will re-load QAM in the future.\n" +
+	            "Magical kisses from Nemesea, keep on having fun with BC and all the add-ons for this great game!</p>"
+                );   	
             } else if (content.includes("misc")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Misc commands:\n" +
@@ -212,11 +220,10 @@ async function NEWmenu() {
                 );
 	    } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.10.0:\n" + 
-		    "- Added 3 extra buttons in Main Hall, Chat Room Search and Friendlist, allowing to switch between lobbies.\n" +
-		    "- Allowed back to main hall when leaving search screen corresponding to a lobby.\n" +
-		    "- Updated the search command by replacing old options by these 4 options: asylum, fclub, mclub, xclub.\n" +
-		    "- Removed neutralization of validation (next BC beta comes with a better system).</p>"		
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.11.0:\n" + 
+		    "- Added partial support for "TheyThem" pronouns.\n" +.\n" +
+		    "- Removed features incompatible with BCX and/or FBC: AutoRelog/AntiDisconnect, Gagspeak, rewritten Nickname functions.\n" +
+		    "- Removed the gagcode, name and savename commands.</p>"
                 );   	    
             } else if (content.includes("talking")) {
 		ChatRoomSendLocal(
@@ -7128,9 +7135,10 @@ ChatCommandGreeting = function(data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
 	Player.RestrictionSettings.BypassNPCPunishments = true;
 	ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.10.0: Ready, type <b>/help</b> for general menu.\n" +
+                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.11.0: Ready, type <b>/help</b> for general menu.\n" +
 		    "Note: NPC punishments are disabled.\n" +
                     "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
+		    "Use <b>/help message</b> to see special message.\n" +
 		    "Use <b>/clubhelp</b> to get the standard BC menu (+ FBC menu when enabled).\n" +
 		    "Visit also our <a href='https://github.com/tetris245/tetris245/wiki' target='_blank'>Wiki</a>\n" +
                     "For any inquiries, join <a href='https://discord.gg/JUvYfSpCmN' target='_blank'>https://discord.gg/JUvYfSpCmN</a></p>"
@@ -9244,7 +9252,7 @@ function FriendListClick() {
 function LoginRun() {
 	if (LoginCredits != null) LoginDrawCredits();
 	const CanLogin = ServerIsConnected && !LoginSubmitted;
-        DrawButton(750,120,500,60,"QAM 1.10.0 Ready!", "Pink", "Black", "");
+        DrawButton(750,120,500,60,"QAM 1.11.0 Ready!", "Pink", "Black", "");
 	DrawText(TextGet("Welcome"), 1000, 50, "White", "Black");
 	DrawText(LoginMessage, 1000, 100, "White", "Black");
 	DrawText(TextGet("AccountName"), 1000, 200, "White", "Black");
@@ -10514,6 +10522,7 @@ function AppearanceClick() {
 var tenorRe = /(?:(?:(?:[A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)(?:(?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)(?:jpg|jpeg|gif|png)/;
 var tubeRe = /((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?/;
 
+//Misc functions (some of them are not used since removal of embedding active part, they are kept for later re-using)
 function getChatWindowElement() {
     var div = document.querySelector("#TextAreaChatLog");
     return div;
@@ -10601,7 +10610,7 @@ setTimeout(function() {
     });
 }, 5000);
 
-
+//Auto-Join
 function ChatSearchJoin() { //rewrite chatroom join to house auto join
     var X = 25;
     var Y = 25;
