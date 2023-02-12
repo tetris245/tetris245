@@ -8,7 +8,7 @@ Most recent release is version 1.11.0 - Visit also our wiki: https://github.com/
 
 **After more than one year of QAM development, I've decided to make a long pause. Only some maintenance will be done in 2023.**
 
-**It was for me a nice experience and many users have appreciated all the changes, improvements and additions made during this year. The next step would be to make QAM fully compatible with other add-ons by using a ModSDK, created by the main BCX coder. However, I'm not an advanced coder, and it will take some time.**
+**It was for me a nice experience and many users have appreciated all the changes, improvements and additions made during this year. The next step would be to get full compatibility with other add-ons by using a ModSDK, created by the main BCX coder. However, I'm not an advanced coder, and it will take some time.**
 
 **I hope that someone with better skills will create another mod with improved features. There will be a future for QAM, more info in Spring.** 
  
