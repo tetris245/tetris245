@@ -10062,65 +10062,6 @@ function StableTrainerEnd() {
     CharacterRefresh(Player);
 }
 
-//text limits remover by rewriting functions
-//transport jacket can not be rewritten.
-//pet bowl can not be rewritten.
-//wooden box can not be rewritten.
-//canvas hood can not be rewritetn.
-InventoryItemMiscWoodenSignLoad = function () {
-    DynamicDrawLoadFont(InventoryItemMiscWoodenSignFont);
-    var C = CharacterGetCurrent();
-    var MustRefresh = false;
-    if (DialogFocusItem.Property == null) DialogFocusItem.Property = {};
-    if (DialogFocusItem.Property.Text == null && DialogFocusItem.Property.Text2 == null) {
-        DialogFocusItem.Property.Text = "";
-        DialogFocusItem.Property.Text2 = "";
-        MustRefresh = true;
-    }
-    if (MustRefresh) {
-        CharacterRefresh(C);
-        ChatRoomCharacterItemUpdate(C, DialogFocusItem.Asset.Group.Name);
-    }
-    const input1 = ElementCreateInput("WoodenSignText1", "text", DialogFocusItem.Property.Text, "50");
-    const input2 = ElementCreateInput("WoodenSignText2", "text", DialogFocusItem.Property.Text2, "50");
-    if (input1) input1.pattern = DynamicDrawTextInputPattern;
-    if (input2) input2.pattern = DynamicDrawTextInputPattern;
-}
-//
-InventoryItemNeckAccessoriesCustomCollarTagLoad = function () {
-    var C = CharacterGetCurrent();
-    var MustRefresh = false;
-    if (DialogFocusItem.Property == null) DialogFocusItem.Property = {};
-    if (DialogFocusItem.Property.Text == null) {
-        DialogFocusItem.Property.Text = "Tag";
-        MustRefresh = true;
-    }
-    if (MustRefresh) {
-        CharacterRefresh(C);
-        ChatRoomCharacterItemUpdate(C, DialogFocusItem.Asset.Group.Name);
-    }
-    if (!InventoryItemHasEffect(DialogFocusItem, "Lock", true)) {
-        ElementCreateInput("TagText", "text", DialogFocusItem.Property.Text, "30");
-    }
-}
-//
-InventoryItemNeckAccessoriesElectronicTagLoad = function () {
-    var C = CharacterGetCurrent();
-    var MustRefresh = false;
-    if (DialogFocusItem.Property == null) DialogFocusItem.Property = {};
-    if (DialogFocusItem.Property.Text == null) {
-        DialogFocusItem.Property.Text = "Tag";
-        MustRefresh = true;
-    }
-    if (MustRefresh) {
-        CharacterRefresh(C);
-        ChatRoomCharacterItemUpdate(C, DialogFocusItem.Asset.Group.Name);
-    }
-    if (!InventoryItemHasEffect(DialogFocusItem, "Lock", true)) {
-        ElementCreateInput("TagText", "text", DialogFocusItem.Property.Text, "30");
-    }
-}
-
 //Timercell
 function CellLoad() {
     CellKeyDepositStaff = CharacterLoadNPC("NPC_Cell_KeyDepositStaff");
