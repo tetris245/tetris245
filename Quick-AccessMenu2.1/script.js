@@ -75,8 +75,6 @@ async function NEWmenu() {
             } else if (content.includes("character")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Character commands - * = more info when using\n" +
-                    "<b>/becomeownlover</b> = becomes your own lover.\n" +
-                    "<b>/becomeownowner</b> = becomes your own owner.\n" +
                     "<b>/difficulty</b> (number) = changes game difficulty. *\n" +
                     "<b>/giveeverything</b> = gives every item.\n" +
                     "<b>/maxstatistics</b> = gives max statistics.\n" +
@@ -895,50 +893,7 @@ async function NEWmenu() {
                     document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
                 }
             }
-        } else if (content.indexOf("/becomeownlover") == 0) {
-            if (content.includes("yes")) {
-                ServerSend("AccountLovership", {
-                    MemberNumber: Player.MemberNumber,
-                    Action: "Propose" && "Accept"
-                })
-                ServerSend("AccountLovership", {
-                    MemberNumber: Player.MemberNumber,
-                    Action: "CanOfferBeginWedding" && "Propose"
-                });
-                ServerSend("AccountLovership", {
-                    MemberNumber: Player.MemberNumber,
-                    Action: "CanBeginWedding" && "Accept"
-                });
-                ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: Accomplished. Break-up is done via Club Management.</p>"
-                );
-            } else {
-                ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Warning</b>: Uncomfirmed glitch might occur when removing self as lover, during which a random/real lover will be taken\n" +
-                    "Use with risk in mind. Confirm by typing: <b>/becomeownlover yes</b></p>"
-                );
-            }
-        }
-        //consider writing a lover break up code to compensate for glitch, if possible.
-        else if (content.indexOf("/becomeownowner") == 0) {
-            ServerSend("AccountOwnership", {
-                MemberNumber: Player.MemberNumber,
-                Action: "Propose" && "Accept"
-            })
-            ServerSend("AccountOwnership", {
-                MemberNumber: Player.MemberNumber,
-                Action: "CanOfferEndTrial" && "Propose"
-            });
-            ServerSend("AccountOwnership", {
-                MemberNumber: Player.MemberNumber,
-                Action: "CanEndTrial" && "Accept"
-            });
-            ChatRoomSendLocal(
-                "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: Accomplished. Break-up is done via Club Management.</p>"
-            );
-        }
-        //can't end free from owner, due to club's extreme mode preventing yet not allowing owner to break. Stupid...
-        else if (content.indexOf("/bg1") == 0) {
+        } else if (content.indexOf("/bg1") == 0) {
             var BackgroundsTagList = [
                 BackgroundsTagNone,
                 BackgroundsTagIndoor,
