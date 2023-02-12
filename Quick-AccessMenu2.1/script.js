@@ -7968,17 +7968,25 @@ function M_MOANER_reactionVibeWithChat(data) {
 }
 
 function M_MOANER_isSpank(data) {
-    var array = data.Dictionary;
     if (data.Content == "ActionActivitySpankItem") {
         return true;
     }
-    for (index in array) {
-        let elem = array[index];
-        if (elem.Tag == "ActivityName") {
-            if (elem.Text == "Spank" || elem.Text == "Slap") {
-                return true;
+    var FocusButt = false;
+    var ActivitySpank = false;
+    for (let elem of data.Dictionary) {
+        if (elem.ActivityName) {
+            if (elem.ActivityName == "Spank" || elem.ActivityName == "SpankItem") {
+                ActivitySpank = true;
             }
         }
+        if (elem.FocusGroupName) {
+            if (elem.FocusGroupName == "ItemButt") {
+                FocusButt = true;
+            }
+        }
+    }
+    if (FocusButt && ActivitySpank) {
+        return true;
     }
     return false;
 }
