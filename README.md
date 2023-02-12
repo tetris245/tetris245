@@ -4,13 +4,13 @@ Quick-AccessMenu2.1 by Nemesea - Add-on for Ben987's BondageClub game
 
 Most recent release is version 1.11.0 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
-## Important notice
+## Important notice - Updated on 12/02/23
 
-**After more than one year of QAM development, I've decided to stop it. There will be just a version 1.11.1 when the lobby system will be improved in BC.**
+**After more than one year of QAM development, I've decided to make a long pause. Only some maintenance will be done in 2023.**
 
-**It was for me a nice experience and many users have appreciated all the changes, improvements and additions made during this year. The next step would be to make QAM fully compatible with other add-ons by using a ModSDK, created by the main BCX coder. However, I'm not an advanced coder, and the coding changes required in QAM to use this tool are beyond my skills.**
+**It was for me a nice experience and many users have appreciated all the changes, improvements and additions made during this year. The next step would be to make QAM fully compatible with other add-ons by using a ModSDK, created by the main BCX coder. However, I'm not an advanced coder, and it will take some time.**
 
-**I know it was not an easy decision, and that many users will be disappointed. I just hope that someone with better skills will re-load QAM in the future.** 
+**I hope that someone with better skills will create another mod with improved features. There will be a future for QAM, more info in Spring.** 
  
 ## Installation 
 
