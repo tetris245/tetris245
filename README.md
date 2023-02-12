@@ -43,7 +43,7 @@ Special thanks to Myrhanda and Kimei for giving permission to integrate the Moan
 Thanks to lillyBC for providing ideas and inspiration with her bcTampermonkeys scripts.
 
 Thanks for special assistance:
-Shyness, Ada, huzpsb, Lilly.
+Shyness, Ada, huzpsb, Lilly, Nikky90506.
 
 Thanks for general assistance:
 Brianna, Better, Miyako, Zeltron, Selina, Estsanatlehi, okatakab.
