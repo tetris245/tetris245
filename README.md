@@ -49,6 +49,12 @@ Thanks for general assistance:
 Brianna, Better, Miyako, Zeltron, Selina, Estsanatlehi, okatakab.
 All else I might not have included.
 
+==================
+
+Changes for future version
+
+* Removed the /becomeownlover and /becomeownowner commands (no more possible in R89)
+
 
 
 
