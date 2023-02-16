@@ -53,6 +53,7 @@ All else I might not have included.
 
 Changes for future version
 
+* Updated the DialogClick function (for R89 compatibility)
 * Updated the Moaner function for spanking activity (thanks to Nikky90506)
 * Removed the /becomeownlover and /becomeownowner commands (no more possible in R89)
 * Removed functions rewritten to bypass text limits (no more possible since R88)
