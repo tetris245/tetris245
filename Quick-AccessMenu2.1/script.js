@@ -9698,16 +9698,16 @@ function DialogClick() {
             CommonDynamicFunction("Inventory" + DialogFocusItem.Asset.Group.Name + DialogFocusItem.Asset.Name + "Click()");
         } else {
             if ((MouseX >= 1000) && (MouseX < 2000) && (MouseY >= 200) && (MouseY < 1000) && (DialogIsStruggling())) {
-				if (!StruggleMinigameClick()) {
-					if (MouseIn(1387-300, 600, 225, 275)) {
-						StruggleMinigameStart(Player, "Strength", DialogStrugglePrevItem, DialogStruggleNextItem);
-					} else if (MouseIn(1387, 600, 225, 275)) {
-						StruggleMinigameStart(Player, "Flexibility", DialogStrugglePrevItem, DialogStruggleNextItem);
-					} else if (MouseIn(1387+300, 600, 225, 275)) {
-						StruggleMinigameStart(Player, "Dexterity", DialogStrugglePrevItem, DialogStruggleNextItem);
-					}
-				}
-			}
+		if (!StruggleMinigameClick()) {
+	            if (MouseIn(1387-300, 600, 225, 275)) {
+			StruggleMinigameStart(Player, "Strength", DialogStrugglePrevItem, DialogStruggleNextItem);
+		    } else if (MouseIn(1387, 600, 225, 275)) {
+			StruggleMinigameStart(Player, "Flexibility", DialogStrugglePrevItem, DialogStruggleNextItem);
+		    } else if (MouseIn(1387+300, 600, 225, 275)) {
+			StruggleMinigameStart(Player, "Dexterity", DialogStrugglePrevItem, DialogStruggleNextItem);
+		    }
+		}
+	    }
             if ((MouseX >= 1000) && (MouseX < 2000) && (MouseY >= 15) && (MouseY <= 105)) DialogMenuButtonClick();
             if ((MouseX >= 1000) && (MouseX <= 1975) && (MouseY >= 125) && (MouseY <= 1000) && !DialogCraftingMenu && ((DialogItemPermissionMode && (Player.FocusGroup != null)) || (Player.CanInteract() && !InventoryGroupIsBlocked(C, null, true))) && !DialogIsStruggling() && (DialogColor == null)) {
                 let X = 1000;
