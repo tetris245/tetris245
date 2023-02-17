@@ -25,7 +25,7 @@ To update: Go to Installed Scripts / Click on date corresponding to QAM (TM will
 **Bookmark methode** - link to the QAM bookmark: https://tetris245.github.io/QAMbookmark.js
 
 **Alternative methode for Google Chrome, Microsoft Edge, similar browsers**
-1. Download the Quick-AccessMenu2.1-version1.11.0.zip file on the Releases page
+1. Download the Quick-AccessMenu2.1-version1.11.1.zip file on the Releases page
 2. Depending on browser, the .zip might have to be extracted. few browsers accept a .zip, a few requires a folder.
 3. Go to browser extensions. Enable developer mode.
 4. Load as Unpacked. Done. If the file can't be seen, see step 2.
@@ -53,11 +53,7 @@ All else I might not have included.
 
 Changes for future version
 
-* Updated DialogClick and MainHall functions (for R89 compatibility)
-* Updated the Moaner function for spanking activity (thanks to Nikky90506)
-* Removed the /becomeownlover and /becomeownowner commands (no more possible in R89)
-* Removed functions rewritten to bypass text limits (no more possible since R88)
-
+(...)
 
 
 
