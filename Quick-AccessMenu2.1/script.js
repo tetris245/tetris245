@@ -221,6 +221,7 @@ async function NEWmenu() {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Changes in v.1.11.1:\n" +
                     "- Updated DialogClick and MainHall functions for R89 compatibility.\n" +
+		    "- Updated the Moaner function for spanking activity.\n" +
                     "- Removed the /becomeownlover and /becomeownowner commands (no more possible with R89).\n" +
                     "- Removed functions rewritten to bypass text limits (no more possible since R88).</p>"
                 );
