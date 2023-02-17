@@ -202,9 +202,10 @@ async function NEWmenu() {
             } else if (content.includes("message")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Message for QAM users:\n" +
-                    "Version 1.11.0 was initially planned as final QAM version. However, a version 1.11.1 will be released when the lobby system will be improved in BC.\n" +
+                    "Only maintenance releases for QAM in 2023.\n" +
                     "I thank all QAM users for their support and hope they will continue to enjoy this add-on for a long time (act wisely when you use some cheats!).\n" +
-                    "I stop here QAM development, as I have reached my skills limits. Let's hope that someone with better skills will re-load QAM in the future.\n" +
+                    "I will focus now on a modSDK version that will have another name (more info in the next months).\n" +
+		    "I also hope that someone with better skills will create another mod with improved features. \n" +
                     "Magical kisses from Nemesea, keep on having fun with BC and all the add-ons for this great game!</p>"
                 );
             } else if (content.includes("misc")) {
@@ -218,10 +219,10 @@ async function NEWmenu() {
                 );
             } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.11.0:\n" +
-                    "- Added partial support for TheyThem pronouns.\n" +
-                    "- Removed features incompatible with BCX and/or FBC: AutoRelog/AntiDisconnect, Gagspeak, rewritten Nickname functions.\n" +
-                    "- Removed the gagcode, name and savename commands.</p>"
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Changes in v.1.11.1:\n" +
+                    "- Updated DialogClick and MainHall functions for R89 compatibility.\n" +
+                    "- Removed the /becomeownlover and /becomeownowner commands (no more possible with R89).\n" +
+                    "- Removed functions rewritten to bypass text limits (no more possible since R88).</p>"
                 );
             } else if (content.includes("talking")) {
                 ChatRoomSendLocal(
