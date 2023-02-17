@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.11.0
+// @version 1.11.1
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -7104,7 +7104,7 @@ ChatCommandGreeting = function (data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
         Player.RestrictionSettings.BypassNPCPunishments = true;
         ChatRoomSendLocal(
-            "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.11.0: Ready, type <b>/help</b> for general menu.\n" +
+            "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.11.1: Ready, type <b>/help</b> for general menu.\n" +
             "Note: NPC punishments are disabled.\n" +
             "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
             "Use <b>/help message</b> to see special message.\n" +
@@ -9230,7 +9230,7 @@ function FriendListClick() {
 function LoginRun() {
     if (LoginCredits != null) LoginDrawCredits();
     const CanLogin = ServerIsConnected && !LoginSubmitted;
-    DrawButton(750, 120, 500, 60, "QAM 1.11.0 Ready!", "Pink", "Black", "");
+    DrawButton(750, 120, 500, 60, "QAM 1.11.1 Ready!", "Pink", "Black", "");
     DrawText(TextGet("Welcome"), 1000, 50, "White", "Black");
     DrawText(LoginMessage, 1000, 100, "White", "Black");
     DrawText(TextGet("AccountName"), 1000, 200, "White", "Black");
@@ -9372,8 +9372,11 @@ function MainHallRun() {
             MainHallStartEventTimer = CommonTime();
             MainHallNextEventTimer = CommonTime() + 40000 + Math.floor(Math.random() * 40000);
         } else {
-            DrawText(TextGet("OnlinePlayers") + " " + CurrentOnlinePlayers.toString(), 1650, 960, "White", "Black");
-            DrawButton(1885, 900, 90, 90, "", "White", "Icons/ServiceBell.png", TextGet("RequestMaid"));
+            MainCanvas.textAlign = "right";
+	    DrawText(TextGet("OnlinePlayers") + " " + CurrentOnlinePlayers.toString(), 1740, 950, "White", "Black");
+	    MainCanvas.textAlign = "center";
+	    DrawButton(1775, 900, 90, 90, "", "White", "Icons/Changelog.png", TextGet("OpenChangelog"));
+	    DrawButton(1885, 900, 90, 90, "", "White", "Icons/ServiceBell.png", TextGet("RequestMaid"));
         }
         MainHallMaidWasCalledManually = false;
     } else {
@@ -9398,7 +9401,7 @@ function MainHallClick() {
             window.location = window.location;
         }
     }
-    if (MouseIn(1645, 145, 90, 90)) MainHallMoveToChatSelect()
+    if (MouseIn(1645, 145, 90, 90)) MainHallMoveToChatSelect();
     if ((MouseX >= 240) && (MouseX < 330) && (MouseY >= 475) && (MouseY < 565)) {
         if ((InventoryGet(Player, "Pronouns").Asset.Name == "SheHer")
             && (InventoryGet(Player, "Pussy").Asset.Name != "Penis")
@@ -9462,7 +9465,9 @@ function MainHallClick() {
                 MainHallStartEventTimer = CommonTime();
                 MainHallNextEventTimer = CommonTime() + 40000 + Math.floor(Math.random() * 40000);
                 MainHallMaidWasCalledManually = true;
-            }
+	    }    
+        } else if (MouseIn(1775, 900, 90, 90)) {
+	    MainHallOpenChangelog();
         }
     }
 }
