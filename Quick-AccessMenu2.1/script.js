@@ -9704,7 +9704,7 @@ function DialogClick() {
         if (DialogFocusItem != null) {
             CommonDynamicFunction("Inventory" + DialogFocusItem.Asset.Group.Name + DialogFocusItem.Asset.Name + "Click()");
         } else {
-            if ((MouseX >= 1000) && (MouseX < 2000) && (MouseY >= 200) && (MouseY < 1000) && (DialogIsStruggling())) {
+            if ((MouseX >= 1000) && (MouseX < 2000) && (MouseY >= 200) && (MouseY < 1000) && (DialogIsSelectingStruggleGame() || DialogIsStruggling())) {
 		if (!StruggleMinigameClick()) {
 	            if (MouseIn(1387-300, 600, 225, 275)) {
 			StruggleMinigameStart(Player, "Strength", DialogStrugglePrevItem, DialogStruggleNextItem);
