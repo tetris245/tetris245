@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.11.1
+// @version 1.11.2
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -219,11 +219,12 @@ async function NEWmenu() {
                 );
             } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Changes in v.1.11.1:\n" +
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Changes in v.1.11.1 and 1.11.2:\n" +
                     "- Updated DialogClick and MainHall functions for R89 compatibility.\n" +
 		    "- Updated the Moaner function for spanking activity.\n" +
                     "- Removed the /becomeownlover and /becomeownowner commands (no more possible with R89).\n" +
-                    "- Removed functions rewritten to bypass text limits (no more possible since R88).</p>"
+                    "- Removed functions rewritten to bypass text limits (no more possible since R88).\n" +
+		    "- (1.11.2) Fixed broken start of struggle.<p>"
                 );
             } else if (content.includes("talking")) {
                 ChatRoomSendLocal(
@@ -7106,7 +7107,7 @@ ChatCommandGreeting = function (data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
         Player.RestrictionSettings.BypassNPCPunishments = true;
         ChatRoomSendLocal(
-            "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.11.1: Ready, type <b>/help</b> for general menu.\n" +
+            "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.11.2: Ready, type <b>/help</b> for general menu.\n" +
             "Note: NPC punishments are disabled.\n" +
             "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
             "Use <b>/help message</b> to see special message.\n" +
@@ -9232,7 +9233,7 @@ function FriendListClick() {
 function LoginRun() {
     if (LoginCredits != null) LoginDrawCredits();
     const CanLogin = ServerIsConnected && !LoginSubmitted;
-    DrawButton(750, 120, 500, 60, "QAM 1.11.1 Ready!", "Pink", "Black", "");
+    DrawButton(750, 120, 500, 60, "QAM 1.11.2 Ready!", "Pink", "Black", "");
     DrawText(TextGet("Welcome"), 1000, 50, "White", "Black");
     DrawText(LoginMessage, 1000, 100, "White", "Black");
     DrawText(TextGet("AccountName"), 1000, 200, "White", "Black");
