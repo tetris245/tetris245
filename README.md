@@ -50,10 +50,8 @@ Brianna, Better, Miyako, Zeltron, Selina, Estsanatlehi, okatakab.
 All else I might not have included.
 
 ==================
-
 Changes for future version
-
-(...)
+* Hotfix DialogClick function
 
 
 
