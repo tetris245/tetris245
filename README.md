@@ -52,7 +52,7 @@ All else I might not have included.
 ==================
 Changes for future version
 
-(...)
+* Removed lobby buttons in Chat Room Search (Tip: ute EBCH, that can be loaded from FBC - it will provide you a lobby selector)
 
 
 
