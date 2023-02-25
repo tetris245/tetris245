@@ -9077,12 +9077,12 @@ function FriendListClick() {
     }
     if ((MouseX >= 960) && (MouseX < 1050) && (MouseY >= 5) && (MouseY < 95)) {
         ChatRoomSpace = "Asylum";
-        ElementContent("FriendList", "Asylum");
+        ElementContent("FriendList", "");
         ServerSend("AccountQuery", { Query: "OnlineFriends" });
     }
     if ((MouseX >= 1070) && (MouseX < 1160) && (MouseY >= 5) && (MouseY < 95)) {
         ChatRoomSpace = "X";
-        ElementContent("FriendList", "Asylum");
+        ElementContent("FriendList", "");
         ServerSend("AccountQuery", { Query: "OnlineFriends" });
     }
     if ((MouseX >= 1180) && (MouseX < 1270) && (MouseY >= 5) && (MouseY < 95)) {
