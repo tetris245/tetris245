@@ -9175,8 +9175,8 @@ function MainHallRun() {
     } else {
         DrawButton(240, 475, 90, 90, "", "Gray", "Screens/Online/ChatSelect/Female.png", "Only Female");
     }
-    DrawButton(360, 475, 90, 90, "", "White", "Screens/Online/ChatSelect/Female.png", "Mixed");
-    DrawButton(450, 475, 90, 90, "", "White", "Screens/Online/ChatSelect/Male.png", "Mixed");
+    DrawButton(350, 475, 90, 90, "", "White", "Icons/Asylum.png", "Asylum");
+    DrawButton(460, 475, 90, 90, "MIXED", "White", "", "Mixed");
     if ((InventoryGet(Player, "Pronouns").Asset.Name == "HeHim")
         && (InventoryGet(Player, "Pussy").Asset.Name == "Penis")
         && ((InventoryGet(Player, "BodyUpper").Asset.Name == "FlatSmall") || (InventoryGet(Player, "BodyUpper").Asset.Name == "FlatMedium"))) {
@@ -9276,7 +9276,8 @@ function MainHallClick() {
             ChatSelectStartSearch(ChatRoomSpaceType.FEMALE_ONLY);
         }
     }
-    if ((MouseX >= 360) && (MouseX < 540) && (MouseY >= 475) && (MouseY < 565)) ChatSelectStartSearch(ChatRoomSpaceType.MIXED);
+    if ((MouseX >= 350) && (MouseX < 440) && (MouseY >= 475) && (MouseY < 565)) ChatSelectStartSearch(ChatRoomSpaceType.ASYLUM);
+    if ((MouseX >= 460) && (MouseX < 550) && (MouseY >= 475) && (MouseY < 565)) ChatSelectStartSearch(ChatRoomSpaceType.MIXED);
     if ((MouseX >= 570) && (MouseX < 660) && (MouseY >= 475) && (MouseY < 565)) {
         if ((InventoryGet(Player, "Pronouns").Asset.Name == "HeHim")
             && (InventoryGet(Player, "Pussy").Asset.Name == "Penis")
