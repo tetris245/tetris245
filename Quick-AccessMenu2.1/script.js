@@ -9027,8 +9027,8 @@ function FriendListRun() {
     } else {
         DrawButton(850, 5, 90, 90, "", "Gray", "Screens/Online/ChatSelect/Female.png", "Only Female");
     }
-    DrawButton(970, 5, 90, 90, "", "White", "Screens/Online/ChatSelect/Female.png", "Mixed");
-    DrawButton(1060, 5, 90, 90, "", "White", "Screens/Online/ChatSelect/Male.png", "Mixed");
+    DrawButton(960, 5, 90, 90, "", "White", "Icons/Asylum.png", "Asylum");
+    DrawButton(1070, 5, 90, 90, "MIXED", "White", "", "Mixed");
     if ((InventoryGet(Player, "Pronouns").Asset.Name == "HeHim")
         && (InventoryGet(Player, "Pussy").Asset.Name == "Penis")
         && ((InventoryGet(Player, "BodyUpper").Asset.Name == "FlatSmall") || (InventoryGet(Player, "BodyUpper").Asset.Name == "FlatMedium"))) {
@@ -9075,9 +9075,14 @@ function FriendListClick() {
             ServerSend("AccountQuery", { Query: "OnlineFriends" });
         }
     }
-    if ((MouseX >= 970) && (MouseX < 1150) && (MouseY >= 5) && (MouseY < 95)) {
+    if ((MouseX >= 960) && (MouseX < 1050) && (MouseY >= 5) && (MouseY < 95)) {
+        ChatRoomSpace = "Asylum";
+        ElementContent("FriendList", "Asylum");
+        ServerSend("AccountQuery", { Query: "OnlineFriends" });
+    }
+    if ((MouseX >= 1070) && (MouseX < 1160) && (MouseY >= 5) && (MouseY < 95)) {
         ChatRoomSpace = "X";
-        ElementContent("FriendList", "");
+        ElementContent("FriendList", "Asylum");
         ServerSend("AccountQuery", { Query: "OnlineFriends" });
     }
     if ((MouseX >= 1180) && (MouseX < 1270) && (MouseY >= 5) && (MouseY < 95)) {
