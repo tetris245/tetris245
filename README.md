@@ -55,6 +55,7 @@ Changes for future version
 * Added Asylum to the lobby buttons in Main Hall and Friend List
 * Removed lobby buttons in Chat Room Search (Tip: use EBCH, that can be loaded from FBC - it will provide you a lobby selector including the asylum)
 * Improved the frlist command: you need now to specify the lobby for which you want to have clickable links - the options are the same as for the search command: asylum, fclub, mclub, xclub
+* Renamed the wardrobe command as wrobe to avoid conflict with BCAR add-on
 
 
 
