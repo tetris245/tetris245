@@ -110,7 +110,7 @@ async function NEWmenu() {
                     "<b>/naked</b> (target) = removes clothes.\n" +
                     "<b>/outfit</b> = restores/saves/loads outfit (including restraints). Using will give more info.\n" +
                     "<b>/underwear</b> (target) = changes underwear.\n" +
-                    "<b>/wardrobe</b> (target) = opens target wardrobe.</p>"
+                    "<b>/wrobe</b> (target) = opens target wardrobe.</p>"
                 );
             } else if (content.includes("escape")) {
                 ChatRoomSendLocal(
@@ -6955,12 +6955,23 @@ async function NEWmenu() {
                     }
                 }
             }
-        } else if (content.indexOf("/wardrobe") == 0) {
-            if (content.endsWith("/wardrobe")) {
+        } else if (content.indexOf("/whisper") == 0) {
+            var targetname = content.substring(8).trim();
+            var targetfinder = new RegExp('^' + targetname + '', 'i');
+            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+            if (target[0] == null) {
+                var targetnumber = parseInt(targetname);
+                target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
+            }
+            if (target[0] != null) {
+                ChatRoomTargetMemberNumber = target[0].MemberNumber;
+            }
+	} else if (content.indexOf("/wrobe") == 0) {
+            if (content.endsWith("/wrobe")) {
                 ChatRoomClickCharacter(Player);
                 DialogChangeClothes();
             } else {
-                var targetname = content.substring(10).trim();
+                var targetname = content.substring(7).trim();
                 var targetfinder = new RegExp('^' + targetname + '', 'i');
                 var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
                 if (target[0] == null) {
@@ -6974,18 +6985,6 @@ async function NEWmenu() {
                     DialogChangeClothes();
                 }
             }
-        } else if (content.indexOf("/whisper") == 0) {
-            var targetname = content.substring(8).trim();
-            var targetfinder = new RegExp('^' + targetname + '', 'i');
-            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
-            if (target[0] == null) {
-                var targetnumber = parseInt(targetname);
-                target[0] = ChatRoomCharacter.find((x) => x.MemberNumber === targetnumber);
-            }
-            if (target[0] != null) {
-                ChatRoomTargetMemberNumber = target[0].MemberNumber;
-            }
-        }
 
         //	DO NOT add new commands past this point.
 
