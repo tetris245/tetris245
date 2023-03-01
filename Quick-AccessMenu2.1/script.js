@@ -6985,7 +6985,8 @@ async function NEWmenu() {
                     DialogChangeClothes();
                 }
             }
-
+        }
+	    
         //	DO NOT add new commands past this point.
 
 
