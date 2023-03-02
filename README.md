@@ -58,6 +58,7 @@ Changes for future version
 * Removed the action command (is actually available in BC), while keeping the short version /a
 * Removed the babytalk command, while keeping the short version /b
 * Removed the collarremove command, while keeping /removecollar
+* Rename the safewordspecific command as safeworditem to avoid conflict with BCAR add-on
 * Renamed the wardrobe command as wrobe to avoid conflict with BCAR add-on
 
 
