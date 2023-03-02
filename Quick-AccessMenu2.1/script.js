@@ -798,7 +798,9 @@ async function NEWmenu() {
             }
         } else if (content.indexOf("/autokick") == 0) {
             if (this.AutoKickOn == false || this.AutoKickOn == undefined) {
-                ChatRoomSendLocal("AutoKick: Ready.");
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: AutoKick Ready.</p>"
+                );
                 AutoKickOn = true;
                 AutoKicker = function (data, days = 1, hours = 12, minutes = 0) {
                     minutes *= 60000;
@@ -824,7 +826,9 @@ async function NEWmenu() {
             } else {
                 AutoKickOn = false;
                 ServerSocket.off("ChatRoomMessage", AutoKicker);
-                ChatRoomSendLocal("AutoKick: Disabled.");
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: AutoKick Disabled.</p>"
+                );
             }
         } else if ((content.indexOf("/babytalk") == 0) || content.indexOf("/b ") == 0) {
             if (content.includes("/babytalk")) {
