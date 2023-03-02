@@ -116,9 +116,9 @@ async function NEWmenu() {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Escape commands:\n" +
                     "<b>/boost</b> = boosts skills, similar to maid quarters drink.\n" +
-                    "<b>/collarremove</b> = removes slave/owner collar. Can also be: /removecollar.\n" +
                     "<b>/frlist</b> = gives access to friendlist with clickable links to other rooms during 15 seconds.\n" +
                     "<b>/leave</b> = leaves room, even if prevented.\n" +
+		    "<b>/removecollar</b> = temporarily removes slave/owner collar.\n" +
                     "<b>/resetdifficulty</b> = resets difficulty, thereby quitting it. Will warn first.\n" +
                     "<b>/safewordspecific</b> = removes specific item. More info when used.\n" +
                     "<b>/solidity</b> (value) = changes the solidity of most current bindings. Use low values to escape! Value 1 allows to escape special devices.\n" +
@@ -1633,19 +1633,6 @@ async function NEWmenu() {
             }
         } else if (content.indexOf("/clubhelp") == 0) {
             CommandPrintHelpFor(Commands);
-        } else if ((content.indexOf("/collarremove") == 0) || (content.indexOf("/removecollar") == 0)) {
-            ServerSend("ChatRoomChat", {
-                Content: "PlayerOwnerCollarRelease",
-                Type: "Action",
-                Dictionary: [{
-                    Tag: "DestinationCharacterName",
-                    Text: Player.Name,
-                    MemberNumber: Player.MemberNumber
-                }]
-            });
-            LogAdd("Released.Collar", "OwnerRule");
-            InventoryRemove(Player, "ItemNeck");
-            ChatRoomCharacterItemUpdate(Player, "ItemNeck");
         } else if (content.indexOf("/college") == 0) {
             ChatRoomSetLastChatRoom("");
             ServerSend("ChatRoomLeave", "");
@@ -5027,6 +5014,19 @@ async function NEWmenu() {
         } else if (content.indexOf("/relog") == 0) {
             ServerSocket.close();
             ServerSocket.open();
+        } else if (content.indexOf("/removecollar") == 0) {
+            ServerSend("ChatRoomChat", {
+                Content: "PlayerOwnerCollarRelease",
+                Type: "Action",
+                Dictionary: [{
+                    Tag: "DestinationCharacterName",
+                    Text: Player.Name,
+                    MemberNumber: Player.MemberNumber
+                }]
+            });
+            LogAdd("Released.Collar", "OwnerRule");
+            InventoryRemove(Player, "ItemNeck");
+            ChatRoomCharacterItemUpdate(Player, "ItemNeck");
         } else if (content.indexOf("/reputation") == 0) {
             if (content.endsWith("/reputation")) {
                 ChatRoomSendLocal(
