@@ -228,7 +228,7 @@ async function NEWmenu() {
             } else if (content.includes("talking")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Talking commands - * = more info when using\n" +
-                    "<b>/babytalk</b> (stuffhere) = speaks once as a baby. Can also: /b.\n" +
+                    "<b>/b</b> (stuffhere) = speaks once as a baby.\n" +
                     "<b>/gagtalk</b> (talkmode) (stuffhere) = speaks once in specified gag talk. *\n" +
                     "<b>/hear</b> (hearmode) = forces a specific hearing mode. *\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. *\n" +
@@ -830,63 +830,33 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: AutoKick Disabled.</p>"
                 );
             }
-        } else if ((content.indexOf("/babytalk") == 0) || content.indexOf("/b ") == 0) {
-            if (content.includes("/babytalk")) {
-                content = SpeechBabyTalk({
-                    Effect: ["RegressedTalk"]
-                }, content);
-                if (ChatRoomTargetMemberNumber == null) {
-                    ServerSend("ChatRoomChat", {
-                        "Content": content.substring(9).trim(),
-                        "Type": "Chat"
-                    });
-                } else {
-                    ServerSend("ChatRoomChat", {
-                        "Content": content.substring(9).trim(),
-                        "Type": "Whisper",
-                        "Target": ChatRoomTargetMemberNumber
-                    });
-                    for (let C = 0; C < ChatRoomCharacter.length; C++)
-                        if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
-                            TargetName = ChatRoomCharacter[C].Name;
-                            break;
-                        }
-                    ChatRoomMessage({
-                        Content: "Whisper to " + TargetName + ": " + content.substring(9).trim(),
-                        Type: "LocalMessage",
-                        Sender: Player.MemberNumber
-                    });
-                    document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
-                    document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
-                }
+        } else if (content.indexOf("/b ") == 0) {
+            content = SpeechBabyTalk({
+                Effect: ["RegressedTalk"]
+            }, content);
+            if (ChatRoomTargetMemberNumber == null) {
+                ServerSend("ChatRoomChat", {
+                    "Content": content.substring(2).trim(),
+                    "Type": "Chat"
+                });
             } else {
-                content = SpeechBabyTalk({
-                    Effect: ["RegressedTalk"]
-                }, content);
-                if (ChatRoomTargetMemberNumber == null) {
-                    ServerSend("ChatRoomChat", {
-                        "Content": content.substring(2).trim(),
-                        "Type": "Chat"
-                    });
-                } else {
-                    ServerSend("ChatRoomChat", {
-                        "Content": content.substring(2).trim(),
-                        "Type": "Whisper",
-                        "Target": ChatRoomTargetMemberNumber
-                    });
-                    for (let C = 0; C < ChatRoomCharacter.length; C++)
-                        if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
-                            TargetName = ChatRoomCharacter[C].Name;
-                            break;
-                        }
-                    ChatRoomMessage({
-                        Content: "Whisper to " + TargetName + ": " + content.substring(2).trim(),
-                        Type: "LocalMessage",
-                        Sender: Player.MemberNumber
-                    });
-                    document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
-                    document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
-                }
+                ServerSend("ChatRoomChat", {
+                    "Content": content.substring(2).trim(),
+                    "Type": "Whisper",
+                    "Target": ChatRoomTargetMemberNumber
+                });
+                for (let C = 0; C < ChatRoomCharacter.length; C++)
+                    if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+                        TargetName = ChatRoomCharacter[C].Name;
+                        break;
+                    }
+                ChatRoomMessage({
+                    Content: "Whisper to " + TargetName + ": " + content.substring(2).trim(),
+                    Type: "LocalMessage",
+                    Sender: Player.MemberNumber
+                });
+                document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
+                document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
             }
         } else if (content.indexOf("/bg1") == 0) {
             var BackgroundsTagList = [
