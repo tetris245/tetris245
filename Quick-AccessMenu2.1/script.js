@@ -5369,13 +5369,6 @@ async function NEWmenu() {
                 "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: You have 5 seconds to click  on target, select area. If successful, will be returned. If not, retry.</p>"
             );
             setTimeout(function () {
-                if (CurrentCharacter !== Player) {
-                    ServerSend("ChatRoomChat", {
-                        Content: "Quick-Access Menu2: " + Player.Name + " has removed " + InventoryGet(CurrentCharacter, CurrentCharacter.FocusGroup.Name).Asset.Name + " on you via console. If this is undesired, blacklist player.",
-                        Type: "Whisper",
-                        Target: CurrentCharacter.MemberNumber
-                    })
-                };
                 CurrentCharacter.Appearance = CurrentCharacter.Appearance.filter(x => (CurrentCharacter.FocusGroup && CurrentCharacter.FocusGroup.Name) ? x.Asset.Group.Name !=
                     CurrentCharacter.FocusGroup.Name : true);
                 ChatRoomCharacterUpdate(CurrentCharacter);
