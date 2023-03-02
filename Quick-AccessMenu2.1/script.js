@@ -120,7 +120,7 @@ async function NEWmenu() {
                     "<b>/leave</b> = leaves room, even if prevented.\n" +
 		    "<b>/removecollar</b> = temporarily removes slave/owner collar.\n" +
                     "<b>/resetdifficulty</b> = resets difficulty, thereby quitting it. Will warn first.\n" +
-                    "<b>/safewordspecific</b> = removes specific item. More info when used.\n" +
+                    "<b>/safeworditem</b> = removes specific item. More info when used.\n" +
                     "<b>/solidity</b> (value) = changes the solidity of most current bindings. Use low values to escape! Value 1 allows to escape special devices.\n" +
                     "<b>/totalrelease</b> (target) = removes all bindings, collar, harness, chastity, toys.\n" +
                     "<b>/unlock</b> (target) (locktype) = removes all locks or only a specified type of lock. More info with /help unl.\n" +
@@ -5364,7 +5364,7 @@ async function NEWmenu() {
                 document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
                 document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
             }
-        } else if (content.indexOf("/safewordspecific") == 0) {
+        } else if (content.indexOf("/safeworditem") == 0) {
             ChatRoomSendLocal(
                 "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: You have 5 seconds to click  on target, select area. If successful, will be returned. If not, retry.</p>"
             );
