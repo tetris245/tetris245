@@ -784,18 +784,24 @@ async function NEWmenu() {
                 );
             }
         } else if (content.indexOf("/asylum") == 0) {
-            var minutes = content.substring(7).trim();
-            ChatRoomSetLastChatRoom("");
-            ServerSend("ChatRoomLeave", "");
-            OnlineGameName = "";
-            CommonSetScreen("Room", "AsylumEntrance");
-            ChatRoomClearAllElements();
-            AsylumEntranceIsWearingNurseClothes = function () {
-                return true
-            };
-            if (ReputationGet("Asylum") < 0) {
-                LogAdd("Committed", "Asylum", CurrentTime + 60000 * minutes);
-            }
+	    if ((content.endsWith("/asylum")) && (ReputationGet("Asylum") < 0)) { 
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'><b>ULTRAbc</b>: You must specify minutes if you are a patient.</p>" 
+                );
+            } else {
+                var minutes = content.substring(7).trim();
+                ChatRoomSetLastChatRoom("");
+                ServerSend("ChatRoomLeave", "");
+                OnlineGameName = "";
+                CommonSetScreen("Room", "AsylumEntrance");
+                ChatRoomClearAllElements();
+                AsylumEntranceIsWearingNurseClothes = function () {
+                    return true
+                };
+                if (ReputationGet("Asylum") < 0) {
+                    LogAdd("Committed", "Asylum", CurrentTime + 60000 * minutes);
+                }
+	    }	    
         } else if (content.indexOf("/autokick") == 0) {
             if (this.AutoKickOn == false || this.AutoKickOn == undefined) {
                 ChatRoomSendLocal(
