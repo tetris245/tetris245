@@ -55,6 +55,7 @@ Changes for future version
 * Added Asylum to the lobby buttons in Main Hall and Friend List
 * Removed lobby buttons in Chat Room Search (Tip: use EBCH, that can be loaded from FBC - it will provide you a lobby selector including the asylum)
 * Reduced the size of export/import buttons in the wardrobe
+* Added condition related to minutes in asylum command
 * Improved the frlist command: you need now to specify the lobby for which you want to have clickable links - the options are the same as for the search command: asylum, fclub, mclub, xclub
 * Removed the action command (is actually available in BC), while keeping the short version /a
 * Removed the babytalk command, while keeping the short version /b
