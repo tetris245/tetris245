@@ -836,7 +836,7 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: AutoKick Disabled.</p>"
                 );
             }
-        } else if (content.indexOf("/b ") == 0) {
+        } else if (content.indexOf("/b") == 0) {
             content = SpeechBabyTalk({
                 Effect: ["RegressedTalk"]
             }, content);
