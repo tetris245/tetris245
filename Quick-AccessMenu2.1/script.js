@@ -1537,7 +1537,8 @@ async function NEWmenu() {
             );
         } else if (content.indexOf("/chess") == 0) {
 	    if (content.endsWith("/chess")) {
-		 "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The chess command must be followed by a number between 1 and 3.\n" +
+                ChatRoomSendLocal(  
+		    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The chess command must be followed by a number between 1 and 3.\n" +
                     " \n" +
                     "Available difficulty modes:\n" +
                     "1 easy\n" +
@@ -1641,7 +1642,6 @@ async function NEWmenu() {
                 return true;
             }
         } else if (content.indexOf("/colorchanger") == 0) {
-
             if (content.includes("custom") || content.includes("set") || content.includes("select")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: You have 5 seconds to click on target, select area. If successful, will be returned. If not, retry.</p>"
