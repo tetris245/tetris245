@@ -9046,7 +9046,7 @@ function CraftingItemListBuild() {
     Search = Search.toUpperCase().trim();
     CraftingItemList = [];
     for (let A of Asset) {
-        if (!InventoryAvailable(Player, A.Name, A.Group.Name)) continue;
+        if (!InventoryAvailable(Player, A.Name, A.Group.Name) && A.AvailableLocations.length === 0) continue;
         if (!A.Group.Name.startsWith("Item")) continue;
         let Match = true;
         const desc = A.DynamicDescription(Player).toUpperCase().trim();
