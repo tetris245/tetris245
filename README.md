@@ -50,24 +50,10 @@ Brianna, Better, Miyako, Zeltron, Selina, Estsanatlehi, okatakab.
 All else I might not have included.
 
 ==================
+
 Changes for future version
 
-* Added Asylum to the lobby buttons in Main Hall and Friend List
-* Removed lobby buttons in Chat Room Search (Tip: use EBCH, that can be loaded from FBC - it will provide you a lobby selector including the asylum)
-* Removed all changes to the pose menu (Tip: use the pose2 command and/or EBCH)
-* Reduced the size of export/import buttons in the wardrobe
-* Added condition related to minutes in asylum command
-* Added explaining messages to a few commands
-* Improved the frlist command: you need now to specify the lobby for which you want to have clickable links - the options are the same as for the search command: asylum, fclub, mclub, xclub
-* Removed the action command (is actually available in BC), while keeping the short version /a
-* Removed the babytalk command, while keeping the short version /b
-* Removed the collarremove command, while keeping /removecollar
-* Removed the mouth and speech commands, while keeping /speak
-* Renamed the safewordspecific command as safeworditem to avoid conflict with BCAR add-on
-* Renamed the wardrobe command as wrobe to avoid conflict with BCAR add-on
-* Removed the whispered message, often misunderstood by players, in the colorchanger and safeworditem commands
-* Updated the AppearanceRun and CraftingItemListBuild functions
-
+(...)
 
 
 
