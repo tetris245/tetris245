@@ -10,7 +10,7 @@ Most recent release is version 1.12.0- Visit also our wiki: https://github.com/t
 
 **It was for me a nice experience and many users have appreciated all the changes, improvements and additions made during the year 2022.**
 
-**This month, I will release ULTRAbc 1.0.0, the modSDK version of QAM, for a better compatibiity with other add-ons, especially BCX and FBC. However, QAM will continue to exist, as I want to give full freedom of choice to the end-users**
+**This month, I will release ULTRAbc 1.0.0, the modSDK version of QAM, for a better compatibiity with other add-ons, especially BCX and FBC. However, QAM will continue to exist, as I want to give full freedom of choice to the end-users.**
  
 ## Installation 
 
