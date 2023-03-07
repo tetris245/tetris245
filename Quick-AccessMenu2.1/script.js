@@ -5709,7 +5709,7 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: The solidity of most current bindings has been changed.</p>"
                 );
             }
-        } else if ((content.indexOf("/speak") == 0) || (content.indexOf("/mouth") == 0) || (content.indexOf("/speech") == 0)) {
+        } else if (content.indexOf("/speak") == 0) {
             (typeof OLDtalking !== 'undefined') && (ChatRoomSendChat = OLDtalking); // reset
             NEWtalking = function () {
                 this.msg = ElementValue("InputChat").trim();
