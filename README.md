@@ -2,15 +2,15 @@
 
 Quick-AccessMenu2.1 by Nemesea - Add-on for Ben987's BondageClub game 
 
-Most recent release is version 1.11.3 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
+Most recent release is version 1.12.0- Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
-## Important notice - Updated on 12/02/23
+## Important notice - Updated on 07/03/23
 
-**After more than one year of QAM development, I've decided to make a long pause. Only some maintenance will be done in 2023.**
+**After more than one year of intense QAM development, there will be only some maintenance for QAM in 2023. Version 1.12.00 is one of these maintenance versions.**
 
-**It was for me a nice experience and many users have appreciated all the changes, improvements and additions made during this year. The next step would be to get full compatibility with other add-ons by using a ModSDK, created by the main BCX coder. However, I'm not an advanced coder, and it will take some time.**
+**It was for me a nice experience and many users have appreciated all the changes, improvements and additions made during the year 2022.**
 
-**I hope that someone with better skills will create another mod with improved features. There will be a future for QAM, more info in Spring.** 
+**This month, I will release ULTRAbc 1.0.0, the modSDK version of QAM, for a better compatibiity with other add-ons, especially BCX and FBC. However, QAM will continue to exist, as I want to give full freedom of choice to the end-users**
  
 ## Installation 
 
@@ -25,7 +25,7 @@ To update: Go to Installed Scripts / Click on date corresponding to QAM (TM will
 **Bookmark methode** - link to the QAM bookmark: https://tetris245.github.io/QAMbookmark.js
 
 **Alternative methode for Google Chrome, Microsoft Edge, similar browsers**
-1. Download the Quick-AccessMenu2.1-version1.11.3.zip file on the Releases page
+1. Download the Quick-AccessMenu2.1-version1.12.0.zip file on the Releases page
 2. Depending on browser, the .zip might have to be extracted. few browsers accept a .zip, a few requires a folder.
 3. Go to browser extensions. Enable developer mode.
 4. Load as Unpacked. Done. If the file can't be seen, see step 2.
