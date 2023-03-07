@@ -1647,15 +1647,6 @@ async function NEWmenu() {
                     if (CurrentCharacter.FocusGroup.Name) {
                         var RandomColor = null;
                         var ColorTargetNameCustom = CurrentCharacter;
-                        if (ColorTargetNameCustom !== Player) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Quick-Access Menu2: " + tmpname + " has used colorchanger on you. If this is undesired, blacklist player.",
-                                Type: "Whisper",
-                                Target: ColorTargetNameCustom.MemberNumber
-                            })
-                        };
-
-
                         if (this.ColorTarget1 == undefined) {
                             this.ColorTarget1 = CurrentCharacter.FocusGroup.Name
                         } else if (this.ColorTarget2 == undefined) {
@@ -1677,7 +1668,6 @@ async function NEWmenu() {
                         } else if (this.ColorTarget10 == undefined) {
                             this.ColorTarget10 = CurrentCharacter.FocusGroup.Name
                         }
-
                         ColorChangerCustom = function () {
                             setTimeout(function () {
                                 ColorChangerCustom()
@@ -1748,13 +1738,6 @@ async function NEWmenu() {
                         };
                         ColorChangerEyes();
                         DialogLeave();
-                        if (ColorTargetNameEyes !== Player) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Quick-Access Menu2: " + tmpname + " has used colorchanger on you. If this is undesired, blacklist player.",
-                                Type: "Whisper",
-                                Target: ColorTargetNameEyes.MemberNumber
-                            })
-                        };
                     }
                 }, 5000);
             } else if (content.includes("hair")) {
@@ -1777,13 +1760,6 @@ async function NEWmenu() {
                         };
                         ColorChangerHair();
                         DialogLeave();
-                        if (ColorTargetNameHair !== Player) {
-                            ServerSend("ChatRoomChat", {
-                                Content: "Quick-Access Menu2: " + tmpname + " has used colorchanger on you. If this is undesired, blacklist player.",
-                                Type: "Whisper",
-                                Target: ColorTargetNameHair.MemberNumber
-                            })
-                        };
                     }
                 }, 5000);
             } else if (content.includes("stop") || content.includes("reset")) {
