@@ -9536,25 +9536,34 @@ function AppearanceRun() {
     if (CharacterAppearanceMode == "") {
         for (let A = CharacterAppearanceOffset; A < AssetGroup.length && A < CharacterAppearanceOffset + CharacterAppearanceNumPerPage; A++)
             if ((AssetGroup[A].Family == C.AssetFamily) && (AssetGroup[A].Category == "Appearance") && AssetGroup[A].AllowCustomize) {
-                if (AppearanceGroupAllowed(C, AssetGroup[A].Name)) {
-                    const Item = InventoryGet(C, AssetGroup[A].Name);
-                    const ButtonColor = WardrobeGroupAccessible(C, AssetGroup[A]) ? "White" : "#888";
-                    if (AssetGroup[A].AllowNone && (AssetGroup[A].Category == "Appearance") && (Item != null) && WardrobeGroupAccessible(C, AssetGroup[A]))
-                        DrawButton(1210, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", ButtonColor, "Icons/Small/Naked.png", TextGet("StripItem"));
-                    DrawBackNextButton(1300, 145 + (A - CharacterAppearanceOffset) * 95, 400, 65, AssetGroup[A].Description + ": " + CharacterAppearanceGetCurrentValue(C, AssetGroup[A].Name, "Description"), ButtonColor, "",
-                        () => WardrobeGroupAccessible(C, AssetGroup[A]) ? CharacterAppearanceNextItem(C, AssetGroup[A].Name, false, true) : "",
-                        () => WardrobeGroupAccessible(C, AssetGroup[A]) ? CharacterAppearanceNextItem(C, AssetGroup[A].Name, true, true) : "",
-                        !WardrobeGroupAccessible(C, AssetGroup[A]),
-                        AssetGroup[A].AllowNone || AppearancePreviewUseCharacter(AssetGroup[A]) ? 65 : null);
-                    var Color = CharacterAppearanceGetCurrentValue(C, AssetGroup[A].Name, "Color");
-                    const ColorButtonText = ItemColorGetColorButtonText(Color);
-                    const ColorButtonColor = ColorButtonText.startsWith("#") ? ColorButtonText : "#fff";
-                    const CanCycleColors = !!Item && WardrobeGroupAccessible(C, AssetGroup[A]) && (Item.Asset.ColorableLayerCount > 0 || Item.Asset.Group.ColorSchema.length > 1) && !InventoryBlockedOrLimited(C, Item);
-                    const CanPickColor = CanCycleColors && AssetGroup[A].AllowColorize;
-                    const ColorIsSimple = ItemColorIsSimple(Item);
-                    DrawButton(1725, 145 + (A - CharacterAppearanceOffset) * 95, 160, 65, ColorButtonText, CanCycleColors ? ColorButtonColor : "#aaa", null, null, !CanCycleColors);
-                    DrawButton(1910, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", CanPickColor ? "#fff" : "#aaa", CanPickColor ? ColorIsSimple ? "Icons/Color.png" : "Icons/MultiColor.png" : "Icons/ColorBlocked.png", null, !CanPickColor);
-                } else DrawText(AssetGroup[A].Description + " " + TextGet("OwnerBlock"), 1600, 177 + (A - CharacterAppearanceOffset) * 95, "White", "Silver");
+	        if (!AppearanceGroupAllowed(C, AssetGroup[A].Name)) {
+		    DrawText(AssetGroup[A].Description + " " + TextGet("OwnerBlock"), 1600, 177 + (A - CharacterAppearanceOffset) * 95, "White", "Silver");
+		    continue;
+		}
+		const Item = InventoryGet(C, AssetGroup[A].Name);
+		const ButtonColor = WardrobeGroupAccessible(C, AssetGroup[A]) ? "White" : "#888";
+		if (AssetGroup[A].AllowNone && (AssetGroup[A].Category == "Appearance") && (Item != null) && WardrobeGroupAccessible(C, AssetGroup[A]))
+		    DrawButton(1210, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", ButtonColor, "Icons/Small/Naked.png", TextGet("StripItem"));
+		const prevNextButtonHandler = (prev) => {
+		    if (WardrobeGroupAccessible(C, AssetGroup[A])) {
+		        const asset = CharacterAppearanceNextItem(C, AssetGroup[A].Name, prev);
+			return asset ? asset.Description : "None";
+		    }
+		    return "";
+		};
+		DrawBackNextButton(1300, 145 + (A - CharacterAppearanceOffset) * 95, 400, 65, AssetGroup[A].Description + ": " + CharacterAppearanceGetCurrentValue(C, AssetGroup[A].Name, "Description"), ButtonColor, "",
+		    () => prevNextButtonHandler(false),
+		    () => prevNextButtonHandler(true),
+		    !WardrobeGroupAccessible(C, AssetGroup[A]),
+		    AssetGroup[A].HasPreviewImages || AppearancePreviewUseCharacter(AssetGroup[A]) ? 65 : null);
+		var Color = CharacterAppearanceGetCurrentValue(C, AssetGroup[A].Name, "Color");
+		const ColorButtonText = ItemColorGetColorButtonText(Color);
+		const ColorButtonColor = ColorButtonText.startsWith("#") ? ColorButtonText : "#fff";
+		const CanCycleColors = !!Item && WardrobeGroupAccessible(C, AssetGroup[A]) && (Item.Asset.ColorableLayerCount > 0 || Item.Asset.Group.ColorSchema.length > 1) && !InventoryBlockedOrLimited(C, Item);
+		const CanPickColor = CanCycleColors && AssetGroup[A].AllowColorize;
+		const ColorIsSimple = ItemColorIsSimple(Item);
+		DrawButton(1725, 145 + (A - CharacterAppearanceOffset) * 95, 160, 65, ColorButtonText, CanCycleColors ? ColorButtonColor : "#aaa", null, null, !CanCycleColors);
+	        DrawButton(1910, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", CanPickColor ? "#fff" : "#aaa", CanPickColor ? ColorIsSimple ? "Icons/Color.png" : "Icons/MultiColor.png" : "Icons/ColorBlocked.png", null, !CanPickColor);    
             }
     }
     if (CharacterAppearanceMode == "Wardrobe") {
