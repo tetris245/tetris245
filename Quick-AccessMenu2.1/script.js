@@ -1533,41 +1533,51 @@ async function NEWmenu() {
                 "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: You feel your senses heightened(bondage/evasion). Can see change in information panel.</p>"
             );
         } else if (content.indexOf("/chess") == 0) {
-            CollegeChessGameEndALT = function () {
-                document.removeEventListener("chessOnMove", CollegeChessGameProgress);
-                MiniGameEnded = true;
-                ChessEndStatus = "Draw";
-                ElementRemove("DivChessBoard");
-                CommonDynamicFunction(MiniGameReturnFunction + "()");
-                CommonSetScreen("Online", "ChatRoom");
-                CurrentScreen = "ChatRoom";
-                ChatRoomDrawCharacter();
-                ChatRoomMenuBuild();
-                ChatRoomDrawBackground();
-                ChatRoomLoad();
-                ChatRoomClearAllElements();
-            };
-            CollegeChessGameStartALT = function (Difficulty) {
-                CollegeChessDifficulty = parseInt(Difficulty);
-                const playerStarts = Math.random() < 0.5;
-                ChessCharacterWhite = playerStarts ? Player : CollegeChessOpponent;
-                ChessCharacterBlack = playerStarts ? CollegeChessOpponent : Player;
-                MiniGameStart("Chess", CollegeChessDifficulty, "CollegeChessGameEndALT");
-                document.addEventListener("chessOnMove", CollegeChessGameProgress);
-            };
-            var chessdifficulty = content.substring(6).trim();
-            if (this.ChessOn == false || this.ChessOn == undefined) {
-                ChessOn = true;
-                CommonSetScreen("Room", "CollegeChess");
-                CollegeChessGameStartALT(chessdifficulty);
-                setTimeout(function () {
+	    if (content.endsWith("/chess")) {
+		 "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The chess command must be followed by a number between 1 and 3.\n" +
+                    " \n" +
+                    "Available difficulty modes:\n" +
+                    "1 easy\n" +
+                    "2 normal\n" +
+                    "3 hard</p>"
+                );
+            } else {    
+                CollegeChessGameEndALT = function () {
+                    document.removeEventListener("chessOnMove", CollegeChessGameProgress);
+                    MiniGameEnded = true;
+                    ChessEndStatus = "Draw";
+                    ElementRemove("DivChessBoard");
+                    CommonDynamicFunction(MiniGameReturnFunction + "()");
                     CommonSetScreen("Online", "ChatRoom");
-                    ElementPositionFix("DivChessBoard", null, -1000, 0);
-                }, 2000);
-            } else {
-                ChessOn = false;
-                CollegeChessGameEndALT();
-            }
+                    CurrentScreen = "ChatRoom";
+                    ChatRoomDrawCharacter();
+                    ChatRoomMenuBuild();
+                    ChatRoomDrawBackground();
+                    ChatRoomLoad();
+                    ChatRoomClearAllElements();
+                };
+                CollegeChessGameStartALT = function (Difficulty) {
+                    CollegeChessDifficulty = parseInt(Difficulty);
+                    const playerStarts = Math.random() < 0.5;
+                    ChessCharacterWhite = playerStarts ? Player : CollegeChessOpponent;
+                    ChessCharacterBlack = playerStarts ? CollegeChessOpponent : Player;
+                    MiniGameStart("Chess", CollegeChessDifficulty, "CollegeChessGameEndALT");
+                    document.addEventListener("chessOnMove", CollegeChessGameProgress);
+                };
+                var chessdifficulty = content.substring(6).trim();
+                if (this.ChessOn == false || this.ChessOn == undefined) {
+                    ChessOn = true;
+                    CommonSetScreen("Room", "CollegeChess");
+                    CollegeChessGameStartALT(chessdifficulty);
+                    setTimeout(function () {
+                        CommonSetScreen("Online", "ChatRoom");
+                        ElementPositionFix("DivChessBoard", null, -1000, 0);
+                    }, 2000);
+                } else {
+                    ChessOn = false;
+                    CollegeChessGameEndALT();
+               }
+	    }	    
         } else if (content.indexOf("/clothes") == 0) {
             if (content.endsWith("/clothes")) {
                 ServerSend("ChatRoomChat", {
