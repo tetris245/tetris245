@@ -57,6 +57,7 @@ Changes for future version
 * Removed all changes to the pose menu (Tip: use the pose2 command and/or EBCH)
 * Reduced the size of export/import buttons in the wardrobe
 * Added condition related to minutes in asylum command
+* Added explaining messages to a few commands
 * Improved the frlist command: you need now to specify the lobby for which you want to have clickable links - the options are the same as for the search command: asylum, fclub, mclub, xclub
 * Removed the action command (is actually available in BC), while keeping the short version /a
 * Removed the babytalk command, while keeping the short version /b
