@@ -7158,7 +7158,9 @@ ChatCommandGreeting = function (data) {
             "Use <b>/help message</b> to see special message.\n" +
             "Use <b>/clubhelp</b> to get the standard BC menu (+ FBC menu when enabled).\n" +
             "Visit also our <a href='https://github.com/tetris245/tetris245/wiki' target='_blank'>Wiki</a>\n" +
-            "For any inquiries, join <a href='https://discord.gg/JUvYfSpCmN' target='_blank'>https://discord.gg/JUvYfSpCmN</a></p>"
+            "For any inquiries, join <a href='https://discord.gg/JUvYfSpCmN' target='_blank'>https://discord.gg/JUvYfSpCmN</a>\n" +
+	    " \n" +
+	    "Be ready for the release of ULTRAbc 1.0.0, the modSDK version of QAM, later this month!</p>"
         );
         ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)
     }
