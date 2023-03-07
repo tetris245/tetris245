@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.11.3
+// @version 1.12.0
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -91,7 +91,7 @@ async function NEWmenu() {
             } else if (content.includes("chat")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Chat commands - * = more info when using\n" +
-                    "<b>/a</b> (stuffhere) = inserts an action. Can also: /a.\n" +
+                    "<b>/a</b> (stuffhere) = inserts an action.\n" +
                     "<b>/autokick</b> = toggles on auto kick for 0 day old accounts.\n" +
                     "<b>/bio</b> (target) = gives direct access to the profile description of any player in the chat room.\n" +
                     "<b>/erase</b> = erases chat.\n" +
@@ -131,8 +131,7 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Automatic features without command:\n" +
                     "<b>Auto All Items Are Craftable</b> but limited using of the extra crafted items\n" +
                     "<b>Auto-Disable NPC Punishments</b> - can be changed with the /npcpunish command\n" +
-                    "<b>Auto Easy Access To Chat Rooms</b> by extra buttons in Main Hall, Chat Room Search and Friendlist\n" +
-                    "<b>Auto Extended Availability of Pose Menu </b>with priority over Facial Expression\n" +
+                    "<b>Auto Easy Access To Chat Rooms</b> by extra buttons in Main Hall and Friendlist\n" +
                     "<b>Auto Extra Buttons In Wardrobe</b>: Export (usable only if you come from a chat room) - Import1 = outfit + restraints\n" +
                     "Import2 = outfit + cosplay items + restraints - Import3 = full import including body changes\n" +
                     "<b>Auto-Join</b> to enter a room as soon as possible</p>"
@@ -204,10 +203,10 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Message for QAM users:\n" +
                     "Only maintenance releases for QAM in 2023.\n" +
                     "I thank all QAM users for their support and hope they will continue to enjoy this add-on for a long time (act wisely when you use some cheats!).\n" +
-                    "I will focus now on a modSDK version that will have another name (more info in the next months).\n" +
+                    "Be ready for the first release of ULTRAbc, the modSDK version of QAM!.\n" +
 		    "I also hope that someone with better skills will create another mod with improved features. \n" +
                     "Magical kisses from Nemesea, keep on having fun with BC and all the add-ons for this great game!</p>"
-                );
+                ); 
             } else if (content.includes("misc")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Misc commands:\n" +
@@ -219,11 +218,15 @@ async function NEWmenu() {
                 );
             } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Changes in v.1.11.3:\n" +
-                    "- Updated DialogClick and MainHall functions for R89 compatibility.\n" +
-		    "- Updated the Moaner function for spanking activity.\n" +
-                    "- Removed the /becomeownlover and /becomeownowner commands (no more possible with R89).\n" +
-                    "- Removed functions rewritten to bypass text limits (no more possible since R88).</p>"
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.12.0:\n" +
+                    "- Added Asylum to the lobby buttons in Main Hall and Friend List.\n" +
+		    "- Removed lobby buttons in Chat Room Search (Tip: use EBCH lobby selector).\n" +
+                    "- Removed all changes to the pose menu (Tip: use the pose2 command and/or EBCH).\n" +
+		    "- Reduced the size of export/import buttons in the wardrobe.\n" +
+		    "- Improved the frlist command: you need now to specify the lobby for which you want to have clickable links.\n" +
+	            "- Removed alternative commands to a few commands.\n" +
+		    "- Renamed safewordspecific as safeworditem, wardrobe as wrobe to avoid conflict with BCAR.\n" +
+                    "- Removed whispered message in the colorchanger and safeworditem commands.</p>"
                 );
             } else if (content.includes("talking")) {
                 ChatRoomSendLocal(
@@ -263,7 +266,7 @@ async function NEWmenu() {
                     "<b>/colorchanger</b> (animhere) = gets an animation with color change. *\n" +
                     "<b>/pose2</b> (posehere) (target) = changes the pose of any player. *\n" +
                     "<b>/see</b> (visionmode) (blurlevel) = forces a vision mode. *\n" +
-                    "<b>/speak</b> = animates mouth when talking in chat. Can also: /mouth or /speech.\n" +
+                    "<b>/speak</b> = animates mouth when talking in chat.\n" +
                     "<b>/trsee</b> (visor) (deafening module) (chin strap) = changes the settings of a worn Techno Helmet. * \n" +
                     "<b>/vrsee</b> (background) (mode) (game) = changes the settings of a worn VR Headset. *</p>"
                 );
@@ -7149,7 +7152,7 @@ ChatCommandGreeting = function (data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
         Player.RestrictionSettings.BypassNPCPunishments = true;
         ChatRoomSendLocal(
-            "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.11.3: Ready, type <b>/help</b> for general menu.\n" +
+            "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.12.0: Ready, type <b>/help</b> for general menu.\n" +
             "Note: NPC punishments are disabled.\n" +
             "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
             "Use <b>/help message</b> to see special message.\n" +
@@ -9144,7 +9147,7 @@ function FriendListClick() {
 function LoginRun() {
     if (LoginCredits != null) LoginDrawCredits();
     const CanLogin = ServerIsConnected && !LoginSubmitted;
-    DrawButton(750, 120, 500, 60, "QAM 1.11.3 Ready!", "Pink", "Black", "");
+    DrawButton(750, 120, 500, 60, "QAM 1.12.0 Ready!", "Pink", "Black", "");
     DrawText(TextGet("Welcome"), 1000, 50, "White", "Black");
     DrawText(LoginMessage, 1000, 100, "White", "Black");
     DrawText(TextGet("AccountName"), 1000, 200, "White", "Black");
