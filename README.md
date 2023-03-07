@@ -66,6 +66,7 @@ Changes for future version
 * Renamed the safewordspecific command as safeworditem to avoid conflict with BCAR add-on
 * Renamed the wardrobe command as wrobe to avoid conflict with BCAR add-on
 * Removed the whispered message, often misunderstood by players, in the colorchanger and safeworditem commands
+* Updated the AppearanceRun function
 
 
 
