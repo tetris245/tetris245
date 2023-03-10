@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.12.0
+// @version 1.12.1
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -218,7 +218,7 @@ async function NEWmenu() {
                 );
             } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.12.0:\n" +
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.12.0/1.12.1:\n" +
                     "- Added Asylum to the lobby buttons in Main Hall and Friend List.\n" +
 		    "- Removed lobby buttons in Chat Room Search (Tip: use EBCH lobby selector).\n" +
                     "- Removed all changes to the pose menu (Tip: use the pose2 command and/or EBCH).\n" +
@@ -7152,7 +7152,7 @@ ChatCommandGreeting = function (data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
         Player.RestrictionSettings.BypassNPCPunishments = true;
         ChatRoomSendLocal(
-            "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.12.0: Ready, type <b>/help</b> for general menu.\n" +
+            "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.12.0/1.12.1: Ready, type <b>/help</b> for general menu.\n" +
             "Note: NPC punishments are disabled.\n" +
             "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
             "Use <b>/help message</b> to see special message.\n" +
@@ -9149,7 +9149,7 @@ function FriendListClick() {
 function LoginRun() {
     if (LoginCredits != null) LoginDrawCredits();
     const CanLogin = ServerIsConnected && !LoginSubmitted;
-    DrawButton(750, 120, 500, 60, "QAM 1.12.0 Ready!", "Pink", "Black", "");
+    DrawButton(750, 120, 500, 60, "QAM 1.12.1 Ready!", "Pink", "Black", "");
     DrawText(TextGet("Welcome"), 1000, 50, "White", "Black");
     DrawText(LoginMessage, 1000, 100, "White", "Black");
     DrawText(TextGet("AccountName"), 1000, 200, "White", "Black");
@@ -9633,25 +9633,28 @@ function AppearanceClick() {
         if ((MouseX >= 1300) && (MouseX < 1700) && (MouseY >= 145) && (MouseY < 975)) {
             C.FocusGroup = null;
             for (let A = CharacterAppearanceOffset; A < AssetGroup.length && A < CharacterAppearanceOffset + CharacterAppearanceNumPerPage; A++)
-                if ((AssetGroup[A].Family == C.AssetFamily) && (AssetGroup[A].Category == "Appearance") && WardrobeGroupAccessible(C, AssetGroup[A]))
-                    if (MouseYIn(145 + (A - CharacterAppearanceOffset) * 95, 65))
-                        if (AppearanceGroupAllowed(C, AssetGroup[A].Name)) {
-                            if (!AssetGroup[A].AllowNone && !AppearancePreviewUseCharacter(AssetGroup[A])) {
-                                CharacterAppearanceNextItem(C, AssetGroup[A].Name, MouseX > 1500);
-                            }
-                            else {
-                                if (MouseXIn(1300, 65)) CharacterAppearanceNextItem(C, AssetGroup[A].Name, false);
-                                else if (MouseXIn(1635, 65)) CharacterAppearanceNextItem(C, AssetGroup[A].Name, true);
-                                else {
-                                    C.FocusGroup = AssetGroup[A];
-                                    DialogInventoryBuild(C, null, true);
-                                    CharacterAppearanceCloth = InventoryGet(C, C.FocusGroup.Name);
-                                    CharacterAppearanceMode = "Cloth";
-                                    return;
-                                }
-                            }
-                        }
-
+                if ((AssetGroup[A].Family == C.AssetFamily) && (AssetGroup[A].Category == "Appearance") && WardrobeGroupAccessible(C, AssetGroup[A]) && AppearanceGroupAllowed(C, AssetGroup[A].Name))
+	            if (MouseYIn(145 + (A - CharacterAppearanceOffset) * 95, 65)) {
+		        if (!AssetGroup[A].HasPreviewImages && !AppearancePreviewUseCharacter(AssetGroup[A])) {
+			    const asset = CharacterAppearanceNextItem(C, AssetGroup[A].Name, MouseX > 1500);
+			    CharacterAppearanceSetItem(C, AssetGroup[A].Name, asset);
+			}
+			else if (MouseXIn(1300, 65)) {
+			    const asset = CharacterAppearanceNextItem(C, AssetGroup[A].Name, false);
+			    CharacterAppearanceSetItem(C, AssetGroup[A].Name, asset);
+			}
+			else if (MouseXIn(1635, 65)) {
+			    const asset = CharacterAppearanceNextItem(C, AssetGroup[A].Name, true);
+			    CharacterAppearanceSetItem(C, AssetGroup[A].Name, asset);
+			}
+			else {										    
+			    C.FocusGroup = AssetGroup[A];
+			    DialogInventoryBuild(C, null, true);
+			    CharacterAppearanceCloth = InventoryGet(C, C.FocusGroup.Name);
+			    CharacterAppearanceMode = "Cloth";
+			    return;
+			}
+		}
         }
         if ((MouseX >= 1725) && (MouseX < 1885) && (MouseY >= 145) && (MouseY < 975))
             for (let A = CharacterAppearanceOffset; A < AssetGroup.length && A < CharacterAppearanceOffset + CharacterAppearanceNumPerPage; A++) {
