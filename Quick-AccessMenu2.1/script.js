@@ -1500,7 +1500,7 @@ async function NEWmenu() {
 	} else if (content.indexOf("/btalk") == 0) {
 	    if (content.endsWith("/btalk")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The gtalk command must be followed by the words you want to say or whisper.</p>"
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The btalk command must be followed by the words you want to say or whisper.</p>"
                 );
             } else {	
                 content = SpeechBabyTalk({
@@ -5252,109 +5252,133 @@ async function NEWmenu() {
                 );
             }
         } else if (content.indexOf("/s1") == 0) {
-            content = StutterTalk1(content.substring(3).trim());
-            if (ChatRoomTargetMemberNumber == null) {
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Chat"
-                });
+	    if (content.endsWith("/s1")) {
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The s1 command must be followed by the words you want to say or whisper.</p>"
+                );
             } else {
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Whisper",
-                    "Target": ChatRoomTargetMemberNumber
-                });
-                for (let C = 0; C < ChatRoomCharacter.length; C++)
-                    if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
-                        TargetName = ChatRoomCharacter[C].Name;
-                        break;
-                    }
-                ChatRoomMessage({
-                    Content: "Whisper to " + TargetName + ": " + content,
-                    Type: "LocalMessage",
-                    Sender: Player.MemberNumber
-                });
-                document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
-                document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
-            }
+                content = StutterTalk1(content.substring(3).trim());
+                if (ChatRoomTargetMemberNumber == null) {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Chat"
+                    });
+                } else {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Whisper",
+                        "Target": ChatRoomTargetMemberNumber
+                    });
+                    for (let C = 0; C < ChatRoomCharacter.length; C++)
+                        if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+                            TargetName = ChatRoomCharacter[C].Name;
+                            break;
+                        }
+                    ChatRoomMessage({
+                        Content: "Whisper to " + TargetName + ": " + content,
+                        Type: "LocalMessage",
+                        Sender: Player.MemberNumber
+                    });
+                    document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
+                    document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+                }
+	    }	    
         } else if (content.indexOf("/s2") == 0) {
-            content = StutterTalk2(content.substring(3).trim());
-            if (ChatRoomTargetMemberNumber == null) {
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Chat"
-                });
+	    if (content.endsWith("/s2")) {
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The s2 command must be followed by the words you want to say or whisper.</p>"
+                );
             } else {
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Whisper",
-                    "Target": ChatRoomTargetMemberNumber
-                });
-                for (let C = 0; C < ChatRoomCharacter.length; C++)
-                    if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
-                        TargetName = ChatRoomCharacter[C].Name;
-                        break;
-                    }
-                ChatRoomMessage({
-                    Content: "Whisper to " + TargetName + ": " + content,
-                    Type: "LocalMessage",
-                    Sender: Player.MemberNumber
-                });
-                document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
-                document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
-            }
+                content = StutterTalk2(content.substring(3).trim());
+                if (ChatRoomTargetMemberNumber == null) {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Chat"
+                    });
+                } else {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Whisper",
+                        "Target": ChatRoomTargetMemberNumber
+                    });
+                    for (let C = 0; C < ChatRoomCharacter.length; C++)
+                        if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+                            TargetName = ChatRoomCharacter[C].Name;
+                            break;
+                        }
+                    ChatRoomMessage({
+                        Content: "Whisper to " + TargetName + ": " + content,
+                        Type: "LocalMessage",
+                        Sender: Player.MemberNumber
+                    });
+                    document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
+                    document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+                }
+	    }	    
         } else if (content.indexOf("/s3") == 0) {
-            content = StutterTalk3(content.substring(3).trim());
-            if (ChatRoomTargetMemberNumber == null) {
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Chat"
-                });
+            if (content.endsWith("/s3")) {
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The s3 command must be followed by the words you want to say or whisper.</p>"
+                );
             } else {
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Whisper",
-                    "Target": ChatRoomTargetMemberNumber
-                });
-                for (let C = 0; C < ChatRoomCharacter.length; C++)
-                    if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
-                        TargetName = ChatRoomCharacter[C].Name;
-                        break;
-                    }
-                ChatRoomMessage({
-                    Content: "Whisper to " + TargetName + ": " + content,
-                    Type: "LocalMessage",
-                    Sender: Player.MemberNumber
-                });
-                document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
-                document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
-            }
+                content = StutterTalk3(content.substring(3).trim());
+                if (ChatRoomTargetMemberNumber == null) {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Chat"
+                    });
+                } else {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Whisper",
+                        "Target": ChatRoomTargetMemberNumber
+                    });
+                    for (let C = 0; C < ChatRoomCharacter.length; C++)
+                        if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+                            TargetName = ChatRoomCharacter[C].Name;
+                            break;
+                        }
+                    ChatRoomMessage({
+                        Content: "Whisper to " + TargetName + ": " + content,
+                        Type: "LocalMessage",
+                        Sender: Player.MemberNumber
+                    });
+                    document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
+                    document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+                }
+	    }	    
         } else if (content.indexOf("/s4") == 0) {
-            content = StutterTalk4(content.substring(3).trim());
-            if (ChatRoomTargetMemberNumber == null) {
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Chat"
-                });
+	     if (content.endsWith("/s4")) {
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The s4 command must be followed by the words you want to say or whisper.</p>"
+                );
             } else {
-                ServerSend("ChatRoomChat", {
-                    "Content": content,
-                    "Type": "Whisper",
-                    "Target": ChatRoomTargetMemberNumber
-                });
-                for (let C = 0; C < ChatRoomCharacter.length; C++)
-                    if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
-                        TargetName = ChatRoomCharacter[C].Name;
-                        break;
-                    }
-                ChatRoomMessage({
-                    Content: "Whisper to " + TargetName + ": " + content,
-                    Type: "LocalMessage",
-                    Sender: Player.MemberNumber
-                });
-                document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
-                document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
-            }
+                content = StutterTalk4(content.substring(3).trim());
+                if (ChatRoomTargetMemberNumber == null) {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Chat"
+                    });
+                } else {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content,
+                        "Type": "Whisper",
+                        "Target": ChatRoomTargetMemberNumber
+                    });
+                    for (let C = 0; C < ChatRoomCharacter.length; C++)
+                        if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+                            TargetName = ChatRoomCharacter[C].Name;
+                            break;
+                        }
+                    ChatRoomMessage({
+                        Content: "Whisper to " + TargetName + ": " + content,
+                        Type: "LocalMessage",
+                        Sender: Player.MemberNumber
+                    });
+                    document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
+                    document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+                }
+	    }	    
         } else if (content.indexOf("/safeworditem") == 0) {
             ChatRoomSendLocal(
                 "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: You have 5 seconds to click  on target, select area. If successful, will be returned. If not, retry.</p>"
