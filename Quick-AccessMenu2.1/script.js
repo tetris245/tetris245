@@ -91,7 +91,6 @@ async function NEWmenu() {
             } else if (content.includes("chat")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Chat commands - * = more info when using\n" +
-                    "<b>/a</b> (stuffhere) = inserts an action.\n" +
                     "<b>/autokick</b> = toggles on auto kick for 0 day old accounts.\n" +
                     "<b>/bio</b> (target) = gives direct access to the profile description of any player in the chat room.\n" +
                     "<b>/erase</b> = erases chat.\n" +
@@ -284,15 +283,6 @@ async function NEWmenu() {
                     "<b>/timercell</b> (minutes) = stays in the isolation cell. More than 60 minutes is possible.</p>"
                 );
             }
-        } else if (content.indexOf("/a") == 0) {
-            ServerSend("ChatRoomChat", {
-                Content: "Beep",
-                Type: "Action",
-                Dictionary: [{
-                    Tag: "Beep",
-                    Text: (content.substring(2).trim())
-                }]
-            });
         } else if (content.indexOf("/anim2") == 0) {
             CharacterResetFacialExpression(Player);
             CharacterResetFacialExpression(Player);
