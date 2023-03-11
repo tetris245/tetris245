@@ -2252,7 +2252,7 @@ async function NEWmenu() {
 		} else if (content.indexOf("/gtalk") == 0) {
             if (content.endsWith("/gtalk")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The gtalk command must be followed by a number between 1 and 9, then your message.\n" +
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The gtalk command must be followed by a number between 1 and 9, then the words you want to say or whisper.\n" +
                     " \n" +
                     "Available talk modes:\n" +
                     "1 very light gag talk\n" +
