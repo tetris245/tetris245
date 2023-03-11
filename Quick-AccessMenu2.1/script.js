@@ -2163,60 +2163,6 @@ async function NEWmenu() {
                 document.getElementById("TextAreaChatLog").style.display = "inline";
                 }, 15000);
             }
-        } else if (content.indexOf("/gagtalk") == 0) {
-            if (content.endsWith("/gagtalk")) {
-                ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The gagtalk command must be followed by a number between 1 and 9, then your message.\n" +
-                    " \n" +
-                    "Available talk modes:\n" +
-                    "1 very light gag talk\n" +
-                    "2 light gag talk\n" +
-                    "3 easy gag talk\n" +
-                    "4 normal gag talk\n" +
-                    "5 medium gag talk\n" +
-                    "6 heavy gag talk\n" +
-                    "7 very heavy gag talk\n" +
-                    "8 total gag talk\n" +
-                    "9 real gag talk</p>"
-                );
-            } else {
-                var stringGag1 = content;
-                var stringGag2 = stringGag1.split(/[ ,]+/);
-                var gaglevel = stringGag2[1];
-                if ((gaglevel > 0) && (gaglevel < 9)) {
-                    gl = gaglevel;
-                }
-                if (gaglevel == 9) {
-                    gl = SpeechGetTotalGagLevel(Player);
-                }
-                if ((gaglevel > 0) && (gaglevel < 10)) {
-                    content = SpeechGarbleByGagLevel(gl, content.substring(11).trim());
-                    if (ChatRoomTargetMemberNumber == null) {
-                        ServerSend("ChatRoomChat", {
-                            "Content": content,
-                            "Type": "Chat"
-                        });
-                    } else {
-                        ServerSend("ChatRoomChat", {
-                            "Content": content,
-                            "Type": "Whisper",
-                            "Target": ChatRoomTargetMemberNumber
-                        });
-                        for (let C = 0; C < ChatRoomCharacter.length; C++)
-                            if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
-                                TargetName = ChatRoomCharacter[C].Name;
-                                break;
-                            }
-                        ChatRoomMessage({
-                            Content: "Whisper to " + TargetName + ": " + content,
-                            Type: "LocalMessage",
-                            Sender: Player.MemberNumber
-                        });
-                        document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
-                        document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
-                    }
-                }
-            }
         } else if (content.indexOf("/game") == 0) {
             if (content.endsWith("/game")) {
                 ChatRoomSendLocal(
@@ -2303,6 +2249,60 @@ async function NEWmenu() {
             );
             AssetFemale3DCG.forEach(group => group.Asset.forEach(item => InventoryAdd(Player, item.Name, group.Group)));
             ServerPlayerInventorySync();
+		} else if (content.indexOf("/gtalk") == 0) {
+            if (content.endsWith("/gtalk")) {
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The gtalk command must be followed by a number between 1 and 9, then your message.\n" +
+                    " \n" +
+                    "Available talk modes:\n" +
+                    "1 very light gag talk\n" +
+                    "2 light gag talk\n" +
+                    "3 easy gag talk\n" +
+                    "4 normal gag talk\n" +
+                    "5 medium gag talk\n" +
+                    "6 heavy gag talk\n" +
+                    "7 very heavy gag talk\n" +
+                    "8 total gag talk\n" +
+                    "9 real gag talk</p>"
+                );
+            } else {
+                var stringGag1 = content;
+                var stringGag2 = stringGag1.split(/[ ,]+/);
+                var gaglevel = stringGag2[1];
+                if ((gaglevel > 0) && (gaglevel < 9)) {
+                    gl = gaglevel;
+                }
+                if (gaglevel == 9) {
+                    gl = SpeechGetTotalGagLevel(Player);
+                }
+                if ((gaglevel > 0) && (gaglevel < 10)) {
+                    content = SpeechGarbleByGagLevel(gl, content.substring(9).trim());
+                    if (ChatRoomTargetMemberNumber == null) {
+                        ServerSend("ChatRoomChat", {
+                            "Content": content,
+                            "Type": "Chat"
+                        });
+                    } else {
+                        ServerSend("ChatRoomChat", {
+                            "Content": content,
+                            "Type": "Whisper",
+                            "Target": ChatRoomTargetMemberNumber
+                        });
+                        for (let C = 0; C < ChatRoomCharacter.length; C++)
+                            if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+                                TargetName = ChatRoomCharacter[C].Name;
+                                break;
+                            }
+                        ChatRoomMessage({
+                            Content: "Whisper to " + TargetName + ": " + content,
+                            Type: "LocalMessage",
+                            Sender: Player.MemberNumber
+                        });
+                        document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
+                        document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+                    }
+                }
+            }	
         } else if (content.indexOf("/hear") == 0) {
             if (content.endsWith("/hear")) {
                 ChatRoomSendLocal(
