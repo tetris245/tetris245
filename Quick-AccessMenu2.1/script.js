@@ -2249,7 +2249,7 @@ async function NEWmenu() {
             );
             AssetFemale3DCG.forEach(group => group.Asset.forEach(item => InventoryAdd(Player, item.Name, group.Group)));
             ServerPlayerInventorySync();
-		} else if (content.indexOf("/gtalk") == 0) {
+	} else if (content.indexOf("/gtalk") == 0) {
             if (content.endsWith("/gtalk")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The gtalk command must be followed by a number between 1 and 9, then the words you want to say or whisper.\n" +
