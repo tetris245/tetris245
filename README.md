@@ -55,6 +55,8 @@ Changes for future version
 
 * Removed the /a command (Tip: use the standard BC /action command)
 * Renamed the /b command as /btalk
+* Renamed the /gagtalk command as /gtalk
+* Added explaining messages to a few commands
 
 
 
