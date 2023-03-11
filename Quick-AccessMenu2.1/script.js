@@ -1498,33 +1498,39 @@ async function NEWmenu() {
                 "<p style='background-color:#5fbd7a'>Quick-AccessMenu2: You feel your senses heightened(bondage/evasion). Can see change in information panel.</p>"
             );
 	} else if (content.indexOf("/btalk") == 0) {
-            content = SpeechBabyTalk({
-                Effect: ["RegressedTalk"]
-            }, content);
-            if (ChatRoomTargetMemberNumber == null) {
-                ServerSend("ChatRoomChat", {
-                    "Content": content.substring(2).trim(),
-                    "Type": "Chat"
-                });
-            } else {
-                ServerSend("ChatRoomChat", {
-                    "Content": content.substring(2).trim(),
-                    "Type": "Whisper",
-                    "Target": ChatRoomTargetMemberNumber
-                });
-                for (let C = 0; C < ChatRoomCharacter.length; C++)
-                    if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
-                        TargetName = ChatRoomCharacter[C].Name;
-                        break;
-                    }
-                ChatRoomMessage({
-                    Content: "Whisper to " + TargetName + ": " + content.substring(2).trim(),
-                    Type: "LocalMessage",
-                    Sender: Player.MemberNumber
-                });
-                document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
-                document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
-            }
+	    if (content.endsWith("/btalk")) {
+                ChatRoomSendLocal(
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: The gtalk command must be followed by the words you want to say or whisper.</p>"
+                );
+            } else {	
+                content = SpeechBabyTalk({
+                    Effect: ["RegressedTalk"]
+                }, content);
+                if (ChatRoomTargetMemberNumber == null) {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content.substring(6).trim(),
+                        "Type": "Chat"
+                    });
+                } else {
+                    ServerSend("ChatRoomChat", {
+                        "Content": content.substring(6).trim(),
+                        "Type": "Whisper",
+                        "Target": ChatRoomTargetMemberNumber
+                    });
+                    for (let C = 0; C < ChatRoomCharacter.length; C++)
+                        if (ChatRoomTargetMemberNumber == ChatRoomCharacter[C].MemberNumber) {
+                            TargetName = ChatRoomCharacter[C].Name;
+                            break;
+                        }
+                    ChatRoomMessage({
+                        Content: "Whisper to " + TargetName + ": " + content.substring(6).trim(),
+                        Type: "LocalMessage",
+                        Sender: Player.MemberNumber
+                    });
+                    document.querySelector('#TextAreaChatLog').lastChild.style.fontStyle = "italic";
+                    document.querySelector('#TextAreaChatLog').lastChild.style.color = "silver";
+                }
+	    }	    
         } else if (content.indexOf("/chess") == 0) {
 	    if (content.endsWith("/chess")) {
                 ChatRoomSendLocal(  
