@@ -59,6 +59,7 @@ Changes for future version
 * Renamed the /b command as /btalk
 * Renamed the /gagtalk command as /gtalk
 * Added explaining messages to a few commands
+* Fixed the stand option in pose2 command
 
 
 
