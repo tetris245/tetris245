@@ -4327,8 +4327,10 @@ async function NEWmenu() {
                     } else if ((content.includes("stand"))
                         && (Player.ActivePose != null)
                         && ((CharacterCanChangeToPose(Player, null)) || (ChatRoomCanAttemptStand(Player) == true))) {
-                        CharacterSetActivePose(Player, null);
+			CharacterSetActivePose(Player, null);
+                        delete InventoryGet(Player, 'Emoticon').Property.OverrideHeight;
                         ChatRoomCharacterUpdate(Player);
+                        CharacterRefresh(Player);
                         ServerSend("ChatRoomChat", {
                             Content: "Beep",
                             Type: "Action",
@@ -4857,8 +4859,9 @@ async function NEWmenu() {
                             if ((target[0].AllowItem == true)
                                 && (target[0].ActivePose != null)
                                 && ((CharacterCanChangeToPose(target[0], null)) || (ChatRoomCanAttemptStand(target[0]) == true))) {
-                                CharacterSetActivePose(target[0], null);
+				CharacterSetActivePose(target[0], null);
                                 ChatRoomCharacterUpdate(target[0]);
+                                CharacterRefresh(target[0]);   
                                 ServerSend("ChatRoomChat", {
                                     Content: "Beep",
                                     Type: "Action",
