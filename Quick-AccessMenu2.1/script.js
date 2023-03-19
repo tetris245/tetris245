@@ -202,7 +202,7 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Message for QAM users:\n" +
                     "Only maintenance releases for QAM in 2023.\n" +
                     "I thank all QAM users for their support and hope they will continue to enjoy this add-on for a long time (act wisely when you use some cheats!).\n" +
-                    "Be ready for the first release of ULTRAbc, the modSDK version of QAM!.\n" +
+                    "For a better compatibility with BCX and FBC, you are invited to switch to <a href='https://github.com/tetris245/ULTRAbc' target='_blank'ULTRAbc</a>.\n" +
 		    "I also hope that someone with better skills will create another mod with improved features. \n" +
                     "Magical kisses from Nemesea, keep on having fun with BC and all the add-ons for this great game!</p>"
                 ); 
@@ -217,21 +217,17 @@ async function NEWmenu() {
                 );
             } else if (content.includes("new")) {
                 ChatRoomSendLocal(
-                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.12.0/1.12.1:\n" +
-                    "- Added Asylum to the lobby buttons in Main Hall and Friend List.\n" +
-		    "- Removed lobby buttons in Chat Room Search (Tip: use EBCH lobby selector).\n" +
-                    "- Removed all changes to the pose menu (Tip: use the pose2 command and/or EBCH).\n" +
-		    "- Reduced the size of export/import buttons in the wardrobe.\n" +
-		    "- Improved the frlist command: you need now to specify the lobby for which you want to have clickable links.\n" +
-	            "- Removed alternative commands to a few commands.\n" +
-		    "- Renamed safewordspecific as safeworditem, wardrobe as wrobe to avoid conflict with BCAR.\n" +
-                    "- Removed whispered message in the colorchanger and safeworditem commands.</p>"
+                    "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Main changes in v.1.12.2:\n" +
+                    "- Renamed the /b command as /btalk.\n" +
+		    "- Renamed the /gagtalk command as /gtalk.\n" +
+                    "- Removed the /a command (Tip: use the standard BC /action command).\n" +
+                    "- Fixed the stand option in pose2 command.</p>"
                 );
             } else if (content.includes("talking")) {
                 ChatRoomSendLocal(
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Talking commands - * = more info when using\n" +
-                    "<b>/b</b> (stuffhere) = speaks once as a baby.\n" +
-                    "<b>/gagtalk</b> (talkmode) (stuffhere) = speaks once in specified gag talk. *\n" +
+                    "<b>/btalk</b> (stuffhere) = speaks once as a baby.\n" +
+                    "<b>/gtalk</b> (talkmode) (stuffhere) = speaks once in specified gag talk. *\n" +
                     "<b>/hear</b> (hearmode) = forces a specific hearing mode. *\n" +
                     "<b>/moaner</b> = moans when horny and stimulated. *\n" +
                     "<b>/s1</b> (stuffhere) = speaks once in light stuttering mode.\n" +
