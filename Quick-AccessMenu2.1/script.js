@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Quick-AccessMenu2.1
 // @namespace https://www.bondageprojects.com/
-// @version 1.12.1
+// @version 1.12.2
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
@@ -7175,7 +7175,7 @@ ChatCommandGreeting = function (data) {
     if (CurrentScreen == "ChatRoom" && data.Content == "ServerEnter") {
         Player.RestrictionSettings.BypassNPCPunishments = true;
         ChatRoomSendLocal(
-            "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.12.0/1.12.1: Ready, type <b>/help</b> for general menu.\n" +
+            "<p style='background-color:#5fbd7a'>Quick-AccessMenu2 - version 1.12.2: Ready, type <b>/help</b> for general menu.\n" +
             "Note: NPC punishments are disabled.\n" +
             "Use <b>/help new</b> to get info about changes in current QAM version.\n" +
             "Use <b>/help message</b> to see special message.\n" +
@@ -7183,7 +7183,7 @@ ChatCommandGreeting = function (data) {
             "Visit also our <a href='https://github.com/tetris245/tetris245/wiki' target='_blank'>Wiki</a>\n" +
             "For any inquiries, join <a href='https://discord.gg/JUvYfSpCmN' target='_blank'>https://discord.gg/JUvYfSpCmN</a>\n" +
 	    " \n" +
-	    "Be ready for the release of ULTRAbc 1.0.0, the modSDK version of QAM, later this month!</p>"
+	    "For a better compatibility with BCX and FBC, you are invited to switch to <a href='https://github.com/tetris245/ULTRAbc' target='_blank'ULTRAbc</a>.</p>"
         );
         ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)
     }
@@ -9172,7 +9172,7 @@ function FriendListClick() {
 function LoginRun() {
     if (LoginCredits != null) LoginDrawCredits();
     const CanLogin = ServerIsConnected && !LoginSubmitted;
-    DrawButton(750, 120, 500, 60, "QAM 1.12.1 Ready!", "Pink", "Black", "");
+    DrawButton(750, 120, 500, 60, "QAM 1.12.2 Ready!", "Pink", "Black", "");
     DrawText(TextGet("Welcome"), 1000, 50, "White", "Black");
     DrawText(LoginMessage, 1000, 100, "White", "Black");
     DrawText(TextGet("AccountName"), 1000, 200, "White", "Black");
