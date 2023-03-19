@@ -2,7 +2,7 @@
 
 Quick-AccessMenu2.1 by Nemesea - Add-on for Ben987's BondageClub game 
 
-Most recent release is version 1.12.1 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
+Most recent release is version 1.12.2 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
 ## Important notice - Updated on 13/03/23
 
@@ -27,7 +27,7 @@ To update: Go to Installed Scripts / Click on date corresponding to QAM (TM will
 **Bookmark methode** - link to the QAM bookmark: https://tetris245.github.io/QAMbookmark.js
 
 **Alternative methode for Google Chrome, Microsoft Edge, similar browsers**
-1. Download the Quick-AccessMenu2.1-version1.12.1.zip file on the Releases page
+1. Download the Quick-AccessMenu2.1-version1.12.2.zip file on the Releases page
 2. Depending on browser, the .zip might have to be extracted. few browsers accept a .zip, a few requires a folder.
 3. Go to browser extensions. Enable developer mode.
 4. Load as Unpacked. Done. If the file can't be seen, see step 2.
@@ -55,11 +55,7 @@ All else I might not have included.
 
 Changes for future version
 
-* Removed the /a command (Tip: use the standard BC /action command)
-* Renamed the /b command as /btalk
-* Renamed the /gagtalk command as /gtalk
-* Added explaining messages to a few commands
-* Fixed the stand option in pose2 command
+(...)
 
 
 
