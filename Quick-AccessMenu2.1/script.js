@@ -202,7 +202,7 @@ async function NEWmenu() {
                     "<p style='background-color:#5fbd7a'><b>Quick-AccessMenu2</b>: Message for QAM users:\n" +
                     "Only maintenance releases for QAM in 2023.\n" +
                     "I thank all QAM users for their support and hope they will continue to enjoy this add-on for a long time (act wisely when you use some cheats!).\n" +
-                    "For a better compatibility with BCX and FBC, you are invited to switch to <a href='https://github.com/tetris245/ULTRAbc' target='_blank'ULTRAbc</a>.\n" +
+                    "For a better compatibility with BCX and FBC, you are invited to switch to <a href='https://github.com/tetris245/ULTRAbc' target='_blank'>ULTRAbc</a>.\n" +
 		    "I also hope that someone with better skills will create another mod with improved features. \n" +
                     "Magical kisses from Nemesea, keep on having fun with BC and all the add-ons for this great game!</p>"
                 ); 
@@ -7179,7 +7179,7 @@ ChatCommandGreeting = function (data) {
             "Visit also our <a href='https://github.com/tetris245/tetris245/wiki' target='_blank'>Wiki</a>\n" +
             "For any inquiries, join <a href='https://discord.gg/JUvYfSpCmN' target='_blank'>https://discord.gg/JUvYfSpCmN</a>\n" +
 	    " \n" +
-	    "For a better compatibility with BCX and FBC, you are invited to switch to <a href='https://github.com/tetris245/ULTRAbc' target='_blank'ULTRAbc</a>.</p>"
+	    "For a better compatibility with BCX and FBC, you are invited to switch to <a href='https://github.com/tetris245/ULTRAbc' target='_blank'>ULTRAbc</a>.</p>"
         );
         ServerSocket.off('ChatRoomMessage', ChatCommandGreeting)
     }
