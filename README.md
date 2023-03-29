@@ -10,7 +10,7 @@ Most recent release is version 1.12.2 - Visit also our wiki: https://github.com/
 
 **It was for me a nice experience and many users have appreciated all the changes, improvements and additions made during the year 2022.**
 
-**ULTRAbc 1.1. has just been released, it's the the modSDK version of QAM, for a better compatibiity with other add-ons, especially BCX and FBC. At some point in the future, I will remove links and files for QAM bookmark and tmloader. All QAM users are invited to switch to ULTRAbc**
+**ULTRAbc is available, it's the the modSDK version of QAM, for a better compatibiity with other add-ons, especially BCX and FBC. At some point in the future, I will remove links and files for QAM bookmark and tmloader. All QAM users are invited to switch to ULTRAbc**
 
 Link to ULTRAbc repository: https://github.com/tetris245/ULTRAbc/
  
