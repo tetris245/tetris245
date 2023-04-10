@@ -6,7 +6,7 @@ Most recent and final release is version 1.12.2 - Visit also our wiki: https://g
 
 ## Important notice - Updated on 10/04/2023 
 
-**ULTRAbc is available, it's the the modSDK version of QAM, for a better compatibiity with other add-ons, especially BCX and FBC. 
+**ULTRAbc is available, it's the the modSDK version of QAM, for a better compatibiity with other add-ons, especially BCX and FBC.** 
 
 **I will no more update QAM.  All QAM users are invited to switch to ULTRAbc. At some point in the future, I will remove links and files for QAM bookmark and tmloader.**
 
