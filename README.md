@@ -4,7 +4,7 @@ Quick-AccessMenu2.1 by Nemesea - Add-on for Ben987's BondageClub game
 
 Most recent and final release is version 1.12.2 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
-## Important notice - Updated on 10/04/2023
+## Important notice - Updated on 10/04/2023 
 
 **ULTRAbc is available, it's the the modSDK version of QAM, for a better compatibiity with other add-ons, especially BCX and FBC. 
 
