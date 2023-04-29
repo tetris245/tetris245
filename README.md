@@ -4,11 +4,13 @@ Quick-AccessMenu2.1 by Nemesea - Add-on for Ben987's BondageClub game
 
 Most recent and final release is version 1.12.2 - Visit also our wiki: https://github.com/tetris245/tetris245/wiki
 
-## Important notice - Updated on 10/04/2023 
+## Important notice - Updated on 29/04/2023 
 
-**ULTRAbc is available, it's the the modSDK version of QAM, for a better compatibiity with other add-ons, especially BCX and FBC.** 
+**On 1st May 2023, all links to QAM will be removed.**
 
-**I will no more update QAM.  All QAM users are invited to switch to ULTRAbc. At some point in the future, I will remove links and files for QAM bookmark and tmloader.**
+**All QAM users are invited to switch to ULTRAbc.**
+
+**ULTRAbc is the the modSDK version of QAM, for a better compatibiity with other add-ons, especially BCX and FBC.** 
 
 Link to ULTRAbc repository: https://github.com/tetris245/ULTRAbc/
  
@@ -23,12 +25,6 @@ Inside Tampermonkey: Add new script / Utilities / Insert link to QAM loader in l
 To update: Go to Installed Scripts / Click on date corresponding to QAM (TM will search for new version and install it)
 
 **Bookmark methode** - link to the QAM bookmark: https://tetris245.github.io/QAMbookmark.js
-
-**Alternative methode for Google Chrome, Microsoft Edge, similar browsers**
-1. Download the Quick-AccessMenu2.1-version1.12.2.zip file on the Releases page
-2. Depending on browser, the .zip might have to be extracted. few browsers accept a .zip, a few requires a folder.
-3. Go to browser extensions. Enable developer mode.
-4. Load as Unpacked. Done. If the file can't be seen, see step 2.
 
 After installation, refresh your BC page and relog.
 
