@@ -10,7 +10,7 @@ Most recent and final release is version 1.12.2 - Visit also our wiki: https://g
 
 **All QAM users are invited to switch to ULTRAbc.**
 
-**ULTRAbc is the the modSDK version of QAM, for a better compatibiity with other add-ons, especially BCX and FBC.** 
+**ULTRAbc is the modSDK version of QAM, for a better compatibiity with other add-ons, especially BCX and FBC.** 
 
 Link to ULTRAbc repository: https://github.com/tetris245/ULTRAbc/
  
